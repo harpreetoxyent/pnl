@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<container type="CT1" id ="GIPTime">
+	<modulelist>
+		
+		<module
+			name="Storage Component"
+			id="storage.comp"
+			version="1.1.1"
+			provider-name="Oxyent"
+			class="com.oxymedical.component.storage.StorageComponent">
+	
+	 		<requires>
+		 		<jarFolder location="d://storageJar" />
+		 		<!-- <import module="jug-lgpl-2.0.0.jar" />
+		 		<import module="jug-native.jar" />
+		 		<import module="UniqueIdGenerator.jar" />-->
+				<import module="baseComponent.jar"/>
+				<import module="dom4j-1.6.1.jar"/>
+				<import module="framework.jar"/>-->
+			</requires>
+	
+		    <runtime>
+				<library name="testworld.jar"/>	
+		    </runtime>
+	
+		    <maintenance>
+		    		<Defect-Action>
+		    			<Defect-List>
+		    				<Defect id="301" severity="3">
+		    					Database not created properly
+		    				</Defect>
+		    			</Defect-List>	
+		    			<Action-List>
+						<Action id="101">
+							<Defect> 301 </Defect>
+							<type> Re-create the database </type>
+						</Action>
+		    			</Action-List>
+		    		</Defect-Action>
+		    		<Defect-Action>
+					 <Defect-List>
+					    	<Defect id="202" severity="1">
+					   			Record not created properly
+					    	</Defect>
+					    	<Defect id="203" severity="1">
+					   			Record not stored properly
+					    	</Defect>
+					 </Defect-List>	
+					 <Action-List>
+							<Action id="102"> 
+								<Defect> 202 </Defect>
+								<Defect> 203 </Defect>
+						    	<type> Re-create the record </type>
+						</Action>
+					 </Action-List>
+		    		</Defect-Action>
+		     </maintenance>
+	
+		</module>
+		<module
+				name="Billing Tracking Component"
+				id="com.oxymedical.component.billingTracking"
+				version="1.1.1"
+				provider-name="Oxyent"
+				class="com.oxymedical.component.billingTracking.BillingTrackingComponent">
+	
+	 			<requires>
+					<import module="org.eclipse.core.resources"/>
+					<import module="org.eclipse.ui"/>
+		    	</requires>
+	
+		    	<runtime>
+					<library name="testworld.jar"/>	
+		    	</runtime>
+		    	<maintenance>
+		    		<Defect-Action>
+		    			<Defect-List>
+		    				<Defect id="101" severity="3">
+		    					Billing Document Failed
+		    				</Defect>
+		    			</Defect-List>	
+		    			<Action-List>
+						<Action id="101">
+							<Defect> 101 </Defect>
+							<type> Create new instance of Billing Document </type>
+						</Action>
+		    			</Action-List>
+		    		</Defect-Action>
+		     	</maintenance>
+		     	<billingTracking>
+		    		<event id="EVBT1">
+			    		<method>run</method>
+					</event>
+					<event id="EVBT2">
+			    		<method>start</method>
+					</event>
+				</billingTracking>
+		</module>
+		<module
+			name="Maintenance Component"
+			id="maint.comp"
+			version="1.1.1"
+			provider-name="Oxyent"
+			class="com.oxymedical.component.maintenance.MaintenanceComponent">
+	
+	 		<requires>
+	 		<jarFolder location="d://maintenanceJars" />
+			<import module="baseComponent.jar"/>
+			<import module="framework.jar"/>
+			<!-- <import module="dom4j-1.6.1.jar"/>-->
+			<import module="jug-asl-2.0.0.jar"/>
+			<import module="jug-native.jar"/>
+			<import module="log4j-1.2.11.jar"/>
+			<import module="log4j.jar"/>
+			<import module="UniqueIdGenerator.jar"/>
+		    </requires>
+	
+		    <runtime>
+			<library name="testworld.jar"/>	
+		    </runtime>
+	
+		    <maintenance>
+		   		<Defect-Action>
+		    			<Defect-List>
+		    				<Defect>
+		    					
+		    				</Defect>
+		    			</Defect-List>	
+		    			<Action-List>
+						<Action>
+							
+						</Action>
+		    			</Action-List>
+		    		</Defect-Action>
+		    	</maintenance>
+		    	<auditLogging>
+	    		<event id="maintenance">
+		    		<method name="maintain">
+		    			<auditPattern id="MTDET1">
+		    				<auditData>log</auditData>
+		    			</auditPattern>
+		    		</method>
+		    	</event>
+		    				
+			</auditLogging>
+	
+		</module>	
+		<module
+			name="Import Component"
+			id="com.oxymedical.component.importcomponent"
+			version="1.0"
+			provider-name="Oxyent"
+			class="com.oxymedical.component.importcomponent.ImportComponent">
+	
+	 		<requires>
+				<import module="org.eclipse.core.resources"/>
+				<import module="org.eclipse.ui"/>
+		    </requires>
+	
+		    <runtime>
+				<library name="testworld.jar"/>	
+		    </runtime>
+	
+		    <maintenance>
+		   		<Defect-Action>
+		    			<Defect-List>
+		    				<Defect>
+		    					
+		    				</Defect>
+		    			</Defect-List>	
+		    			<Action-List>
+						<Action>
+							
+						</Action>
+		    			</Action-List>
+		    		</Defect-Action>
+		    	</maintenance>
+	
+		</module>	
+		<module
+			name="Database Component"
+			id="importDBComponent"
+			version="1.0"
+			provider-name="Oxyent"
+			class="com.oxymedical.component.db.DBComponent">
+	
+	 		<requires>
+			<import module="org.eclipse.core.resources"/>
+			<import module="org.eclipse.ui"/>
+		    </requires>
+	
+		    <runtime>
+			<library name="testworld.jar"/>	
+		    </runtime>
+	
+		    <maintenance>
+		   		<Defect-Action>
+		    			<Defect-List>
+		    				<Defect>
+		    					
+		    				</Defect>
+		    			</Defect-List>	
+		    			<Action-List>
+						<Action>
+							
+						</Action>
+		    			</Action-List>
+		    		</Defect-Action>
+		    	</maintenance>
+		    	
+		</module>
+		
+		<module
+			name="Database Component"
+			id="billingDBComponent"
+			version="1.0"
+			provider-name="Oxyent"
+			class="com.oxymedical.component.db.DBComponent">
+	
+	 		<requires>
+			<import module="org.eclipse.core.resources"/>
+			<import module="org.eclipse.ui"/>
+		    </requires>
+	
+		    <runtime>
+			<library name="testworld.jar"/>	
+		    </runtime>
+	
+		    <maintenance>
+		   		<Defect-Action>
+		    			<Defect-List>
+		    				<Defect>
+		    					
+		    				</Defect>
+		    			</Defect-List>	
+		    			<Action-List>
+						<Action>
+							
+						</Action>
+		    			</Action-List>
+		    		</Defect-Action>
+		    	</maintenance>
+		    	
+		</module>		
+		<module
+			name="User Admin Component"
+			id="com.oxymedical.component.useradmin"
+			version="1.0"
+			provider-name="Oxyent"
+			class="com.oxymedical.component.useradmin.UserAdminComponent">
+	
+	 		<requires>
+			<import module="org.eclipse.core.resources"/>
+			<import module="org.eclipse.ui"/>
+		    </requires>
+	
+		    <runtime>
+			<library name="testworld.jar"/>	
+		    </runtime>
+	
+		    <maintenance>
+		   		<Defect-Action>
+		    			<Defect-List>
+		    				<Defect>
+		    					
+		    				</Defect>
+		    			</Defect-List>	
+		    			<Action-List>
+						<Action>
+							
+						</Action>
+		    			</Action-List>
+		    		</Defect-Action>
+		    	</maintenance>
+		    	
+		</module>	
+		<module
+			name="Database Component"
+			id="userAdminDBComponent"
+			version="1.0"
+			provider-name="Oxyent"
+			class="com.oxymedical.component.db.DBComponent">
+	
+	 		<requires>
+			<import module="org.eclipse.core.resources"/>
+			<import module="org.eclipse.ui"/>
+		    </requires>
+	
+		    <runtime>
+			<library name="testworld.jar"/>	
+		    </runtime>
+	
+		    <maintenance>
+		   		<Defect-Action>
+		    			<Defect-List>
+		    				<Defect>
+		    					
+		    				</Defect>
+		    			</Defect-List>	
+		    			<Action-List>
+						<Action>
+							
+						</Action>
+		    			</Action-List>
+		    		</Defect-Action>
+		    	</maintenance>
+		    	
+		</module>			
+		<module
+			name="Rendering Component"
+			id="id.rendering"
+			version="1.0"
+			provider-name="Oxyent"
+			class="com.oxymedical.component.renderer.RendererComponent">
+	
+	 		<requires>
+			<import module="org.eclipse.core.resources"/>
+			<import module="org.eclipse.ui"/>
+		    </requires>
+	
+		    <runtime>
+			<library name="testworld.jar"/>	
+		    </runtime>
+	
+		    <maintenance>
+		    		<Defect-Action>
+		    			<Defect-List>
+		    				<Defect id="301" severity="3">
+		    					Database not created properly
+		    				</Defect>
+		    			</Defect-List>	
+		    			<Action-List>
+						<Action id="101">
+							<Defect> 301 </Defect>
+							<type> Re-create the database </type>
+						</Action>
+		    			</Action-List>
+		    		</Defect-Action>
+		    		<Defect-Action>
+					 <Defect-List>
+					    	<Defect id="202" severity="1">
+					   			Record not created properly
+					    	</Defect>
+					    	<Defect id="203" severity="1">
+					   			Record not stored properly
+					    	</Defect>
+					 </Defect-List>	
+					 <Action-List>
+							<Action id="102"> 
+								<Defect> 202 </Defect>
+								<Defect> 203 </Defect>
+						    	<type> Re-create the record </type>
+						</Action>
+					 </Action-List>
+		    		</Defect-Action>
+		     </maintenance>
+		    <billingTracking>
+	    		<event id="EVRE1">
+		    		<method>newApplication</method>
+				</event>
+				<event id="EVRE2">
+		    		<method>renderApplication</method>
+				</event>
+			</billingTracking>
+			<auditLogging>
+	    		<event id="appInfo">
+		    		<method name="newApplication">
+		    			<auditPattern id="APPDET1">
+		    				<auditData>appName</auditData>
+		    			</auditPattern>
+		    		</method>
+		    	</event>
+		    	<event id="renderInfo">
+		    		<method name="renderApplication">
+		    			<auditPattern id="APPDET2">
+		    				<auditData>renderingStatus</auditData>
+		    			</auditPattern>
+		    		</method>
+		    	</event>
+				
+			</auditLogging>
+		</module>	
+		
+		<module
+			name="Database Component"
+			id="dbCompnent"
+			version="1.0"
+			provider-name="Oxyent"
+			class="com.oxymedical.component.db.DBComponent">
+	
+	 		<requires>
+			<import module="org.eclipse.core.resources"/>
+			<import module="org.eclipse.ui"/>
+		    </requires>
+	
+		    <runtime>
+			<library name="testworld.jar"/>	
+		    </runtime>
+	
+		    <maintenance>
+		   		<Defect-Action>
+		    			<Defect-List>
+		    				<Defect>
+		    					
+		    				</Defect>
+		    			</Defect-List>	
+		    			<Action-List>
+						<Action>
+							
+						</Action>
+		    			</Action-List>
+		    		</Defect-Action>
+		    	</maintenance>
+		    	<billingTracking>
+		    		<event id="EVDB1">
+			    		<method>saveObject</method>
+					</event>
+				</billingTracking>
+		</module>		
+	    <module name="Test Componet" id="de.gipmbh.TestComponent" version="1.1.1" providername="gipmbh"
+	        class="de.gipmbh.eib.test.TestComponent">
+	        <requires>
+	            <import module="org.eclipse.core.resources" />
+	            <import module="org.eclipse.ui" />
+	        </requires>
+	        <runtime>
+	            <library name="testworld.jar" />
+	        </runtime>
+	        <extension point="org.eclipse.ui.actionSets" id="org.eclipse.examples.helloworld.HelloWorldActionSet"
+	            name="Hello World" />
+	    </module>
+	    
+		  <module
+			name="AuditLogging Component"
+			id="com.oxymedical.component.auditLogging"
+			version="1.0"
+			provider-name="Oxyent"
+			class="com.oxymedical.component.auditLogging.AuditComponent">
+	
+	 		<requires>
+			<import module="org.eclipse.core.resources"/>
+			<import module="org.eclipse.ui"/>
+		    </requires>
+	
+		    <runtime>
+			<library name="testworld.jar"/>	
+		    </runtime>
+	
+		    <maintenance>
+		   		<Defect-Action>
+		    			<Defect-List>
+		    				<Defect>
+		    					
+		    				</Defect>
+		    			</Defect-List>	
+		    			<Action-List>
+						<Action>
+							
+						</Action>
+		    			</Action-List>
+		    		</Defect-Action>
+		    	</maintenance>
+		    	<auditLogging>
+		    		<event id="transactionDet">
+			    		<method name="run">
+			    			<auditPattern id="TRDET1">
+			    				<auditData>time</auditData>
+			    				<auditData>systemDate</auditData>
+			    			</auditPattern>
+			    		</method>
+			    	</event>
+			    	<event id="cleanup">
+			    		<method name="destroy">
+			    			<auditPattern id="CLNUP1">
+			    				<auditData>time</auditData>
+			    				<auditData>systemDate</auditData>
+			    			</auditPattern>
+			    		</method>
+			    	</event>
+		    	
+				</auditLogging>
+		  </module>
+		  <module
+			name="Database Component"
+			id="maintDBComponent"
+			version="1.0"
+			provider-name="Oxyent"
+			class="com.oxymedical.component.db.DBComponent">
+	
+	 		<requires>
+			<import module="org.eclipse.core.resources"/>
+			<import module="org.eclipse.ui"/>
+		    </requires>
+	
+		    <runtime>
+			<library name="testworld.jar"/>	
+		    </runtime>
+	
+		    <maintenance>
+		   		<Defect-Action>
+		    			<Defect-List>
+		    				<Defect>
+		    					
+		    				</Defect>
+		    			</Defect-List>	
+		    			<Action-List>
+						<Action>
+							
+						</Action>
+		    			</Action-List>
+		    		</Defect-Action>
+		    	</maintenance>
+		    	
+		</module>
+		
+		  <module
+			name="AuditLogging Database Component"
+			id="auditLoggingDBComponent"
+			version="1.0"
+			provider-name="Oxyent"
+			class="com.oxymedical.component.db.DBComponent">
+	
+	 		<requires>
+			<import module="org.eclipse.core.resources"/>
+			<import module="org.eclipse.ui"/>
+		    </requires>
+	
+		    <runtime>
+			<library name="testworld.jar"/>	
+		    </runtime>
+	
+		    <maintenance>
+		   		<Defect-Action>
+		    			<Defect-List>
+		    				<Defect>
+		    					
+		    				</Defect>
+		    			</Defect-List>	
+		    			<Action-List>
+						<Action>
+							
+						</Action>
+		    			</Action-List>
+		    		</Defect-Action>
+		    	</maintenance>
+		    	
+		</module>
+		<module
+			name="Logging Component"
+			id="com.oxymedical.component.logging.LoggingComponent"
+			version="1.0"
+			provider-name="Oxyent"
+			class="com.oxymedical.component.logging.LoggingComponent">
+	
+	 		<requires>
+			<import module="org.eclipse.core.resources"/>
+			<import module="org.eclipse.ui"/>
+		    </requires>
+	
+		    <runtime>
+			<library name="testworld.jar"/>	
+		    </runtime>
+	
+		    <maintenance>
+		   		<Defect-Action>
+		    			<Defect-List>
+		    				<Defect>
+		    					
+		    				</Defect>
+		    			</Defect-List>	
+		    			<Action-List>
+						<Action>
+							
+						</Action>
+		    			</Action-List>
+		    		</Defect-Action>
+		    	</maintenance>
+		    	
+		</module>
+		
+	</modulelist>
+</container>
