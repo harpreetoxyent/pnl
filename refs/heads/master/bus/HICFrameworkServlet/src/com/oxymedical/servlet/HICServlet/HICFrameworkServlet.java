@@ -24,7 +24,6 @@ import org.dom4j.io.SAXReader;
 
 import com.oxymedical.component.baseComponent.IComponentIdConstants;
 import com.oxymedical.component.baseComponent.exception.ComponentException;
-import com.oxymedical.component.renderer.exception.RendererComponentException;
 import com.oxymedical.core.commonData.Application;
 import com.oxymedical.core.commonData.Data;
 import com.oxymedical.core.commonData.DataBase;
@@ -349,10 +348,6 @@ public class HICFrameworkServlet extends HttpServlet
 			}
 			renderThread = new Thread(new RenderRequest());
 			renderThread.start();
-		}
-		catch(RendererComponentException e)
-		{
-			throw e;
 		}
 		catch(Exception e)
 		{

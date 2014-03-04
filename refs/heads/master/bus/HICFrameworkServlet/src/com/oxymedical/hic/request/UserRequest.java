@@ -4,14 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.oxymedical.component.db.exception.DBComponentException;
-import com.oxymedical.component.useradmin.exception.DuplicateUserIdException;
-import com.oxymedical.component.useradmin.exception.NoSuchCompanyException;
-import com.oxymedical.component.useradmin.exception.NoSuchContainerException;
-import com.oxymedical.component.useradmin.exception.NoSuchGroupException;
-import com.oxymedical.component.useradmin.exception.NoSuchRoleException;
-import com.oxymedical.component.useradmin.exception.NoSuchUserException;
-import com.oxymedical.component.useradmin.exception.UAComponentException;
 import com.oxymedical.core.commonData.Data;
 import com.oxymedical.core.commonData.HICData;
 import com.oxymedical.core.commonData.IData;
@@ -114,38 +106,7 @@ public class UserRequest implements Runnable
 					NOLISRuntime.FireEvent("registerNewApplication", new Object[]{hicData}, PublicationScope.Global);
 //					userAdminComponent.registerNewApplication(userPatternsXML,applicationName);
 				}
-				catch (NoSuchGroupException e)
-				{
-					e.printStackTrace();
-				}
-				catch (NoSuchCompanyException e)
-				{
-					e.printStackTrace();
-				}
-				catch (DuplicateUserIdException e)
-				{
-					e.printStackTrace();
-				}
-				catch (NoSuchUserException e)
-				{
-					e.printStackTrace();
-				}
-				catch (NoSuchRoleException e)
-				{
-					e.printStackTrace();
-				}
-				catch (NoSuchContainerException e)
-				{
-					e.printStackTrace();
-				}
-				catch (DBComponentException e)
-				{
-					e.printStackTrace();
-				}
-				catch (UAComponentException e)
-				{
-					e.printStackTrace();
-				} catch (Exception e) {
+				catch (Exception e) {
 					e.printStackTrace();
 				}
 

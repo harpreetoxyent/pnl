@@ -13,7 +13,5 @@
 	<classpathentry kind="lib" path="lib/log4j-1.2.11.jar"/>
 	<classpathentry kind="lib" path="lib/servlet-api.jar"/>
 	<classpathentry kind="lib" path="lib/webserviceprovider.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/DBComponent"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/UseradminComponent"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
