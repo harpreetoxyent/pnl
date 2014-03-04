@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<container type="CT1" id ="GIPTime">
-	<modulelist>
-		
+<container type="CT1" id ="PNLMVP">
+	<modulelist>		
 		<module
 			name="Storage Component"
 			id="storage.comp"
@@ -11,9 +10,6 @@
 	
 	 		<requires>
 		 		<jarFolder location="d://storageJar" />
-		 		<!-- <import module="jug-lgpl-2.0.0.jar" />
-		 		<import module="jug-native.jar" />
-		 		<import module="UniqueIdGenerator.jar" />-->
 				<import module="baseComponent.jar"/>
 				<import module="dom4j-1.6.1.jar"/>
 				<import module="framework.jar"/>-->

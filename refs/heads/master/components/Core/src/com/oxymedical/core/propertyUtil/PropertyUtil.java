@@ -53,7 +53,7 @@ public class PropertyUtil
 			props.load(fis) ;
 			propertyValue = props.getProperty(key);
 		}catch (IOException ie){  
-			System.out.println ("Error reading setup.properties file"); 
+			System.out.println ("Error reading setup.properties file in currentDirectory="+currentDirectory); 
 			ie.printStackTrace();
 		}  
 		finally{

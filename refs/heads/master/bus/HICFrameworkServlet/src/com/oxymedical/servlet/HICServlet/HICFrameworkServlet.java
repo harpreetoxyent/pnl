@@ -90,7 +90,7 @@ public class HICFrameworkServlet extends HttpServlet
 				super.init();
 				renderingApplicationSettings = RenderingApplicationSettings.getInstanceUserAdminSystemSettings();
 				startHIC();
-				System.out.println("inside the init of hic framework---1");
+				System.out.println("----HIC Framework started as module xml found. Now initilizing housekeeping components------");
 				initializeComponents();
 				initializeHICObjects();
 				initializeWebServiceProvider();
