@@ -9,9 +9,9 @@
 	<classpathentry kind="lib" path="lib/portal-service.jar"/>
 	<classpathentry kind="lib" path="lib/portlet.jar"/>
 	<classpathentry kind="lib" path="lib/ant.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/basseComponent"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/core"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/BaseComponent"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/JAAP"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/UniquIdGenerator"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/CoreLibrary"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

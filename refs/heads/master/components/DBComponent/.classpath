@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JAAP"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Logging"/>
+	<classpathentry kind="lib" path="component_lib/ant-launcher.jar"/>
+	<classpathentry kind="lib" path="component_lib/ant-nodeps.jar"/>
+	<classpathentry kind="lib" path="component_lib/ant-trax.jar"/>
+	<classpathentry kind="lib" path="component_lib/ant.jar"/>
+	<classpathentry kind="lib" path="component_lib/antlr-2.7.6rc1.jar"/>
+	<classpathentry kind="lib" path="component_lib/asm-attrs.jar"/>
+	<classpathentry kind="lib" path="component_lib/asm.jar"/>
+	<classpathentry kind="lib" path="component_lib/cglib-2.1.3.jar"/>
+	<classpathentry kind="lib" path="component_lib/commons-collections.jar"/>
+	<classpathentry kind="lib" path="component_lib/commons-lang.jar"/>
+	<classpathentry kind="lib" path="component_lib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="component_lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="component_lib/ehcache.jar"/>
+	<classpathentry kind="lib" path="component_lib/ejb3-persistence.jar"/>
+	<classpathentry kind="lib" path="component_lib/freemarker.jar"/>
+	<classpathentry kind="lib" path="component_lib/hibernate-annotations.jar"/>
+	<classpathentry kind="lib" path="component_lib/hibernate-commons-annotations.jar"/>
+	<classpathentry kind="lib" path="component_lib/hibernate-tools.jar"/>
+	<classpathentry kind="lib" path="component_lib/hibernate3.jar"/>
+	<classpathentry kind="lib" path="component_lib/jta.jar"/>
+	<classpathentry kind="lib" path="component_lib/jtidy-r8-21122004.jar"/>
+	<classpathentry kind="lib" path="component_lib/log4j.jar"/>
+	<classpathentry kind="lib" path="component_lib/mysql-connector-java-5.0.8-bin.jar"/>
+	<classpathentry kind="lib" path="component_lib/tools.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/BaseComponent"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/CoreLibrary"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Framework"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

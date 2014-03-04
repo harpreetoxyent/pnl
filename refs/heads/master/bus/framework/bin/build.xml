@@ -1,0 +1,24 @@
+<project name="creating-war" default="wait" basedir="." >
+	
+	<target name="remove">
+	     <!-- <delete dir="${servdir}/${applicationname}"/> -->
+		 	<delete file="${servdir}/${applicationname}.war"/>
+			
+	</target>
+
+	
+	<target name="create-war" depends="remove">
+		<war destfile="${applicationname}.war" webxml="${sourcedir}/render/web.xml">
+			<fileset dir="${sourcedir}/render"/>
+		</war>
+	</target>
+	
+	<target name = "copy-war" depends="create-war">
+		<copy file="${sourcedir}/${applicationname}.war" todir="${servdir}"/>
+	</target>
+		    
+		<target name ="wait" depends="copy-war">
+		<sleep seconds = "20" />
+		<echo message="slept"/>
+		</target>
+</project>

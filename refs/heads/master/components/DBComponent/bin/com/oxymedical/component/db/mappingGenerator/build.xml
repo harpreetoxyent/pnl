@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="EIB Database" default="codegen">
+	<property name="build.dir" value="${basedir}"/>
+	<property name="build.gen-src.dir" value="${build.dir}/gen-src"/>
+	<property name="build.gen-hbm.dir" value="${build.dir}/gen-hbm"/>
+	<property name="src.dir" value="${build.dir}/src"/>
+	<property name="build.classes.dir" value="${build.dir}/classes"/>
+	<!--	 <property name="java.home" value="C:\\Program Files\\Java\\jdk1.6.0_12"/> -->
+	<target name="middlegen" description="Run Middlegen" unless="middlegen.skip">
+		<path id="middlegen.task.classpath">
+			<fileset dir="${basedir}/lib">
+				<include name="*.jar"/>
+			</fileset>
+		</path>
+		<delete file="${build.classes.dir}/${jarName}.jar"/>
+		<delete dir="${build.gen-hbm.dir}"/>
+		<delete dir="${build.gen-src.dir}"/>
+		<delete dir="${build.classes.dir}"/>
+		<mkdir dir="${build.gen-hbm.dir}"/>
+		<mkdir dir="${build.gen-src.dir}"/>
+		<echo message="Class path = ${basedir}/lib"/>
+		<taskdef name="middlegen" classname="middlegen.MiddlegenTask" classpathref="middlegen.task.classpath"/>
+		<middlegen appname="EIBDBComponent" prefsdir="${src.dir}" 
+			gui="${gui}" databaseurl="${serverURL}" initialContextFactory="${java.naming.factory.initial}" 
+			providerURL="${java.naming.provider.url}" datasourceJNDIName="${datasource.jndi.name}" 
+			driver="com.mysql.jdbc.Driver" username="${username}" password="${password}">
+
+			<!-- Plugins -->
+			<hibernate destination="${build.classes.dir}" package="${name}" 
+				standardGeneratorScheme="assigned" dynamicupdate="true" dynamicinsert="true" 
+				javaTypeMapper="middlegen.plugins.hibernate.HibernateJavaTypeMapper" version="3.0"/>
+
+		</middlegen>
+	</target>
+	<target name="updatehbm" depends="middlegen">
+		<echo message="inside updatehbm target"/>
+		<java classname="com.oxymedical.component.db.utilities.MappingEditor">
+			<arg value="${build.classes.dir}"/>
+			<arg value="${name}"/>
+		</java>
+	</target>
+	<target name="codegen" description="Generate Java source code from the Hibernate mapping files" depends="updatehbm">
+		<echo message="inside codegen target"/>
+		<path id="toolslib">
+			<path id="toolslib">
+				<path location="${basedir}/lib/hibernate-tools.jar"/>
+				<path location="${basedir}/lib/hibernate3.jar"/>
+				<path location="${basedir}/lib/freemarker.jar"/>
+				<path location="${basedir}/lib/jtidy-r8-21122004.jar"/>
+			</path>
+		</path>
+		<path id="middlegen.task.classpath">
+			<fileset dir="${basedir}/lib">
+				<include name="*.jar"/>
+			</fileset>
+		</path>
+		<taskdef name="hibernatetool" classname="org.hibernate.tool.ant.HibernateToolTask" classpathref="toolslib"/>
+		<hibernatetool destdir="${build.gen-src.dir}">
+			<configuration>
+				<fileset dir="${build.classes.dir}">
+					<include name="**/*.hbm.xml"/>
+				</fileset>
+			</configuration>
+			<hbm2java jdk5="true" ejb3="${enable.ejb3}">
+			</hbm2java>
+		</hibernatetool>
+	</target>
+	<target name="compile" depends="codegen">
+		<mkdir dir="${build.classes.dir}"/>
+		<javac srcdir="${build.gen-src.dir}" destdir="${build.classes.dir}" debug="on"/>
+		<echo message="after compile"/>
+	</target>
+	<target name="updatehibernateconfig" depends="compile">
+		<echo message="updatehibernateconfig"/>
+		<path id="toolslib">
+			<path id="toolslib">
+				<path location="${basedir}/lib/hibernate-tools.jar"/>
+				<path location="${basedir}/lib/hibernate3.jar"/>
+				<path location="${basedir}/lib/freemarker.jar"/>
+				<path location="${basedir}/lib/jtidy-r8-21122004.jar"/>
+			</path>
+		</path>
+		<taskdef name="hibernatetool" classname="org.hibernate.tool.ant.HibernateToolTask" classpathref="toolslib"/>
+		<hibernatetool destdir="${build.classes.dir}">
+			<configuration>
+				<fileset dir="${build.classes.dir}">
+					<include name="**/*.hbm.xml"/>
+				</fileset>
+			</configuration>
+			<hbm2cfgxml>
+				<property key="ejb3" value="true"/>
+				<property key="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+				<property key="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+				<property key="hibernate.connection.username" value="${username}"/>
+				<property key="hibernate.connection.password" value="${password}"/>
+			</hbm2cfgxml>
+		</hibernatetool>
+	</target>
+	<target name="movehbm" depends="updatehibernateconfig">
+		<java classname="com.oxymedical.component.db.utilities.HibernateConfigMover">
+			<arg value="${build.classes.dir}"/>
+			<arg value="${name}"/>
+		</java>
+	</target>
+	<target name="createjar" depends="movehbm" description="generate the distribution">
+		<echo message="inside create jar ant build"/>
+		<jar jarfile="${basedir}/${jarName}.jar" basedir="${build.classes.dir}"/>
+	</target>
+</project>

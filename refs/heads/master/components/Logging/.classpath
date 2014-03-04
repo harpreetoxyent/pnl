@@ -2,9 +2,9 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/basseComponent"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/core"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/BaseComponent"/>
 	<classpathentry kind="lib" path="lib/dom4j.jar"/>
 	<classpathentry kind="lib" path="lib/log4j-1.2.11.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/CoreLibrary"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
