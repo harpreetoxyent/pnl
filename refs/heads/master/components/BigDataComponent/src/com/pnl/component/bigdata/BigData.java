@@ -1,4 +1,4 @@
-package com.pnl.data;
+package com.pnl.component.bigdata;
 
 import java.io.IOException;
 import org.apache.hadoop.fs.Path;
@@ -17,10 +17,10 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class BigDataComponent {
+public class BigData {
 
 	public static final Logger LOG = LoggerFactory
-			.getLogger(BigDataComponent.class);
+			.getLogger(BigData.class);
 
 	public static class Map extends Mapper<Text, Content, Text, Text> {
 		private final static IntWritable one = new IntWritable(1);
@@ -89,7 +89,7 @@ public class BigDataComponent {
 		 */
 
 		Job job = new Job();
-		job.setJarByClass(BigDataComponent.class);
+		job.setJarByClass(BigData.class);
 		job.setJobName("DataProcessor");
 		FileInputFormat.setInputPaths(job, new Path(args[0]));
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));
