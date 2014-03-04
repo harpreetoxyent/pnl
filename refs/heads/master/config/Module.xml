@@ -2,23 +2,19 @@
 <container type="CT1" id ="PNLMVP">
 	<modulelist>		
 		<module
-			name="Storage Component"
-			id="storage.comp"
+			name="Search Component"
+			id="search.comp"
 			version="1.1.1"
-			provider-name="Oxyent"
-			class="com.oxymedical.component.storage.StorageComponent">
+			provider-name="PNL"
+			class="com.pnl.mvp.SearchComponent">
 	
 	 		<requires>
 		 		<jarFolder location="d://storageJar" />
 				<import module="baseComponent.jar"/>
-				<import module="dom4j-1.6.1.jar"/>
-				<import module="framework.jar"/>-->
 			</requires>
-	
 		    <runtime>
 				<library name="testworld.jar"/>	
 		    </runtime>
-	
 		    <maintenance>
 		    		<Defect-Action>
 		    			<Defect-List>
