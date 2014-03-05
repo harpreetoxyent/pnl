@@ -19,13 +19,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.pnl.component.socialmedia.operations.UserInfo;
 import com.pnl.component.socialmedia.utilities.ActionConstants;
-
+import com.pnl.component.socialmedia.operations.UserInfo;
 
 @Controller
-public class HomeController
-{
+public class HomeController {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -119,5 +117,4 @@ public class HomeController
 		return modelAndView;
 
 	}
-
 }

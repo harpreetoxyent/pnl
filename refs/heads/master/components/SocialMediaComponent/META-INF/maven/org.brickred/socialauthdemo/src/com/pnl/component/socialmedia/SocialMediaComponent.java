@@ -1,25 +1,18 @@
 package com.pnl.component.socialmedia;
 
 import java.util.Hashtable;
-
 import org.dom4j.Document;
-
 import com.oxymedical.component.baseComponent.IComponent;
 import com.oxymedical.component.baseComponent.exception.ComponentException;
 import com.oxymedical.component.baseComponent.maintenance.annotations.MaintenancePublisher;
 import com.oxymedical.core.commonData.IHICData;
 import com.oxymedical.core.maintenanceData.IMaintenanceData;
 
+
+
 public class SocialMediaComponent implements ISocialMediaComponent , IComponent{
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
+	
 	@Override
 	public void start(Hashtable<String, Document> configData) {
 		// TODO Auto-generated method stub
@@ -62,5 +55,6 @@ public class SocialMediaComponent implements ISocialMediaComponent , IComponent{
 		// TODO Auto-generated method stub
 		
 	}
+
 
 }

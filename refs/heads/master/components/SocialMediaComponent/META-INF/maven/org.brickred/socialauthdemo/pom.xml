@@ -2,11 +2,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.brickred</groupId>
-	<artifactId>socialauthdemo</artifactId>
+	<groupId>com.pnl</groupId>
+	<artifactId>personalizeddata</artifactId>
 	<packaging>war</packaging>
-	<version>4.0</version>
-	<name>socialauthdemo</name>
+	<version>1.0</version>
+	<name>socialmedia</name>
 	<url>http://code.google.com/p/socialauth</url>
 	<properties>
 		<org.springframework.version>3.1.2.RELEASE</org.springframework.version>
@@ -108,7 +108,7 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.1-beta-1</version>
 				<configuration>
-					<warName>socialauthdemo</warName>
+					<warName>socialmedia</warName>
 				</configuration>
 			</plugin>
 		</plugins>
