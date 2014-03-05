@@ -4,6 +4,10 @@ public class KnowledgeGraphException extends Exception
 {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
 	  * Constructor for class KnowledgeGraphException.
 	  * 
 	 */

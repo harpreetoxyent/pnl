@@ -4,6 +4,10 @@ public class SocialMediaComponentException extends Exception
 {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 619342883124636369L;
+	/**
 	  * Constructor for class NLPException.
 	  * 
 	 */

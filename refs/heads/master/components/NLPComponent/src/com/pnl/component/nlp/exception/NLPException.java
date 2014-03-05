@@ -4,6 +4,10 @@ public class NLPException  extends Exception
 {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5495478885524703551L;
+	/**
 	  * Constructor for class NLPException.
 	  * 
 	 */
