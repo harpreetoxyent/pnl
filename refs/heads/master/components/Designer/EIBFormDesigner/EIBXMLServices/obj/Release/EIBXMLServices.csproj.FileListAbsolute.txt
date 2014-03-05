@@ -1,0 +1,5 @@
+E:\sunpharma\ESB\dev\src\main\components\net\EIBFormDesigner\EIBXMLServices\bin\Release\NolisXMLServices.dll
+E:\sunpharma\ESB\dev\src\main\components\net\EIBFormDesigner\EIBXMLServices\bin\Release\NolisXMLServices.pdb
+E:\sunpharma\ESB\dev\src\main\components\net\EIBFormDesigner\EIBXMLServices\obj\Release\ResolveAssemblyReference.cache
+E:\sunpharma\ESB\dev\src\main\components\net\EIBFormDesigner\EIBXMLServices\obj\Release\NolisXMLServices.dll
+E:\sunpharma\ESB\dev\src\main\components\net\EIBFormDesigner\EIBXMLServices\obj\Release\NolisXMLServices.pdb

@@ -1,0 +1,14 @@
+E:\sunpharma\ESB\dev\src\main\components\net\EIBFormDesigner\ScenarioWizard\bin\Release\NolisAppDesigner.ScenarioWizard.dll
+E:\sunpharma\ESB\dev\src\main\components\net\EIBFormDesigner\ScenarioWizard\bin\Release\NolisAppDesigner.ScenarioWizard.pdb
+E:\sunpharma\ESB\dev\src\main\components\net\EIBFormDesigner\ScenarioWizard\obj\Release\ResolveAssemblyReference.cache
+E:\sunpharma\ESB\dev\src\main\components\net\EIBFormDesigner\ScenarioWizard\obj\Release\EIBFormDesigner.ScenarioWizard.ControlListView.resources
+E:\sunpharma\ESB\dev\src\main\components\net\EIBFormDesigner\ScenarioWizard\obj\Release\EIBFormDesigner.ScenarioWizard.OpenScenario.resources
+E:\sunpharma\ESB\dev\src\main\components\net\EIBFormDesigner\ScenarioWizard\obj\Release\EIBFormDesigner.ScenarioWizard.Properties.Resources.resources
+E:\sunpharma\ESB\dev\src\main\components\net\EIBFormDesigner\ScenarioWizard\obj\Release\EIBFormDesigner.ScenarioWizard.SceanrioBuilder.resources
+E:\sunpharma\ESB\dev\src\main\components\net\EIBFormDesigner\ScenarioWizard\obj\Release\EIBFormDesigner.ScenarioWizard.TileListItem.resources
+E:\sunpharma\ESB\dev\src\main\components\net\EIBFormDesigner\ScenarioWizard\obj\Release\ScenarioWizard.csproj.GenerateResource.Cache
+E:\sunpharma\ESB\dev\src\main\components\net\EIBFormDesigner\ScenarioWizard\obj\Release\NolisAppDesigner.ScenarioWizard.dll
+E:\sunpharma\ESB\dev\src\main\components\net\EIBFormDesigner\ScenarioWizard\obj\Release\NolisAppDesigner.ScenarioWizard.pdb
+E:\sunpharma\ESB\dev\src\main\components\net\EIBFormDesigner\ScenarioWizard\bin\Release\NolisXMLServices.dll
+E:\sunpharma\ESB\dev\src\main\components\net\EIBFormDesigner\ScenarioWizard\bin\Release\NolisXMLServices.pdb
+E:\sunpharma\ESB\dev\src\main\components\net\EIBFormDesigner\ScenarioWizard\obj\Release\EIBFormDesigner.ScenarioWizard.LiferayWindow.resources

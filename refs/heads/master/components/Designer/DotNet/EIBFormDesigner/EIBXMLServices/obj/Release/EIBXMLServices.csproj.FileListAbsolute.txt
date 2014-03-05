@@ -1,0 +1,20 @@
+E:\sunpharma\ESB\dev\src\main\components\net\EIBFormDesigner\EIBXMLServices\bin\Release\NolisXMLServices.dll
+E:\sunpharma\ESB\dev\src\main\components\net\EIBFormDesigner\EIBXMLServices\bin\Release\NolisXMLServices.pdb
+E:\sunpharma\ESB\dev\src\main\components\net\EIBFormDesigner\EIBXMLServices\obj\Release\ResolveAssemblyReference.cache
+E:\sunpharma\ESB\dev\src\main\components\net\EIBFormDesigner\EIBXMLServices\obj\Release\NolisXMLServices.dll
+E:\sunpharma\ESB\dev\src\main\components\net\EIBFormDesigner\EIBXMLServices\obj\Release\NolisXMLServices.pdb
+D:\ApplicationDesigner\EIBFormDesigner\EIBXMLServices\bin\Release\NolisXMLServices.dll
+D:\ApplicationDesigner\EIBFormDesigner\EIBXMLServices\bin\Release\NolisXMLServices.pdb
+D:\ApplicationDesigner\EIBFormDesigner\EIBXMLServices\obj\Release\ResolveAssemblyReference.cache
+D:\ApplicationDesigner\EIBFormDesigner\EIBXMLServices\obj\Release\NolisXMLServices.dll
+D:\ApplicationDesigner\EIBFormDesigner\EIBXMLServices\obj\Release\NolisXMLServices.pdb
+D:\DotNetProjects\ApplicationDesigner\EIBFormDesigner\EIBXMLServices\bin\Release\NolisXMLServices.dll
+D:\DotNetProjects\ApplicationDesigner\EIBFormDesigner\EIBXMLServices\bin\Release\NolisXMLServices.pdb
+D:\DotNetProjects\ApplicationDesigner\EIBFormDesigner\EIBXMLServices\obj\Release\ResolveAssemblyReference.cache
+D:\DotNetProjects\ApplicationDesigner\EIBFormDesigner\EIBXMLServices\obj\Release\NolisXMLServices.dll
+D:\DotNetProjects\ApplicationDesigner\EIBFormDesigner\EIBXMLServices\obj\Release\NolisXMLServices.pdb
+D:\Dot Net Projects\ApplicationDesigner\EIBFormDesigner\EIBXMLServices\bin\Release\NolisXMLServices.dll
+D:\Dot Net Projects\ApplicationDesigner\EIBFormDesigner\EIBXMLServices\bin\Release\NolisXMLServices.pdb
+D:\Dot Net Projects\ApplicationDesigner\EIBFormDesigner\EIBXMLServices\obj\Release\ResolveAssemblyReference.cache
+D:\Dot Net Projects\ApplicationDesigner\EIBFormDesigner\EIBXMLServices\obj\Release\NolisXMLServices.dll
+D:\Dot Net Projects\ApplicationDesigner\EIBFormDesigner\EIBXMLServices\obj\Release\NolisXMLServices.pdb

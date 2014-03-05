@@ -1,0 +1,17 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace EIBFormDesigner.Designer.Database
+{
+    internal class DatabaseConstants
+    {
+        public static string CharType = "Char";
+        public static string LongTextType = "LongText";
+    }
+
+    public class TimeStamp
+    {
+        //to mimic functionality for timestamp in My SQL
+    }
+}

@@ -1,0 +1,134 @@
+drop database if exists billingtracking;
+create database billingtracking;
+use billingtracking;
+
+create table Transaction ( transactionId  varchar(100) , transactionType  varchar(50)  , transactionDesc  varchar(50),
+CONSTRAINT transactionId_PK primary key ( transactionId) );
+
+create table Currency ( currencyId varchar(100), currency varchar(50),
+CONSTRAINT currencyIdCU_PK primary key ( currencyId));
+
+create table BillingCycle ( billingCycleId varchar(100), billingCycleDesc varchar(50),
+CONSTRAINT billingCycleIdBC_PK primary key ( billingCycleId));
+
+create table Strategy (strategyId  varchar(100) , amount  DOUBLE  , currencyId varchar(100), billingDate  DATE  , billingCycleId varchar(100), transactionId  varchar(100),
+CONSTRAINT strategyIdST_PK primary key ( strategyId) ,
+CONSTRAINT transactionIdST_FK FOREIGN KEY(transactionId) REFERENCES Transaction (transactionId),
+CONSTRAINT billingCycleIdST_FK FOREIGN KEY(billingCycleId) REFERENCES BillingCycle (billingCycleId),
+CONSTRAINT currencyIdST_FK FOREIGN KEY(currencyId) REFERENCES Currency (currencyId));
+
+create table Client ( clientId  varchar(100)  , clientType  varchar(50)  , clientName  varchar(50)  , strategyId  varchar(100) , parentId varchar(100),
+CONSTRAINT clientIdCL_PK primary key ( clientId ) ,
+CONSTRAINT strategyIdCL_FK FOREIGN KEY(strategyId) REFERENCES Strategy (strategyId));
+
+create table eventui ( eventId  Char( 100)   ) TYPE = INNODB ;
+
+create table strategyui ( strategyId  Char( 100)   ) TYPE = INNODB ;
+
+create table ComponentNameUI ( ComponentName  Char( 50)   ) TYPE = INNODB ;
+
+create table Event ( eventId  varchar(100) , methodName varchar(50), timeStamp  DATETIME  , 
+CONSTRAINT eventIdEV_PK primary key ( eventId));
+
+create table Component ( componentId varchar(100)  , componentName  varchar(50)  ,
+CONSTRAINT componentIdCM_PK primary key ( componentId));
+
+create table ContainerType (containerTypeId varchar(100), containerTypeName varchar (50),
+CONSTRAINT containerTypeIdCT_PK primary key ( containerTypeId));
+
+create table Container ( containerId  varchar(100) , containerTypeId  varchar(100) ,
+CONSTRAINT containerIdCO_PK primary key ( containerId), 
+CONSTRAINT containerTypeIdCO_FK FOREIGN KEY (containerTypeId) REFERENCES ContainerType (containerTypeId));
+
+create table ContClient ( contClientId  int AUTO_INCREMENT , containerId  varchar(100) ,clientId  varchar(100)  , 
+CONSTRAINT contClientIdCoC_PK primary key ( contClientId), 
+CONSTRAINT containerIdCoC_FK FOREIGN KEY (containerId) REFERENCES Container (containerId),
+CONSTRAINT clientIdCoC_FK FOREIGN KEY (clientId) REFERENCES Client (clientId),
+CONSTRAINT contClntUnIdCoC_UN UNIQUE(containerId,clientId));
+
+
+create table ContComp(contCompId int AUTO_INCREMENT, containerId  varchar(100), componentId varchar(100),
+CONSTRAINT contCompIdCC_PK primary key (contCompId),
+CONSTRAINT containerIdCC_FK FOREIGN KEY(containerId) REFERENCES Container(containerId),
+CONSTRAINT componentIdCC_FK FOREIGN KEY(componentId) REFERENCES Component (componentId),
+CONSTRAINT contCompUnIdCC_UN UNIQUE(containerId,componentId));
+
+create table CompEvent(compEventId int AUTO_INCREMENT, componentId varchar(100), eventId  varchar(100),
+CONSTRAINT compEventIdCE_PK primary key (compEventId),
+CONSTRAINT componentIdCE_FK FOREIGN KEY(componentId) REFERENCES Component (componentId),
+CONSTRAINT eventIdCE_FK FOREIGN KEY(eventId) REFERENCES Event(eventId),
+CONSTRAINT compEvenUnIdCE_UN UNIQUE(componentId,eventId));
+
+create table StrategyMap(strategyMapId int AUTO_INCREMENT, strategyId varchar(100), compEventId int,volume BIGINT,
+CONSTRAINT strategyMapIdSM_PK primary key (strategyMapId),
+CONSTRAINT strategyIdSM_FK FOREIGN KEY(strategyId) REFERENCES Strategy (strategyId),
+CONSTRAINT compEventIdSM_FK FOREIGN KEY(compEventId) REFERENCES CompEvent(compEventId),
+CONSTRAINT strComEveUnIdSM_UN UNIQUE(strategyId,compEventId));
+
+create table TrackingManager ( trackingManagerId int AUTO_INCREMENT, clientId varchar(100), componentId varchar(100), eventId  varchar(100) , occurence  BIGINT  , volume  BIGINT , 
+CONSTRAINT trackingManagerIdTM_PK primary key (trackingManagerId),
+CONSTRAINT clientIdTM_FK FOREIGN KEY (clientId) REFERENCES Client (clientId),
+CONSTRAINT componentIdTM_FK FOREIGN KEY(componentId) REFERENCES Component (componentId),
+CONSTRAINT eventIdTM_FK FOREIGN KEY (eventId) REFERENCES Event(eventId),
+CONSTRAINT cltComEveUnIdTM_UN UNIQUE(clientId,componentId,eventId));
+
+create table Invoice ( invoiceId int AUTO_INCREMENT, clientId  varchar(100)  , billAmount  DOUBLE  , currency varchar(100) , billDate  DATE , parentId  varchar(100) , 
+CONSTRAINT invoiceIdIN_PK primary key ( invoiceId) , componentId varchar(100) , componentUsage BIGINT , 
+CONSTRAINT clientIdIN_FK FOREIGN KEY (clientId) REFERENCES Client (clientId),
+CONSTRAINT componentIdIN_FK FOREIGN KEY (componentId) REFERENCES Component (componentId));
+
+create table ClientInvoiceDetails ( clInDetId int AUTO_INCREMENT ,invoiceId  int ,eventName  varchar(100)  , occurence varchar(100) ,  
+CONSTRAINT clInDetIdID_PK primary key (clInDetId) , 
+CONSTRAINT invoiceIdID_FK FOREIGN KEY (invoiceId) REFERENCES Invoice(invoiceId));
+
+
+insert into transaction(transactionId , transactionType , transactionDesc) values ('TR1','Variable', 'Variable-rate transaction');
+
+insert into currency(currencyId,currency) values ('CU1','euros');
+insert into billingcycle(billingCycleId , billingCycleDesc) values ('BC1','monthly');
+
+insert into containertype(containertypename,containertypeid) values ('Application','CT1');
+
+insert into component(componentId,componentName) values ('storage.comp','Storage Component');
+insert into component(componentId,componentName) values ('de.stoneone.component.billingTracking','Billing Tracking Component');
+insert into component(componentId,componentName) values ('maint.comp','Maintenance Component');
+insert into component(componentId,componentName) values ('maintDBComponent','Database Component');
+insert into component(componentId,componentName) values ('de.stoneone.component.importcomponent','Import Component');
+insert into component(componentId,componentName) values ('importDBComponent','Database Component');
+insert into component(componentId,componentName) values ('billingDBComponent','Database Component');
+insert into component(componentId,componentName) values ('id.rendering','Rendering Component');
+insert into component(componentId,componentName) values ('dbCompnent','Database Component');
+insert into component(componentId,componentName) values ('userAdminDBComponent','Database Component');
+insert into component(componentId,componentName) values ('de.stoneone.component.useradmin','User Admin Component');
+insert into component(componentId,componentName) values ('de.gipmbh.TestComponent','Test Componet');
+insert into component(componentId,componentName) values ('de.stoneone.component.auditLogging','AuditLogging Component');
+insert into component(componentId,componentName) values ('auditLoggingDBComponent','AuditLogging Database Component');
+insert into component(componentId,componentName) values ('de.stoneone.component.logging.LoggingComponent','Logging Component');
+insert into component(componentId,componentName) values ('export.Component','Export Component');
+insert into component(componentId,componentName) values ('dacomponent','Data Acquisition Component');
+insert into component(componentId,componentName) values ('ldapComp','LDAPComponent');
+
+insert into event(eventId,methodname) values('EVBT1','run');
+insert into event(eventId,methodname) values('EVBT2','start');
+insert into event(eventId,methodname) values('EVRE1','newApplication');
+insert into event(eventId,methodname) values('EVRE2','renderApplication');
+insert into event(eventId,methodname) values('EVDB1','saveObject');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

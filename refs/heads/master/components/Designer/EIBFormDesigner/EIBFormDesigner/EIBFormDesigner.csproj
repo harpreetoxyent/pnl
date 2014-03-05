@@ -1,0 +1,780 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{83B83396-618E-4C66-9217-FD313257C5CE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EIBFormDesigner</RootNamespace>
+    <AssemblyName>NolisAppDesigner</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GenericUndoRedo, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Release_WidthType\GenericUndoRedo.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=1.0.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\release\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="NolisCryptoHelper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Release_WidthType\NolisCryptoHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=2.1.2706.19617, Culture=neutral, PublicKeyToken=d481317c817cec47, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>externallibrary\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Build\BuildTool.cs" />
+    <Compile Include="Controls\Common\ControlEnums.cs" />
+    <Compile Include="Controls\Common\MenuOrient.cs" />
+    <Compile Include="Controls\Common\TransparentPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Converter\VisibleToConverter.cs" />
+    <Compile Include="Controls\Converter\DataMappingConverter.cs" />
+    <Compile Include="Controls\Editor\VisibleToEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Editor\VisibleToEditorForm.Designer.cs">
+      <DependentUpon>VisibleToEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Editor\VisibleToEditor.cs" />
+    <Compile Include="Controls\EIBApplet.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBImageBrowse.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBImageBrowseUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBImageBrowseUserControl.Designer.cs">
+      <DependentUpon>EIBImageBrowseUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EIBCalender.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBSchedular.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBVMenuBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBPaging.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Editor\DataMappingEditor.cs" />
+    <Compile Include="Controls\Editor\DataMappingEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Editor\DataMappingEditorForm.Designer.cs">
+      <DependentUpon>DataMappingEditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EIBJasper.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBPagingUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBPagingUserControl.Designer.cs">
+      <DependentUpon>EIBPagingUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EIBTime.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBUserControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBPlaceHolder.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBRadioGroup.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBBrowse.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBDatePicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBTabPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBTreeNode.cs">
+    </Compile>
+    <Compile Include="Controls\EIBListbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBSearch.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBLattice.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Designer\Common\RenderUtil.cs">
+    </Compile>
+    <Compile Include="ICustomSizableControl.cs" />
+    <Compile Include="ICustomVisible.cs" />
+    <Compile Include="DataMapping.cs" />
+    <Compile Include="Designer\DisplayNameExplorer\DisplayNameExplorer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Designer\DisplayNameExplorer\DisplayNameExplorer.Designer.cs">
+      <DependentUpon>DisplayNameExplorer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Designer\WebServiceClientExplorer\AddWebServiceClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Designer\WebServiceClientExplorer\AddWebServiceClient.Designer.cs">
+      <DependentUpon>AddWebServiceClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Designer\WebServiceClientExplorer\WebServiceExplorer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Designer\WebServiceClientExplorer\WebServiceExplorer.Designer.cs">
+      <DependentUpon>WebServiceExplorer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IContainerControl.cs" />
+    <Compile Include="Menu\MenuEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu\MenuEditor.Designer.cs">
+      <DependentUpon>MenuEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Property\ValueTypes.cs" />
+    <Compile Include="RedoUndo\ControlPool.cs" />
+    <Compile Include="RedoUndo\Mementos.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="Workflow\Controls\EIBNodeRelation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Workflow\Controls\EIBNode.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBRelation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBMenuBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBMenuItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBCombobox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBCheckbox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBPicture.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBLine.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBTable.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Grid\Collections\ColumnCollection.cs" />
+    <Compile Include="Controls\Grid\Collections\RowCollection.cs" />
+    <Compile Include="Controls\EIBColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBRow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\EIBGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\TableRowColumnSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\TableRowColumnSelector.Designer.cs">
+      <DependentUpon>TableRowColumnSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Designer\Build\BuildWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Designer\Build\BuildWindow.Designer.cs">
+      <DependentUpon>BuildWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Designer\Common\CommonResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CommonResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Designer\Common\EIBControlCollectoin.cs" />
+    <Compile Include="Designer\Workflow\WorkflowEditorWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Designer\Workflow\WorkflowEditorWindow.Designer.cs">
+      <DependentUpon>WorkflowEditorWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Format\Alignment.cs" />
+    <Compile Include="Workflow\Common\INodeControl.cs" />
+    <Compile Include="Designer\Common\RenderWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Designer\Common\RenderWindow.Designer.cs">
+      <DependentUpon>RenderWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Designer\DatabaseExplorer\DataPatternExplorer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Designer\DatabaseExplorer\DataPatternExplorer.Designer.cs">
+      <DependentUpon>DataPatternExplorer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Designer\Database\TableSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Designer\Database\DatabaseConstants.cs" />
+    <Compile Include="Designer\Explorer\ProjectExplorer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Designer\Explorer\ProjectExplorer.Designer.cs">
+      <DependentUpon>ProjectExplorer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Designer\Database\DatabaseScriptGenerator.cs" />
+    <Compile Include="Designer\Database\DBSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Designer\FormDesignerUtilities.cs" />
+    <Compile Include="IBaseWindow.cs" />
+    <Compile Include="Property\IsForm.cs" />
+    <Compile Include="Property\IsMandatory.cs" />
+    <Compile Include="Property\SelectionMode.cs" />
+    <Compile Include="Property\CustomFormatConverter.cs" />
+    <Compile Include="Search\SearchDesigner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Search\SearchDesigner.Designer.cs">
+      <DependentUpon>SearchDesigner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Search\SearchUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Search\SearchUserControl.Designer.cs">
+      <DependentUpon>SearchUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StartupHIC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartupHIC.Designer.cs">
+      <DependentUpon>StartupHIC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow\Designer\Forms\WorkflowDataPattern.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Workflow\Designer\Forms\WorkflowDataPattern.Designer.cs">
+      <DependentUpon>WorkflowDataPattern.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow\Designer\Forms\WorkflowNodeStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Workflow\Designer\Forms\WorkflowNodeStatus.Designer.cs">
+      <DependentUpon>WorkflowNodeStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow\Designer\Forms\WorkflowUserPattern.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Workflow\Designer\Forms\WorkflowUserPattern.Designer.cs">
+      <DependentUpon>WorkflowUserPattern.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow\Designer\Forms\WorkflowFormPattern.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Workflow\Designer\Forms\WorkflowFormPattern.Designer.cs">
+      <DependentUpon>WorkflowFormPattern.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow\Designer\Wizards\NodeConfigurationWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Workflow\Designer\Wizards\NodeConfigurationWizard.Designer.cs">
+      <DependentUpon>NodeConfigurationWizard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow\Node\DataObject.cs" />
+    <Compile Include="Workflow\Node\DataPattern.cs" />
+    <Compile Include="Workflow\Controls\EIBNodeConnector.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Database\Table\EIBTableConnector.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Database\Table\RelationShip.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Database\Table\RelationShip.Designer.cs">
+      <DependentUpon>RelationShip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Table\RelationshipManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Database\Table\RelationshipManager.Designer.cs">
+      <DependentUpon>RelationshipManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Table\TableUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Database\Table\TableUserControl.designer.cs">
+      <DependentUpon>TableUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Designer\Database\DataBaseWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Designer\Database\DataBaseWindow.Designer.cs">
+      <DependentUpon>DataBaseWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Designer\Form\FormulaEditorResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FormulaEditorResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="IFormulaManager.cs" />
+    <Compile Include="Designer\Form\BaseWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Designer\Form\BaseWindow.Designer.cs">
+      <DependentUpon>BaseWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Designer\Common\EIBControlList.cs" />
+    <Compile Include="Parser\Parser.cs" />
+    <Compile Include="Parser\Scanner.cs" />
+    <Compile Include="FormulaManager.cs" />
+    <Compile Include="Property\FilteredPropertyGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Designer\Form\FormulaEditorWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Designer\Form\FormulaEditorWindow.Designer.cs">
+      <DependentUpon>FormulaEditorWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Event\ObjectWrapper.cs" />
+    <Compile Include="Designer\Form\PropertyWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Designer\Form\PropertyWindow.Designer.cs">
+      <DependentUpon>PropertyWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Designer\Common\ToolBoxWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Designer\Common\ToolBoxWindow.Designer.cs">
+      <DependentUpon>ToolBoxWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Designer\FormDesigner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Designer\FormDesigner.Designer.cs">
+      <DependentUpon>FormDesigner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Designer\Common\ToolWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Designer\Common\ToolWindow.Designer.cs">
+      <DependentUpon>ToolWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Event\LineEventHandler.cs" />
+    <Compile Include="Event\DragDropExceptions.cs" />
+    <Compile Include="Event\DragDropHandler.cs" />
+    <Compile Include="Designer\FormDesignerConstants.cs" />
+    <Compile Include="Event\PickBox.cs" />
+    <Compile Include="IDragDropEnabled.cs" />
+    <Compile Include="IEIBControl.cs" />
+    <Compile Include="IPropertiesManager.cs" />
+    <Compile Include="ITool.cs" />
+    <Compile Include="IToolBox.cs" />
+    <Compile Include="IUIEventManager.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Property\PropertiesManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\Editor\VisibleToEditorForm.resx">
+      <DependentUpon>VisibleToEditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\EIBImageBrowse.resx">
+      <DependentUpon>EIBImageBrowse.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\EIBImageBrowseUserControl.resx">
+      <DependentUpon>EIBImageBrowseUserControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Editor\DataMappingEditorForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DataMappingEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\EIBColumn.resx">
+      <DependentUpon>EIBColumn.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\EIBPaging.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EIBPaging.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\EIBPagingUserControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EIBPagingUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\EIBRow.resx">
+      <DependentUpon>EIBRow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\EIBGrid.resx">
+      <DependentUpon>EIBGrid.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\EIBTable.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EIBTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\EIBTextBox.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EIBTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\EIBTime.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EIBTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TableRowColumnSelector.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TableRowColumnSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Database\Table\RelationShip.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>RelationShip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Database\Table\RelationshipManager.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>RelationshipManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Database\Table\TableUserControl.resx">
+      <DependentUpon>TableUserControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Designer\Build\BuildWindow.resx">
+      <DependentUpon>BuildWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Designer\Common\CommonResource.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CommonResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Designer\Common\RenderWindow.resx">
+      <DependentUpon>RenderWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Designer\DatabaseExplorer\DataPatternExplorer.resx">
+      <DependentUpon>DataPatternExplorer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Designer\Database\TableSettings.resx">
+      <DependentUpon>TableSettings.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Designer\DisplayNameExplorer\DisplayNameExplorer.resx">
+      <DependentUpon>DisplayNameExplorer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Designer\Explorer\ProjectExplorer.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ProjectExplorer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Designer\Database\DBSettings.resx">
+      <DependentUpon>DBSettings.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Designer\Database\DataBaseWindow.resx">
+      <DependentUpon>DataBaseWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Designer\Form\BaseWindow.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BaseWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Designer\Form\FormulaEditorResource.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FormulaEditorResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Designer\Form\FormulaEditorWindow.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormulaEditorWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Designer\Form\PropertyWindow.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PropertyWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Designer\Common\ToolBoxWindow.resx">
+      <DependentUpon>ToolBoxWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Designer\FormDesigner.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormDesigner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Designer\Common\ToolWindow.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ToolWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Designer\WebServiceClientExplorer\AddWebServiceClient.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AddWebServiceClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Designer\WebServiceClientExplorer\WebServiceExplorer.resx">
+      <DependentUpon>WebServiceExplorer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Designer\Workflow\WorkflowEditorWindow.resx">
+      <DependentUpon>WorkflowEditorWindow.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu\MenuEditor.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MenuEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="App.config" />
+    <EmbeddedResource Include="Search\SearchDesigner.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SearchDesigner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Search\SearchUserControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SearchUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartupHIC.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>StartupHIC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\Controls\MarkControl.resx">
+      <DependentUpon>MarkControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\Controls\NodeUserControl.resx">
+      <DependentUpon>NodeUserControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\Controls\NodeRelationShip.resx">
+      <DependentUpon>NodeRelationShip.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\Designer\Forms\WorkflowDataPattern.resx">
+      <DependentUpon>WorkflowDataPattern.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\Designer\Forms\WorkflowNodeStatus.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WorkflowNodeStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\Designer\Forms\WorkflowUserPattern.resx">
+      <DependentUpon>WorkflowUserPattern.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\Designer\Forms\WorkflowFormPattern.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WorkflowFormPattern.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\Designer\Wizards\NodeConfigurationWizard.resx">
+      <DependentUpon>NodeConfigurationWizard.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\Node\NodeRelationManager.resx">
+      <DependentUpon>NodeRelationManager.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workflow\Designer\Wizards\WorkflowPropertyEditor.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WorkflowPropertyEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Tool\ToolBox.cs">
+    </Compile>
+    <Compile Include="Event\UIEventManager.cs" />
+    <Compile Include="Workflow\Node\FormPattern.cs" />
+    <Compile Include="Workflow\Controls\MarkControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Workflow\Controls\NodeUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Workflow\Controls\NodeUserControl.designer.cs">
+      <DependentUpon>NodeUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow\Controls\NodeRelationShip.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Workflow\Controls\NodeRelationShip.Designer.cs">
+      <DependentUpon>NodeRelationShip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow\Node\NodeRelationManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Workflow\Node\NodeRelationManager.Designer.cs">
+      <DependentUpon>NodeRelationManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow\Node\UserPattern.cs" />
+    <Compile Include="Workflow\Node\UserProfile.cs" />
+    <Compile Include="Workflow\Node\WorkflowNode.cs" />
+    <Compile Include="Workflow\Designer\Wizards\WorkflowPropertyEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Workflow\Designer\Wizards\WorkflowPropertyEditor.Designer.cs">
+      <DependentUpon>WorkflowPropertyEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Workflow\XML\WorkflowDeserializeServices.cs" />
+    <Compile Include="Workflow\XML\WorkflowXMLServices.cs" />
+    <Compile Include="XML\DatabaseDeserializeServices.cs" />
+    <Compile Include="XML\DatabaseXMLServices.cs" />
+    <Compile Include="XML\EIBDeserializeServices.cs" />
+    <Compile Include="XML\XMLServices.cs" />
+    <Compile Include="XML\XMLServicesConstants.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="config.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Controls\Grid\Controls\TableControl.bmp" />
+    <Content Include="Resources\bg_splash.png" />
+    <Content Include="Resources\DeleteHS.png" />
+    <Content Include="Resources\FillDownHS.png" />
+    <Content Include="Resources\FillUpHS.png" />
+    <Content Include="Resources\menu.png" />
+    <None Include="Resources\700_splash_hic_.JPG" />
+    <None Include="Resources\maintenance.txt" />
+    <None Include="Resources\auditlogging.txt" />
+    <None Include="Resources\billingtracking.txt" />
+    <None Include="Resources\CreateSQL.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EIBXMLServices\EIBXMLServices.csproj">
+      <Project>{AA0041B7-C9F1-44B8-A1D7-F784C57D99D4}</Project>
+      <Name>EIBXMLServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ScenarioWizard\ScenarioWizard.csproj">
+      <Project>{F9600567-868E-4076-9029-46A4B705F431}</Project>
+      <Name>ScenarioWizard</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserAdmin\UserAdmin.csproj">
+      <Project>{0998FE84-1122-431D-A9F4-4A57C1623387}</Project>
+      <Name>UserAdmin</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

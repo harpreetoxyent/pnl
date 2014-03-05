@@ -1,0 +1,296 @@
+COMPILER Formula
+IGNORECASE
+CHARACTERS
+	digit = '0'..'9'.
+	hexDigit = digit + "ABCDEFabcdef".
+	eol	= '\r'.
+	noDigit	= ANY - digit.
+	quotes = "' '".		
+	letter  = 'A' .. 'Z' + 'a' .. 'z' + '_'.
+	cr  = '\u000d'. /* 13 = carriage return */
+	newLine = cr + eol.	
+	anyIdent = ANY - "}" - "{".
+	char  = ANY - "'" - '\\' - newLine.
+	verbatimStringChar = ANY - '"'.
+	regularStringChar  = ANY - '"' - '\\' - newLine.
+	blockComCh = ANY - '*' - '/'.
+	notNewLine = ANY - newLine .
+	
+	/* Now Token Starts*/
+	
+TOKENS
+	ident =	letter {letter | digit | '_' | '-'}.
+	/*--------------------------------------------------------------------------------*/
+	intCon =
+		( digit {digit} | digit {digit} CONTEXT ("." noDigit)
+		| ("0x" | "0X") hexDigit {hexDigit}
+		)
+		["U" | "u" | "L" | "l" | "UL" | "Ul" | "uL" | "ul" | "LU" | "Lu" | "lU" | "lu"].
+  /*--------------------------------------------------------------------------------*/
+	realCon =
+		"." digit {digit} 
+		[("e" | "E") ["+" | "-"] digit {digit}] 
+		["F" | "f" | "D" | "d" | "M" | "m"]
+	| digit {digit} 
+		( "." digit {digit} 
+			[("e" | "E" ) ["+" | "-"] digit {digit} ] 
+			["F" | "f" | "D" | "d" | "M" | "m"]
+		| ("e" | "E") ["+" | "-"] digit {digit}
+			["F" | "f" | "D" | "d" | "M" | "m"]
+		| "F" | "f" | "D" | "d" | "M" | "m"
+		).
+  /*--------------------------------------------------------------------------------*/
+	charCon =
+		"'" (	char
+				| "\\\'" | "\\\"" | "\\\\" | "\\0" | "\\a" | "\\b" | "\\f" | "\\n" | "\\r" | "\\t" | "\\v"
+				| "\\x" hexDigit [hexDigit] [hexDigit] [hexDigit]
+				| "\\u" hexDigit hexDigit hexDigit hexDigit
+				| "\\U" hexDigit hexDigit hexDigit hexDigit hexDigit hexDigit hexDigit hexDigit
+				) 
+		"'".
+	/*--------------------------------------------------------------------------------*/
+	stringCon =
+		"\""	{ regularStringChar
+					| "\\\'" | "\\\"" | "\\\\" | "\\0" | "\\a" | "\\b" | "\\f" | "\\n" | "\\r" | "\\t" | "\\v"
+					| "\\x" hexDigit [hexDigit] [hexDigit] [hexDigit]
+					| "\\u" hexDigit hexDigit hexDigit hexDigit
+					| "\\U" hexDigit hexDigit hexDigit hexDigit hexDigit hexDigit hexDigit hexDigit
+					} 
+		"\""
+	| "@\"" {verbatimStringChar | "\"\""} "\"".
+	
+	and    = "&".
+	assgn  = "=".
+	colon  = ":".
+	comma  = ",".
+	dec    = "--".
+	div    = "/".
+	dot    = ".".
+	eq     = "==".
+	gt     = ">".
+	gte    = ">=".
+	inc    = "++".
+	eqop = ":=".
+	gtop = ":>".	
+	ltop = ":<".
+	letop = ":<=".
+	getop = ":>=".
+	lbrace = "{".
+	lbrack = "[".
+	leftparanthesis   = "(".
+	lshift = "<<".
+	lt     = "<".
+	lte    = "<=".
+	mod    = "%".
+	neq    = "!=".
+	not    = "!".
+	or     = "|".
+	rbrace = "}".
+	rbrack = "]".
+	rightparanthesis   = ")".
+	rshift = ">>".
+	scolon = ";".
+	tilde  = "~".
+	times  = "*".
+	
+	/* New KeyWords */
+	move = "move".
+	insert = "insert".
+	delete ="del".
+	datediff ="datediff".
+	saveform ="saveform".
+	thisv = "this".
+	executeaction = "executeaction".
+	executeListQuery = "executeListQuery".
+	executeGridQuery = "executeGridQuery".	
+	executeComboQuery = "executeComboQuery".
+	printReport = "printReport".
+	showTree = "showTree".
+	invokeaction = "invokecomponent".
+	showGridQuery = "showGridQuery".
+	executeOnNode = "executeOnNode".
+	updateSession = "updateSession".
+	getSessionAttrib = "getSessionAttribute".
+	createArray = "createArray".
+	printwindow = "printwindow".
+	setDataStatus = "setDataStatus".
+	getDate = "getDate".
+	message = "message".
+	blockCom = "/*" { "/" | blockComCh | "*"{"*"} blockComCh } "*"{"*"}"/".
+	lineCom = "//" { notNewLine } newLine.	
+	quote = '"'.
+IGNORE '\t' + '\r' + '\n'
+PRODUCTIONS
+	//showTree leftparanthesis Term rightparanthesis.
+	
+	Formula = statement {statement}.
+	statement = methodStatementcomplete | validStatement | cons | conditionStatement.
+	methodStatementcomplete = methodStatement scolon.
+	methodStatement = insertStatement 
+					| deleteStatement
+					| datedifStatement
+					| moveStatement
+					| saveformStatement
+					| printwindowStatement
+					| executeStatement
+					| exListQueryStatement 
+					| exGridQueryStatement 
+					| exComboQueryStatement 
+					| printReportStatement 
+					| showTreeStatement 
+					| showgridStatement
+					| invokeStatement
+					| printwindowStatement
+					| executeOnNodeStatement
+					| updateSessionStatement
+					| getSessionAttribStatement
+					| setDataStatusStatement
+					| messageStatement.
+	
+	conditionStatement = ifStatement {elseStatement}.	
+	ifStatement = "if" "(" expression ")" "{"  statement {statement} "}".
+	elseStatement = "else" ["if" "(" expression ")"] "{" statement {statement} "}".
+	
+	validStatement  = [(varDeclaration|designator)] [assgn] validExpression scolon.
+	validExpression = insertStatement 
+					| thisStatement 
+					| datedifStatement 
+					| deleteStatement 
+					| createArrayExpr
+					| getDateStatement
+					| anyStatement
+					| expression
+					| invokeStatement
+					.
+	
+	insertStatement= insert leftparanthesis queryExpr "," queryExpr "," intCon rightparanthesis.
+	deleteStatement= delete leftparanthesis queryExpr "," intCon "," intCon rightparanthesis.
+	datedifStatement= datediff leftparanthesis queryExpr "," queryExpr "," queryExpr rightparanthesis.
+	moveStatement= move leftparanthesis queryExpr rightparanthesis.
+	saveformStatement= saveform leftparanthesis [queryExpr] rightparanthesis.
+	printwindowStatement= printwindow leftparanthesis [queryExpr] rightparanthesis.
+	thisStatement = thisv { "." ident} [assgn] [leftparanthesis] [queryExpr {[eqop] [","] queryExpr}] [rightparanthesis] [addOp queryExpr {addOp queryExpr}].
+	
+	executeStatement = executeaction [leftparanthesis] [queryExpr] ["," queryExpr] {"," queryExpr} {addOp queryExpr} [rightparanthesis].
+	exListQueryStatement = executeListQuery [leftparanthesis] [queryExpr] ["," queryExpr] {"," queryExpr} {addOp queryExpr} [rightparanthesis].
+	exGridQueryStatement = executeGridQuery [leftparanthesis] [queryExpr] ["," queryExpr] {"," queryExpr} {addOp queryExpr} [rightparanthesis].
+	exComboQueryStatement = executeComboQuery [leftparanthesis] [queryExpr] ["," queryExpr] {"," queryExpr} {addOp queryExpr} [rightparanthesis].
+	printReportStatement = printReport [leftparanthesis] [queryExpr] ["," queryExpr] {"," queryExpr} {addOp queryExpr} [rightparanthesis].
+	showTreeStatement = showTree [leftparanthesis] [queryExpr] ["," queryExpr] [rightparanthesis].
+	showgridStatement = showGridQuery [leftparanthesis] [queryExpr] {"," queryExpr} [rightparanthesis].
+	
+	eventNodeStatement = "onClick" | "onDoubleClick".
+	executeOnNodeStatement = executeOnNode leftparanthesis queryExpr "," eventNodeStatement "," {methodStatementcomplete} rightparanthesis.
+	updateSessionStatement = updateSession [leftparanthesis] [queryExpr] {"," queryExpr} [rightparanthesis].
+	getSessionAttribStatement = getSessionAttrib [leftparanthesis] queryExpr [rightparanthesis].
+	createArrayExpr = createArray leftparanthesis (queryExpr | validDataType)  {"," queryExpr} rightparanthesis.
+	invokeStatement = invokeaction leftparanthesis queryExpr {"," queryExpr} {addOp queryExpr}  rightparanthesis.	
+	setDataStatusStatement = setDataStatus [leftparanthesis] queryExpr {"," queryExpr} [rightparanthesis].
+	getDateStatement = getDate [leftparanthesis] [queryExpr] {"," queryExpr} [rightparanthesis].
+
+	messageStatement = message leftparanthesis queryExpr {"," queryExpr} rightparanthesis.
+
+	anyStatement =  ident { "." ident} [leftparanthesis]  [queryExpr] {"," queryExpr}  [rightparanthesis].
+	
+	designator   =  ident { "[" expList "]" | "^" | "." ident }.
+	expList      =  expression { "," expression }.
+	
+	expression   =  (simexpr [ relOp (Literal|queryExpr|simexpr) SYNC ]). 	
+  	simexpr    =  SYNC ["+" | "-"] simpleterm { addOp simpleterm }.	
+  	simpleterm  =  factor { mulOp factor }.
+	factor =  SYNC (intCon | ident {"[" expList "]" | "^" | "." ident} | queryExpr | "(" expression {"," expression} ")" | quote [expression] ["%"] [eqop] [gtop] [ltop] [letop] quote  | ( "!" | "~" ) factor).
+  	mulOp        =    "*" | "/"  | "DIV" | "REM" | "MOD".                
+  	relOp        =    "<>" | "<"  | "<=" | ">" | ">=" | "!=" | "==".  	
+  	addOp = "+" | "-".
+	
+	queryExpr = stringCon|Term.//quote [","] stringCon [eqop] [intCon] [Term] {[","]Term} [compositeExpr]  quote | Term.
+	/*compositeExpr = [addedExpr] {[","] addedExpr}.
+	addedExpr = {(eqop | ([eqop] (Term | intCon |charCon)|Term))} {[","]Term} {lbrack Term {"-" Term} rbrack}.*/
+	Term =  (ident | intCon) {dot ident}.
+	
+	varDeclaration = validDataType ident.
+
+	validDataType = "String"|"int"|"float"|"boolean"|"String[]"|"byte"| "short"| "long" | "char" | "Time" | "Date".
+
+	cons = AssignOp Expr.	
+	
+	
+	/*------------------------------------------------------------------------*/
+	AssignOp
+	= "=" | "+=" | "-=" | "*=" | "/=" | "%=" | "&=" | "|=" | "^=" | "<<=" | ">>="
+	.
+	
+	/*------------------------------------------------------------------------*
+	*----------------------------- Expressions ------------------------------*
+	*------------------------------------------------------------------------*/
+
+
+	Expr
+	= Unary
+	( OrExpr ["?" Expr ":" Expr]
+	| AssignOp Expr
+	)
+	.
+	/*------------------------------------------------------------------------*/
+	OrExpr
+	= AndExpr {"||" Unary AndExpr}
+	.
+	/*------------------------------------------------------------------------*/
+	AndExpr
+	= BitOrExpr {"&&" Unary BitOrExpr}
+	.
+	/*------------------------------------------------------------------------*/
+	BitOrExpr
+	= BitXorExpr {"|" Unary BitXorExpr}
+	.
+	/*------------------------------------------------------------------------*/
+	BitXorExpr
+	= BitAndExpr {"^" Unary BitAndExpr}
+	.
+	/*------------------------------------------------------------------------*/
+	BitAndExpr
+	= EqlExpr {"&" Unary EqlExpr}
+	.
+	/*------------------------------------------------------------------------*/
+	EqlExpr
+	= RelExpr  {("!=" | "==") Unary RelExpr}
+	.
+	/*------------------------------------------------------------------------*/
+	RelExpr
+	= ShiftExpr
+	{ ("<" | ">" | "<=" | ">=") Unary ShiftExpr}
+	.
+	/*------------------------------------------------------------------------*/
+	ShiftExpr
+	= AddExpr {("<<" | ">>") Unary AddExpr}
+	.
+	/*------------------------------------------------------------------------*/
+	AddExpr
+	= MulExpr {( "+" | "-" ) Unary MulExpr}
+	.
+	/*------------------------------------------------------------------------*/
+	MulExpr
+	= {("*" | "/" | "%") Unary}
+	.
+	/*------------------------------------------------------------------------*/
+	Unary
+	=
+	{( "+" | "-" | "!" | "~" | "*" | "++" | "--" | "&")
+	} 
+	Primary
+	.
+	/*------------------------------------------------------------------------*/
+	Primary
+	=
+	( ident | Literal | "(" Expr ")" | "this"	
+	{ "++" | "--" 
+	| "." ident
+	| "(" [Expr {"," Expr}] ")"}
+	)
+	.
+	/*------------------------------------------------------------------------*/
+	Literal
+	= intCon | realCon | charCon.
+	
+	
+END Formula.

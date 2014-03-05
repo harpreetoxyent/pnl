@@ -1,0 +1,52 @@
+drop database if exists auditlogging ;
+
+create database auditlogging ;
+
+use auditlogging ;
+
+create table ContainerType (containerTypeId varchar(100), containerTypeName varchar (50),
+CONSTRAINT containerTypeIdCT_PK primary key ( containerTypeId));
+
+create table Container ( containerId  varchar(100) , containerTypeId  varchar(100) ,
+CONSTRAINT containerIdCO_PK primary key ( containerId), 
+CONSTRAINT containerTypeIdCO_FK FOREIGN KEY (containerTypeId) REFERENCES ContainerType (containerTypeId));
+
+create table Component ( componentId varchar(100)  , componentName  varchar(50)  ,
+CONSTRAINT componentIdCM_PK primary key ( componentId));
+
+create table ContComp(contCompId int AUTO_INCREMENT, containerId  varchar(100), componentId varchar(100),
+CONSTRAINT contCompIdCC_PK primary key (contCompId),
+CONSTRAINT containerIdCC_FK FOREIGN KEY(containerId) REFERENCES Container(containerId),
+CONSTRAINT componentIdCC_FK FOREIGN KEY(componentId) REFERENCES Component (componentId),
+CONSTRAINT contCompUnIdCC_UN UNIQUE(containerId,componentId));
+
+create table CompEvent(compEventId int AUTO_INCREMENT, componentId varchar(100), eventId  varchar(100), methodName varchar(100), auditPattern varchar(100),
+CONSTRAINT compEventIdCE_PK primary key (compEventId),
+CONSTRAINT componentIdCE_FK FOREIGN KEY(componentId) REFERENCES Component (componentId));
+
+create table AuditData ( auditDataId  int AUTO_INCREMENT , auditPattern  varchar(100) ,
+auditData varchar(100),
+CONSTRAINT auditDataIdAD_PK primary key ( auditDataId));
+
+
+insert into containertype(containertypename,containertypeid) values ('Application','CT1');
+
+insert into component(componentId,componentName) values ('storage.comp','Storage Component');
+insert into component(componentId,componentName) values ('de.stoneone.component.billingTracking','Billing Tracking Component');
+insert into component(componentId,componentName) values ('maint.comp','Maintenance Component');
+insert into component(componentId,componentName) values ('maintDBComponent','Database Component');
+insert into component(componentId,componentName) values ('de.stoneone.component.importcomponent','Import Component');
+insert into component(componentId,componentName) values ('importDBComponent','Database Component');
+insert into component(componentId,componentName) values ('billingDBComponent','Database Component');
+insert into component(componentId,componentName) values ('id.rendering','Rendering Component');
+insert into component(componentId,componentName) values ('dbCompnent','Database Component');
+insert into component(componentId,componentName) values ('userAdminDBComponent','Database Component');
+insert into component(componentId,componentName) values ('de.stoneone.component.useradmin','User Admin Component');
+insert into component(componentId,componentName) values ('de.gipmbh.TestComponent','Test Componet');
+insert into component(componentId,componentName) values ('de.stoneone.component.auditLogging','AuditLogging Component');
+insert into component(componentId,componentName) values ('auditLoggingDBComponent','AuditLogging Database Component');
+insert into component(componentId,componentName) values ('de.stoneone.component.logging.LoggingComponent','Logging Component');
+insert into component(componentId,componentName) values ('export.Component','Export Component');
+insert into component(componentId,componentName) values ('dacomponent','Data Acquisition Component');
+insert into component(componentId,componentName) values ('ldapComp','LDAPComponent');
+

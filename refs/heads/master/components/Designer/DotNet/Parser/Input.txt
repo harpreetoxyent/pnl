@@ -1,0 +1,137 @@
+program Test 
+{int i; // global variable
+// compute the sum of 1..i
+void SumUp() {
+int sum;
+sum = 0;
+while (i > 0) { sum = sum + i; i = i - 1; }
+write sum;
+}
+// the program starts here
+void Main() {
+read i;
+while (i > 0) {
+SumUp();
+read i;
+}
+}
+}
+executeOnNode("button1",onClick,move("formpattern1");move("formpattern1"););
+executeaction("",1111);
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get Patient.id,Patient.medicalRecordNumber,Patient.firstname,Patient.lastname,Patient.dateofbirth,Patient.cellphone,Patient.Prefix,Patient.MiddleName,Patient.suffix,Patient.Address1,Patient.Address2,Patient.City,Patient.State,Patient.zipCode,Patient.EmailAddress,Patient.sex,Patient.MaritalStatus,Patient.HomeTel,Patient.HomeTelExt,Patient.WorkTel,Patient.WorkTelExt,Patient.EmergencyContact,Patient.EmergencyRelationship,patientphoto.ImageDocument from noliswispicdb.Patient,noliswispicdb.patientphoto conditions patient.id:="+rowValue+" and patient.deleted:=\"0\" or patient.deleted:=null and patientphoto.patientid:=patient.id");
+a.Text = insert("aa.Text","",1);
+insert("aa.Text","",1);
+del("",1,2);
+saveForm();
+move("");
+printWindow();
+this.valueField = "taskGroupId"; 
+this.displayField = "taskGroupName"; 
+this.fromTable = "taskGroup";
+this.showList();
+this.critria = "taskgroupid" + y;
+y="hello";
+this.addLevel("0", "Tree", "Name", "id", "parentid := 0");
+this.addChildLevel("1", "Tree", "Name", "ID", "0" , "parentId", "displayfield");
+this.displayField = "event.methodName";
+this.valueField = "event.eventId";
+this.fromTable = "component,compevent,event";
+this.fromTable = "empfavourite,task";
+this.criteria= "task.taskid:=empfavourite.taskid and empfavourite.empid:=1";
+this.criteria="select methodName from event,compevent,component where event.eventId:=compevent.eventid";
+this.criteria="select methodName from event,compevent,component where event.eventId:=" +compevent.eventid +" and compevent.componentId:="+component.componentId + "and component.componentName:="+ x;
+this.fromTable = "component,compEvent,event,componentnameui";
+this.displayField = "event.methodName";
+this.valueField = "event.eventId";
+this.criteria="event.eventId:=compEvent.eventid and compEvent.componentId:=component.componentId and component.componentName:= componentnameui.componentName";
+this.showList();
+
+executeaction("get regData.id,regData.firstname,regData.lastname,regData.address1,regData.phone, regData.Email from regData conditions regData.id:="+textbox104.value);
+executeaction("add into EmpFavourite values EmpId:=1,EmpFavouriteId:=1,TaskId:=" + y);
+executeaction("add into tablename values col1:=[abc],col2:=20 ,col2:=[10-10-2007]");
+executeaction("add into client values clientId:=" +y+",parentId:=" +z+",strategyId :="+x);
+showGridQuery("add into tablename values col1:=[abc],col2:=20 ,col2:=[10-10-2007]");
+executeListQuery("abc","abc");
+executeGridQuery("abc","abc");
+showTree("abc","abc");
+
+executeComboQuery("get Componentdefectinfo.defectId,Componentdefectinfo.defectCompId,Componentdefectinfo.occurence_counter,Componentdefectinfo.severity,Componentdefectinfo.defect_occured from Componentdefectinfo,mainttemp conditions Componentdefectinfo.defectCompId","abc");
+executeGridQuery("get regData.id,regData.firstname,regData.lastname,regData.address1,regData.phone, regData.Email from regData conditions regData.id:="+textbox104.value);
+printReport("select state.stateid, state.statename , country.countryid  from State1 as state , Country1 as country where country.countryid :='2'",report);
+
+executeListQuery("delete from demo conditions demo.id:="+x);
+executeComboQuery("get doctor.id,doctor.name from doctor conditions doctor.id:=doctorspec.doctorid","combobox6");
+executeGridQuery("get doctorschedule.id,doctorschedule.days,doctorschedule.todate,doctorschedule.fromdate,doctorschedule.totime,doctorschedule.fromtime,doctorschedule.status from doctorschedule conditions doctorschedule.doctorid:=1","grid0");
+
+
+updateSession("a",null);
+getSessionAttribute("s");
+x=createArray("String","textboxid,textboxname,textboxaddress,textboxphonenumber");
+setDataStatus("CreatePhysician");
+setDataStatus("CreatePhysician","");
+
+invokecomponent("abc","abc","abc","delete from demo conditions demo.id:="+x+"ssss");
+invokecomponent("dbComp","setUpDataConfiguration" , "de.stoneone.component.IDBComponent", "delete from demo conditions demo.id:="+x+"ssss");
+
+
+list1.condition = "taskgroupid" + x;
+list1.addItem("abc");
+xyz = list1.addItem("sx","yss");
+x = combobox3.getValue("");
+list1.condition = "taskgroupid:=" + z;
+getComboItemId("abc");
+test1.text = this.getRowData("c_name");
+
+a=getDate();
+String sksk=getDate();
+boolean s = true;
+Date s = getDate();
+a="sss   s ss";
+a = null;
+
+x = "3";
+y =3;
+x= (textbox3.value);
+
+if(selectedDate1 !=null)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get Appoint.StartDate,Appoint.EndDate,Appoint.StartTime,Appoint.EndTime from Appoint conditions Appoint.Physician:="+physicianId +" and appoint.StartDate:=" + "_DATESTART_" + selectedDate1 + "_DATEEND_" + "_SEP_grid1");
+}
+else
+{
+message("PhysicianId or StartDate is not selected");
+}
+
+if(a!=null)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get Appoint.StartDate,Appoint.EndDate,Appoint.StartTime,Appoint.EndTime from Appoint conditions Appoint.Physician:="+physicianId +" and appoint.StartDate:=" + "_DATESTART_" + selectedDate1 + "_DATEEND_" + "_SEP_grid1");
+}
+else if(x==y)
+{
+printWindow();
+}
+else
+{
+printWindow();
+}
+
+String retValue=invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","Patient");
+checkValueWithOperator("Date()");
+
+addFormValue("textbox2","0");
+rowValue = getSessionData("rowId");
+if(rowValue!=null)
+{
+String rd = getSessionData("readOnly");
+if(rd!=null)
+{
+if(rd=="true")
+{
+	readOnly("Patient");
+}
+}
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get Patient.id,Patient.medicalRecordNumber,Patient.firstname,Patient.lastname,Patient.dateofbirth,Patient.cellphone,Patient.Prefix,Patient.MiddleName,Patient.suffix,Patient.Address1,Patient.Address2,Patient.City,Patient.State,Patient.zipCode,Patient.EmailAddress,Patient.sex,Patient.MaritalStatus,Patient.HomeTel,Patient.HomeTelExt,Patient.WorkTel,Patient.WorkTelExt,Patient.EmergencyContact,Patient.EmergencyRelationship,patientphoto.ImageDocument from noliswispicdb.Patient,noliswispicdb.patientphoto conditions patient.id:="+rowValue+" and patient.deleted:=_STRINGSTART_0_STRINGEND_ or patient.deleted:=null and patientphoto.patientid:=patient.id");
+data=createArray("String", "textbox92,textbox93,textbox88,textbox90,datepicker0,textbox87,combobox15,textbox89,combobox16,textbox95,textbox96,combobox17,combobox18,textbox99,textbox100,combobox19,combobox20,textbox62,textbox85,textbox84,textbox86,textbox94,textbox101,picture4");
+showData(data);
+updateSession("rowId", null);}
+message("asas",s);

@@ -1,0 +1,1 @@
+D:\DotNetProjects\ApplicationDesigner\EIBFormDesigner\EIBFormDesigner\bin\Debug\NolisAppDesigner.exe.config
