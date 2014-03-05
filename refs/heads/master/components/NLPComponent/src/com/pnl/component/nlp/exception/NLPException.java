@@ -1,13 +1,45 @@
 package com.pnl.component.nlp.exception;
 
-public class NLPException {
+public class NLPException  extends Exception 
+{
 
 	/**
-	 * @param args
+	  * Constructor for class NLPException.
+	  * 
 	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public NLPException(){
+		
 	}
+	/**
+	  * Calls the constructor of its superclass ComponentException and 
+	  * passes message.
+	  * @param message 
+	  * 
+	 */
+  public NLPException(String message)
+  {
+  	super(message);
+  }
+  /**
+   * Calls the constructor of its superclass ComponentException and 
+   * passes message,cause into it.
+   * @param messageException  
+   * @param causeException
+  */
+  public NLPException(String messageException, Throwable causeException){
+  	super(messageException);
+  		
+  	}
+  /**
+   * Calls the constructor of its superclass ComponentException and 
+   * passes cause.
+   * @param causeException  
+   * 
+  */
+	public NLPException(Throwable causeException)
+	{
+		super(causeException);
+	}	
+	
 
 }
