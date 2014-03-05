@@ -6,6 +6,15 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
+import java.util.Hashtable;
+
+import org.dom4j.Document;
+
+import com.oxymedical.component.baseComponent.IComponent;
+import com.oxymedical.component.baseComponent.exception.ComponentException;
+import com.oxymedical.component.baseComponent.maintenance.annotations.MaintenancePublisher;
+import com.oxymedical.core.commonData.IHICData;
+import com.oxymedical.core.maintenanceData.IMaintenanceData;
 
 import opennlp.tools.sentdetect.SentenceDetectorME;
 import opennlp.tools.sentdetect.SentenceModel;
@@ -16,7 +25,6 @@ import opennlp.tools.tokenize.WhitespaceTokenizer;
 import opennlp.tools.util.ObjectStream;
 import opennlp.tools.util.PlainTextByLineStream;
 import opennlp.tools.util.Span;
-import opennlp.uima.sentdetect.SentenceDetector;
 import opennlp.tools.cmdline.PerformanceMonitor;
 import opennlp.tools.cmdline.postag.POSModelLoader;
 import opennlp.tools.namefind.NameFinderME;
@@ -25,7 +33,7 @@ import opennlp.tools.postag.POSModel;
 import opennlp.tools.postag.POSSample;
 import opennlp.tools.postag.POSTaggerME;
 
-public class NLPComponent implements INLPComponent{
+public class NLPComponent implements INLPComponent , IComponent{
 
 	public static void main(String[] args) throws IOException 
 	{
@@ -188,6 +196,49 @@ public class NLPComponent implements INLPComponent{
 		perfMon.stopAndPrintFinalResult();
 		System.out.println("*****************");
 				
+	}
+
+	@Override
+	public void start(Hashtable<String, Document> configData) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void run() throws ComponentException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void stop() throws ComponentException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void destroy() throws ComponentException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public IHICData getHicData() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setHicData(IHICData hicData) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	@MaintenancePublisher
+	public void maintenance(IMaintenanceData maintenanceData) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

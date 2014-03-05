@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
@@ -16,6 +16,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/Framework"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/HICFrameworkServlet"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/JAAP"/>
-	<classpathentry kind="lib" path="component_lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

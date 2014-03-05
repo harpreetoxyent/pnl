@@ -1,0 +1,29 @@
+<toolbar sclass="calendar-toolbar">
+		<div class="float-left">
+			<hbox>
+				<divarrow type="arrow-left" command='calendarId.previousPage();Events.postEvent("onCreate", label, null)'/>
+				<divarrow type="arrow-right" command='calendarId.nextPage();Events.postEvent("onCreate", label, null)'/>
+			<div>
+			<button mold="os" label="today" onClick='calendarId.setCurrentDate(java.util.Calendar.getInstance(calendarId.getDefaultTimeZone()).getTime());Events.postEvent("onCreate", label, null);'/>			
+			<label id="label">
+				<attribute name="onCreate">
+					Date b = calendarId.getBeginDate();
+					Date e = calendarId.getEndDate();
+					java.text.DateFormat sdfV= DateFormat.getDateInstance();
+					sdfV.setTimeZone(calendarId.getDefaultTimeZone());
+					String[] begin=sdfV.format(b).split(",");
+					self.setValue(begin[0] + " - " + sdfV.format(e));
+				</attribute>
+			</label>			</div>
+				
+			</hbox>
+		</div>
+		<div >
+			<hbox class="float-right">
+				<divtab command='calendarId.mold = "default";calendarId.days = 1;Events.postEvent("onCreate", label, null);' text="Day"/>
+				<divtab command='calendarId.mold = "default";calendarId.days = 7;Events.postEvent("onCreate", label, null);' text="Week"/>
+				<divtab command='calendarId.mold = "default";calendarId.days = 5;Events.postEvent("onCreate", label, null);' text="5 Days"/>
+				<divtab command='calendarId.mold = "month";Events.postEvent("onCreate", label, null);' text="Month"/>
+			</hbox>
+		</div>
+</toolbar>

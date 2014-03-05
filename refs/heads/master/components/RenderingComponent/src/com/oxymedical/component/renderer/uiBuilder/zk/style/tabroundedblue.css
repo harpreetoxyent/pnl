@@ -1,0 +1,79 @@
+.z-tab-body {
+	position: relative;
+	background-image: url('./img/back.jpg');
+	background-repeat: repeat-x; 
+	margin-left:2px;
+}
+.z-tab .z-tab-body {
+	background-position:0 -48px;
+}
+.z-tab .z-tab-body:hover {
+	background-position:0 -96px;
+}
+.z-tab-seld .z-tab-body {
+	cursor:default;
+	background-position:0 0px;
+}
+
+.z-tab em {
+	background-color: transparent;
+	background-image: url('./img/back.jpg');
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position: right -48px;
+	display: block;
+}
+.z-tab .z-tab-body:hover em {
+	background-position:right -96px;
+}
+.z-tab-seld em {
+	background-position:right 0px;
+}
+
+.z-tab-inner {
+	padding-left: 2px;
+	padding-right: 1px;
+	overflow: hidden;
+	cursor: pointer;
+	background-color: transparent;
+	background-image: url('./img/center.jpg');
+	background-repeat: repeat-x;
+	background-attachment: scroll;
+	background-position: 0 -48px;
+}
+.z-tab .z-tab-body:hover .z-tab-inner {
+	background-position:right -48px;
+}
+.z-tab-seld .z-tab-inner {
+	cursor:default;
+	background-position:right -96px;
+	hasLayout:-1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.z-tab .z-tab-body:hover .z-tab-text {
+	color:#FFFFFF;
+}
+.z-tab .z-tab-text {
+	color:#0000FF;
+	cursor:pointer;
+	font-style:normal;
+	font-family: ${fontFamilyT};
+	font-size: ${fontSizeM};
+	font-size-adjust:none;
+	white-space:nowrap;
+	margin-top:4px;
+	margin-bottom:4px;
+}
+
+.z-tab-seld .z-tab-text {
+	color:#0000FF;
+	cursor:default;
+	font-weight:bold;
+	font-style:normal;
+	font-family: ${fontFamilyT};
+	font-size: ${fontSizeM};
+	white-space:nowrap;
+	padding:4px 0 5px;
+}

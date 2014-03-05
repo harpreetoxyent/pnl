@@ -1,0 +1,25 @@
+.z-button .z-button-tm, .z-button .z-button-cl, .z-button .z-button-cr, .z-button .z-button-cm 
+{
+    background-image:none; background-color:#c5d9f4;
+}
+.z-button .z-button-tl, .z-button-over .z-button-tl 
+{
+	background-image:url('img/tl.png'); background-repeat: no-repeat; background-position: 0px 0px; width: 8px; height: 8px; padding: 0; margin: 0;
+}
+.z-button .z-button-tr, .z-button-over .z-button-tr 
+{
+	background-image:url('img/tr.png'); background-repeat: no-repeat; background-position: 0px 0px; width: 8px; height: 8px; padding: 0; margin: 0;
+}
+.z-button .z-button-bl, .z-button-over .z-button-bl 
+{
+	background-image:url('img/bl.png'); background-repeat: no-repeat; background-position: 0px 0px; width: 8px; height: 8px; padding: 0; margin: 0;
+}
+.z-button .z-button-br, .z-button-over .z-button-br 
+{
+	background-image:url('img/br.png'); background-repeat: no-repeat; background-position: 0px 0px; width: 8px; height: 8px; padding: 0; margin: 0;
+}
+.z-button .z-button-bm, .z-button-over .z-button-bm 
+{
+	background-image:url('img/bm.png'); background-repeat: repeat-x; background-position: 0 0px; 	height: 8px;
+}
+
