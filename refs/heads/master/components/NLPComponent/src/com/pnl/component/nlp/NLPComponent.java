@@ -37,11 +37,11 @@ public class NLPComponent implements INLPComponent , IComponent{
 
 	public static void main(String[] args) throws IOException 
 	{
-		InputStream sentenceModelFile;
-		InputStream tokenModelFile;
-		InputStream nameModelFile;
-		InputStream locationModelFile;
-		File posModelFile = null;
+		InputStream sentenceModelFile = null;
+		InputStream tokenModelFile = null;
+		InputStream nameModelFile = null;
+		InputStream locationModelFile = null;
+		InputStream posModelFile = null;
 		
 		SentenceModel sentModel = null;
 		TokenizerModel tokenModel = null;
@@ -49,11 +49,13 @@ public class NLPComponent implements INLPComponent , IComponent{
 		POSModel posModel = null;
 		TokenNameFinderModel locationFinderModel = null;
 		
-		sentenceModelFile = new FileInputStream("/PNL/Technology/NLP_Models/en-sent.bin");
-		tokenModelFile = new FileInputStream("/PNL/Technology/NLP_Models/en-token.bin");
-		nameModelFile = new FileInputStream("/PNL/Technology/NLP_Models/en-ner-person.bin");
-		locationModelFile = new FileInputStream("/PNL/Technology/NLP_Models/en-ner-location.bin");
-		posModelFile = new File("/PNL/Technology/NLP_Models/en-pos-maxent.bin");
+//		sentenceModelFile = new FileInputStream("/PNL/Technology/NLP_Models/en-sent.bin");
+		sentenceModelFile = NLPComponent.class.getResourceAsStream("model/en-sent.bin");
+
+		tokenModelFile = NLPComponent.class.getResourceAsStream("model/en-token.bin");
+		nameModelFile = NLPComponent.class.getResourceAsStream("model/NLP_Models/en-ner-person.bin");
+		locationModelFile = NLPComponent.class.getResourceAsStream("model/en-ner-location.bin");
+		posModelFile = NLPComponent.class.getResourceAsStream("model/en-pos-maxent.bin");
 		
 		String paragraph  = "This isn't the greatest example sentence in the world because I've seen better. Ankit Kumar Singh sweet and Mike Smith Kumar lives in California";
 		String line;
@@ -64,7 +66,7 @@ public class NLPComponent implements INLPComponent , IComponent{
 			tokenModel = new TokenizerModel(tokenModelFile);
 			nameFinderModel = new TokenNameFinderModel(nameModelFile);
 			locationFinderModel = new TokenNameFinderModel(locationModelFile);
-			posModel = new POSModelLoader().load(posModelFile);
+//			posModel = new POSModelLoader().loadModel(posModelFile);
 		} 
 		
 		catch (FileNotFoundException e1)
