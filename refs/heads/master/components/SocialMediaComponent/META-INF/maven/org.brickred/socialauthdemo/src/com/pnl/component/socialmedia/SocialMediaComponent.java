@@ -10,7 +10,7 @@ import com.oxymedical.component.baseComponent.maintenance.annotations.Maintenanc
 import com.oxymedical.core.commonData.IHICData;
 import com.oxymedical.core.maintenanceData.IMaintenanceData;
 
-public class SocialMedia implements ISocialMedia , IComponent{
+public class SocialMediaComponent implements ISocialMediaComponent , IComponent{
 
 	/**
 	 * @param args
