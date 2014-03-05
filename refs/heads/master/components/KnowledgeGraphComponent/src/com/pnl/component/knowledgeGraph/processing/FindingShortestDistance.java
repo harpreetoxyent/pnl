@@ -1,4 +1,4 @@
-package com.oxyent.pnl.neo4j;
+package com.pnl.component.knowledgeGraph.processing;
 
 
 import java.io.File;
@@ -20,14 +20,14 @@ import org.neo4j.graphdb.RelationshipType;
 import org.neo4j.graphdb.Transaction;
 import org.neo4j.graphdb.factory.GraphDatabaseFactory;
 
-public class PathFindingDocTest
+public class FindingShortestDistance
 {
     private static GraphDatabaseService graphDb;
     private Transaction tx;
 
     public static void main( final String[] args )
     {
-    	PathFindingDocTest hello = new PathFindingDocTest();
+    	FindingShortestDistance hello = new FindingShortestDistance();
         hello.startDb();
     	hello.doBefore();
         hello.shortestPathExample();

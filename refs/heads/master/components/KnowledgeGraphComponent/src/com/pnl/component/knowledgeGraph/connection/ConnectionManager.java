@@ -1,4 +1,4 @@
-package com.oxyent.pnl.neo4j;
+package com.pnl.component.knowledgeGraph.connection;
 
 
 import java.io.File;
@@ -13,7 +13,7 @@ import org.neo4j.graphdb.Transaction;
 import org.neo4j.graphdb.factory.GraphDatabaseFactory;
 import org.neo4j.kernel.impl.util.FileUtils;
 
-public class EmbeddedNeo4j
+public class ConnectionManager
 {
     private static final String DB_PATH = "target/neo4j-hello-db";
 
@@ -35,7 +35,7 @@ public class EmbeddedNeo4j
 
     public static void main( final String[] args )
     {
-        EmbeddedNeo4j hello = new EmbeddedNeo4j();
+        ConnectionManager hello = new ConnectionManager();
         hello.createDb();
         hello.removeData();
         hello.shutDown();
