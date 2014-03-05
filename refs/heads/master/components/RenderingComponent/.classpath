@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="lib/ZK6.0/calendar.jar"/>
+	<classpathentry kind="lib" path="lib/ZK6.0/zcommon.jar"/>
+	<classpathentry kind="lib" path="lib/ZK6.0/zhtml.jar"/>
+	<classpathentry kind="lib" path="lib/ZK6.0/zk.jar"/>
+	<classpathentry kind="lib" path="lib/ZK6.0/zkex.jar"/>
+	<classpathentry kind="lib" path="lib/ZK6.0/zkplus.jar"/>
+	<classpathentry kind="lib" path="lib/ZK6.0/zul.jar"/>
+	<classpathentry kind="lib" path="lib/ZK6.0/zweb.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/BaseComponent"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/CoreLibrary"/>
+	<classpathentry kind="lib" path="lib/ant-contrib.jar"/>
+	<classpathentry kind="lib" path="lib/ant-ext.jar"/>
+	<classpathentry kind="lib" path="lib/ant-hibernate-config-0.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/ant-installer.jar"/>
+	<classpathentry kind="lib" path="lib/ant-launcher.jar"/>
+	<classpathentry kind="lib" path="lib/ant-nodeps.jar"/>
+	<classpathentry kind="lib" path="lib/ant-trax.jar"/>
+	<classpathentry kind="lib" path="lib/ant.jar"/>
+	<classpathentry kind="lib" path="lib/antelope.jar"/>
+	<classpathentry kind="lib" path="lib/antlr-2.7.6rc1.jar"/>
+	<classpathentry kind="lib" path="lib/antlr.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Framework"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Logging"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/DBComponent"/>
+	<classpathentry kind="lib" path="lib/servlet-api.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JAAP"/>
+	<classpathentry kind="lib" path="lib/commons-beanutils-1.6.jar"/>
+	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="lib/jasperreports.jar"/>
+	<classpathentry kind="lib" path="lib/commons-digester-1.8.jar"/>
+	<classpathentry kind="lib" path="lib/itext-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/catalina.jar"/>
+	<classpathentry kind="lib" path="lib/commons-fileupload-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/commons-codec-1.3.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

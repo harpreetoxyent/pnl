@@ -1,0 +1,275 @@
+<configuration>
+
+	<element id="application" zkname="zk"/>	
+	<element id="zscript" zkname="zscript"/>
+	<element id="id" zkname="id"/>
+	<element id="x" zkname="left"/>
+	<element id="y" zkname="top"/>
+	<element id="backColor" zkname="background-color"/>	
+	<element id="backgroundImage" zkname="background-image"/>
+	<element id="width" zkname="width"/>
+	<element id="height" zkname="height"/>
+	<element id="margintop" zkname="margin-top"/>
+	<element id="marginbottom" zkname="margin-bottom"/>
+	<element id="marginleft" zkname="margin-left"/>
+	<element id="marginright" zkname="margin-right"/>
+	<element id="paddingright" zkname="padding-right"/>
+	<element id="paddingleft" zkname="padding-left"/>
+	<element id="paddingtop" zkname="padding-top"/>
+	<element id="paddingbottom" zkname="padding-bottom"/>
+	<element id="visible" zkname="visible"/>
+	<element id="forecolor" zkname="color"/>
+	<element id="font" zkname="font-family"/>
+	<element id="fontstyle" zkname="font-style"/>
+	<element id="fontsize" zkname="font-size"/>
+	<element id="position" zkname="position"/>
+	<element id="align" zkname="align"/>
+	<element id="textalign" zkname="text-align"/>
+	<element id="bordersize" zkname="border" />
+	<element id="renderCursor" zkname="renderCursor" />
+	<element id="style" zkname="style" />
+	<!--  <element id ="valuetype" zkname = "constraint"/>
+	<element id ="ismandatory" zkname = "constraint"/>-->
+	<element id ="tabindex" zkname = "tabindex"/>
+	
+	<!-- new xml attribute mapped with zkattribute
+	changes by wasim and puneet  11-May-2009 and 12-May-2009.
+	-->
+	<element id ="droppable" zkname = "droppable"/>
+	<element id ="draggable" zkname = "draggable"/>
+	<element id ="backgroundImageLayout" zkname = "background-position"/>	
+	
+	<!-- title, calendar attribute mapped with zkattribute
+	changes by puneet  12-May-2009.
+	-->
+	<element id="basewindow" zkname="window">
+	
+	   <attribute id="title" zkname="title"/>
+	</element>
+		<element id="Calender" zkname="calendar">
+	</element>
+	
+	<element id="TextBox" zkname="textbox">
+         <attribute id="text" zkname="value"/>
+		<attribute id="password" zkname="type"/>
+		<attribute id="multiline" zkname="rows"/>
+		<attribute id="name" zkname="name"/>
+		<attribute id="valuetype" zkname="constraint"/>
+		<attribute id="datapattern" zkname="data"/>
+		<attribute id ="readonly" zkname = "readonly"/>
+		<attribute id ="maxlength" zkname = "maxlength"/>
+		
+		
+	</element>
+	
+	<!-- placeholder tag mapped with zktag
+	changes by wasim  13-May-2009.
+	-->
+	<element id ="PlaceHolder" zkname = "include">
+	<attribute id="reference" zkname="src"/>
+	</element>
+	
+	
+	<element id="Label" zkname="label">
+		<attribute id="text" zkname="value"/>
+	</element>
+	<element id="Time" zkname="timebox">
+	<attribute id="name" zkname="name"/>
+	</element>
+
+	<element id="ListBox" zkname="listbox">
+		<attribute id="selectionmode" zkname="multiple"/>
+		<attribute id="paginal" zkname="paginal"/>	
+		<attribute id="multiselect" zkname="multiple"/>
+		<attribute id="checkmark" zkname="checkmark"/>
+	</element>
+	
+	<element id="listitem" zkname="listitem">
+		<attribute id="listitemname" zkname="label"/>
+		<attribute id="name" zkname="id"/>
+	</element>
+	
+	<element id="Button" zkname="button">
+		<attribute id="text" zkname="label"/>
+		<attribute id="source" zkname="image"/>	
+		
+	</element>	
+	<!--  picture mapped with imagemap changes by Wasim Khan -->
+	<element id="Picture" zkname="imagemap">
+		<attribute id="source" zkname="src"/>
+	</element>
+	
+	<element id="DatePicker" zkname="datebox">
+	<attribute id="name" zkname="name"/>
+	<attribute id="id" zkname="id"/>
+	</element>
+	<element id="customformat" zkname="format"/>
+	
+	<element id="Frame" zkname="div"/>
+	
+	<!-- Added on March 29 2_23 PM -->
+	
+	
+	<element id="Panel" zkname="panel"/>
+	<element id="PanelChildren" zkname="panelchildren"/>
+	<element id="Hbox" zkname="hbox"/>
+	<element id="Vbox" zkname="vbox"/>	
+	<element id="collapse" zkname="collapse"/>
+	
+		
+	<element id="Splitter" zkname="splitter">
+		<attribute id="id" zkname="id"/>
+		<attibute collapse="collapse" zkname="collapse"/>
+		<attibute style="style" zkname="style"/>
+	</element>
+	
+	<!-- Finish -->
+	
+	<element id="Checkbox" zkname="checkbox">
+	<attribute id="id" zkname="id"/>
+	<attibute id="text" zkname="label"/>
+	<attibute id="selected" zkname="Checked"/>
+	</element>
+	
+	<element id="RadioGroup" zkname="radiogroup"/>
+	
+	<element id="RadioButton" zkname="radio">
+	<attibute id="text" zkname="label"/>
+	<attibute id="selected" zkname="Selected"/>
+	<attibute id="value" zkname="value"/>
+	
+	</element>
+	<element id="Combobox" zkname="combobox">
+		<attribute id="name" zkname="name"/>
+		<attribute id="readonly" zkname="readonly"/>
+		<attribute id="text" zkname="text"/>
+	</element>
+	
+	<element id="option" zkname="comboitem">
+		<attribute id="text" zkname="label"/>
+		<attribute id="value" zkname="value"/>
+		<attribute id="name" zkname="id"/>
+	</element>
+	
+	<element id="DGrid" zkname="grid">
+		<attribute id="span" zkname="span"/>
+	</element>
+	<!--  <element id="columns" zkname="columns"/>
+	adding attribute to column-->
+	
+	<element id="columns" zkname="columns">
+		
+	</element>
+		
+	<element id="Dcolumn" zkname="column">
+	<attibute id="text" zkname="label"/>
+	</element>
+	<element id="Drows" zkname="rows"/>
+	<element id="Drow" zkname="row">
+		<attribute id="spans" zkname="spans"/>
+	</element>
+	<element id="auxhead" zkname="auxhead"/>
+	<element id="auxheader" zkname="auxheader">
+		<attibute id="text" zkname="label"/>
+		<attribute id="colspan" zkname="colspan"/>
+	</element>
+	
+	
+	
+	<element id="Grid" zkname="listbox">
+		<attribute id="paginal" zkname="paginal"/>	
+		<attribute id="multiselect" zkname="multiple"/>	
+		<attribute id="checkmark" zkname="checkmark"/>
+	</element>		
+	<!--<element id="rows" zkname="rows"/>-->
+	<element id="rows" zkname="listhead"/>
+	<element id="row" zkname="listhead"/>	
+	<!--<element id="column" zkname="div"/>-->
+	<element id="column" zkname="listheader"/>
+	
+	<element id="Tree" zkname="tree"/>
+	<element id="TreeNode" zkname="treeitem">
+		<attribute id="text" zkname="label"/>
+	</element>
+	
+	<element id="Browse" zkname="button">
+	<attribute id="text" zkname="label"/>
+	</element>
+	<element id="MenuBar" zkname="menubar">
+	<attribute id="orient" zkname="orient"/>
+	</element>
+	
+	<element id="Menu" zkname="menu">
+		<attibute id="text" zkname="label"/>
+		<!--  attribute mapped with zkattribute
+	changes by puneet  10-June-2009.
+	-->
+		<attibute id="menuIcon" zkname="src"/>
+	</element>
+	
+	<element id="MenuItem" zkname="menuitem">
+		<attibute id="text" zkname="label"/>
+			<!--  attribute mapped with zkattribute
+	changes by puneet  10-June-2009.
+	-->
+		<attibute id="menuIcon" zkname="src"/>
+	</element>
+	
+	<element id="MultiTab" zkname="tabbox" > 
+		<attibute id="type" zkname="mold"/>
+	</element>
+	<element id="TabPage" zkname="tab">
+		<attibute id="text" zkname="label"/>
+	</element>
+	<element id="JasperReports" zkname="jasperreport"/>
+	  
+	<element id="OnClick" zkname="onClick"/>
+	<!-- onOK xml event mapped with onOK zk event -->
+	<element id="OnOK" zkname="onOK"/>
+	<element id="OnChange" zkname="onChange"/>
+	<element id="DefaultValue" zkname="onCreate"/>
+	<element id="onFocus" zkname="onFocus"/>
+	<element id="onBlur" zkname="onBlur"/>
+	<element id="GlobalScripts" zkname="GlobalScripts"/>
+	<element id="StyleScripts" zkname="StyleScripts"/>
+	<element id="OnSelect" zkname="onSelect"/>
+	<element id="OnOpen" zkname="onOpen"/>
+	<element id="OnCheck" zkname="onCheck"/>
+	<element id="OnChanging" zkname="onChanging"/>
+	
+	<element id="OnDrop" zkname="onDrop"/>
+	<!--ttribute mapped with zkattribute
+	changes by puneet  25-June-2009.-->
+	<element id="OnEventCreate" zkname="onEventCreate"/>
+	<element id="OnEventUpdate" zkname="onEventUpdate"/>
+	<element id="OnEventEdit" zkname="onEventEdit"/>
+	<element id="Paging" zkname="paging">
+		<attibute id="pagesize" zkname="pageSize"/>
+	</element>
+	
+	<!-- added by pra for schedular on june 24 2009-->
+	<element id="Schedular" zkname="calendars">
+		<!-- added by pra for schedular attributes on june 29 2009-->
+	<attibute id="firstdayofweek" zkname="firstDayOfWeek"/>
+	<attibute id="mold" zkname="mold"/>
+	
+	</element>
+	
+	<!-- added by hku for applet on july 28 2009-->
+	<element id="Applet" zkname="applet">
+		<!-- added by pra for schedular attributes on june 29 2009-->
+	<attibute id="code" zkname="code"/>
+	<attibute id="archive" zkname="archive"/>
+	<attibute id="appname" zkname="name"/>
+	
+	</element>
+	
+	<!-- grid mapping latice -->
+	<element id="Lattice" zkname="grid"/>	
+	<element id="lrow" zkname="row"/>
+	<element id="chart" zkname="chart">
+	<attibute id="title" zkname="title"/>
+	<attibute id="type" zkname="type"/>
+	</element>
+			
+</configuration>
