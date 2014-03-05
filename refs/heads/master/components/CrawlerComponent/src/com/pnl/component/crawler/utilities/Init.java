@@ -1,12 +1,11 @@
-package com.pnl.manager;
+package com.pnl.component.crawler.utilities;
 
 import java.io.IOException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.pnl.util.Utility;
-import com.pnl.crawler.Crawl;
+import com.pnl.component.crawler.CrawlerComponent;
 
 public class Init {
 
@@ -44,7 +43,7 @@ public class Init {
 				crawlerArgs[i] = args[i+1];
 			}
 			
-			Crawl.main(crawlerArgs);
+			//CrawlerComponent.process(crawlerArgs);
 		    
 			LOG.info("||STEP-1:|| Completed.");
 			LOG.info("||STEP-2:|| Initiated:");

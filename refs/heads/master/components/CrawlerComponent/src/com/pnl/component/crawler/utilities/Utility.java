@@ -1,4 +1,4 @@
-package com.pnl.util;
+package com.pnl.component.crawler.utilities;
 
 import java.io.BufferedInputStream;
 import java.io.File;

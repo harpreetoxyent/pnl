@@ -1,4 +1,4 @@
-package com.pnl.crawler;
+package com.pnl.component.crawler;
 
 import java.util.*;
 import java.text.*;
@@ -25,9 +25,18 @@ import org.apache.nutch.crawl.Generator;
 import org.apache.nutch.crawl.Injector;
 import org.apache.nutch.crawl.LinkDb;
 import org.apache.nutch.fetcher.Fetcher;
+import org.dom4j.Document;
 
-public class Crawl extends Configured implements Tool {
-	  public static final Logger LOG = LoggerFactory.getLogger(Crawl.class);
+import com.oxymedical.component.baseComponent.IComponent;
+import com.oxymedical.component.baseComponent.exception.ComponentException;
+import com.oxymedical.component.baseComponent.maintenance.annotations.MaintenancePublisher;
+import com.oxymedical.core.commonData.IHICData;
+import com.oxymedical.core.maintenanceData.IMaintenanceData;
+import com.pnl.component.crawler.exception.CrawlerComponentException;
+import com.pnl.component.crawler.exception.CrawlerExceptionConstants;
+
+public class CrawlerComponent extends Configured implements Tool,ICrawlerComponent,IComponent {
+	  public static final Logger LOG = LoggerFactory.getLogger(CrawlerComponent.class);
 
 	  private static String getDate() {
 	    return new SimpleDateFormat("yyyyMMddHHmmss").format
@@ -37,10 +46,16 @@ public class Crawl extends Configured implements Tool {
 
 	  /* Perform complete crawling and indexing (to Solr) given a set of root urls and the -solr
 	     parameter respectively. More information and Usage parameters can be found below. */
-	  public static void main(String args[]) throws Exception {
+	  public void process(String[] args) throws CrawlerComponentException {
 	    Configuration conf = NutchConfiguration.create();
-	    int res = ToolRunner.run(conf, new Crawl(), args);
-	    //System.exit(res);
+	    try
+	    {
+	     int res = ToolRunner.run(conf, new CrawlerComponent(), args);
+	     //System.exit(res);
+	    }catch(Exception exce)
+	    {
+	    	throw new CrawlerComponentException(CrawlerExceptionConstants.EXCEPTION+exce);
+	    }
 	  }
 	  
 	  @Override
@@ -160,4 +175,54 @@ public class Crawl extends Configured implements Tool {
 	    if (LOG.isInfoEnabled()) { LOG.info("crawl finished: " + dir); }
 	    return 0;
 	  }
+
+
+	@Override
+	public void start(Hashtable<String, Document> configData) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void run() throws ComponentException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void stop() throws ComponentException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void destroy() throws ComponentException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public IHICData getHicData() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public void setHicData(IHICData hicData) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	@MaintenancePublisher
+	public void maintenance(IMaintenanceData maintenanceData) {
+		// TODO Auto-generated method stub
+		
+	}
 }
