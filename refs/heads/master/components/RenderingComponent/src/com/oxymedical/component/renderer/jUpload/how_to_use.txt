@@ -1,0 +1,29 @@
+===== define the event listener like below.
+===== this will be called when the multi upload box closes.
+===== onMultiUploadClose is the event handler and must be 
+===== defined in the zscript tag of the window. 
+org.zkoss.zk.ui.event.EventListener onMultiUploadCloseListener = new org.zkoss.zk.ui.event.EventListener(){            
+	public void onEvent(Event event){
+		onMultiUploadClose(event);
+	};
+};
+
+===== call the method showMultiUpload by passing the close handler
+showMultiUpload(onMultiUploadCloseListener, "pdf/doc");
+or
+showMultiUpload(onMultiUploadCloseListener, "*");
+
+===== the actual handler should be defined like so..
+public void onMultiUploadClose(org.zkoss.zk.ui.event.Event event){
+	ArrayList alUploadedFileNames = session.getAttribute("uploadedFileNames");
+	alert("alUploadedFileNames: " + alUploadedFileNames);
+}
+
+===== the upload directory on the server may be specified
+===== by using the session variable 'multiUploadDir'
+session.setAttribute("multiUploadDir", "d:/MultiUploadDirectory/")
+
+
+
+
+
