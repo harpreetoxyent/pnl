@@ -1,6 +1,8 @@
 package com.pnl.component.bigdata;
 
 import java.io.IOException;
+import java.util.Hashtable;
+
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.Job;
@@ -17,10 +19,18 @@ import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class BigData {
+import com.oxymedical.component.baseComponent.IComponent;
+import com.oxymedical.component.baseComponent.exception.ComponentException;
+import com.oxymedical.component.baseComponent.maintenance.annotations.MaintenancePublisher;
+import com.oxymedical.core.commonData.IHICData;
+import com.oxymedical.core.maintenanceData.IMaintenanceData;
+import com.pnl.component.bigdata.exception.BigDataComponentException;
+import com.pnl.component.bigdata.exception.BigDataExceptionConstants;
+
+public class BigDataComponent implements IBigDataComponent, IComponent {
 
 	public static final Logger LOG = LoggerFactory
-			.getLogger(BigData.class);
+			.getLogger(BigDataComponent.class);
 
 	public static class Map extends Mapper<Text, Content, Text, Text> {
 		private final static IntWritable one = new IntWritable(1);
@@ -67,7 +77,7 @@ public class BigData {
 		}
 	}
 
-	public static void process(String[] args) throws Exception {
+	public void process(String[] args) throws BigDataComponentException {
 
 		/*
 		 * JobConf conf = new JobConf(DataProcessor.class);
@@ -88,30 +98,87 @@ public class BigData {
 		 * JobClient.runJob(conf);
 		 */
 
-		Job job = new Job();
-		job.setJarByClass(BigData.class);
-		job.setJobName("DataProcessor");
-		FileInputFormat.setInputPaths(job, new Path(args[0]));
-		FileOutputFormat.setOutputPath(job, new Path(args[1]));
+		Job job = null;
+		boolean success = false;
+		try {
+			job = new Job();
+			job.setJarByClass(BigDataComponent.class);
+			job.setJobName("DataProcessor");
+			FileInputFormat.setInputPaths(job, new Path(args[0]));
+			FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
-		job.setMapperClass(Map.class);
-		job.setReducerClass(Reduce.class);
+			job.setMapperClass(Map.class);
+			job.setReducerClass(Reduce.class);
 
-		job.setInputFormatClass(SequenceFileInputFormat.class);
+			job.setInputFormatClass(SequenceFileInputFormat.class);
 
-		job.setMapOutputKeyClass(Text.class);
-		job.setMapOutputValueClass(Text.class);
+			job.setMapOutputKeyClass(Text.class);
+			job.setMapOutputValueClass(Text.class);
 
-		job.setOutputKeyClass(Text.class);
-		job.setOutputValueClass(Text.class);
+			job.setOutputKeyClass(Text.class);
+			job.setOutputValueClass(Text.class);
 
-		// job.setNumReduceTasks(3);
+			// job.setNumReduceTasks(3);
 
-		boolean success;
-
-		success = job.waitForCompletion(true);
+			success = job.waitForCompletion(true);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+			throw new BigDataComponentException(BigDataExceptionConstants.IO_EXCEPTION);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+			throw new BigDataComponentException(BigDataExceptionConstants.INTERRUPTED_EXCEPTION);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+			throw new BigDataComponentException(BigDataExceptionConstants.CLASS_NOT_FOUND_EXCEPTION);
+		}
 		System.exit(success ? 0 : 1);
 
+	}
+
+	@Override
+	public void start(Hashtable<String, org.dom4j.Document> configData) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void run() throws ComponentException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void stop() throws ComponentException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void destroy() throws ComponentException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public IHICData getHicData() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setHicData(IHICData hicData) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	@MaintenancePublisher
+	public void maintenance(IMaintenanceData maintenanceData) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
