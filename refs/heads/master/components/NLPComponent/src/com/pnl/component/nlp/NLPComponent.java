@@ -1,4 +1,4 @@
-package com.oxyent.nlp.test;
+package com.pnl.component.nlp;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,22 +25,8 @@ import opennlp.tools.postag.POSModel;
 import opennlp.tools.postag.POSSample;
 import opennlp.tools.postag.POSTaggerME;
 
+public class NLPComponent implements INLPComponent{
 
-
-
-
-
-
-
-public class LearnNLP
-{
-
-	/**
-	 * @param args
-	 * @throws IOException 
-	 * 
-	 */
-	  
 	public static void main(String[] args) throws IOException 
 	{
 		InputStream sentenceModelFile;
@@ -201,11 +187,8 @@ public class LearnNLP
 		}
 		perfMon.stopAndPrintFinalResult();
 		System.out.println("*****************");
-		
-		
-		
-		
-		
+				
 	}
+
 
 }
