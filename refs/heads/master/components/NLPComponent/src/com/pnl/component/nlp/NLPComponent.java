@@ -56,7 +56,7 @@ public class NLPComponent implements INLPComponent, IComponent {
 		SentenceModel sentModel = null;
 		TokenizerModel tokenModel = null;
 		TokenNameFinderModel nameFinderModel = null;
-		POSModel posModel = null;
+		//POSModel posModel = null;
 		TokenNameFinderModel locationFinderModel = null;
 		String paragraph = "This isn't the greatest example sentence in the world because I've seen better. Ankit Kumar Singh sweet and Mike Smith Kumar lives in California";
 		String line;
@@ -80,7 +80,7 @@ public class NLPComponent implements INLPComponent, IComponent {
 			tokenModel = new TokenizerModel(tokenModelFile);
 			nameFinderModel = new TokenNameFinderModel(nameModelFile);
 			locationFinderModel = new TokenNameFinderModel(locationModelFile);
-			posModel = new POSModelLoader().load(new File(posModelFile));
+			//posModel = new POSModelLoader().load(new File(posModelFile));
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		} catch (FileNotFoundException e1) {
@@ -167,7 +167,7 @@ public class NLPComponent implements INLPComponent, IComponent {
 		// Part-Of-Speech Model
 
 		PerformanceMonitor perfMon = new PerformanceMonitor(System.err, "sent");
-		POSTaggerME tagger = new POSTaggerME(posModel);
+		//POSTaggerME tagger = new POSTaggerME(posModel);
 		ObjectStream<String> lineStream = new PlainTextByLineStream(
 				new StringReader(paragraph));
 		perfMon.start();
@@ -176,10 +176,10 @@ public class NLPComponent implements INLPComponent, IComponent {
 
 			String whitespaceTokenizerLine[] = WhitespaceTokenizer.INSTANCE
 					.tokenize(line);
-			String[] tags = tagger.tag(whitespaceTokenizerLine);
+			//String[] tags = tagger.tag(whitespaceTokenizerLine);
 
-			POSSample sample = new POSSample(whitespaceTokenizerLine, tags);
-			System.out.println(sample.toString());
+			//POSSample sample = new POSSample(whitespaceTokenizerLine, tags);
+			//System.out.println(sample.toString());
 
 			perfMon.incrementCounter();
 		}
