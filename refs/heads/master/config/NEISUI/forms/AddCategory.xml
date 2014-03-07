@@ -1,0 +1,164 @@
+<basewindow popup="true" visibleto="All" font="Microsoft Sans Serif" height="475" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="AddCategory" boxalignment="none" backgroundImageLayout="tile" id="AddCategory" title="Adding Category" width="382" y="0" draggable="false">
+  <Events />
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="430" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame47" boxalignment="none" backgroundImageLayout="tile" id="frame47" width="372" y="35" draggable="false">
+    <Events />
+    <DataMappings />
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="40" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="55" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame60" boxalignment="none" backgroundImageLayout="tile" id="frame60" width="266" y="1" draggable="false">
+      <Events />
+      <DataMappings />
+      <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="Transparent" x="10" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Category Name*:" use="" forecolor="#000000" enabled="true" name="label5" textalign="topleft" backgroundImageLayout="tile" id="label5" width="87" y="13" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" readonly="false" backColor="#FFFFFF" x="103" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox5" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox5" valuetype="AlphaNumeric" backgroundImageLayout="tile" password="false" draggable="false" width="151" y="11" passwordchar="" ismandatory="yes">
+        <Events />
+        <DataMappings>
+          <Mapping datafield="CategoryName: String" datatable="QBCategory" datapattern="neiswispicdb" />
+        </DataMappings>
+      </TextBox>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="9" readonly="false" backColor="#FFFFFF" x="224" fontsize="8.25" paddingleft="0" position="absolute" visible="false" border="fixedsingle" paddingbottom="0" id="textbox7" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox7" valuetype="Any" backgroundImageLayout="tile" password="false" width="100" y="52" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings>
+          <Mapping datafield="id: Int16" datatable="QBCategory" datapattern="neiswispicdb" />
+          <Mapping datafield="CategoryId: Int16" datatable="QBCategoryDetail" datapattern="neiswispicdb" />
+        </DataMappings>
+      </TextBox>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="10" readonly="false" backColor="#FFFFFF" x="390" fontsize="8.25" paddingleft="0" position="absolute" visible="false" border="fixedsingle" paddingbottom="0" id="textbox8" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox8" valuetype="Any" backgroundImageLayout="tile" password="false" width="100" y="53" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings>
+          <Mapping datafield="deleted: Char" datatable="QBCategory" datapattern="neiswispicdb" />
+        </DataMappings>
+      </TextBox>
+    </Frame>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="332" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="1" default="false" backColor="#FFFFFF" x="20" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame61" boxalignment="none" backgroundImageLayout="tile" id="frame61" width="133" y="46" draggable="false">
+      <Events />
+      <DataMappings />
+      <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="#FFFFFF" x="3" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="All Fields" use="" forecolor="#000000" enabled="true" name="label6" textalign="topleft" backgroundImageLayout="tile" id="label6" width="68" y="0" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Grid visibleto="All" font="Microsoft Sans Serif" height="300" netBackColor="White" multiselect="False" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" backColor="#FFFFFF" x="4" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="grid41" use="" forecolor="#000000" enabled="true" align="none" name="grid41" backgroundImageLayout="tile" id="grid41" width="120" y="20" draggable="false">
+        <Events>
+          <event name="DefaultValue">invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get QBUserDefinedField.id, QBUserDefinedField.userDefinedFieldName from neiswispicdb.QBUserDefinedField conditions QBUserDefinedField.deleted:=[0] orderby QBUserDefinedField.userDefinedFieldName");
+displayFieldDataInControl("grid41");
+</event>
+          <event name="OnClick">x=getSelectedListData();
+updateSession("rowId",x);</event>
+        </Events>
+        <DataMappings />
+      </Grid>
+    </Frame>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="flat" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="2" backColor="Transparent" x="170" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="0" paddingright="0" source="\img\button17.jpg" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="button17" backgroundImageLayout="tile" id="button17" width="30" y="80" draggable="false">
+      <Events>
+        <event name="OnClick">rowID=getSessionData("rowId");
+moveValue(rowID,"grid41","grid42");
+updateSession("rowId",null);</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" backColor="Transparent" x="170" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="move" use="" forecolor="#000000" enabled="true" name="label7" textalign="topleft" backgroundImageLayout="tile" id="label7" width="42" y="120" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="flat" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="9" backColor="Transparent" x="170" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="0" paddingright="0" source="\img\button18.jpg" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="button18" backgroundImageLayout="tile" id="button18" width="30" y="149" draggable="false">
+      <Events>
+        <event name="OnClick">rowID=getSessionData("rowId");
+moveValue(rowID,"grid42","grid41");
+updateSession("rowId",null);</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Label visibleto="All" font="Microsoft Sans Serif" height="21" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="10" backColor="Transparent" x="169" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="remove" use="" forecolor="#000000" enabled="true" name="label8" textalign="topleft" backgroundImageLayout="tile" id="label8" width="50" y="189" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="flat" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="11" backColor="Transparent" x="171" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="0" paddingright="0" source="\img\button19.jpg" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="button19" backgroundImageLayout="tile" id="button19" width="30" y="298" draggable="false">
+      <Events>
+        <event name="OnClick">moveAllItems("grid42","grid41");</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Label visibleto="All" font="Microsoft Sans Serif" height="22" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="12" backColor="Transparent" x="170" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="move all" use="" forecolor="#000000" enabled="true" name="label9" textalign="topleft" backgroundImageLayout="tile" id="label9" width="50" y="266" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="flat" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="13" backColor="#FFFFFF" x="170" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="0" paddingright="0" source="\img\button21.jpg" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="button21" backgroundImageLayout="tile" id="button21" width="30" y="223" draggable="false">
+      <Events>
+        <event name="OnClick">moveAllItems("grid41","grid42");</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="14" backColor="Transparent" x="167" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="remove all" use="" forecolor="#000000" enabled="true" name="label11" textalign="topleft" backgroundImageLayout="tile" id="label11" width="59" y="344" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="338" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="15" default="false" backColor="#FFFFFF" x="234" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame62" boxalignment="none" backgroundImageLayout="tile" id="frame62" width="132" y="45" draggable="false">
+      <Events />
+      <DataMappings />
+      <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="#FFFFFF" x="4" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Fields in Category" use="" forecolor="#000000" enabled="true" name="label12" textalign="topleft" backgroundImageLayout="tile" id="label12" width="102" y="3" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Grid visibleto="All" font="Microsoft Sans Serif" height="300" netBackColor="White" multiselect="False" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="1" backColor="#FFFFFF" x="10" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="grid42" use="" forecolor="#000000" enabled="true" align="none" name="grid42" backgroundImageLayout="tile" id="grid42" width="120" y="25" draggable="false">
+        <Events>
+          <event name="OnClick">x=getSelectedListData();
+updateSession("rowId",x);
+setListItemId("grid42");</event>
+        </Events>
+        <DataMappings>
+          <Mapping datafield="UserDefinedFieldId: Int16" datatable="QBCategoryDetail" datapattern="neiswispicdb" />
+        </DataMappings>
+      </Grid>
+    </Frame>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="16" backColor="Transparent" x="74" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Save Category" use="" forecolor="#000000" enabled="true" name="button22" backgroundImageLayout="tile" id="button22" width="92" y="391" draggable="false">
+      <Events>
+        <event name="OnClick">updateRefferences("textbox7");
+addFormValue("textbox8","0");
+createFieldsList("grid42");
+value = getListValue("fields");
+list = createListValues(value);
+addFormValue("grid42",list);
+String txt = textbox5.text;
+boolean isValid = clientSideValidation("AddCategory");
+if(isValid)
+{
+int size = list.size();
+if(size &gt;=1)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get qbcategory.id, qbcategory.CategoryName from neiswispicdb.qbcategory conditions qbcategory.CategoryName:=["+txt+"] and qbcategory.deleted:=[0]");
+boolean isYes = isRecordExist();
+if(!isYes)
+{
+
+String retStr = invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","AddCategory");
+isEqual = checkValueWithOperator(retStr ,"true", "EQUAL");
+if(isEqual )
+{
+  message("Category information saved successfully.");
+detachWindow("AddCategory");
+}
+}
+else
+{
+ String msg = "This category name already exist. Please enter another category name.";
+ message(msg);
+ textbox5.text= "";
+ addFormValue("textbox5","");
+}
+}
+else
+{
+message("Fields in category is blank. Please select atleast one field.");
+}
+}</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="17" backColor="Transparent" x="183" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Cancel" use="" forecolor="#000000" enabled="true" name="button24" backgroundImageLayout="tile" id="button24" width="92" y="391" draggable="false">
+      <Events>
+        <event name="OnClick">detachWindow("AddCategory");</event>
+      </Events>
+      <DataMappings />
+    </Button>
+  </Frame>
+</basewindow>

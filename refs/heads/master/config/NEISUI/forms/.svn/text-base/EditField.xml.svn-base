@@ -1,0 +1,133 @@
+<basewindow popup="true" visibleto="All" font="Microsoft Sans Serif" height="232" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="EditField" boxalignment="none" backgroundImageLayout="tile" id="EditField" title="Update/Delete Field" width="290" y="0" draggable="false">
+  <Events />
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="190" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="9" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame35" boxalignment="none" backgroundImageLayout="tile" id="frame35" width="271" y="32" draggable="false">
+    <Events />
+    <DataMappings />
+    <Combobox visibleto="All" font="Microsoft Sans Serif" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" readonly="true" backColor="#FFFFFF" x="110" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="combobox28" backgroundImageLayout="tile" id="combobox28" draggable="false" width="110" y="10" ismandatory="yes">
+      <Events>
+        <event name="DefaultValue">invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get qbuserdefinedfield.Id,qbuserdefinedfield.UserDefinedFieldName from neiswispicdb.qbuserdefinedfield conditions qbuserdefinedfield.deleted:=[0] orderby qbuserdefinedfield.UserDefinedFieldName");
+showComboData("combobox28");
+String id = null;
+String fieldName = null;
+String table = null;
+String classFName = null;
+</event>
+        <event name="OnClick">id =getComboItemId1("combobox28");
+fieldName = getComboBoxValue("combobox28");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get qbuserdefinedfield.ClassName,qbuserdefinedfield.ClassFieldName from neiswispicdb.qbuserdefinedfield conditions qbuserdefinedfield.deleted:=[0] and qbuserdefinedfield.UserDefinedFieldName:=["+fieldName+"]");
+data=createArray("String", "combobox29,combobox30");
+showData(data);
+String tableName = combobox29.text;
+String classFieldName = combobox30.text;
+if(tableName !="")
+{
+	invokeComponent("dbComponent","dbStructure","com.oxymedical.component.db.DBComponent","tableName=neiswispicdb#"+tableName);
+showComboData("combobox30");
+}
+combobox30.setText(classFieldName);
+textbox65.setText(fieldName);
+addFormValue("textbox65",fieldName);
+</event>
+      </Events>
+      <DataMappings />
+    </Combobox>
+    <Label visibleto="All" font="Microsoft Sans Serif" height="22" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" backColor="Transparent" x="5" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Select User Field:" use="" forecolor="#000000" enabled="true" name="label192" textalign="topleft" backgroundImageLayout="tile" id="label192" width="92" y="11" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="9" readonly="false" backColor="#FFFFFF" x="110" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox65" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox65" valuetype="AlphaNumeric" backgroundImageLayout="tile" password="false" draggable="false" width="125" y="117" passwordchar="" ismandatory="yes">
+      <Events />
+      <DataMappings />
+    </TextBox>
+    <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="10" backColor="Transparent" x="11" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Enter New Field:" use="" forecolor="#000000" enabled="true" name="label193" textalign="topleft" backgroundImageLayout="tile" id="label193" width="87" y="123" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="11" backColor="Transparent" x="12" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Update" use="" forecolor="#000000" enabled="true" name="button7" backgroundImageLayout="tile" id="button40" width="75" y="152" draggable="false">
+      <Events>
+        <event name="OnClick">boolean isValid = clientSideValidation("EditField");
+if(isValid)
+{String fieldValue = textbox65.text;
+table = combobox29.getValue();
+classFName = combobox30.getValue();
+String retValue = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","update neiswispicdb.qbuserdefinedfield set UserDefinedFieldName:=["+fieldValue+"],ClassName:=["+table+"] ,ClassFieldName:=["+classFName +"] conditions qbuserdefinedfield.id:="+id);
+updateSession("rowId", null);
+detachWindow("EditField");
+}</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="12" backColor="Transparent" x="184" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Cancel" use="" forecolor="#000000" enabled="true" name="button8" backgroundImageLayout="tile" id="button53" width="75" y="152" draggable="false">
+      <Events>
+        <event name="OnClick">detachWindow("EditField");
+</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="13" backColor="Transparent" x="98" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Delete" use="" forecolor="#000000" enabled="true" name="button9" backgroundImageLayout="tile" id="button105" width="75" y="152" draggable="false">
+      <Events>
+        <event name="OnClick">if(id!=null)
+{
+boolean isYes =messageWithQuestion("Are you sure you want to delete this field?");
+if(isYes)
+{
+String retValue = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","update neiswispicdb.qbuserdefinedfield set Deleted:=1 conditions qbuserdefinedfield.id:="+id);
+if(retValue=="true")
+{
+msg ="Do you want to delete more?";
+boolean isYes = messageWithQuestion(msg);
+if(!isYes)
+{
+updateSession("rowId", null);
+detachWindow("EditField");
+}
+else
+{
+String retval = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get qbuserdefinedfield.Id,qbuserdefinedfield.UserDefinedFieldName from neiswispicdb.qbuserdefinedfield conditions qbuserdefinedfield.deleted:=[0] orderby qbuserdefinedfield.UserDefinedFieldName");
+showComboData("combobox28");
+combobox29.setText("");
+combobox30.setText("");
+textbox65.setText("");
+}
+}
+}
+}
+else
+{
+message(" Please select user field to perform this operation.");
+}</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="14" backColor="Transparent" x="24" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Table Name:" use="" forecolor="#000000" enabled="true" name="label194" textalign="topleft" backgroundImageLayout="tile" id="label199" width="70" y="46" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+    <Combobox visibleto="All" font="Microsoft Sans Serif" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="15" readonly="true" backColor="#FFFFFF" x="110" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="combobox29" backgroundImageLayout="tile" id="combobox29" draggable="false" width="110" y="45" ismandatory="yes">
+      <Events>
+        <event name="DefaultValue">invokeComponent("dbComponent","dbStructure","com.oxymedical.component.db.DBComponent","dbName=neiswispicdb");
+showComboData("combobox29");
+
+
+</event>
+        <event name="OnClick">table = getComboBoxValue("combobox29");
+addFormValue("combobox29",table);
+invokeComponent("dbComponent","dbStructure","com.oxymedical.component.db.DBComponent","tableName=neiswispicdb#"+table);
+showComboData("combobox30");</event>
+      </Events>
+      <DataMappings />
+    </Combobox>
+    <Combobox visibleto="All" font="Microsoft Sans Serif" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="16" readonly="true" backColor="#FFFFFF" x="110" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="combobox30" backgroundImageLayout="tile" id="combobox30" draggable="false" width="110" y="83" ismandatory="yes">
+      <Events>
+        <event name="OnClick">classFName = getComboBoxValue("combobox30");
+addFormValue("combobox30",classFName);
+</event>
+      </Events>
+      <DataMappings />
+    </Combobox>
+    <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="17" backColor="#FFFFFF" x="2" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Class Field Name:" use="" forecolor="#000000" enabled="true" name="label195" textalign="topleft" backgroundImageLayout="tile" id="label200" width="92" y="86" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+  </Frame>
+</basewindow>

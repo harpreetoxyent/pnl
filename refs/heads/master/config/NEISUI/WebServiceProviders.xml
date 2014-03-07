@@ -1,0 +1,8 @@
+<WebServiceProviders>
+	<WebServiceProvider servicename = "SampleDemoThree">
+		<Operation name = "storeData"/>
+	</WebServiceProvider>	
+	<WebServiceProvider servicename = "SampleDemoFour">
+			<Operation name = "executeList"/>
+	</WebServiceProvider>	
+</WebServiceProviders>

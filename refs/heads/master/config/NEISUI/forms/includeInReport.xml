@@ -1,0 +1,45 @@
+<basewindow popup="false" visibleto="All" font="Microsoft Sans Serif" height="730" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="9" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="includeInReport" boxalignment="none" backgroundImageLayout="none" id="includeInReport" title="" width="784" y="0" draggable="false">
+  <Events />
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="297" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="173" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame74" boxalignment="none" backgroundImageLayout="none" id="frame83" width="468" y="192" draggable="false">
+    <Events />
+    <DataMappings />
+    <ListBox visibleto="All" draggable="false" height="206" widthtype="Auto" netBackColor="Window" multiselect="False" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="28" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="listbox0" use="" forecolor="#000000" enabled="true" name="listbox2" backgroundImageLayout="none" id="listbox2" width="159" y="38">
+      <Events />
+      <DataMappings />
+    </ListBox>
+    <ListBox visibleto="All" draggable="false" height="202" widthtype="Auto" netBackColor="Window" multiselect="False" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="8" font="Microsoft Sans Serif" backColor="#FFFFFF" x="285" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="listbox0" use="" forecolor="#000000" enabled="true" name="listbox3" backgroundImageLayout="none" id="listbox3" width="156" y="38">
+      <Events />
+      <DataMappings />
+    </ListBox>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Control" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="9" backColor="#ECE9D8" x="112" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="OK" use="" forecolor="#000000" enabled="true" name="button143" backgroundImageLayout="none" id="button143" width="75" y="253" draggable="false">
+      <Events />
+      <DataMappings />
+    </Button>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Control" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="10" backColor="#ECE9D8" x="284" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="GO BACK" use="" forecolor="#000000" enabled="true" name="button144" backgroundImageLayout="none" id="button144" width="75" y="253" draggable="false">
+      <Events>
+        <event name="OnClick">  invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","Category");</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Label visibleto="All" font="Microsoft Sans Serif" height="27" widthtype="Auto" netBackColor="GradientInactiveCaption" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="11" backColor="#9DB9EB" x="28" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="categories not in report" use="" forecolor="#000000" enabled="true" name="label26" textalign="topleft" backgroundImageLayout="none" id="label26" width="142" y="11" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+    <Label visibleto="All" font="Microsoft Sans Serif" height="29" widthtype="Auto" netBackColor="DarkSeaGreen" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="12" backColor="#8FBC8B" x="285" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="categories in report" use="" forecolor="#000000" enabled="true" name="label27" textalign="topleft" backgroundImageLayout="none" id="label27" width="125" y="10" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Control" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="13" backColor="#ECE9D8" x="195" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="move" use="" forecolor="#000000" enabled="true" name="button145" backgroundImageLayout="none" id="button145" width="75" y="66" draggable="false">
+      <Events />
+      <DataMappings />
+    </Button>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Control" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="14" backColor="#ECE9D8" x="198" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="remove" use="" forecolor="#000000" enabled="true" name="button146" backgroundImageLayout="none" id="button146" width="75" y="152" draggable="false">
+      <Events />
+      <DataMappings />
+    </Button>
+  </Frame>
+  <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="DarkSeaGreen" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="1" backColor="#8FBC8B" x="189" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="DarkOliveGreen" droppable="false" marginleft="0" marginbottom="0" text="Include in Report" use="" forecolor="#556B2F" enabled="true" name="label28" textalign="topleft" backgroundImageLayout="none" id="label28" width="108" y="162" draggable="false">
+    <Events />
+    <DataMappings />
+  </Label>
+</basewindow>

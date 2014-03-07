@@ -1,0 +1,98 @@
+<Rights>
+  <Right rightid="PatientInformation" CompanyId="EGI">PatientInformation</Right>
+  <Right rightid="AddPatient" CompanyId="EGI">AddPatient</Right>
+  <Right rightid="Edit/ModifyPatient" CompanyId="EGI">Edit/ModifyPatient</Right>
+  <Right rightid="DeletePatient" CompanyId="EGI">DeletePatient</Right>
+  <Right rightid="SchedulePatient" CompanyId="EGI">SchedulePatient</Right>
+  <Right rightid="Acquisition" CompanyId="EGI">Acquisition</Right>
+  <Right rightid="ImportPatientListToAcquisitionSystem" CompanyId="EGI">ImportPatientListToAcquisitionSystem</Right>
+  <Right rightid="RoomManagement" CompanyId="EGI">RoomManagement</Right>
+  <Right rightid="AddRoom" CompanyId="EGI">AddRoom</Right>
+  <Right rightid="Edit/ModifyRoom" CompanyId="EGI">
+  </Right>
+  <Right rightid="DeleteRoom" CompanyId="EGI">DeleteRoom</Right>
+  <Right rightid="ClinicalManagement" CompanyId="EGI">ClinicalManagement</Right>
+  <Right rightid="AddClincain" CompanyId="EGI">AddClincain</Right>
+  <Right rightid="Edit/ModifyClincianList" CompanyId="EGI">Edit/ModifyClincianList</Right>
+  <Right rightid="EditPatientAssignmentAdmin" CompanyId="EGI">EditPatientAssignmentAdmin</Right>
+  <Right rightid="PrintingAssignments" CompanyId="EGI">PrintingAssignments</Right>
+  <Right rightid="AcquisitionManagement" CompanyId="EGI">AcquisitionManagement</Right>
+  <Right rightid="AcquisitionLog" CompanyId="EGI">AcquisitionLog</Right>
+  <Right rightid="ImportAcquisitionData" CompanyId="EGI">ImportAcquisitionData</Right>
+  <Right rightid="ConvertAcquisitionToEuropeanDataManagement" CompanyId="EGI">ConvertAcquisitionToEuropeanDataManagement</Right>
+  <Right rightid="HighDensityEEG" CompanyId="EGI">HighDensityEEG</Right>
+  <Right rightid="HighDensityPSG" CompanyId="EGI">HighDensityPSG</Right>
+  <Right rightid="PSG" CompanyId="EGI">PSG</Right>
+  <Right rightid="ReportingManagement" CompanyId="EGI">ReportingManagement</Right>
+  <Right rightid="ImportReportTemplate" CompanyId="EGI">ImportReportTemplate</Right>
+  <Right rightid="UploadReportToNolis" CompanyId="EGI">UploadReportToNolis</Right>
+  <Right rightid="ViewTechinicanNote" CompanyId="EGI">ViewTechinicanNote</Right>
+  <Right rightid="TechnicianNoteManagement" CompanyId="EGI">TechnicianNoteManagement</Right>
+  <Right rightid="ClinicalReportManagement" CompanyId="EGI">ClinicalReportManagement</Right>
+  <Right rightid="PrintClinicalReport" CompanyId="EGI">PrintClinicalReport</Right>
+  <Right rightid="CreateTechinicanNote" CompanyId="EGI">CreateTechinicanNote</Right>
+  <Right rightid="SendReportToEpic" CompanyId="EGI">SendReportToEpic</Right>
+  <Right rightid="SendClincianReportToEpic" CompanyId="EGI">SendClincianReportToEpic</Right>
+  <Right rightid="SendDiagnosisCodesToEpic" CompanyId="EGI">SendDiagnosisCodesToEpic</Right>
+  <Right rightid="UserManagement" CompanyId="EGI">UserManagement</Right>
+  <Right rightid="AddUserAccount" CompanyId="EGI">AddUserAccount</Right>
+  <Right rightid="Edit/ModifyUserAccount" CompanyId="EGI">Edit/ModifyUserAccount</Right>
+  <Right rightid="DeleteUserAccount" CompanyId="EGI">DeleteUserAccount</Right>
+  <Right rightid="PatientAssignment" CompanyId="EGI">PatientAssignment</Right>
+  <Right rightid="EditPatientAssignment" CompanyId="EGI">EditPatientAssignment</Right>
+  <Right rightid="PrintAssignment" CompanyId="EGI">PrintAssignment</Right>
+  <Right rightid="AssignmentSummary" CompanyId="EGI">AssignmentSummary</Right>
+  <Right rightid="PatientSleepTechinican" CompanyId="EGI">PatientSleepTechinican</Right>
+  <Right rightid="PatientPhysician" CompanyId="EGI">PatientPhysician</Right>
+  <Right rightid="ViewPatientSleepTechnicianAssignment" CompanyId="EGI">ViewPatientSleepTechnicianAssignment</Right>
+  <Right rightid="SeePatientAssignment" CompanyId="EGI">SeePatientAssignment</Right>
+  <Right rightid="AssignToRoom" CompanyId="EGI">Assign To Room</Right>
+  <Right rightid="SearchPatientInfo" CompanyId="EGI">Search Patient Info</Right>
+  <Right rightid="AddNewCity" CompanyId="EGI">You can add new city</Right>
+  <Right rightid="Edit/Modify Patient Menu" CompanyId="EGI">
+  </Right>
+  <Right rightid="Room Assignment" CompanyId="EGI">
+  </Right>
+  <Right rightid="Advance Search" CompanyId="EGI">
+  </Right>
+  <Right rightid="Create Schedule" CompanyId="EGI">
+  </Right>
+  <Right rightid="Create Room Assignment" CompanyId="EGI">
+  </Right>
+  <Right rightid="Clear Room Assginment" CompanyId="EGI">
+  </Right>
+  <Right rightid="Upload Photo" CompanyId="EGI">
+  </Right>
+  <Right rightid="Delete Photo" CompanyId="EGI">
+  </Right>
+  <Right rightid="Import Report" CompanyId="EGI">
+  </Right>
+  <Right rightid="Remove Report" CompanyId="EGI">
+  </Right>
+  <Right rightid="Attach Signature" CompanyId="EGI">
+  </Right>
+  <Right rightid="Import patient Photos" CompanyId="EGI">
+  </Right>
+  <Right rightid="Export To Alice" CompanyId="EGI">
+  </Right>
+  <Right rightid="Remove Technician Report" CompanyId="EGI">
+  </Right>
+  <Right rightid="Administrative Taks" CompanyId="EGI">
+  </Right>
+  <Right rightid="Task Setting" CompanyId="EGI">
+  </Right>
+  <Right rightid="hd-EEG/PSG Analysis" CompanyId="EGI">
+  </Right>
+  <Right rightid="Artifact Rejection" CompanyId="EGI">
+  </Right>
+  <Right rightid="Power Spectral Density" CompanyId="EGI">
+  </Right>
+  <Right rightid="Slope Of Slow Waves" CompanyId="EGI">
+  </Right>
+  <Right rightid="Travelling Waves" CompanyId="EGI">
+  </Right>
+  <Right rightid="Detection of Waves" CompanyId="EGI">
+  </Right>
+  <Right rightid="Spindles" CompanyId="EGI">
+  </Right>
+</Rights>

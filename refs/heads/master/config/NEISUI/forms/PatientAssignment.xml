@@ -1,0 +1,60 @@
+<basewindow popup="false" visibleto="All" font="Microsoft Sans Serif" height="750" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="PatientAssignment" boxalignment="none" backgroundImageLayout="tile" id="PatientAssignment" title="" width="550" y="0" draggable="false">
+  <Events>
+    <event name="DefaultValue">String pid = getSessionData("rowId");
+String passign = getSessionData("pateintassign");
+if(passign!=null)
+{
+String retval = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get roomassginment.sleeptechid,roomassginment.researchid,schedule.appointmentstarttime,room.RoomDescription,patient.dateofbirth,roomassginment.stat,roomassginment.physicianid,studytype.type,patient.physician,roomassginment.arrived,schedule.assigntoroom,roomassginment.comments,roomassginment.sleeptechid,patient.id,schedule.id from neiswispicdb.schedule,neiswispicdb.roomassginment joins leftjoin schedule.patientid:=patient.id,leftjoin schedule.StudyType:=studytype.id,leftjoin roomassginment.roomid:=room.id conditions roomassginment.schduleid:=schedule.id and patient.deleted:=["+0+"] and roomassginment.deleted:=["+0+"] and schedule.cancelled:=["+0+"]");
+}
+else
+{
+if(pid != null)
+{
+String retval = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get roomassginment.sleeptechid,roomassginment.researchid,schedule.appointmentstarttime,room.RoomDescription,patient.dateofbirth,roomassginment.stat,roomassginment.physicianid,studytype.type,patient.physician,roomassginment.arrived,schedule.assigntoroom,roomassginment.comments,roomassginment.sleeptechid,patient.id,schedule.id from neiswispicdb.schedule,neiswispicdb.roomassginment joins leftjoin schedule.patientid:=patient.id,leftjoin schedule.StudyType:=studytype.id,leftjoin roomassginment.roomid:=room.id conditions roomassginment.schduleid:=schedule.id and patient.deleted:=["+0+"] and roomassginment.deleted:=["+0+"] and schedule.cancelled:=["+0+"] and patient.ID:="+pid);
+}
+}
+addGridToFrame(frame191, "TECH,RA,TIME,RM,DOB,Stat,Reading Phys.,TYPE,Referring Phys.,Arrived,Pt. in Room,Comments,Lead", "Label,Label,Label,Label,Label,Checkbox,Label,Combobox,Label,Checkbox,Checkbox,Textbox,Label","user:user: : : :N:user:get studytype.id,studytype.type from neiswispicdb.studytype orderby studytype.type:user:N:N: :user");</event>
+  </Events>
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="727" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame190" boxalignment="none" backgroundImageLayout="tile" id="frame190" width="540" y="0" draggable="false">
+    <Events />
+    <DataMappings />
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="122" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="8" default="false" backColor="#FFFFFF" x="1" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame141" boxalignment="none" backgroundImageLayout="tile" id="frame141" width="530" y="0" draggable="false">
+      <Events />
+      <DataMappings />
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="Transparent" x="29" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="Print Patient Assignment" use="" forecolor="#316AC5" enabled="true" name="button10" backgroundImageLayout="tile" id="button10" width="196" y="67" draggable="false">
+        <Events>
+          <event name="OnClick">String sid = getSessionData("scheduleid");
+if(sid!=null)
+{
+createPopUp("PrintAssignment");
+String pid = getSessionData("rowId");
+if(pid != null)
+{
+String retval = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get roomassginment.sleeptechid,roomassginment.researchid,schedule.appointmentstarttime,room.RoomDescription,patient.dateofbirth,roomassginment.stat,roomassginment.physicianid,studytype.type,patient.physician,roomassginment.arrived,schedule.assigntoroom,roomassginment.comments,roomassginment.sleeptechid,patient.id,schedule.id from neiswispicdb.schedule,neiswispicdb.roomassginment joins leftjoin schedule.patientid:=patient.id,leftjoin schedule.StudyType:=studytype.id,leftjoin roomassginment.roomid:=room.id conditions roomassginment.schduleid:=schedule.id and patient.deleted:=["+0+"] and roomassginment.deleted:=["+0+"] and schedule.cancelled:=["+0+"] and patient.ID:="+pid);
+}
+else
+{
+String retval = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get roomassginment.sleeptechid,roomassginment.researchid,schedule.appointmentstarttime,room.RoomDescription,patient.dateofbirth,roomassginment.stat,roomassginment.physicianid,studytype.type,patient.physician,roomassginment.arrived,schedule.assigntoroom,roomassginment.comments,roomassginment.sleeptechid,patient.id,schedule.id from neiswispicdb.schedule,neiswispicdb.roomassginment joins leftjoin schedule.patientid:=patient.id,leftjoin schedule.StudyType:=studytype.id,leftjoin roomassginment.roomid:=room.id conditions roomassginment.schduleid:=schedule.id and patient.deleted:=["+0+"] and roomassginment.deleted:=["+0+"] and schedule.cancelled:=["+0+"]");
+}
+addGridToFrame(frame191, "TECH,RA,TIME,RM,DOB,Stat,Reading Phys.,TYPE,Referring Phys.,Arrived,Pt. in Room,Comments,Lead", "Label,Label,Label,Label,Label,Checkbox,Label,Combobox,Label,Checkbox,Checkbox,Textbox,Label","user:user: : : :N:user:get studytype.id,studytype.type from neiswispicdb.studytype orderby studytype.type:user:N:N: :user");
+}
+else
+{
+message("Please select a record.");
+}</event>
+        </Events>
+        <DataMappings />
+      </Button>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="8" backColor="Transparent" x="271" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="Save Patient Assignments" use="" forecolor="#316AC5" enabled="true" name="button37" backgroundImageLayout="tile" id="button37" width="202" y="68" draggable="false">
+        <Events>
+          <event name="OnClick">saveDataFromGrid("PatientAssignmentGrid");</event>
+        </Events>
+        <DataMappings />
+      </Button>
+    </Frame>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="604" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="1" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame191" boxalignment="none" backgroundImageLayout="tile" id="frame191" width="530" y="118" draggable="false">
+      <Events />
+      <DataMappings />
+    </Frame>
+  </Frame>
+</basewindow>

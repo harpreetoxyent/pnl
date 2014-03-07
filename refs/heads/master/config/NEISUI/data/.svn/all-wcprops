@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/NOLIS/!svn/ver/7965/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/data
+END
+neiswispicdb.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/NOLIS/!svn/ver/7275/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/data/neiswispicdb.xml
+END
+useradmin.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/data/useradmin.xml
+END
+appadmin.xml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/NOLIS/!svn/ver/7965/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/data/appadmin.xml
+END
+datasettings.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/data/datasettings.xml
+END
+DeploySettings.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/data/DeploySettings.xml
+END

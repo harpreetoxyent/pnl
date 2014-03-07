@@ -1,0 +1,119 @@
+<basewindow popup="true" visibleto="All" font="Microsoft Sans Serif" height="183" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="EditTaskSchedular" boxalignment="none" backgroundImageLayout="tile" id="EditTaskSchedular" title="" width="280" y="0" draggable="false">
+  <Events>
+    <event name="OnEventCreate">String id=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get  SchedularTime.ID,SchedularTime.ScheduleTime,Schedular.ID,Schedular.Method,Schedular.Description,Schedular.ClassName,Schedular.Component from neiswispicdb.SchedularTime,neiswispicdb.Schedular conditions SchedularTime.SchedularID:=Schedular.ID and SchedularTime.ID:="+id);
+data=createArray("String", "textbox182,textbox181,textbox183,textbox184,textbox180,textbox186,textbox187");
+showData(data);</event>
+    <event name="DefaultValue">String id=getSessionData("rowId");
+textbox182.setVisible(false);
+textbox183.setVisible(false);
+textbox184.setVisible(false);
+textbox186.setVisible(false);
+textbox187.setVisible(false);
+String id=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get  SchedularTime.ID,SchedularTime.ScheduleTime,Schedular.ID,Schedular.Method,Schedular.Description,Schedular.ClassName,Schedular.Component from neiswispicdb.SchedularTime,neiswispicdb.Schedular conditions SchedularTime.SchedularID:=Schedular.ID and SchedularTime.ID:="+id);
+data=createArray("String", "textbox182,textbox181,textbox183,textbox184,textbox180,textbox186,textbox187");
+showData(data);
+
+</event>
+  </Events>
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="173" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="5" cursor="[Cursor: Default]" margintop="5" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="5" marginbottom="5" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame188" boxalignment="vertical" backgroundImageLayout="tile" id="frame188" width="260" y="0" draggable="false">
+    <Events />
+    <DataMappings />
+    <Lattice visibleto="All" font="Microsoft Sans Serif" height="104" netBackColor="White" multiselect="False" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="#FFFFFF" x="0" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="lattice6" use="" forecolor="#000000" enabled="true" align="none" name="lattice6" backgroundImageLayout="tile" id="lattice6" width="300" y="0" draggable="false">
+      <Events>
+        <event name="DefaultValue">String gridStyle = "background-color:Transparent;border:0px";
+lattice6.setStyle(gridStyle);
+row700.setStyle(gridStyle);
+row701.setStyle(gridStyle);
+</event>
+      </Events>
+      <DataMappings />
+      <lrow visibleto="All" draggable="false" height="44" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="Transparent" x="0" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="row700" use="" forecolor="#000000" enabled="true" name="row700" backgroundImageLayout="tile" id="row700" sizetype="Pixel" width="300" y="0">
+        <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="Transparent" x="21" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Description:" use="" forecolor="#000000" enabled="true" name="label313" textalign="topleft" backgroundImageLayout="tile" id="label313" width="80" y="14" draggable="false">
+          <Events />
+          <DataMappings />
+        </Label>
+        <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" readonly="false" backColor="#FFFFFF" x="21" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" id="textbox180" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox180" valuetype="Any" backgroundImageLayout="tile" password="false" draggable="false" width="150" y="24" passwordchar="" ismandatory="yes">
+          <Events />
+          <DataMappings>
+            <Mapping datafield="Description: String" datatable="Schedular" datapattern="neiswispicdb" />
+            <Mapping datafield="Description: String" datatable="Schedular" datapattern="neiswispicdb" />
+            <Mapping datafield="Description: String" datatable="Schedular" datapattern="neiswispicdb" />
+          </DataMappings>
+        </TextBox>
+      </lrow>
+      <lrow visibleto="All" draggable="false" height="44" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="1" font="Microsoft Sans Serif" backColor="Transparent" x="0" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="row701" use="" forecolor="#000000" enabled="true" name="row701" backgroundImageLayout="tile" id="row701" sizetype="Pixel" width="300" y="44">
+        <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="Transparent" x="21" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Time:" use="" forecolor="#000000" enabled="true" name="label314" textalign="topleft" backgroundImageLayout="tile" id="label314" width="80" y="14" draggable="false">
+          <Events />
+          <DataMappings />
+        </Label>
+        <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" readonly="false" backColor="#FFFFFF" x="36" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" id="textbox181" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="z" use="" forecolor="#000000" enabled="true" name="textbox181" valuetype="Numeric" backgroundImageLayout="tile" password="false" draggable="false" width="150" y="12" passwordchar="" ismandatory="yes">
+          <Events />
+          <DataMappings>
+            <Mapping datafield="ScheduleTime: Int32" datatable="SchedularTime" datapattern="neiswispicdb" />
+            <Mapping datafield="ScheduleTime: Int32" datatable="SchedularTime" datapattern="neiswispicdb" />
+          </DataMappings>
+        </TextBox>
+      </lrow>
+    </Lattice>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="40" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="center" name="frame189" boxalignment="none" backgroundImageLayout="tile" id="frame189" width="261" y="125" draggable="false">
+      <Events />
+      <DataMappings />
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="5" cursor="[Cursor: SizeAll]" margintop="5" tabindex="0" backColor="Transparent" x="60" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="5" marginbottom="5" text="Update " use="" forecolor="#000000" enabled="true" name="button207" backgroundImageLayout="tile" id="button207" width="75" y="10" draggable="false">
+        <Events>
+          <event name="OnClick">String timeValue=textbox181.text;
+String isValid = checkIntegerValueWithOperator(timeValue,"5","GREATERTHAN");
+if(isValid!=null )
+{
+String getValue=invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","");
+if(getValue=="true")
+{
+invokeComponent("com.oxymedical.component.SchedularComponent","rescheduleTask","com.oxymedical.component.schedularcomponent.SchedularComponent","");
+invokeComponent("com.oxymedical.component.SchedularComponent","scheduleTask","com.oxymedical.component.schedularcomponent.SchedularComponent","");
+detachWindow("EditTaskSchedular");
+}
+}</event>
+        </Events>
+        <DataMappings />
+      </Button>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="5" cursor="[Cursor: SizeAll]" margintop="5" tabindex="8" backColor="Transparent" x="5" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="5" marginbottom="5" text="Cancel" use="" forecolor="#000000" enabled="true" name="button208" backgroundImageLayout="tile" id="button208" width="75" y="20" draggable="false">
+        <Events>
+          <event name="OnClick">detachWindow("EditTaskSchedular");</event>
+        </Events>
+        <DataMappings />
+      </Button>
+    </Frame>
+  </Frame>
+  <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="1" readonly="false" backColor="#FFFFFF" x="175" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" id="textbox182" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox182" valuetype="Any" backgroundImageLayout="tile" password="false" width="95" y="5" passwordchar="" draggable="false">
+    <Events />
+    <DataMappings>
+      <Mapping datafield="ID: Int16" datatable="SchedularTime" datapattern="neiswispicdb" />
+    </DataMappings>
+  </TextBox>
+  <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="2" readonly="false" backColor="#FFFFFF" x="169" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" id="textbox183" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox183" valuetype="Any" backgroundImageLayout="tile" password="false" width="100" y="26" passwordchar="" draggable="false">
+    <Events />
+    <DataMappings>
+      <Mapping datafield="ID: Int16" datatable="Schedular" datapattern="neiswispicdb" />
+      <Mapping datafield="ScheduleID: Int16" datatable="SchedularTime" datapattern="neiswispicdb" />
+    </DataMappings>
+  </TextBox>
+  <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="8" readonly="false" backColor="#FFFFFF" x="171" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" id="textbox184" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox184" valuetype="Any" backgroundImageLayout="tile" password="false" width="100" y="49" passwordchar="" draggable="false">
+    <Events />
+    <DataMappings>
+      <Mapping datafield="Method: String" datatable="Schedular" datapattern="neiswispicdb" />
+    </DataMappings>
+  </TextBox>
+  <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="10" readonly="false" backColor="#FFFFFF" x="171" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" id="textbox186" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox186" valuetype="Any" backgroundImageLayout="tile" password="false" width="100" y="75" passwordchar="" draggable="false">
+    <Events />
+    <DataMappings>
+      <Mapping datafield="ClassName: String" datatable="Schedular" datapattern="neiswispicdb" />
+    </DataMappings>
+  </TextBox>
+  <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="11" readonly="false" backColor="#FFFFFF" x="172" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" id="textbox187" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox187" valuetype="Any" backgroundImageLayout="tile" password="false" width="100" y="99" passwordchar="" draggable="false">
+    <Events />
+    <DataMappings>
+      <Mapping datafield="Component: String" datatable="Schedular" datapattern="neiswispicdb" />
+    </DataMappings>
+  </TextBox>
+</basewindow>

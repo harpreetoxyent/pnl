@@ -1,0 +1,67 @@
+<basewindow popup="false" visibleto="All" font="Microsoft Sans Serif" height="215" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="searchuserpanel" boxalignment="none" backgroundImageLayout="tile" id="searchuserpanel" title="" width="186" y="0" draggable="false">
+  <Events />
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="205" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" y="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame73" boxalignment="none" backgroundImageLayout="center" id="frame73" width="176" backgroundImage="\img\frame73.jpg" draggable="false">
+    <Events />
+    <DataMappings />
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="144" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="Transparent" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame74" boxalignment="none" backgroundImageLayout="tile" id="frame74" width="172" y="12" draggable="false">
+      <Events />
+      <DataMappings />
+      <Label visibleto="All" font="Microsoft Sans Serif" height="34" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="Transparent" x="5" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="Highlight" droppable="false" marginleft="0" marginbottom="0" text="search&#xD;&#xA;USERdatabase:" use="" forecolor="#316AC5" enabled="true" name="label29" textalign="topleft" backgroundImageLayout="tile" id="label41" width="92" y="8" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="21" readonly="false" backColor="#FFFFFF" x="4" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox2" paddingright="0" multiline="false" netForeColor="InactiveBorder" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="user account" use="" forecolor="#D4D0C8" enabled="true" name="textbox2" valuetype="Any" backgroundImageLayout="tile" password="false" width="160" y="49" passwordchar="" draggable="false">
+        <Events>
+          <event name="OnBlur">textNotEntered=checkValueWithOperator("",textbox2.value, "EQUAL");
+if (textNotEntered) { textbox2.text="user account"; textbox2.style="color:#D4D0C8";}</event>
+          <event name="OnFocus">textNotEntered=checkValueWithOperator("user account",textbox2.value, "EQUAL");
+if (textNotEntered) { textbox2.text=""; textbox2.style="color:#000000";}</event>
+        </Events>
+        <DataMappings />
+      </TextBox>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="22" readonly="false" backColor="#FFFFFF" x="4" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox3" paddingright="0" multiline="false" netForeColor="InactiveBorder" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="first name" use="" forecolor="#D4D0C8" enabled="true" name="textbox3" valuetype="Any" backgroundImageLayout="tile" password="false" width="160" y="79" passwordchar="" draggable="false">
+        <Events>
+          <event name="OnBlur">textNotEntered=checkValueWithOperator("",textbox3.value, "EQUAL");
+if (textNotEntered) { textbox3.text="first name"; textbox3.style="color:#D4D0C8";}</event>
+          <event name="OnFocus">textNotEntered=checkValueWithOperator("first name",textbox3.value, "EQUAL");
+if (textNotEntered) { textbox3.text=""; textbox3.style="color:#000000";}</event>
+        </Events>
+        <DataMappings />
+      </TextBox>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="23" readonly="false" backColor="#FFFFFF" x="4" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox4" paddingright="0" multiline="false" netForeColor="InactiveBorder" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="last name" use="" forecolor="#D4D0C8" enabled="true" name="textbox4" valuetype="Any" backgroundImageLayout="tile" password="false" width="160" y="110" passwordchar="" draggable="false">
+        <Events>
+          <event name="OnBlur">textNotEntered=checkValueWithOperator("",textbox4.value, "EQUAL");
+if (textNotEntered) { textbox4.text="last name"; textbox4.style="color:#D4D0C8";}</event>
+          <event name="OnFocus">textNotEntered=checkValueWithOperator("last name",textbox4.value, "EQUAL");
+if (textNotEntered) { textbox4.text=""; textbox4.style="color:#000000";}</event>
+        </Events>
+        <DataMappings />
+      </TextBox>
+    </Frame>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="41" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" default="false" backColor="Transparent" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="center" name="frame75" boxalignment="none" backgroundImageLayout="tile" id="frame75" width="173" y="160" draggable="false">
+      <Events />
+      <DataMappings />
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="Transparent" x="45" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="Highlight" droppable="false" marginleft="0" marginbottom="0" text="search" use="" forecolor="#316AC5" enabled="true" name="button51" backgroundImageLayout="tile" id="button51" width="75" y="8" draggable="false">
+        <Events>
+          <event name="OnClick">isEqual = checkValueWithOperator("last name", textbox4.value, "EQUAL");
+if (!isEqual)
+{
+ updateSession("userlastname", textbox4.value);
+}
+isEqual = checkValueWithOperator("first name", textbox3.value, "EQUAL");
+if (!isEqual) 
+{
+updateSession("userfirstname",textbox3.value);
+}
+isEqual = checkValueWithOperator("user account",textbox2.value, "EQUAL");
+if (!isEqual){ 
+updateSession("searchUserId", textbox2.value);
+}
+setDataStatus("UpdateUser", "ListUser", "useradmin");
+</event>
+        </Events>
+        <DataMappings />
+      </Button>
+    </Frame>
+  </Frame>
+</basewindow>

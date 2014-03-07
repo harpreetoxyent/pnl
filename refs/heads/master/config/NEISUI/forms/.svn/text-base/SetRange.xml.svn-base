@@ -1,0 +1,43 @@
+<basewindow popup="true" visibleto="All" font="Microsoft Sans Serif" height="158" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="SetRange" boxalignment="none" backgroundImageLayout="tile" id="SetRange" title="Add Range Value" width="265" y="0" draggable="false">
+  <Events />
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="113" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="1" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame93" boxalignment="none" backgroundImageLayout="tile" id="frame94" width="254" y="35" draggable="false">
+    <Events />
+    <DataMappings />
+    <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="Transparent" x="26" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Enter First Range:" use="" forecolor="#000000" enabled="true" name="label48" textalign="topleft" backgroundImageLayout="tile" id="label57" width="98" y="13" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" readonly="false" backColor="#FFFFFF" x="148" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox26" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox26" valuetype="Numeric" backgroundImageLayout="tile" password="false" width="100" y="10" passwordchar="" draggable="false">
+      <Events />
+      <DataMappings />
+    </TextBox>
+    <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="9" backColor="Transparent" x="8" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Enter Second Range:" use="" forecolor="#000000" enabled="true" name="label49" textalign="topleft" backgroundImageLayout="tile" id="label58" width="112" y="46" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="10" readonly="false" backColor="#FFFFFF" x="148" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox27" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox27" valuetype="Numeric" backgroundImageLayout="tile" password="false" width="100" y="44" passwordchar="" draggable="false">
+      <Events />
+      <DataMappings />
+    </TextBox>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="11" backColor="#FFFFFF" x="39" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Apply" use="" forecolor="#000000" enabled="true" name="button80" backgroundImageLayout="tile" id="button82" width="75" y="77" draggable="false">
+      <Events>
+        <event name="OnClick">boolean isValid =clientSideValidation("SetRange");
+if(isValid)
+{
+String range1 = textbox26.text;
+String range2 = textbox27.text;
+updateSession("range1",range1);
+updateSession("range2",range2);
+detachWindow("SetRange");
+}</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="12" backColor="#FFFFFF" x="146" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Cancel" use="" forecolor="#000000" enabled="true" name="button81" backgroundImageLayout="tile" id="button83" width="75" y="76" draggable="false">
+      <Events>
+        <event name="OnClick">detachWindow("SetRange");</event>
+      </Events>
+      <DataMappings />
+    </Button>
+  </Frame>
+</basewindow>

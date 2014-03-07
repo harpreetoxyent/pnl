@@ -1,0 +1,68 @@
+<basewindow popup="false" visibleto="All" font="Microsoft Sans Serif" height="805" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="ImportData" boxalignment="none" backgroundImageLayout="tile" id="ImportData" title="" width="710" y="0" draggable="false">
+  <Events>
+    <event name="DefaultValue" internal="true">makeVisible("ImportData")</event>
+  </Events>
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="790" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame101" boxalignment="none" backgroundImageLayout="tile" id="frame101" width="700" y="5" draggable="false">
+    <Events />
+    <DataMappings />
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="780" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="55" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame5104" boxalignment="none" backgroundImageLayout="tile" id="frame5104" width="175" y="35" draggable="false">
+      <Events />
+      <DataMappings />
+      <PlaceHolder visibleto="All" draggable="false" height="200" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="searchpanel" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P1201" backgroundImageLayout="tile" id="placeholder39" width="175" y="0">
+        <Events />
+        <DataMappings />
+        <Item reference="searchpanel">
+          <Events />
+        </Item>
+      </PlaceHolder>
+    </Frame>
+    <Frame visibleto="ImportPatientListToAcquisitionSystem" font="Microsoft Sans Serif" height="769" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="55" tabindex="0" default="false" backColor="#FFFFFF" x="177" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame5404" boxalignment="none" backgroundImageLayout="tile" id="frame5404" width="316" y="10" draggable="false">
+      <Events />
+      <DataMappings />
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="Transparent" x="5" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Update NOLIS Patient database" use="" forecolor="#000000" enabled="true" name="button95" backgroundImageLayout="tile" id="button95" width="188" y="150" draggable="false">
+        <Events>
+          <event name="OnClick">invokeComponent("com.oxymedical.component.HL7Component","ImportHL7Data","com.oxymedical.component.HL7Component.HL7Component","ImportData");
+message("Patient HL7 Data successfully stored in database.");
+setDataStatus("UserAuthenticated", "HomeForm", null);
+</event>
+        </Events>
+        <DataMappings />
+      </Button>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" backColor="Transparent" x="206" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Back" use="" forecolor="#000000" enabled="true" name="button96" backgroundImageLayout="tile" id="button96" width="105" y="150" draggable="false">
+        <Events>
+          <event name="OnClick">setDataStatus("UserAuthenticated", "HomeForm", null);</event>
+        </Events>
+        <DataMappings />
+      </Button>
+    </Frame>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="780" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="495" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="5" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="right" name="frame1705" boxalignment="none" backgroundImageLayout="tile" id="frame1705" width="203" y="0" draggable="false">
+      <Events />
+      <DataMappings />
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="740" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="5" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="left" name="frame1793" boxalignment="none" backgroundImageLayout="tile" id="frame1793" width="203" y="0" draggable="false">
+        <Events />
+        <DataMappings />
+        <PlaceHolder visibleto="All" draggable="false" height="55" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="Logo" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P72" backgroundImageLayout="tile" id="placeholder40" width="203" y="0">
+          <Events />
+          <DataMappings />
+          <Item reference="Logo">
+            <Events />
+          </Item>
+        </PlaceHolder>
+        <PlaceHolder visibleto="All" draggable="false" height="200" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="CalendarPanel" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P802" backgroundImageLayout="tile" id="placeholder41" width="203" y="56">
+          <Events />
+          <DataMappings />
+          <Item reference="CalendarPanel">
+            <Events />
+          </Item>
+        </PlaceHolder>
+      </Frame>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Control" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="27" backColor="#ECE9D8" x="10" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="sign out" use="" forecolor="#316AC5" enabled="true" name="button361" backgroundImageLayout="tile" id="button361" width="75" y="745" draggable="false">
+        <Events>
+          <event name="OnClick">String retValue = logOut("login");
+updateSession("login", null);</event>
+        </Events>
+        <DataMappings />
+      </Button>
+    </Frame>
+  </Frame>
+</basewindow>

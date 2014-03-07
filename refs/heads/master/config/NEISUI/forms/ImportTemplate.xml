@@ -1,0 +1,99 @@
+<basewindow popup="false" visibleto="All" font="Microsoft Sans Serif" height="1092" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="ImportTemplate" boxalignment="none" backgroundImageLayout="tile" id="ImportTemplate" title="" width="960" y="0" draggable="false">
+  <Events>
+    <event name="DefaultValue">updateSession("list","list");
+</event>
+    <event name="DefaultValue" internal="true">makeVisible("ImportTemplate")</event>
+  </Events>
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="1070" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame1706" boxalignment="none" backgroundImageLayout="tile" id="frame142" width="950" y="5" draggable="false">
+    <Events />
+    <DataMappings />
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="1063" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame9712" boxalignment="none" backgroundImageLayout="tile" id="frame143" width="175" y="0" draggable="false">
+      <Events />
+      <DataMappings />
+      <PlaceHolder visibleto="All" draggable="false" height="200" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="searchpanel" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P1760" backgroundImageLayout="tile" id="placeholder52" width="175" y="0">
+        <Events />
+        <DataMappings />
+        <Item reference="searchpanel">
+          <Events />
+        </Item>
+      </PlaceHolder>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="1" backColor="Transparent" x="21" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="Go Back" use="" forecolor="#316AC5" enabled="true" name="button53" backgroundImageLayout="tile" id="button124" width="112" y="295" draggable="false">
+        <Events>
+          <event name="OnClick">updateSessionList("dbListValue",null);
+updateSession("roomassign",null);
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","HomeForm");
+</event>
+        </Events>
+        <DataMappings />
+      </Button>
+    </Frame>
+    <Frame visibleto="ImportReportTemplate" font="Microsoft Sans Serif" height="1060" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="176" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame9713" boxalignment="none" backgroundImageLayout="tile" id="frame144" width="572" y="0" draggable="false">
+      <Events />
+      <DataMappings />
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="814" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="10" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame56" boxalignment="none" backgroundImageLayout="tile" id="frame145" width="555" y="70" draggable="false">
+        <Events />
+        <DataMappings />
+        <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="11" backColor="Transparent" x="320" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="Upload New Template" use="" forecolor="#316AC5" enabled="true" name="button16" backgroundImageLayout="tile" id="button151" width="193" y="97" draggable="false">
+          <Events>
+            <event name="OnClick">String value=combobox26.value;
+String testEmpty="";
+result=equalsTest(value,testEmpty);
+if(!result)
+{
+String value = uploadTemplate(combobox26.value );
+if(value != null)
+{
+message("Template is Uploaded.");
+}
+}
+else
+{
+message("Select a template type.");
+}</event>
+          </Events>
+          <DataMappings />
+        </Button>
+        <Combobox visibleto="All" draggable="false" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="12" font="Microsoft Sans Serif" readonly="true" backColor="#FFFFFF" x="178" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="combobox1" use="" forecolor="#000000" enabled="true" name="combobox26" backgroundImageLayout="tile" id="combobox26" width="77" y="101">
+          <Events>
+            <event name="DefaultValue">invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get TemplateType.TemplateId,TemplateType.TemplateName from neiswispicdb.TemplateType");
+showComboData("combobox26");</event>
+          </Events>
+          <DataMappings />
+        </Combobox>
+        <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="13" backColor="#FFFFFF" x="50" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Select Template Type:" use="" forecolor="#000000" enabled="true" name="label202" textalign="middlecenter" backgroundImageLayout="tile" id="label205" width="122" y="101" draggable="false">
+          <Events />
+          <DataMappings />
+        </Label>
+      </Frame>
+    </Frame>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="1060" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="748" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="5" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="right" name="frame9714" boxalignment="none" backgroundImageLayout="tile" id="frame146" width="203" y="0" draggable="false">
+      <Events />
+      <DataMappings />
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="756" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="5" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="left" name="frame9715" boxalignment="none" backgroundImageLayout="tile" id="frame147" width="203" y="0" draggable="false">
+        <Events />
+        <DataMappings />
+        <PlaceHolder visibleto="All" draggable="false" height="55" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="Logo" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P9716" backgroundImageLayout="tile" id="placeholder53" width="203" y="0">
+          <Events />
+          <DataMappings />
+          <Item reference="Logo">
+            <Events />
+          </Item>
+        </PlaceHolder>
+        <PlaceHolder visibleto="All" draggable="false" height="200" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="CalendarPanel" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P9717" backgroundImageLayout="tile" id="placeholder54" width="203" y="56">
+          <Events />
+          <DataMappings />
+          <Item reference="CalendarPanel">
+            <Events />
+          </Item>
+        </PlaceHolder>
+      </Frame>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Control" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="27" backColor="#ECE9D8" x="83" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="sign out" use="" forecolor="#316AC5" enabled="true" name="button9515" backgroundImageLayout="tile" id="button152" width="75" y="811" draggable="false">
+        <Events>
+          <event name="OnClick">String retValue = logOut("login");
+updateSession("login", null);</event>
+        </Events>
+        <DataMappings />
+      </Button>
+    </Frame>
+  </Frame>
+</basewindow>

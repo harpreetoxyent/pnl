@@ -1,0 +1,526 @@
+ .Patient{
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:8px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:8px;
+position:absolute;
+padding-bottom:8px;
+padding-right:8px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+}
+  .frame14{
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:14px;
+}
+   .frame125{
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+}
+   .button76{
+font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:18px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+border:1;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#316AC5;
+background-position:tile;
+top:286px;
+}
+   .placeholder6{
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:#FFFFFF;
+left:0px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:0px;
+}
+    .button99{
+font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:18px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+border:1;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#316AC5;
+background-position:tile;
+top:365px;
+}
+   .placeholder7{
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:#FFFFFF;
+left:4px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:473px;
+}
+    .button239{
+font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:21px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+border:1;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:686px;
+}
+   .frame140{
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+}
+   .multitab7{
+background-color:Transparent;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-right:0px;
+padding-left:0px;
+padding-top:0px;
+color:#000000;
+font-size:8pt;
+margin-bottom:0px;
+position:relative;
+background-position:tile;
+margin-right:0px;
+margin-left:0px;
+padding-bottom:0px;
+}
+   .tabpage18{
+background-color:#FFFFFF;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-right:0px;
+padding-left:0px;
+padding-top:0px;
+font-size:8pt;
+margin-bottom:0px;
+position:relative;
+background-position:tile;
+margin-right:0px;
+margin-left:0px;
+padding-bottom:0px;
+color:#000000;
+}
+  .placeholder8{
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:#FFFFFF;
+left:3px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:37px;
+}
+    .tabpage19{
+background-color:#D8E4F8;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-right:0px;
+padding-left:0px;
+padding-top:0px;
+font-size:8pt;
+margin-bottom:0px;
+position:relative;
+background-position:tile;
+margin-right:0px;
+margin-left:0px;
+padding-bottom:0px;
+color:#000000;
+}
+  .placeholder9{
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:#D8E4F8;
+left:3px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:40px;
+}
+    .tabpage22{
+background-color:#FFFFFF;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-right:0px;
+padding-left:0px;
+padding-top:0px;
+font-size:8pt;
+margin-bottom:0px;
+position:relative;
+background-position:tile;
+margin-right:0px;
+margin-left:0px;
+padding-bottom:0px;
+color:#000000;
+}
+  .placeholder10{
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:#FFFFFF;
+left:5px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:40px;
+}
+    .tabpage23{
+background-color:#FFFFFF;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-right:0px;
+padding-left:0px;
+padding-top:0px;
+font-size:8pt;
+margin-bottom:0px;
+position:relative;
+background-position:tile;
+margin-right:0px;
+margin-left:0px;
+padding-bottom:0px;
+color:#000000;
+}
+  .placeholder11{
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:#FFFFFF;
+left:5px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:40px;
+}
+    .tabpage24{
+background-color:#FFFFFF;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-right:0px;
+padding-left:0px;
+padding-top:0px;
+font-size:8pt;
+margin-bottom:0px;
+position:relative;
+background-position:tile;
+margin-right:0px;
+margin-left:0px;
+padding-bottom:0px;
+color:#000000;
+}
+  .placeholder12{
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:#FFFFFF;
+left:5px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:40px;
+}
+    .tabpage11{
+background-color:Transparent;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-right:0px;
+padding-left:0px;
+padding-top:0px;
+font-size:8pt;
+margin-bottom:0px;
+position:relative;
+background-position:tile;
+margin-right:0px;
+margin-left:0px;
+padding-bottom:0px;
+color:#000000;
+}
+  .placeholder13{
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:Transparent;
+left:5px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:40px;
+}
+    .tabpage34{
+top:22px;
+background-color:#FFFFFF;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-right:0px;
+padding-left:0px;
+padding-top:0px;
+font-size:8pt;
+margin-bottom:0px;
+position:absolute;
+background-position:tile;
+margin-right:0px;
+margin-left:0px;
+padding-bottom:0px;
+color:#000000;
+left:4px;
+}
+  .placeholder14{
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:#FFFFFF;
+left:19px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:31px;
+}
+    .frame17{
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:5px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+}
+   .frame179{
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:5px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+}
+   .placeholder15{
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+}
+    .placeholder16{
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+}
+    .button31{
+font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#ECE9D8;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+border:1;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#316AC5;
+background-position:tile;
+}
+  

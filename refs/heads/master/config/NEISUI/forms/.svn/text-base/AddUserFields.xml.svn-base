@@ -1,0 +1,187 @@
+<basewindow popup="false" visibleto="All" font="Microsoft Sans Serif" height="1070" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="AddUserFields" boxalignment="none" backgroundImageLayout="tile" id="AddUserFields" title="" width="959" y="0" draggable="false">
+  <Events>
+    <event name="DefaultValue">editOnly=getSessionData("edit");
+if(editOnly=="true")
+{
+button61.setLabel("Edit Clinician Privileges");
+}</event>
+    <event name="DefaultValue" internal="true">makeVisible("AddUserFields")</event>
+  </Events>
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="1060" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame58" boxalignment="horizontal" backgroundImageLayout="tile" id="frame20" width="949" y="0" draggable="false">
+    <Events />
+    <DataMappings />
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="1042" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame1251" boxalignment="none" backgroundImageLayout="tile" id="frame1251" width="175" y="0" draggable="false">
+      <Events />
+      <DataMappings />
+      <PlaceHolder visibleto="All" draggable="false" height="200" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="searchpanel" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P108" backgroundImageLayout="tile" id="placeholder23" width="175" y="0">
+        <Events />
+        <DataMappings />
+        <Item reference="searchpanel">
+          <Events />
+        </Item>
+      </PlaceHolder>
+    </Frame>
+    <Frame visibleto="AddClincain,Edit/ModifyClincianList" font="Microsoft Sans Serif" height="1055" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="1" default="false" backColor="#FFFFFF" x="175" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame110" boxalignment="vertical" backgroundImageLayout="tile" id="frame110" width="569" y="0" draggable="false">
+      <Events />
+      <DataMappings />
+      <MultiTab y="0" name="multitab6" backColor="Transparent" margintop="0" font="Microsoft Sans Serif" height="1054" netBackColor="Control" use="" netForeColor="ControlText" fontstyle="Regular" tabindex="0" paddingright="0" paddingleft="0" paddingtop="0" visibleto="All" width="569" forecolor="#000000" fontsize="8" draggable="false" id="multitab6" marginbottom="0" position="relative" cursor="[Cursor: SizeAll]" backgroundImageLayout="tile" marginright="0" marginleft="0" paddingbottom="0" text="multitab6" droppable="false" visible="true" enabled="true" x="0">
+        <Events />
+        <DataMappings />
+        <TabPage y="22" align="none" name="Privileges" backColor="#D8E4F8" margintop="0" font="Microsoft Sans Serif" height="1028" netBackColor="InactiveCaptionText" use="" netForeColor="ControlText" fontstyle="Regular" tabindex="0" paddingright="0" paddingleft="0" paddingtop="0" visibleto="All" width="561" text="Entry fields" fontsize="8" draggable="false" id="tabpage16" marginbottom="0" position="absolute" cursor="[Cursor: SizeAll]" backgroundImageLayout="tile" marginright="0" widthtype="Auto" marginleft="0" paddingbottom="0" droppable="false" forecolor="#000000" enabled="true" x="4">
+          <Events />
+          <Frame visibleto="All" font="Microsoft Sans Serif" height="50" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="center" name="frame112" boxalignment="none" backgroundImageLayout="tile" id="frame112" width="559" y="0" draggable="false">
+            <Events />
+            <DataMappings />
+            <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="0" backColor="Transparent" x="2" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="10" marginbottom="10" text="Define Clinician Privileges&#xD;&#xA;" use="" forecolor="#316AC5" enabled="true" name="button61" backgroundImageLayout="tile" id="button61" width="214" y="11" draggable="false">
+              <Events>
+                <event name="OnClick">updateSessionList("fields",null);
+createFieldsList("listbox9");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","AddPrivileges");
+setDataStatus("AddPrivilege", "AddPrivileges", "useradmin");
+</event>
+              </Events>
+              <DataMappings />
+            </Button>
+            <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="9" backColor="Transparent" x="249" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="10" marginbottom="10" text="Back" use="" forecolor="#316AC5" enabled="true" name="button67" backgroundImageLayout="tile" id="button67" width="75" y="11" draggable="false">
+              <Events>
+                <event name="OnClick">updateSessionList("fields",null);
+createFieldsList("listbox9");
+setDataStatus("CreateClinical", "AddClinical", "useradmin");
+</event>
+              </Events>
+              <DataMappings />
+            </Button>
+            <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="10" backColor="Transparent" x="404" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="Highlight" droppable="false" marginleft="10" marginbottom="10" text="Cancel" use="" forecolor="#316AC5" enabled="true" name="button14" backgroundImageLayout="tile" id="button14" width="75" y="12" draggable="false">
+              <Events>
+                <event name="OnClick">updateSession("userPatternId",null);
+updateSession("companyId",null);
+updateSessionList("fields",null);
+updateSessionList("privilege",null);
+updateSessionList("edit",null);
+setDataStatus("UserAuthenticated", "HomeForm", null);
+</event>
+              </Events>
+              <DataMappings />
+            </Button>
+          </Frame>
+          <Frame visibleto="All" font="Microsoft Sans Serif" height="970" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" y="50" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame113" boxalignment="none" backgroundImageLayout="center" id="frame113" width="561" backgroundImage="\img\frame113.jpg" draggable="false">
+            <Events />
+            <DataMappings />
+            <ListBox visibleto="All" draggable="false" height="491" widthtype="Auto" netBackColor="Window" multiselect="True" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="8" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="listbox0" use="" forecolor="#000000" enabled="true" name="listbox8" backgroundImageLayout="tile" id="listbox8" width="230" y="65">
+              <Events>
+                <event name="DefaultValue">invokeComponent("com.oxymedical.component.useradmin","executeListUserAdmin","com.oxymedical.component.useradmin.UserAdminComponent","get userfields.fieldid,userfields.fieldName from useradmin.userfields orderby userfields.fieldName ");
+displayFieldDataInControl("listbox8");</event>
+                <event name="OnClick">x=getSelectedListData();
+updateSession("rowId",x);</event>
+              </Events>
+              <DataMappings />
+            </ListBox>
+            <ListBox visibleto="All" draggable="false" height="491" widthtype="Auto" netBackColor="Window" multiselect="False" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" font="Microsoft Sans Serif" backColor="#FFFFFF" x="322" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="listbox0" use="" forecolor="#000000" enabled="true" name="listbox9" backgroundImageLayout="tile" id="listbox9" width="230" y="65">
+              <Events>
+                <event name="DefaultValue">editOnly=getSessionData("edit");
+patternId=getSessionData("userPatternId");
+dValue=session.getAttribute("fields");
+ if(editOnly=="true")
+ {
+ if(dValue==null)
+ {
+invokeComponent("com.oxymedical.component.useradmin","GetFields","com.oxymedical.component.useradmin.UserAdminComponent","userPatternId :="+patternId);
+displayFieldDataInControl("listbox9");
+}
+}
+
+setDefaultValue(dValue,"listbox9");
+removeChilds("listbox9","listbox8"); </event>
+                <event name="OnClick">x=getSelectedListData();
+updateSession("rowId",x);</event>
+              </Events>
+              <DataMappings />
+            </ListBox>
+            <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="flat" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="9" backColor="Transparent" x="267" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="0" paddingright="0" source="\img\button62.jpg" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="button62" backgroundImageLayout="tile" id="button62" width="33" y="80" draggable="false">
+              <Events>
+                <event name="OnClick">rowID=getSessionData("rowId");
+moveValue(rowID,"listbox8","listbox9");
+updateSession("rowId",null);
+</event>
+              </Events>
+              <DataMappings />
+            </Button>
+            <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="flat" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="10" backColor="Transparent" x="264" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="0" paddingright="0" source="\img\button63.jpg" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="button63" backgroundImageLayout="tile" id="button63" width="33" y="165" draggable="false">
+              <Events>
+                <event name="OnClick">rowID=getSessionData("rowId");
+moveValue(rowID,"listbox9","listbox8");
+updateSession("rowId",null);
+</event>
+              </Events>
+              <DataMappings />
+            </Button>
+            <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="flat" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="11" backColor="Transparent" x="266" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="0" paddingright="0" source="\img\button64.jpg" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="button64" backgroundImageLayout="tile" id="button64" width="33" y="250" draggable="false">
+              <Events>
+                <event name="OnClick">moveAllItems("listbox8","listbox9");</event>
+              </Events>
+              <DataMappings />
+            </Button>
+            <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="flat" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="12" backColor="Transparent" x="263" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="0" paddingright="0" source="\img\button65.jpg" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="button65" backgroundImageLayout="tile" id="button65" width="33" y="345" draggable="false">
+              <Events>
+                <event name="OnClick">moveAllItems("listbox9","listbox8");</event>
+              </Events>
+              <DataMappings />
+            </Button>
+            <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="13" backColor="Transparent" x="270" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Move" use="" forecolor="#000000" enabled="true" name="label63" textalign="topleft" backgroundImageLayout="tile" id="label63" width="43" y="115" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+            <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="14" backColor="Transparent" x="262" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Remove" use="" forecolor="#000000" enabled="true" name="label64" textalign="topleft" backgroundImageLayout="tile" id="label64" width="53" y="198" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+            <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="15" backColor="Transparent" x="264" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Move All" use="" forecolor="#000000" enabled="true" name="label65" textalign="topleft" backgroundImageLayout="tile" id="label65" width="52" y="285" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+            <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="16" backColor="Transparent" x="257" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Remove All" use="" forecolor="#000000" enabled="true" name="label66" textalign="topleft" backgroundImageLayout="tile" id="label66" width="63" y="380" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+            <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="17" backColor="Transparent" x="111" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Entry Fields" use="" forecolor="#000000" enabled="true" name="label67" textalign="topleft" backgroundImageLayout="tile" id="label67" width="65" y="41" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+            <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="18" backColor="#FFFFFF" x="386" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="User Selected Fields" use="" forecolor="#000000" enabled="true" name="label68" textalign="topleft" backgroundImageLayout="tile" id="label68" width="110" y="41" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </Frame>
+        </TabPage>
+      </MultiTab>
+    </Frame>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="1059" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="744" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="5" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="right" name="frame1700" boxalignment="none" backgroundImageLayout="tile" id="frame1700" width="203" y="0" draggable="false">
+      <Events />
+      <DataMappings />
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="1" backColor="#FFFFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="sign out" use="" forecolor="#316AC5" enabled="true" name="button200" backgroundImageLayout="tile" id="button200" width="75" y="1028" draggable="false">
+        <Events>
+          <event name="OnClick">String retValue = logOut("login");</event>
+        </Events>
+        <DataMappings />
+      </Button>
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="991" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="2" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="left" name="frame114" boxalignment="none" backgroundImageLayout="tile" id="frame114" width="203" y="0" draggable="false">
+        <Events />
+        <DataMappings />
+        <PlaceHolder visibleto="All" draggable="false" height="55" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="Logo" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P207" backgroundImageLayout="tile" id="placeholder24" width="203" y="0">
+          <Events />
+          <DataMappings />
+          <Item reference="Logo">
+            <Events />
+          </Item>
+        </PlaceHolder>
+        <PlaceHolder visibleto="All" draggable="false" height="200" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="CalendarPanel" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P208" backgroundImageLayout="tile" id="placeholder25" width="203" y="56">
+          <Events />
+          <DataMappings />
+          <Item reference="CalendarPanel">
+            <Events />
+          </Item>
+        </PlaceHolder>
+      </Frame>
+    </Frame>
+  </Frame>
+</basewindow>

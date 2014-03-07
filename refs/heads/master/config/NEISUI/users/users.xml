@@ -1,0 +1,47 @@
+<users>
+  <User userid="adminuserone" CompanyId="EGI" password="03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4" orgName="EGI" groupId="group1">
+    <personalinfo firstname="admin" middlename="" lastname="user" emailid="abc@gmail.com" birthday="7/31/2009 10:17:17 PM" gender="Male" prefix="0" suffix="0" empno="" category="0" active="False" address1="" address2="" city="Bulgaria" state="Bulgaria" phone="34545555" zipcode="234445" upin="" npin="344" />
+  </User>
+  <User userid="sleepuserone" CompanyId="EGI" password="03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4" orgName="EGI" groupId="group1">
+    <personalinfo firstname="Sleep" middlename="" lastname="Test" emailid="abc@gmail.com" birthday="5/30/2009 11:52:02 AM" gender="Male" prefix="0" suffix="0" empno="" category="0" active="False" address1="" address2="" city="Afganistan" state="Bulgaria" phone="123455" zipcode="123445" upin="" npin="" />
+  </User>
+  <User userid="daytechone" CompanyId="EGI" password="03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4" orgName="EGI" groupId="group1">
+    <personalinfo firstname="test" middlename="" lastname="five" emailid="abc@gmail.com" birthday="5/30/2009 12:00:06 PM" gender="Male" prefix="0" suffix="0" empno="" category="0" active="False" address1="" address2="" city="Afganistan" state="India" phone="123445" zipcode="1234455" upin="" npin="" />
+  </User>
+  <User userid="phyuserone" CompanyId="EGI" password="03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4" orgName="EGI" groupId="group1">
+    <personalinfo firstname="test" middlename="" lastname="six" emailid="abc@gmail.copm" birthday="5/30/2009 12:00:54 PM" gender="Male" prefix="0" suffix="0" empno="" category="1" active="False" address1="" address2="" city="Afganistan" state="Germany" phone="13244" zipcode="1234545" upin="" npin="" />
+  </User>
+  <User userid="resuserone" CompanyId="EGI" password="03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4" orgName="EGI" groupId="group1">
+    <personalinfo firstname="Research" middlename="" lastname="User" emailid="research@gmail.com" birthday="6/10/2009 3:55:02 PM" gender="Male" prefix="0" suffix="0" empno="" category="0" active="False" address1="" address2="" city="Bulgaria" state="Bulgaria" phone="345666" zipcode="45677" upin="" npin="" />
+  </User>
+  <User userid="sbraczi" CompanyId="EGI" password="03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4" orgName="EGI" groupId="group1">
+    <personalinfo firstname="Steven" middlename="" lastname="Braczi" emailid="" birthday="8/4/2009 1:17:00 PM" gender="Male" prefix="0" suffix="0" empno="" category="0" active="True" address1="" address2="" city="" state="" phone="0" zipcode="0" upin="" npin="" />
+  </User>
+  <User userid="rbenca" CompanyId="EGI" password="03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4" orgName="EGI" groupId="group1">
+    <personalinfo firstname="Ruth" middlename="" lastname="Benca" emailid="" birthday="8/4/2009 1:17:03 PM" gender="Male" prefix="0" suffix="1" empno="" category="0" active="False" address1="" address2="" city="" state="" phone="0" zipcode="0" upin="" npin="" />
+  </User>
+  <User userid="scattapan" CompanyId="EGI" password="03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4" orgName="EGI" groupId="group1">
+    <personalinfo firstname="Steven" middlename="" lastname="Cattapan" emailid="" birthday="8/4/2009 1:16:02 PM" gender="Male" prefix="0" suffix="0" empno="" category="0" active="False" address1="" address2="" city="" state="" phone="0" zipcode="0" upin="" npin="" />
+  </User>
+  <User userid="gdopico" CompanyId="EGI" password="03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4" orgName="EGI" groupId="group1">
+    <personalinfo firstname="Guillermo" middlename="" lastname="doPico" emailid="" birthday="8/4/2009 1:17:07 PM" gender="Male" prefix="0" suffix="0" empno="" category="0" active="False" address1="" address2="" city="" state="" phone="0" zipcode="0" upin="" npin="" />
+  </User>
+  <User userid="cgreen" CompanyId="EGI" password="03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4" orgName="EGI" groupId="group1">
+    <personalinfo firstname="Chirstopher" middlename="" lastname="Green" emailid="" birthday="8/4/2009 1:17:14 PM" gender="Male" prefix="0" suffix="0" empno="" category="0" active="False" address1="" address2="" city="" state="" phone="0" zipcode="0" upin="" npin="" />
+  </User>
+  <User userid="jjones" CompanyId="EGI" password="03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4" orgName="EGI" groupId="group1">
+    <personalinfo firstname="John" middlename="" lastname="Jones" emailid="" birthday="8/4/2009 1:17:25 PM" gender="Male" prefix="0" suffix="0" empno="" category="0" active="False" address1="" address2="" city="" state="" phone="0" zipcode="0" upin="" npin="" />
+  </User>
+  <User userid="mklink" CompanyId="EGI" password="03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4" orgName="EGI" groupId="group1">
+    <personalinfo firstname="Mary" middlename="" lastname="Klink" emailid="" birthday="8/4/2009 1:17:31 PM" gender="Male" prefix="0" suffix="0" empno="" category="0" active="False" address1="" address2="" city="" state="" phone="0" zipcode="0" upin="" npin="" />
+  </User>
+  <User userid="jmcmahon" CompanyId="EGI" password="03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4" orgName="EGI" groupId="group1">
+    <personalinfo firstname="Joseph" middlename="" lastname="McMahon" emailid="" birthday="8/4/2009 1:15:33 PM" gender="Male" prefix="0" suffix="0" empno="" category="0" active="False" address1="" address2="" city="" state="" phone="0" zipcode="0" upin="" npin="" />
+  </User>
+  <User userid="mteodorescu" CompanyId="EGI" password="03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4" orgName="EGI" groupId="group1">
+    <personalinfo firstname="Mihaela" middlename="" lastname="Teodorescu" emailid="" birthday="8/4/2009 1:15:49 PM" gender="Male" prefix="0" suffix="0" empno="" category="0" active="False" address1="" address2="" city="" state="" phone="0" zipcode="0" upin="" npin="" />
+  </User>
+  <User userid="tmihai" CompanyId="EGI" password="03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4" orgName="EGI" groupId="group1">
+    <personalinfo firstname="Mihai" middlename="" lastname="Teodorescu" emailid="" birthday="8/4/2009 1:15:53 PM" gender="Male" prefix="0" suffix="0" empno="" category="0" active="False" address1="" address2="" city="" state="" phone="0" zipcode="0" upin="" npin="" />
+  </User>
+</users>

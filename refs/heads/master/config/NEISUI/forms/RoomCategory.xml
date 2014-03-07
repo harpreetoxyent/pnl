@@ -1,0 +1,98 @@
+<basewindow popup="true" visibleto="All" font="Microsoft Sans Serif" height="160" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="RoomCategory" boxalignment="none" backgroundImageLayout="tile" id="RoomCategory" title="" width="346" y="0" draggable="false">
+  <Events>
+    <event name="DefaultValue">textbox164.setVisible(false);</event>
+    <event name="OnOK">String category=textbox69.text;
+if(category!=null)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get roomtype.ID from neiswispicdb.roomtype conditions roomtype.roomType:=["+category+"] and roomtype.deleted:=["+0+"]");
+boolean retVal=isRecordExist();
+if(!retVal)
+{
+addFormValue("textbox164",textbox164.text);
+String retVal=invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","");
+if(retVal=="true")
+{
+message("Room Category is saved.");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","addroom");
+}
+}
+else
+{
+message("Room Category already exists. Please change the name of Room Category.");
+}
+}
+else
+{
+message("Room Category Name cannot be empty");
+}
+
+
+</event>
+  </Events>
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="153" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame133" boxalignment="none" backgroundImageLayout="tile" id="frame133" width="344" y="0" draggable="false">
+    <Events />
+    <DataMappings />
+    <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#FFFFFF" x="64" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Add New Category For Room" use="" forecolor="#000000" enabled="true" name="label203" textalign="topleft" backgroundImageLayout="tile" id="label203" width="189" y="5" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+    <Label visibleto="All" font="Microsoft Sans Serif" height="28" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="8" backColor="#FFFFFF" x="8" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Room Category Name:" use="" forecolor="#000000" enabled="true" name="label204" textalign="topleft" backgroundImageLayout="tile" id="label204" width="125" y="47" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="9" backColor="Transparent" x="18" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="Save Category" use="" forecolor="#316AC5" enabled="true" name="button120" backgroundImageLayout="tile" id="button122" width="118" y="94" draggable="false">
+      <Events>
+        <event name="OnClick">
+String category=textbox69.text;
+if(category!=null)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get roomtype.ID from neiswispicdb.roomtype conditions roomtype.roomType:=["+category+"] and roomtype.deleted:=["+0+"]");
+boolean retVal=isRecordExist();
+if(!retVal)
+{
+addFormValue("textbox164",textbox164.text);
+String retVal=invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","");
+if(retVal=="true")
+{
+message("Room Category is saved.");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","addroom");
+}
+}
+else
+{
+message("Room Category already exists. Please change the name of Room Category.");
+}
+}
+else
+{
+message("Room Category Name cannot be empty");
+}
+
+</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="10" backColor="Transparent" x="189" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="Cancel" use="" forecolor="#316AC5" enabled="true" name="button121" backgroundImageLayout="tile" id="button123" width="114" y="94" draggable="false">
+      <Events>
+        <event name="OnClick">detachWindow("RoomCategory");</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="11" readonly="false" backColor="#FFFFFF" x="177" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox69" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox69" valuetype="Any" backgroundImageLayout="tile" password="false" draggable="false" width="125" y="47" passwordchar="" ismandatory="yes">
+      <Events />
+      <DataMappings>
+        <Mapping datafield="roomtype: String" datatable="roomtype" datapattern="neiswispicdb" />
+        <Mapping datafield="roomtype: String" datatable="roomtype" datapattern="neiswispicdb" />
+      </DataMappings>
+    </TextBox>
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="12" readonly="false" backColor="#FFFFFF" x="232" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox164" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="0" use="" forecolor="#000000" enabled="true" name="textbox164" valuetype="Any" backgroundImageLayout="tile" password="false" width="100" y="28" passwordchar="" draggable="false">
+      <Events />
+      <DataMappings>
+        <Mapping datafield="deleted: String" datatable="roomtype" datapattern="neiswispicdb" />
+        <Mapping datafield="deleted: String" datatable="roomtype" datapattern="neiswispicdb" />
+        <Mapping datafield="deleted: String" datatable="roomtype" datapattern="neiswispicdb" />
+        <Mapping datafield="deleted: String" datatable="roomtype" datapattern="neiswispicdb" />
+      </DataMappings>
+    </TextBox>
+  </Frame>
+</basewindow>

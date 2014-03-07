@@ -1,0 +1,102 @@
+<basewindow popup="false" visibleto="All" font="Microsoft Sans Serif" height="1092" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="roomassignment" boxalignment="none" backgroundImageLayout="tile" id="roomassignment" title="" width="960" y="0" draggable="false">
+  <Events>
+    <event name="DefaultValue">updateSession("list","list");
+</event>
+    <event name="DefaultValue" internal="true">makeVisible("roomassignment")</event>
+  </Events>
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="1070" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame1706" boxalignment="none" backgroundImageLayout="tile" id="frame1706" width="950" y="5" draggable="false">
+    <Events />
+    <DataMappings />
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="1063" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame9712" boxalignment="none" backgroundImageLayout="tile" id="frame9712" width="175" y="0" draggable="false">
+      <Events />
+      <DataMappings />
+      <PlaceHolder visibleto="All" draggable="false" height="200" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="searchpanel" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P1760" backgroundImageLayout="tile" id="placeholder49" width="175" y="0">
+        <Events />
+        <DataMappings />
+        <Item reference="searchpanel">
+          <Events />
+        </Item>
+      </PlaceHolder>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="1" backColor="Transparent" x="21" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="Go Back" use="" forecolor="#316AC5" enabled="true" name="button53" backgroundImageLayout="tile" id="button107" width="112" y="295" draggable="false">
+        <Events>
+          <event name="OnClick">updateSessionList("dbListValue",null);
+updateSession("roomassign",null);
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","HomeForm");
+</event>
+        </Events>
+        <DataMappings />
+      </Button>
+    </Frame>
+    <Frame visibleto="Room Assignment" font="Microsoft Sans Serif" height="1060" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="176" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame9713" boxalignment="none" backgroundImageLayout="tile" id="frame9713" width="572" y="0" draggable="false">
+      <Events />
+      <DataMappings />
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="814" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="10" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame56" boxalignment="none" backgroundImageLayout="tile" id="frame136" width="555" y="70" draggable="false">
+        <Events>
+          <event name="DefaultValue">frame136.setStyle("overflow:auto;");
+String toDate = getCurrentDate("yyyy-MM-dd");
+removeRooms(frame136);
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get room.id,room.RoomDescription,room.roomtype from neiswispicdb.room ,neiswispicdb.roomtype conditions room.deleted:=["+0+"] and room.roomtype:=roomtype.id and roomtype.deleted:=["+0+"]");
+boolean result=createRoomAssignment(frame136);
+if(result)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get roomassginment.id,room.id,schedule.id,roomassginment.physicianid,roomassginment.sleeptechid,roomassginment.researchid,studytype.Type,patient.FirstName,schedule.AppointmentStartTime,patient.lastName,schedule.AppointmentStartDate,roomassginment.researchid2 from neiswispicdb.roomassginment,neiswispicdb.schedule joins leftjoin roomassginment.roomid:=room.id,leftjoin schedule.PatientID:=patient.id,leftjoin schedule.StudyType:=studytype.id conditions roomassginment.schduleid:=schedule.ID and schedule.Cancelled:=["+0+"] and roomassginment.deleted:=["+0+"] and schedule.AppointmentStartDate:=["+toDate +"] and patient.deleted:=["+0+"]");
+createRoomData(frame136);
+}
+else
+{
+message("No rooms present in the system.");
+}</event>
+        </Events>
+        <DataMappings />
+      </Frame>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="1" backColor="Transparent" x="345" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="Export Assignment to Excel" use="" forecolor="#316AC5" enabled="true" name="button105" backgroundImageLayout="tile" id="button119" width="208" y="30" draggable="false">
+        <Events>
+          <event name="OnClick">resultObject=session.getAttribute("dbListValue");
+if(resultObject!=null)
+{
+invokeComponent("export.Component","exportCSV","com.oxymedical.component.export.ExportComponent"," ROOM,FIRST NAME,LAST NAME,APPOINTMENT START DATE,APPOINTMENT START TIME,STUDY TYPE,SLEEP TECHNICIAN,PHYSICIAN,RESEARCH ASSISANT");
+showCSVFile("");
+}
+else
+{
+message("No assignment is present to export to excel.");
+}</event>
+        </Events>
+        <DataMappings />
+      </Button>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="2" backColor="Transparent" x="165" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Patient-Room Assignments" use="" forecolor="#000000" enabled="true" name="label201" textalign="topleft" backgroundImageLayout="tile" id="label201" width="175" y="8" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+    </Frame>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="1060" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="748" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="5" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="right" name="frame9714" boxalignment="none" backgroundImageLayout="tile" id="frame9714" width="203" y="0" draggable="false">
+      <Events />
+      <DataMappings />
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="756" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="5" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="left" name="frame9715" boxalignment="none" backgroundImageLayout="tile" id="frame9715" width="203" y="0" draggable="false">
+        <Events />
+        <DataMappings />
+        <PlaceHolder visibleto="All" draggable="false" height="55" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="Logo" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P9716" backgroundImageLayout="tile" id="placeholder50" width="203" y="0">
+          <Events />
+          <DataMappings />
+          <Item reference="Logo">
+            <Events />
+          </Item>
+        </PlaceHolder>
+        <PlaceHolder visibleto="All" draggable="false" height="200" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="CalendarPanel" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P9717" backgroundImageLayout="tile" id="placeholder51" width="203" y="56">
+          <Events />
+          <DataMappings />
+          <Item reference="CalendarPanel">
+            <Events />
+          </Item>
+        </PlaceHolder>
+      </Frame>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Control" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="27" backColor="#ECE9D8" x="83" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="sign out" use="" forecolor="#316AC5" enabled="true" name="button9515" backgroundImageLayout="tile" id="button9515" width="75" y="811" draggable="false">
+        <Events>
+          <event name="OnClick">String retValue = logOut("login");
+updateSession("login", null);</event>
+        </Events>
+        <DataMappings />
+      </Button>
+    </Frame>
+  </Frame>
+</basewindow>

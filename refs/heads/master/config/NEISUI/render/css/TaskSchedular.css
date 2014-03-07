@@ -1,0 +1,335 @@
+ .TaskSchedular{
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:8px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:8px;
+position:absolute;
+padding-bottom:8px;
+padding-right:8px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+}
+  .frame183{
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:16px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:0px;
+}
+   .frame184{
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+}
+   .placeholder57{
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:#FFFFFF;
+left:0px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:0px;
+}
+    .frame186{
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+}
+   .frame187{
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#F5F5F5;
+left:15px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:40px;
+}
+   .button205{
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:5px;
+margin-top:5px;
+background-color:#F5F5F5;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+border:1;
+padding-right:0px;
+margin-left:5px;
+margin-bottom:5px;
+color:#000000;
+background-position:tile;
+}
+   .button209{
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:5px;
+margin-top:5px;
+background-color:#F5F5F5;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+border:1;
+padding-right:0px;
+margin-left:5px;
+margin-bottom:5px;
+color:#000000;
+background-position:tile;
+}
+   .grid26{
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:16px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:91px;
+}
+   .row509{
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:#FF7F50;
+left:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:0px;
+}
+ .column1191{
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:#00FFFF;
+left:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:0px;
+}
+ .column1192{
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:#00FFFF;
+left:70px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:0px;
+}
+ .column1193{
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:#00FFFF;
+left:270px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:0px;
+}
+ .label316{
+font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:141px;
+font-size:10pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:center;
+background-position:tile;
+top:10px;
+}
+   .frame185{
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+}
+   .placeholder58{
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:#FFFFFF;
+left:0px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:1px;
+}
+    .placeholder59{
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:#FFFFFF;
+left:0px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:56px;
+}
+    .button206{
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+border:1;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:660px;
+}
+  

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp codebase="http://localhost:8080/NEISUI/zul/Visualizer/" spec="1.0+">
+  <information>
+    <title>NEIS EDF Visualizer</title>
+    <vendor>Oxyent Medical Pvt. Ltd.</vendor>
+  </information>
+  <offline-allowed/>
+  <security>
+    <all-permissions/>
+  </security>
+  <resources>
+    <j2se href="http://java.sun.com/products/autodl/j2se" version="1.6+"/>
+    <jar href="Svisualizer_client.jar" main="true"/>
+  </resources>
+  <application-desc
+    main-class="com.oxymedical.components.visualizer.client.VisualizerMain" name="VisualizerMain">
+    <argument>1</argument>
+    <argument>11111111</argument>
+    <argument>comoxymedicalcomponentstoolssleepdataarchitectureSleepDataArchitecture</argument>
+    <argument>WF02</argument>
+    <argument>adminuserone</argument>
+	<argument>1</argument>
+  </application-desc>
+</jnlp>

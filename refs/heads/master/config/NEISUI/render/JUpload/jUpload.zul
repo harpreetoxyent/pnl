@@ -1,0 +1,32 @@
+<zk>
+	<window title="Multiple file upload box" id="win_jUpload" border="normal" width="418px" height="365px">
+		<attribute name="onCreate"><![CDATA[
+			jUploadApplet.setParam("postURL", "../JUpload/parseRequest.jsp");
+			jUploadApplet.setParam("showLogWindow", "false");
+			jUploadApplet.setParam("maxFileSize", "104857600");//100mb
+			jUploadApplet.setParam("lookAndFeel", "system");
+			jUploadApplet.setParam("nbFilesPerRequest", "-1");
+			String allowedExtensions = win_jUpload.getAttribute("allowedExtensions");
+			if(allowedExtensions != null){
+				if(!(allowedExtensions.length() == 0 || allowedExtensions.equalsIgnoreCase("*"))){
+					jUploadApplet.setParam("allowedFileExtensions", allowedExtensions);
+				}
+			}
+		]]></attribute>
+		<applet code="wjhk.jupload2.JUploadApplet" 
+				name="JUpload"
+				archive="../JUpload/wjhk.jupload.jar"
+				width="400px"
+				height="300px"
+				mayscript="true"
+				alt="The java plugin must be installed."
+				id="jUploadApplet">
+		</applet>
+		<button label="Click when done uploading" height="30px" width="400px">
+			<attribute name="onClick"><![CDATA[
+				Event closeEvent = new Event(Events.ON_CLOSE, win_jUpload, null);
+				Events.postEvent(closeEvent);
+			]]></attribute>
+		</button>
+	</window>
+</zk>

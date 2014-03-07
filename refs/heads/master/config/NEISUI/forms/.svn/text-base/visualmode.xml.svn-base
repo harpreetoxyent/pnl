@@ -1,0 +1,306 @@
+<basewindow popup="false" visibleto="All" font="Microsoft Sans Serif" height="1092" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="visualmode" boxalignment="none" backgroundImageLayout="tile" id="visualmode" title="" width="960" y="0" draggable="false">
+  <Events />
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="1070" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame2571" boxalignment="none" backgroundImageLayout="tile" id="frame2571" width="950" y="0" draggable="false">
+    <Events />
+    <DataMappings />
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="1060" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame2572" boxalignment="none" backgroundImageLayout="tile" id="frame2572" width="175" y="0" draggable="false">
+      <Events />
+      <DataMappings />
+      <PlaceHolder visibleto="All" draggable="false" height="200" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="searchpanel" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P1974" backgroundImageLayout="tile" id="placeholder64" width="175" y="0">
+        <Events />
+        <DataMappings />
+        <Item reference="searchpanel">
+          <Events />
+        </Item>
+      </PlaceHolder>
+    </Frame>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="1060" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="15" default="false" backColor="#FFFFFF" x="176" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame2573" boxalignment="none" backgroundImageLayout="tile" id="frame2573" width="574" y="1" draggable="false">
+      <Events>
+        <event name="DefaultValue">String workflowName = getSessionData("workflowName");
+		String workflowid = getSessionData("workflowId");
+if(workflowid != null)
+		{
+			updateSession("oldworkflowTitle",workflowName);
+				String query = "get workflowinfo.isVisual,workflowinfo.displayname,workflowinfo.id,nodedetails.id from appadmin.workflowinfo joins leftjoin workflowinfo.visualizerid:=nodedetails.id conditions workflowinfo.id:="+workflowid;
+invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent",query);
+data=createArray("String", "checkbox4,textbox206,textbox220,combobox47");
+showData(data);
+		}
+</event>
+      </Events>
+      <DataMappings />
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="608" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="3" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" y="13" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame205" boxalignment="none" backgroundImageLayout="center" id="frame205" width="566" backgroundImage="\img\frame205.jpg" draggable="false">
+        <Events />
+        <DataMappings />
+        <Frame visibleto="All" font="Microsoft Sans Serif" height="472" widthtype="Auto" netBackColor="ActiveBorder" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#D4D0C8" x="24" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame206" boxalignment="none" backgroundImageLayout="tile" id="frame206" width="516" y="79" draggable="false">
+          <Events />
+          <DataMappings />
+          <ListBox visibleto="All" draggable="false" height="325" widthtype="Auto" netBackColor="Window" multiselect="False" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="6" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="true" marginleft="0" marginbottom="0" text="listbox1" use="" forecolor="#000000" enabled="true" name="listbox4" backgroundImageLayout="tile" id="listbox4" width="163" y="141">
+            <Events>
+              <event name="OnDrop">move(event.dragged);</event>
+              <event name="DefaultValue">invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","get nodedetails.id,nodedetails.nodeDescription from appadmin.nodedetails conditions nodedetails.deleted:=["+0+"] and nodedetails.isVisualizer:=false");
+displayFieldDataInControlForDragAndDrop("listbox4");</event>
+              <event name="OnClick">x=getSelectedListData();
+updateSession("rowId",x);</event>
+            </Events>
+            <DataMappings />
+          </ListBox>
+          <ListBox visibleto="All" draggable="false" height="325" widthtype="Auto" netBackColor="Window" multiselect="False" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="8" font="Microsoft Sans Serif" backColor="#FFFFFF" x="335" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="true" marginleft="0" marginbottom="0" text="listbox0" use="" forecolor="#000000" enabled="true" name="listbox5" backgroundImageLayout="tile" id="listbox5" width="163" y="141">
+            <Events>
+              <event name="OnDrop">move(event.dragged);</event>
+              <event name="DefaultValue">String workflowid = getSessionData("workflowId");
+if(workflowid != null)
+{
+invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","get nodedetails.id, nodedetails.nodeDescription from appadmin.workflownodeinfo,appadmin.nodedetails,appadmin.nodeinfo conditions nodeinfo.nodeDetail:=nodedetails.id and workflownodeinfo.nodeid:=nodeinfo.id and workflownodeinfo.workflowid:="+workflowid+" orderby workflownodeinfo.id");
+displayFieldDataInControlForDragAndDrop("listbox5");
+removeChilds("listbox5","listbox4");
+}</event>
+              <event name="OnClick">x=getSelectedListData();
+updateSession("rowId",x);</event>
+            </Events>
+            <DataMappings>
+              <Mapping datafield="nodeid: Int16" datatable="workflownodeinfo" datapattern="appadmin" />
+              <Mapping datafield="nodeid: Int16" datatable="workflownodeinfo" datapattern="appadmin" />
+            </DataMappings>
+          </ListBox>
+          <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="ActiveBorder" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="9" backColor="#D4D0C8" x="68" fontsize="9" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Tools" use="" forecolor="#000000" enabled="true" name="label198" textalign="topleft" backgroundImageLayout="tile" id="label198" width="53" y="87" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="ActiveBorder" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="10" backColor="#D4D0C8" x="363" fontsize="9" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Current Set" use="" forecolor="#000000" enabled="true" name="label357" textalign="topleft" backgroundImageLayout="tile" id="label357" width="82" y="113" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="ActiveBorder" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="11" backColor="#D4D0C8" x="17" fontsize="9" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="WorkFlow Title" use="" forecolor="#000000" enabled="true" name="label358" textalign="topleft" backgroundImageLayout="tile" id="label358" width="101" y="16" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="12" readonly="false" backColor="#FFFFFF" x="120" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox206" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox206" valuetype="AlphaNumeric" backgroundImageLayout="tile" password="false" width="120" y="14" passwordchar="" draggable="false">
+            <Events />
+            <DataMappings>
+              <Mapping datafield="name: String" datatable="workflowinfo" datapattern="appadmin" />
+              <Mapping datafield="name: String" datatable="workflowinfo" datapattern="appadmin" />
+              <Mapping datafield="name: String" datatable="workflowinfo" datapattern="appadmin" />
+              <Mapping datafield="name: String" datatable="workflowinfo" datapattern="appadmin" />
+              <Mapping datafield="name: String" datatable="workflowinfo" datapattern="appadmin" />
+            </DataMappings>
+          </TextBox>
+          <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="flat" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="13" backColor="Transparent" x="240" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="0" paddingright="0" source="\img\button222.jpg" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="button222" backgroundImageLayout="tile" id="button222" width="29" y="189" draggable="false">
+            <Events>
+              <event name="OnClick">rowID=getSessionData("rowId");
+moveValue(rowID,"listbox4","listbox5");
+updateSession("rowId",null);</event>
+            </Events>
+            <DataMappings />
+          </Button>
+          <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="ActiveBorder" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="14" backColor="#D4D0C8" x="238" fontsize="9" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="move" use="" forecolor="#000000" enabled="true" name="label359" textalign="topleft" backgroundImageLayout="tile" id="label359" width="50" y="225" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="flat" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="15" backColor="Transparent" x="240" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="0" paddingright="0" source="\img\button223.jpg" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="button223" backgroundImageLayout="tile" id="button223" width="28" y="295" draggable="false">
+            <Events>
+              <event name="OnClick">rowID=getSessionData("rowId");
+moveValue(rowID,"listbox5","listbox4");
+updateSession("rowId",null);</event>
+            </Events>
+            <DataMappings />
+          </Button>
+          <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="ActiveBorder" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="16" backColor="#D4D0C8" x="234" fontsize="9" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="remove" use="" forecolor="#000000" enabled="true" name="label360" textalign="topleft" backgroundImageLayout="tile" id="label360" width="57" y="329" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <Checkbox visibleto="All" draggable="false" height="20" widthtype="Auto" netBackColor="ActiveBorder" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="17" font="Microsoft Sans Serif" backColor="#D4D0C8" x="267" fontsize="8" paddingleft="0" position="absolute" selected="false" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="checkbox4" backgroundImageLayout="tile" id="checkbox4" width="20" y="15" visible="true">
+            <Events />
+            <DataMappings>
+              <Mapping datafield="isVisual: Boolean" datatable="workflowinfo" datapattern="appadmin" />
+              <Mapping datafield="isVisual: Boolean" datatable="workflowinfo" datapattern="appadmin" />
+              <Mapping datafield="isVisual: Boolean" datatable="workflowinfo" datapattern="appadmin" />
+              <Mapping datafield="isVisual: Boolean" datatable="workflowinfo" datapattern="appadmin" />
+            </DataMappings>
+          </Checkbox>
+          <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="ActiveBorder" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="19" backColor="#D4D0C8" x="297" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Visual" use="" forecolor="#000000" enabled="true" name="label361" textalign="topleft" backgroundImageLayout="tile" id="label361" width="36" y="19" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="20" readonly="false" backColor="#FFFFFF" x="384" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox220" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox220" valuetype="Any" backgroundImageLayout="tile" password="false" width="100" y="14" passwordchar="" draggable="false">
+            <Events>
+              <event name="DefaultValue">textbox220.setVisible(false);</event>
+            </Events>
+            <DataMappings>
+              <Mapping datafield="id: Int16" datatable="workflowinfo" datapattern="appadmin" />
+              <Mapping datafield="id: Int16" datatable="workflowinfo" datapattern="appadmin" />
+              <Mapping datafield="id: Int16" datatable="workflowinfo" datapattern="appadmin" />
+              <Mapping datafield="id: Int16" datatable="workflowinfo" datapattern="appadmin" />
+            </DataMappings>
+          </TextBox>
+          <Button visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" flatstyle="standard" netBackColor="ActiveBorder" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="21" backColor="#D4D0C8" x="8" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Show All" use="" forecolor="#000000" enabled="true" name="button267" backgroundImageLayout="tile" id="button267" width="64" y="113" draggable="false">
+            <Events>
+              <event name="OnClick">invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","get nodedetails.id,nodedetails.nodeDescription from appadmin.nodedetails conditions nodedetails.deleted:=["+0+"]");
+displayFieldDataInControlForDragAndDrop("listbox4");
+combobox45.text="";
+</event>
+            </Events>
+            <DataMappings />
+          </Button>
+          <Combobox visibleto="All" draggable="false" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="22" font="Microsoft Sans Serif" readonly="false" backColor="#FFFFFF" x="86" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="combobox1" use="" forecolor="#000000" enabled="true" name="combobox45" backgroundImageLayout="tile" id="combobox45" width="81" y="113">
+            <Events>
+              <event name="DefaultValue">invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","get toolcateogry .id,toolcateogry.category from appadmin.toolcateogry ");
+showComboData("combobox45");</event>
+              <event name="OnClick">String toolId=getComboItemId1("combobox45");
+invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","get nodedetails.id,nodedetails.nodeDescription from appadmin.nodedetails conditions nodedetails.deleted:=["+0+"] and nodedetails.cateogryid:="+toolId+" and nodedetails.isVisualizer:=false");
+displayFieldDataInControlForDragAndDrop("listbox4");</event>
+            </Events>
+            <DataMappings />
+          </Combobox>
+          <Combobox visibleto="All" draggable="false" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="23" font="Microsoft Sans Serif" readonly="false" backColor="#FFFFFF" x="122" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="combobox1" use="" forecolor="#000000" enabled="true" name="combobox47" backgroundImageLayout="tile" id="combobox47" width="119" y="53">
+            <Events>
+              <event name="DefaultValue">invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","get nodedetails.id,nodedetails.nodeDescription from appadmin.nodedetails conditions nodedetails.deleted:=["+0+"] and nodedetails.isVisualizer:=true");
+showComboData("combobox47");</event>
+              <event name="OnClick">getComboItemId1("combobox47");</event>
+            </Events>
+            <DataMappings>
+              <Mapping datafield="visualizerid: Int16" datatable="workflowinfo" datapattern="appadmin" />
+              <Mapping datafield="visualizerid: Int16" datatable="workflowinfo" datapattern="appadmin" />
+            </DataMappings>
+          </Combobox>
+          <Label visibleto="All" font="Microsoft Sans Serif" height="26" widthtype="Auto" netBackColor="ActiveBorder" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="24" backColor="#D4D0C8" x="44" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Visualizer" use="" forecolor="#000000" enabled="true" name="label428" textalign="topleft" backgroundImageLayout="tile" id="label428" width="71" y="56" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+        </Frame>
+        <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="1" backColor="Transparent" x="246" fontsize="9" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="Add Tool" use="" forecolor="#316AC5" enabled="true" name="button220" backgroundImageLayout="tile" id="button220" width="94" y="561" draggable="false">
+          <Events>
+            <event name="OnClick">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","AddTool");
+</event>
+          </Events>
+          <DataMappings />
+        </Button>
+      </Frame>
+    </Frame>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="1060" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="750" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="5" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame2574" boxalignment="none" backgroundImageLayout="tile" id="frame2574" width="203" y="0" draggable="false">
+      <Events />
+      <DataMappings />
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="646" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="5" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="left" name="frame2575" boxalignment="none" backgroundImageLayout="tile" id="frame2575" width="203" y="0" draggable="false">
+        <Events />
+        <DataMappings />
+        <PlaceHolder visibleto="All" draggable="false" height="55" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="Logo" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P2575" backgroundImageLayout="tile" id="placeholder65" width="203" y="0">
+          <Events />
+          <DataMappings />
+          <Item reference="Logo">
+            <Events />
+          </Item>
+        </PlaceHolder>
+        <PlaceHolder visibleto="All" draggable="false" height="200" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="CalendarPanel" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P2576" backgroundImageLayout="tile" id="placeholder66" width="203" y="56">
+          <Events />
+          <DataMappings />
+          <Item reference="CalendarPanel">
+            <Events />
+          </Item>
+        </PlaceHolder>
+        <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="9" backColor="#FFFFFF" x="65" fontsize="9" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="Save" use="" forecolor="#316AC5" enabled="true" name="button218" backgroundImageLayout="tile" id="button218" width="75" y="415" draggable="false">
+          <Events>
+            <event name="OnClick">String workflowTitle = textbox206.getText();
+String editWorkflow = getSessionData("editWorkflow");
+if(workflowTitle!=null)
+{
+result=equalsTest(workflowTitle,"");
+	if(result)
+	{
+	message("Enter WorkFlow Title.");
+	}
+else
+{
+      updateSessionList("fields",null);
+	  createFieldsList("listbox5");
+	  obj=session.getAttribute("fields");
+	  nodeSelected=createListValues(obj);
+	 addFormValue("listbox5",nodeSelected);
+ if(editWorkflow!=null)
+ {
+      
+     String oldName = getSessionData("oldworkflowTitle");
+	 result=equalsTest(workflowTitle,oldName);
+	 if(result)
+	 {
+	   	 invokeComponent("com.oxyentmedical.component.workflowcomponent","SaveWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","");
+		message("workflow saved.");
+		updateSessionList("fields",null);
+updateSession("oldWorkflowTitle",null);
+updateSession("workflowId",null);
+updateSession("workflowName",null);
+updateSession("editWorkflow",null);
+        invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","listOfAvailableWorkflow"); 
+	 }
+	 else
+	 {
+	    invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowCompo nent.WorkflowComponent","get  workflowinfo.id from appadmin.workflowinfo conditions  workflowinfo.displayname:=["+workflowTitle +"]");
+		boolean isPresent = isRecordExist();
+		if(isPresent)
+		{
+			message("Workflow Title already exists. Change Title  name!");
+		}
+		else
+		{		invokeComponent("com.oxyentmedical.component.workflowcomponent","SaveWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","");
+		message("workflow saved.");
+		updateSessionList("fields",null);
+updateSession("oldWorkflowTitle",null);
+updateSession("workflowId",null);
+updateSession("workflowName",null);
+updateSession("editWorkflow",null);
+        invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","listOfAvailableWorkflow");
+		}
+	 }
+ }
+ else
+ {
+ invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowCompo nent.WorkflowComponent","get  workflowinfo.id from appadmin.workflowinfo conditions  workflowinfo.displayname:=["+workflowTitle+"]");
+	boolean isPresent = isRecordExist();
+	if(isPresent)
+	{
+		message("Workflow Title already exists. Change Title name!");
+	}
+	else
+	{	invokeComponent("com.oxyentmedical.component.workflowcomponent","SaveWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","");
+		message("workflow saved.");
+		updateSessionList("fields",null);
+updateSession("oldWorkflowTitle",null);
+updateSession("workflowId",null);
+updateSession("workflowName",null);
+updateSession("editWorkflow",null);
+        invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","listOfAvailableWorkflow");
+	}
+ }
+}
+}
+else
+{
+message("Enter WorkFlow Title.");
+}
+
+</event>
+          </Events>
+          <DataMappings />
+        </Button>
+        <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="10" backColor="#FFFFFF" x="65" fontsize="9" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="Cancel" use="" forecolor="#316AC5" enabled="true" name="button219" backgroundImageLayout="tile" id="button219" width="75" y="490" draggable="false">
+          <Events>
+            <event name="OnClick">updateSession("oldWorkflowTitle",null);
+updateSession("workflowId",null);
+updateSession("workflowName",null);
+updateSession("editWorkflow",null);
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","listOfAvailableWorkflow");
+
+
+</event>
+          </Events>
+          <DataMappings />
+        </Button>
+      </Frame>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="1" backColor="#FFFFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="sign out" use="" forecolor="#316AC5" enabled="true" name="button2575" backgroundImageLayout="tile" id="button2575" width="75" y="730" draggable="false">
+        <Events>
+          <event name="OnClick">String retValue = logOut("login");</event>
+        </Events>
+        <DataMappings />
+      </Button>
+    </Frame>
+  </Frame>
+</basewindow>

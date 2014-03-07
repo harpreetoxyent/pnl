@@ -1,0 +1,86 @@
+<basewindow popup="false" visibleto="All" font="Microsoft Sans Serif" height="733" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="true" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="none" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="login" boxalignment="none" backgroundImageLayout="none" id="login" title="" width="954" y="0" draggable="false">
+  <Events>
+    <event name="OnOK">boolean isValid = checkLoginBlankValue("textbox0","textbox1");
+if(isValid)
+{
+String retValue = invokeComponent("com.oxymedical.component.useradmin","authenticateUserEx","com.oxymedical.component.useradmin.UserAdminComponent","userId_SEP_textbox0_FIELDSEP_password_SEP_textbox1");
+if(retValue!="true")
+{
+message("username and/or password invalid");
+textbox0.text="";
+textbox1.text="";
+setFocus("textbox0");
+}
+}
+else
+{
+	message("sign-in failed. please try again ");
+	textbox0.text="";
+	textbox1.text="";
+	setFocus("textbox0");
+	
+}
+</event>
+  </Events>
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="721" widthtype="Auto" netBackColor="ControlLightLight" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" default="false" backColor="#FFFFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="center" name="frame0" boxalignment="none" backgroundImageLayout="none" id="frame0" width="823" y="4" draggable="false">
+    <Events />
+    <DataMappings />
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="190" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="Transparent" x="228" fontsize="8" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" y="181" netForeColor="ActiveCaptionText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#FFFFFF" enabled="true" align="none" name="frame1" boxalignment="none" backgroundImageLayout="none" id="frame1" width="299" backgroundImage="\img\frame1.jpg" draggable="false">
+      <Events />
+      <DataMappings />
+      <Label visibleto="All" font="Microsoft Sans Serif" height="15" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" backColor="Transparent" x="22" fontsize="8.8" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="WindowFrame" droppable="false" marginleft="0" marginbottom="0" text="username" use="" forecolor="#000000" enabled="true" name="label0" textalign="topleft" backgroundImageLayout="none" id="label0" width="71" y="45" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="19" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="8" backColor="Transparent" x="22" fontsize="8.3" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="password" use="" forecolor="#000000" enabled="true" name="label1" textalign="topleft" backgroundImageLayout="none" id="label1" width="68" y="93" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: IBeam]" margintop="0" tabindex="1" readonly="false" backColor="#FFFFFF" x="110" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox0" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox0" valuetype="Any" backgroundImageLayout="none" password="false" width="155" y="46" passwordchar="" draggable="false">
+        <Events>
+          <event name="DefaultValue">setFocus("textbox0");</event>
+        </Events>
+        <DataMappings />
+      </TextBox>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: IBeam]" margintop="0" tabindex="2" readonly="false" backColor="#FFFFFF" x="109" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox1" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox1" valuetype="Any" backgroundImageLayout="none" password="true" width="155" y="95" passwordchar="*" draggable="false">
+        <Events />
+        <DataMappings />
+      </TextBox>
+      <Picture visibleto="All" draggable="false" height="24" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="9" font="Microsoft Sans Serif" backColor="Transparent" x="110" fontsize="8" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" source="\img\picture6.jpg" netForeColor="ActiveCaptionText" droppable="false" marginleft="0" marginbottom="0" text="picture1" use="" forecolor="#FFFFFF" enabled="true" name="picture6" backgroundImageLayout="tile" id="picture6" width="101" y="120">
+        <Events>
+          <event name="OnClick">createPopUp("ForgotPassword");</event>
+        </Events>
+        <DataMappings />
+      </Picture>
+    </Frame>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="ControlLightLight" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="3" backColor="#FFFFFF" x="327" fontsize="9.75" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="#000000" droppable="false" marginleft="0" marginbottom="0" text="sign in." use="" forecolor="#000000" enabled="true" name="button0" backgroundImageLayout="none" id="button0" width="101" y="385" draggable="false">
+      <Events>
+        <event name="OnClick">boolean isValid = checkLoginBlankValue("textbox0","textbox1");
+if(isValid)
+{
+String retValue = invokeComponent("com.oxymedical.component.useradmin","authenticateUserEx","com.oxymedical.component.useradmin.UserAdminComponent","userId_SEP_textbox0_FIELDSEP_password_SEP_textbox1");
+if(retValue!="true")
+{
+message("username and/or password invalid");
+textbox0.text="";
+textbox1.text="";
+setFocus("textbox0");
+}
+}
+else
+{
+	message("sign-in failed. please try again ");
+	textbox0.text="";
+	textbox1.text="";
+	setFocus("textbox0");
+	
+}</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="70" widthtype="Auto" netBackColor="ControlLightLight" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="10" default="false" backColor="#FFFFFF" x="263" fontsize="8" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" y="70" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="center" name="frame59" boxalignment="none" backgroundImageLayout="center" id="frame59" width="229" backgroundImage="\img\frame59.jpg" draggable="false">
+      <Events />
+      <DataMappings />
+    </Frame>
+  </Frame>
+</basewindow>

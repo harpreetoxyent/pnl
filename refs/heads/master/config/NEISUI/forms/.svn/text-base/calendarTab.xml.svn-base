@@ -1,0 +1,49 @@
+<basewindow popup="false" visibleto="All" font="Microsoft Sans Serif" height="730" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="calendarTab" boxalignment="none" backgroundImageLayout="none" id="calendarTab" title="" width="785" y="0" draggable="false">
+  <Events />
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="648" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="7" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame81" boxalignment="none" backgroundImageLayout="none" id="frame90" width="768" y="9" draggable="false">
+    <Events />
+    <DataMappings />
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="217" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="194" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame82" boxalignment="none" backgroundImageLayout="none" id="frame91" width="356" y="181" draggable="false">
+      <Events />
+      <DataMappings />
+      <Label visibleto="All" font="Microsoft Sans Serif" height="23" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" backColor="#FFFFFF" x="22" fontsize="11.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="You have clicked on the Calender tab." use="" forecolor="#000000" enabled="true" name="label37" textalign="topleft" backgroundImageLayout="none" id="label37" width="309" y="15" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="8" backColor="#FFFFFF" x="22" fontsize="11.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Do you wish to schedule this patient?" use="" forecolor="#000000" enabled="true" name="label38" textalign="topleft" backgroundImageLayout="none" id="label38" width="307" y="44" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Control" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="9" backColor="#ECE9D8" x="59" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="DarkOliveGreen" droppable="false" marginleft="0" marginbottom="0" text="YES" use="" forecolor="#556B2F" enabled="true" name="button157" backgroundImageLayout="none" id="button157" width="75" y="172" draggable="false">
+        <Events>
+          <event name="OnClick">
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","patientschedular");
+</event>
+        </Events>
+        <DataMappings />
+      </Button>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Control" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="10" backColor="#ECE9D8" x="203" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="DarkRed" droppable="false" marginleft="0" marginbottom="0" text="NO" use="" forecolor="#8B0000" enabled="true" name="button158" backgroundImageLayout="none" id="button158" width="75" y="172" draggable="false">
+        <Events />
+        <DataMappings />
+      </Button>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="11" backColor="#FFFFFF" x="44" fontsize="9" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Patient Name:" use="" forecolor="#000000" enabled="true" name="label39" textalign="topleft" backgroundImageLayout="none" id="label39" width="102" y="83" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="12" backColor="#FFFFFF" x="44" fontsize="9" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Identifier Number:" use="" forecolor="#000000" enabled="true" name="label40" textalign="topleft" backgroundImageLayout="none" id="label40" width="127" y="110" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: IBeam]" margintop="0" tabindex="13" readonly="false" backColor="#FFFFFF" x="183" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox34" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox34" valuetype="Any" backgroundImageLayout="none" password="false" width="125" y="84" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings />
+      </TextBox>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: IBeam]" margintop="0" tabindex="14" readonly="false" backColor="#FFFFFF" x="184" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox35" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox35" valuetype="Any" backgroundImageLayout="none" password="false" width="124" y="112" passwordchar="" draggable="false">
+        <Events>
+          <event name="OnClick">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","search");</event>
+        </Events>
+        <DataMappings />
+      </TextBox>
+    </Frame>
+  </Frame>
+</basewindow>

@@ -1,0 +1,54 @@
+<basewindow popup="true" visibleto="All" font="Microsoft Sans Serif" height="175" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="ResultSetting" boxalignment="none" backgroundImageLayout="tile" id="ResultSetting" title="Query Result Setting" width="262" y="0" draggable="false">
+  <Events>
+    <event name="DefaultValue">String checkValue = getSessionData("ResultInExcel");
+boolean isEqual = equalsTest(checkValue,"yes");
+if(isEqual)
+{
+	checkbox0.setChecked(true);
+}
+String textValue = getSessionData("PageNo");
+if(textValue!=null)
+{
+textbox28.text = textValue;
+}</event>
+  </Events>
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="129" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame94" boxalignment="none" backgroundImageLayout="tile" id="frame95" width="252" y="36" draggable="false">
+    <Events />
+    <DataMappings />
+    <Checkbox visibleto="All" draggable="false" height="30" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="11" fontsize="8" paddingleft="0" position="absolute" selected="false" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Export query results automatically into EXCEL" use="" forecolor="#000000" enabled="true" name="checkbox0" backgroundImageLayout="tile" id="checkbox0" width="241" y="6" visible="true">
+      <Events />
+      <DataMappings />
+    </Checkbox>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="1" backColor="Transparent" x="15" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Apply" use="" forecolor="#000000" enabled="true" name="button82" backgroundImageLayout="tile" id="button84" width="75" y="80" draggable="false">
+      <Events>
+        <event name="OnClick">boolean value = checkbox0.isChecked();
+String pageNo = textbox28.text;
+if(value)
+{
+updateSession("ResultInExcel","yes");
+}
+else
+{
+	updateSession("ResultInExcel","no");
+}
+updateSession("PageNo",pageNo);
+detachWindow("ResultSetting");</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" backColor="Transparent" x="123" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Cancel" use="" forecolor="#000000" enabled="true" name="button83" backgroundImageLayout="tile" id="button85" width="75" y="81" draggable="false">
+      <Events>
+        <event name="OnClick">detachWindow("ResultSetting");</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Label visibleto="All" font="Microsoft Sans Serif" height="21" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="9" backColor="Transparent" x="10" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Result per-page:" use="" forecolor="#000000" enabled="true" name="label44" textalign="topleft" backgroundImageLayout="tile" id="label59" width="88" y="38" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="10" readonly="false" backColor="#FFFFFF" x="110" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox28" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox28" valuetype="Any" backgroundImageLayout="tile" password="false" width="41" y="38" passwordchar="" draggable="false">
+      <Events />
+      <DataMappings />
+    </TextBox>
+  </Frame>
+</basewindow>

@@ -1,0 +1,539 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/NOLIS/!svn/ver/8052/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms
+END
+roomdetails.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/roomdetails.xml
+END
+list0fTools.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/NOLIS/!svn/ver/7278/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/list0fTools.xml
+END
+ForgotPassword.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/ForgotPassword.xml
+END
+listOfAvailableWorkflow.xml
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/NOLIS/!svn/ver/8051/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/listOfAvailableWorkflow.xml
+END
+MedicationForm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/MedicationForm.xml
+END
+Logo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/NOLIS/!svn/ver/8052/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/Logo.xml
+END
+EditTaskSchedular.xml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/EditTaskSchedular.xml
+END
+SetRange.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/SetRange.xml
+END
+workflow.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/NOLIS/!svn/ver/7770/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/workflow.xml
+END
+listOfError.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/NOLIS/!svn/ver/7496/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/listOfError.xml
+END
+RoomCategory.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/RoomCategory.xml
+END
+toolcategory.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/NOLIS/!svn/ver/7813/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/toolcategory.xml
+END
+HomeForm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/NOLIS/!svn/ver/8019/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/HomeForm.xml
+END
+QueryBuilder.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/NOLIS/!svn/ver/7275/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/QueryBuilder.xml
+END
+Category.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/Category.xml
+END
+TechnicianNoteForm.xml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/NOLIS/!svn/ver/7275/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/TechnicianNoteForm.xml
+END
+EditRoomCategory.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/EditRoomCategory.xml
+END
+AddCity.xml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/AddCity.xml
+END
+acqschedule.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/acqschedule.xml
+END
+acquisitiondata.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/NOLIS/!svn/ver/7275/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/acquisitiondata.xml
+END
+EditCategory.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/NOLIS/!svn/ver/5871/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/EditCategory.xml
+END
+searchuserpanel.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/searchuserpanel.xml
+END
+FilePathLocation.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/NOLIS/!svn/ver/7278/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/FilePathLocation.xml
+END
+TechNotePrint.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/TechNotePrint.xml
+END
+ResultInExcel.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/NOLIS/!svn/ver/7275/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/ResultInExcel.xml
+END
+PrimaryCarePhysician.xml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/PrimaryCarePhysician.xml
+END
+SetCategory.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/SetCategory.xml
+END
+Photo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/Photo.xml
+END
+EditField.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/EditField.xml
+END
+userinfo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/userinfo.xml
+END
+Schedule.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/NOLIS/!svn/ver/7275/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/Schedule.xml
+END
+ShowAppointment.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/ShowAppointment.xml
+END
+SetVariable.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/SetVariable.xml
+END
+Patient.xml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/NOLIS/!svn/ver/7381/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/Patient.xml
+END
+ImportData.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/NOLIS/!svn/ver/7275/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/ImportData.xml
+END
+WaveFormJobs.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/WaveFormJobs.xml
+END
+roomassignment.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/NOLIS/!svn/ver/7275/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/roomassignment.xml
+END
+WaveFormTools.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/WaveFormTools.xml
+END
+AddCustomQuery.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/AddCustomQuery.xml
+END
+Calendar.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/Calendar.xml
+END
+SchedularMessage.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/SchedularMessage.xml
+END
+RoomDescription.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/NOLIS/!svn/ver/5871/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/RoomDescription.xml
+END
+AddPrivileges.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/NOLIS/!svn/ver/7275/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/AddPrivileges.xml
+END
+searchpanel.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/NOLIS/!svn/ver/8051/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/searchpanel.xml
+END
+PrintAssignment.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/NOLIS/!svn/ver/5919/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/PrintAssignment.xml
+END
+AddClinical.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/NOLIS/!svn/ver/7275/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/AddClinical.xml
+END
+ListOfToolsNew.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/NOLIS/!svn/ver/8034/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/ListOfToolsNew.xml
+END
+TechnicianNote.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/TechnicianNote.xml
+END
+PatientAssignment.xml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/NOLIS/!svn/ver/5956/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/PatientAssignment.xml
+END
+TaskSchedular.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/NOLIS/!svn/ver/7275/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/TaskSchedular.xml
+END
+calendarTab.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/calendarTab.xml
+END
+FileBrowse.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/FileBrowse.xml
+END
+patientScheduler.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/NOLIS/!svn/ver/5950/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/patientScheduler.xml
+END
+AcquisitionInfo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/NOLIS/!svn/ver/7660/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/AcquisitionInfo.xml
+END
+PhotoInfo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/NOLIS/!svn/ver/5906/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/PhotoInfo.xml
+END
+includeInReport.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/includeInReport.xml
+END
+ImportTemplate.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/NOLIS/!svn/ver/7275/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/ImportTemplate.xml
+END
+ScheduleInfo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/NOLIS/!svn/ver/5899/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/ScheduleInfo.xml
+END
+WorkflowStatusList.xml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/NOLIS/!svn/ver/8050/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/WorkflowStatusList.xml
+END
+ResultSetting.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/ResultSetting.xml
+END
+MapFile.xml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/NOLIS/!svn/ver/7787/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/MapFile.xml
+END
+workflowstatus.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/NOLIS/!svn/ver/8050/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/workflowstatus.xml
+END
+InfoPatient.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/NOLIS/!svn/ver/7278/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/InfoPatient.xml
+END
+PatientInfo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/NOLIS/!svn/ver/5913/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/PatientInfo.xml
+END
+StudyInfo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/NOLIS/!svn/ver/5898/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/StudyInfo.xml
+END
+AssignmentInfo.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/NOLIS/!svn/ver/7275/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/AssignmentInfo.xml
+END
+addroom.xml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/NOLIS/!svn/ver/7275/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/addroom.xml
+END
+AddTool.xml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/NOLIS/!svn/ver/7998/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/AddTool.xml
+END
+AddCategory.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/NOLIS/!svn/ver/5871/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/AddCategory.xml
+END
+ViewPatientAssignment.xml
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/NOLIS/!svn/ver/7275/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/ViewPatientAssignment.xml
+END
+CalendarPanel.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/NOLIS/!svn/ver/5898/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/CalendarPanel.xml
+END
+SetBoolean.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/SetBoolean.xml
+END
+Workflowpatientlist.xml
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/NOLIS/!svn/ver/7278/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/Workflowpatientlist.xml
+END
+ExecuteWorkflow.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/NOLIS/!svn/ver/7278/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/ExecuteWorkflow.xml
+END
+uisettings.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/uisettings.xml
+END
+PopupFileList.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/NOLIS/!svn/ver/7278/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/PopupFileList.xml
+END
+ToolPreprocessorInput.xml
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/NOLIS/!svn/ver/7278/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/ToolPreprocessorInput.xml
+END
+QueryResult.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/NOLIS/!svn/ver/7275/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/QueryResult.xml
+END
+hdPSG.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/NOLIS/!svn/ver/7275/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/hdPSG.xml
+END
+search.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/NOLIS/!svn/ver/7275/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/search.xml
+END
+workingDirectory.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/NOLIS/!svn/ver/7809/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/workingDirectory.xml
+END
+AddUserDefineField.xml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/NOLIS/!svn/ver/5940/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/AddUserDefineField.xml
+END
+login.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/NOLIS/!svn/ver/5886/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/login.xml
+END
+visualmode.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/NOLIS/!svn/ver/8039/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/visualmode.xml
+END
+Moduleparameters.xml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/NOLIS/!svn/ver/7278/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/Moduleparameters.xml
+END
+PhotoAlbum.xml
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/PhotoAlbum.xml
+END
+ListUser.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/NOLIS/!svn/ver/7275/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/ListUser.xml
+END
+SetAllFields.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/SetAllFields.xml
+END
+AddUserFields.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/NOLIS/!svn/ver/7275/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/forms/AddUserFields.xml
+END

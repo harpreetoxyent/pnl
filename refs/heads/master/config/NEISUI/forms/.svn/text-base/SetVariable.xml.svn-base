@@ -1,0 +1,29 @@
+<basewindow popup="true" visibleto="All" font="Microsoft Sans Serif" height="137" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="SetVariable" boxalignment="none" backgroundImageLayout="tile" id="SetVariable" title="Set Variable Value" width="240" y="0" draggable="false">
+  <Events />
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="91" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="2" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame92" boxalignment="none" backgroundImageLayout="tile" id="frame93" width="228" y="36" draggable="false">
+    <Events />
+    <DataMappings />
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" readonly="false" backColor="#FFFFFF" x="120" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox25" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox25" valuetype="Any" backgroundImageLayout="tile" password="false" width="103" y="17" passwordchar="" draggable="false">
+      <Events />
+      <DataMappings />
+    </TextBox>
+    <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" backColor="Transparent" x="6" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Enter Variable Value:" use="" forecolor="#000000" enabled="true" name="label47" textalign="topleft" backgroundImageLayout="tile" id="label56" width="112" y="17" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="9" backColor="Transparent" x="18" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Apply" use="" forecolor="#000000" enabled="true" name="button76" backgroundImageLayout="tile" id="button80" width="75" y="53" draggable="false">
+      <Events>
+        <event name="OnClick">String value = textbox25.text;
+updateSession("VariableValue",value);
+detachWindow("SetVariable");</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="10" backColor="Transparent" x="124" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Cancel" use="" forecolor="#000000" enabled="true" name="button77" backgroundImageLayout="tile" id="button81" width="75" y="51" draggable="false">
+      <Events>
+        <event name="OnClick">detachWindow("SetVariable");</event>
+      </Events>
+      <DataMappings />
+    </Button>
+  </Frame>
+</basewindow>

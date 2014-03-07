@@ -1,0 +1,182 @@
+<basewindow popup="true" visibleto="All" font="Microsoft Sans Serif" height="780" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="PrintAssignment" boxalignment="none" backgroundImageLayout="tile" id="PrintAssignment" title="" width="720" y="0" draggable="false">
+  <Events>
+    <event name="DefaultValue">textbox193.setReadonly(true); 
+textbox194.setReadonly(true);
+textbox195.setReadonly(true);
+textbox196.setReadonly(true);
+textbox197.setReadonly(true);
+textbox198.setReadonly(true);
+textbox199.setReadonly(true);
+textbox200.setReadonly(true);
+textbox201.setReadonly(true);
+textbox202.setReadonly(true);
+textbox203.setReadonly(true);
+textbox204.setReadonly(true);
+textbox205.setReadonly(true);
+String pid = getSessionData("patientid");
+String sid = getSessionData("scheduleid");
+if(sid != null)
+{
+String retval = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get roomassginment.sleeptechid,roomassginment.researchid,room.RoomDescription,patient.dateofbirth,roomassginment.stat,roomassginment.physicianid,schedule.appointmentstarttime,studytype.type,patient.physician,roomassginment.arrived,schedule.assigntoroom,roomassginment.sleeptechid,roomassginment.comments from neiswispicdb.schedule,neiswispicdb.roomassginment joins leftjoin schedule.patientid:=patient.id,leftjoin schedule.StudyType:=studytype.id,leftjoin roomassginment.roomid:=room.id conditions roomassginment.schduleid:=schedule.id and patient.deleted:=["+0+"] and roomassginment.deleted:=["+0+"] and schedule.cancelled:=["+0+"] and roomassginment.schduleid:="+sid+" and patient.ID:="+pid);
+data=createArray("String", "textbox193,textbox194,textbox195,textbox196,textbox197,textbox198,textbox199,textbox200,textbox201,textbox202,textbox203,textbox204,textbox205");
+showData(data);
+String text = textbox193.getText();
+String newText = getUserNameBasedOnUserId(text);
+textbox193.setText(newText);
+
+text = textbox194.getText();
+newText = getUserNameBasedOnUserId(text);
+textbox194.setText(newText);
+
+text = textbox198.getText();
+newText = getUserNameBasedOnUserId(text);
+textbox198.setText(newText);
+
+text = textbox201.getText();
+newText = getUserNameBasedOnUserId(text);
+textbox201.setText(newText);
+
+text = textbox204.getText();
+newText = getUserNameBasedOnUserId(text);
+textbox204.setText(newText);
+}
+else
+{
+message("No record selected.");
+}</event>
+  </Events>
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="761" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame202" boxalignment="none" backgroundImageLayout="tile" id="frame202" width="702" y="0" draggable="false">
+    <Events />
+    <DataMappings />
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="606" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="71" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" y="1" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame203" boxalignment="none" backgroundImageLayout="tile" id="frame203" width="563" backgroundImage="\img\frame203.jpg" draggable="false">
+      <Events />
+      <DataMappings />
+      <Label visibleto="All" font="Microsoft Sans Serif" height="27" widthtype="Auto" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#FFFFFF" x="190" fontsize="9.75" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="PATIENT ASSIGNMENT" use="" forecolor="#000000" enabled="true" name="label167" textalign="topleft" backgroundImageLayout="tile" id="label167" width="178" y="4" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="1" backColor="Transparent" x="165" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="SLEEP TECHNICIAN:" use="" forecolor="#000000" enabled="true" name="label168" textalign="topleft" backgroundImageLayout="tile" id="label168" width="115" y="70" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="8" backColor="Transparent" x="148" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="RESEARCH ASSISTANT:" use="" forecolor="#000000" enabled="true" name="label169" textalign="topleft" backgroundImageLayout="tile" id="label169" width="135" y="102" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="9" backColor="Transparent" x="229" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="ROOM#:" use="" forecolor="#000000" enabled="true" name="label170" textalign="topleft" backgroundImageLayout="tile" id="label170" width="58" y="132" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="10" backColor="Transparent" x="187" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="DATE OF BIRTH:" use="" forecolor="#000000" enabled="true" name="label171" textalign="topleft" backgroundImageLayout="tile" id="label171" width="92" y="161" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="11" backColor="Transparent" x="240" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="STAT:" use="" forecolor="#000000" enabled="true" name="label173" textalign="topleft" backgroundImageLayout="tile" id="label173" width="39" y="190" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="12" backColor="Transparent" x="159" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="READING PHYSICIAN:" use="" forecolor="#000000" enabled="true" name="label176" textalign="topleft" backgroundImageLayout="tile" id="label176" width="120" y="220" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="13" backColor="Transparent" x="240" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="TYPE:" use="" forecolor="#000000" enabled="true" name="label177" textalign="topleft" backgroundImageLayout="tile" id="label177" width="41" y="282" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="14" backColor="Transparent" x="145" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="REFERRING PHYSICIAN:" use="" forecolor="#000000" enabled="true" name="label178" textalign="topleft" backgroundImageLayout="tile" id="label178" width="135" y="313" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="15" backColor="Transparent" x="218" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="ARRIVED:" use="" forecolor="#000000" enabled="true" name="label179" textalign="topleft" backgroundImageLayout="tile" id="label179" width="60" y="341" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="16" backColor="Transparent" x="171" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="PATIENT IN ROOM:" use="" forecolor="#000000" enabled="true" name="label194" textalign="topleft" backgroundImageLayout="tile" id="label194" width="109" y="370" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="17" backColor="Transparent" x="122" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="APPOINTMENT START TIME:" use="" forecolor="#000000" enabled="true" name="label195" textalign="topleft" backgroundImageLayout="tile" id="label195" width="158" y="252" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="18" backColor="Transparent" x="204" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="COMMENTS:" use="" forecolor="#000000" enabled="true" name="label196" textalign="topleft" backgroundImageLayout="tile" id="label196" width="72" y="457" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="19" backColor="Transparent" x="170" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="LEAD TECHNICIAN:" use="" forecolor="#000000" enabled="true" name="label197" textalign="topleft" backgroundImageLayout="tile" id="label197" width="106" y="401" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="20" readonly="false" backColor="#FFFFFF" x="310" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox193" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox193" valuetype="Any" backgroundImageLayout="tile" password="false" width="180" y="67" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings />
+      </TextBox>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="21" readonly="false" backColor="#FFFFFF" x="310" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox194" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox194" valuetype="Any" backgroundImageLayout="tile" password="false" width="180" y="97" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings />
+      </TextBox>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="22" readonly="false" backColor="#FFFFFF" x="310" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox195" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox195" valuetype="Any" backgroundImageLayout="tile" password="false" width="180" y="127" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings />
+      </TextBox>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="23" readonly="false" backColor="#FFFFFF" x="310" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox196" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox196" valuetype="Any" backgroundImageLayout="tile" password="false" width="180" y="157" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings />
+      </TextBox>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="24" readonly="false" backColor="#FFFFFF" x="310" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox197" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox197" valuetype="Any" backgroundImageLayout="tile" password="false" width="180" y="187" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings />
+      </TextBox>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="25" readonly="false" backColor="#FFFFFF" x="310" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox198" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox198" valuetype="Any" backgroundImageLayout="tile" password="false" width="180" y="217" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings />
+      </TextBox>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="26" readonly="false" backColor="#FFFFFF" x="310" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox199" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox199" valuetype="Any" backgroundImageLayout="tile" password="false" width="180" y="247" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings />
+      </TextBox>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="27" readonly="false" backColor="#FFFFFF" x="310" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox200" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox200" valuetype="Any" backgroundImageLayout="tile" password="false" width="180" y="277" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings />
+      </TextBox>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="28" readonly="false" backColor="#FFFFFF" x="310" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox201" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox201" valuetype="Any" backgroundImageLayout="tile" password="false" width="180" y="307" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings />
+      </TextBox>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="29" readonly="false" backColor="#FFFFFF" x="310" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox202" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox202" valuetype="Any" backgroundImageLayout="tile" password="false" width="180" y="337" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings />
+      </TextBox>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="30" readonly="false" backColor="#FFFFFF" x="310" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox203" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox203" valuetype="Any" backgroundImageLayout="tile" password="false" width="180" y="367" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings />
+      </TextBox>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="31" readonly="false" backColor="#FFFFFF" x="310" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox204" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox204" valuetype="Any" backgroundImageLayout="tile" password="false" width="180" y="397" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings />
+      </TextBox>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="140" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="32" readonly="false" backColor="#FFFFFF" x="310" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox205" paddingright="0" multiline="true" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox205" valuetype="Any" backgroundImageLayout="tile" password="false" width="240" y="457" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings />
+      </TextBox>
+    </Frame>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="100" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="8" default="false" backColor="#FFFFFF" x="70" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame204" boxalignment="none" backgroundImageLayout="tile" id="frame204" width="563" y="606" draggable="false">
+      <Events />
+      <DataMappings />
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="Transparent" x="134" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="Print" use="" forecolor="#316AC5" enabled="true" name="button117" backgroundImageLayout="tile" id="button117" width="107" y="42" draggable="false">
+        <Events>
+          <event name="OnClick">printWindow();</event>
+        </Events>
+        <DataMappings />
+      </Button>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="8" backColor="Transparent" x="323" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="Back" use="" forecolor="#316AC5" enabled="true" name="button217" backgroundImageLayout="tile" id="button217" width="113" y="42" draggable="false">
+        <Events>
+          <event name="OnClick">updateSession("patientid",null);
+updateSession("scheduleid",null);
+detachWindow("PrintAssignment");</event>
+        </Events>
+        <DataMappings />
+      </Button>
+    </Frame>
+  </Frame>
+</basewindow>

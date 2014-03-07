@@ -1,0 +1,254 @@
+<basewindow popup="false" visibleto="" font="Microsoft Sans Serif" height="240" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="searchpanel" boxalignment="none" backgroundImageLayout="none" id="searchpanel" title="" width="178" y="0" draggable="false">
+  <Events>
+    <event name="DefaultValue">String lastName = getSessionData("lastname");
+String firstname= getSessionData("firstname");
+String dob= getSessionData("dob");
+String mrn= getSessionData("mrn");
+if(lastName !=null)
+{
+	textbox97.text = lastName;
+	textbox97.style="color:#000000";
+}
+if(firstname !=null)
+{
+	textbox91.text = firstname;
+	textbox91.style="color:#000000";
+}
+if(dob !=null)
+{
+	textbox98.text = dob;
+	textbox98.style="color:#000000";
+}
+if(mrn !=null)
+{
+	textbox44.text = mrn;
+	textbox44.style="color:#000000";
+}</event>
+    <event name="OnOK">updateSession("lastname",null);
+updateSession("firstname",null);
+updateSession("dob",null);
+updateSession("mrn",null);
+updateSessionList("dbListValue",null);
+updateSession("roomassign",null);
+boolean goNext = true;
+boolean isValid = clientSideValidation("searchpanel");
+if(isValid)
+{
+isEqual = checkValueWithOperator("last name", textbox97.value, "EQUAL");
+if (!isEqual)
+{
+	String lName = textbox97.value;
+	int len = lName.length();
+	if(len &gt;0)
+	{
+	 updateSession("lastname", textbox97.value);
+ }
+}
+isEqual = checkValueWithOperator("first name", textbox91.value, "EQUAL");
+if (!isEqual) 
+{
+	String fName = textbox91.value;
+	int len = fName.length();
+	if(len &gt;0)
+	{
+		updateSession("firstname", textbox91.value);}}
+isEqual = checkValueWithOperator("date of birth(yyyy-mm-dd)", textbox98.value, "EQUAL");
+if (!isEqual)
+{
+
+String dobValue = textbox98.value;
+int len = dobValue.length();
+	if(len &gt;0)
+	{
+boolean valid = dateValidation(dobValue);
+if(valid)
+{
+ updateSession("dob", textbox98.value);
+ }
+ else
+ {
+	message("Invalid date. Please enter valid date as(yyyy-mm-dd).");
+	goNext = false;
+	textbox98.setText("date of birth(yyyy-mm-dd)");
+	textbox98.style="color:#D4D0C8";
+	textbox98.setFocus(true);
+ }
+ }
+ }
+isEqual = checkValueWithOperator("MRN", textbox44.value, "EQUAL");
+if (!isEqual){
+String mrnValue = textbox44.value;
+int length = mrnValue.length();
+if(length&gt;0)
+{
+if(length==8)
+{
+ updateSession("mrn", textbox44.value);
+ }
+ else
+ {
+ message("MRN no is invalid. MRN should be eight-digit number.");
+ goNext = false;
+ }
+ }
+}
+if(goNext)
+{
+setDataStatus("ModifyPatient", "search", "neiswispicdb");
+}
+}</event>
+    <event name="DefaultValue" internal="true">makeVisible("searchpanel")</event>
+  </Events>
+  <Frame visibleto="SearchPatientInfo" font="Microsoft Sans Serif" height="193" widthtype="Auto" netBackColor="ControlLightLight" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="17" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" y="37" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame160" boxalignment="vertical" backgroundImageLayout="center" id="frame160" width="168" backgroundImage="\img\frame160.jpg" draggable="false">
+    <Events />
+    <DataMappings />
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="142" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="35" default="false" backColor="Transparent" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame2" boxalignment="none" backgroundImageLayout="tile" id="frame2" width="164" y="5" draggable="false">
+      <Events />
+      <DataMappings />
+      <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="15" backColor="Transparent" x="9" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="search&#xD;&#xA;PATIENTdatabase:" use="" forecolor="#316AC5" enabled="true" name="label3" textalign="topleft" backgroundImageLayout="none" id="label61" width="103" y="0" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="30" readonly="false" backColor="#FFFFFF" x="1" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox91" paddingright="0" multiline="false" netForeColor="InactiveBorder" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="first name" use="" forecolor="#D4D0C8" enabled="true" name="FirstName:" valuetype="AlphaNumeric" backgroundImageLayout="none" password="false" width="158" y="32" passwordchar="" draggable="false">
+        <Events>
+          <event name="OnBlur">textNotEntered=checkValueWithOperator("",textbox91.value, "EQUAL");
+if (textNotEntered) { textbox91.text="first name"; textbox91.style="color:#D4D0C8";}</event>
+          <event name="OnFocus">textNotEntered=checkValueWithOperator("first name",textbox91.value, "EQUAL");
+if (textNotEntered) { textbox91.text=""; textbox91.style="color:#000000";}</event>
+        </Events>
+        <DataMappings />
+      </TextBox>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="31" readonly="false" backColor="#FFFFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox97" paddingright="0" multiline="false" netForeColor="InactiveBorder" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="last name" use="" forecolor="#D4D0C8" enabled="true" name="LastName:" valuetype="AlphaNumeric" backgroundImageLayout="none" password="false" width="159" y="58" passwordchar="" draggable="false">
+        <Events>
+          <event name="OnBlur">textNotEntered=checkValueWithOperator("",textbox97.value, "EQUAL");
+if (textNotEntered) { textbox97.text="last name"; textbox97.style="color:#D4D0C8";}</event>
+          <event name="OnFocus">textNotEntered=checkValueWithOperator("last name",textbox97.value, "EQUAL");
+if (textNotEntered) { textbox97.text=""; textbox97.style="color:#000000";}</event>
+        </Events>
+        <DataMappings />
+      </TextBox>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="32" readonly="false" backColor="#FFFFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox98" paddingright="0" multiline="false" netForeColor="InactiveBorder" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="date of birth(yyyy-mm-dd)" use="" forecolor="#D4D0C8" enabled="true" name="DOB:" valuetype="Any" backgroundImageLayout="none" password="false" width="160" y="86" passwordchar="" draggable="false">
+        <Events>
+          <event name="OnBlur">textNotEntered=checkValueWithOperator("", textbox98.value, "EQUAL");
+if (textNotEntered) { textbox98.text="date of birth(yyyy-mm-dd)"; textbox98.style="color:#D4D0C8";}</event>
+          <event name="OnFocus">textNotEntered=checkValueWithOperator("date of birth(yyyy-mm-dd)", textbox98.value, "EQUAL");
+if (textNotEntered) { textbox98.text=""; textbox98.style="color:#000000";}</event>
+        </Events>
+        <DataMappings />
+      </TextBox>
+      <TextBox visibleto="All" maxlength="8" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="33" readonly="false" backColor="#FFFFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox44" paddingright="0" multiline="false" netForeColor="InactiveBorder" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="MRN" use="" forecolor="#D4D0C8" enabled="true" name="MRN:" valuetype="Numeric" backgroundImageLayout="tile" password="false" width="160" y="114" passwordchar="" draggable="false">
+        <Events>
+          <event name="OnBlur">textNotEntered=checkValueWithOperator("",textbox44.value, "EQUAL");
+if (textNotEntered) { textbox44.text="MRN"; textbox44.style="color:#D4D0C8";}</event>
+          <event name="OnFocus">textNotEntered=checkValueWithOperator("MRN",textbox44.value, "EQUAL");
+if (textNotEntered) { textbox44.text=""; textbox44.style="color:#000000";}</event>
+        </Events>
+        <DataMappings />
+      </TextBox>
+    </Frame>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="33" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="17" default="false" backColor="Transparent" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="center" name="frame60" boxalignment="none" backgroundImageLayout="none" id="frame127" width="164" y="150" draggable="false">
+      <Events />
+      <DataMappings />
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="1" cursor="[Cursor: SizeAll]" margintop="1" tabindex="33" backColor="Transparent" x="0" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="1" marginbottom="1" text="search" use="" forecolor="#316AC5" enabled="true" name="button2" backgroundImageLayout="none" id="button20" width="75" y="0" draggable="false">
+        <Events>
+          <event name="OnClick">updateSession("lastname",null);
+updateSession("firstname",null);
+updateSession("dob",null);
+updateSession("mrn",null);
+updateSessionList("dbListValue",null);
+updateSession("roomassign",null);
+boolean goNext = true;
+boolean isValid = clientSideValidation("searchpanel");
+if(isValid)
+{
+isEqual = checkValueWithOperator("last name", textbox97.value, "EQUAL");
+if (!isEqual)
+{
+	String lName = textbox97.value;
+	int len = lName.length();
+	if(len &gt;0)
+	{
+	 updateSession("lastname", textbox97.value);
+ }
+}
+isEqual = checkValueWithOperator("first name", textbox91.value, "EQUAL");
+if (!isEqual) 
+{
+	String fName = textbox91.value;
+	int len = fName.length();
+	if(len &gt;0)
+	{
+		updateSession("firstname", textbox91.value);}}
+isEqual = checkValueWithOperator("date of birth(yyyy-mm-dd)", textbox98.value, "EQUAL");
+if (!isEqual)
+{
+
+String dobValue = textbox98.value;
+int len = dobValue.length();
+	if(len &gt;0)
+	{
+boolean valid = dateValidation(dobValue);
+if(valid)
+{
+ updateSession("dob", textbox98.value);
+ }
+ else
+ {
+	message("Invalid date. Please enter valid date as(yyyy-mm-dd).");
+	goNext = false;
+	textbox98.setText("date of birth(yyyy-mm-dd)");
+	textbox98.style="color:#D4D0C8";
+	textbox98.setFocus(true);
+ }
+ }
+ }
+isEqual = checkValueWithOperator("MRN", textbox44.value, "EQUAL");
+if (!isEqual){
+String mrnValue = textbox44.value;
+int length = mrnValue.length();
+if(length&gt;0)
+{
+if(length==8)
+{
+ updateSession("mrn", textbox44.value);
+ }
+ else
+ {
+ message("MRN no is invalid. MRN should be eight-digit number.");
+ goNext = false;
+ }
+ }
+}
+if(goNext)
+{
+setDataStatus("ModifyPatient", "search", "neiswispicdb");
+}
+}
+</event>
+        </Events>
+        <DataMappings />
+      </Button>
+      <Button visibleto="Advance Search" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="1" cursor="[Cursor: SizeAll]" margintop="1" tabindex="34" backColor="Transparent" x="87" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="1" marginbottom="1" text="advance" use="" forecolor="#316AC5" enabled="true" name="button3" backgroundImageLayout="none" id="button32" width="75" y="0" draggable="false">
+        <Events>
+          <event name="OnClick">updateSession("lastname",null);
+updateSession("firstname",null);
+updateSession("dob",null);
+updateSession("mrn",null);
+updateSession("roomassign",null);
+updateSessionList("dbListValue",null);
+updateSession("rowId",null);
+setDataStatus("CreateQuery", "QueryBuilder", "neiswispicdb");</event>
+        </Events>
+        <DataMappings />
+      </Button>
+    </Frame>
+  </Frame>
+  <Picture visibleto="All" draggable="false" height="24" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="18" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" source="\img\picture15.jpg" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="picture1" use="" forecolor="#000000" enabled="true" name="picture15" backgroundImageLayout="center" id="picture15" width="88" y="0">
+    <Events>
+      <event name="OnClick">String serverIp=session.getServerName();
+String address="http://"+serverIp+":8080/NeisInstallationManual/index.html";
+openNewWindow(address,picture15);</event>
+    </Events>
+    <DataMappings />
+  </Picture>
+</basewindow>

@@ -1,0 +1,119 @@
+<basewindow popup="true" visibleto="All" font="Microsoft Sans Serif" height="70" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="Logo" boxalignment="none" backgroundImageLayout="center" id="Logo" title="" width="213" y="0" draggable="false">
+  <Events />
+  <Picture visibleto="All" draggable="false" height="51" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="1" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" paddingbottom="0" paddingright="0" source="\img\picture13.jpg" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="picture0" use="" forecolor="#000000" enabled="true" name="picture13" backgroundImageLayout="center" id="picture13" width="213" y="5">
+    <Events>
+      <event name="OnClick">updateSession("oldWorkflowTitle",null);
+updateSession("workflowId",null);
+updateSession("workflowName",null);
+updateSession("editWorkflow",null);
+updateSession("lastname",null);
+updateSession("firstname",null);
+updateSession("dob",null);
+updateSession("mrn",null);
+updateSession("pateintassign",null);
+updateSession("roomType",null);
+updateSession("studyId",null);
+updateSession("roomassign",null);
+updateSession("Schedular",null);
+updateSessionList("dbListValue",null);
+updateSession("editroom",null);
+updateSession("CSVHEADER",null);
+String parentForm=getParentFormPattern("Logo");
+String updMsg = getSessionData("updatedMsg");
+values=session.getAttribute("formValues");
+String list=getSessionData("list");
+updateSession("userPatternId",null);
+updateSession("companyId",null);
+updateSessionList("fields",null);
+updateSessionList("privilege",null);
+updateSessionList("edit",null);
+updateSession("patientmrn",null);
+updateSession("workflowname", null);
+updateSession("nodename", null);
+updateSession("workstatus",null);
+updateSession("scheduleId", null);
+updateSession("workingarea", null);
+boolean result=false;
+if(list!=null)
+{
+result=equalsTest(list,"list");
+}
+if(result)
+{
+updateSession("rowId",null);
+setDataStatus("UserAuthenticated", "HomeForm", null);
+}
+else
+{
+addFormValues(values);
+String rowValue=getSessionData("rowId");
+if(rowValue!=null)
+{
+	if(updMsg == null)
+	{
+	  boolean isUpdated=false;
+		setFormPatternId(parentForm);
+		String val=messageLogoQuestion("Do you want to save changes to form?");
+		if(val=="yes")
+		{
+			result=equalsTest(parentForm,"Patient");
+			if(result)
+			{
+			setFormPatternId("PatientInfo");
+			isUpdated=clientSideValidationForLogo("PatientInfo");
+			if(isUpdated)
+			{
+			  String retValue=invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","Patient");
+			  setFormPatternId(parentForm);
+			}
+			}
+			result=equalsTest(parentForm,"userinfo");
+			if(result)
+			{
+			isUpdated=clientSideValidationForLogo("userinfo");
+			if(isUpdated)
+			{
+			invokeComponent("com.oxymedical.component.useradmin","addUserFromApplication","com.oxymedical.component.useradmin.UserAdminComponent","");
+			}
+			}
+                                    result=equalsTest(parentForm,"TechnicianNoteForm");
+			if(result)
+			{
+			isUpdated=clientSideValidationForLogo("TechnicianNoteForm");
+			if(isUpdated)
+			{
+			  String retValue=invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","TechnicianNoteForm");
+                                     obj=getComponentFromPage("TechnicianNoteForm","grid21");
+                                     saveForeignTable(obj);
+			}
+			}
+		  if(isUpdated)
+		  {
+			message("Changes made to form are saved.");
+			updateSession("rowId",null);
+			setDataStatus("UserAuthenticated", "HomeForm", null);
+		  }
+		}		
+		else if(val=="no")
+		{
+		updateSession("rowId",null);
+		setDataStatus("UserAuthenticated", "HomeForm", null);
+		}
+	}
+	else
+	{
+	updateSession("rowId",null);
+	setDataStatus("UserAuthenticated", "HomeForm", null);
+	}
+	
+}
+else
+{
+updateSession("rowId",null);
+setDataStatus("UserAuthenticated", "HomeForm", null);
+}
+}</event>
+    </Events>
+    <DataMappings />
+  </Picture>
+</basewindow>

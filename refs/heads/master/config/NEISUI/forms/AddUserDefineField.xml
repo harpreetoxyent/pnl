@@ -1,0 +1,105 @@
+<basewindow popup="true" visibleto="All" font="Microsoft Sans Serif" height="228" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="AddUserDefineField" boxalignment="none" backgroundImageLayout="tile" id="AddUserDefineField" title="Add User Define Field" width="345" y="0" draggable="false">
+  <Events>
+    <event name="DefaultValue">textbox10.setVisible(false);</event>
+  </Events>
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="175" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame75" boxalignment="none" backgroundImageLayout="tile" id="frame76" width="334" y="35" draggable="false">
+    <Events />
+    <DataMappings />
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="167" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame76" boxalignment="none" backgroundImageLayout="tile" id="frame77" width="329" y="2" draggable="false">
+      <Events />
+      <DataMappings />
+      <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="#FFFFFF" x="54" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Select Table Name*:" use="" forecolor="#000000" enabled="true" name="label36" textalign="topleft" backgroundImageLayout="tile" id="label42" width="106" y="17" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Combobox visibleto="All" font="Microsoft Sans Serif" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" readonly="true" backColor="#FFFFFF" x="172" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="combobox1" backgroundImageLayout="tile" id="combobox1" draggable="false" width="135" y="17" ismandatory="yes">
+        <Events>
+          <event name="DefaultValue">invokeComponent("dbComponent","dbStructure","com.oxymedical.component.db.DBComponent","dbName=neiswispicdb");
+showComboData("combobox1");
+</event>
+          <event name="OnClick">String table = getComboBoxValue("combobox1");
+addFormValue("combobox1",table);
+invokeComponent("dbComponent","dbStructure","com.oxymedical.component.db.DBComponent","tableName=neiswispicdb#"+table);
+showComboData("combobox2");
+</event>
+        </Events>
+        <DataMappings>
+          <Mapping datafield="ClassName: String" datatable="QBUserDefinedField" datapattern="neiswispicdb" />
+        </DataMappings>
+      </Combobox>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="9" backColor="#FFFFFF" x="57" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Select Field Name*:" use="" forecolor="#000000" enabled="true" name="label41" textalign="topleft" backgroundImageLayout="tile" id="label43" width="101" y="56" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Combobox visibleto="All" font="Microsoft Sans Serif" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="10" readonly="true" backColor="#FFFFFF" x="172" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="combobox2" backgroundImageLayout="tile" id="combobox2" draggable="false" width="135" y="57" ismandatory="yes">
+        <Events>
+          <event name="OnClick">String fieldName = getComboBoxValue("combobox2");
+addFormValue("combobox2",fieldName);</event>
+        </Events>
+        <DataMappings>
+          <Mapping datafield="ClassFieldName: String" datatable="QBUserDefinedField" datapattern="neiswispicdb" />
+        </DataMappings>
+      </Combobox>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="11" backColor="#FFFFFF" x="28" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="User Define Field Name*:" use="" forecolor="#000000" enabled="true" name="label42" textalign="topleft" backgroundImageLayout="tile" id="label44" width="127" y="96" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="12" readonly="false" backColor="#FFFFFF" x="171" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox9" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox9" valuetype="Any" backgroundImageLayout="tile" password="false" draggable="false" width="154" y="91" passwordchar="" ismandatory="yes">
+        <Events />
+        <DataMappings>
+          <Mapping datafield="UserDefinedFieldName: String" datatable="QBUserDefinedField" datapattern="neiswispicdb" />
+        </DataMappings>
+      </TextBox>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="13" backColor="#FFFFFF" x="77" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Save" use="" forecolor="#000000" enabled="true" name="button54" backgroundImageLayout="tile" id="button54" width="100" y="130" draggable="false">
+        <Events>
+          <event name="OnClick">addFormValue("textbox10","0");
+String fieldName = textbox9.text;
+boolean isExist = false;
+if(fieldName !="")
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get qbuserdefinedfield.id, qbuserdefinedfield.UserDefinedFieldName from neiswispicdb.qbuserdefinedfield conditions qbuserdefinedfield.UserDefinedFieldName:=["+fieldName+"] and qbuserdefinedfield.deleted:=[0]");
+isExist = isRecordExist();
+}
+
+if(!isExist)
+{
+String isYes =invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","AddUserDefineField");
+if(isYes=="true")
+{
+msg ="Do you want to add more?";
+boolean isYes = messageWithQuestion(msg);
+if(isYes)
+{
+String[] data = createArray("String", "textbox9");
+clearFieldData(data);
+}
+else
+{
+detachWindow("AddUserDefineField");
+}
+}
+}
+else
+{
+	message("This field name already exist. Please enter another field name.");
+	textbox9.text = "";
+	addFormValue("textbox9","");
+}</event>
+        </Events>
+        <DataMappings />
+      </Button>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="14" backColor="#FFFFFF" x="207" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Cancel" use="" forecolor="#000000" enabled="true" name="button55" backgroundImageLayout="tile" id="button55" width="100" y="130" draggable="false">
+        <Events>
+          <event name="OnClick">detachWindow("AddUserDefineField");</event>
+        </Events>
+        <DataMappings />
+      </Button>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="15" readonly="false" backColor="#FFFFFF" x="309" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox10" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox3" valuetype="Any" backgroundImageLayout="tile" password="false" width="20" y="17" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings>
+          <Mapping datafield="deleted: Char" datatable="QBUserDefinedField" datapattern="neiswispicdb" />
+        </DataMappings>
+      </TextBox>
+    </Frame>
+  </Frame>
+</basewindow>

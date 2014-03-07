@@ -1,0 +1,9 @@
+<applications>
+<application>
+		<ApplicationName>NEISUI</ApplicationName>
+		<serverLibDirectory>/apache-tomcat-7.0.42//lib/ext</serverLibDirectory>
+		<renderOption>ZK</renderOption>
+		<sourcedir>/NEISUI//</sourcedir>
+		<serverDirectory>/apache-tomcat-7.0.42//autodeploy</serverDirectory>
+	</application>
+</applications>

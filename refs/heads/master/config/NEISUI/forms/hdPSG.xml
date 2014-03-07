@@ -1,0 +1,237 @@
+<basewindow popup="false" visibleto="All" font="Microsoft Sans Serif" height="1092" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="hdPSG" boxalignment="none" backgroundImageLayout="tile" id="hdPSG" title="" width="960" y="0" draggable="false">
+  <Events>
+    <event name="DefaultValue">updateSession("rowId",null);
+updateSession("list","list");
+String toDate = getCurrentDate("yyyy-MM-dd");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.id from schedule conditions schedule.AppointmentStartDate:=["+toDate+"] and schedule.ExportToAlice:=["+0+"] and schedule.Cancelled:=["+0+"]");
+retVal=isRecordExist();
+if(retVal==false)
+{
+button98.setDisabled(true);
+}</event>
+    <event name="DefaultValue" internal="true">makeVisible("hdPSG")</event>
+  </Events>
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="1070" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame1425" boxalignment="horizontal" backgroundImageLayout="tile" id="frame1425" width="950" y="5" draggable="false">
+    <Events />
+    <DataMappings />
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="1129" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame5411" boxalignment="none" backgroundImageLayout="tile" id="frame5411" width="175" y="0" draggable="false">
+      <Events />
+      <DataMappings />
+      <PlaceHolder visibleto="All" draggable="false" height="200" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="searchpanel" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P192" backgroundImageLayout="tile" id="placeholder43" width="175" y="0">
+        <Events />
+        <DataMappings />
+        <Item reference="searchpanel">
+          <Events />
+        </Item>
+      </PlaceHolder>
+    </Frame>
+    <Frame visibleto="Acquisition" font="Microsoft Sans Serif" height="1060" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="176" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame1430" boxalignment="none" backgroundImageLayout="tile" id="frame57" width="558" y="10" draggable="false">
+      <Events />
+      <DataMappings />
+      <Grid visibleto="All" font="Microsoft Sans Serif" height="296" netBackColor="White" multiselect="False" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="#FFFFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paginal="paging1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="grid46" use="" forecolor="#000000" enabled="true" align="none" name="grid46" backgroundImageLayout="tile" id="grid46" width="555" y="114" draggable="false">
+        <Events>
+          <event name="DefaultValue">setPagingId("paging1");</event>
+          <event name="OnClick">x=getRowData(0);
+updateSession("rowId",x);
+</event>
+        </Events>
+        <DataMappings />
+        <row visibleto="All" draggable="false" height="30" netBackColor="Coral" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FF7F50" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="row164" use="" forecolor="#000000" enabled="true" name="row164" backgroundImageLayout="tile" id="row164" sizetype="Pixel" width="553" y="0">
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column312" use="" forecolor="#000000" enabled="true" name="column312" backgroundImageLayout="tile" id="column312" sizetype="Pixel" width="73" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="identifier" use="" forecolor="#000000" enabled="true" name="label93" textalign="topleft" backgroundImageLayout="tile" id="label141" width="72" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="1" font="Microsoft Sans Serif" backColor="#00FFFF" x="73" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column392" use="" forecolor="#000000" enabled="true" name="column392" backgroundImageLayout="tile" id="column392" sizetype="Pixel" width="75" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="MRN" use="" forecolor="#000000" enabled="true" name="label94" textalign="topleft" backgroundImageLayout="tile" id="label143" width="73" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="2" font="Microsoft Sans Serif" backColor="#00FFFF" x="148" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column393" use="" forecolor="#000000" enabled="true" name="column393" backgroundImageLayout="tile" id="column393" sizetype="Pixel" width="93" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="first name" use="" forecolor="#000000" enabled="true" name="label95" textalign="topleft" backgroundImageLayout="tile" id="label144" width="83" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="3" font="Microsoft Sans Serif" backColor="#00FFFF" x="241" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column394" use="" forecolor="#000000" enabled="true" name="column394" backgroundImageLayout="tile" id="column394" sizetype="Pixel" width="90" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="last name" use="" forecolor="#000000" enabled="true" name="label96" textalign="topleft" backgroundImageLayout="tile" id="label145" width="76" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="4" font="Microsoft Sans Serif" backColor="#00FFFF" x="331" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column395" use="" forecolor="#000000" enabled="true" name="column395" backgroundImageLayout="tile" id="column395" sizetype="Pixel" width="75" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="appointment start time" use="" forecolor="#000000" enabled="true" name="label97" textalign="topleft" backgroundImageLayout="tile" id="label148" width="74" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="5" font="Microsoft Sans Serif" backColor="#00FFFF" x="406" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column396" use="" forecolor="#000000" enabled="true" name="column396" backgroundImageLayout="tile" id="column396" sizetype="Pixel" width="75" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="appointment end time" use="" forecolor="#000000" enabled="true" name="label139" textalign="topleft" backgroundImageLayout="tile" id="label152" width="66" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="6" font="Microsoft Sans Serif" backColor="#00FFFF" x="481" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column90" use="" forecolor="#000000" enabled="true" name="column90" backgroundImageLayout="tile" id="column90" sizetype="Pixel" width="74" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="Transparent" x="3" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="study type" use="" forecolor="#000000" enabled="true" name="label152" textalign="topleft" backgroundImageLayout="tile" id="label154" width="67" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+        </row>
+      </Grid>
+      <Combobox visibleto="All" draggable="false" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" font="Microsoft Sans Serif" readonly="true" backColor="#FFFFFF" x="11" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text=" " use="" forecolor="#000000" enabled="true" name="combobox9" backgroundImageLayout="tile" id="combobox9" width="110" y="78">
+        <Events>
+          <event name="DefaultValue">invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get StudyType.Id,StudyType.Type from neiswispicdb.StudyType");
+showComboData("combobox9");</event>
+          <event name="OnClick">String toDate = getCurrentDate("yyyy-MM-dd");
+String sid=getComboItemId1("combobox9");
+if(sid!=null)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule  .id,patient.MedicalRecordNumber,patient.FirstName,patient.LastName,schedule.AppointmentStartTime,schedule.AppointmentEndTime,studytype.Type from neiswispicdb.patient,neiswispicdb.schedule joins leftjoin schedule.StudyType:=studytype.id conditions patient.id:=schedule.PatientID and patient.Deleted:=["+0+"] and schedule.Cancelled:=["+0+"] and studytype.id:="+sid+" and schedule.AppointmentStartDate:=["+toDate+"]");
+boolean retVal=displayDataInControl("grid46"); 
+createPagingEvent("grid46");
+if(!retVal)
+{
+removeChildFromList("grid46");
+}
+}</event>
+        </Events>
+        <DataMappings />
+      </Combobox>
+      <Combobox visibleto="Export To Alice" draggable="false" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="9" font="Microsoft Sans Serif" readonly="true" backColor="#FFFFFF" x="211" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="combobox12" backgroundImageLayout="tile" id="combobox12" width="144" y="471">
+        <Events>
+          <event name="DefaultValue">invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get StudyType.Id,StudyType.Type from neiswispicdb.StudyType");
+showComboData("combobox12");</event>
+          <event name="OnClick">String studyId=getComboItemId1("combobox12");
+updateSession("studyId",studyId);</event>
+        </Events>
+        <DataMappings />
+      </Combobox>
+      <Button visibleto="Export To Alice" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="10" backColor="Transparent" x="381" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Update Study Type" use="" forecolor="#000000" enabled="true" name="button97" backgroundImageLayout="tile" id="button97" width="157" y="464" draggable="false">
+        <Events>
+          <event name="OnClick">String toDate = getCurrentDate("yyyy-MM-dd");
+String sid=getSessionData("studyId");
+String rowId=getSessionData("rowId");
+if(rowId!=null)
+{
+if(sid!=null)
+{
+String retValue = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","update neiswispicdb.schedule set StudyType:="+sid+" conditions schedule.id:="+rowId);
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule  .id,patient.MedicalRecordNumber,patient.FirstName,patient.LastName,schedule.AppointmentStartTime,schedule.AppointmentEndTime,studytype.Type from neiswispicdb.patient,neiswispicdb.schedule joins leftjoin schedule.StudyType:=studytype.id conditions patient.id:=schedule.PatientID and patient.Deleted:=["+0+"] and schedule.Cancelled:=["+0+"] and schedule.AppointmentStartDate:=["+toDate+"]");
+displayDataInControl("grid46"); 
+createPagingEvent("grid46");
+combobox12.setText("");
+combobox9.setText("");
+updateSession("studyId",null);
+updateSession("rowId",null);
+updateSession("mrn",null);
+}
+else
+{
+message("Please select studytype"); 
+}
+}
+else
+{
+message("Please select one record"); 
+}</event>
+        </Events>
+        <DataMappings />
+      </Button>
+      <Button visibleto="Export To Alice" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="11" backColor="Transparent" x="208" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Export to Alice" use="" forecolor="#000000" enabled="true" name="button98" backgroundImageLayout="tile" id="button98" width="157" y="518" draggable="false">
+        <Events>
+          <event name="OnClick">String toDate = getCurrentDate("yyyy-MM-dd");
+String createmessage=("Are you sure you want to export patients to Alice Sleepware for "+toDate +"?");
+boolean result=messageWithQuestion(createmessage);
+if(result)
+{
+String retval =invokeComponent("com.oxymedical.component.SleepWareComponent","retrivedata",
+"com.oxymedical.component.sleepwarecomponent.SleepWareComponent","export");
+result=equalsTest(retval,"true");
+if(result)
+{
+message("Patients have been exported to Alice Sleepware");
+ invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.id,patient.MedicalRecordNumber,patient.FirstName,patient.LastName,schedule.AppointmentStartTime,schedule.AppointmentEndTime,studytype.Type from neiswispicdb.patient,neiswispicdb.schedule joins leftjoin schedule.StudyType:=studytype.id conditions patient.id:=schedule.PatientID and patient.Deleted:=["+0+"] and schedule.Cancelled:=["+0+"] and schedule.AppointmentStartDate:=["+toDate+"]");
+boolean retVal=displayDataInControl("grid46"); 
+createPagingEvent("grid46");
+button98.setDisabled(true);
+if(!retVal)
+{
+removeChildFromList("grid46");
+}
+}
+}</event>
+        </Events>
+        <DataMappings />
+      </Button>
+      <Paging visibleto="All" pagesize="25" draggable="false" height="25" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="12" font="Microsoft Sans Serif" backColor="#FFFFFF" x="3" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="paging1" backgroundImageLayout="tile" id="paging1" width="549" y="416">
+        <Events>
+          <event name="DefaultValue">String toDate = getCurrentDate("yyyy-MM-dd");
+paginalSetter("grid46");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule  .id,patient.MedicalRecordNumber,patient.FirstName,patient.LastName,schedule.AppointmentStartTime,schedule.AppointmentEndTime,studytype.Type  from neiswispicdb.patient,neiswispicdb.schedule  joins leftjoin schedule.StudyType:=studytype.id conditions patient.id:=schedule.PatientID and patient.Deleted:=["+0+"] and schedule.Cancelled:=["+0+"] and schedule.AppointmentStartDate:=["+ toDate+"]");
+displayDataInControl("grid46"); 
+createPagingEvent("grid46");
+</event>
+        </Events>
+        <DataMappings />
+      </Paging>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="23" widthtype="Auto" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="13" backColor="#FFFFFF" x="158" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Study Type" use="" forecolor="#000000" enabled="true" name="label154" textalign="topleft" backgroundImageLayout="tile" id="label156" width="90" y="80" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Label visibleto="Export To Alice" font="Microsoft Sans Serif" height="26" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="14" backColor="#FFFFFF" x="42" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Select Study Type" use="" forecolor="#000000" enabled="true" name="label156" textalign="middlecenter" backgroundImageLayout="tile" id="label157" width="160" y="470" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="15" backColor="Transparent" x="280" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Show All" use="" forecolor="#000000" enabled="true" name="button101" backgroundImageLayout="tile" id="button101" width="115" y="74" draggable="false">
+        <Events>
+          <event name="OnClick">invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.id,patient.MedicalRecordNumber,patient.FirstName,patient.LastName,schedule.AppointmentStartTime,schedule.AppointmentEndTime,studytype.Type from neiswispicdb.patient,neiswispicdb.schedule joins leftjoin schedule.StudyType:=studytype.id conditions patient.id:=schedule.PatientID and patient.Deleted:=["+0+"] and schedule.Cancelled:=["+0+"] and schedule.AppointmentStartDate:=["+toDate+"]");
+boolean retVal=displayDataInControl("grid46"); 
+createPagingEvent("grid46");
+combobox9.setText("");
+if(!retVal)
+{
+removeChildFromList("grid46");
+}
+</event>
+        </Events>
+        <DataMappings />
+      </Button>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="16" backColor="#FFFFFF" x="142" fontsize="11.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="APPOINTMENTS FOR CLINIC" use="" forecolor="#000000" enabled="true" name="label161" textalign="middlecenter" backgroundImageLayout="tile" id="label159" width="323" y="10" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+    </Frame>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="1060" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="735" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="5" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="right" name="frame1473" boxalignment="none" backgroundImageLayout="tile" id="frame1473" width="203" y="0" draggable="false">
+      <Events />
+      <DataMappings />
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="703" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="5" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="left" name="frame1739" boxalignment="none" backgroundImageLayout="tile" id="frame102" width="203" y="0" draggable="false">
+        <Events />
+        <DataMappings />
+        <PlaceHolder visibleto="All" draggable="false" height="55" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="Logo" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P87" backgroundImageLayout="tile" id="placeholder44" width="203" y="0">
+          <Events />
+          <DataMappings />
+          <Item reference="Logo">
+            <Events />
+          </Item>
+        </PlaceHolder>
+        <PlaceHolder visibleto="All" draggable="false" height="200" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="CalendarPanel" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P88" backgroundImageLayout="tile" id="placeholder45" width="203" y="56">
+          <Events />
+          <DataMappings />
+          <Item reference="CalendarPanel">
+            <Events />
+          </Item>
+        </PlaceHolder>
+      </Frame>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Control" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="27" backColor="#ECE9D8" x="40" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="sign out" use="" forecolor="#316AC5" enabled="true" name="button3161" backgroundImageLayout="tile" id="button3161" width="75" y="830" draggable="false">
+        <Events>
+          <event name="OnClick">String retValue = logOut("login");
+updateSession("login", null);</event>
+        </Events>
+        <DataMappings />
+      </Button>
+    </Frame>
+  </Frame>
+</basewindow>

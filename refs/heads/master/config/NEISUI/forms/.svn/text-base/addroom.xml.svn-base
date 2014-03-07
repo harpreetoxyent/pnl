@@ -1,0 +1,358 @@
+<basewindow popup="false" visibleto="All" font="Microsoft Sans Serif" height="1094" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="addroom" boxalignment="none" backgroundImageLayout="tile" id="addroom" title="" width="960" y="0" draggable="false">
+  <Events>
+    <event name="DefaultValue">textbox46.setVisible(false);
+textbox49.setVisible(false);
+textbox52.setVisible(false);
+textbox190.setVisible(false);
+updateSession("list","list");
+String modes=getSessionData("editroom");
+String editRoom=getSessionData("editroom");
+boolean resultRoom=false;
+if(editRoom!=null)
+{
+result=equalsTest(editRoom,"true");
+if(result)
+{
+button16.setVisible(false);
+button8.setVisible(false);
+button9.setVisible(false);
+button189.setVisible(false);
+label189.setValue("Please select Room Type you wish to edit");
+}
+else
+{
+button16.setVisible(false);
+button9.setVisible(false);
+button189.setVisible(false);
+label189.setValue("Please select Room Type ");
+}
+}
+else
+{
+label189.setValue("Select Room Type to add a new room");
+button8.setVisible(false);
+}</event>
+    <event name="DefaultValue" internal="true">makeVisible("addroom")</event>
+  </Events>
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="1070" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame1949" boxalignment="none" backgroundImageLayout="tile" id="frame1949" width="950" y="14" draggable="false">
+    <Events />
+    <DataMappings />
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="1063" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame1205" boxalignment="none" backgroundImageLayout="tile" id="frame1205" width="175" y="0" draggable="false">
+      <Events />
+      <DataMappings />
+      <PlaceHolder visibleto="All" draggable="false" height="200" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="searchpanel" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P152" backgroundImageLayout="tile" id="placeholder45" width="175" y="0">
+        <Events />
+        <DataMappings />
+        <Item reference="searchpanel">
+          <Events />
+        </Item>
+      </PlaceHolder>
+    </Frame>
+    <Frame visibleto="AddRoom,Edit/ModifyRoom,DeleteRoom" font="Microsoft Sans Serif" height="1060" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="176" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame1407" boxalignment="none" backgroundImageLayout="tile" id="frame1407" width="572" y="10" draggable="false">
+      <Events>
+        <event name="DefaultValue">frame1407.setStyle("overflow:auto;");</event>
+      </Events>
+      <DataMappings />
+      <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="#FFFFFF" x="374" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Room Type:" use="" forecolor="#000000" enabled="true" name="label157" textalign="topleft" backgroundImageLayout="tile" id="label188" width="77" y="11" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Combobox visibleto="All" draggable="false" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" font="Microsoft Sans Serif" readonly="true" backColor="#FFFFFF" x="453" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="combobox1" use="" forecolor="#000000" enabled="true" name="combobox22" backgroundImageLayout="tile" id="combobox25" width="96" y="7">
+        <Events>
+          <event name="DefaultValue">invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get roomtype.ID,roomtype.roomtype from neiswispicdb.roomtype conditions roomtype.deleted:=[0] ");
+showComboData("combobox25");</event>
+          <event name="OnClick">roomType=getComboItemId1("combobox25");
+updateSession("roomType",roomType);
+String editRoom=getSessionData("editroom");
+removeRooms(frame1407);
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get room.id,room.RoomDescription,room.roomtype from neiswispicdb.room conditions room.deleted:=["+0+"] and room.roomtype:="+roomType);
+resultRoom=createRooms("frame1407");
+if(editRoom!=null)
+{
+result=equalsTest(editRoom,"true");
+if(result)
+{
+if(!resultRoom)
+{
+label189.setValue("Select room you wish to edit");
+}
+else
+{
+label189.setValue("Select room you wish to edit");
+}
+}
+else
+{
+result=equalsTest(editRoom,"false");
+if(result)
+{
+if(!resultRoom)
+{
+label189.setValue("Select room you wish to delete");
+}
+else
+{
+label189.setValue("Select room you wish to delete");
+}
+}
+}
+}</event>
+        </Events>
+        <DataMappings>
+          <Mapping datafield="roomtype: Int16" datatable="room" datapattern="neiswispicdb" />
+        </DataMappings>
+      </Combobox>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="10" readonly="false" backColor="#FFFFFF" x="4" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox46" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox47" valuetype="Any" backgroundImageLayout="tile" password="false" width="100" y="78" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings>
+          <Mapping datafield="RoomDescription: String" datatable="room" datapattern="neiswispicdb" />
+        </DataMappings>
+      </TextBox>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="11" readonly="false" backColor="#FFFFFF" x="115" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox49" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="0" use="" forecolor="#000000" enabled="true" name="textbox49" valuetype="Any" backgroundImageLayout="tile" password="false" width="100" y="75" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings>
+          <Mapping datafield="deleted: String" datatable="room" datapattern="neiswispicdb" />
+        </DataMappings>
+      </TextBox>
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="37" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="13" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="center" name="frame129" boxalignment="none" backgroundImageLayout="tile" id="frame129" width="565" y="43" draggable="false">
+        <Events />
+        <DataMappings />
+        <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: SizeAll]" margintop="5" tabindex="9" backColor="Transparent" x="0" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="5" marginbottom="5" text="Add Room" use="" forecolor="#316AC5" enabled="true" name="button104" backgroundImageLayout="tile" id="button104" width="98" y="0" draggable="false">
+          <Events>
+            <event name="OnClick">String roomType=getSessionData("roomType");
+if(roomType!=null)
+{
+updateSession("parent","frame1407");
+updateSession("parentForm","addroom");
+updateSession("editroom",null);
+createPopUp("RoomDescription");
+String rid=getSessionData("roomid");
+if(rid!=null)
+{
+setFormPatternId("addroom");
+saveRoomData("textbox46","textbox49","combobox25",rid,roomType,"textbox190","textbox52");
+updateSession("roomid",null);
+}
+updateSession("editroom",modes);
+removeRooms(frame1407);
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get room.id,room.RoomDescription,room.roomtype from neiswispicdb.room conditions room.deleted:=["+0+"] and room.roomtype:="+roomType);
+resultRoom=createRooms("frame1407");
+}
+else
+{
+message("Please select room type.");
+}
+updateSession("popup", null);</event>
+          </Events>
+          <DataMappings />
+        </Button>
+        <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: SizeAll]" margintop="5" tabindex="14" backColor="Transparent" x="210" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="5" marginbottom="5" text="Edit Room" use="" forecolor="#316AC5" enabled="true" name="button113" backgroundImageLayout="tile" id="button113" width="100" y="1" draggable="false">
+          <Events>
+            <event name="OnClick">updateSession("parent","frame1407");
+updateSession("parentForm","addroom");
+objects=getSelectedRooms(frame1407);
+String rowId=getSelectedId(objects);
+String roomType=getSessionData("roomType");
+if(rowId!=null)
+{
+updateSession("rowId",rowId);
+String roomId=getRoomId(rowId);
+updateSession("roomId", roomId);
+updateSession("editroom","true");
+createPopUp("RoomDescription");
+String typeRoom=getSessionData("typeRoom");
+String popup=getSessionData("popup");
+if(popup==null)
+{
+setFormPatternId("addroom");
+saveRoomData("textbox46","textbox49","combobox25",rowId,typeRoom,"textbox190","textbox52");
+message("Your room has been updated.");
+}
+updateSession("editroom",modes);
+removeRooms(frame1407);
+if(roomType!=null)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get room.id,room.RoomDescription,room.roomtype from neiswispicdb.room conditions room.deleted:=["+0+"] and room.roomtype:="+roomType);
+}
+else
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get room.id,room.RoomDescription,room.roomtype from neiswispicdb.room,neiswispicdb.roomtype conditions room.deleted:=["+0+"] and  roomtype.deleted:=[0] and room.roomtype:=roomtype.id");
+}
+resultRoom=createRooms("frame1407");
+updateSession("rowId", null);
+updateSession("roomId", null);
+updateSession("popup", null);
+updateSession("typeRoom", null);
+}
+else
+{
+updateSession("rowId", null);
+updateSession("roomId", null);
+updateSession("typeRoom", null);
+message("Please select only one room.");
+}</event>
+          </Events>
+          <DataMappings />
+        </Button>
+        <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: SizeAll]" margintop="5" tabindex="15" backColor="Transparent" x="0" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="5" marginbottom="5" text="Delete Room" use="" forecolor="#316AC5" enabled="true" name="button116" backgroundImageLayout="tile" id="button116" width="109" y="0" draggable="false">
+          <Events>
+            <event name="OnClick">objects=getSelectedRooms(frame1407);
+boolean retVal=checkListSizeValid(objects,0);
+if(retVal)
+{
+String dMessage="Are you sure you want to delete these rooms?";
+boolean retVal=messageWithQuestion(dMessage);
+if(retVal)
+{
+	boolean isDeleted=deleteRoom(objects,"frame1407");
+		if(isDeleted)
+		{
+			dMessage=("Rooms has been deleted.");
+			message(dMessage);
+			removeRooms(frame1407);
+			String roomType=getSessionData("roomType");
+			if(roomType!=null)
+			{
+			invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get room.id,room.RoomDescription,room.roomtype from neiswispicdb.room conditions room.deleted:=["+0+"] and room.roomtype:="+roomType );
+			}
+			else
+			{
+			invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get room.id,room.RoomDescription,room.roomtype from neiswispicdb.room,neiswispicdb.roomtype conditions room.deleted:=["+0+"] and  roomtype.deleted:=[0] and room.roomtype:=roomtype.id");
+			}
+			resultRoom=createRooms("frame1407");
+			updateSession("rowId", null);
+		}
+}
+else
+{
+clearRoomList("frame1407");
+}
+}
+else
+{
+message("Please select rooms.");
+}</event>
+          </Events>
+          <DataMappings />
+        </Button>
+        <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: SizeAll]" margintop="5" tabindex="16" backColor="Transparent" x="163" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="5" marginbottom="5" text="Add New Room Category" use="" forecolor="#316AC5" enabled="true" name="button16" backgroundImageLayout="tile" id="button16" width="176" y="0" draggable="false">
+          <Events>
+            <event name="OnClick">createPopUp("RoomCategory");</event>
+          </Events>
+          <DataMappings />
+        </Button>
+        <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="5" tabindex="17" backColor="Transparent" x="149" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="5" marginbottom="5" text="Delete all rooms" use="" forecolor="#316AC5" enabled="true" name="button159" backgroundImageLayout="tile" id="button8" width="118" y="0" draggable="false">
+          <Events>
+            <event name="OnClick">String roomType=getSessionData("roomType");
+if(resultRoom)
+{
+String dMessage="Are you sure you want to delete all rooms?";
+boolean retVal=messageWithQuestion(dMessage);
+if(retVal)
+{
+String messageDisplay=deleteAllRooms("frame1407");
+message(messageDisplay);
+}
+}
+else
+{
+message("No rooms present.");
+}</event>
+          </Events>
+          <DataMappings />
+        </Button>
+        <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: SizeAll]" margintop="5" tabindex="13" backColor="Transparent" x="110" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="5" marginbottom="5" text="Go Back" use="" forecolor="#316AC5" enabled="true" name="button111" backgroundImageLayout="tile" id="button111" width="81" y="0" draggable="false">
+          <Events>
+            <event name="OnClick">updateSession("editroom", null);
+updateSession("roomType",null);
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","HomeForm");
+</event>
+          </Events>
+          <DataMappings />
+        </Button>
+        <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="5" tabindex="21" backColor="Transparent" x="355" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="5" marginbottom="5" text="Edit Room Category" use="" forecolor="#316AC5" enabled="true" name="button187" backgroundImageLayout="tile" id="button9" width="138" y="2" draggable="false">
+          <Events>
+            <event name="OnClick">updateSession("edit","true");
+createPopUp("EditRoomCategory");
+updateSession("edit","null");</event>
+          </Events>
+          <DataMappings />
+        </Button>
+        <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="5" tabindex="22" backColor="Transparent" x="397" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="5" marginbottom="5" text="Delete Room Category" use="" forecolor="#316AC5" enabled="true" name="button189" backgroundImageLayout="tile" id="button189" width="168" y="7" draggable="false">
+          <Events>
+            <event name="OnClick">updateSession("edit","false");
+createPopUp("EditRoomCategory");
+updateSession("edit","null");</event>
+          </Events>
+          <DataMappings />
+        </Button>
+      </Frame>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="14" readonly="false" backColor="#FFFFFF" x="230" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox52" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox52" valuetype="Any" backgroundImageLayout="tile" password="false" width="100" y="74" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings>
+          <Mapping datafield="id: Int16" datatable="room" datapattern="neiswispicdb" />
+          <Mapping datafield="id: Int16" datatable="room" datapattern="neiswispicdb" />
+        </DataMappings>
+      </TextBox>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="28" widthtype="Auto" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="15" backColor="Transparent" x="21" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="label166" textalign="topleft" backgroundImageLayout="tile" id="label189" width="187" y="11" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="16" backColor="Transparent" x="228" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="View all Rooms" use="" forecolor="#316AC5" enabled="true" name="button87" backgroundImageLayout="tile" id="button87" width="141" y="6" draggable="false">
+        <Events>
+          <event name="OnClick">removeRooms(frame1407);
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get room.id,room.RoomDescription,room.roomtype from neiswispicdb.room,neiswispicdb.roomtype conditions room.deleted:=["+0+"] and  roomtype.deleted:=[0] and room.roomtype:=roomtype.id");
+resultRoom=createRooms("frame1407");
+if(resultRoom)
+{
+updateSession("roomType",null);
+combobox25.text="";
+}
+else
+{
+message("No rooms present in system.");
+}</event>
+        </Events>
+        <DataMappings />
+      </Button>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="17" readonly="false" backColor="#FFFFFF" x="352" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox190" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox190" valuetype="Any" backgroundImageLayout="tile" password="false" width="100" y="84" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings>
+          <Mapping datafield="basestation: String" datatable="room" datapattern="neiswispicdb" />
+          <Mapping datafield="basestation: String" datatable="room" datapattern="neiswispicdb" />
+          <Mapping datafield="basestation: String" datatable="room" datapattern="neiswispicdb" />
+          <Mapping datafield="basestation: String" datatable="room" datapattern="neiswispicdb" />
+        </DataMappings>
+      </TextBox>
+    </Frame>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="1060" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="748" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="5" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="right" name="frame1070" boxalignment="none" backgroundImageLayout="tile" id="frame1070" width="203" y="0" draggable="false">
+      <Events />
+      <DataMappings />
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="683" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="5" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="left" name="frame1179" boxalignment="none" backgroundImageLayout="tile" id="frame1179" width="203" y="0" draggable="false">
+        <Events />
+        <DataMappings />
+        <PlaceHolder visibleto="All" draggable="false" height="55" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="Logo" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P67" backgroundImageLayout="tile" id="placeholder46" width="203" y="0">
+          <Events />
+          <DataMappings />
+          <Item reference="Logo">
+            <Events />
+          </Item>
+        </PlaceHolder>
+        <PlaceHolder visibleto="All" draggable="false" height="200" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="CalendarPanel" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P88" backgroundImageLayout="tile" id="placeholder47" width="203" y="56">
+          <Events />
+          <DataMappings />
+          <Item reference="CalendarPanel">
+            <Events />
+          </Item>
+        </PlaceHolder>
+      </Frame>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Control" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="27" backColor="#ECE9D8" x="35" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="sign out" use="" forecolor="#316AC5" enabled="true" name="button381" backgroundImageLayout="tile" id="button381" width="75" y="730" draggable="false">
+        <Events>
+          <event name="OnClick">String retValue = logOut("login");
+updateSession("login", null);</event>
+        </Events>
+        <DataMappings />
+      </Button>
+    </Frame>
+  </Frame>
+</basewindow>

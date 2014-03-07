@@ -1,0 +1,898 @@
+<?xml version="1.0" standalone="yes"?>
+<useradmin>
+  <xs:schema id="useradmin" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="useradmin" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Account_" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="accountId" msdata:Caption="200" type="xs:string" />
+                <xs:element name="companyId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="userId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="userName" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="createDate" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="modifiedDate_x0020_" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="parentAccountId_x0020_" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="name" msdata:Caption="100" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Address" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="addressId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="companyId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="userId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="userName" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="street1" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="className" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="classPK" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="city" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="zip" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="regionId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="countryId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Company" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="companyId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="homeURL" msdata:Caption="100" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Contact_" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="contactId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="companyId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="userId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="userName" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="createDate" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="modifiedDate" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="accountId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="firstName" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="middleName" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="lastName" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="prefixId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="suffixId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="male" type="xs:short" minOccurs="0" />
+                <xs:element name="birthday" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="jobTitle" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="employeeNumber" msdata:Caption="50" type="xs:string" minOccurs="0" />
+                <xs:element name="category" msdata:Caption="50" type="xs:string" minOccurs="0" />
+                <xs:element name="Address1" msdata:Caption="50" type="xs:string" minOccurs="0" />
+                <xs:element name="Address2" msdata:Caption="50" type="xs:string" minOccurs="0" />
+                <xs:element name="city" msdata:Caption="100" type="xs:short" minOccurs="0" />
+                <xs:element name="zipCode" type="xs:short" minOccurs="0" />
+                <xs:element name="state" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="telephoneNumber" type="xs:short" minOccurs="0" />
+                <xs:element name="universalProviderIdentificationNumber" msdata:Caption="50" type="xs:string" minOccurs="0" />
+                <xs:element name="nationalProvidedIdentificationNumber" msdata:Caption="50" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Counter" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="name" msdata:Caption="100" type="xs:string" />
+                <xs:element name="currentId" type="xs:short" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Country" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="countryId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="name" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="active_" type="xs:short" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="EmailAddress" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="emailAddressId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="companyId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="userId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="userName" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="className" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="classPK" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="address" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="typeId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="primary_" type="xs:short" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Group_" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="groupId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="companyId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="className" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="classPK" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="name" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="description" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="type_" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="parentGroupId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Groups_Orgs" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="groupId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="organizationId" msdata:Caption="100" type="xs:string" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Groups_Permissions" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="groupId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="permissionId" msdata:Caption="100" type="xs:string" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Groups_Roles" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="groupId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="roleId" msdata:Caption="100" type="xs:string" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Groups_UserGroups" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="groupId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="userGroupId" msdata:Caption="100" type="xs:string" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Layout" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="layoutId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="ownerId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="companyId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="parentLayoutId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="name" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="title" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="type_" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="typeSettings" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="hidden_" type="xs:short" minOccurs="0" />
+                <xs:element name="friendlyURL" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="themeId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="colorSchemeId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="priority" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="LayoutSet" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="ownerId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="companyId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="groupId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="userId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="privateLayout" type="xs:short" minOccurs="0" />
+                <xs:element name="themeId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="colorSchemeId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="pageCount" type="xs:int" minOccurs="0" />
+                <xs:element name="virtualHost" msdata:Caption="100" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Organization_" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="organizationId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="companyId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="parentOrganizationId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="name" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="regionId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="countryId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="statusId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="comments" msdata:Caption="100" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="OrgGroupPermission" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="organizationId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="groupId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="permissionId" msdata:Caption="100" type="xs:string" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="OrgGroupRole" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="organizationId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="groupId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="roleId" msdata:Caption="100" type="xs:string" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="PasswordTracker" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="passwordTrackerId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="userId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="createDate" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="password_" msdata:Caption="100" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Permission_" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="permissionId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="companyId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="actionId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="resourceId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Region" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="regionId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="countryId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="regionCode" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="name" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="active_" type="xs:short" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Role_" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="roleId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="companyId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="name" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="className" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="classPK" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="defaultURL" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="description" msdata:Caption="100" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Roles_Permissions" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="roleId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="permissionId" msdata:Caption="100" type="xs:string" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="User_" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="userId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="companyId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="contactId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="password_" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="emailAddress" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="languageId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="greeting" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="comments" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="active_" type="xs:short" minOccurs="0" />
+                <xs:element name="inActiveDate" type="xs:dateTime" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="UserGroup" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="userGroupId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="companyId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="parentUserGroupId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="name" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="description" msdata:Caption="100" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="UserIdMapper" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="userId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="type_" msdata:Caption="100" type="xs:string" />
+                <xs:element name="externalUserId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="description" msdata:Caption="100" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Users_Groups" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="userId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="groupId" msdata:Caption="100" type="xs:string" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Users_Orgs" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="userId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="organizationId" msdata:Caption="100" type="xs:string" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Users_Permissions" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="userId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="permissionId" msdata:Caption="100" type="xs:string" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Users_Roles" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="userId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="roleId" msdata:Caption="100" type="xs:string" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Users_UserGroups" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="userId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="userGroupId" msdata:Caption="100" type="xs:string" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="UserPatterns" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="userPatternId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="companyId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="comments" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="defaultFormPattern" msdata:Caption="100" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Component" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="componentId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="compName" msdata:Caption="100" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Container" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="containerId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="containerTypeId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Container_Type" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="containerTypeId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="containerTypeName" msdata:Caption="100" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Cont_Comp" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="contCompId" msdata:AutoIncrement="true" type="xs:int" />
+                <xs:element name="containerId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="componentId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Company_Cont" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="userContId" msdata:AutoIncrement="true" type="xs:int" />
+                <xs:element name="companyId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="containerId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Rights_" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="rightId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="name" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="companyId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="languageproperties" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="defaultURL" msdata:Caption="100" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Role_Rights" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="rightId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="roleId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="companyId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="userPattern_Roles" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="userPatternId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="roleId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="companyId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="userPattern_Users" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="userPatternId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="userId" msdata:Caption="100" type="xs:string" />
+                <xs:element name="companyId" msdata:Caption="100" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="userfields" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="fieldId" msdata:Caption="50" type="xs:string" />
+                <xs:element name="fieldName" msdata:Caption="50" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="userfieldsforusertype" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:AutoIncrement="true" type="xs:short" />
+                <xs:element name="userTypeId" msdata:Caption="50" type="xs:string" minOccurs="0" />
+                <xs:element name="userFieldId" msdata:Caption="50" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="logindetails" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:AutoIncrement="true" type="xs:short" />
+                <xs:element name="userid" msdata:Caption="50" type="xs:string" minOccurs="0" />
+                <xs:element name="loginDate" msdata:Caption="50" type="xs:string" minOccurs="0" />
+                <xs:element name="logintime" msdata:Caption="50" type="xs:string" minOccurs="0" />
+                <xs:element name="ipaddress" msdata:Caption="50" type="xs:string" minOccurs="0" />
+                <xs:element name="logouttime" msdata:Caption="50" type="xs:string" minOccurs="0" />
+                <xs:element name="logout" msdata:Caption="1" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:length value="1" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="preffix" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="prefixId" msdata:Caption="50" type="xs:string" />
+                <xs:element name="prefixName" msdata:Caption="50" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="suffix" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="suffixId" msdata:Caption="50" type="xs:string" />
+                <xs:element name="suffixName" msdata:Caption="50" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="active" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:Caption="50" type="xs:string" />
+                <xs:element name="value" msdata:Caption="50" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="usersignature" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:AutoIncrement="true" type="xs:int" />
+                <xs:element name="userid" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="imagetype" msdata:Caption="4" type="xs:string" minOccurs="0" />
+                <xs:element name="imagedata" type="xs:string" minOccurs="0" />
+                <xs:element name="imagetagno" msdata:Caption="8" type="xs:int" minOccurs="0" />
+                <xs:element name="imageunid" msdata:Caption="32" type="xs:string" minOccurs="0" />
+                <xs:element name="imagewidth" msdata:Caption="11" type="xs:short" minOccurs="0" />
+                <xs:element name="imageheight" msdata:Caption="11" type="xs:short" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="admincity" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:AutoIncrement="true" type="xs:short" />
+                <xs:element name="cityname" msdata:Caption="100" type="xs:string" minOccurs="0" />
+                <xs:element name="stateid" msdata:Caption="50" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Account_" />
+        <xs:field xpath="accountId" />
+      </xs:unique>
+      <xs:unique name="Address_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Address" />
+        <xs:field xpath="addressId" />
+      </xs:unique>
+      <xs:unique name="Company_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Company" />
+        <xs:field xpath="companyId" />
+      </xs:unique>
+      <xs:unique name="Counter_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Counter" />
+        <xs:field xpath="name" />
+      </xs:unique>
+      <xs:unique name="Country_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Country" />
+        <xs:field xpath="countryId" />
+      </xs:unique>
+      <xs:unique name="EmailAddress_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//EmailAddress" />
+        <xs:field xpath="emailAddressId" />
+      </xs:unique>
+      <xs:unique name="Group__Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Group_" />
+        <xs:field xpath="groupId" />
+      </xs:unique>
+      <xs:unique name="Groups_Orgs_Constraint1" msdata:ConstraintName="Constraint1">
+        <xs:selector xpath=".//Groups_Orgs" />
+        <xs:field xpath="groupId" />
+      </xs:unique>
+      <xs:unique name="Constraint2">
+        <xs:selector xpath=".//Groups_Orgs" />
+        <xs:field xpath="organizationId" />
+      </xs:unique>
+      <xs:unique name="Constraint3" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Groups_Orgs" />
+        <xs:field xpath="groupId" />
+        <xs:field xpath="organizationId" />
+      </xs:unique>
+      <xs:unique name="Groups_Permissions_Constraint1" msdata:ConstraintName="Constraint1">
+        <xs:selector xpath=".//Groups_Permissions" />
+        <xs:field xpath="groupId" />
+      </xs:unique>
+      <xs:unique name="Groups_Permissions_Constraint2" msdata:ConstraintName="Constraint2">
+        <xs:selector xpath=".//Groups_Permissions" />
+        <xs:field xpath="permissionId" />
+      </xs:unique>
+      <xs:unique name="Groups_Permissions_Constraint3" msdata:ConstraintName="Constraint3" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Groups_Permissions" />
+        <xs:field xpath="groupId" />
+        <xs:field xpath="permissionId" />
+      </xs:unique>
+      <xs:unique name="Groups_Roles_Constraint1" msdata:ConstraintName="Constraint1">
+        <xs:selector xpath=".//Groups_Roles" />
+        <xs:field xpath="groupId" />
+      </xs:unique>
+      <xs:unique name="Groups_Roles_Constraint2" msdata:ConstraintName="Constraint2">
+        <xs:selector xpath=".//Groups_Roles" />
+        <xs:field xpath="roleId" />
+      </xs:unique>
+      <xs:unique name="Groups_Roles_Constraint3" msdata:ConstraintName="Constraint3" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Groups_Roles" />
+        <xs:field xpath="groupId" />
+        <xs:field xpath="roleId" />
+      </xs:unique>
+      <xs:unique name="Groups_UserGroups_Constraint1" msdata:ConstraintName="Constraint1">
+        <xs:selector xpath=".//Groups_UserGroups" />
+        <xs:field xpath="groupId" />
+      </xs:unique>
+      <xs:unique name="Groups_UserGroups_Constraint2" msdata:ConstraintName="Constraint2">
+        <xs:selector xpath=".//Groups_UserGroups" />
+        <xs:field xpath="userGroupId" />
+      </xs:unique>
+      <xs:unique name="Groups_UserGroups_Constraint3" msdata:ConstraintName="Constraint3" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Groups_UserGroups" />
+        <xs:field xpath="groupId" />
+        <xs:field xpath="userGroupId" />
+      </xs:unique>
+      <xs:unique name="Layout_Constraint1" msdata:ConstraintName="Constraint1">
+        <xs:selector xpath=".//Layout" />
+        <xs:field xpath="layoutId" />
+      </xs:unique>
+      <xs:unique name="Layout_Constraint2" msdata:ConstraintName="Constraint2">
+        <xs:selector xpath=".//Layout" />
+        <xs:field xpath="ownerId" />
+      </xs:unique>
+      <xs:unique name="Layout_Constraint3" msdata:ConstraintName="Constraint3" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Layout" />
+        <xs:field xpath="layoutId" />
+        <xs:field xpath="ownerId" />
+      </xs:unique>
+      <xs:unique name="LayoutSet_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//LayoutSet" />
+        <xs:field xpath="ownerId" />
+      </xs:unique>
+      <xs:unique name="Organization__Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Organization_" />
+        <xs:field xpath="organizationId" />
+      </xs:unique>
+      <xs:unique name="OrgGroupPermission_Constraint1" msdata:ConstraintName="Constraint1">
+        <xs:selector xpath=".//OrgGroupPermission" />
+        <xs:field xpath="organizationId" />
+      </xs:unique>
+      <xs:unique name="OrgGroupPermission_Constraint2" msdata:ConstraintName="Constraint2">
+        <xs:selector xpath=".//OrgGroupPermission" />
+        <xs:field xpath="groupId" />
+      </xs:unique>
+      <xs:unique name="OrgGroupPermission_Constraint3" msdata:ConstraintName="Constraint3">
+        <xs:selector xpath=".//OrgGroupPermission" />
+        <xs:field xpath="permissionId" />
+      </xs:unique>
+      <xs:unique name="Constraint4" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//OrgGroupPermission" />
+        <xs:field xpath="organizationId" />
+        <xs:field xpath="groupId" />
+        <xs:field xpath="permissionId" />
+      </xs:unique>
+      <xs:unique name="OrgGroupRole_Constraint1" msdata:ConstraintName="Constraint1">
+        <xs:selector xpath=".//OrgGroupRole" />
+        <xs:field xpath="organizationId" />
+      </xs:unique>
+      <xs:unique name="OrgGroupRole_Constraint2" msdata:ConstraintName="Constraint2">
+        <xs:selector xpath=".//OrgGroupRole" />
+        <xs:field xpath="groupId" />
+      </xs:unique>
+      <xs:unique name="OrgGroupRole_Constraint3" msdata:ConstraintName="Constraint3">
+        <xs:selector xpath=".//OrgGroupRole" />
+        <xs:field xpath="roleId" />
+      </xs:unique>
+      <xs:unique name="OrgGroupRole_Constraint4" msdata:ConstraintName="Constraint4" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//OrgGroupRole" />
+        <xs:field xpath="organizationId" />
+        <xs:field xpath="groupId" />
+        <xs:field xpath="roleId" />
+      </xs:unique>
+      <xs:unique name="PasswordTracker_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//PasswordTracker" />
+        <xs:field xpath="passwordTrackerId" />
+      </xs:unique>
+      <xs:unique name="Permission__Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Permission_" />
+        <xs:field xpath="permissionId" />
+      </xs:unique>
+      <xs:unique name="Region_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Region" />
+        <xs:field xpath="regionId" />
+      </xs:unique>
+      <xs:unique name="Role__Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Role_" />
+        <xs:field xpath="roleId" />
+      </xs:unique>
+      <xs:unique name="Roles_Permissions_Constraint1" msdata:ConstraintName="Constraint1">
+        <xs:selector xpath=".//Roles_Permissions" />
+        <xs:field xpath="roleId" />
+      </xs:unique>
+      <xs:unique name="Roles_Permissions_Constraint2" msdata:ConstraintName="Constraint2">
+        <xs:selector xpath=".//Roles_Permissions" />
+        <xs:field xpath="permissionId" />
+      </xs:unique>
+      <xs:unique name="Roles_Permissions_Constraint3" msdata:ConstraintName="Constraint3" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Roles_Permissions" />
+        <xs:field xpath="roleId" />
+        <xs:field xpath="permissionId" />
+      </xs:unique>
+      <xs:unique name="User__Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//User_" />
+        <xs:field xpath="userId" />
+      </xs:unique>
+      <xs:unique name="UserGroup_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//UserGroup" />
+        <xs:field xpath="userGroupId" />
+      </xs:unique>
+      <xs:unique name="UserIdMapper_Constraint1" msdata:ConstraintName="Constraint1">
+        <xs:selector xpath=".//UserIdMapper" />
+        <xs:field xpath="userId" />
+      </xs:unique>
+      <xs:unique name="UserIdMapper_Constraint2" msdata:ConstraintName="Constraint2">
+        <xs:selector xpath=".//UserIdMapper" />
+        <xs:field xpath="type_" />
+      </xs:unique>
+      <xs:unique name="UserIdMapper_Constraint3" msdata:ConstraintName="Constraint3" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//UserIdMapper" />
+        <xs:field xpath="userId" />
+        <xs:field xpath="type_" />
+      </xs:unique>
+      <xs:unique name="Users_Groups_Constraint1" msdata:ConstraintName="Constraint1">
+        <xs:selector xpath=".//Users_Groups" />
+        <xs:field xpath="userId" />
+      </xs:unique>
+      <xs:unique name="Users_Groups_Constraint2" msdata:ConstraintName="Constraint2">
+        <xs:selector xpath=".//Users_Groups" />
+        <xs:field xpath="groupId" />
+      </xs:unique>
+      <xs:unique name="Users_Groups_Constraint3" msdata:ConstraintName="Constraint3" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Users_Groups" />
+        <xs:field xpath="userId" />
+        <xs:field xpath="groupId" />
+      </xs:unique>
+      <xs:unique name="Users_Orgs_Constraint1" msdata:ConstraintName="Constraint1">
+        <xs:selector xpath=".//Users_Orgs" />
+        <xs:field xpath="userId" />
+      </xs:unique>
+      <xs:unique name="Users_Orgs_Constraint2" msdata:ConstraintName="Constraint2">
+        <xs:selector xpath=".//Users_Orgs" />
+        <xs:field xpath="organizationId" />
+      </xs:unique>
+      <xs:unique name="Users_Orgs_Constraint3" msdata:ConstraintName="Constraint3" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Users_Orgs" />
+        <xs:field xpath="userId" />
+        <xs:field xpath="organizationId" />
+      </xs:unique>
+      <xs:unique name="Users_Permissions_Constraint1" msdata:ConstraintName="Constraint1">
+        <xs:selector xpath=".//Users_Permissions" />
+        <xs:field xpath="userId" />
+      </xs:unique>
+      <xs:unique name="Users_Permissions_Constraint2" msdata:ConstraintName="Constraint2">
+        <xs:selector xpath=".//Users_Permissions" />
+        <xs:field xpath="permissionId" />
+      </xs:unique>
+      <xs:unique name="Users_Permissions_Constraint3" msdata:ConstraintName="Constraint3" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Users_Permissions" />
+        <xs:field xpath="userId" />
+        <xs:field xpath="permissionId" />
+      </xs:unique>
+      <xs:unique name="Users_Roles_Constraint1" msdata:ConstraintName="Constraint1">
+        <xs:selector xpath=".//Users_Roles" />
+        <xs:field xpath="userId" />
+      </xs:unique>
+      <xs:unique name="Users_Roles_Constraint2" msdata:ConstraintName="Constraint2">
+        <xs:selector xpath=".//Users_Roles" />
+        <xs:field xpath="roleId" />
+      </xs:unique>
+      <xs:unique name="Users_Roles_Constraint3" msdata:ConstraintName="Constraint3" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Users_Roles" />
+        <xs:field xpath="userId" />
+        <xs:field xpath="roleId" />
+      </xs:unique>
+      <xs:unique name="Users_UserGroups_Constraint1" msdata:ConstraintName="Constraint1">
+        <xs:selector xpath=".//Users_UserGroups" />
+        <xs:field xpath="userId" />
+      </xs:unique>
+      <xs:unique name="Users_UserGroups_Constraint2" msdata:ConstraintName="Constraint2">
+        <xs:selector xpath=".//Users_UserGroups" />
+        <xs:field xpath="userGroupId" />
+      </xs:unique>
+      <xs:unique name="Users_UserGroups_Constraint3" msdata:ConstraintName="Constraint3" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Users_UserGroups" />
+        <xs:field xpath="userId" />
+        <xs:field xpath="userGroupId" />
+      </xs:unique>
+      <xs:unique name="UserPatterns_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//UserPatterns" />
+        <xs:field xpath="userPatternId" />
+      </xs:unique>
+      <xs:unique name="Component_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Component" />
+        <xs:field xpath="componentId" />
+      </xs:unique>
+      <xs:unique name="Container_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Container" />
+        <xs:field xpath="containerId" />
+      </xs:unique>
+      <xs:unique name="Container_Type_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Container_Type" />
+        <xs:field xpath="containerTypeId" />
+      </xs:unique>
+      <xs:unique name="Cont_Comp_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Cont_Comp" />
+        <xs:field xpath="contCompId" />
+      </xs:unique>
+      <xs:unique name="Company_Cont_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Company_Cont" />
+        <xs:field xpath="userContId" />
+      </xs:unique>
+      <xs:unique name="Rights__Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Rights_" />
+        <xs:field xpath="rightId" />
+      </xs:unique>
+      <xs:unique name="Role_Rights_Constraint1" msdata:ConstraintName="Constraint1">
+        <xs:selector xpath=".//Role_Rights" />
+        <xs:field xpath="rightId" />
+      </xs:unique>
+      <xs:unique name="Role_Rights_Constraint2" msdata:ConstraintName="Constraint2">
+        <xs:selector xpath=".//Role_Rights" />
+        <xs:field xpath="roleId" />
+      </xs:unique>
+      <xs:unique name="Role_Rights_Constraint3" msdata:ConstraintName="Constraint3" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Role_Rights" />
+        <xs:field xpath="rightId" />
+        <xs:field xpath="roleId" />
+      </xs:unique>
+      <xs:unique name="userPattern_Roles_Constraint1" msdata:ConstraintName="Constraint1">
+        <xs:selector xpath=".//userPattern_Roles" />
+        <xs:field xpath="userPatternId" />
+      </xs:unique>
+      <xs:unique name="userPattern_Roles_Constraint2" msdata:ConstraintName="Constraint2">
+        <xs:selector xpath=".//userPattern_Roles" />
+        <xs:field xpath="roleId" />
+      </xs:unique>
+      <xs:unique name="userPattern_Roles_Constraint3" msdata:ConstraintName="Constraint3" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//userPattern_Roles" />
+        <xs:field xpath="userPatternId" />
+        <xs:field xpath="roleId" />
+      </xs:unique>
+      <xs:unique name="userPattern_Users_Constraint1" msdata:ConstraintName="Constraint1">
+        <xs:selector xpath=".//userPattern_Users" />
+        <xs:field xpath="userPatternId" />
+      </xs:unique>
+      <xs:unique name="userPattern_Users_Constraint2" msdata:ConstraintName="Constraint2">
+        <xs:selector xpath=".//userPattern_Users" />
+        <xs:field xpath="userId" />
+      </xs:unique>
+      <xs:unique name="userPattern_Users_Constraint3" msdata:ConstraintName="Constraint3" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//userPattern_Users" />
+        <xs:field xpath="userPatternId" />
+        <xs:field xpath="userId" />
+      </xs:unique>
+      <xs:unique name="userfields_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//userfields" />
+        <xs:field xpath="fieldId" />
+      </xs:unique>
+      <xs:unique name="userfieldsforusertype_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//userfieldsforusertype" />
+        <xs:field xpath="id" />
+      </xs:unique>
+      <xs:unique name="logindetails_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//logindetails" />
+        <xs:field xpath="id" />
+      </xs:unique>
+      <xs:unique name="preffix_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//preffix" />
+        <xs:field xpath="prefixId" />
+      </xs:unique>
+      <xs:unique name="suffix_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//suffix" />
+        <xs:field xpath="suffixId" />
+      </xs:unique>
+      <xs:unique name="active_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//active" />
+        <xs:field xpath="id" />
+      </xs:unique>
+      <xs:unique name="usersignature_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//usersignature" />
+        <xs:field xpath="id" />
+      </xs:unique>
+      <xs:unique name="admincity_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//admincity" />
+        <xs:field xpath="id" />
+      </xs:unique>
+      <xs:keyref name="companyId_FK" refer="Company_Constraint1">
+        <xs:selector xpath=".//Company_Cont" />
+        <xs:field xpath="companyId" />
+      </xs:keyref>
+      <xs:keyref name="containerId_FK" refer="Container_Constraint1">
+        <xs:selector xpath=".//Company_Cont" />
+        <xs:field xpath="containerId" />
+      </xs:keyref>
+      <xs:keyref name="bel" refer="Container_Constraint1">
+        <xs:selector xpath=".//Cont_Comp" />
+        <xs:field xpath="containerId" />
+      </xs:keyref>
+      <xs:keyref name="belo" refer="Component_Constraint1">
+        <xs:selector xpath=".//Cont_Comp" />
+        <xs:field xpath="componentId" />
+      </xs:keyref>
+      <xs:keyref name="Bel" refer="Container_Type_Constraint1">
+        <xs:selector xpath=".//Container" />
+        <xs:field xpath="containerTypeId" />
+      </xs:keyref>
+    </xs:element>
+  </xs:schema>
+</useradmin>

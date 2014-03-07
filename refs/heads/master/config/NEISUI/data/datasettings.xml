@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<dbsettings>
+  <properties>DB Settings</properties>
+  <servername>localhost</servername>
+  <user>root</user>
+  <password>1234</password>
+  <databasetype>MySQL</databasetype>
+  <portno>3306</portno>
+</dbsettings>

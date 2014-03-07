@@ -1,0 +1,227 @@
+<basewindow popup="true" visibleto="All" font="Microsoft Sans Serif" height="185" widthtype="Auto" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="RoomDescription" boxalignment="none" backgroundImageLayout="tile" id="RoomDescription" title="Add Room Description" width="295" y="0" draggable="false">
+  <Events>
+    <event name="DefaultValue">String editRoom=getSessionData("editroom");
+label172.setVisible(false);
+combobox33.setVisible(false);
+if(editRoom!=null)
+{
+result=equalsTest(editRoom,"true");
+if(result)
+{
+button108.setLabel("Save");
+label172.setVisible(true);
+combobox33.setVisible(true);
+String roomId=getSessionData("roomId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get room.RoomDescription,room.roomtype,room.basestation from neiswispicdb.room conditions room.deleted:=["+0+"] and room.id:="+roomId);
+data=createArray("String", "textbox51,combobox33,textbox191");
+showData(data);
+roomType=getComboItemId1("combobox33");
+updateSession("typeRoom",roomType);
+desc=textbox51.text;
+}
+}</event>
+    <event name="OnOK">String parentId=getSessionData("parent");
+String parentForm=getSessionData("parentForm");
+String editRoom=getSessionData("editroom");
+String testEmpty="";
+resultbase=equalsTest(textbox191.text,testEmpty);
+if(!resultbase)
+{
+updateSession("basestation",textbox191.text);	
+}
+result=equalsTest(textbox51.text,testEmpty);
+if(result)
+{
+message("Please enter value in room description.");
+}
+else
+{
+if(editRoom!=null)
+{
+result=equalsTest(editRoom,"true");
+String rowId=getSessionData("rowId");
+setDescription(textbox51.text,parentForm,rowId);
+boolean result=equalsTest(desc,textbox51.text);
+if(result)
+{
+
+updateSession("parent",null);
+updateSession("parentForm",null);
+detachWindow("RoomDescription");
+}
+else
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get room.id from neiswispicdb.room conditions room.deleted:=["+0+"] and room.RoomDescription:=["+textbox51.text+"]");
+boolean retVal=isRecordExist();
+if(!retVal)
+{
+updateSession("parent",null);
+updateSession("parentForm",null);
+detachWindow("RoomDescription");
+}
+else
+{
+message("Please change room description as it already exists.");
+}
+}
+}
+else
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get room.id from neiswispicdb.room conditions room.deleted:=["+0+"] and room.RoomDescription:=["+textbox51.text+"]");
+boolean retVal=isRecordExist();
+if(!retVal)
+{
+String rid=addRoomList(textbox51.text,parentId,parentForm);
+if(id!=null)
+{
+updateSession("roomid",rid);
+}
+updateSession("parent",null);
+updateSession("parentForm",null);
+detachWindow("RoomDescription");
+}
+else
+{
+message("Please change room description as it already exists.");
+}
+}
+}</event>
+  </Events>
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="157" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame103" boxalignment="none" backgroundImageLayout="tile" id="frame122" width="290" y="22" draggable="false">
+    <Events />
+    <DataMappings />
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="111" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame122" boxalignment="horizontal" backgroundImageLayout="tile" id="frame124" width="287" y="0" draggable="false">
+      <Events />
+      <DataMappings />
+      <Lattice visibleto="All" font="Microsoft Sans Serif" height="105" netBackColor="White" multiselect="False" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="lattice0" use="" forecolor="#000000" enabled="true" align="none" name="lattice100" backgroundImageLayout="tile" id="lattice100" width="287" y="6" draggable="false">
+        <Events>
+          <event name="DefaultValue">String gridStyle = "background-color:Transparent;border:0px";
+lattice100.setStyle(gridStyle);
+row5500.setStyle(gridStyle);
+row5501.setStyle(gridStyle);
+row301.setStyle(gridStyle);
+
+</event>
+        </Events>
+        <DataMappings />
+        <lrow visibleto="All" draggable="false" height="30" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="Transparent" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="row55" use="" forecolor="#000000" enabled="true" name="row5500" backgroundImageLayout="tile" id="row5500" sizetype="Pixel" width="285" y="0">
+          <Label visibleto="All" font="Microsoft Sans Serif" height="26" widthtype="Auto" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="#FFFFFF" x="10" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Room Descripition:" use="" forecolor="#000000" enabled="true" name="label191" textalign="topleft" backgroundImageLayout="tile" id="label191" width="138" y="2" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" readonly="false" backColor="#FFFFFF" x="148" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" id="textbox51" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="new room" use="" forecolor="#000000" enabled="true" name="textbox51" valuetype="Any" backgroundImageLayout="tile" password="false" draggable="false" width="126" y="1" passwordchar="" ismandatory="yes">
+            <Events />
+            <DataMappings />
+          </TextBox>
+        </lrow>
+        <lrow visibleto="All" draggable="false" height="30" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="Transparent" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="row55" use="" forecolor="#000000" enabled="true" name="row5501" backgroundImageLayout="tile" id="row5501" sizetype="Pixel" width="285" y="30">
+          <Label visibleto="All" font="Microsoft Sans Serif" height="26" widthtype="Auto" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" backColor="#FFFFFF" x="9" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Room Type:" use="" forecolor="#000000" enabled="true" name="label172" textalign="topleft" backgroundImageLayout="tile" id="label172" width="111" y="4" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <Combobox visibleto="All" draggable="false" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="9" font="Microsoft Sans Serif" readonly="false" backColor="#FFFFFF" x="149" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="combobox1" use="" forecolor="#000000" enabled="true" name="combobox33" backgroundImageLayout="tile" id="combobox33" width="75" y="1">
+            <Events>
+              <event name="DefaultValue">invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get roomtype.ID,roomtype.roomtype from neiswispicdb.roomtype conditions roomtype.deleted:=[0]");
+showComboData("combobox33");</event>
+              <event name="OnClick"> roomType=getComboItemId1("combobox33");
+updateSession("typeRoom",roomType);</event>
+            </Events>
+            <DataMappings />
+          </Combobox>
+        </lrow>
+        <lrow visibleto="All" draggable="false" height="30" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="1" font="Microsoft Sans Serif" backColor="Transparent" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="row301" use="" forecolor="#000000" enabled="true" name="row301" backgroundImageLayout="tile" id="row301" sizetype="Pixel" width="285" y="60">
+          <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="Transparent" x="13" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Base Station:" use="" forecolor="#000000" enabled="true" name="label327" textalign="topleft" backgroundImageLayout="tile" id="label327" width="111" y="0" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="1" readonly="false" backColor="#FFFFFF" x="148" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" id="textbox191" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox191" valuetype="Any" backgroundImageLayout="tile" password="false" width="126" y="5" passwordchar="" draggable="false">
+            <Events />
+            <DataMappings />
+          </TextBox>
+        </lrow>
+      </Lattice>
+    </Frame>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="43" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="10" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="center" name="frame157" boxalignment="horizontal" backgroundImageLayout="tile" id="frame157" width="287" y="110" draggable="false">
+      <Events />
+      <DataMappings />
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: SizeAll]" margintop="5" tabindex="8" backColor="Transparent" x="9" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="5" marginbottom="5" text="Ok" use="" forecolor="#316AC5" enabled="true" name="button108" backgroundImageLayout="tile" id="button108" width="101" y="5" draggable="false">
+        <Events>
+          <event name="OnClick">String parentId=getSessionData("parent");
+String parentForm=getSessionData("parentForm");
+String editRoom=getSessionData("editroom");
+String testEmpty="";
+resultbase=equalsTest(textbox191.text,testEmpty);
+if(!resultbase)
+{
+updateSession("basestation",textbox191.text);	
+}
+result=equalsTest(textbox51.text,testEmpty);
+if(result)
+{
+message("Please enter value in room description.");
+}
+else
+{
+if(editRoom!=null)
+{
+result=equalsTest(editRoom,"true");
+String rowId=getSessionData("rowId");
+setDescription(textbox51.text,parentForm,rowId);
+boolean result=equalsTest(desc,textbox51.text);
+if(result)
+{
+
+updateSession("parent",null);
+updateSession("parentForm",null);
+detachWindow("RoomDescription");
+}
+else
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get room.id from neiswispicdb.room conditions room.deleted:=["+0+"] and room.RoomDescription:=["+textbox51.text+"]");
+boolean retVal=isRecordExist();
+if(!retVal)
+{
+updateSession("parent",null);
+updateSession("parentForm",null);
+detachWindow("RoomDescription");
+}
+else
+{
+message("Please change room description as it already exists.");
+}
+}
+}
+else
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get room.id from neiswispicdb.room conditions room.deleted:=["+0+"] and room.RoomDescription:=["+textbox51.text+"]");
+boolean retVal=isRecordExist();
+if(!retVal)
+{
+String rid=addRoomList(textbox51.text,parentId,parentForm);
+if(id!=null)
+{
+updateSession("roomid",rid);
+}
+updateSession("parent",null);
+updateSession("parentForm",null);
+detachWindow("RoomDescription");
+}
+else
+{
+message("Please change room description as it already exists.");
+}
+}
+}</event>
+        </Events>
+        <DataMappings />
+      </Button>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: SizeAll]" margintop="5" tabindex="9" backColor="Transparent" x="137" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="5" marginbottom="5" text="Cancel" use="" forecolor="#316AC5" enabled="true" name="button109" backgroundImageLayout="tile" id="button109" width="125" y="3" draggable="false">
+        <Events>
+          <event name="OnClick">updateSession("popup","cancel");
+detachWindow("RoomDescription");</event>
+        </Events>
+        <DataMappings />
+      </Button>
+    </Frame>
+  </Frame>
+</basewindow>

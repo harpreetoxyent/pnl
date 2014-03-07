@@ -1,0 +1,170 @@
+<basewindow popup="false" visibleto="All" font="Microsoft Sans Serif" height="1092" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="none" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="AddClinical" boxalignment="none" backgroundImageLayout="tile" id="AddClinical" title="" width="958" y="0" draggable="false">
+  <Events>
+    <event name="DefaultValue" internal="true">makeVisible("AddClinical")</event>
+  </Events>
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="1070" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame17" boxalignment="horizontal" backgroundImageLayout="tile" id="frame10" width="950" y="14" draggable="false">
+    <Events>
+      <event name="DefaultValue">String val="";
+	  textbox15.setVisible(false);
+	                            setLabelValue("textbox102");
+								setLabelValue("combobox8");                              
+							   editOnly=getSessionData("edit");
+							   if(editOnly=="true")
+							   {
+							   addFormValue("textbox102","test");
+							   textbox102.setVisible(false);
+							   label62.setVisible(false);							   
+							   }
+							   else
+							   {
+							   addFormValue("combobox8","test");							   
+							    label34.setVisible(false);
+								combobox8.setVisible(false);							    
+							   }
+
+</event>
+    </Events>
+    <DataMappings />
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="1060" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame250" boxalignment="none" backgroundImageLayout="tile" id="frame250" width="175" y="0" draggable="false">
+      <Events />
+      <DataMappings />
+      <PlaceHolder visibleto="All" draggable="false" height="200" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="searchpanel" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P19" backgroundImageLayout="tile" id="placeholder17" width="175" y="0">
+        <Events />
+        <DataMappings />
+        <Item reference="searchpanel">
+          <Events />
+        </Item>
+      </PlaceHolder>
+    </Frame>
+    <Frame visibleto="AddClincain,Edit/ModifyClincianList" font="Microsoft Sans Serif" height="1060" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="1" default="false" backColor="#FFFFFF" x="176" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame25" boxalignment="vertical" backgroundImageLayout="tile" id="frame16" width="572" y="0" draggable="false">
+      <Events />
+      <DataMappings />
+      <MultiTab y="0" name="multitab5" backColor="Transparent" margintop="0" font="Microsoft Sans Serif" height="1060" netBackColor="Control" use="" netForeColor="ControlText" fontstyle="Regular" tabindex="0" paddingright="0" paddingleft="0" paddingtop="0" visibleto="All" width="572" forecolor="#000000" fontsize="8" draggable="false" id="multitab5" marginbottom="0" position="relative" cursor="[Cursor: SizeAll]" backgroundImageLayout="tile" marginright="0" marginleft="0" paddingbottom="0" text="multitab5" droppable="false" visible="true" enabled="true" x="0">
+        <Events />
+        <DataMappings />
+        <TabPage y="22" align="none" name="tabpage17" backColor="#D8E4F8" margintop="0" font="Microsoft Sans Serif" height="1034" netBackColor="InactiveCaptionText" use="" netForeColor="ControlText" fontstyle="Regular" tabindex="1" paddingright="0" paddingleft="0" paddingtop="0" visibleto="All" width="564" text="Clinician" fontsize="8" draggable="false" id="tabpage17" marginbottom="0" position="relative" cursor="[Cursor: SizeAll]" backgroundImageLayout="tile" marginright="0" widthtype="Auto" marginleft="0" paddingbottom="0" droppable="false" forecolor="#000000" enabled="true" x="4">
+          <Events />
+          <Frame visibleto="All" font="Microsoft Sans Serif" height="50" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="center" name="frame111" boxalignment="none" backgroundImageLayout="tile" id="frame111" width="560" y="20" draggable="false">
+            <Events />
+            <DataMappings />
+            <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="1" backColor="Transparent" x="38" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="10" marginbottom="10" text="Next" use="" forecolor="#316AC5" enabled="true" name="button58" backgroundImageLayout="tile" id="button58" width="75" y="7" draggable="false">
+              <Events>
+                <event name="OnClick">editOnly=getSessionData("edit");
+ if(editOnly=="true")
+ {
+valid=clientSideValidation("AddClinical");
+if(valid)
+{
+updateSession("userPatternId",val);
+updateSession("companyId",textbox15.value);
+setDataStatus("CreateFields", "AddUserFields", "useradmin");
+}
+}
+else{
+invokeComponent("com.oxymedical.component.useradmin","executeListUserAdmin","com.oxymedical.component.useradmin.UserAdminComponent","get userpatterns.userPatternId,userpatterns.companyId from useradmin.userpatterns conditions userpatterns.userPatternId:=["+textbox102.value+"]");
+retVal=isRecordExist();
+if(!retVal)
+{
+valid=clientSideValidation("AddClinical");
+if(valid)
+{
+updateSession("userPatternId",textbox102.value);
+updateSession("companyId",textbox15.value);
+setDataStatus("CreateFields", "AddUserFields", "useradmin");
+}
+}
+else
+{
+message("The clinician with this name is already exist. Please choose another name.");
+textbox102.value="";
+textArgs=createArray("String","textbox102");
+setErrorColor(textArgs);
+}
+}</event>
+              </Events>
+              <DataMappings />
+            </Button>
+            <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="2" backColor="Transparent" x="161" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="Highlight" droppable="false" marginleft="10" marginbottom="10" text="Cancel" use="" forecolor="#316AC5" enabled="true" name="button15" backgroundImageLayout="tile" id="button15" width="75" y="7" draggable="false">
+              <Events>
+                <event name="OnClick">updateSession("userPatternId",null);
+updateSession("companyId",null);
+updateSessionList("fields",null);
+updateSessionList("privilege",null);
+updateSessionList("edit",null);
+setDataStatus("UserAuthenticated", "HomeForm", null);
+</event>
+              </Events>
+              <DataMappings />
+            </Button>
+          </Frame>
+          <Frame visibleto="All" font="Microsoft Sans Serif" height="964" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" y="70" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame50" boxalignment="none" backgroundImageLayout="center" id="frame18" width="572" backgroundImage="\img\frame50.jpg" draggable="false">
+            <Events />
+            <DataMappings />
+            <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="Transparent" x="158" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Clinical Group:" use="" forecolor="#000000" enabled="true" name="label62" textalign="topleft" backgroundImageLayout="tile" id="label62" width="119" y="38" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+            <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" readonly="false" backColor="#FFFFFF" x="295" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox102" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox102" valuetype="Any" backgroundImageLayout="tile" password="false" draggable="false" width="201" y="36" passwordchar="" ismandatory="yes">
+              <Events />
+              <DataMappings />
+            </TextBox>
+            <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="9" readonly="false" backColor="#FFFFFF" x="174" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox15" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="EGI" use="" forecolor="#000000" enabled="true" name="textbox15" valuetype="Any" backgroundImageLayout="tile" password="false" width="100" y="157" passwordchar="" draggable="false">
+              <Events />
+              <DataMappings />
+            </TextBox>
+            <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="10" backColor="#FFFFFF" x="129" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Select Name Of Clincian:" use="" forecolor="#000000" enabled="true" name="label4" textalign="topleft" backgroundImageLayout="tile" id="label34" width="136" y="68" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+            <Combobox visibleto="All" font="Microsoft Sans Serif" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="11" readonly="true" backColor="#FFFFFF" x="295" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="combobox0" use="" forecolor="#000000" enabled="true" name="combobox8" backgroundImageLayout="tile" id="combobox8" draggable="false" width="128" y="66" ismandatory="yes">
+              <Events>
+                <event name="DefaultValue">invokeComponent("com.oxymedical.component.useradmin","executeListUserAdmin","com.oxymedical.component.useradmin.UserAdminComponent","get userpatterns.userPatternId,userpatterns.userPatternId from useradmin.userpatterns");
+showComboData("combobox8");</event>
+                <event name="OnClick">val=getComboItemId1("combobox8");
+patternId=getSessionData("userPatternId");
+result=equalsTest(val,patternId);
+if(!result){
+updateSession("userPatternId",null);
+updateSession("companyId",null);
+updateSessionList("fields",null);
+updateSessionList("privilege",null);
+}
+updateSession("userPatternId",val);
+</event>
+              </Events>
+              <DataMappings />
+            </Combobox>
+          </Frame>
+        </TabPage>
+      </MultiTab>
+    </Frame>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="1060" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="747" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="5" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="right" name="frame51" boxalignment="none" backgroundImageLayout="tile" id="frame19" width="203" y="0" draggable="false">
+      <Events />
+      <DataMappings />
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="1020" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="5" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="left" name="frame679" boxalignment="none" backgroundImageLayout="tile" id="frame679" width="203" y="0" draggable="false">
+        <Events />
+        <DataMappings />
+        <PlaceHolder visibleto="All" draggable="false" height="55" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="Logo" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P91" backgroundImageLayout="tile" id="placeholder18" width="203" y="0">
+          <Events />
+          <DataMappings />
+          <Item reference="Logo">
+            <Events />
+          </Item>
+        </PlaceHolder>
+        <PlaceHolder visibleto="All" draggable="false" height="200" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="CalendarPanel" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P92" backgroundImageLayout="tile" id="placeholder19" width="203" y="56">
+          <Events />
+          <DataMappings />
+          <Item reference="CalendarPanel">
+            <Events />
+          </Item>
+        </PlaceHolder>
+      </Frame>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="1" backColor="#FFFFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="sign out" use="" forecolor="#316AC5" enabled="true" name="button198" backgroundImageLayout="tile" id="button198" width="75" y="1030" draggable="false">
+        <Events>
+          <event name="OnClick">String retValue = logOut("login");</event>
+        </Events>
+        <DataMappings />
+      </Button>
+    </Frame>
+  </Frame>
+</basewindow>

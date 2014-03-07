@@ -1,0 +1,353 @@
+<basewindow popup="true" visibleto="All" font="Microsoft Sans Serif" height="310" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="patientScheduler" boxalignment="none" backgroundImageLayout="tile" id="patientScheduler" title="" width="770" y="0" draggable="false">
+  <Events>
+    <event name="DefaultValue">textbox32.setVisible(false);
+textbox33.setVisible(false);
+textbox45.setVisible(false);
+textbox48.setVisible(false);
+textbox67.setVisible(false);
+button94.setVisible(false);
+String rowValue=getSessionData("rowId");
+setDefaultForSchedule("datepicker1","datepicker17","eibtimebase","time1");
+if(rowValue!=null)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patient.FirstName,patient.lastName,patient.MedicalRecordNumber from neiswispicdb.patient conditions patient.id:="+rowValue);
+data=createArray("String", "textbox47,textbox29,textbox30");
+showData(data);
+}
+String id=getSessionData("schId");
+if(id!=null)
+{
+button94.setVisible(true);
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.AppointmentStartDate,schedule.AppointmentEndDate,schedule.AppointmentStartTime,schedule.AppointmentEndTime,patient.FirstName,patient.lastName,StudyType.id,proceduretype.ProcedureName,patient.MedicalRecordNumber,schedule.id,patient.id,schedule.visitNo from neiswispicdb.schedule,neiswispicdb.patient joins leftjoin schedule.StudyType:=StudyType.id,leftjoin schedule.ProcedureType:=proceduretype.ProcedureId conditions patient.id :=schedule.PatientID and schedule.id:="+id);
+data=createArray("String", "datepicker1,datepicker17,eibtimebase,time1,textbox47,textbox29,combobox4,combobox22,textbox30,textbox32,textbox33,textbox31");
+showData(data);
+button86.setLabel("Update Patient's Appointment");
+}</event>
+  </Events>
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="308" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame398" boxalignment="vertical" backgroundImageLayout="tile" id="frame398" width="760" y="0" draggable="false">
+    <Events />
+    <DataMappings />
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="32" readonly="false" backColor="#FFFFFF" x="156" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" id="textbox32" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox12" valuetype="Any" backgroundImageLayout="tile" password="false" width="50" y="0" passwordchar="" draggable="false">
+      <Events />
+      <DataMappings>
+        <Mapping datafield="ID: Int16" datatable="Schedule" datapattern="neiswispicdb" />
+      </DataMappings>
+    </TextBox>
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="33" readonly="false" backColor="#FFFFFF" x="263" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" id="textbox33" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox13" valuetype="Any" backgroundImageLayout="tile" password="false" width="50" y="0" passwordchar="" draggable="false">
+      <Events />
+      <DataMappings>
+        <Mapping datafield="PatientID: Int16" datatable="Schedule" datapattern="neiswispicdb" />
+      </DataMappings>
+    </TextBox>
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="34" readonly="false" backColor="#FFFFFF" x="378" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" id="textbox45" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="0" use="" forecolor="#000000" enabled="true" name="textbox45" valuetype="Any" backgroundImageLayout="tile" password="false" width="50" y="0" passwordchar="" draggable="false">
+      <Events />
+      <DataMappings>
+        <Mapping datafield="Cancelled: Char" datatable="Schedule" datapattern="neiswispicdb" />
+      </DataMappings>
+    </TextBox>
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="35" readonly="false" backColor="#FFFFFF" x="515" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" id="textbox48" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="0" use="" forecolor="#000000" enabled="true" name="textbox48" valuetype="Any" backgroundImageLayout="tile" password="false" width="50" y="2" passwordchar="" draggable="false">
+      <Events />
+      <DataMappings>
+        <Mapping datafield="ExportToAlice: Int16" datatable="Schedule" datapattern="neiswispicdb" />
+        <Mapping datafield="ExportToAlice: Int16" datatable="Schedule" datapattern="neiswispicdb" />
+      </DataMappings>
+    </TextBox>
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="41" readonly="false" backColor="#FFFFFF" x="281" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" id="textbox67" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="0" use="" forecolor="#000000" enabled="true" name="textbox67" valuetype="Any" backgroundImageLayout="tile" password="false" width="50" y="108" passwordchar="" draggable="false">
+      <Events />
+      <DataMappings>
+        <Mapping datafield="Assigntoroom: String" datatable="Schedule" datapattern="neiswispicdb" />
+        <Mapping datafield="Assigntoroom: String" datatable="Schedule" datapattern="neiswispicdb" />
+      </DataMappings>
+    </TextBox>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="305" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="Transparent" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame397" boxalignment="vertical" backgroundImageLayout="tile" id="frame397" width="764" y="0" draggable="false">
+      <Events />
+      <DataMappings />
+      <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="#FFFFFF" x="0" fontsize="9" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="RoyalBlue" droppable="false" marginleft="0" marginbottom="0" text="PATIENTscheduler" use="" forecolor="#4169E1" enabled="true" name="label73" textalign="topleft" backgroundImageLayout="tile" id="label73" width="135" y="0" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="250" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame88" boxalignment="vertical" backgroundImageLayout="tile" id="frame98" width="750" y="27" draggable="false">
+        <Events />
+        <DataMappings />
+        <Lattice visibleto="All" font="Microsoft Sans Serif" height="250" netBackColor="White" multiselect="False" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="32" backColor="#FFFFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="lattice2" use="" forecolor="#000000" enabled="true" align="none" name="lattice2" backgroundImageLayout="tile" id="lattice2" width="750" y="0" draggable="false">
+          <Events>
+            <event name="DefaultValue">String gridStyle = "background-color:Transparent;border:0px";
+lattice2.setStyle(gridStyle);
+row75.setStyle(gridStyle);
+row76.setStyle(gridStyle);
+row80.setStyle(gridStyle);
+row79.setStyle(gridStyle);
+row77.setStyle(gridStyle);
+</event>
+          </Events>
+          <DataMappings />
+          <lrow visibleto="All" draggable="false" height="45" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="Transparent" x="0" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="row75" use="" forecolor="#000000" enabled="true" name="row75" backgroundImageLayout="tile" id="row75" sizetype="Pixel" width="750" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="37" backColor="Transparent" x="10" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="First Name:" use="" forecolor="#000000" enabled="true" name="label158" textalign="topleft" backgroundImageLayout="tile" id="label158" width="190" y="5" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+            <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="36" readonly="true" backColor="#FFFFFF" x="200" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" id="textbox47" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox47" valuetype="Any" backgroundImageLayout="tile" password="false" width="120" y="5" passwordchar="" draggable="false">
+              <Events />
+              <DataMappings />
+            </TextBox>
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="16" backColor="Transparent" x="365" fontsize="9" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Medical Record Number:" use="" forecolor="#000000" enabled="true" name="label49" textalign="topleft" backgroundImageLayout="tile" id="label92" width="190" y="15" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+            <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="17" readonly="true" backColor="#FFFFFF" x="603" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" id="textbox30" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox17" valuetype="Any" backgroundImageLayout="tile" password="false" width="120" y="19" passwordchar="" draggable="false">
+              <Events />
+              <DataMappings />
+            </TextBox>
+          </lrow>
+          <lrow visibleto="All" draggable="false" height="45" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="1" font="Microsoft Sans Serif" backColor="Transparent" x="0" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="row76" use="" forecolor="#000000" enabled="true" name="row76" backgroundImageLayout="tile" id="row76" sizetype="Pixel" width="750" y="45">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="9" backColor="Transparent" x="0" fontsize="9" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Last Name:" use="" forecolor="#000000" enabled="true" name="label46" textalign="topleft" backgroundImageLayout="tile" id="label75" width="190" y="5" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+            <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="11" readonly="true" backColor="#FFFFFF" x="201" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" id="textbox29" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox11" valuetype="Any" backgroundImageLayout="tile" password="false" width="120" y="3" passwordchar="" draggable="false">
+              <Events />
+              <DataMappings />
+            </TextBox>
+            <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="18" backColor="Transparent" x="367" fontsize="9" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Procedure Type:" use="" forecolor="#000000" enabled="true" name="label51" textalign="topleft" backgroundImageLayout="tile" id="label93" width="190" y="15" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+            <Combobox visibleto="All" font="Microsoft Sans Serif" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="38" readonly="true" backColor="#FFFFFF" x="603" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="combobox1" use="" forecolor="#000000" enabled="true" name="combobox22" backgroundImageLayout="tile" id="combobox22" draggable="false" width="101" y="5" ismandatory="no">
+              <Events>
+                <event name="DefaultValue">invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get ProcedureType.ProcedureId,ProcedureType.ProcedureName from neiswispicdb.ProcedureType orderby  ProcedureType.ProcedureName ");
+showComboData("combobox22");
+</event>
+                <event name="OnClick">getComboItemId1("combobox22");</event>
+              </Events>
+              <DataMappings>
+                <Mapping datafield="ProcedureType: String" datatable="Schedule" datapattern="neiswispicdb" />
+              </DataMappings>
+            </Combobox>
+          </lrow>
+          <lrow visibleto="All" draggable="false" height="45" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="2" font="Microsoft Sans Serif" backColor="Transparent" x="0" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="row77" use="" forecolor="#000000" enabled="true" name="row77" backgroundImageLayout="tile" id="row77" sizetype="Pixel" width="750" y="90">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="10" backColor="Transparent" x="0" fontsize="9" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Study Type:" use="" forecolor="#000000" enabled="true" name="label47" textalign="topleft" backgroundImageLayout="tile" id="label76" width="190" y="5" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+            <Combobox visibleto="All" draggable="false" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="12" font="Microsoft Sans Serif" readonly="true" backColor="#FFFFFF" x="200" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="combobox0" use="" forecolor="#000000" enabled="true" name="combobox4" backgroundImageLayout="tile" id="combobox4" width="103" y="5">
+              <Events>
+                <event name="DefaultValue">invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studytype.Id,studytype.type from neiswispicdb.studytype orderby studytype.type ");
+showComboData("combobox4");</event>
+                <event name="OnClick">getComboItemId1("combobox4");</event>
+              </Events>
+              <DataMappings>
+                <Mapping datafield="StudyType: Int16" datatable="Schedule" datapattern="neiswispicdb" />
+              </DataMappings>
+            </Combobox>
+            <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="40" backColor="Transparent" x="391" fontsize="9" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Visit Id:" use="" forecolor="#000000" enabled="true" name="label160" textalign="topleft" backgroundImageLayout="tile" id="label160" width="190" y="6" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+            <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="39" readonly="true" backColor="#FFFFFF" x="602" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" id="textbox31" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox31" valuetype="Any" backgroundImageLayout="tile" password="false" width="120" y="4" passwordchar="" draggable="false">
+              <Events>
+                <event name="DefaultValue">int number = generateUniqueNumber();
+String visitId = "E7"+number;
+textbox31.text = visitId;
+addFormValue("textbox31",visitId);
+
+</event>
+              </Events>
+              <DataMappings>
+                <Mapping datafield="visitNo: String" datatable="Schedule" datapattern="neiswispicdb" />
+              </DataMappings>
+            </TextBox>
+          </lrow>
+          <lrow visibleto="All" draggable="false" height="45" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="3" font="Microsoft Sans Serif" backColor="Transparent" x="0" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="row79" use="" forecolor="#000000" enabled="true" name="row79" backgroundImageLayout="tile" id="row79" sizetype="Pixel" width="750" y="135">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="36" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" backColor="Transparent" x="0" fontsize="9" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Appointment Start Date:" use="" forecolor="#000000" enabled="true" name="label45" textalign="topleft" backgroundImageLayout="tile" id="label74" width="190" y="5" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+            <DatePicker visibleto="All" draggable="false" height="25" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="27" font="Microsoft Sans Serif" backColor="#FFFFFF" x="200" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="datepicker1" backgroundImageLayout="tile" id="datepicker1" width="120" y="5" ismandatory="yes">
+              <Events>
+                <event name="DefaultValue">String selectedDate1=(null);
+</event>
+                <event name="OnClick">valid = selectCurrentOrFutureDate("datepicker1");
+selectedDate1 = getDate();</event>
+              </Events>
+              <DataMappings>
+                <Mapping datafield="AppointmentStartDate: DateTime" datatable="Schedule" datapattern="neiswispicdb" />
+              </DataMappings>
+            </DatePicker>
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="20" backColor="Transparent" x="332" fontsize="9" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Appointment Start Time:" use="" forecolor="#000000" enabled="true" name="label52" textalign="topleft" backgroundImageLayout="tile" id="label94" width="190" y="5" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+            <Time visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="28" backColor="#FFFFFF" x="525" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="eibtimebase" time="23:49" backgroundImageLayout="tile" id="eibtimebase" draggable="false" width="60" y="5" ismandatory="yes">
+              <Events />
+              <DataMappings>
+                <Mapping datafield="AppointmentStartTime: TimeSpan" datatable="Schedule" datapattern="neiswispicdb" />
+              </DataMappings>
+            </Time>
+          </lrow>
+          <lrow visibleto="All" draggable="false" height="45" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="4" font="Microsoft Sans Serif" backColor="Transparent" x="0" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="row80" use="" forecolor="#000000" enabled="true" name="row80" backgroundImageLayout="tile" id="row80" sizetype="Pixel" width="750" y="180">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="14" backColor="Transparent" x="0" fontsize="9" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Appointment End Date:" use="" forecolor="#000000" enabled="true" name="label48" textalign="topleft" backgroundImageLayout="tile" id="label77" width="190" y="5" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+            <DatePicker visibleto="All" draggable="false" height="25" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="30" font="Microsoft Sans Serif" backColor="#FFFFFF" x="200" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="datepicker17" backgroundImageLayout="tile" id="datepicker17" width="120" y="5" ismandatory="yes">
+              <Events>
+                <event name="DefaultValue">String selectedDate2=(null);
+</event>
+                <event name="OnClick">boolean isDateValid=validateDate("datepicker17","datepicker1");</event>
+              </Events>
+              <DataMappings>
+                <Mapping datafield="AppointmentEndDate: DateTime" datatable="Schedule" datapattern="neiswispicdb" />
+              </DataMappings>
+            </DatePicker>
+            <Label visibleto="All" font="Microsoft Sans Serif" height="34" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="21" backColor="Transparent" x="331" fontsize="9" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Appointment End Time:" use="" forecolor="#000000" enabled="true" name="label53" textalign="topleft" backgroundImageLayout="tile" id="label95" width="190" y="3" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+            <Time visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="29" backColor="#FFFFFF" x="525" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="time1" time="17:49" backgroundImageLayout="tile" id="time1" draggable="false" width="0" y="5" ismandatory="yes">
+              <Events />
+              <DataMappings>
+                <Mapping datafield="AppointmentEndTime: TimeSpan" datatable="Schedule" datapattern="neiswispicdb" />
+              </DataMappings>
+            </Time>
+          </lrow>
+        </Lattice>
+      </Frame>
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="37" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="31" default="false" backColor="Transparent" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="center" name="frame89" boxalignment="none" backgroundImageLayout="tile" id="frame99" width="761" y="265" draggable="false">
+        <Events />
+        <DataMappings />
+        <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: SizeAll]" margintop="5" tabindex="24" backColor="Transparent" x="118" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="InactiveCaption" droppable="false" marginleft="5" marginbottom="5" text="Save Patient's Appointment" use="" forecolor="#7A96DF" enabled="true" name="button71" backgroundImageLayout="tile" id="button86" width="198" y="0" draggable="false">
+          <Events>
+            <event name="OnClick">addFormValue("textbox32",textbox32.value);
+addFormValue("textbox45",textbox45.value);
+addFormValue("textbox48",textbox48.value);
+addFormValue("textbox67",textbox67.value);
+String studytype = combobox4.getText();
+boolean isempty = checkValueWithOperator(studytype,"","EQUAL");
+if(isempty)
+{
+addFormValue("combobox4",4);
+}
+else
+{
+if(studytype==null)
+{
+addFormValue("combobox4",4);
+}
+}
+if(rowValue!=null)
+{
+addFormValue("textbox33",rowValue);
+}
+addFormValue("textbox30",textbox30.value);
+boolean  valid=clientSideValidation("patientScheduler");
+if(valid)
+{
+boolean isTimeValid=validateTime("eibtimebase","time1","datepicker1","datepicker17");
+if(isTimeValid)
+{
+invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","patientScheduler");
+message("Patient’s Appointment has been saved.");
+updateSession("schId",null);
+String mode=getSessionData("mode");
+if(mode!=null)
+{
+result=equalsTest(mode,"schedule");
+if(result)
+{
+updateSession("mode",null);
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","Schedule");
+}
+else
+{
+updateSession("rowId",rowValue);
+updateSession("Schedular","true");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","Patient");
+}
+}
+else
+{
+updateSession("rowId",rowValue);
+updateSession("Schedular","true");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","Patient");
+}
+}
+}</event>
+          </Events>
+          <DataMappings>
+            <Mapping datafield="ExportToAlice: Int16" datatable="Schedule" datapattern="neiswispicdb" />
+            <Mapping datafield="ExportToAlice: Int16" datatable="Schedule" datapattern="neiswispicdb" />
+          </DataMappings>
+        </Button>
+        <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: SizeAll]" margintop="5" tabindex="26" backColor="Transparent" x="315" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="InactiveCaption" droppable="false" marginleft="5" marginbottom="5" text="Go Back" use="" forecolor="#7A96DF" enabled="true" name="button74" backgroundImageLayout="tile" id="button88" width="87" y="0" draggable="false">
+          <Events>
+            <event name="OnClick">result=messageWithQuestion("Do you wish leave Scheduler? Any changes made to appointment will be discarded.");
+String mode=getSessionData("mode");
+if(result)
+{
+updateSession("schId",null);
+if(mode!=null)
+{
+result=equalsTest(mode,"schedule");
+if(result)
+{
+updateSession("mode",null);
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","Schedule");
+}
+else
+{
+updateSession("rowId",rowValue);
+updateSession("Schedular","true");
+detachWindow("patientScheduler");
+}
+}
+else
+{
+updateSession("rowId",rowValue);
+updateSession("Schedular","true");
+detachWindow("patientScheduler");
+}
+}</event>
+          </Events>
+          <DataMappings />
+        </Button>
+        <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: SizeAll]" margintop="5" tabindex="27" backColor="Transparent" x="401" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="InactiveCaption" droppable="false" marginleft="5" marginbottom="5" text="Cancel Patient's Appointment" use="" forecolor="#7A96DF" enabled="true" name="button94" backgroundImageLayout="tile" id="button94" width="196" y="0" draggable="false">
+          <Events>
+            <event name="OnClick">if(id!=null)
+{
+boolean isYes =messageWithQuestion("Do you wish to cancel this patient appointment?");
+if(isYes)
+{
+String retValue = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","update neiswispicdb.schedule set Cancelled:=1 conditions schedule.ID:="+id);
+updateSession("schId",null);
+String mode=getSessionData("mode");
+if(mode!=null)
+{
+result=equalsTest(mode,"schedule");
+if(result)
+{
+updateSession("mode",null);
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","Schedule");
+}
+else
+{
+updateSession("rowId",rowValue);
+updateSession("Schedular","true");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","Patient");
+}
+}
+else
+{
+updateSession("rowId",rowValue);
+updateSession("Schedular","true");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","Patient");
+}
+}
+}
+</event>
+          </Events>
+          <DataMappings />
+        </Button>
+      </Frame>
+    </Frame>
+  </Frame>
+</basewindow>

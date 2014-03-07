@@ -1,0 +1,35 @@
+<basewindow popup="true" visibleto="All" font="Microsoft Sans Serif" height="143" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="SetAllFields" boxalignment="none" backgroundImageLayout="tile" id="SetAllFields" title="Set Fields" width="254" y="0" draggable="false">
+  <Events>
+    <event name="DefaultValue">String id =getSessionData("CategoryId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get qbuserdefinedfield.id,qbuserdefinedfield.UserDefinedFieldName from neiswispicdb.qbcategorydetail,neiswispicdb.qbuserdefinedfield conditions qbcategorydetail.categoryId:="+id+" and qbuserdefinedfield.id:=qbcategorydetail.UserDefinedFieldId");
+showComboData("combobox5");</event>
+  </Events>
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="98" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="6" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame88" boxalignment="none" backgroundImageLayout="tile" id="frame89" width="238" y="35" draggable="false">
+    <Events />
+    <DataMappings />
+    <Label visibleto="All" font="Microsoft Sans Serif" height="22" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="9" backColor="Transparent" x="32" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Select Field:" use="" forecolor="#000000" enabled="true" name="label45" textalign="topleft" backgroundImageLayout="tile" id="label54" width="70" y="17" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+    <Combobox visibleto="All" draggable="false" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="10" font="Microsoft Sans Serif" readonly="true" backColor="#FFFFFF" x="126" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="combobox5" backgroundImageLayout="tile" id="combobox5" width="100" y="12">
+      <Events>
+        <event name="DefaultValue">String field =null;</event>
+        <event name="OnClick">field = getComboBoxValue("combobox5");</event>
+      </Events>
+      <DataMappings />
+    </Combobox>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="11" backColor="#FFFFFF" x="27" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Apply" use="" forecolor="#000000" enabled="true" name="button71" backgroundImageLayout="tile" id="button71" width="75" y="53" draggable="false">
+      <Events>
+        <event name="OnClick">updateSession("FieldName",field);
+detachWindow("SetAllFields");</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="12" backColor="#FFFFFF" x="122" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Cancel" use="" forecolor="#000000" enabled="true" name="button73" backgroundImageLayout="tile" id="button73" width="75" y="52" draggable="false">
+      <Events>
+        <event name="OnClick">detachWindow("SetAllFields");</event>
+      </Events>
+      <DataMappings />
+    </Button>
+  </Frame>
+</basewindow>

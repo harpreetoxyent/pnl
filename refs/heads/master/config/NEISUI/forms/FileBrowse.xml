@@ -1,0 +1,52 @@
+<basewindow popup="true" visibleto="All" font="Microsoft Sans Serif" height="120" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="2" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="2" position="absolute" visible="true" border="fixedsingle" paddingbottom="2" paddingright="2" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="FileBrowse" boxalignment="none" backgroundImageLayout="tile" id="FileBrowse" title="" width="340" y="0" draggable="false">
+  <Events />
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="63" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="center" name="frame196" boxalignment="none" backgroundImageLayout="tile" id="frame196" width="323" y="7" draggable="false">
+    <Events />
+    <DataMappings />
+    <Lattice visibleto="All" font="Microsoft Sans Serif" height="70" netBackColor="White" multiselect="False" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="#FFFFFF" x="5" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="lattice7" use="" forecolor="#000000" enabled="true" align="none" name="lattice7" backgroundImageLayout="tile" id="lattice7" width="320" y="3" draggable="false">
+      <Events>
+        <event name="DefaultValue">String gridStyle = "background-color:Transparent;border:0px";
+lattice7.setStyle(gridStyle);
+row168.setStyle(gridStyle);</event>
+      </Events>
+      <DataMappings />
+      <lrow visibleto="All" draggable="false" height="40" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="Transparent" x="0" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="row168" use="" forecolor="#000000" enabled="true" name="row168" backgroundImageLayout="tile" id="row168" sizetype="Pixel" width="320" y="0">
+        <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="Transparent" x="0" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="Give the file path" use="" forecolor="#316AC5" enabled="true" name="label323" textalign="topleft" backgroundImageLayout="tile" id="label323" width="123" y="7" draggable="false">
+          <Events />
+          <DataMappings />
+        </Label>
+        <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: IBeam]" margintop="0" tabindex="0" readonly="false" backColor="#FFFFFF" x="132" fontsize="8.25" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" id="textbox188" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox188" valuetype="Any" backgroundImageLayout="tile" password="false" width="160" y="7" passwordchar="" draggable="false">
+          <Events />
+          <DataMappings />
+        </TextBox>
+      </lrow>
+    </Lattice>
+  </Frame>
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="38" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="8" default="false" backColor="Transparent" x="4" fontsize="8" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="center" name="frame197" boxalignment="none" backgroundImageLayout="tile" id="frame197" width="317" y="73" draggable="false">
+    <Events />
+    <DataMappings />
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="5" tabindex="8" backColor="Transparent" x="154" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="5" marginbottom="5" text="Set Path" use="" forecolor="#316AC5" enabled="true" name="button210" backgroundImageLayout="tile" id="button210" width="114" y="2" draggable="false">
+      <Events>
+        <event name="OnClick">String filepath = textbox188.getText();
+if(filepath!=null)
+{
+String newfilepath = filepath.replaceAll("/","\\\\");
+updateSession("filePath", newfilepath);
+detachWindow("FileBrowse");
+}
+else
+{
+message("Not a valid path.");
+}</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="5" tabindex="0" backColor="Transparent" x="5" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="5" marginbottom="5" text="Cancel" use="" forecolor="#316AC5" enabled="true" name="button211" backgroundImageLayout="tile" id="button211" width="113" y="2" draggable="false">
+      <Events>
+        <event name="OnClick">updateSession("filePath", null);
+detachWindow("FileBrowse");</event>
+      </Events>
+      <DataMappings />
+    </Button>
+  </Frame>
+</basewindow>

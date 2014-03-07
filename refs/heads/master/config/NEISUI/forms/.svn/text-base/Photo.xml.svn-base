@@ -1,0 +1,47 @@
+<basewindow popup="false" visibleto="All" font="Microsoft Sans Serif" height="912" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="Photo" boxalignment="none" backgroundImageLayout="none" id="Photo" title="" width="784" y="0" draggable="false">
+  <Events />
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="893" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="7" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame101" boxalignment="none" backgroundImageLayout="none" id="frame104" width="755" y="9" draggable="false">
+    <Events />
+    <DataMappings />
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="873" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="83" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame102" boxalignment="none" backgroundImageLayout="none" id="frame105" width="578" y="5" draggable="false">
+      <Events />
+      <DataMappings />
+      <Picture visibleto="All" draggable="false" height="110" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="14" fontsize="8" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" y="31" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="picture0" use="" forecolor="#000000" enabled="true" name="picture10" backgroundImageLayout="none" id="picture10" width="314" backgroundImage="\img\picture10.jpg">
+        <Events />
+        <DataMappings />
+      </Picture>
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="120" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="8" default="false" backColor="#FFFFFF" x="341" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame103" boxalignment="none" backgroundImageLayout="none" id="frame106" width="218" y="36" draggable="false">
+        <Events />
+        <DataMappings />
+        <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" backColor="#FFFFFF" x="8" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Patient Name:" use="" forecolor="#000000" enabled="true" name="label79" textalign="topleft" backgroundImageLayout="none" id="label79" width="98" y="7" draggable="false">
+          <Events />
+          <DataMappings />
+        </Label>
+        <Label visibleto="All" font="Microsoft Sans Serif" height="21" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="8" backColor="#FFFFFF" x="10" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="MR#" use="" forecolor="#000000" enabled="true" name="label80" textalign="topleft" backgroundImageLayout="none" id="label80" width="84" y="29" draggable="false">
+          <Events />
+          <DataMappings />
+        </Label>
+        <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="9" backColor="#FFFFFF" x="10" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Date of Study:" use="" forecolor="#000000" enabled="true" name="label81" textalign="topleft" backgroundImageLayout="none" id="label81" width="98" y="78" draggable="false">
+          <Events />
+          <DataMappings />
+        </Label>
+      </Frame>
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="313" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="9" default="false" backColor="#FFFFFF" x="59" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame104" boxalignment="none" backgroundImageLayout="none" id="frame107" width="455" y="190" draggable="false">
+        <Events />
+        <DataMappings />
+        <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" backColor="#FFFFFF" x="58" fontsize="9" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="AppWorkspace" droppable="false" marginleft="0" marginbottom="0" text="PATIENT PHOTO (FRONT VIEW) IS INSERTED HERE" use="" forecolor="#808080" enabled="true" name="label82" textalign="topleft" backgroundImageLayout="none" id="label82" width="354" y="143" draggable="false">
+          <Events />
+          <DataMappings />
+        </Label>
+      </Frame>
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="313" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="10" default="false" backColor="#FFFFFF" x="59" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame105" boxalignment="none" backgroundImageLayout="none" id="frame108" width="455" y="503" draggable="false">
+        <Events />
+        <DataMappings />
+        <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" backColor="#FFFFFF" x="58" fontsize="9" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="AppWorkspace" droppable="false" marginleft="0" marginbottom="0" text="PATIENT PHOTO (SIDE VIEW) IS INSERTED HERE" use="" forecolor="#808080" enabled="true" name="label83" textalign="topleft" backgroundImageLayout="none" id="label83" width="343" y="143" draggable="false">
+          <Events />
+          <DataMappings />
+        </Label>
+      </Frame>
+    </Frame>
+  </Frame>
+</basewindow>

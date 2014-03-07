@@ -1,0 +1,331 @@
+<basewindow popup="false" visibleto="All" font="Microsoft Sans Serif" height="992" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="PhotoInfo" boxalignment="none" backgroundImageLayout="tile" id="PhotoInfo" title="" width="562" y="0" draggable="false">
+  <Events>
+    <event name="DefaultValue">textbox192.setVisible(false);
+String rowValue = getSessionData("rowId");
+msg ="Patient saved successfully.";
+if(rowValue!=null)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.SideView,patientphoto.FrontView,patientphoto.id  from neiswispicdb.Patient,neiswispicdb.patientphoto conditions patient.id:="+rowValue+" and patient.deleted:=_STRINGSTART_0_STRINGEND_ and patientphoto.patientid:=patient.id");
+data=createArray("String", "picture3,picture2,textbox16");
+showData(data);
+}
+
+</event>
+    <event name="DefaultValue" internal="true">makeVisible("PhotoInfo")</event>
+  </Events>
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="976" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="14" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame25" boxalignment="none" backgroundImageLayout="tile" id="frame25" width="560" y="14" draggable="false">
+    <Events />
+    <DataMappings />
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="71" readonly="false" backColor="#FFFFFF" x="460" fontsize="8.25" paddingleft="0" position="absolute" visible="false" border="fixedsingle" paddingbottom="0" id="textbox16" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox16" valuetype="Any" backgroundImageLayout="tile" password="false" width="20" y="0" passwordchar="" draggable="false">
+      <Events />
+      <DataMappings>
+        <Mapping datafield="id: Int16" datatable="PatientPhoto" datapattern="neiswispicdb" />
+      </DataMappings>
+    </TextBox>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="400" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="77" default="false" backColor="#FFFFFF" x="26" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="center" name="frame162" boxalignment="none" backgroundImageLayout="tile" id="frame162" width="500" y="48" draggable="false">
+      <Events>
+        <event name="DefaultValue">frame162.setStyle("overflow:auto;border:2px solid;");
+
+</event>
+        <event name="OnClick">storFormValue("formValue");
+		String pid = getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.ID,patientphoto.frontview from neiswispicdb.patientphoto conditions patientphoto.patientID:="+pid);
+String fview = getDataFromAllValuesVar(0, 1);
+boolean isYes = true;
+if(fview!=null)
+{
+isYes = false;
+}
+if(isYes)
+{
+String imagevalue  = uploadImage("picture2");
+if(imagevalue != null)
+{
+if(pid!=null)
+{
+addFormValue("textbox163",pid);
+addFormValue("picture14",imagevalue);
+addFormValue("textbox192",pid);
+invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","Patient");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.SideView,patientphoto.FrontView,patientphoto.id  from neiswispicdb.Patient,neiswispicdb.patientphoto conditions patient.id:="+rowValue+" and patient.deleted:=_STRINGSTART_0_STRINGEND_ and patientphoto.patientid:=patient.id");
+data=createArray("String", "picture3,picture2,textbox16");
+restorFormValue("formValue");
+showData(data);
+message("Photo saved.");
+}
+}
+}</event>
+      </Events>
+      <DataMappings />
+      <Picture y="0" name="picture2" backColor="#FFFFFF" margintop="0" font="Microsoft Sans Serif" height="90" netBackColor="White" use="" netForeColor="ControlText" fontstyle="Regular" tabindex="72" paddingright="0" paddingleft="0" paddingtop="0" visibleto="All" width="75" forecolor="#000000" fontsize="8" draggable="false" id="picture2" marginbottom="0" position="relative" cursor="[Cursor: SizeAll]" backgroundImageLayout="center" marginright="0" widthtype="Auto" marginleft="0" paddingbottom="0" text="picture1" droppable="false" visible="true" enabled="true" x="0">
+        <Events />
+        <DataMappings>
+          <Mapping datafield="FrontView: String" datatable="PatientPhoto" datapattern="neiswispicdb" />
+        </DataMappings>
+      </Picture>
+    </Frame>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="400" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="78" default="false" backColor="#FFFFFF" x="27" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="center" name="frame163" boxalignment="none" backgroundImageLayout="tile" id="frame163" width="500" y="496" draggable="false">
+      <Events>
+        <event name="DefaultValue">frame163.setStyle("overflow:auto;border:2px solid;");</event>
+        <event name="OnClick">storFormValue("formValue");
+		String pid = getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.ID,patientphoto.sideview from neiswispicdb.patientphoto conditions patientphoto.patientID:="+pid);
+String sview = getDataFromAllValuesVar(0, 1);
+boolean isYes = true;
+if(sview!=null)
+{
+isYes = false;
+}
+if(isYes)
+{
+String imagevalue  = uploadImage("picture3");
+if(imagevalue != null)
+{
+if(pid!=null)
+{
+addFormValue("textbox163",pid);
+addFormValue("picture14",imagevalue);
+addFormValue("textbox192",pid);
+invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","Patient");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.SideView,patientphoto.FrontView,patientphoto.id  from neiswispicdb.Patient,neiswispicdb.patientphoto conditions patient.id:="+rowValue+" and patient.deleted:=_STRINGSTART_0_STRINGEND_ and patientphoto.patientid:=patient.id");
+data=createArray("String", "picture3,picture2,textbox16");
+restorFormValue("formValue");
+showData(data);
+message("Photo saved.");
+}
+}
+}</event>
+      </Events>
+      <DataMappings />
+      <Picture y="0" name="picture3" backColor="#FFFFFF" margintop="0" font="Microsoft Sans Serif" height="91" netBackColor="White" use="" netForeColor="ControlText" fontstyle="Regular" tabindex="9" paddingright="0" paddingleft="0" paddingtop="0" visibleto="All" width="79" forecolor="#000000" fontsize="8" draggable="false" id="picture3" marginbottom="0" position="relative" cursor="[Cursor: SizeAll]" backgroundImageLayout="center" marginright="0" widthtype="Auto" marginleft="0" paddingbottom="0" text="picture0" droppable="false" visible="true" enabled="true" x="0">
+        <Events />
+        <DataMappings>
+          <Mapping datafield="SideView: String" datatable="PatientPhoto" datapattern="neiswispicdb" />
+        </DataMappings>
+      </Picture>
+    </Frame>
+    <Picture visibleto="Delete Photo" draggable="false" height="15" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="79" font="Microsoft Sans Serif" backColor="#FFFFFF" x="5" fontsize="8" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" source="\img\picture5.jpg" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="picture1" use="" forecolor="#000000" enabled="true" name="picture5" backgroundImageLayout="tile" id="picture5" width="15" y="50">
+      <Events>
+        <event name="DefaultValue">createToolTip("picture5"," Delete Front View Photo. ");</event>
+        <event name="OnClick">storFormValue("formValue");
+		id = getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.ID,patientphoto.frontview from neiswispicdb.patientphoto conditions patientphoto.patientID:="+id);
+String fview = getDataFromAllValuesVar(0, 1);
+if(fview!=null)
+{
+boolean isnull = checkValueWithOperator(fview,"null","EQUAL");
+if(!isnull)
+{
+if(id!=null)
+{
+String photoId=textbox16.text;
+boolean result=checkValueWithOperator(photoId,"","EQUAL");
+if(!result)
+{
+boolean isYes =messageWithQuestion("Are you sure you wish to delete patient photo (front)?");
+if(isYes)
+{
+String retValue = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","update neiswispicdb.patientphoto set FrontView:="+null+" conditions PatientID:="+id+" and patientphoto.id:="+photoId);
+removeFromFormValue("picture2");
+if(retValue == "true")
+{
+message("Deleted patient photo.");
+String retvalue=invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.frontview,patientphoto.sideview from neiswispicdb.patientphoto conditions patientphoto.patientID:="+id);
+restorFormValue("formValue");
+displayImageContent(picture2,0,0);
+displayImageContent(picture3,0,1);
+}
+}
+}
+}
+}
+else
+{
+message("No photo is present.");
+}
+}
+else
+{
+message("No photo is present.");
+}</event>
+      </Events>
+      <DataMappings />
+    </Picture>
+    <Picture visibleto="Delete Photo" draggable="false" height="15" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="80" font="Microsoft Sans Serif" backColor="#FFFFFF" x="5" fontsize="8" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" source="\img\picture12.jpg" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="picture0" use="" forecolor="#000000" enabled="true" name="picture12" backgroundImageLayout="center" id="picture12" width="15" y="495">
+      <Events>
+        <event name="DefaultValue">createToolTip("picture12"," Delete Side View Photo. ");</event>
+        <event name="OnClick">storFormValue("formValue");
+		id = getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.ID,patientphoto.sideview from neiswispicdb.patientphoto conditions patientphoto.patientID:="+id);
+String sview = getDataFromAllValuesVar(0, 1);
+if(sview!=null)
+{
+boolean isnull = checkValueWithOperator(sview,"null","EQUAL");
+if(!isnull)
+{
+if(id!=null)
+{
+String photoId=textbox16.text;
+boolean result=checkValueWithOperator(photoId,"","EQUAL");
+if(!result)
+{
+boolean isYes =messageWithQuestion("Are you sure you wish to delete patient photo (side)?");
+if(isYes)
+{
+String retValue = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","update neiswispicdb.patientphoto set SideView:="+null+" conditions PatientID:="+id);
+removeFromFormValue("picture3");
+if(retValue == "true")
+{
+message("Deleted patient photo.");
+String retvalue=invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.frontview,patientphoto.sideview from neiswispicdb.patientphoto conditions patientphoto.patientID:="+id);
+restorFormValue("formValue");
+displayImageContent(picture2,0,0);
+displayImageContent(picture3,0,1);
+}
+}
+}
+}
+}
+else
+{
+message("No photo is present.");
+}
+}
+else
+{
+message("No photo is present.");
+}</event>
+      </Events>
+      <DataMappings />
+    </Picture>
+    <Picture y="0" name="picture14" backColor="#FFFFFF" margintop="0" font="Microsoft Sans Serif" height="20" netBackColor="White" use="" netForeColor="ControlText" fontstyle="Regular" tabindex="81" paddingright="0" paddingleft="0" paddingtop="0" visibleto="All" width="20" forecolor="#000000" fontsize="8" draggable="false" id="picture14" marginbottom="0" position="absolute" cursor="[Cursor: System.Windows.Forms.Cursor]" backgroundImageLayout="tile" marginright="0" widthtype="Auto" marginleft="0" paddingbottom="0" text="picture1" droppable="false" visible="false" enabled="true" x="485">
+      <Events />
+      <DataMappings>
+        <Mapping datafield="Photo: String" datatable="PatientAlbum" datapattern="neiswispicdb" />
+      </DataMappings>
+    </Picture>
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="82" readonly="false" backColor="#FFFFFF" x="510" fontsize="8.25" paddingleft="0" position="absolute" visible="false" border="fixedsingle" paddingbottom="0" id="textbox163" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox163" valuetype="Any" backgroundImageLayout="tile" password="false" width="20" y="0" passwordchar="" draggable="false">
+      <Events />
+      <DataMappings>
+        <Mapping datafield="PatientID: Int16" datatable="PatientAlbum" datapattern="neiswispicdb" />
+      </DataMappings>
+    </TextBox>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="39" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="83" default="false" backColor="Transparent" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="center" name="frame177" boxalignment="none" backgroundImageLayout="tile" id="frame177" width="558" y="0" draggable="false">
+      <Events />
+      <DataMappings />
+      <Button visibleto="Upload Photo" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: SizeAll]" margintop="5" tabindex="8" backColor="Transparent" x="330" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="5" marginbottom="5" text="Upload Side View" use="" forecolor="#316AC5" enabled="true" name="button57" backgroundImageLayout="tile" id="button57" width="142" y="0" draggable="false">
+        <Events>
+          <event name="OnClick">storFormValue("formValue");
+		  String pid = getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.ID,patientphoto.sideview from neiswispicdb.patientphoto conditions patientphoto.patientID:="+pid);
+String sview = getDataFromAllValuesVar(0, 1);
+boolean isYes = true;
+if(sview!=null)
+{
+boolean isnull = checkValueWithOperator(sview,"null","EQUAL");
+if(!isnull)
+{
+isYes = messageWithQuestion("Photo already exists. Are you sure you want to replace the picture?");
+}
+}
+if(isYes)
+{
+String imagevalue  = uploadImage("picture3");
+if(imagevalue != null)
+{
+if(pid!=null)
+{
+addFormValue("textbox192",pid);
+addFormValue("textbox163",pid);
+addFormValue("picture14",imagevalue);
+setFormPatternId("PhotoInfo");
+invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","Patient");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.SideView,patientphoto.FrontView,patientphoto.id  from neiswispicdb.Patient,neiswispicdb.patientphoto conditions patient.id:="+rowValue+" and patient.deleted:=_STRINGSTART_0_STRINGEND_ and patientphoto.patientid:=patient.id");
+restorFormValue("formValue");
+data=createArray("String", "picture3,picture2,textbox16");
+showData(data);
+message("Photo saved.");
+}
+}
+else
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.SideView,patientphoto.FrontView,patientphoto.id  from neiswispicdb.Patient,neiswispicdb.patientphoto conditions patient.id:="+rowValue+" and patient.deleted:=_STRINGSTART_0_STRINGEND_ and patientphoto.patientid:=patient.id");
+restorFormValue("formValue");
+data=createArray("String", "picture3,picture2,textbox16");
+showData(data);
+}
+}</event>
+        </Events>
+        <DataMappings />
+      </Button>
+      <Button visibleto="Upload Photo" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: SizeAll]" margintop="5" tabindex="73" backColor="Transparent" x="178" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="5" marginbottom="5" text="Upload Front View" use="" forecolor="#316AC5" enabled="true" name="button36" backgroundImageLayout="tile" id="button36" width="142" y="0" draggable="false">
+        <Events>
+          <event name="OnClick">storFormValue("formValue");
+		  String pid = getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.ID,patientphoto.frontview from neiswispicdb.patientphoto conditions patientphoto.patientID:="+pid);
+String fview = getDataFromAllValuesVar(0, 1);
+boolean isYes = true;
+if(fview!=null)
+{
+boolean isnull = checkValueWithOperator(fview,"null","EQUAL");
+if(!isnull)
+{
+isYes = messageWithQuestion("Photo already exists. Are you sure you want to replace the picture?");
+}
+}
+if(isYes)
+{
+String imagevalue  = uploadImage("picture2");
+if(imagevalue != null)
+{
+if(pid!=null)
+{
+addFormValue("textbox192",pid);
+addFormValue("textbox163",pid);
+addFormValue("picture14",imagevalue);
+setFormPatternId("PhotoInfo");
+invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","Patient");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.SideView,patientphoto.FrontView,patientphoto.id  from neiswispicdb.Patient,neiswispicdb.patientphoto conditions patient.id:="+rowValue+" and patient.deleted:=_STRINGSTART_0_STRINGEND_ and patientphoto.patientid:=patient.id");
+restorFormValue("formValue");
+data=createArray("String", "picture3,picture2,textbox16");
+showData(data);
+message("Photo saved.");
+}
+}
+else
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.SideView,patientphoto.FrontView,patientphoto.id  from neiswispicdb.Patient,neiswispicdb.patientphoto conditions patient.id:="+rowValue+" and patient.deleted:=_STRINGSTART_0_STRINGEND_ and patientphoto.patientid:=patient.id");
+restorFormValue("formValue");
+data=createArray("String", "picture3,picture2,textbox16");
+showData(data);
+}
+}</event>
+        </Events>
+        <DataMappings />
+      </Button>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="5" tabindex="76" backColor="Transparent" x="2" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="5" marginbottom="5" text="Show Album" use="" forecolor="#316AC5" enabled="true" name="button159" backgroundImageLayout="tile" id="button159" width="157" y="1" draggable="false">
+        <Events>
+          <event name="OnClick">storFormValue("formValue");
+updateSession("imageid", null);
+createPopUp("PhotoAlbum");
+String pid = getSessionData("rowId");
+String retvalue=invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.frontview,patientphoto.sideview from neiswispicdb.patientphoto conditions patientphoto.patientID:="+pid);
+displayImageContent(picture2,0,0);
+displayImageContent(picture3,0,1);
+restorFormValue("formValue");
+String front = getDataFromAllValuesVar(0, 0);
+String side = getDataFromAllValuesVar(0, 1);
+addFormValue("picture2",front);
+addFormValue("picture3",side);</event>
+        </Events>
+        <DataMappings />
+      </Button>
+    </Frame>
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="84" readonly="false" backColor="#FFFFFF" x="91" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox192" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox192" valuetype="Any" backgroundImageLayout="tile" password="false" width="100" y="461" passwordchar="" draggable="false">
+      <Events />
+      <DataMappings>
+        <Mapping datafield="PatientID: Int16" datatable="PatientPhoto" datapattern="neiswispicdb" />
+      </DataMappings>
+    </TextBox>
+  </Frame>
+</basewindow>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<DeploySettings>
+  <properties>Deploy Settings</properties>
+  <projectTitle>
+  </projectTitle>
+  <renderingoption>ZK</renderingoption>
+  <applicationname>E:/Development/AppDesigner/NEISUI</applicationname>
+  <glassfishhome>C:\glassfish</glassfishhome>
+  <serverpath>http://localhost:8080/c?</serverpath>
+  <databasetype>MySQL</databasetype>
+  <username>root</username>
+  <password>1234</password>
+  <serveraddress>localhost</serveraddress>
+  <portno>3306</portno>
+</DeploySettings>

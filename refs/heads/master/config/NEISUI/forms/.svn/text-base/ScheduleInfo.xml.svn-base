@@ -1,0 +1,37 @@
+<basewindow popup="false" visibleto="All" font="Microsoft Sans Serif" height="849" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="ScheduleInfo" boxalignment="none" backgroundImageLayout="tile" id="ScheduleInfo" title="" width="566" y="0" draggable="false">
+  <Events>
+    <event name="DefaultValue" internal="true">makeVisible("ScheduleInfo")</event>
+  </Events>
+  <Schedular visibleto="Create Schedule" font="Microsoft Sans Serif" paddingright="0" height="830" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="#FFFFFF" x="0" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" firstdayofweek="Monday" timezone="" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="schedular0" use="" forecolor="#000000" enabled="true" name="schedular1" backgroundImageLayout="tile" id="schedular1" width="564" y="9" draggable="false" mold="default">
+    <Events>
+      <event name="OnEventCreate">storFormValue("formValue");
+String rowValue=getSessionData("rowId");
+if(rowValue!=null)
+{
+boolean isValid=getDefaultValuesForSchedular("schedular1");
+if(isValid)
+{
+updateSession("rowId",rowValue);
+createPopUp("patientScheduler");
+}
+}
+else
+{
+message("Please save patient information.");
+}
+restorFormValue("formValue");</event>
+      <event name="DefaultValue">String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get          schedule.AppointmentStartDate,schedule.AppointmentEndDate,schedule.AppointmentEndDate,schedule.AppointmentStartTime,schedule.AppointmentEndTime,schedule.id,patient.LastName,patient.firstName,studytype.Type from neiswispicdb.schedule joins leftjoin schedule.StudyType:=studytype.id,leftjoin schedule.PatientID:=patient.id conditions schedule.Cancelled:=["+0+"] and schedule.patientID:="+pid);   
+setDataInCalendars(schedular1);
+</event>
+      <event name="OnEventEdit">storFormValue("formValue");
+String id=onEditEventCalendar();
+String rowValue=getSessionData("rowId");
+updateSession("schId",id);
+updateSession("rowId",rowValue);
+createPopUp("patientScheduler");
+restorFormValue("formValue");</event>
+    </Events>
+    <DataMappings />
+  </Schedular>
+</basewindow>

@@ -1,0 +1,45 @@
+<basewindow popup="true" visibleto="All" font="Microsoft Sans Serif" height="210" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="CalendarPanel" boxalignment="none" backgroundImageLayout="none" id="CalendarPanel" title="" width="213" y="0" draggable="false">
+  <Events />
+  <Calender y="0" name="calender12" backColor="#FFFFFF" margintop="0" font="Microsoft Sans Serif" height="200" netBackColor="ActiveCaptionText" use="" netForeColor="ControlText" fontstyle="Regular" tabindex="10" paddingright="0" paddingleft="0" paddingtop="0" visibleto="All" width="203" forecolor="#000000" fontsize="8.25" draggable="false" id="calender12" marginbottom="0" position="absolute" cursor="[Cursor: SizeAll]" backgroundImageLayout="none" marginright="0" widthtype="Auto" marginleft="0" paddingbottom="0" text="" droppable="false" visible="true" enabled="true" x="0">
+    <Events>
+      <event name="OnChange">value=calender12.getValue();
+String selectedDate= getSelectedDate(value,"yyyy/MM/dd HH:mm");
+String parentForm=getParentFormPattern("CalendarPanel");
+boolean result=equalsTest(parentForm,"Schedule");
+if(result)
+{
+setCalendarDate(selectedDate,parentForm);
+}
+else
+{
+boolean result=equalsTest(parentForm,"roomassignment");
+if(result)
+{
+String selectedDate= getSelectedDate(value,"yyyy-MM-dd");
+setDataForRoomManagement(parentForm,selectedDate,"frame136");
+}
+else
+{
+boolean result=equalsTest(parentForm,"Patient");
+if(result)
+{
+setCalendarDate(selectedDate,"ScheduleInfo");
+}
+else
+{
+updateSession("parentform",parentForm);
+updateSessionList("selectedDate",value);
+String retValue=invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","Schedule");
+}
+}
+}</event>
+      <event name="DefaultValue">data=session.getAttribute("selectedDate");
+if(data!=null)
+{
+calender12.setValue(data);
+updateSessionList("selectedDate",null);
+}</event>
+    </Events>
+    <DataMappings />
+  </Calender>
+</basewindow>

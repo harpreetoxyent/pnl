@@ -1,0 +1,39 @@
+<basewindow popup="false" visibleto="All" font="Microsoft Sans Serif" height="730" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="ExecuteWorkflow" boxalignment="none" backgroundImageLayout="tile" id="ExecuteWorkflow" title="" width="784" y="0" draggable="false">
+  <Events />
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="250" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="22" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame254" boxalignment="none" backgroundImageLayout="tile" id="frame254" width="664" y="83" draggable="false">
+    <Events />
+    <DataMappings />
+    <Combobox visibleto="All" draggable="false" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" font="Microsoft Sans Serif" readonly="false" backColor="#FFFFFF" x="350" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="combobox1" use="" forecolor="#000000" enabled="true" name="combobox42" backgroundImageLayout="tile" id="combobox42" width="176" y="88">
+      <Events />
+      <DataMappings />
+    </Combobox>
+    <Label visibleto="All" font="Microsoft Sans Serif" height="26" widthtype="Auto" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" backColor="#FFFFFF" x="99" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Brain K Module" use="" forecolor="#000000" enabled="true" name="label419" textalign="middlecenter" backgroundImageLayout="tile" id="label420" width="169" y="85" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+    <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="9" backColor="#FFFFFF" x="221" fontsize="9.75" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Execute Work Flow" use="" forecolor="#000000" enabled="true" name="label420" textalign="middlecenter" backgroundImageLayout="tile" id="label421" width="176" y="25" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+    <Label visibleto="All" font="Microsoft Sans Serif" height="29" widthtype="Auto" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="10" backColor="#FFFFFF" x="98" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Configuration Area" use="" forecolor="#000000" enabled="true" name="label421" textalign="middlecenter" backgroundImageLayout="tile" id="label423" width="167" y="140" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+    <RadioGroup visibleto="All" font="Microsoft Sans Serif" height="26" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="11" backColor="#FFFFFF" x="350" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixed3d" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="radiogroup0" backgroundImageLayout="tile" id="radiogroup0" width="172" y="142" draggable="false">
+      <Events />
+      <DataMappings />
+    </RadioGroup>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="40" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="12" default="false" backColor="#FFFFFF" x="11" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame255" boxalignment="none" backgroundImageLayout="tile" id="frame255" width="641" y="203" draggable="false">
+      <Events />
+      <DataMappings />
+      <Button visibleto="All" font="Microsoft Sans Serif" height="32" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="#FFFFFF" x="152" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="Process" use="" forecolor="#316AC5" enabled="true" name="button262" backgroundImageLayout="tile" id="button262" width="84" y="3" draggable="false">
+        <Events />
+        <DataMappings />
+      </Button>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="33" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="8" backColor="#FFFFFF" x="324" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="Cancel" use="" forecolor="#316AC5" enabled="true" name="button263" backgroundImageLayout="tile" id="button263" width="84" y="3" draggable="false">
+        <Events />
+        <DataMappings />
+      </Button>
+    </Frame>
+  </Frame>
+</basewindow>

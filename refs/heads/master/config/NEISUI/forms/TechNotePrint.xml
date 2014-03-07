@@ -1,0 +1,301 @@
+<basewindow popup="false" visibleto="All" font="Microsoft Sans Serif" height="1540" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="TechNotePrint" boxalignment="none" backgroundImageLayout="tile" id="TechNotePrint" title="" width="970" y="0" draggable="false">
+  <Events>
+    <event name="DefaultValue">frame169.setVisible(false);
+readOnly("TechNotePrint");
+String study = getSessionData("studyId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get techniciannote.id,techniciannote.SleepLatency,techniciannote.EEG,techniciannote.Snoring,techniciannote.Plms,techniciannote.Arousals,techniciannote.RespiratoryEvent,techniciannote.PatientTreatedWith,techniciannote.Pressures,techniciannote.SleepApneaHandOut,techniciannote.ChinStrap,techniciannote.GeneralComments,techniciannote.NoOfBreaths,techniciannote.ApneaLength,techniciannote.EKG,techniciannote.Proceduretype,techniciannote.Leak,techniciannote.EPOCHNO from neiswispicdb.techniciannote conditions techniciannote.studyId:="+study );
+data=createArray("String", "textbox155,textbox134,textbox135,textbox137,textbox138,textbox139,textbox140,textbox145,textbox144,textbox146,textbox147,textbox149,textbox141,textbox142,textbox136,combobox36,textbox148,textbox143");
+showData(data);
+String id1 = textbox155.text;
+if(id1 !="")
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get medicationconsume.time,medicationconsume.NameDescription,medicationconsume.Dose from neiswispicdb.medicationconsume conditions medicationconsume.TechNoteId:="+id1);
+	
+	displayDataInControl("grid21");
+}
+String value = combobox36.getText();
+boolean isTrue = equalsTest(value,"Research");
+if(isTrue)
+{
+frame169.setVisible(true);
+}
+else
+{
+frame169.setVisible(false);
+}
+</event>
+  </Events>
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="1133" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="12" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame142" boxalignment="none" backgroundImageLayout="tile" id="frame166" width="948" y="11" draggable="false">
+    <Events />
+    <DataMappings />
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="982" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="72" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" y="57" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame143" boxalignment="none" backgroundImageLayout="center" id="frame167" width="569" backgroundImage="\img\frame143.jpg" draggable="false">
+      <Events />
+      <DataMappings />
+      <Label visibleto="All" font="Microsoft Sans Serif" height="24" widthtype="Auto" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="Transparent" x="60" fontsize="12" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="REMARKS:" use="" forecolor="#000000" enabled="true" name="label206" textalign="topleft" backgroundImageLayout="tile" id="label279" width="103" y="13" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="1" backColor="Transparent" x="202" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Sleep Latency:" use="" forecolor="#000000" enabled="true" name="label207" textalign="topleft" backgroundImageLayout="tile" id="label280" width="88" y="46" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="8" readonly="false" backColor="#FFFFFF" x="295" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox134" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox71" valuetype="Numeric" backgroundImageLayout="tile" password="false" width="100" y="43" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings>
+          <Mapping datafield="SleepLatency: Double" datatable="TechnicianNote" datapattern="neiswispicdb" />
+        </DataMappings>
+      </TextBox>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="22" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="9" backColor="Transparent" x="247" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="EEG:" use="" forecolor="#000000" enabled="true" name="label208" textalign="topleft" backgroundImageLayout="tile" id="label281" width="35" y="76" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="10" readonly="false" backColor="#FFFFFF" x="295" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox135" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox73" valuetype="Numeric" backgroundImageLayout="tile" password="false" width="100" y="72" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings>
+          <Mapping datafield="EEG: Double" datatable="TechnicianNote" datapattern="neiswispicdb" />
+        </DataMappings>
+      </TextBox>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="22" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="11" backColor="Transparent" x="247" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="EKG:" use="" forecolor="#000000" enabled="true" name="label227" textalign="topleft" backgroundImageLayout="tile" id="label282" width="38" y="106" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="12" readonly="false" backColor="#FFFFFF" x="296" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox136" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox74" valuetype="Numeric" backgroundImageLayout="tile" password="false" width="100" y="103" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings>
+          <Mapping datafield="EKG: Double" datatable="TechnicianNote" datapattern="neiswispicdb" />
+        </DataMappings>
+      </TextBox>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="21" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="13" backColor="Transparent" x="233" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Snoring:" use="" forecolor="#000000" enabled="true" name="label236" textalign="topleft" backgroundImageLayout="tile" id="label283" width="47" y="134" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="14" readonly="false" backColor="#FFFFFF" x="296" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox137" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox77" valuetype="Numeric" backgroundImageLayout="tile" password="false" width="100" y="132" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings>
+          <Mapping datafield="Snoring: Decimal" datatable="TechnicianNote" datapattern="neiswispicdb" />
+        </DataMappings>
+      </TextBox>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="15" backColor="Transparent" x="239" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="PLMS:" use="" forecolor="#000000" enabled="true" name="label240" textalign="topleft" backgroundImageLayout="tile" id="label284" width="43" y="165" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="16" readonly="false" backColor="#FFFFFF" x="296" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox138" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox79" valuetype="Numeric" backgroundImageLayout="tile" password="false" width="100" y="163" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings>
+          <Mapping datafield="Plms: Decimal" datatable="TechnicianNote" datapattern="neiswispicdb" />
+        </DataMappings>
+      </TextBox>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="17" backColor="Transparent" x="228" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Arousals:" use="" forecolor="#000000" enabled="true" name="label242" textalign="topleft" backgroundImageLayout="tile" id="label290" width="51" y="194" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="18" readonly="false" backColor="#FFFFFF" x="295" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox139" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox103" valuetype="Numeric" backgroundImageLayout="tile" password="false" width="100" y="191" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings>
+          <Mapping datafield="Arousals: Double" datatable="TechnicianNote" datapattern="neiswispicdb" />
+        </DataMappings>
+      </TextBox>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="19" backColor="Transparent" x="179" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Respiratory Events:" use="" forecolor="#000000" enabled="true" name="label243" textalign="topleft" backgroundImageLayout="tile" id="label291" width="104" y="225" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="20" readonly="false" backColor="#FFFFFF" x="295" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox140" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox104" valuetype="Any" backgroundImageLayout="tile" password="false" width="100" y="219" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings>
+          <Mapping datafield="RespiratoryEvent: String" datatable="TechnicianNote" datapattern="neiswispicdb" />
+        </DataMappings>
+      </TextBox>
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="744" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="21" default="false" backColor="Transparent" x="11" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame146" boxalignment="none" backgroundImageLayout="tile" id="frame168" width="537" y="245" draggable="false">
+        <Events />
+        <DataMappings />
+        <Frame visibleto="All" font="Microsoft Sans Serif" height="118" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="Transparent" x="24" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame147" boxalignment="none" backgroundImageLayout="tile" id="frame169" width="433" y="1" draggable="false">
+          <Events />
+          <DataMappings />
+          <Label visibleto="All" font="Microsoft Sans Serif" height="24" widthtype="Auto" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="Transparent" x="31" fontsize="9.75" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="PEDIATRIC APNEA CALCULATION" use="" forecolor="#000000" enabled="true" name="label244" textalign="topleft" backgroundImageLayout="tile" id="label292" width="259" y="9" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="8" backColor="Transparent" x="136" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="EPOCH Number used:" use="" forecolor="#000000" enabled="true" name="label245" textalign="topleft" backgroundImageLayout="tile" id="label293" width="116" y="40" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="9" backColor="Transparent" x="65" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Number of breaths in 30-sec EPOCH:" use="" forecolor="#000000" enabled="true" name="label246" textalign="topleft" backgroundImageLayout="tile" id="label294" width="187" y="73" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="10" readonly="false" backColor="#FFFFFF" x="283" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox141" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox105" valuetype="Numeric" backgroundImageLayout="tile" password="false" width="100" y="67" passwordchar="" draggable="false">
+            <Events />
+            <DataMappings>
+              <Mapping datafield="NoOfBreaths: Int32" datatable="TechnicianNote" datapattern="neiswispicdb" />
+            </DataMappings>
+          </TextBox>
+          <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="11" backColor="Transparent" x="55" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Minimum Apnea Length = 60/#breaths:" use="" forecolor="#000000" enabled="true" name="label247" textalign="topleft" backgroundImageLayout="tile" id="label295" width="195" y="98" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="12" readonly="false" backColor="#FFFFFF" x="284" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox142" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox106" valuetype="Numeric" backgroundImageLayout="tile" password="false" width="100" y="96" passwordchar="" draggable="false">
+            <Events />
+            <DataMappings>
+              <Mapping datafield="ApneaLength: Int32" datatable="TechnicianNote" datapattern="neiswispicdb" />
+            </DataMappings>
+          </TextBox>
+          <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="13" readonly="false" backColor="#FFFFFF" x="283" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox143" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox116" valuetype="Numeric" backgroundImageLayout="tile" password="false" width="100" y="37" passwordchar="" draggable="false">
+            <Events />
+            <DataMappings>
+              <Mapping datafield="Epochno: Int32" datatable="TechnicianNote" datapattern="neiswispicdb" />
+            </DataMappings>
+          </TextBox>
+        </Frame>
+        <Frame visibleto="All" font="Microsoft Sans Serif" height="253" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="8" default="false" backColor="Transparent" x="23" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame148" boxalignment="none" backgroundImageLayout="tile" id="frame170" width="489" y="125" draggable="false">
+          <Events />
+          <DataMappings />
+          <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="Transparent" x="29" fontsize="9.75" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="POSTIVE AIRWAY PRESSURE" use="" forecolor="#000000" enabled="true" name="label248" textalign="topleft" backgroundImageLayout="tile" id="label296" width="225" y="9" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="1" backColor="Transparent" x="143" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Patient was treated with: " use="" forecolor="#000000" enabled="true" name="label249" textalign="topleft" backgroundImageLayout="tile" id="label297" width="124" y="40" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="66" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="8" readonly="false" backColor="#FFFFFF" x="283" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox144" paddingright="0" multiline="true" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox107" valuetype="Any" backgroundImageLayout="tile" password="false" width="185" y="85" passwordchar="" draggable="false">
+            <Events />
+            <DataMappings>
+              <Mapping datafield="PatientTreatedWith: String" datatable="TechnicianNote" datapattern="neiswispicdb" />
+            </DataMappings>
+          </TextBox>
+          <Label visibleto="All" font="Microsoft Sans Serif" height="23" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="9" backColor="Transparent" x="209" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Pressures:" use="" forecolor="#000000" enabled="true" name="label250" textalign="topleft" backgroundImageLayout="tile" id="label298" width="59" y="98" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="66" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="10" readonly="false" backColor="#FFFFFF" x="283" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox145" paddingright="0" multiline="true" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox108" valuetype="Any" backgroundImageLayout="tile" password="false" width="185" y="12" passwordchar="" draggable="false">
+            <Events />
+            <DataMappings>
+              <Mapping datafield="Pressures: String" datatable="TechnicianNote" datapattern="neiswispicdb" />
+            </DataMappings>
+          </TextBox>
+          <Label visibleto="All" font="Microsoft Sans Serif" height="22" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="11" backColor="Transparent" x="24" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Therapy for sleep apnea handout given to patient?" use="" forecolor="#000000" enabled="true" name="label251" textalign="topleft" backgroundImageLayout="tile" id="label299" width="246" y="161" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="12" readonly="false" backColor="#FFFFFF" x="283" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox146" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox109" valuetype="Any" backgroundImageLayout="tile" password="false" width="100" y="158" passwordchar="" draggable="false">
+            <Events />
+            <DataMappings>
+              <Mapping datafield="SleepApneaHandOut: String" datatable="TechnicianNote" datapattern="neiswispicdb" />
+            </DataMappings>
+          </TextBox>
+          <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="13" backColor="Transparent" x="209" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Chin strap:" use="" forecolor="#000000" enabled="true" name="label252" textalign="topleft" backgroundImageLayout="tile" id="label300" width="57" y="190" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="14" readonly="false" backColor="#FFFFFF" x="284" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox147" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox110" valuetype="Any" backgroundImageLayout="tile" password="false" width="100" y="189" passwordchar="" draggable="false">
+            <Events />
+            <DataMappings>
+              <Mapping datafield="ChinStrap: String" datatable="TechnicianNote" datapattern="neiswispicdb" />
+            </DataMappings>
+          </TextBox>
+          <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="15" backColor="Transparent" x="231" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Leak:" use="" forecolor="#000000" enabled="true" name="label253" textalign="topleft" backgroundImageLayout="tile" id="label301" width="37" y="221" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="16" readonly="false" backColor="#FFFFFF" x="284" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox148" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox114" valuetype="Any" backgroundImageLayout="tile" password="false" width="100" y="219" passwordchar="" draggable="false">
+            <Events />
+            <DataMappings>
+              <Mapping datafield="Leak: String" datatable="TechnicianNote" datapattern="neiswispicdb" />
+            </DataMappings>
+          </TextBox>
+        </Frame>
+        <Frame visibleto="All" font="Microsoft Sans Serif" height="344" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="9" default="false" backColor="Transparent" x="22" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame156" boxalignment="none" backgroundImageLayout="tile" id="frame171" width="490" y="379" draggable="false">
+          <Events />
+          <DataMappings />
+          <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="22" backColor="Transparent" x="52" fontsize="9.75" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="MEDICATIONS CONSUMED" use="" forecolor="#000000" enabled="true" name="label254" textalign="topleft" backgroundImageLayout="tile" id="label302" width="212" y="2" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <Grid visibleto="All" font="Microsoft Sans Serif" height="131" netBackColor="White" multiselect="False" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="23" backColor="#FFFFFF" x="55" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="grid21" use="" forecolor="#000000" enabled="true" align="none" name="grid21" backgroundImageLayout="tile" id="grid21" width="368" y="52" draggable="false">
+            <Events />
+            <DataMappings />
+            <row visibleto="All" draggable="false" height="31" netBackColor="Coral" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FF7F50" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="row64" use="" forecolor="#000000" enabled="true" name="row64" backgroundImageLayout="tile" id="row64" sizetype="Pixel" width="366" y="0">
+              <column visibleto="All" draggable="false" height="31" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column332" use="" forecolor="#000000" enabled="true" name="column332" backgroundImageLayout="tile" id="column332" sizetype="Pixel" width="100" y="0">
+                <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Time" use="" forecolor="#000000" enabled="true" name="label255" textalign="topleft" backgroundImageLayout="tile" id="label303" width="98" y="0" draggable="false">
+                  <Events />
+                  <DataMappings />
+                </Label>
+              </column>
+              <column visibleto="All" draggable="false" height="31" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="1" font="Microsoft Sans Serif" backColor="#00FFFF" x="100" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column333" use="" forecolor="#000000" enabled="true" name="column333" backgroundImageLayout="tile" id="column333" sizetype="Pixel" width="184" y="0">
+                <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Name/Description" use="" forecolor="#000000" enabled="true" name="label256" textalign="topleft" backgroundImageLayout="tile" id="label304" width="182" y="0" draggable="false">
+                  <Events />
+                  <DataMappings />
+                </Label>
+              </column>
+              <column visibleto="All" draggable="false" height="31" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="2" font="Microsoft Sans Serif" backColor="#00FFFF" x="284" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column334" use="" forecolor="#000000" enabled="true" name="column334" backgroundImageLayout="tile" id="column334" sizetype="Pixel" width="99" y="0">
+                <Label visibleto="All" font="Microsoft Sans Serif" height="29" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Dose" use="" forecolor="#000000" enabled="true" name="label257" textalign="topleft" backgroundImageLayout="tile" id="label305" width="86" y="0" draggable="false">
+                  <Events />
+                  <DataMappings />
+                </Label>
+              </column>
+            </row>
+          </Grid>
+          <Label visibleto="All" font="Microsoft Sans Serif" height="22" widthtype="Auto" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="24" backColor="Transparent" x="52" fontsize="9.75" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="General Comments:   " use="" forecolor="#000000" enabled="true" name="label258" textalign="topleft" backgroundImageLayout="tile" id="label306" width="181" y="209" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="104" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="25" readonly="false" backColor="#FFFFFF" x="55" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox149" paddingright="0" multiline="true" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox115" valuetype="Any" backgroundImageLayout="tile" password="false" width="365" y="233" passwordchar="" draggable="false">
+            <Events />
+            <DataMappings>
+              <Mapping datafield="GeneralComments: String" datatable="TechnicianNote" datapattern="neiswispicdb" />
+            </DataMappings>
+          </TextBox>
+          <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="26" backColor="Transparent" x="55" fontsize="8.25" paddingleft="0" position="absolute" visible="false" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Add Medication Information" use="" forecolor="#000000" enabled="true" name="button151" backgroundImageLayout="tile" id="button182" width="163" y="28" draggable="false">
+            <Events>
+              <event name="OnClick">storFormValue("formValue");
+createPopUp("MedicationForm");
+restorFormValue("formValue");
+showDataInGrid("grid21");</event>
+            </Events>
+            <DataMappings />
+          </Button>
+        </Frame>
+      </Frame>
+      <Combobox visibleto="All" draggable="false" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="32" font="Microsoft Sans Serif" readonly="true" backColor="#FFFFFF" x="295" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="combobox32" backgroundImageLayout="tile" id="combobox36" width="81" y="10">
+        <Events>
+          <event name="DefaultValue">invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get ProcedureType.ProcedureId,ProcedureType.ProcedureName from neiswispicdb.ProcedureType");
+showComboData("combobox36");</event>
+        </Events>
+        <DataMappings>
+          <Mapping datafield="Proceduretype: String" datatable="TechnicianNote" datapattern="neiswispicdb" />
+        </DataMappings>
+      </Combobox>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="21" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="33" backColor="Transparent" x="182" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Select Notes Type:" use="" forecolor="#000000" enabled="true" name="label263" textalign="topleft" backgroundImageLayout="tile" id="label307" width="102" y="13" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="34" readonly="true" backColor="#FFFFFF" x="483" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox155" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox125" valuetype="Any" backgroundImageLayout="tile" password="false" width="52" y="43" passwordchar="" draggable="false">
+        <Events />
+        <DataMappings>
+          <Mapping datafield="id: Int16" datatable="TechnicianNote" datapattern="neiswispicdb" />
+        </DataMappings>
+      </TextBox>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="22" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="36" backColor="Transparent" x="428" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Note Id:" use="" forecolor="#000000" enabled="true" name="label265" textalign="topleft" backgroundImageLayout="tile" id="label308" width="57" y="44" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+    </Frame>
+    <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="10" backColor="Transparent" x="234" fontsize="12" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="TECHNICIAN NOTE" use="" forecolor="#000000" enabled="true" name="label205" textalign="topleft" backgroundImageLayout="tile" id="label309" width="186" y="30" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="35" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="13" backColor="Transparent" x="188" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Print Notes" use="" forecolor="#000000" enabled="true" name="button179" backgroundImageLayout="tile" id="button183" width="106" y="1070" draggable="false">
+      <Events>
+        <event name="OnClick">printWindow();</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="35" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="14" backColor="Transparent" x="409" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Back" use="" forecolor="#000000" enabled="true" name="button181" backgroundImageLayout="tile" id="button186" width="106" y="1070" draggable="false">
+      <Events>
+        <event name="OnClick">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","TechnicianNoteForm");
+</event>
+      </Events>
+      <DataMappings />
+    </Button>
+  </Frame>
+</basewindow>

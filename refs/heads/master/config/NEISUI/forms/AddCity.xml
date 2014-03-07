@@ -1,0 +1,66 @@
+<basewindow popup="true" visibleto="All" font="Microsoft Sans Serif" height="140" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="AddCity" boxalignment="none" backgroundImageLayout="tile" id="AddCity" title="Add New City" width="262" y="0" draggable="false">
+  <Events>
+    <event name="DefaultValue">textbox68.setVisible(false);</event>
+  </Events>
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="95" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="6" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame103" boxalignment="none" backgroundImageLayout="tile" id="frame103" width="246" y="35" draggable="false">
+    <Events />
+    <DataMappings />
+    <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="Transparent" x="32" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="City Name*:" use="" forecolor="#000000" enabled="true" name="label157" textalign="topleft" backgroundImageLayout="tile" id="label190" width="70" y="10" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" readonly="false" backColor="#FFFFFF" x="113" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox50" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox50" valuetype="AlphaNumeric" backgroundImageLayout="tile" password="false" draggable="false" width="127" y="12" passwordchar="" ismandatory="yes">
+      <Events />
+      <DataMappings>
+        <Mapping datafield="CityName: String" datatable="City" datapattern="neiswispicdb" />
+      </DataMappings>
+    </TextBox>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="9" backColor="#FFFFFF" x="42" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Save" use="" forecolor="#000000" enabled="true" name="button104" backgroundImageLayout="tile" id="button34" width="75" y="55" draggable="false">
+      <Events>
+        <event name="OnClick">String stateId = getSessionData("STATEID");
+if(stateId !=null)
+{
+	boolean isValid = clientSideValidation("AddCity");
+	if(isValid)
+	{
+		String city = textbox50.text;
+		boolean isExist = false;
+		invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get City.id from neiswispicdb.City conditions City.CityName:=["+city+"]");
+		isExist = isRecordExist();
+		if(!isExist)
+		{
+			addFormValue("textbox68",stateId);
+			String retValue = invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","AddCity");
+			boolean isSaved = equalsTest(retValue,"true");
+			if(isSaved)
+			{		
+				detachWindow("AddCity");
+			}
+		}
+		else
+		{
+			message("This city name already exist. Please enter another city name.");
+		}
+	}
+}
+else
+{
+message("Please select state before saving new city name.");
+}</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="10" backColor="#FFFFFF" x="141" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Cancel" use="" forecolor="#000000" enabled="true" name="button105" backgroundImageLayout="tile" id="button35" width="75" y="54" draggable="false">
+      <Events>
+        <event name="OnClick">detachWindow("AddCity");</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="11" readonly="false" backColor="#FFFFFF" x="219" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox68" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox68" valuetype="Any" backgroundImageLayout="tile" password="false" width="21" y="38" passwordchar="" draggable="false">
+      <Events />
+      <DataMappings>
+        <Mapping datafield="StateId: Int32" datatable="City" datapattern="neiswispicdb" />
+      </DataMappings>
+    </TextBox>
+  </Frame>
+</basewindow>

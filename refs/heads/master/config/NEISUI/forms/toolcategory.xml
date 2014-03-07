@@ -1,0 +1,39 @@
+<basewindow popup="true" visibleto="All" font="Microsoft Sans Serif" height="180" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="toolcategory" boxalignment="none" backgroundImageLayout="tile" id="toolcategory" title="Tool Cateogry" width="250" y="0" draggable="false">
+  <Events />
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="84" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame256" boxalignment="none" backgroundImageLayout="tile" id="frame256" width="245" y="32" draggable="false">
+    <Events />
+    <DataMappings />
+    <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#FFFFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Tool Category" use="" forecolor="#000000" enabled="true" name="label381" textalign="topleft" backgroundImageLayout="tile" id="label419" width="105" y="23" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="8" readonly="false" backColor="#FFFFFF" x="128" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox221" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox221" valuetype="Any" backgroundImageLayout="tile" password="false" draggable="false" width="108" y="28" passwordchar="" ismandatory="yes">
+      <Events />
+      <DataMappings>
+        <Mapping datafield="category: String" datatable="toolcateogry" datapattern="appadmin" />
+        <Mapping datafield="category: String" datatable="toolcateogry" datapattern="appadmin" />
+      </DataMappings>
+    </TextBox>
+  </Frame>
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="40" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="8" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame258" boxalignment="none" backgroundImageLayout="tile" id="frame258" width="244" y="118" draggable="false">
+    <Events />
+    <DataMappings />
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="10" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="10" tabindex="0" backColor="#FFFFFF" x="8" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="10" marginbottom="10" text="Save" use="" forecolor="#000000" enabled="true" name="button264" backgroundImageLayout="tile" id="button273" width="75" y="6" draggable="false">
+      <Events>
+        <event name="OnClick">result=clientSideValidation("toolcategory");
+if(result)
+{
+invokeComponent("com.oxyentmedical.component.workflowcomponent","AddNewToolCateogry","com.oxymedical.component.workflowComponent.WorkflowComponent","");
+detachWindow("toolcategory");
+}</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="10" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="10" tabindex="1" backColor="#FFFFFF" x="139" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="10" marginbottom="10" text="Cancel" use="" forecolor="#000000" enabled="true" name="button266" backgroundImageLayout="tile" id="button274" width="75" y="6" draggable="false">
+      <Events>
+        <event name="OnClick">detachWindow("toolcategory");</event>
+      </Events>
+      <DataMappings />
+    </Button>
+  </Frame>
+</basewindow>

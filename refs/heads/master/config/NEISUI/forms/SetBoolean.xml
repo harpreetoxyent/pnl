@@ -1,0 +1,33 @@
+<basewindow popup="true" visibleto="All" font="Microsoft Sans Serif" height="165" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="SetBoolean" boxalignment="none" backgroundImageLayout="tile" id="SetBoolean" title="Set Boolean Value" width="230" y="0" draggable="false">
+  <Events />
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="102" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="5" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame132" boxalignment="none" backgroundImageLayout="tile" id="frame132" width="215" y="53" draggable="false">
+    <Events />
+    <DataMappings />
+    <Combobox visibleto="All" draggable="false" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" font="Microsoft Sans Serif" readonly="true" backColor="#FFFFFF" x="36" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="combobox31" backgroundImageLayout="tile" id="combobox31" width="94" y="25">
+      <Events>
+        <event name="DefaultValue">invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get logical.logicalId,logical.logicalOperator from neiswispicdb.logical conditions logical.deleted:=_STRINGSTART_0_STRINGEND_ ");
+showComboData("combobox31");
+String logName =null;
+</event>
+        <event name="OnClick">logName = getComboBoxValue("combobox31");
+String id =getComboItemId1("combobox31");
+updateSession("logicalId", id);
+</event>
+      </Events>
+      <DataMappings />
+    </Combobox>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" backColor="Transparent" x="21" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Apply" use="" forecolor="#000000" enabled="true" name="button10" backgroundImageLayout="tile" id="button120" width="75" y="66" draggable="false">
+      <Events>
+        <event name="OnClick">updateSession("LogicalName",logName);
+detachWindow("SetBoolean");</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="9" backColor="Transparent" x="112" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Cancel" use="" forecolor="#000000" enabled="true" name="button53" backgroundImageLayout="tile" id="button121" width="75" y="66" draggable="false">
+      <Events>
+        <event name="OnClick">detachWindow("SetBoolean");</event>
+      </Events>
+      <DataMappings />
+    </Button>
+  </Frame>
+</basewindow>

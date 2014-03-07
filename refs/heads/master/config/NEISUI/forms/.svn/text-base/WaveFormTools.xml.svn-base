@@ -1,0 +1,127 @@
+<basewindow popup="false" visibleto="All" font="Microsoft Sans Serif" height="652" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="relative" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="WaveFormTools" boxalignment="none" backgroundImageLayout="tile" id="WaveFormTools" title="" width="685" y="0" draggable="false">
+  <Events />
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="642" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame148" boxalignment="none" backgroundImageLayout="tile" id="frame56" width="675" y="0" draggable="false">
+    <Events />
+    <DataMappings />
+    <MultiTab y="0" name="multitab6" backColor="Transparent" margintop="0" font="Microsoft Sans Serif" height="640" netBackColor="Control" use="" netForeColor="ControlText" fontstyle="Regular" tabindex="0" paddingright="0" paddingleft="0" paddingtop="0" visibleto="All" width="670" forecolor="#000000" fontsize="8" draggable="false" id="multitab6" marginbottom="0" position="absolute" cursor="[Cursor: SizeAll]" backgroundImageLayout="tile" marginright="0" marginleft="0" paddingbottom="0" text="multitab6" droppable="false" visible="true" enabled="true" x="2">
+      <Events />
+      <DataMappings />
+      <TabPage y="22" align="none" name="tabpage12" backColor="#FFFFFF" margintop="0" font="Microsoft Sans Serif" height="614" netBackColor="White" use="" netForeColor="ControlText" fontstyle="Regular" tabindex="0" paddingright="0" paddingleft="0" paddingtop="0" visibleto="All" width="662" text="Jobs" fontsize="8" draggable="false" id="tabpage21" marginbottom="0" position="absolute" cursor="[Cursor: System.Windows.Forms.Cursor]" backgroundImageLayout="tile" marginright="0" widthtype="Auto" marginleft="0" paddingbottom="0" droppable="false" forecolor="#000000" enabled="true" x="4">
+        <Events />
+        <Frame visibleto="All" font="Microsoft Sans Serif" height="593" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" default="false" backColor="#FFFFFF" x="1" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame149" boxalignment="none" backgroundImageLayout="tile" id="frame63" width="648" y="10" draggable="false">
+          <Events />
+          <DataMappings />
+          <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#FFFFFF" x="7" fontsize="9" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Job :" use="" forecolor="#000000" enabled="true" name="label206" textalign="topleft" backgroundImageLayout="tile" id="label175" width="40" y="7" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <Checkbox visibleto="All" draggable="false" height="20" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="9" font="Microsoft Sans Serif" backColor="#FFFFFF" x="561" fontsize="8" paddingleft="0" position="absolute" selected="false" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="Status" backgroundImageLayout="tile" id="checkbox2" width="26" y="7" visible="true">
+            <Events />
+            <DataMappings />
+          </Checkbox>
+          <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="10" backColor="#FFFFFF" x="511" fontsize="9" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Status" use="" forecolor="#000000" enabled="true" name="label207" textalign="topleft" backgroundImageLayout="tile" id="label266" width="49" y="7" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="11" backColor="#FFFFFF" x="6" fontsize="9" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Inputs:" use="" forecolor="#000000" enabled="true" name="label208" textalign="topleft" backgroundImageLayout="tile" id="label267" width="70" y="31" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <Grid visibleto="All" font="Microsoft Sans Serif" height="113" netBackColor="White" multiselect="False" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="12" backColor="#FFFFFF" x="42" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="grid21" use="" forecolor="#000000" enabled="true" align="none" name="grid21" backgroundImageLayout="tile" id="grid21" width="472" y="58" draggable="false">
+            <Events />
+            <DataMappings />
+          </Grid>
+          <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="13" backColor="#FFFFFF" x="532" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Add" use="" forecolor="#000000" enabled="true" name="button152" backgroundImageLayout="tile" id="button150" width="75" y="100" draggable="false">
+            <Events />
+            <DataMappings />
+          </Button>
+          <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="14" backColor="#FFFFFF" x="532" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Remove" use="" forecolor="#000000" enabled="true" name="button154" backgroundImageLayout="tile" id="button161" width="75" y="141" draggable="false">
+            <Events />
+            <DataMappings />
+          </Button>
+          <Label visibleto="All" font="Microsoft Sans Serif" height="22" widthtype="Auto" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="15" backColor="#FFFFFF" x="39" fontsize="9" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Specification:    Tool Sets" use="" forecolor="#000000" enabled="true" name="label227" textalign="topleft" backgroundImageLayout="tile" id="label268" width="177" y="182" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <Combobox visibleto="All" draggable="false" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="16" font="Microsoft Sans Serif" readonly="false" backColor="#FFFFFF" x="223" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="combobox32" backgroundImageLayout="tile" id="combobox34" width="212" y="182">
+            <Events>
+              <event name="OnChange">String toolName = getComboItemId1("combobox34");
+addFormValue("toolName", toolName);
+invokeComponent("com.oxymedical.component.HDEEGComponent","generateSubTools","com.oxymedical.component.HDEEGComponent.HDEEGComponent ", "");
+displayDataInControl("grid22");</event>
+              <event name="DefaultValue">invokeComponent("com.oxymedical.component.HDEEGComponent","generateTools","com.oxymedical.component.HDEEGComponent.HDEEGComponent ", "");
+showComboData("combobox34");</event>
+            </Events>
+            <DataMappings />
+          </Combobox>
+          <Grid visibleto="All" font="Microsoft Sans Serif" height="321" netBackColor="White" multiselect="False" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="17" backColor="#FFFFFF" x="42" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="grid22" use="" forecolor="#000000" enabled="true" align="none" name="grid22" backgroundImageLayout="tile" id="grid22" width="472" y="224" draggable="false">
+            <Events>
+              <event name="OnClick">String toolName = getRowData(0);
+String toolType = getRowData(1);
+addFormValue("toolName", toolName);
+addFormValue("toolType", toolType);</event>
+            </Events>
+            <DataMappings />
+            <row visibleto="All" draggable="false" height="30" netBackColor="DarkOrange" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FF8C00" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="row327" use="" forecolor="#000000" enabled="true" name="row327" backgroundImageLayout="tile" id="row327" sizetype="Pixel" width="470" y="0">
+              <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column2521" use="" forecolor="#000000" enabled="true" name="column2521" backgroundImageLayout="tile" id="column2521" sizetype="Pixel" width="300" y="0">
+                <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Name" use="" forecolor="#000000" enabled="true" name="label269" textalign="middlecenter" backgroundImageLayout="tile" id="label269" width="299" y="0" draggable="false">
+                  <Events />
+                  <DataMappings />
+                </Label>
+              </column>
+              <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="1" font="Microsoft Sans Serif" backColor="#00FFFF" x="300" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column2694" use="" forecolor="#000000" enabled="true" name="column2694" backgroundImageLayout="tile" id="column2694" sizetype="Pixel" width="170" y="0">
+                <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Tool" use="" forecolor="#000000" enabled="true" name="label270" textalign="middlecenter" backgroundImageLayout="tile" id="label270" width="169" y="0" draggable="false">
+                  <Events />
+                  <DataMappings />
+                </Label>
+              </column>
+            </row>
+          </Grid>
+          <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="18" backColor="#FFFFFF" x="532" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Cancel" use="" forecolor="#000000" enabled="true" name="button153" backgroundImageLayout="tile" id="button168" width="81" y="512" draggable="false">
+            <Events>
+              <event name="OnClick">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","WaveFormJobs");
+</event>
+            </Events>
+            <DataMappings />
+          </Button>
+          <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="19" backColor="#FFFFFF" x="532" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Save" use="" forecolor="#000000" enabled="true" name="button155" backgroundImageLayout="tile" id="button169" width="82" y="474" draggable="false">
+            <Events />
+            <DataMappings />
+          </Button>
+          <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="20" backColor="#FFFFFF" x="531" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Run" use="" forecolor="#000000" enabled="true" name="button156" backgroundImageLayout="tile" id="button170" width="83" y="436" draggable="false">
+            <Events>
+              <event name="OnClick">invokeComponent("com.oxymedical.component.HDEEGComponent","runTool","com.oxymedical.component.HDEEGComponent.HDEEGComponent ", "");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","WaveFormJobs");
+</event>
+            </Events>
+            <DataMappings />
+          </Button>
+          <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="21" backColor="#FFFFFF" x="532" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Result Status" use="" forecolor="#000000" enabled="true" name="button159" backgroundImageLayout="tile" id="button171" width="83" y="392" draggable="false">
+            <Events />
+            <DataMappings />
+          </Button>
+        </Frame>
+      </TabPage>
+      <TabPage y="22" align="none" name="tabpage14" backColor="#FFFFFF" margintop="0" font="Microsoft Sans Serif" height="614" netBackColor="White" use="" netForeColor="ControlText" fontstyle="Regular" tabindex="2" paddingright="0" paddingleft="0" paddingtop="0" visibleto="All" width="662" text="Set Up" fontsize="8" draggable="false" id="tabpage14" marginbottom="0" position="absolute" cursor="[Cursor: SizeAll]" backgroundImageLayout="tile" marginright="0" widthtype="Auto" marginleft="0" paddingbottom="0" droppable="false" forecolor="#000000" enabled="true" x="4">
+        <Events />
+        <Label visibleto="All" font="Microsoft Sans Serif" height="22" widthtype="Auto" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="#FFFFFF" x="68" fontsize="9" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Net Station IP:" use="" forecolor="#000000" enabled="true" name="label242" textalign="topleft" backgroundImageLayout="tile" id="label271" width="112" y="67" draggable="false">
+          <Events />
+          <DataMappings />
+        </Label>
+        <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="8" readonly="false" backColor="#FFFFFF" x="223" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox132" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox71" valuetype="Any" backgroundImageLayout="tile" password="false" width="223" y="68" passwordchar="" draggable="false">
+          <Events />
+          <DataMappings />
+        </TextBox>
+        <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="9" backColor="#FFFFFF" x="294" fontsize="9" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Save" use="" forecolor="#000000" enabled="true" name="button160" backgroundImageLayout="tile" id="button172" width="75" y="136" draggable="false">
+          <Events>
+            <event name="OnClick">addFormValue("ipAddress", textbox132.text);
+invokeComponent("com.oxymedical.component.HDEEGComponent","setUpNetStation","com.oxymedical.component.HDEEGComponent.HDEEGComponent ", "");
+showComboData("combobox34");
+</event>
+          </Events>
+          <DataMappings />
+        </Button>
+      </TabPage>
+    </MultiTab>
+  </Frame>
+</basewindow>

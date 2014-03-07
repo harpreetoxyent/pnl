@@ -1,0 +1,287 @@
+<basewindow popup="false" visibleto="All" font="Microsoft Sans Serif" height="881" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" y="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="workflowpattern0" boxalignment="none" backgroundImageLayout="tile" id="workflowpattern0" title="" width="819" backgroundImage="\img\workflowpattern0.jpg" draggable="false">
+  <Events />
+  <Node y="32" align="None" name="node0" backColor="#ECE9D8" margintop="3" font="Microsoft Sans Serif" height="150" netBackColor="Control" netForeColor="ControlText" fontstyle="Regular" paddingright="0" paddingleft="0" paddingtop="0" width="215" forecolor="#000000" fontsize="8" isstart="True" id="node0" marginbottom="3" position="absolute" marginright="3" marginleft="3" scenario="NEISUI" paddingbottom="0" text="node0" visible="true" x="30">
+    <Events />
+    <FormPatterns>
+      <formpattern formpatternid="login" />
+    </FormPatterns>
+    <DataPatterns />
+    <dataobject>
+      <info />
+      <data />
+      <status>DEFAULT</status>
+    </dataobject>
+    <UserPatterns />
+  </Node>
+  <Node y="41" align="None" name="node1" backColor="#ECE9D8" margintop="3" font="Microsoft Sans Serif" height="150" netBackColor="Control" netForeColor="ControlText" fontstyle="Regular" paddingright="0" paddingleft="0" paddingtop="0" width="215" forecolor="#000000" fontsize="8" isstart="False" id="node1" marginbottom="3" position="absolute" marginright="3" marginleft="3" scenario="NEISUI" paddingbottom="0" text="node1" visible="true" x="409">
+    <Events>
+      <event name="OnNode">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","");</event>
+    </Events>
+    <FormPatterns>
+      <formpattern formpatternid="HomeForm" />
+    </FormPatterns>
+    <DataPatterns />
+    <dataobject>
+      <info />
+      <data />
+      <status>UserAuthenticated</status>
+    </dataobject>
+    <UserPatterns />
+  </Node>
+  <connector name="loginConnector">
+    <from id="node0" />
+    <to id="node1" />
+  </connector>
+  <Node y="184" align="None" name="node2" backColor="#ECE9D8" margintop="3" font="Microsoft Sans Serif" height="150" netBackColor="Control" netForeColor="ControlText" fontstyle="Regular" paddingright="0" paddingleft="0" paddingtop="0" width="215" forecolor="#000000" fontsize="8" isstart="False" id="node2" marginbottom="3" position="absolute" marginright="3" marginleft="3" scenario="NEISUI" paddingbottom="0" text="node2" visible="true" x="579">
+    <Events>
+      <event name="OnNode">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","");</event>
+    </Events>
+    <FormPatterns>
+      <formpattern formpatternid="Patient" />
+    </FormPatterns>
+    <DataPatterns>
+      <datapattern datapatternid="neiswispicdb" />
+    </DataPatterns>
+    <dataobject>
+      <info />
+      <data />
+      <status>CreatePatient</status>
+    </dataobject>
+    <UserPatterns />
+  </Node>
+  <connector name="patientConnector">
+    <from id="node1" />
+    <to id="node2" />
+  </connector>
+  <Node y="177" align="None" name="node3" backColor="#ECE9D8" margintop="3" font="Microsoft Sans Serif" height="150" netBackColor="Control" netForeColor="ControlText" fontstyle="Regular" paddingright="0" paddingleft="0" paddingtop="0" width="215" forecolor="#000000" fontsize="8" isstart="False" id="node3" marginbottom="3" position="absolute" marginright="3" marginleft="3" scenario="NEISUI" paddingbottom="0" text="node3" visible="true" x="30">
+    <Events>
+      <event name="OnNode">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","");</event>
+    </Events>
+    <FormPatterns>
+      <formpattern formpatternid="search" />
+    </FormPatterns>
+    <DataPatterns>
+      <datapattern datapatternid="neiswispicdb" />
+    </DataPatterns>
+    <dataobject>
+      <info />
+      <data />
+      <status>DeletePatient</status>
+    </dataobject>
+    <UserPatterns />
+  </Node>
+  <connector name="deleteConnector">
+    <from id="node1" />
+    <to id="node3" />
+  </connector>
+  <Node y="295" align="None" name="node4" backColor="#ECE9D8" margintop="3" font="Microsoft Sans Serif" height="150" netBackColor="Control" netForeColor="ControlText" fontstyle="Regular" paddingright="0" paddingleft="0" paddingtop="0" width="215" forecolor="#000000" fontsize="8" isstart="False" id="node4" marginbottom="3" position="absolute" marginright="3" marginleft="3" scenario="NEISUI" paddingbottom="0" text="node4" visible="true" x="44">
+    <Events>
+      <event name="OnNode">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","");</event>
+    </Events>
+    <FormPatterns>
+      <formpattern formpatternid="search" />
+    </FormPatterns>
+    <DataPatterns>
+      <datapattern datapatternid="neiswispicdb" />
+    </DataPatterns>
+    <dataobject>
+      <info />
+      <data />
+      <status>ModifyPatient</status>
+    </dataobject>
+    <UserPatterns />
+  </Node>
+  <connector name="modify Patient">
+    <from id="node1" />
+    <to id="node4" />
+  </connector>
+  <Node y="319" align="None" name="node5" backColor="#ECE9D8" margintop="3" font="Microsoft Sans Serif" height="150" netBackColor="Control" netForeColor="ControlText" fontstyle="Regular" paddingright="0" paddingleft="0" paddingtop="0" width="215" forecolor="#000000" fontsize="8" isstart="False" id="node5" marginbottom="3" position="absolute" marginright="3" marginleft="3" scenario="NEISUI" paddingbottom="0" text="node5" visible="true" x="587">
+    <Events>
+      <event name="OnNode">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","");</event>
+    </Events>
+    <FormPatterns>
+      <formpattern formpatternid="AddClinical" />
+    </FormPatterns>
+    <DataPatterns>
+      <datapattern datapatternid="useradmin" />
+    </DataPatterns>
+    <dataobject>
+      <info />
+      <data />
+      <status>CreateClinical</status>
+    </dataobject>
+    <UserPatterns />
+  </Node>
+  <connector name="clinicalConnector">
+    <from id="node1" />
+    <to id="node5" />
+  </connector>
+  <Node y="310" align="None" name="node6" backColor="#ECE9D8" margintop="3" font="Microsoft Sans Serif" height="150" netBackColor="Control" netForeColor="ControlText" fontstyle="Regular" paddingright="0" paddingleft="0" paddingtop="0" width="215" forecolor="#000000" fontsize="8" isstart="False" id="node6" marginbottom="3" position="absolute" marginright="3" marginleft="3" scenario="NEISUI" paddingbottom="0" text="node6" visible="true" x="208">
+    <Events>
+      <event name="OnNode">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","");</event>
+    </Events>
+    <FormPatterns>
+      <formpattern formpatternid="userinfo" />
+    </FormPatterns>
+    <DataPatterns>
+      <datapattern datapatternid="useradmin" />
+    </DataPatterns>
+    <dataobject>
+      <info />
+      <data />
+      <status>CreateUser</status>
+    </dataobject>
+    <UserPatterns />
+  </Node>
+  <connector name="userConnector">
+    <from id="node1" />
+    <to id="node6" />
+  </connector>
+  <Node y="412" align="None" name="node7" backColor="#ECE9D8" margintop="3" font="Microsoft Sans Serif" height="150" netBackColor="Control" netForeColor="ControlText" fontstyle="Regular" paddingright="0" paddingleft="0" paddingtop="0" width="215" forecolor="#000000" fontsize="8" isstart="False" id="node7" marginbottom="3" position="absolute" marginright="3" marginleft="3" scenario="NEISUI" paddingbottom="0" text="node7" visible="true" x="367">
+    <Events>
+      <event name="OnNode">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","");</event>
+    </Events>
+    <FormPatterns>
+      <formpattern formpatternid="ListUser" />
+    </FormPatterns>
+    <DataPatterns>
+      <datapattern datapatternid="useradmin" />
+    </DataPatterns>
+    <dataobject>
+      <info />
+      <data />
+      <status>UpdateUser</status>
+    </dataobject>
+    <UserPatterns />
+  </Node>
+  <connector name="updateConnector">
+    <from id="node1" />
+    <to id="node7" />
+  </connector>
+  <Node y="451" align="None" name="node8" backColor="#ECE9D8" margintop="3" font="Microsoft Sans Serif" height="150" netBackColor="Control" netForeColor="ControlText" fontstyle="Regular" paddingright="0" paddingleft="0" paddingtop="0" width="215" forecolor="#000000" fontsize="8" isstart="False" id="node8" marginbottom="3" position="absolute" marginright="3" marginleft="3" scenario="NEISUI" paddingbottom="0" text="node8" visible="true" x="232">
+    <Events>
+      <event name="OnNode">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","");</event>
+    </Events>
+    <FormPatterns>
+      <formpattern formpatternid="AddUserFields" />
+    </FormPatterns>
+    <DataPatterns>
+      <datapattern datapatternid="useradmin" />
+    </DataPatterns>
+    <dataobject>
+      <info />
+      <data />
+      <status>CreateFields</status>
+    </dataobject>
+    <UserPatterns />
+  </Node>
+  <connector name="FieldConnector">
+    <from id="node5" />
+    <to id="node8" />
+  </connector>
+  <Node y="539" align="None" name="node9" backColor="#ECE9D8" margintop="3" font="Microsoft Sans Serif" height="150" netBackColor="Control" netForeColor="ControlText" fontstyle="Regular" paddingright="0" paddingleft="0" paddingtop="0" width="215" forecolor="#000000" fontsize="8" isstart="False" id="node9" marginbottom="3" position="absolute" marginright="3" marginleft="3" scenario="NEISUI" paddingbottom="0" text="node9" visible="true" x="574">
+    <Events>
+      <event name="OnNode">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","");</event>
+    </Events>
+    <FormPatterns>
+      <formpattern formpatternid="AddPrivileges" />
+    </FormPatterns>
+    <DataPatterns>
+      <datapattern datapatternid="useradmin" />
+    </DataPatterns>
+    <dataobject>
+      <info />
+      <data />
+      <status>AddPrivilege</status>
+    </dataobject>
+    <UserPatterns />
+  </Node>
+  <connector name="PrivilegeConnector">
+    <from id="node8" />
+    <to id="node9" />
+  </connector>
+  <connector name="PatientToSearch">
+    <from id="node2" />
+    <to id="node3" />
+  </connector>
+  <Node y="507" align="None" name="node10" backColor="#ECE9D8" margintop="3" font="Microsoft Sans Serif" height="150" netBackColor="Control" netForeColor="ControlText" fontstyle="Regular" paddingright="0" paddingleft="0" paddingtop="0" width="215" forecolor="#000000" fontsize="8" isstart="False" id="node10" marginbottom="3" position="absolute" marginright="3" marginleft="3" scenario="NEISUI" paddingbottom="0" text="node10" visible="true" x="17">
+    <Events>
+      <event name="OnNode">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","");</event>
+    </Events>
+    <FormPatterns>
+      <formpattern formpatternid="QueryBuilder" />
+    </FormPatterns>
+    <DataPatterns>
+      <datapattern datapatternid="neiswispicdb" />
+    </DataPatterns>
+    <dataobject>
+      <info />
+      <data />
+      <status>CreateQuery</status>
+    </dataobject>
+    <UserPatterns />
+  </Node>
+  <Node y="718" align="None" name="node11" backColor="#ECE9D8" margintop="3" font="Microsoft Sans Serif" height="150" netBackColor="Control" netForeColor="ControlText" fontstyle="Regular" paddingright="0" paddingleft="0" paddingtop="0" width="215" forecolor="#000000" fontsize="8" isstart="False" id="node11" marginbottom="3" position="absolute" marginright="3" marginleft="3" scenario="NEISUI" paddingbottom="0" text="node11" visible="true" x="210">
+    <Events>
+      <event name="OnNode">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","");</event>
+    </Events>
+    <FormPatterns>
+      <formpattern formpatternid="searchpanel" />
+    </FormPatterns>
+    <DataPatterns />
+    <dataobject>
+      <info />
+      <data />
+      <status>SearchPanel</status>
+    </dataobject>
+    <UserPatterns />
+  </Node>
+  <connector name="searchToQuery">
+    <from id="node11" />
+    <to id="node10" />
+  </connector>
+  <connector name="searchToHome">
+    <from id="node11" />
+    <to id="node1" />
+  </connector>
+  <Node y="713" align="None" name="node12" backColor="#ECE9D8" margintop="3" font="Microsoft Sans Serif" height="150" netBackColor="Control" netForeColor="ControlText" fontstyle="Regular" paddingright="0" paddingleft="0" paddingtop="0" width="215" forecolor="#000000" fontsize="8" isstart="False" id="node12" marginbottom="3" position="absolute" marginright="3" marginleft="3" scenario="NEISUI" paddingbottom="0" text="node12" visible="true" x="499">
+    <Events>
+      <event name="OnNode">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","");</event>
+    </Events>
+    <FormPatterns>
+      <formpattern formpatternid="QueryResult" />
+    </FormPatterns>
+    <DataPatterns>
+      <datapattern datapatternid="neiswispicdb" />
+    </DataPatterns>
+    <dataobject>
+      <info />
+      <data />
+      <status>QueryResult</status>
+    </dataobject>
+    <UserPatterns />
+  </Node>
+  <connector name="queryToResult">
+    <from id="node10" />
+    <to id="node12" />
+  </connector>
+  <Node y="697" align="None" name="node13" backColor="#ECE9D8" margintop="3" font="Microsoft Sans Serif" height="150" netBackColor="Control" netForeColor="ControlText" fontstyle="Regular" paddingright="0" paddingleft="0" paddingtop="0" width="215" forecolor="#000000" fontsize="8" isstart="False" id="node13" marginbottom="3" position="absolute" marginright="3" marginleft="3" scenario="NEISUI" paddingbottom="0" text="node13" visible="true" x="31">
+    <Events />
+    <FormPatterns>
+      <formpattern formpatternid="ResultInExcel" />
+    </FormPatterns>
+    <DataPatterns>
+      <datapattern datapatternid="neiswispicdb" />
+    </DataPatterns>
+    <dataobject>
+      <info />
+      <data />
+      <status>ExcelResult</status>
+    </dataobject>
+    <UserPatterns />
+  </Node>
+  <connector name="ExcelConnector">
+    <from id="node10" />
+    <to id="node13" />
+  </connector>
+</basewindow>

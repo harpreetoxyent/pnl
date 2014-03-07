@@ -1,0 +1,620 @@
+<basewindow popup="false" visibleto="All" font="Microsoft Sans Serif" height="871" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="QueryBuilder" boxalignment="none" backgroundImageLayout="tile" id="QueryBuilder" title="" width="1122" y="0" draggable="false">
+  <Events>
+    <event name="DefaultValue">updateSession("list","list");
+checkbox1.setVisible(false);
+textbox42.setVisible(false);
+textbox41.setVisible(false);
+textbox43.setVisible(false);
+String yes = getSessionData("QBBack");
+if(yes !=null)
+{
+String retValue = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get tempquerydetail.categoryName,tempquerydetail.fieldName,tempquerydetail.variableValue,tempquerydetail.firstRange,tempquerydetail.secondRange,tempquerydetail.logicalValue,tempquerydetail.checkboxValue from neiswispicdb.tempquerydetail");
+if(retValue=="true")
+{
+	showQueryUI("frame109");
+}
+updateSession("QBBack",null);
+}</event>
+    <event name="DefaultValue" internal="true">makeVisible("QueryBuilder")</event>
+  </Events>
+  <Frame visibleto="Advance Search" font="Microsoft Sans Serif" height="848" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="10" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame3" boxalignment="horizontal" backgroundImageLayout="tile" id="frame3" width="885" y="5" draggable="false">
+    <Events />
+    <DataMappings />
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="641" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" default="false" backColor="#FFFFFF" x="3" fontsize="8" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="center" name="frame22" boxalignment="none" backgroundImageLayout="tile" id="frame22" width="120" y="99" draggable="false">
+      <Events />
+      <DataMappings />
+      <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="1" backColor="Transparent" x="4" fontsize="9" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="CornflowerBlue" droppable="false" marginleft="0" marginbottom="0" text="Custom Queries" use="" forecolor="#6495ED" enabled="true" name="label3" textalign="topleft" backgroundImageLayout="tile" id="label35" width="109" y="110" draggable="false">
+        <Events />
+        <DataMappings />
+      </Label>
+      <Grid visibleto="All" font="Microsoft Sans Serif" height="358" netBackColor="White" multiselect="False" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="#FFFFFF" x="6" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="grid40" use="" forecolor="#000000" enabled="true" align="none" name="grid40" backgroundImageLayout="tile" id="grid40" width="110" y="133" draggable="false">
+        <Events>
+          <event name="DefaultValue">invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get customquery.queryId, customquery.customQueryName from neiswispicdb.customquery conditions customquery.deleted:=_STRINGSTART_0_STRINGEND_ orderby customquery.customQueryName");
+displayFieldDataInControl("grid40");
+</event>
+          <event name="OnClick">x=getSelectedListId();
+String name = getSelectedListLabel();
+addFormValue("textbox42",name );
+String retValue = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get customquerydetail.categoryName,customquerydetail.fieldName,customquerydetail.variableValue,customquerydetail.firstRange,customquerydetail.secondRange,customquerydetail.logicalValue,customquerydetail.checkboxValue from neiswispicdb.customquerydetail conditions customquerydetail.queryId:="+x);
+if(retValue=="true")
+{
+	showQueryUI("frame109");
+}
+updateSession("rowId",x);</event>
+        </Events>
+        <DataMappings>
+          <Mapping datafield="queryId: Int16" datatable="CustomQueryDetail" datapattern="neiswispicdb" />
+          <Mapping datafield="queryId: Int16" datatable="CustomQuery" datapattern="neiswispicdb" />
+        </DataMappings>
+      </Grid>
+    </Frame>
+    <Frame visibleto="Advance Search" font="Microsoft Sans Serif" height="697" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="14" default="false" backColor="Transparent" x="125" fontsize="8" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" y="70" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame46" boxalignment="none" backgroundImageLayout="center" id="frame46" width="752" backgroundImage="\img\frame46.jpg" draggable="false">
+      <Events />
+      <DataMappings />
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="51" widthtype="Auto" netBackColor="#DDD9C3" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="10" default="false" backColor="#DDD9C3" x="8" fontsize="8" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="center" name="frame34" boxalignment="none" backgroundImageLayout="center" id="frame34" width="730" y="55" draggable="false">
+        <Events />
+        <DataMappings />
+        <MenuBar visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="GradientInactiveCaption" autosize="false" fontstyle="Regular" paddingtop="2" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="0" backColor="#9DB9EB" x="157" fontsize="8.25" paddingleft="6" position="absolute" visible="true" paddingbottom="2" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="10" marginbottom="10" text="category" use="" forecolor="#000000" enabled="true" align="none" orient="horizontal" name="menubar9" backgroundImageLayout="tile" id="menubar9" width="93" y="20" draggable="false">
+          <Events />
+          <DataMappings />
+          <Menu backColor="#9DB9EB" id="menu13" width="60" forecolor="#000000" netBackColor="GradientInactiveCaption" netForeColor="ControlText" visibleto="All" height="16" fontstyle="Regular" text="category" name="menu13" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+            <Events />
+            <MenuItem backColor="#ECE9D8" id="menuitem38" width="150" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" visibleto="All" height="22" fontstyle="Regular" text="Add Category" name="menuitem38" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+              <Events>
+                <event name="OnClick">storFormValue("formValue");
+createPopUp("AddCategory");
+restorFormValue("formValue");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get qbcategory.Id,qbcategory.categoryName from neiswispicdb.qbcategory conditions qbcategory.deleted:=_STRINGSTART_0_STRINGEND_ orderby qbcategory.categoryName");
+showQueryComboData("frame46");</event>
+              </Events>
+            </MenuItem>
+            <MenuItem backColor="#ECE9D8" id="menuitem39" width="150" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" visibleto="All" height="22" fontstyle="Regular" text="Delete Category" name="menuitem39" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+              <Events>
+                <event name="OnClick">storFormValue("formValue");
+createPopUp("EditCategory");
+restorFormValue("formValue");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get qbcategory.Id,qbcategory.categoryName from neiswispicdb.qbcategory conditions qbcategory.deleted:=_STRINGSTART_0_STRINGEND_ orderby qbcategory.categoryName");
+showQueryComboData("frame46");</event>
+              </Events>
+            </MenuItem>
+            <MenuItem backColor="#ECE9D8" id="menuitem43" width="150" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" visibleto="All" height="22" fontstyle="Regular" text="Edit Category" name="menuitem43" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+              <Events>
+                <event name="OnClick">storFormValue("formValue");
+createPopUp("EditCategory");
+restorFormValue("formValue");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get qbcategory.Id,qbcategory.categoryName from neiswispicdb.qbcategory conditions qbcategory.deleted:=_STRINGSTART_0_STRINGEND_ orderby qbcategory.categoryName");
+showQueryComboData("frame46");</event>
+              </Events>
+            </MenuItem>
+            <MenuItem backColor="#ECE9D8" id="menuitem51" width="150" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" visibleto="All" height="22" fontstyle="Regular" text="Set All To..." name="menuitem51" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+              <Events>
+                <event name="OnClick">createPopUp("SetCategory");
+setAllTo("category1");</event>
+              </Events>
+            </MenuItem>
+            <MenuItem backColor="#ECE9D8" id="menuitem57" width="153" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" visibleto="All" height="22" fontstyle="Regular" text="Clear All" name="menuitem57" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+              <Events>
+                <event name="OnClick">boolean isYes = messageWithQuestion("Are you sure you wish to clear all entries?");
+if(isYes)
+{
+clearQueryValue("category1");
+message("All category entries have been cleared.");
+}</event>
+              </Events>
+            </MenuItem>
+          </Menu>
+        </MenuBar>
+        <MenuBar visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="GradientInactiveCaption" autosize="false" fontstyle="Regular" paddingtop="2" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="8" backColor="#9DB9EB" x="262" fontsize="8.25" paddingleft="6" position="absolute" visible="true" paddingbottom="2" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="10" marginbottom="10" text="" use="" forecolor="#000000" enabled="true" align="none" orient="horizontal" name="menubar10" backgroundImageLayout="tile" id="menubar10" width="91" y="19" draggable="false">
+          <Events />
+          <DataMappings />
+          <Menu backColor="#9DB9EB" id="menu14" width="38" forecolor="#000000" netBackColor="GradientInactiveCaption" netForeColor="ControlText" visibleto="All" height="16" fontstyle="Regular" text="field" name="menu14" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+            <Events />
+            <MenuItem backColor="#ECE9D8" id="menuitem48" width="169" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" visibleto="All" height="22" fontstyle="Regular" text="Add Fields" name="menuitem48" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+              <Events>
+                <event name="OnClick">storFormValue("formValue");
+createPopUp("AddUserDefineField");
+restorFormValue("formValue");</event>
+              </Events>
+            </MenuItem>
+            <MenuItem backColor="#ECE9D8" id="menuitem42" width="169" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" visibleto="All" height="22" fontstyle="Regular" text="Edit Field" name="menuitem42" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+              <Events>
+                <event name="OnClick">storFormValue("formValue");
+createPopUp("EditField");
+restorFormValue("formValue");</event>
+              </Events>
+            </MenuItem>
+            <MenuItem backColor="#ECE9D8" id="menuitem52" width="169" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" visibleto="All" height="22" fontstyle="Regular" text="Delete Field" name="menuitem52" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+              <Events>
+                <event name="OnClick">storFormValue("formValue");
+createPopUp("EditField");
+restorFormValue("formValue");</event>
+              </Events>
+            </MenuItem>
+            <MenuItem backColor="#ECE9D8" id="menuitem64" width="169" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" visibleto="All" height="22" fontstyle="Regular" text="Set All To Fields..." name="menuitem64" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+              <Events>
+                <event name="OnClick">createPopUp("SetAllFields");
+setAllTo("field1");</event>
+              </Events>
+            </MenuItem>
+            <MenuItem backColor="#ECE9D8" id="menuitem66" width="169" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" visibleto="All" height="22" fontstyle="Regular" text="Clear All Fields" name="menuitem66" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+              <Events>
+                <event name="OnClick">boolean isYes = messageWithQuestion("Are you sure you wish to clear all entries?");
+if(isYes)
+{
+clearQueryValue("field1");
+message("All field entries have been cleared.");
+}
+</event>
+              </Events>
+            </MenuItem>
+            <MenuItem backColor="#ECE9D8" id="menuitem70" width="169" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" visibleto="All" height="22" fontstyle="Regular" text="Set All  Checkboxes" name="menuitem70" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+              <Events>
+                <event name="OnClick">setAllTo("check1");</event>
+              </Events>
+            </MenuItem>
+            <MenuItem backColor="#ECE9D8" id="menuitem71" width="180" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" visibleto="All" height="22" fontstyle="Regular" text="Clear All  Checkboxes" name="menuitem71" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+              <Events>
+                <event name="OnClick">boolean isYes = messageWithQuestion("Are you sure you wish to clear all checked value?");
+if(isYes)
+{
+clearQueryValue("check1");
+message("All checkbox entries have been cleared.");
+}
+
+</event>
+              </Events>
+            </MenuItem>
+          </Menu>
+        </MenuBar>
+        <MenuBar visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="GradientInactiveCaption" autosize="false" fontstyle="Regular" paddingtop="2" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="9" backColor="#9DB9EB" x="384" fontsize="8.25" paddingleft="6" position="absolute" visible="true" paddingbottom="2" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="10" marginbottom="10" text="variable" use="" forecolor="#000000" enabled="true" align="none" orient="horizontal" name="menubar11" backgroundImageLayout="tile" id="menubar11" width="95" y="20" draggable="false">
+          <Events />
+          <DataMappings />
+          <Menu backColor="#9DB9EB" id="menu15" width="56" forecolor="#000000" netBackColor="GradientInactiveCaption" netForeColor="ControlText" visibleto="All" height="16" fontstyle="Regular" text="variable" name="menu15" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+            <Events />
+            <MenuItem backColor="#ECE9D8" id="menuitem47" width="129" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" visibleto="All" height="22" fontstyle="Regular" text="Set All To..." name="menuitem47" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+              <Events>
+                <event name="OnClick">createPopUp("SetVariable");
+setAllTo("variable1");</event>
+              </Events>
+            </MenuItem>
+            <MenuItem backColor="#ECE9D8" id="menuitem49" width="132" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" visibleto="All" height="22" fontstyle="Regular" text="Clear All" name="menuitem49" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+              <Events>
+                <event name="OnClick">boolean isYes = messageWithQuestion("Are you sure you wish to clear all entries?");
+if(isYes)
+{
+clearQueryValue("variable1");
+message("All varibale entries have been cleared.");
+}</event>
+              </Events>
+            </MenuItem>
+          </Menu>
+        </MenuBar>
+        <MenuBar visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="GradientInactiveCaption" autosize="false" fontstyle="Regular" paddingtop="2" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="10" backColor="#9DB9EB" x="491" fontsize="8.25" paddingleft="6" position="absolute" visible="true" paddingbottom="2" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="10" marginbottom="10" text="" use="" forecolor="#000000" enabled="true" align="none" orient="horizontal" name="menubar12" backgroundImageLayout="tile" id="menubar12" width="132" y="20" draggable="false">
+          <Events />
+          <DataMappings />
+          <Menu backColor="#9DB9EB" id="menu16" width="46" forecolor="#000000" netBackColor="GradientInactiveCaption" netForeColor="ControlText" visibleto="All" height="16" fontstyle="Regular" text="range" name="menu16" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+            <Events />
+            <MenuItem backColor="#ECE9D8" id="menuitem44" width="129" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" visibleto="All" height="22" fontstyle="Regular" text="Set All To..." name="menuitem44" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+              <Events>
+                <event name="OnClick">storFormValue("formValue");
+createPopUp("SetRange");
+restorFormValue("formValue");
+setRangeTo("range");</event>
+              </Events>
+            </MenuItem>
+            <MenuItem backColor="#ECE9D8" id="menuitem45" width="132" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" visibleto="All" height="22" fontstyle="Regular" text="Clear All" name="menuitem45" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+              <Events>
+                <event name="OnClick">boolean isYes = messageWithQuestion("Are you sure you wish to clear all entries?");
+if(isYes)
+{
+clearRangeValue("range");
+message("All range entries have been cleared.");
+}</event>
+              </Events>
+            </MenuItem>
+          </Menu>
+        </MenuBar>
+        <MenuBar visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="GradientInactiveCaption" autosize="false" fontstyle="Regular" paddingtop="2" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="11" backColor="#9DB9EB" x="89" fontsize="8.25" paddingleft="6" position="absolute" visible="true" paddingbottom="2" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" orient="horizontal" name="menubar1" backgroundImageLayout="tile" id="menubar1" width="65" y="30" draggable="false">
+          <Events />
+          <DataMappings />
+          <Menu backColor="#9DB9EB" id="menu1" width="57" forecolor="#000000" netBackColor="GradientInactiveCaption" netForeColor="ControlText" visibleto="All" height="16" fontstyle="Regular" text="boolean" name="menu1" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+            <Events />
+            <MenuItem backColor="#ECE9D8" id="menuitem65" width="129" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" visibleto="All" height="22" fontstyle="Regular" text="Set All To..." name="menuitem65" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+              <Events>
+                <event name="OnClick">createPopUp("SetBoolean");
+setAllTo("logical2");</event>
+              </Events>
+            </MenuItem>
+            <MenuItem backColor="#ECE9D8" id="menuitem67" width="132" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" visibleto="All" height="22" fontstyle="Regular" text="Clear All" name="menuitem67" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+              <Events>
+                <event name="OnClick">boolean isYes = messageWithQuestion("Are you sure you wish to clear all entries?");
+if(isYes)
+{
+clearQueryValue("logical2");
+message("All boolean entries have been cleared.");
+}
+</event>
+              </Events>
+            </MenuItem>
+          </Menu>
+        </MenuBar>
+      </Frame>
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="420" widthtype="Auto" netBackColor="#DDD9C3" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#DDD9C3" x="7" fontsize="8" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="center" name="frame13" boxalignment="none" backgroundImageLayout="tile" id="frame13" width="731" y="105" draggable="false">
+        <Events />
+        <DataMappings />
+        <Lattice visibleto="All" font="Microsoft Sans Serif" height="50" netBackColor="White" multiselect="False" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="24" backColor="#FFFFFF" x="15" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="lattice0" use="" forecolor="#000000" enabled="true" align="none" name="lattice0" backgroundImageLayout="tile" id="lattice0" width="716" y="16" draggable="false">
+          <Events>
+            <event name="DefaultValue">String gridStyle = "background-color:#DDD9C3;border:0px";
+	lattice0.setStyle(gridStyle);
+row61.setStyle(gridStyle);</event>
+          </Events>
+          <DataMappings />
+          <lrow visibleto="All" draggable="false" height="44" netBackColor="#DDD9C3" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#DDD9C3" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="row61" use="" forecolor="#000000" enabled="true" name="row61" backgroundImageLayout="tile" id="row61" sizetype="Pixel" width="716" y="0">
+            <Frame visibleto="All" font="Microsoft Sans Serif" height="44" widthtype="Auto" netBackColor="#DDD9C3" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="14" default="false" backColor="#DDD9C3" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame69" boxalignment="horizontal" backgroundImageLayout="tile" id="frame23" width="712" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+              <Combobox visibleto="All" font="Microsoft Sans Serif" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="1" readonly="true" backColor="#FFFFFF" x="142" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="10" marginbottom="10" text="" use="" forecolor="#000000" enabled="true" name="category" backgroundImageLayout="tile" id="category1" draggable="false" width="80" y="0" ismandatory="no">
+                <Events>
+                  <event name="DefaultValue">invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get qbcategory.Id,qbcategory.categoryName from neiswispicdb.qbcategory conditions qbcategory.deleted:=_STRINGSTART_0_STRINGEND_ orderby qbcategory.categoryName");
+showComboData("category1");</event>
+                  <event name="OnClick">String id =getComboItemId1("category1");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get qbuserdefinedfield.id,qbuserdefinedfield.UserDefinedFieldName from neiswispicdb.qbcategorydetail,neiswispicdb.qbuserdefinedfield conditions qbcategorydetail.categoryId:="+id+" and qbuserdefinedfield.id:=qbcategorydetail.UserDefinedFieldId orderby qbuserdefinedfield.UserDefinedFieldName");
+showComboData("field1");
+String categoryName = getComboBoxValue("category1");
+addFormValue("category1",categoryName);</event>
+                </Events>
+                <DataMappings />
+              </Combobox>
+              <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="3" readonly="false" backColor="#FFFFFF" x="370" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="variable1" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="10" marginbottom="10" text="" use="" forecolor="#000000" enabled="true" name="variable" valuetype="Any" backgroundImageLayout="tile" password="false" width="100" y="0" passwordchar="" draggable="false">
+                <Events>
+                  <event name="DefaultValue">createToolTip("variable1","For date, value should be in format yyyy-mm-dd.");</event>
+                </Events>
+                <DataMappings />
+              </TextBox>
+              <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="4" readonly="false" backColor="#FFFFFF" x="476" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="firstrange1" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="10" marginbottom="10" text="" use="" forecolor="#000000" enabled="true" name="range1" valuetype="Any" backgroundImageLayout="tile" password="false" width="61" y="0" passwordchar="" draggable="false">
+                <Events />
+                <DataMappings />
+              </TextBox>
+              <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="12" backColor="Transparent" x="543" fontsize="9" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="10" marginbottom="10" text="to" use="" forecolor="#000000" enabled="true" name="label4" textalign="topleft" backgroundImageLayout="tile" id="label36" width="20" y="0" draggable="false">
+                <Events />
+                <DataMappings />
+              </Label>
+              <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="5" readonly="false" backColor="#FFFFFF" x="555" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="secondrange1" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="10" marginbottom="10" text="" use="" forecolor="#000000" enabled="true" name="range2" valuetype="Any" backgroundImageLayout="tile" password="false" width="61" y="0" passwordchar="" draggable="false">
+                <Events />
+                <DataMappings />
+              </TextBox>
+              <Combobox visibleto="All" font="Microsoft Sans Serif" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="2" readonly="true" backColor="#FFFFFF" x="246" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="10" marginbottom="10" text="" use="" forecolor="#000000" enabled="true" name="field" backgroundImageLayout="tile" id="field1" draggable="false" width="80" y="0" ismandatory="no">
+                <Events>
+                  <event name="OnClick">String field =getComboBoxValue("field1");
+addFormValue("field1",field);</event>
+                </Events>
+                <DataMappings />
+              </Combobox>
+              <Combobox visibleto="All" draggable="false" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="14" font="Microsoft Sans Serif" readonly="false" backColor="#FFFFFF" x="4" fontsize="8.25" paddingleft="0" position="absolute" visible="false" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="logicalvalue" use="" forecolor="#000000" enabled="true" name="log1" backgroundImageLayout="tile" id="log1" width="46" y="8">
+                <Events />
+                <DataMappings>
+                  <Mapping datafield="logicalValue: String" datatable="CustomQueryDetail" datapattern="neiswispicdb" />
+                </DataMappings>
+              </Combobox>
+              <Picture visibleto="All" draggable="false" height="25" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="15" font="Microsoft Sans Serif" backColor="#FFFFFF" x="649" fontsize="8" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" source="\img\picture7.jpg" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="picture1" use="" forecolor="#000000" enabled="true" name="picture7" backgroundImageLayout="tile" id="picture7" width="25" y="10">
+                <Events>
+                  <event name="OnClick">addNewComponent("frame109");</event>
+                </Events>
+                <DataMappings />
+              </Picture>
+              <Checkbox visibleto="All" draggable="false" height="30" widthtype="Auto" netBackColor="#DDD9C3" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="16" font="Microsoft Sans Serif" backColor="#DDD9C3" x="358" fontsize="8" paddingleft="0" position="absolute" selected="false" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="check1" backgroundImageLayout="tile" id="check1" width="20" y="9" visible="true">
+                <Events />
+                <DataMappings />
+              </Checkbox>
+            </Frame>
+          </lrow>
+        </Lattice>
+        <Combobox visibleto="All" draggable="false" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="15" font="Microsoft Sans Serif" readonly="false" backColor="#FFFFFF" x="202" fontsize="8.25" paddingleft="0" position="absolute" visible="false" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="category" use="" forecolor="#000000" enabled="true" name="combobox6" backgroundImageLayout="tile" id="combobox6" width="55" y="345">
+          <Events />
+          <DataMappings>
+            <Mapping datafield="categoryName: String" datatable="CustomQueryDetail" datapattern="neiswispicdb" />
+          </DataMappings>
+        </Combobox>
+        <Combobox visibleto="All" draggable="false" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="16" font="Microsoft Sans Serif" readonly="false" backColor="#FFFFFF" x="273" fontsize="8.25" paddingleft="0" position="absolute" visible="false" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="field" use="" forecolor="#000000" enabled="true" name="combobox7" backgroundImageLayout="tile" id="combobox7" width="47" y="345">
+          <Events />
+          <DataMappings>
+            <Mapping datafield="fieldName: String" datatable="CustomQueryDetail" datapattern="neiswispicdb" />
+          </DataMappings>
+        </Combobox>
+        <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="17" readonly="false" backColor="#FFFFFF" x="333" fontsize="8.25" paddingleft="0" position="absolute" visible="false" border="fixedsingle" paddingbottom="0" id="textbox38" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="varibale" use="" forecolor="#000000" enabled="true" name="textbox38" valuetype="Any" backgroundImageLayout="tile" password="false" width="43" y="344" passwordchar="" draggable="false">
+          <Events />
+          <DataMappings>
+            <Mapping datafield="variableValue: String" datatable="CustomQueryDetail" datapattern="neiswispicdb" />
+          </DataMappings>
+        </TextBox>
+        <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="18" readonly="false" backColor="#FFFFFF" x="391" fontsize="8.25" paddingleft="0" position="absolute" visible="false" border="fixedsingle" paddingbottom="0" id="textbox39" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="range1" use="" forecolor="#000000" enabled="true" name="textbox39" valuetype="Any" backgroundImageLayout="tile" password="false" width="30" y="344" passwordchar="" draggable="false">
+          <Events />
+          <DataMappings>
+            <Mapping datafield="firstRange: String" datatable="CustomQueryDetail" datapattern="neiswispicdb" />
+          </DataMappings>
+        </TextBox>
+        <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="19" readonly="false" backColor="#FFFFFF" x="432" fontsize="8.25" paddingleft="0" position="absolute" visible="false" border="fixedsingle" paddingbottom="0" id="textbox40" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="range2" use="" forecolor="#000000" enabled="true" name="textbox40" valuetype="Any" backgroundImageLayout="tile" password="false" width="30" y="344" passwordchar="" draggable="false">
+          <Events />
+          <DataMappings>
+            <Mapping datafield="secondRange: String" datatable="CustomQueryDetail" datapattern="neiswispicdb" />
+          </DataMappings>
+        </TextBox>
+        <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="20" readonly="false" backColor="#FFFFFF" x="122" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox41" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="reference id" use="" forecolor="#000000" enabled="true" name="textbox41" valuetype="Any" backgroundImageLayout="tile" password="false" width="66" y="384" passwordchar="" draggable="false">
+          <Events />
+          <DataMappings>
+            <Mapping datafield="queryId: Int16" datatable="CustomQueryDetail" datapattern="neiswispicdb" />
+            <Mapping datafield="queryId: Int16" datatable="CustomQuery" datapattern="neiswispicdb" />
+          </DataMappings>
+        </TextBox>
+        <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="21" readonly="false" backColor="#FFFFFF" x="12" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox42" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="customequery name" use="" forecolor="#000000" enabled="true" name="textbox42" valuetype="Any" backgroundImageLayout="tile" password="false" width="101" y="383" passwordchar="" draggable="false">
+          <Events />
+          <DataMappings>
+            <Mapping datafield="CustomQueryName: String" datatable="CustomQuery" datapattern="neiswispicdb" />
+          </DataMappings>
+        </TextBox>
+        <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="22" readonly="false" backColor="#FFFFFF" x="196" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox43" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="deletedvalue" use="" forecolor="#000000" enabled="true" name="textbox43" valuetype="Any" backgroundImageLayout="tile" password="false" width="55" y="384" passwordchar="" draggable="false">
+          <Events />
+          <DataMappings>
+            <Mapping datafield="deleted: Char" datatable="CustomQuery" datapattern="neiswispicdb" />
+          </DataMappings>
+        </TextBox>
+        <Checkbox visibleto="All" draggable="false" height="30" widthtype="Auto" netBackColor="#DDD9C3" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="23" font="Microsoft Sans Serif" backColor="#DDD9C3" x="61" fontsize="8" paddingleft="0" position="absolute" selected="false" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="checkbox1" use="" forecolor="#000000" enabled="true" name="checkbox1" backgroundImageLayout="tile" id="checkbox1" width="38" y="350" visible="true">
+          <Events />
+          <DataMappings>
+            <Mapping datafield="checkboxValue: String" datatable="CustomQueryDetail" datapattern="neiswispicdb" />
+          </DataMappings>
+        </Checkbox>
+        <Frame visibleto="All" font="Microsoft Sans Serif" height="354" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="25" default="false" backColor="Transparent" x="1" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame109" boxalignment="none" backgroundImageLayout="tile" id="frame109" width="716" y="66" draggable="false">
+          <Events />
+          <DataMappings />
+        </Frame>
+      </Frame>
+      <Picture visibleto="All" draggable="false" height="75" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="12" font="Microsoft Sans Serif" backColor="Transparent" x="91" fontsize="8" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" source="\img\picture4.jpg" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="picture1" use="" forecolor="#000000" enabled="true" name="picture4" backgroundImageLayout="center" id="picture4" width="79" y="563">
+        <Events>
+          <event name="OnClick">updateSessionList("gridValue",null);
+updateSession("rowId",null);
+updateSession("IDCOUNTER",null);
+updateSession("CSVHEADER",null);
+setDataStatus("UserAuthenticated", "HomeForm", null);
+</event>
+        </Events>
+        <DataMappings />
+      </Picture>
+      <Picture visibleto="All" draggable="false" height="75" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="13" font="Microsoft Sans Serif" backColor="Transparent" x="550" fontsize="8" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" source="\img\picture0.jpg" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="picture0" use="" forecolor="#000000" enabled="true" name="picture0" backgroundImageLayout="center" id="picture0" width="75" y="571">
+        <Events>
+          <event name="OnClick">String fieldName = getCheckedField();
+fieldName = fieldName.trim();
+int len = fieldName.length();
+String defaultField = "firstName,lastName,id,medicalRecordNumber,dateOfBirth";
+if(len&gt;0)
+{
+defaultField = addString(defaultField,",",fieldName);
+}
+updateSession("CSVHEADER",defaultField);
+String[] data=createArray("String", defaultField);
+addFormValue("SelectField",data);
+addFormValue("TableName","neiswispicdb.Patient");
+boolean isValid =clientSideValidation("QueryBuilder");
+String catValue = category1.getText();
+if(catValue=="")
+{
+	isValid = false;
+}
+if(isValid)
+{
+saveTempQuery("saveTempQuery");
+invokeComponent("com.oxymedical.component.query","queryBuilder","com.oxymedical.component.query.QueryComponent","");
+setListDataInSession("dbListValue");
+String excel = getSessionData("ResultInExcel");
+boolean isEqual = checkValueWithOperator(excel, "yes", "EQUAL");
+if(isEqual)
+{
+invokeComponent("export.Component","exportCSV","com.oxymedical.component.export.ExportComponent",defaultField);
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","ResultInExcel");
+}
+else
+{
+setDataStatus("QueryResult", "QueryResult", "neiswispicdb");
+}
+}
+else
+{
+validateDataInQueryObject(frame13);
+message("Cannot execute query.");
+}
+updateSession("rowId",null);
+updateSession("IDCOUNTER",null);
+
+</event>
+        </Events>
+        <DataMappings />
+      </Picture>
+    </Frame>
+    <Label visibleto="All" font="Microsoft Sans Serif" height="32" widthtype="Auto" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="15" backColor="Transparent" x="3" fontsize="15.75" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="#FFC0C0" droppable="false" marginleft="0" marginbottom="0" text="queryBUILDER" use="" forecolor="#FFC0C0" enabled="true" name="label180" textalign="topleft" backgroundImageLayout="tile" id="label180" width="140" y="8" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+    <Label visibleto="All" font="Microsoft Sans Serif" height="21" widthtype="Auto" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="16" backColor="#FFFFFF" x="4" fontsize="9" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="CornflowerBlue" droppable="false" marginleft="0" marginbottom="0" text="PATIENTdatabase:" use="" forecolor="#6495ED" enabled="true" name="label181" textalign="topleft" backgroundImageLayout="tile" id="label181" width="129" y="39" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+    <Combobox visibleto="All" draggable="false" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="17" font="Microsoft Sans Serif" readonly="false" backColor="#FFFFFF" x="30" fontsize="8.25" paddingleft="0" position="absolute" visible="false" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="log" use="" forecolor="#000000" enabled="true" name="combobox37" backgroundImageLayout="tile" id="combobox37" width="64" y="812">
+      <Events />
+      <DataMappings>
+        <Mapping datafield="logicalValue: String" datatable="tempquerydetail" datapattern="neiswispicdb" />
+      </DataMappings>
+    </Combobox>
+    <Combobox visibleto="All" draggable="false" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="18" font="Microsoft Sans Serif" readonly="false" backColor="#FFFFFF" x="107" fontsize="8.25" paddingleft="0" position="absolute" visible="false" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="category" use="" forecolor="#000000" enabled="true" name="combobox38" backgroundImageLayout="tile" id="combobox38" width="52" y="814">
+      <Events />
+      <DataMappings>
+        <Mapping datafield="categoryName: String" datatable="tempquerydetail" datapattern="neiswispicdb" />
+      </DataMappings>
+    </Combobox>
+    <Combobox visibleto="All" draggable="false" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="19" font="Microsoft Sans Serif" readonly="false" backColor="#FFFFFF" x="173" fontsize="8.25" paddingleft="0" position="absolute" visible="false" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="field" use="" forecolor="#000000" enabled="true" name="combobox39" backgroundImageLayout="tile" id="combobox39" width="52" y="815">
+      <Events />
+      <DataMappings>
+        <Mapping datafield="fieldName: String" datatable="tempquerydetail" datapattern="neiswispicdb" />
+      </DataMappings>
+    </Combobox>
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="20" readonly="false" backColor="#FFFFFF" x="235" fontsize="8.25" paddingleft="0" position="absolute" visible="false" border="fixedsingle" paddingbottom="0" id="textbox159" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="variable" use="" forecolor="#000000" enabled="true" name="textbox159" valuetype="Any" backgroundImageLayout="tile" password="false" width="44" y="816" passwordchar="" draggable="false">
+      <Events />
+      <DataMappings>
+        <Mapping datafield="variableValue: String" datatable="tempquerydetail" datapattern="neiswispicdb" />
+      </DataMappings>
+    </TextBox>
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="21" readonly="false" backColor="#FFFFFF" x="291" fontsize="8.25" paddingleft="0" position="absolute" visible="false" border="fixedsingle" paddingbottom="0" id="textbox160" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="range1" use="" forecolor="#000000" enabled="true" name="textbox160" valuetype="Any" backgroundImageLayout="tile" password="false" width="45" y="817" passwordchar="" draggable="false">
+      <Events />
+      <DataMappings>
+        <Mapping datafield="firstRange: String" datatable="tempquerydetail" datapattern="neiswispicdb" />
+      </DataMappings>
+    </TextBox>
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="22" readonly="false" backColor="#FFFFFF" x="344" fontsize="8.25" paddingleft="0" position="absolute" visible="false" border="fixedsingle" paddingbottom="0" id="textbox161" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="range2" use="" forecolor="#000000" enabled="true" name="textbox161" valuetype="Any" backgroundImageLayout="tile" password="false" width="40" y="818" passwordchar="" draggable="false">
+      <Events />
+      <DataMappings>
+        <Mapping datafield="secondRange: String" datatable="tempquerydetail" datapattern="neiswispicdb" />
+      </DataMappings>
+    </TextBox>
+    <Checkbox visibleto="All" draggable="false" height="30" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="23" font="Microsoft Sans Serif" backColor="#FFFFFF" x="399" fontsize="8" paddingleft="0" position="absolute" selected="false" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="checkbox1" use="" forecolor="#000000" enabled="true" name="checkbox3" backgroundImageLayout="tile" id="checkbox3" width="43" y="815" visible="false">
+      <Events />
+      <DataMappings>
+        <Mapping datafield="checkboxValue: String" datatable="tempquerydetail" datapattern="neiswispicdb" />
+      </DataMappings>
+    </Checkbox>
+  </Frame>
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="748" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="9" default="false" backColor="#FFFFFF" x="900" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="center" name="frame23" boxalignment="none" backgroundImageLayout="center" id="frame72" width="184" y="2" draggable="false">
+    <Events />
+    <DataMappings />
+    <Button visibleto="Advance Search" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="7" backColor="Transparent" x="27" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="10" marginbottom="10" text="New Query" use="" forecolor="#000000" enabled="true" name="button1" backgroundImageLayout="tile" id="button2" width="122" y="240" draggable="false">
+      <Events>
+        <event name="OnClick">String rowVal= getSessionData("rowId");
+if(rowVal !=null)
+{
+	String catVal = category1.getText();
+	if(catVal !="")
+	{
+		String mesg=getUpdatedMessage();
+		if(mesg==null)
+		{
+			boolean isYes = messageWithQuestion("Do you want to save current query?");
+			if(isYes)
+			{
+				updateRefferences("textbox41");
+				addFormValue("grid40",rowVal);
+				addFormValue("textbox43","0");
+				saveConditionList("");
+			}
+		}
+	}
+}
+updateSession("rowId",null);
+createPopUp("AddCustomQuery");</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Button visibleto="Advance Search" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="8" backColor="Transparent" x="27" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="10" marginbottom="10" text="Edit Query" use="" forecolor="#000000" enabled="true" name="button2" backgroundImageLayout="tile" id="button3" width="122" y="300" draggable="false">
+      <Events>
+        <event name="OnClick">id = getSessionData("rowId");
+if(id!=null)
+{
+createPopUp("AddCustomQuery");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get customquery.queryId, customquery.customQueryName from neiswispicdb.customquery conditions customquery.deleted:=_STRINGSTART_0_STRINGEND_ orderby customquery.customQueryName");
+displayFieldDataInControl("grid40");
+updateSession("rowId",null);
+}
+else
+{
+message(" Please select  custom query to perform this operation.");
+}
+</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Button visibleto="Advance Search" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="9" backColor="Transparent" x="28" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="10" marginbottom="10" text="Save Query" use="" forecolor="#000000" enabled="true" name="button3" backgroundImageLayout="tile" id="button4" width="122" y="361" draggable="false">
+      <Events>
+        <event name="OnClick">setFormPatternId("QueryBuilder");
+setDatapatternId("");
+id = getSessionData("rowId");
+if(id!=null)
+{
+updateRefferences("textbox41");
+addFormValue("grid40",id);
+addFormValue("textbox43","0");
+saveConditionList("");
+String msg ="Saved changes to query "+name;
+msg = addString(msg,".","");
+message(msg);
+String retValue = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get customquerydetail.categoryName,customquerydetail.fieldName,customquerydetail.variableValue,customquerydetail.firstRange,customquerydetail.secondRange,customquerydetail.logicalValue,customquerydetail.checkboxValue from neiswispicdb.customquerydetail conditions customquerydetail.queryId:="+id);
+if(retValue=="true")
+{
+	showQueryUI("frame109");
+            setUpdatedMessage("Saved.");
+}
+}
+else
+{
+message(" Please select custom query to perform this operation.");
+}</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Button visibleto="Advance Search" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="10" backColor="Transparent" x="27" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="10" marginbottom="10" text="Delete Query" use="" forecolor="#000000" enabled="true" name="button4" backgroundImageLayout="tile" id="button5" width="122" y="420" draggable="false">
+      <Events>
+        <event name="OnClick">id = getSessionData("rowId");
+if(id!=null)
+{
+boolean isYes =messageWithQuestion("Are you sure you wish to delete this query?");
+if(isYes)
+{
+String retValue = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","update neiswispicdb.customquery set Deleted:=1 conditions customquery.queryId:=rowId");
+if(retValue == "true")
+{
+String msg =("Query "+name+" has been deleted.");
+message(msg);
+updateSession("rowId", null);
+setDataStatus("CreateQuery", "QueryBuilder", "neiswispicdb");
+
+}
+}
+}
+else
+{
+message(" Please select custom query to perform this operation.");
+}
+
+</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Button visibleto="Advance Search" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="11" backColor="Transparent" x="27" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="10" marginbottom="10" text="Query Result Setting" use="" forecolor="#000000" enabled="true" name="button5" backgroundImageLayout="tile" id="button50" width="122" y="481" draggable="false">
+      <Events>
+        <event name="OnClick">storFormValue("formValue");
+createPopUp("ResultSetting");
+restorFormValue("formValue");
+
+</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <PlaceHolder visibleto="All" draggable="false" height="90" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="12" font="Microsoft Sans Serif" backColor="#FFFFFF" x="3" fontsize="8" reference="Logo" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P80" backgroundImageLayout="tile" id="placeholder30" width="146" y="10">
+      <Events />
+      <DataMappings />
+      <Item reference="Logo">
+        <Events />
+      </Item>
+    </PlaceHolder>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="13" backColor="Transparent" x="104" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="sign out" use="" forecolor="#000000" enabled="true" name="button6" backgroundImageLayout="tile" id="button6" width="75" y="714" draggable="false">
+      <Events>
+        <event name="OnClick">String retValue = logOut("login");
+
+</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Button visibleto="Advance Search" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="10" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="10" tabindex="14" backColor="Transparent" x="27" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="10" marginbottom="10" text="Clear Query" use="" forecolor="#000000" enabled="true" name="button185" backgroundImageLayout="tile" id="button7" width="122" y="539" draggable="false">
+      <Events>
+        <event name="OnClick">clearAllQueryField("");</event>
+      </Events>
+      <DataMappings />
+    </Button>
+  </Frame>
+</basewindow>

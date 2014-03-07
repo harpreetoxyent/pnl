@@ -1,0 +1,82 @@
+<basewindow popup="true" visibleto="All" font="Microsoft Sans Serif" height="162" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="AddCustomQuery" boxalignment="none" backgroundImageLayout="tile" id="AddCustomQuery" title="Add Custom Query" width="287" y="0" draggable="false">
+  <Events>
+    <event name="DefaultValue">String rowValue = getSessionData("rowId");
+String qName = null;
+String defaultMsg = null;
+if(rowValue!=null)
+{
+data=createArray("String", "textbox13,textbox11");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get customquery.queryId, customquery.customQueryName from neiswispicdb.customquery conditions customquery.queryId:="+rowValue+" and customquery.deleted:=_STRINGSTART_0_STRINGEND_ ");
+showData(data);
+updateSession("rowId", null);
+AddCustomQuery.setTitle("Edit Custom Query");
+qName = textbox11.text;
+defaultMsg = "Query "+qName+" has not been updated.";
+}</event>
+  </Events>
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="117" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="6" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame89" boxalignment="none" backgroundImageLayout="tile" id="frame92" width="271" y="35" draggable="false">
+    <Events />
+    <DataMappings />
+    <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="Transparent" x="22" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="New Query Name:" use="" forecolor="#000000" enabled="true" name="label46" textalign="topleft" backgroundImageLayout="tile" id="label55" width="99" y="25" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" readonly="false" backColor="#FFFFFF" x="140" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox11" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="Untitled Query" use="" forecolor="#000000" enabled="true" name="textbox11" valuetype="AlphaNumeric" backgroundImageLayout="tile" password="false" draggable="false" width="118" y="26" passwordchar="" ismandatory="yes">
+      <Events />
+      <DataMappings>
+        <Mapping datafield="CustomQueryName: String" datatable="CustomQuery" datapattern="neiswispicdb" />
+      </DataMappings>
+    </TextBox>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="9" backColor="#FFFFFF" x="32" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Save" use="" forecolor="#000000" enabled="true" name="button74" backgroundImageLayout="tile" id="button74" width="75" y="71" draggable="false">
+      <Events>
+        <event name="OnClick">String txt = textbox11.text;
+addFormValue("textbox12","0");
+addFormValue("textbox11",txt);
+boolean isYes = false;
+boolean isEqual = equalsTest(qName,txt);
+if(!isEqual)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get customquery.queryId, customquery.customQueryName from neiswispicdb.customquery conditions customquery.CustomQueryName:=["+txt+"] and customquery.deleted:=[0]");
+isYes = isRecordExist();
+defaultMsg =null;
+}
+if(!isYes)
+{
+invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","AddCustomQuery");
+updateSession("rowId",null);
+
+if(defaultMsg !=null)
+{
+message(defaultMsg);
+}
+setDataStatus("CreateQuery", "QueryBuilder", "neiswispicdb");
+}
+else
+{
+String msg = "This custom query name already exist. Please enter another query name.";
+message(msg);
+}</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="10" backColor="#FFFFFF" x="148" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Cancel" use="" forecolor="#000000" enabled="true" name="button75" backgroundImageLayout="tile" id="button77" width="75" y="71" draggable="false">
+      <Events>
+        <event name="OnClick">updateSession("rowId",null);
+setDataStatus("CreateQuery", "QueryBuilder", "neiswispicdb");</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="11" readonly="false" backColor="#FFFFFF" x="142" fontsize="8.25" paddingleft="0" position="absolute" visible="false" border="fixedsingle" paddingbottom="0" id="textbox12" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox12" valuetype="Any" backgroundImageLayout="tile" password="false" width="25" y="51" passwordchar="" draggable="false">
+      <Events />
+      <DataMappings>
+        <Mapping datafield="deleted: Char" datatable="CustomQuery" datapattern="neiswispicdb" />
+      </DataMappings>
+    </TextBox>
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="12" readonly="false" backColor="#FFFFFF" x="140" fontsize="8.25" paddingleft="0" position="absolute" visible="false" border="fixedsingle" paddingbottom="0" id="textbox13" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox13" valuetype="Any" backgroundImageLayout="tile" password="false" width="100" y="0" passwordchar="" draggable="false">
+      <Events />
+      <DataMappings>
+        <Mapping datafield="queryId: Int32" datatable="CustomQuery" datapattern="neiswispicdb" />
+      </DataMappings>
+    </TextBox>
+  </Frame>
+</basewindow>

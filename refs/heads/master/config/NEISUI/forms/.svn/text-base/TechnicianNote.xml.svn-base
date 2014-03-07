@@ -1,0 +1,23 @@
+<basewindow popup="true" visibleto="All" font="Microsoft Sans Serif" height="284" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="TechnicianNote" boxalignment="none" backgroundImageLayout="tile" id="TechnicianNote" title="" width="301" y="0" draggable="false">
+  <Events />
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="239" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="15" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame134" boxalignment="none" backgroundImageLayout="tile" id="frame134" width="276" y="28" draggable="false">
+    <Events />
+    <DataMappings />
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="96" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" readonly="false" backColor="#FFFFFF" x="10" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox70" paddingright="0" multiline="true" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox70" valuetype="Any" backgroundImageLayout="tile" password="false" width="259" y="7" passwordchar="" draggable="false">
+      <Events />
+      <DataMappings />
+    </TextBox>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="8" backColor="#FFFFFF" x="44" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Save" use="" forecolor="#000000" enabled="true" name="button123" backgroundImageLayout="tile" id="button147" width="75" y="201" draggable="false">
+      <Events />
+      <DataMappings />
+    </Button>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="9" backColor="#FFFFFF" x="149" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Cancel" use="" forecolor="#000000" enabled="true" name="button124" backgroundImageLayout="tile" id="button148" width="75" y="204" draggable="false">
+      <Events />
+      <DataMappings />
+    </Button>
+    <Browse y="122" name="browse1" backColor="#FFFFFF" margintop="0" font="Microsoft Sans Serif" height="30" netBackColor="White" use="" netForeColor="ControlText" fontstyle="Regular" tabindex="10" paddingright="0" paddingleft="0" paddingtop="0" visibleto="All" width="111" forecolor="#000000" fontsize="8.25" draggable="false" id="browse1" marginbottom="0" position="absolute" cursor="[Cursor: System.Windows.Forms.Cursor]" backgroundImageLayout="tile" marginright="0" widthtype="Auto" marginleft="0" paddingbottom="0" text="Import Technician Notes" droppable="false" visible="true" enabled="true" x="132">
+      <Events />
+      <DataMappings />
+    </Browse>
+  </Frame>
+</basewindow>

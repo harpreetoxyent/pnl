@@ -1,0 +1,157 @@
+<?xml version="1.0" standalone="yes"?>
+<appadmin>
+  <xs:schema id="appadmin" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="appadmin" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="workflowinfo" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:AutoIncrement="true" type="xs:short" />
+                <xs:element name="name" msdata:Caption="150" type="xs:string" minOccurs="0" />
+                <xs:element name="deleted" msdata:Caption="50" type="xs:string" minOccurs="0" />
+                <xs:element name="isVisual" type="xs:boolean" minOccurs="0" />
+                <xs:element name="visualizerid" type="xs:short" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="EventType" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:AutoIncrement="true" type="xs:short" />
+                <xs:element name="eventtype" msdata:Caption="50" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="NodeInfo" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:AutoIncrement="true" type="xs:short" />
+                <xs:element name="formpatternid" msdata:Caption="150" type="xs:string" minOccurs="0" />
+                <xs:element name="datapatternid" msdata:Caption="250" type="xs:string" minOccurs="0" />
+                <xs:element name="userpatternid" msdata:Caption="50" type="xs:string" minOccurs="0" />
+                <xs:element name="scenario" msdata:Caption="150" type="xs:string" minOccurs="0" />
+                <xs:element name="info" msdata:Caption="50" type="xs:string" minOccurs="0" />
+                <xs:element name="data" msdata:Caption="50" type="xs:string" minOccurs="0" />
+                <xs:element name="nodename" msdata:Caption="50" type="xs:string" minOccurs="0" />
+                <xs:element name="nodeDescription" msdata:Caption="50" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="NodeEvents" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:AutoIncrement="true" type="xs:short" />
+                <xs:element name="nodeid" type="xs:short" minOccurs="0" />
+                <xs:element name="params" msdata:Caption="450" type="xs:string" minOccurs="0" />
+                <xs:element name="eventtype" type="xs:short" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="nodeconnector" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:AutoIncrement="true" type="xs:short" />
+                <xs:element name="connectorname" msdata:Caption="50" type="xs:string" minOccurs="0" />
+                <xs:element name="fromNodeId" type="xs:short" minOccurs="0" />
+                <xs:element name="toNodeId" type="xs:short" minOccurs="0" />
+                <xs:element name="workflowpatternid" type="xs:short" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="workflownodeinfo" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:AutoIncrement="true" type="xs:short" />
+                <xs:element name="workflowid" type="xs:short" minOccurs="0" />
+                <xs:element name="nodeid" type="xs:short" minOccurs="0" />
+                <xs:element name="isStartNode" type="xs:boolean" minOccurs="0" />
+                <xs:element name="status" msdata:Caption="150" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="NodeDetails" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:AutoIncrement="true" type="xs:short" />
+                <xs:element name="Action" msdata:Caption="150" type="xs:string" minOccurs="0" />
+                <xs:element name="formpattern" msdata:Caption="250" type="xs:string" minOccurs="0" />
+                <xs:element name="pacakge" msdata:Caption="250" type="xs:string" minOccurs="0" />
+                <xs:element name="nodeId" type="xs:short" minOccurs="0" />
+                <xs:element name="deleted" msdata:Caption="50" type="xs:string" minOccurs="0" />
+                <xs:element name="nodeDescription" msdata:Caption="150" type="xs:string" minOccurs="0" />
+                <xs:element name="cateogryid" msdata:Caption="50" type="xs:string" minOccurs="0" />
+                <xs:element name="inputxml" msdata:Caption="50" type="xs:string" minOccurs="0" />
+                <xs:element name="isVisualizer" type="xs:boolean" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="toolcateogry" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="id" msdata:AutoIncrement="true" type="xs:short" />
+                <xs:element name="category" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//workflowinfo" />
+        <xs:field xpath="id" />
+      </xs:unique>
+      <xs:unique name="EventType_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//EventType" />
+        <xs:field xpath="id" />
+      </xs:unique>
+      <xs:unique name="NodeInfo_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//NodeInfo" />
+        <xs:field xpath="id" />
+      </xs:unique>
+      <xs:unique name="NodeEvents_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//NodeEvents" />
+        <xs:field xpath="id" />
+      </xs:unique>
+      <xs:unique name="nodeconnector_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//nodeconnector" />
+        <xs:field xpath="id" />
+      </xs:unique>
+      <xs:unique name="workflownodeinfo_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//workflownodeinfo" />
+        <xs:field xpath="id" />
+      </xs:unique>
+      <xs:unique name="NodeDetails_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//NodeDetails" />
+        <xs:field xpath="id" />
+      </xs:unique>
+      <xs:unique name="toolcateogry_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//toolcateogry" />
+        <xs:field xpath="id" />
+      </xs:unique>
+      <xs:keyref name="workinfo" refer="Constraint1">
+        <xs:selector xpath=".//workflownodeinfo" />
+        <xs:field xpath="workflowid" />
+      </xs:keyref>
+      <xs:keyref name="nodeinfo" refer="NodeInfo_Constraint1">
+        <xs:selector xpath=".//workflownodeinfo" />
+        <xs:field xpath="nodeid" />
+      </xs:keyref>
+      <xs:keyref name="fromNode" refer="NodeInfo_Constraint1">
+        <xs:selector xpath=".//nodeconnector" />
+        <xs:field xpath="fromNodeId" />
+      </xs:keyref>
+      <xs:keyref name="toNode" refer="NodeInfo_Constraint1">
+        <xs:selector xpath=".//nodeconnector" />
+        <xs:field xpath="toNodeId" />
+      </xs:keyref>
+      <xs:keyref name="node" refer="NodeInfo_Constraint1">
+        <xs:selector xpath=".//NodeEvents" />
+        <xs:field xpath="nodeid" />
+      </xs:keyref>
+      <xs:keyref name="event" refer="EventType_Constraint1">
+        <xs:selector xpath=".//NodeEvents" />
+        <xs:field xpath="eventtype" />
+      </xs:keyref>
+    </xs:element>
+  </xs:schema>
+</appadmin>

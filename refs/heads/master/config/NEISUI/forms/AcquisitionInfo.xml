@@ -1,0 +1,949 @@
+<basewindow popup="false" visibleto="All" font="Microsoft Sans Serif" height="1014" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="AcquisitionInfo" boxalignment="none" backgroundImageLayout="tile" id="AcquisitionInfo" title="" width="580" y="0" draggable="false">
+  <Events>
+    <event name="DefaultValue" internal="true">makeVisible("AcquisitionInfo")</event>
+  </Events>
+  <MultiTab y="10" name="multitab6" backColor="Transparent" margintop="0" font="Microsoft Sans Serif" height="900" netBackColor="Control" use="" netForeColor="ControlText" fontstyle="Regular" tabindex="12" paddingright="0" paddingleft="0" paddingtop="0" visibleto="All" width="565" forecolor="#000000" fontsize="8" draggable="false" id="multitab6" marginbottom="0" position="absolute" cursor="[Cursor: SizeAll]" backgroundImageLayout="tile" marginright="0" marginleft="0" paddingbottom="0" text="multitab6" droppable="false" visible="true" enabled="true" x="0">
+    <Events />
+    <DataMappings />
+    <TabPage y="22" align="none" name="tabpage12" backColor="#FFFFFF" margintop="0" font="Microsoft Sans Serif" height="874" netBackColor="White" use="" netForeColor="ControlText" fontstyle="Regular" tabindex="0" paddingright="0" paddingleft="0" paddingtop="0" visibleto="All" width="557" text="Reports" fontsize="8" draggable="false" id="tabpage12" marginbottom="0" position="absolute" cursor="[Cursor: Default]" backgroundImageLayout="tile" marginright="0" widthtype="Auto" marginleft="0" paddingbottom="0" droppable="false" forecolor="#000000" enabled="true" x="4">
+      <Events />
+      <Grid visibleto="All" font="Microsoft Sans Serif" height="268" netBackColor="White" multiselect="False" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="9" backColor="#FFFFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="grid146" use="" forecolor="#000000" enabled="true" align="none" name="grid146" backgroundImageLayout="tile" id="grid146" width="556" y="146" draggable="false">
+        <Events>
+          <event name="DefaultValue">String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studytype.Type,studypatient.ReportPath,studypatient.ReportSigned,studypatient.UploadDate,studypatient.TechNote from neiswispicdb.studypatient,neiswispicdb.schedule joins leftjoin studypatient.PatientID:=Patient.ID,leftjoin schedule.StudyType:=studytype.ID conditions studypatient.ScheduleID:=schedule.ID and studypatient.PatientID:="+pid);
+displayDataInControl("grid146");
+</event>
+          <event name="OnClick">x=getRowData(0);
+updateSession("studyId",x);
+y=getRowData(8);
+updateSession("workingarea",y);</event>
+        </Events>
+        <DataMappings />
+        <row visibleto="All" draggable="false" height="30" netBackColor="Coral" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FF7F50" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="row81" use="" forecolor="#000000" enabled="true" name="row81" backgroundImageLayout="tile" id="row81" sizetype="Pixel" width="554" y="0">
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column153" use="" forecolor="#000000" enabled="true" name="column153" backgroundImageLayout="tile" id="column153" sizetype="Pixel" width="62" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Study Id" use="" forecolor="#000000" enabled="true" name="label84" textalign="topleft" backgroundImageLayout="tile" id="label84" width="60" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="5" font="Microsoft Sans Serif" backColor="#00FFFF" x="62" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column94" use="" forecolor="#000000" enabled="true" name="column94" backgroundImageLayout="tile" id="column94" sizetype="Pixel" width="66" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Study Type" use="" forecolor="#000000" enabled="true" name="label166" textalign="topleft" backgroundImageLayout="tile" id="label166" width="65" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="7" font="Microsoft Sans Serif" backColor="#00FFFF" x="128" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column97" use="" forecolor="#000000" enabled="true" name="column97" backgroundImageLayout="tile" id="column97" sizetype="Pixel" width="92" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Study File Path" use="" forecolor="#000000" enabled="true" name="label168" textalign="topleft" backgroundImageLayout="tile" id="label3" width="90" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="9" font="Microsoft Sans Serif" backColor="#00FFFF" x="220" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column483" use="" forecolor="#000000" enabled="true" name="column483" backgroundImageLayout="tile" id="column483" sizetype="Pixel" width="56" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Signature" use="" forecolor="#000000" enabled="true" name="label10" textalign="topleft" backgroundImageLayout="tile" id="label10" width="55" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="10" font="Microsoft Sans Serif" backColor="#00FFFF" x="276" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column908" use="" forecolor="#000000" enabled="true" name="column908" backgroundImageLayout="tile" id="column908" sizetype="Pixel" width="82" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Date of Report Upload" use="" forecolor="#000000" enabled="true" name="label4" textalign="topleft" backgroundImageLayout="tile" id="label4" width="80" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="11" font="Microsoft Sans Serif" backColor="#00FFFF" x="358" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column87" use="" forecolor="#000000" enabled="true" name="column87" backgroundImageLayout="tile" id="column87" sizetype="Pixel" width="52" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Technician Note" use="" forecolor="#000000" enabled="true" name="label174" textalign="topleft" backgroundImageLayout="tile" id="label174" width="50" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="12" font="Microsoft Sans Serif" backColor="#00FFFF" x="410" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column88" use="" forecolor="#000000" enabled="true" name="column88" backgroundImageLayout="tile" id="column88" sizetype="Pixel" width="47" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Date of Study" use="" forecolor="#000000" enabled="true" name="label78" textalign="topleft" backgroundImageLayout="tile" id="label78" width="45" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="13" font="Microsoft Sans Serif" backColor="#00FFFF" x="457" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column259" use="" forecolor="#000000" enabled="true" name="column259" backgroundImageLayout="tile" id="column259" sizetype="Pixel" width="67" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Sleep Technician" use="" forecolor="#000000" enabled="true" name="label85" textalign="topleft" backgroundImageLayout="tile" id="label85" width="65" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+        </row>
+      </Grid>
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="95" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="13" default="false" backColor="Transparent" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="center" name="frame174" boxalignment="none" backgroundImageLayout="tile" id="frame174" width="553" y="43" draggable="false">
+        <Events />
+        <DataMappings />
+        <Button visibleto="SendReportToEpic" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: SizeAll]" margintop="5" tabindex="10" backColor="Transparent" x="4" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="Highlight" droppable="false" marginleft="5" marginbottom="5" text="Export to EPIC" use="" forecolor="#316AC5" enabled="true" name="button102" backgroundImageLayout="tile" id="button102" width="120" y="10" draggable="false">
+          <Events>
+            <event name="OnClick">String studyId=getSessionData("studyId");
+if(studyId!=null)
+{
+invokeComponent("com.oxymedical.component.HL7Component", "ExportToEpic", "com.oxymedical.component.HL7Component.HL7Component", studyId);
+message("Report exported to EPIC.");
+updateSession("studyId",null);
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studytype.Type,studypatient.ReportPath,studypatient.ReportSigned,studypatient.UploadDate,studypatient.TechNote from neiswispicdb.studypatient,neiswispicdb.schedule joins leftjoin studypatient.PatientID:=Patient.ID,leftjoin schedule.StudyType:=studytype.ID conditions studypatient.ScheduleID:=schedule.ID and studypatient.PatientID:="+pid);
+displayDataInControl("grid146");
+}
+else
+{
+message("Please select one record.");
+}</event>
+          </Events>
+          <DataMappings />
+        </Button>
+        <Browse y="11" name="browse0" backColor="Transparent" margintop="5" font="Microsoft Sans Serif" height="30" netBackColor="Transparent" use="" netForeColor="MenuHighlight" fontstyle="Bold" tabindex="8" paddingright="0" paddingleft="0" paddingtop="0" visibleto="Import Report" width="120" forecolor="#316AC5" fontsize="8.25" draggable="false" id="browse0" marginbottom="5" position="relative" cursor="[Cursor: SizeAll]" backgroundImageLayout="tile" marginright="5" widthtype="Auto" marginleft="5" paddingbottom="0" text="Import Report" droppable="false" visible="true" enabled="true" x="140">
+          <Events>
+            <event name="OnClick">storFormValue("formValue");
+updateSession("isImporting","true");
+String pid = getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patient.firstname,patient.lastName from neiswispicdb.patient conditions patient.id:="+pid);
+String fname=getDataFromAllValuesVar(0, 0);
+updateSession("fname",fname);
+String lname=getDataFromAllValuesVar(0, 1);
+updateSession("lname",lname);
+updateSession("tnote","N");
+String sid=getSessionData("studyId");
+if(sid==null)
+{
+updateSession("nolisId",null);
+createPopUp("ShowAppointment");
+}
+else
+{
+String retval = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studypatient.ReportPath from neiswispicdb.studypatient conditions studypatient.ID:="+sid);
+String reportpath = null;
+if(retval=="true")
+{
+reportpath = getDataFromAllValuesVar(0, 1);
+}
+boolean isYes = false;
+if(reportpath!=null)
+{
+boolean isnull = checkValueWithOperator(reportpath,"null","EQUAL");
+if(!isnull)
+{
+isYes = messageWithQuestion("Report already exists. Are you sure you want to replace the report?");
+}
+if(isYes)
+{
+String found = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient1.ID,studypatient.ScheduleID,studypatient.TechNote from neiswispicdb.studypatient1,neiswispicdb.studypatient conditions studypatient.ID:=studypatient1.StudyID and studypatient1.StudyID:="+sid);
+if(found=="true")
+{
+String id = getDataFromAllValuesVar(0, 0);
+updateSession("nolisId", id);
+String schid = getDataFromAllValuesVar(0, 1);
+updateSession("scheduleId", schid);
+String tnote = getDataFromAllValuesVar(0, 2);
+updateSession("tnote",tnote);
+}
+else
+{
+String found = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient2.ID,studypatient.ScheduleID,studypatient.TechNote from neiswispicdb.studypatient2,neiswispicdb.studypatient conditions studypatient.ID:=studypatient1.StudyID and studypatient2.StudyID:="+sid);
+if(found=="true")
+{
+String id = getDataFromAllValuesVar(0, 0);
+updateSession("nolisId", id);
+String schid = getDataFromAllValuesVar(0, 1);
+updateSession("scheduleId", schid);
+String tnote = getDataFromAllValuesVar(0, 2);
+updateSession("tnote",tnote);
+}
+}
+}
+}
+else
+{
+String found = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ScheduleID,studypatient.TechNote from neiswispicdb.studypatient conditions studypatient.ID:="+sid);
+if(found=="true")
+{
+updateSession("nolisId", null);
+String schid = getDataFromAllValuesVar(0, 0);
+updateSession("scheduleId", schid);
+String tnote = getDataFromAllValuesVar(0, 1);
+updateSession("tnote",tnote);
+isYes = true;
+}
+}
+if(isYes)
+{
+String filePath=uploadFile("browse0");
+if(filePath!=null)
+{
+String retValue = invokeComponent("com.oxymedical.component.SleepWareComponent","extractfields",
+"com.oxymedical.component.sleepwarecomponent.SleepWareComponent",filePath);
+if(retValue == "false")
+{
+displayErrorMessageFromComponent("");
+}
+}
+}
+updateSession("studyId",null);
+updateSession("isImporting",null);
+}
+
+String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studytype.Type,studypatient.ReportPath,studypatient.ReportSigned,studypatient.UploadDate,studypatient.TechNote from neiswispicdb.studypatient,neiswispicdb.schedule joins leftjoin studypatient.PatientID:=Patient.ID,leftjoin schedule.StudyType:=studytype.ID conditions studypatient.ScheduleID:=schedule.ID and studypatient.PatientID:="+pid);
+displayDataInControl("grid146");
+restorFormValue("formValue");</event>
+          </Events>
+          <DataMappings />
+        </Browse>
+        <Button visibleto="Attach Signature" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: SizeAll]" margintop="5" tabindex="10" backColor="Transparent" x="5" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="Highlight" droppable="false" marginleft="5" marginbottom="5" text="Attach Signature" use="" forecolor="#316AC5" enabled="true" name="button192" backgroundImageLayout="tile" id="button192" width="120" y="50" draggable="false">
+          <Events>
+            <event name="OnClick">String studyId=getSessionData("studyId");
+if(studyId!=null)
+{
+userId = getSessionData("userId");
+String ret = invokeComponent("com.oxymedical.component.signature.SignatureComponent","AttachElectronicSignature","com.oxymedical.component.signature.SignatureComponent","default;" + userId + ";" + studyId);
+boolean success = checkValueWithOperator(ret, "true", "EQUAL");
+if (success)
+{
+message("Signature attached successfully to report.");
+updateSession("studyId", null);
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studytype.Type,studypatient.ReportPath,studypatient.ReportSigned,studypatient.UploadDate,studypatient.TechNote from neiswispicdb.studypatient,neiswispicdb.schedule joins leftjoin studypatient.PatientID:=Patient.ID,leftjoin schedule.StudyType:=studytype.ID conditions studypatient.ScheduleID:=schedule.ID and studypatient.PatientID:="+pid);
+displayDataInControl("grid146");
+}
+else
+{
+message("There was an error while attaching signature to selected report. Please contact administrator.");
+}
+}
+else
+{
+message("Please select one record.");
+}</event>
+          </Events>
+          <DataMappings />
+        </Button>
+        <Button visibleto="Import patient Photos" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: SizeAll]" margintop="5" tabindex="11" backColor="Transparent" x="140" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="5" marginbottom="5" text="Import Patient Photos" use="" forecolor="#316AC5" enabled="true" name="button163" backgroundImageLayout="tile" id="button163" width="153" y="50" draggable="false">
+          <Events>
+            <event name="OnClick">storFormValue("formValue");
+String studyId=getSessionData("studyId");
+if(studyId!=null)
+{
+updateSession("uploadphoto","true");
+createPopUp("PhotoAlbum");
+String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studytype.Type,studypatient.ReportPath,studypatient.ReportSigned,studypatient.UploadDate,studypatient.TechNote from neiswispicdb.studypatient,neiswispicdb.schedule joins leftjoin studypatient.PatientID:=Patient.ID,leftjoin schedule.StudyType:=studytype.ID conditions studypatient.ScheduleID:=schedule.ID and studypatient.PatientID:="+pid);
+displayDataInControl("grid146");
+}
+else
+{
+message("Please select one record.");
+}
+restorFormValue("formValue");</event>
+          </Events>
+          <DataMappings />
+        </Button>
+        <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: SizeAll]" margintop="5" tabindex="13" backColor="Transparent" x="270" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="5" marginbottom="5" text="View Report" use="" forecolor="#316AC5" enabled="true" name="button194" backgroundImageLayout="tile" id="button194" width="120" y="10" draggable="false">
+          <Events>
+            <event name="OnClick">String sid = getSessionData("studyId");
+if(sid!=null)
+{
+String found = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studypatient.ReportPath from neiswispicdb.studypatient conditions studypatient.ID:="+sid);
+if(found=="true")
+{
+String filepath = getDataFromAllValuesVar(0, 1);
+if(filepath!=null)
+{
+boolean ok = showFileDownload(filepath);
+String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studytype.Type,studypatient.ReportPath,studypatient.ReportSigned,studypatient.UploadDate,studypatient.TechNote from neiswispicdb.studypatient,neiswispicdb.schedule joins leftjoin studypatient.PatientID:=Patient.ID,leftjoin schedule.StudyType:=studytype.ID conditions studypatient.ScheduleID:=schedule.ID and studypatient.PatientID:="+pid);
+displayDataInControl("grid146");
+}
+else
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studytype.Type,studypatient.ReportPath,studypatient.ReportSigned,studypatient.UploadDate,studypatient.TechNote from neiswispicdb.studypatient,neiswispicdb.schedule joins leftjoin studypatient.PatientID:=Patient.ID,leftjoin schedule.StudyType:=studytype.ID conditions studypatient.ScheduleID:=schedule.ID and studypatient.PatientID:="+pid);
+displayDataInControl("grid146");
+message("No report found.");
+}
+}
+updateSession("studyId", null);
+}
+else
+{
+message("Please select one record.");
+}</event>
+          </Events>
+          <DataMappings />
+        </Button>
+        <Button visibleto="Remove Report" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: SizeAll]" margintop="5" tabindex="12" backColor="Transparent" x="400" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="5" marginbottom="5" text="Remove Report" use="" forecolor="#316AC5" enabled="true" name="button185" backgroundImageLayout="tile" id="button185" width="120" y="10" draggable="false">
+          <Events>
+            <event name="OnClick">String sid = getSessionData("studyId");
+if(sid!=null)
+{
+String retval = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studypatient.ReportPath from neiswispicdb.studypatient conditions studypatient.ID:="+sid);
+String reportpath = null;
+if(retval=="true")
+{
+reportpath = getDataFromAllValuesVar(0, 1);
+}
+if(reportpath!=null)
+{
+boolean isYes =messageWithQuestion("Are you sure you wish to delete patient report?");
+if(isYes)
+{
+ invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient1.StudyID from neiswispicdb.studypatient1 conditions studypatient1.StudyID:="+sid);
+boolean found=isRecordExist();
+if(found)
+{
+String deleted = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","delete from neiswispicdb.studypatient1 conditions studyid:="+sid);
+}
+else
+{
+String deleted = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","delete from neiswispicdb.studypatient2 conditions studyid:="+sid);
+}
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get techniciannote.id from neiswispicdb.techniciannote conditions techniciannote.studyId:="+sid );
+boolean isTechNote = isRecordExist();
+String retValue = null;
+if(isTechNote)
+{
+String empty = null;
+retValue = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","update neiswispicdb.studypatient set ReportPath:="+empty+",ReportSigned:="+empty+",ReportType:="+empty+",UploadDate:="+empty+" conditions studypatient.id:="+sid);
+}
+else
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientalbum.photoid from neiswispicdb.patientalbum conditions patientalbum.studyId:="+sid );
+boolean isAlbum = isRecordExist();
+if(isAlbum)
+{
+boolean removeAlbum =messageWithQuestion("There are photos in the album for this study. Deleting patient report will delete them. Are you sure you wish to continue?");
+if(removeAlbum)
+{
+invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","delete from neiswispicdb.patientalbum conditions studyid:="+sid);
+retValue = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","delete from neiswispicdb.studypatient conditions id:="+sid);
+}
+}
+else
+{
+retValue = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","delete from neiswispicdb.studypatient conditions id:="+sid);
+}
+}
+updateSession("studyId", null);
+if(retValue == "true")
+{
+message("Deleted patient report.");
+String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studytype.Type,studypatient.ReportPath,studypatient.ReportSigned,studypatient.UploadDate,studypatient.TechNote from neiswispicdb.studypatient,neiswispicdb.schedule joins leftjoin studypatient.PatientID:=Patient.ID,leftjoin schedule.StudyType:=studytype.ID conditions studypatient.ScheduleID:=schedule.ID and studypatient.PatientID:="+pid);
+displayDataInControl("grid146");
+}
+}
+else
+{
+updateSession("studyId", null);
+String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studytype.Type,studypatient.ReportPath,studypatient.ReportSigned,studypatient.UploadDate,studypatient.TechNote from neiswispicdb.studypatient,neiswispicdb.schedule joins leftjoin studypatient.PatientID:=Patient.ID,leftjoin schedule.StudyType:=studytype.ID conditions studypatient.ScheduleID:=schedule.ID and studypatient.PatientID:="+pid);
+displayDataInControl("grid146");
+}
+}
+else
+{
+message("No report found.");
+}
+}
+else
+{
+message("Please select one record.");
+}</event>
+          </Events>
+          <DataMappings />
+        </Button>
+      </Frame>
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="68" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="14" default="false" backColor="Transparent" x="17" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="center" name="frame175" boxalignment="none" backgroundImageLayout="tile" id="frame175" width="511" y="437" draggable="false">
+        <Events />
+        <DataMappings />
+        <Button visibleto="CreateTechinicanNote" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="10" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="10" tabindex="0" backColor="Transparent" x="0" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="10" marginbottom="10" text="Create Technician Note" use="" forecolor="#316AC5" enabled="true" name="button195" backgroundImageLayout="tile" id="button195" width="187" y="23" draggable="false">
+          <Events>
+            <event name="OnClick">storFormValue("formValue");
+String sid = getSessionData("studyId");
+boolean isYes = true;
+if(sid==null)
+{
+isYes = messageWithQuestion("You have not selected any study record. Are you sure you want to create new study record for this technician note?");
+if(isYes)
+{
+updateSession("isNotes", "true");
+createPopUp("ShowAppointment");
+String note = getSessionData("isNotes");
+if(note!=null)
+{
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","TechnicianNoteForm");
+}
+}
+}
+else
+{
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","TechnicianNoteForm");
+}
+restorFormValue("formValue");</event>
+          </Events>
+          <DataMappings />
+        </Button>
+        <Button visibleto="ViewTechinicanNote" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="10" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="10" tabindex="8" backColor="Transparent" x="168" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="10" marginbottom="10" text="View Technician Note" use="" forecolor="#316AC5" enabled="true" name="button196" backgroundImageLayout="tile" id="button196" width="165" y="25" draggable="false">
+          <Events>
+            <event name="OnClick">String sid = getSessionData("studyId");
+if(sid !=null)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get techniciannote.id from neiswispicdb.techniciannote conditions techniciannote.studyId:="+sid );
+boolean isYes = isRecordExist();
+if(isYes)
+{
+updateSession("ViewNote","yes");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","TechnicianNoteForm");}
+else
+{
+	message("Technician Note is not available for this study.");
+}
+}
+else
+{
+message("Please select study report.");
+}</event>
+          </Events>
+          <DataMappings />
+        </Button>
+        <Button visibleto="Remove Technician Report" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="9" backColor="Transparent" x="323" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="Remove Technician Note" use="" forecolor="#316AC5" enabled="true" name="button204" backgroundImageLayout="tile" id="button204" width="180" y="27" draggable="false">
+          <Events>
+            <event name="OnClick">String sid = getSessionData("studyId");
+if(sid !=null)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get techniciannote.id from neiswispicdb.techniciannote conditions techniciannote.studyId:="+sid );
+boolean isYes = isRecordExist();
+if(isYes)
+{
+boolean remove = messageWithQuestion("Are you sure you wish to delete techinician note for this study?");
+if(remove)
+{
+String deleted = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","delete from neiswispicdb.techniciannote conditions studyid:="+sid);
+String retval = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studypatient.ReportPath from neiswispicdb.studypatient conditions studypatient.ID:="+sid);
+String reportpath = null;
+String retValue = null;
+if(retval=="true")
+{
+reportpath = getDataFromAllValuesVar(0, 1);
+}
+if(reportpath!=null)
+{
+retValue = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","update neiswispicdb.studypatient set TechNote:="+"N"+" conditions studypatient.id:="+sid);
+}
+else
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientalbum.photoid from neiswispicdb.patientalbum conditions patientalbum.studyId:="+sid );
+boolean isAlbum = isRecordExist();
+if(isAlbum)
+{
+boolean removeAlbum =messageWithQuestion("There are photos in the album for this study. Deleting technician note will delete them. Are you sure you wish to continue?");
+if(removeAlbum)
+{
+invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","delete from neiswispicdb.patientalbum conditions studyid:="+sid);
+retValue = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","delete from neiswispicdb.studypatient conditions id:="+sid);
+}
+}
+else
+{
+retValue = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","delete from neiswispicdb.studypatient conditions id:="+sid);
+}
+}
+updateSession("studyId", null);
+if(retValue == "true")
+{
+message("Deleted technician note.");
+String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studytype.Type,studypatient.ReportPath,studypatient.ReportSigned,studypatient.UploadDate,studypatient.TechNote from neiswispicdb.studypatient,neiswispicdb.schedule joins leftjoin studypatient.PatientID:=Patient.ID,leftjoin schedule.StudyType:=studytype.ID conditions studypatient.ScheduleID:=schedule.ID and studypatient.PatientID:="+pid);
+displayDataInControl("grid146");
+}
+else
+{
+String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studytype.Type,studypatient.ReportPath,studypatient.ReportSigned,studypatient.UploadDate,studypatient.TechNote from neiswispicdb.studypatient,neiswispicdb.schedule joins leftjoin studypatient.PatientID:=Patient.ID,leftjoin schedule.StudyType:=studytype.ID conditions studypatient.ScheduleID:=schedule.ID and studypatient.PatientID:="+pid);
+displayDataInControl("grid146");
+}
+}
+else
+{
+String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studytype.Type,studypatient.ReportPath,studypatient.ReportSigned,studypatient.UploadDate,studypatient.TechNote from neiswispicdb.studypatient,neiswispicdb.schedule joins leftjoin studypatient.PatientID:=Patient.ID,leftjoin schedule.StudyType:=studytype.ID conditions studypatient.ScheduleID:=schedule.ID and studypatient.PatientID:="+pid);
+displayDataInControl("grid146");
+}
+}
+else
+{
+message("No technician note found.");
+}
+}
+else
+{
+message("Please select study report.");
+}</event>
+          </Events>
+          <DataMappings />
+        </Button>
+      </Frame>
+    </TabPage>
+    <TabPage y="22" align="none" name="tabpage13" backColor="#FFFFFF" margintop="0" font="Microsoft Sans Serif" height="874" netBackColor="White" use="" netForeColor="ControlText" fontstyle="Regular" tabindex="1" paddingright="0" paddingleft="0" paddingtop="0" visibleto="All" width="557" text="PSG" fontsize="8" draggable="false" id="tabpage13" marginbottom="0" position="relative" cursor="[Cursor: Default]" backgroundImageLayout="tile" marginright="0" widthtype="Auto" marginleft="0" paddingbottom="0" droppable="false" forecolor="#000000" enabled="true" x="4">
+      <Events>
+        <event name="OnClick">updateSession("studytype","PSG");
+String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.id,studytype.type,schedule.AppointmentStartDate,schedule.AppointmentStartTime,schedule.AppointmentEndDate,schedule.AppointmentEndTime,patientacquisition.AcquisitionFilePath from neiswispicdb.studytype,neiswispicdb.patientacquisition joins rightjoin patientacquisition.ScheduleID:=schedule.id conditions schedule.Cancelled:=["+0+"] and studytype.id:=schedule.StudyType and schedule.patientID:="+pid+" and studytype.id &amp;gt;"+4+" and studytype.id &amp;lt;"+16); 
+showListData(null,grid29);</event>
+      </Events>
+      <Applet visibleto="ConvertAcquisitionToEuropeanDataManagement" font="Microsoft Sans Serif" appname="NOLIS EDF Generator" height="150" widthtype="Auto" netBackColor="White" archive="applet/SSignedApplet.jar" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#FFFFFF" x="27" fontsize="8.25" fontstyle="Regular" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="applet0" use="" forecolor="#000000" enabled="true" name="applet2" backgroundImageLayout="tile" code="ExportToEDFApplet.class" id="applet2" width="500" y="598" draggable="false">
+        <Events />
+        <DataMappings />
+      </Applet>
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="54" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="8" default="false" backColor="#FFFFFF" x="3" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="center" name="frame193" boxalignment="none" backgroundImageLayout="tile" id="frame193" width="554" y="62" draggable="false">
+        <Events />
+        <DataMappings />
+        <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="5" tabindex="0" backColor="Transparent" x="14" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="5" marginbottom="5" text="Add Acquisition" use="" forecolor="#316AC5" enabled="true" name="button42" backgroundImageLayout="tile" id="button42" width="139" y="8" draggable="false">
+          <Events>
+            <event name="OnClick">storFormValue("formValue");
+String pid=getSessionData("rowId");
+if(pid!=null)
+{
+String sid=getSessionData("scheduleId");
+if(sid!=null)
+{
+String acqfilepath = getSessionData("acuisitionpath");
+if(acqfilepath==null)
+{
+createPopUp("FileBrowse");
+restorFormValue("formValue");
+String file = getSessionData("filePath");
+if(file!=null)
+{
+String type = getSessionData("studytype");
+String retVal = invokeComponent("storage.comp","StoreDataToStorage","com.oxymedical.component.storage.StorageComponent",sid+"_SEP_"+file+"_SEP_"+type);
+if(retVal == "false")
+{
+updateSession("scheduleId",null);
+updateSession("filePath",null);
+displayErrorMessageFromComponent("");
+}
+else
+{
+updateSession("scheduleId",null);
+updateSession("filePath",null);
+}
+}
+else
+{
+message("No file selected.");
+}
+}
+else
+{
+message("Acquisition exists for this record.");
+}
+}
+else
+{
+message("Please select a record.");
+}
+}
+restorFormValue("formValue");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.id,studytype.type,schedule.AppointmentStartDate,schedule.AppointmentStartTime,schedule.AppointmentEndDate,schedule.AppointmentEndTime,patientacquisition.AcquisitionFilePath from neiswispicdb.studytype,neiswispicdb.patientacquisition joins rightjoin patientacquisition.ScheduleID:=schedule.id conditions schedule.Cancelled:=["+0+"] and studytype.id:=schedule.StudyType and schedule.patientID:="+pid+" and studytype.id &amp;gt;"+4+" and studytype.id &amp;lt;"+16); 
+showListData(null,grid29);</event>
+          </Events>
+          <DataMappings />
+        </Button>
+        <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: SizeAll]" margintop="5" tabindex="1" backColor="Transparent" x="191" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="5" marginbottom="5" text="Retrieve Acquisition" use="" forecolor="#316AC5" enabled="true" name="button212" backgroundImageLayout="tile" id="button212" width="195" y="8" draggable="false">
+          <Events>
+            <event name="OnClick">storFormValue("formValue");
+String pid=getSessionData("rowId");
+if(pid!=null)
+{
+String sid=getSessionData("scheduleId");
+if(sid!=null)
+{
+String acqfilepath = getSessionData("acuisitionpath");
+if(acqfilepath!=null)
+{
+createPopUp("FileBrowse");
+String file = getSessionData("filePath");
+restorFormValue("formValue");
+if(file!=null)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientacquisition.ID,patientacquisition.scheduleid from neiswispicdb.patientacquisition conditions patientacquisition.scheduleid:="+sid);
+String acqid = getDataFromAllValuesVar(0, 0);
+String retVal = invokeComponent("storage.comp","RetrieveDataFromStorage","com.oxymedical.component.storage.StorageComponent",acqid+"_SEP_"+file);
+if(retVal == "false")
+{
+updateSession("scheduleId",null);	
+updateSession("filePath",null);
+displayErrorMessageFromComponent("");
+}
+else
+{
+updateSession("scheduleId",null);
+updateSession("filePath",null);
+}
+}
+else
+{
+message("No file selected.");
+}
+}
+else
+{
+message("There is no acquisition for this record.");
+}
+}
+else
+{
+message("Please select a record.");
+}
+}
+restorFormValue("formValue");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.id,studytype.type,schedule.AppointmentStartDate,schedule.AppointmentStartTime,schedule.AppointmentEndDate,schedule.AppointmentEndTime,patientacquisition.AcquisitionFilePath from neiswispicdb.studytype,neiswispicdb.patientacquisition joins rightjoin patientacquisition.ScheduleID:=schedule.id conditions schedule.Cancelled:=["+0+"] and studytype.id:=schedule.StudyType and schedule.patientID:="+pid+" and studytype.id &amp;gt;"+4+" and studytype.id &amp;lt;"+16); 
+showListData(null,grid29);</event>
+          </Events>
+          <DataMappings />
+        </Button>
+      </Frame>
+      <Grid visibleto="All" font="Microsoft Sans Serif" height="327" netBackColor="White" multiselect="False" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="9" backColor="#FFFFFF" x="6" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="grid29" use="" forecolor="#000000" enabled="true" align="none" name="grid29" backgroundImageLayout="tile" id="grid29" width="548" y="120" draggable="false">
+        <Events>
+          <event name="OnClick">String sid=getRowData(0);
+updateSession("scheduleId",sid);
+String acuisitionpath=getRowData(6);
+updateSession("acuisitionpath",acuisitionpath);
+</event>
+        </Events>
+        <DataMappings />
+        <row visibleto="All" draggable="false" height="30" netBackColor="Coral" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FF7F50" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="row45" use="" forecolor="#000000" enabled="true" name="row45" backgroundImageLayout="tile" id="row45" sizetype="Pixel" width="548" y="0">
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column108" use="" forecolor="#000000" enabled="true" name="column108" backgroundImageLayout="tile" id="column108" sizetype="Pixel" width="76" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Identifier" use="" forecolor="#000000" enabled="true" name="label328" textalign="topleft" backgroundImageLayout="tile" id="label328" width="74" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="1" font="Microsoft Sans Serif" backColor="#00FFFF" x="76" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column109" use="" forecolor="#000000" enabled="true" name="column109" backgroundImageLayout="tile" id="column109" sizetype="Pixel" width="76" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Study-Type" use="" forecolor="#000000" enabled="true" name="label329" textalign="topleft" backgroundImageLayout="tile" id="label329" width="74" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="2" font="Microsoft Sans Serif" backColor="#00FFFF" x="152" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column110" use="" forecolor="#000000" enabled="true" name="column110" backgroundImageLayout="tile" id="column110" sizetype="Pixel" width="76" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Start-Date" use="" forecolor="#000000" enabled="true" name="label330" textalign="topleft" backgroundImageLayout="tile" id="label330" width="67" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="3" font="Microsoft Sans Serif" backColor="#00FFFF" x="228" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column111" use="" forecolor="#000000" enabled="true" name="column111" backgroundImageLayout="tile" id="column111" sizetype="Pixel" width="76" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Start-time" use="" forecolor="#000000" enabled="true" name="label331" textalign="topleft" backgroundImageLayout="tile" id="label331" width="72" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="4" font="Microsoft Sans Serif" backColor="#00FFFF" x="304" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column112" use="" forecolor="#000000" enabled="true" name="column112" backgroundImageLayout="tile" id="column112" sizetype="Pixel" width="76" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="End-Date" use="" forecolor="#000000" enabled="true" name="label332" textalign="topleft" backgroundImageLayout="tile" id="label332" width="69" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="5" font="Microsoft Sans Serif" backColor="#00FFFF" x="380" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column113" use="" forecolor="#000000" enabled="true" name="column113" backgroundImageLayout="tile" id="column113" sizetype="Pixel" width="76" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="End-time" use="" forecolor="#000000" enabled="true" name="label333" textalign="topleft" backgroundImageLayout="tile" id="label333" width="75" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="6" font="Microsoft Sans Serif" backColor="#00FFFF" x="456" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column115" use="" forecolor="#000000" enabled="true" name="column115" backgroundImageLayout="tile" id="column115" sizetype="Pixel" width="101" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Acquisition" use="" forecolor="#000000" enabled="true" name="label334" textalign="topleft" backgroundImageLayout="tile" id="label334" width="100" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+        </row>
+      </Grid>
+    </TabPage>
+    <TabPage y="22" align="none" name="tabpage28" backColor="#FFFFFF" margintop="0" font="Microsoft Sans Serif" height="874" netBackColor="White" use="" netForeColor="ControlText" fontstyle="Regular" tabindex="2" paddingright="0" paddingleft="0" paddingtop="0" visibleto="All" width="557" text="HD-EEG" fontsize="8" draggable="false" id="tabpage28" marginbottom="0" position="absolute" cursor="[Cursor: SizeAll]" backgroundImageLayout="tile" marginright="0" widthtype="Auto" marginleft="0" paddingbottom="0" droppable="false" forecolor="#000000" enabled="true" x="4">
+      <Events>
+        <event name="OnClick">updateSession("studytype","HDEEG");
+String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.id,studytype.type,schedule.AppointmentStartDate,schedule.AppointmentStartTime,schedule.AppointmentEndDate,schedule.AppointmentEndTime,patientacquisition.AcquisitionFilePath,schedule.workingDirectory from neiswispicdb.studytype,neiswispicdb.patientacquisition joins rightjoin patientacquisition.ScheduleID:=schedule.id conditions schedule.Cancelled:=["+0+"] and studytype.id:=schedule.StudyType and schedule.patientID:="+pid+" and studytype.id &amp;gt;"+13);
+showListData(null,grid30);</event>
+      </Events>
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="58" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="9" default="false" backColor="#FFFFFF" x="1" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="center" name="frame201" boxalignment="none" backgroundImageLayout="tile" id="frame201" width="554" y="53" draggable="false">
+        <Events />
+        <DataMappings />
+        <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: SizeAll]" margintop="5" tabindex="12" backColor="Transparent" x="264" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="5" marginbottom="5" text="Select Workflow" use="" forecolor="#316AC5" enabled="true" name="button235" backgroundImageLayout="tile" id="button235" width="136" y="17" draggable="false">
+          <Events>
+            <event name="OnClick">id = getSessionData("rowId");
+if(id!=null)
+{
+String scid=getSessionData("scheduleId");
+if(scid!=null)
+{
+String workingarea=getSessionData("workingarea");
+if(workingarea!=null)
+{
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","listOfAvailableWorkflow");
+}
+else
+{
+message("No working area present for this record.");
+}
+}
+else
+{
+message("Please select a record.");
+}
+}
+</event>
+          </Events>
+          <DataMappings />
+        </Button>
+        <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: SizeAll]" margintop="5" tabindex="8" backColor="Transparent" x="118" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="5" marginbottom="5" text="Retrieve Acquisition" use="" forecolor="#316AC5" enabled="true" name="button213" backgroundImageLayout="tile" id="button213" width="145" y="17" draggable="false">
+          <Events>
+            <event name="OnClick">storFormValue("formValue");
+String pid=getSessionData("rowId");
+if(pid!=null)
+{
+String sid=getSessionData("scheduleId");
+if(sid!=null)
+{
+String acqfilepath = getSessionData("acuisitionpath");
+if(acqfilepath!=null)
+{
+createPopUp("FileBrowse");
+restorFormValue("formValue");
+String file = getSessionData("filePath");
+if(file!=null)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientacquisition.ID,patientacquisition.scheduleid from neiswispicdb.patientacquisition conditions patientacquisition.scheduleid:="+sid);
+String acqid = getDataFromAllValuesVar(0, 0);
+String retVal = invokeComponent("storage.comp","RetrieveDataFromStorage","com.oxymedical.component.storage.StorageComponent",acqid+"_SEP_"+file);
+if(retVal == "false")
+{
+updateSession("scheduleId",null);	
+updateSession("filePath",null);
+displayErrorMessageFromComponent("");
+}
+else
+{
+updateSession("scheduleId",null);
+updateSession("filePath",null);
+}
+}
+else
+{
+message("No file selected.");
+}
+}
+else
+{
+message("There is no acquisition for this record.");
+}
+}
+else
+{
+message("Please select a record.");
+}
+}
+restorFormValue("formValue");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.id,studytype.type,schedule.AppointmentStartDate,schedule.AppointmentStartTime,schedule.AppointmentEndDate,schedule.AppointmentEndTime,patientacquisition.AcquisitionFilePath,schedule.workingDirectory from neiswispicdb.studytype,neiswispicdb.patientacquisition joins rightjoin patientacquisition.ScheduleID:=schedule.id conditions schedule.Cancelled:=["+0+"] and studytype.id:=schedule.StudyType and schedule.patientID:="+pid+" and studytype.id &gt;"+13);
+showListData(null,grid30);</event>
+          </Events>
+          <DataMappings />
+        </Button>
+        <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="5" tabindex="0" backColor="Transparent" x="0" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="5" marginbottom="5" text="Add Acquisition" use="" forecolor="#316AC5" enabled="true" name="button180" backgroundImageLayout="tile" id="button180" width="118" y="17" draggable="false">
+          <Events>
+            <event name="OnClick">setFormPatternId("Patient");
+setDatapatternId("");
+storFormValue("formValue");
+String pid=getSessionData("rowId");
+if(pid!=null)
+{
+String sid=getSessionData("scheduleId");
+if(sid!=null)
+{
+String acqfilepath = getSessionData("acuisitionpath");
+if(acqfilepath==null)
+{
+createPopUp("FileBrowse");
+String file = getSessionData("filePath");
+restorFormValue("formValue");
+if(file!=null)
+{
+String type = getSessionData("studytype");
+String retVal = invokeComponent("storage.comp","StoreDataToStorage","com.oxymedical.component.storage.StorageComponent",sid+"_SEP_"+file+"_SEP_"+type);
+if(retVal == "false")
+{
+updateSession("scheduleId",null);
+updateSession("filePath",null);
+displayErrorMessageFromComponent("");
+}
+else
+{
+updateSession("scheduleId",null);
+updateSession("filePath",null);
+}
+}
+else
+{
+message("No file selected.");
+}
+}
+else
+{
+message("Acquisition exists for this record.");
+}
+}
+else
+{
+message("Please select a record.");
+}
+}
+restorFormValue("formValue");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.id,studytype.type,schedule.AppointmentStartDate,schedule.AppointmentStartTime,schedule.AppointmentEndDate,schedule.AppointmentEndTime,patientacquisition.AcquisitionFilePath,schedule.workingDirectory from neiswispicdb.studytype,neiswispicdb.patientacquisition joins rightjoin patientacquisition.ScheduleID:=schedule.id conditions schedule.Cancelled:=["+0+"] and studytype.id:=schedule.StudyType and schedule.patientID:="+pid+" and studytype.id &gt;"+13);
+showListData(null,grid30);</event>
+          </Events>
+          <DataMappings />
+        </Button>
+        <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="5" cursor="[Cursor: SizeAll]" margintop="5" tabindex="13" backColor="Transparent" x="400" fontsize="8.25" paddingleft="0" position="relative" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="5" marginbottom="5" text="Set Working Directory" use="" forecolor="#316AC5" enabled="true" name="button237" backgroundImageLayout="tile" id="button237" width="150" y="17" draggable="false">
+          <Events>
+            <event name="OnClick">String scid=getSessionData("scheduleId");
+			storFormValue("formValue");
+if(scid!=null)
+{
+createPopUp("workingDirectory");
+updateSession("scheduleId",null);
+String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.id,studytype.type,schedule.AppointmentStartDate,schedule.AppointmentStartTime,schedule.AppointmentEndDate,schedule.AppointmentEndTime,patientacquisition.AcquisitionFilePath,schedule.workingDirectory from neiswispicdb.studytype,neiswispicdb.patientacquisition joins rightjoin patientacquisition.ScheduleID:=schedule.id conditions schedule.Cancelled:=["+0+"] and studytype.id:=schedule.StudyType and schedule.patientID:="+pid+" and studytype.id &amp;gt;"+13);
+restorFormValue("formValue");
+showListData(null,grid30);
+}
+else
+{
+message("Please select one record.");
+}</event>
+          </Events>
+          <DataMappings />
+        </Button>
+      </Frame>
+      <Grid visibleto="All" font="Microsoft Sans Serif" height="326" netBackColor="White" multiselect="False" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="10" backColor="#FFFFFF" x="1" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="grid30" use="" forecolor="#000000" enabled="true" align="none" name="grid30" backgroundImageLayout="tile" id="grid30" width="553" y="135" draggable="false">
+        <Events>
+          <event name="OnClick">String sid=getRowData(0);
+updateSession("scheduleId",sid);
+String acuisitionpath=getRowData(6);
+updateSession("acuisitionpath",acuisitionpath);
+String workingarea =getRowData(7);
+updateSession("workingarea",workingarea);</event>
+        </Events>
+        <DataMappings />
+        <row visibleto="All" draggable="false" height="30" netBackColor="Coral" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FF7F50" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="row276" use="" forecolor="#000000" enabled="true" name="row276" backgroundImageLayout="tile" id="row276" sizetype="Pixel" width="553" y="0">
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column806" use="" forecolor="#000000" enabled="true" name="column806" backgroundImageLayout="tile" id="column806" sizetype="Pixel" width="50" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Identifier" use="" forecolor="#000000" enabled="true" name="label335" textalign="topleft" backgroundImageLayout="tile" id="label335" width="64" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="1" font="Microsoft Sans Serif" backColor="#00FFFF" x="50" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column807" use="" forecolor="#000000" enabled="true" name="column807" backgroundImageLayout="tile" id="column807" sizetype="Pixel" width="75" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Study-type" use="" forecolor="#000000" enabled="true" name="label336" textalign="topleft" backgroundImageLayout="tile" id="label336" width="72" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="2" font="Microsoft Sans Serif" backColor="#00FFFF" x="125" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column808" use="" forecolor="#000000" enabled="true" name="column808" backgroundImageLayout="tile" id="column808" sizetype="Pixel" width="75" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Start-date" use="" forecolor="#000000" enabled="true" name="label337" textalign="topleft" backgroundImageLayout="tile" id="label337" width="75" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="3" font="Microsoft Sans Serif" backColor="#00FFFF" x="200" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column809" use="" forecolor="#000000" enabled="true" name="column809" backgroundImageLayout="tile" id="column809" sizetype="Pixel" width="75" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Start-time" use="" forecolor="#000000" enabled="true" name="label338" textalign="topleft" backgroundImageLayout="tile" id="label338" width="72" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="4" font="Microsoft Sans Serif" backColor="#00FFFF" x="275" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column810" use="" forecolor="#000000" enabled="true" name="column810" backgroundImageLayout="tile" id="column810" sizetype="Pixel" width="75" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="End-date" use="" forecolor="#000000" enabled="true" name="label339" textalign="topleft" backgroundImageLayout="tile" id="label339" width="74" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="5" font="Microsoft Sans Serif" backColor="#00FFFF" x="350" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column811" use="" forecolor="#000000" enabled="true" name="column811" backgroundImageLayout="tile" id="column811" sizetype="Pixel" width="60" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="End-time" use="" forecolor="#000000" enabled="true" name="label340" textalign="topleft" backgroundImageLayout="tile" id="label340" width="67" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="6" font="Microsoft Sans Serif" backColor="#00FFFF" x="410" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column812" use="" forecolor="#000000" enabled="true" name="column812" backgroundImageLayout="tile" id="column812" sizetype="Pixel" width="90" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Acquisition" use="" forecolor="#000000" enabled="true" name="label341" textalign="topleft" backgroundImageLayout="tile" id="label341" width="91" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+          <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="7" font="Microsoft Sans Serif" backColor="#00FFFF" x="500" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column880" use="" forecolor="#000000" enabled="true" name="column880" backgroundImageLayout="tile" id="column880" sizetype="Pixel" width="50" y="0">
+            <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Working area" use="" forecolor="#000000" enabled="true" name="label406" textalign="topleft" backgroundImageLayout="tile" id="label406" width="50" y="0" draggable="false">
+              <Events />
+              <DataMappings />
+            </Label>
+          </column>
+        </row>
+      </Grid>
+    </TabPage>
+    <TabPage y="22" align="none" name="tabpage27" backColor="#FFFFFF" margintop="0" font="Microsoft Sans Serif" height="874" netBackColor="White" use="" netForeColor="ControlText" fontstyle="Regular" tabindex="3" paddingright="0" paddingleft="0" paddingtop="0" visibleto="All" width="557" text="PACS" fontsize="8" draggable="false" id="tabpage27" marginbottom="0" position="absolute" cursor="[Cursor: SizeAll]" backgroundImageLayout="tile" marginright="0" widthtype="Auto" marginleft="0" paddingbottom="0" droppable="false" forecolor="#000000" enabled="true" x="4">
+      <Events />
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="63" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="4" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame237" boxalignment="none" backgroundImageLayout="tile" id="frame237" width="524" y="43" draggable="false">
+        <Events />
+        <DataMappings />
+        <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#FFFFFF" x="65" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ActiveCaption" droppable="false" marginleft="0" marginbottom="0" text="Retrieve Study List" use="" forecolor="#0054E3" enabled="true" name="button252" backgroundImageLayout="tile" id="button252" width="142" y="15" draggable="false">
+          <Events>
+            <event name="OnClick">String patientId = getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patient.DateOfBirth from neiswispicdb.patient conditions patient.ID:="+patientId);
+String dob = getDataFromAllValuesVar(0, 0);
+addFormValue("dateOfBirth", dob);
+invokeComponent("pacsComponent","getStudyListfromPACS","com.oxymedical.component.pacs.PACSComponent","");
+displayDataInControl("grid39");</event>
+          </Events>
+          <DataMappings />
+        </Button>
+        <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="8" backColor="#FFFFFF" x="293" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ActiveCaption" droppable="false" marginleft="0" marginbottom="0" text="Select Workflow" use="" forecolor="#0054E3" enabled="true" name="button253" backgroundImageLayout="tile" id="button253" width="128" y="14" draggable="false">
+          <Events>
+            <event name="OnClick">updateSession("workingarea", "c:/");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","listOfAvailableWorkflow");</event>
+          </Events>
+          <DataMappings />
+        </Button>
+      </Frame>
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="185" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="8" default="false" backColor="#FFFFFF" x="4" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame257" boxalignment="none" backgroundImageLayout="tile" id="frame257" width="524" y="114" draggable="false">
+        <Events />
+        <DataMappings />
+        <Grid visibleto="All" font="Microsoft Sans Serif" height="173" netBackColor="White" multiselect="False" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#FFFFFF" x="9" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="grid39" use="" forecolor="#000000" enabled="true" align="none" name="grid39" backgroundImageLayout="tile" id="grid39" width="510" y="7" draggable="false">
+          <Events>
+            <event name="OnClick">String studyId = getRowData(0);
+addFormValue("studyId", studyId);
+updateSession("scheduleId",studyId);</event>
+          </Events>
+          <DataMappings />
+          <row visibleto="All" draggable="false" height="30" netBackColor="Coral" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FF7F50" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="row55" use="" forecolor="#000000" enabled="true" name="row55" backgroundImageLayout="tile" id="row55" sizetype="Pixel" width="510" y="0">
+            <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#00FFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column155" use="" forecolor="#000000" enabled="true" name="column155" backgroundImageLayout="tile" id="column155" sizetype="Pixel" width="130" y="0">
+              <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="12" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Study Id" use="" forecolor="#000000" enabled="true" name="label370" textalign="topleft" backgroundImageLayout="tile" id="label370" width="97" y="6" draggable="false">
+                <Events />
+                <DataMappings />
+              </Label>
+            </column>
+            <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="1" font="Microsoft Sans Serif" backColor="#00FFFF" x="130" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column156" use="" forecolor="#000000" enabled="true" name="column156" backgroundImageLayout="tile" id="column156" sizetype="Pixel" width="125" y="0">
+              <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="23" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Date" use="" forecolor="#000000" enabled="true" name="label371" textalign="topleft" backgroundImageLayout="tile" id="label371" width="98" y="5" draggable="false">
+                <Events />
+                <DataMappings />
+              </Label>
+            </column>
+            <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="2" font="Microsoft Sans Serif" backColor="#00FFFF" x="255" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column158" use="" forecolor="#000000" enabled="true" name="column158" backgroundImageLayout="tile" id="column158" sizetype="Pixel" width="125" y="0">
+              <Label visibleto="All" font="Microsoft Sans Serif" height="22" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="16" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Series Id" use="" forecolor="#000000" enabled="true" name="label372" textalign="topleft" backgroundImageLayout="tile" id="label372" width="103" y="4" draggable="false">
+                <Events />
+                <DataMappings />
+              </Label>
+            </column>
+            <column visibleto="All" draggable="false" height="30" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="3" font="Microsoft Sans Serif" backColor="#00FFFF" x="380" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="column159" use="" forecolor="#000000" enabled="true" name="column159" backgroundImageLayout="tile" id="column159" sizetype="Pixel" width="130" y="0">
+              <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Aqua" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="#00FFFF" x="21" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="No of Files" use="" forecolor="#000000" enabled="true" name="label373" textalign="topleft" backgroundImageLayout="tile" id="label373" width="96" y="5" draggable="false">
+                <Events />
+                <DataMappings />
+              </Label>
+            </column>
+          </row>
+        </Grid>
+      </Frame>
+    </TabPage>
+  </MultiTab>
+</basewindow>

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/NOLIS/!svn/ver/7275/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/users
+END
+rights.xml
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/NOLIS/!svn/ver/7275/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/users/rights.xml
+END
+users.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/users/users.xml
+END
+Organization.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/users/Organization.xml
+END
+roles.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/NOLIS/!svn/ver/7275/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/users/roles.xml
+END
+Group.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/NOLIS/!svn/ver/5830/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/users/Group.xml
+END
+UserPatterns.xml
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/NOLIS/!svn/ver/5948/trunk/dev/src/main/NOLISApps/NOLIS_Wisconsin/NEISUI/users/UserPatterns.xml
+END

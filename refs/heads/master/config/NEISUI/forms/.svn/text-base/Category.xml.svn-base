@@ -1,0 +1,145 @@
+<basewindow popup="false" visibleto="All" font="Microsoft Sans Serif" height="749" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="Category" boxalignment="none" backgroundImageLayout="none" id="Category" title="" width="923" y="0" draggable="false">
+  <Events />
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="726" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="8" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame67" boxalignment="none" backgroundImageLayout="none" id="frame69" width="898" y="9" draggable="false">
+    <Events />
+    <DataMappings />
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="493" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="189" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame68" boxalignment="none" backgroundImageLayout="none" id="frame70" width="464" y="61" draggable="false">
+      <Events />
+      <DataMappings />
+      <ListBox visibleto="All" draggable="false" height="363" widthtype="Auto" netBackColor="Window" multiselect="False" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="48" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="listbox0" use="" forecolor="#000000" enabled="true" name="listbox0" backgroundImageLayout="none" id="listbox0" width="137" y="74">
+        <Events />
+        <DataMappings />
+      </ListBox>
+      <ListBox visibleto="All" draggable="false" height="360" widthtype="Auto" netBackColor="Window" multiselect="False" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="8" font="Microsoft Sans Serif" backColor="#FFFFFF" x="279" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="listbox0" use="" forecolor="#000000" enabled="true" name="listbox1" backgroundImageLayout="none" id="listbox1" width="140" y="75">
+        <Events />
+        <DataMappings />
+      </ListBox>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="9" backColor="#FFFFFF" x="47" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="all categories" use="" forecolor="#000000" enabled="true" name="button131" backgroundImageLayout="none" id="button131" width="85" y="45" draggable="false">
+        <Events />
+        <DataMappings />
+      </Button>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="10" backColor="#FFFFFF" x="278" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="categories in query" use="" forecolor="#000000" enabled="true" name="button132" backgroundImageLayout="none" id="button132" width="105" y="46" draggable="false">
+        <Events />
+        <DataMappings />
+      </Button>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="ActiveCaptionText" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="11" backColor="#FFFFFF" x="193" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="InfoText" droppable="false" marginleft="0" marginbottom="0" text="move" use="" forecolor="#000000" enabled="true" name="button141" backgroundImageLayout="none" id="button141" width="75" y="168" draggable="false">
+        <Events />
+        <DataMappings />
+      </Button>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="ActiveCaptionText" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="12" backColor="#FFFFFF" x="192" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="InfoText" droppable="false" marginleft="0" marginbottom="0" text="remove" use="" forecolor="#000000" enabled="true" name="button142" backgroundImageLayout="none" id="button142" width="75" y="251" draggable="false">
+        <Events />
+        <DataMappings />
+      </Button>
+    </Frame>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="96" widthtype="Auto" flatstyle="standard" netBackColor="Control" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="8" backColor="#ECE9D8" x="22" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="DarkRed" droppable="false" marginleft="0" marginbottom="0" text="EXIT QUERY BUILDER" use="" forecolor="#8B0000" enabled="true" name="button126" backgroundImageLayout="none" id="button126" width="104" y="597" draggable="false">
+      <Events>
+        <event name="OnClick">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","adminuser");</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="96" widthtype="Auto" flatstyle="standard" netBackColor="Control" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="9" backColor="#ECE9D8" x="740" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="DarkOliveGreen" droppable="false" marginleft="0" marginbottom="0" text="BEGIN QUERY" use="" forecolor="#556B2F" enabled="true" name="button127" backgroundImageLayout="none" id="button127" width="104" y="597" draggable="false">
+      <Events />
+      <DataMappings />
+    </Button>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="116" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="10" default="false" backColor="#FFFFFF" x="190" fontsize="8" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" y="554" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame69" boxalignment="none" backgroundImageLayout="none" id="frame78" width="465" backgroundImage="\img\frame69.jpg" draggable="false">
+      <Events />
+      <DataMappings />
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="ActiveCaptionText" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" backColor="#FFFFFF" x="40" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="add category" use="" forecolor="#316AC5" enabled="true" name="button128" backgroundImageLayout="none" id="button128" width="90" y="19" draggable="false">
+        <Events>
+          <event name="OnClick">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","AddingCategory");</event>
+        </Events>
+        <DataMappings />
+      </Button>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="ActiveCaptionText" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="8" backColor="#FFFFFF" x="185" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="edit category" use="" forecolor="#316AC5" enabled="true" name="button129" backgroundImageLayout="none" id="button129" width="93" y="19" draggable="false">
+        <Events>
+          <event name="OnClick">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","EditingCategory");</event>
+        </Events>
+        <DataMappings />
+      </Button>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="ActiveCaptionText" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="9" backColor="#FFFFFF" x="320" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="delete category" use="" forecolor="#316AC5" enabled="true" name="button130" backgroundImageLayout="none" id="button130" width="105" y="19" draggable="false">
+        <Events />
+        <DataMappings />
+      </Button>
+    </Frame>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="397" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="11" default="false" backColor="#FFFFFF" x="654" fontsize="8" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" y="42" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame71" boxalignment="none" backgroundImageLayout="none" id="frame79" width="159" backgroundImage="\img\frame71.jpg" draggable="false">
+      <Events />
+      <DataMappings />
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="ActiveCaptionText" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" backColor="#FFFFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="Query Result Settings" use="" forecolor="#316AC5" enabled="true" name="button135" backgroundImageLayout="none" id="button135" width="138" y="227" draggable="false">
+        <Events />
+        <DataMappings />
+      </Button>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="ActiveCaptionText" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="8" backColor="#FFFFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="New Query" use="" forecolor="#316AC5" enabled="true" name="button136" backgroundImageLayout="none" id="button136" width="127" y="41" draggable="false">
+        <Events />
+        <DataMappings />
+      </Button>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="ActiveCaptionText" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="9" backColor="#FFFFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="Edit Query" use="" forecolor="#316AC5" enabled="true" name="button137" backgroundImageLayout="none" id="button137" width="135" y="80" draggable="false">
+        <Events />
+        <DataMappings />
+      </Button>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="ActiveCaptionText" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="10" backColor="#FFFFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="Save Query" use="" forecolor="#316AC5" enabled="true" name="button138" backgroundImageLayout="none" id="button138" width="131" y="119" draggable="false">
+        <Events />
+        <DataMappings />
+      </Button>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="ActiveCaptionText" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="11" backColor="#FFFFFF" x="1" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="Delete Query" use="" forecolor="#316AC5" enabled="true" name="button139" backgroundImageLayout="none" id="button139" width="131" y="160" draggable="false">
+        <Events />
+        <DataMappings />
+      </Button>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="12" backColor="#FFFFFF" x="26" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="button0" use="" forecolor="#000000" enabled="true" name="button140" backgroundImageLayout="none" id="button140" width="75" y="296" draggable="false">
+        <Events />
+        <DataMappings />
+      </Button>
+    </Frame>
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: IBeam]" margintop="0" tabindex="12" readonly="false" backColor="#FFFFFF" x="3" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox22" paddingright="0" multiline="false" netForeColor="InactiveBorder" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="  last name" use="" forecolor="#D4D0C8" enabled="true" name="textbox22" valuetype="Any" backgroundImageLayout="none" password="false" width="157" y="58" passwordchar="" draggable="false">
+      <Events />
+      <DataMappings />
+    </TextBox>
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: IBeam]" margintop="0" tabindex="13" readonly="false" backColor="#FFFFFF" x="4" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox23" paddingright="0" multiline="false" netForeColor="InactiveBorder" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="  first name" use="" forecolor="#D4D0C8" enabled="true" name="textbox23" valuetype="Any" backgroundImageLayout="none" password="false" width="157" y="84" passwordchar="" draggable="false">
+      <Events />
+      <DataMappings />
+    </TextBox>
+    <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: IBeam]" margintop="0" tabindex="14" readonly="false" backColor="#FFFFFF" x="4" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox24" paddingright="0" multiline="false" netForeColor="InactiveBorder" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="  date Of Birth(yyyymmdd)" use="" forecolor="#D4D0C8" enabled="true" name="textbox24" valuetype="Any" backgroundImageLayout="none" password="false" width="157" y="112" passwordchar="" draggable="false">
+      <Events />
+      <DataMappings />
+    </TextBox>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="ActiveCaptionText" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="15" backColor="#FFFFFF" x="4" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="search" use="" forecolor="#316AC5" enabled="true" name="button133" backgroundImageLayout="none" id="button133" width="75" y="138" draggable="false">
+      <Events>
+        <event name="OnClick">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","search");</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="ActiveCaptionText" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="16" backColor="#FFFFFF" x="85" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="advance" use="" forecolor="#316AC5" enabled="true" name="button134" backgroundImageLayout="none" id="button134" width="75" y="139" draggable="false">
+      <Events>
+        <event name="OnClick">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","Category");</event>
+      </Events>
+      <DataMappings />
+    </Button>
+    <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="17" backColor="#FFFFFF" x="4" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="DarkSeaGreen" droppable="false" marginleft="0" marginbottom="0" text="PATIENTdatabase" use="" forecolor="#8FBC8B" enabled="true" name="label22" textalign="topleft" backgroundImageLayout="none" id="label22" width="103" y="35" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+    <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="18" backColor="#FFFFFF" x="0" fontsize="12" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="PaleVioletRed" droppable="false" marginleft="0" marginbottom="0" text="query BUILDER" use="" forecolor="#DB7093" enabled="true" name="label23" textalign="topleft" backgroundImageLayout="none" id="label23" width="145" y="10" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="371" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="19" default="false" backColor="#FFFFFF" x="14" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame70" boxalignment="none" backgroundImageLayout="none" id="frame80" width="174" y="178" draggable="false">
+      <Events />
+      <DataMappings />
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="355" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="5" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame72" boxalignment="none" backgroundImageLayout="none" id="frame81" width="161" y="7" draggable="false">
+        <Events />
+        <DataMappings />
+        <Label visibleto="All" font="Microsoft Sans Serif" height="23" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" backColor="#FFFFFF" x="20" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="Custom Queries" use="" forecolor="#316AC5" enabled="true" name="label24" textalign="topleft" backgroundImageLayout="none" id="label24" width="113" y="9" draggable="false">
+          <Events />
+          <DataMappings />
+        </Label>
+      </Frame>
+    </Frame>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="10" widthtype="Auto" netBackColor="ActiveCaption" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="21" default="false" backColor="#0054E3" x="188" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame73" boxalignment="none" backgroundImageLayout="none" id="frame82" width="464" y="51" draggable="false">
+      <Events />
+      <DataMappings />
+    </Frame>
+    <Label visibleto="All" font="Microsoft Sans Serif" height="21" widthtype="Auto" netBackColor="ActiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="22" backColor="#FFFFFF" x="196" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="Category" use="" forecolor="#000000" enabled="true" name="label25" textalign="topleft" backgroundImageLayout="none" id="label25" width="92" y="29" draggable="false">
+      <Events />
+      <DataMappings />
+    </Label>
+  </Frame>
+</basewindow>

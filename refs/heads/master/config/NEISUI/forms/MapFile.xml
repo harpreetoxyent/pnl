@@ -1,0 +1,188 @@
+<MapFile>
+  <formpattern name="login" />
+  <formpattern name="AddCategory">
+    <field id="textbox5" displayName="Category Name*:" labelid="label5" />
+  </formpattern>
+  <formpattern name="EditCategory">
+    <field id="combobox0" displayName="Category Name*:" labelid="label13" />
+    <field id="textbox6" displayName="New Category Name:" labelid="label14" />
+  </formpattern>
+  <formpattern name="Category" />
+  <formpattern name="includeInReport" />
+  <formpattern name="calendarTab" />
+  <formpattern name="Photo" />
+  <formpattern name="search" />
+  <formpattern name="userinfo">
+    <field id="textbox57" displayName="UserId" labelid="label142" />
+    <field id="textbox56" displayName="Password" labelid="label146" />
+    <field id="textbox18" displayName="Confirm Password" labelid="label147" />
+    <field id="textbox80" displayName="Telephone Number:" labelid="label111" />
+    <field id="textbox78" displayName="Zipcode/PostalCode:" labelid="label109" />
+    <field id="combobox10" displayName="User Account Role:" labelid="label209" />
+  </formpattern>
+  <formpattern name="Patient" />
+  <formpattern name="HomeForm" />
+  <formpattern name="AddClinical">
+    <field id="textbox102" displayName="Clinical Group:" labelid="label62" />
+    <field id="combobox8" displayName="Select Name Of Clincian:" labelid="label34" />
+  </formpattern>
+  <formpattern name="AddPrivileges" />
+  <formpattern name="AddUserFields" />
+  <formpattern name="ListUser" />
+  <formpattern name="searchpanel" />
+  <formpattern name="Logo" />
+  <formpattern name="CalendarPanel" />
+  <formpattern name="QueryBuilder" />
+  <formpattern name="searchuserpanel" />
+  <formpattern name="AddUserDefineField">
+    <field id="textbox9" displayName="User Define Field Name*:" labelid="label44" />
+    <field id="combobox1" displayName="Select Table Name*:" labelid="label42" />
+    <field id="combobox2" displayName="Select Field Name*:" labelid="label43" />
+  </formpattern>
+  <formpattern name="QueryResult" />
+  <formpattern name="SetCategory" />
+  <formpattern name="Schedule" />
+  <formpattern name="SetAllFields" />
+  <formpattern name="AddCustomQuery" />
+  <formpattern name="SetVariable" />
+  <formpattern name="SetRange" />
+  <formpattern name="ResultSetting" />
+  <formpattern name="ResultInExcel" />
+  <formpattern name="patientScheduler">
+    <field id="time1" displayName="Appointment End Time:" labelid="label95" />
+    <field id="eibtimebase" displayName="Appointment Start Time:" labelid="label94" />
+    <field id="datepicker1" displayName="Appointment Start Date:" labelid="label74" />
+    <field id="datepicker17" displayName="Appointment End Date:" labelid="label77" />
+  </formpattern>
+  <formpattern name="SchedularMessage" />
+  <formpattern name="ImportData" />
+  <formpattern name="hdPSG" />
+  <formpattern name="ShowAppointment" />
+  <formpattern name="addroom" />
+  <formpattern name="AddCity">
+    <field id="textbox50" displayName="City Name*:" labelid="label190" />
+  </formpattern>
+  <formpattern name="RoomDescription" />
+  <formpattern name="EditField">
+    <field id="combobox28" displayName="Select User Field:" labelid="label192" />
+    <field id="textbox65" displayName="Enter New Field:" labelid="label193" />
+    <field id="combobox29" displayName="Table Name:" labelid="label199" />
+    <field id="combobox30" displayName="Class Field Name:" labelid="label200" />
+  </formpattern>
+  <formpattern name="roomassignment" />
+  <formpattern name="SetBoolean" />
+  <formpattern name="ForgotPassword" />
+  <formpattern name="RoomCategory">
+    <field id="textbox69" displayName="Room Category Name:" labelid="label204" />
+  </formpattern>
+  <formpattern name="TechnicianNote" />
+  <formpattern name="PatientAssignment" />
+  <formpattern name="ImportTemplate" />
+  <formpattern name="TechnicianNoteForm">
+    <field id="textbox71" displayName="Sleep Latency:" labelid="label208" />
+    <field id="textbox73" displayName="EEG:" labelid="label227" />
+    <field id="textbox74" displayName="EKG:" labelid="label236" />
+    <field id="textbox77" displayName="Snoring:" labelid="label240" />
+    <field id="textbox79" displayName="PLMS:" labelid="label242" />
+    <field id="textbox103" displayName="Arousals:" labelid="label243" />
+    <field id="textbox104" displayName="Respiratory Events:" labelid="label244" />
+    <field id="textbox116" displayName="EPOCH Number used:" labelid="label246" />
+    <field id="textbox105" displayName="Number of breaths in 30-sec EPOCH:" labelid="label247" />
+    <field id="textbox106" displayName="Minimum Apnea Length = 60/#breaths:" labelid="label248" />
+    <field id="textbox108" displayName="Patient was treated with: " labelid="label250" />
+    <field id="textbox109" displayName="Therapy for sleep apnea handout given to patient?" labelid="label252" />
+    <field id="textbox110" displayName="Chin strap:" labelid="label253" />
+    <field id="textbox114" displayName="Leak:" labelid="label254" />
+  </formpattern>
+  <formpattern name="MedicationForm" />
+  <formpattern name="PhotoAlbum" />
+  <formpattern name="WaveFormTools" />
+  <formpattern name="WaveFormJobs" />
+  <formpattern name="TechNotePrint" />
+  <formpattern name="roomdetails" />
+  <formpattern name="EditRoomCategory" />
+  <formpattern name="PrimaryCarePhysician">
+    <field id="textbox179" displayName="Last Name:" labelid="label182" />
+    <field id="textbox177" displayName="First Name:" labelid="label161" />
+  </formpattern>
+  <formpattern name="TaskSchedular" />
+  <formpattern name="EditTaskSchedular">
+    <field id="textbox181" displayName="Time:" labelid="label314" />
+    <field id="textbox180" displayName="Description:" labelid="label313" />
+  </formpattern>
+  <formpattern name="ViewPatientAssignment" />
+  <formpattern name="acqschedule" />
+  <formpattern name="FileBrowse" />
+  <formpattern name="acquisitiondata" />
+  <formpattern name="PatientInfo">
+    <field id="textbox88" displayName="First Name*:" labelid="label120" />
+    <field id="combobox15" displayName="Prefix:" labelid="label119" />
+    <field id="textbox89" displayName="Middle Initial:" labelid="label121" />
+    <field id="textbox90" displayName="Last Name*:" labelid="label122" />
+    <field id="textbox92" displayName="NOLIS Id:" labelid="label124" />
+    <field id="textbox93" displayName="Medical Record No.:" labelid="label125" />
+    <field id="textbox95" displayName="Address:" labelid="label126" />
+    <field id="combobox17" displayName="City:" labelid="label128" />
+    <field id="combobox18" displayName="State:" labelid="label129" />
+    <field id="textbox99" displayName="Zip code:" labelid="label130" />
+    <field id="textbox100" displayName="Email address:" labelid="label131" />
+    <field id="textbox94" displayName="Emergency Contact:" labelid="label132" />
+    <field id="textbox101" displayName="Emergency Relationship:" labelid="label133" />
+    <field id="combobox16" displayName="Suffix:" labelid="label123" />
+    <field id="combobox19" displayName="Sex:" labelid="label136" />
+    <field id="datepicker0" displayName="Date of Birth*:" labelid="label137" />
+    <field id="textbox62" displayName="Home:" labelid="label118" />
+    <field id="textbox84" displayName="Work:" labelid="label134" />
+    <field id="textbox87" displayName="Cellphone:" labelid="label135" />
+    <field id="textbox85" displayName="Ext." labelid="label117" />
+    <field id="textbox86" displayName="Ext." labelid="label117" />
+  </formpattern>
+  <formpattern name="PhotoInfo" />
+  <formpattern name="AssignmentInfo" />
+  <formpattern name="ScheduleInfo" />
+  <formpattern name="AcquisitionInfo" />
+  <formpattern name="StudyInfo" />
+  <formpattern name="PrintAssignment" />
+  <formpattern name="visualmode" />
+  <formpattern name="list0fTools" />
+  <formpattern name="AddTool">
+    <field id="combobox43" displayName="Tool Category" labelid="label388" />
+    <field id="textbox214" displayName="Description" labelid="label387" />
+    <field id="textbox210" displayName="Action" labelid="label368" />
+    <field id="textbox208" displayName="Tool Name" labelid="label366" />
+    <field id="textbox209" displayName="Package" labelid="label367" />
+  </formpattern>
+  <formpattern name="listOfAvailableWorkflow" />
+  <formpattern name="Workflowpatientlist" />
+  <formpattern name="workflowstatus" />
+  <formpattern name="InfoPatient" />
+  <formpattern name="workflow" />
+  <formpattern name="listOfError" />
+  <formpattern name="ToolPreprocessorInput" />
+  <formpattern name="PopupFileList" />
+  <formpattern name="workingDirectory" />
+  <formpattern name="ListOfToolsNew" />
+  <formpattern name="FilePathLocation" />
+  <formpattern name="ExecuteWorkflow" />
+  <formpattern name="WorkflowStatusList" />
+  <formpattern name="toolcategory" />
+  <formpattern name="ExportToEDF" />
+  <formpattern name="ExportToPDF" />
+  <formpattern name="formpattern0" />
+  <formpattern name="AddingCategory" />
+  <formpattern name="EditingCategory" />
+  <formpattern name="queryBuilder" />
+  <formpattern name="UserAdmin" />
+  <formpattern name="AddClinical1" />
+  <formpattern name="AddPrivileges1" />
+  <formpattern name="EntryFields" />
+  <formpattern name="formpattern29" />
+  <formpattern name="Userlist" />
+  <formpattern name="formpattern3" />
+  <formpattern name="formpattern4" />
+  <formpattern name="formpattern5" />
+  <formpattern name="formpattern6" />
+  <formpattern name="formpattern2" />
+  <formpattern name="UserList" />
+  <formpattern name="searchpaneluserinfo" />
+</MapFile>

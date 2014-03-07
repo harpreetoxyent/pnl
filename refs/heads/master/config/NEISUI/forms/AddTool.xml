@@ -1,0 +1,223 @@
+<basewindow popup="false" visibleto="All" font="Microsoft Sans Serif" height="1080" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="Transparent" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="fixedsingle" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="AddTool" boxalignment="none" backgroundImageLayout="tile" id="AddTool" title="" width="960" y="0" draggable="false">
+  <Events />
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="1070" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame2581" boxalignment="none" backgroundImageLayout="tile" id="frame2581" width="950" y="-1" draggable="false">
+    <Events />
+    <DataMappings />
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="1060" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame2582" boxalignment="none" backgroundImageLayout="tile" id="frame2582" width="175" y="0" draggable="false">
+      <Events />
+      <DataMappings />
+      <PlaceHolder visibleto="All" draggable="false" height="200" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="searchpanel" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P2582" backgroundImageLayout="tile" id="placeholder74" width="175" y="0">
+        <Events />
+        <DataMappings />
+        <Item reference="searchpanel">
+          <Events />
+        </Item>
+      </PlaceHolder>
+    </Frame>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="1035" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="15" default="false" backColor="#FFFFFF" x="176" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame2583" boxalignment="none" backgroundImageLayout="tile" id="frame2583" width="574" y="0" draggable="false">
+      <Events>
+        <event name="DefaultValue">String toolsId =getSessionData("rowId");
+textbox218.setVisible(false);
+String actionDataBase=null;
+if(toolsId!=null)
+{
+String query = "get nodedetails.formpattern,nodedetails.pacakge,nodedetails.Action,nodedetails.nodeDescription,nodedetails.id,nodedetails.isVisualizer,nodedetails.inputxml,toolcateogry.id from appadmin.nodedetails joins leftjoin nodedetails.cateogryid:=toolcateogry.id conditions nodedetails.id:="+toolsId;
+invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent",query);
+data=createArray("String", "textbox208,textbox209,textbox210,textbox214,textbox218,checkbox5,toolinputxmltextbox,combobox43");
+showData(data);
+actionDataBase=textbox210.getText();
+}</event>
+      </Events>
+      <DataMappings />
+      <MultiTab y="9" name="multitab9" backColor="Transparent" margintop="0" font="Microsoft Sans Serif" height="693" netBackColor="Control" use="" netForeColor="ControlText" fontstyle="Regular" tabindex="0" paddingright="0" paddingleft="0" paddingtop="0" visibleto="All" width="538" forecolor="#000000" fontsize="8" draggable="false" id="multitab9" marginbottom="0" position="absolute" cursor="[Cursor: System.Windows.Forms.Cursor]" backgroundImageLayout="tile" marginright="0" marginleft="0" paddingbottom="0" text="multitab9" droppable="false" visible="true" enabled="true" x="19">
+        <Events />
+        <DataMappings />
+        <TabPage y="22" align="none" name="AddTool" backColor="#D8E4F8" margintop="0" font="Microsoft Sans Serif" height="667" netBackColor="InactiveCaptionText" use="" netForeColor="MenuHighlight" fontstyle="Bold" tabindex="0" paddingright="0" paddingleft="0" paddingtop="0" visibleto="All" width="530" text="Add Tool" fontsize="9" draggable="false" id="tabpage25" marginbottom="0" position="absolute" cursor="[Cursor: System.Windows.Forms.Cursor]" backgroundImageLayout="tile" marginright="0" widthtype="Auto" marginleft="0" paddingbottom="0" droppable="false" forecolor="#316AC5" enabled="true" x="4">
+          <Events />
+          <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="0" backColor="Transparent" x="0" fontsize="11.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="Tool Name" use="" forecolor="#000000" enabled="true" name="label366" textalign="topleft" backgroundImageLayout="tile" id="label366" width="93" y="55" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="8" backColor="Transparent" x="0" fontsize="11.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="Package" use="" forecolor="#000000" enabled="true" name="label367" textalign="topleft" backgroundImageLayout="tile" id="label367" width="75" y="150" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="9" backColor="Transparent" x="0" fontsize="11.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="Action" use="" forecolor="#000000" enabled="true" name="label368" textalign="topleft" backgroundImageLayout="tile" id="label368" width="56" y="212" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="10" readonly="false" backColor="#FFFFFF" x="139" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox208" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox208" valuetype="Any" backgroundImageLayout="tile" password="false" draggable="false" width="330" y="55" passwordchar="" ismandatory="yes">
+            <Events />
+            <DataMappings>
+              <Mapping datafield="formpatternid: String" datatable="NodeInfo" datapattern="appadmin" />
+            </DataMappings>
+          </TextBox>
+          <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="11" readonly="false" backColor="#FFFFFF" x="140" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox209" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox209" valuetype="Any" backgroundImageLayout="tile" password="false" draggable="false" width="330" y="150" passwordchar="" ismandatory="yes">
+            <Events />
+            <DataMappings>
+              <Mapping datafield="params: String" datatable="NodeEvents" datapattern="appadmin" />
+            </DataMappings>
+          </TextBox>
+          <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="12" readonly="false" backColor="#FFFFFF" x="140" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox210" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox210" valuetype="Any" backgroundImageLayout="tile" password="false" draggable="false" width="330" y="212" passwordchar="" ismandatory="yes">
+            <Events />
+            <DataMappings>
+              <Mapping datafield="nodename: String" datatable="NodeInfo" datapattern="appadmin" />
+            </DataMappings>
+          </TextBox>
+          <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="15" backColor="Transparent" x="117" fontsize="9" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="Ok" use="" forecolor="#316AC5" enabled="true" name="button229" backgroundImageLayout="tile" id="button229" width="89" y="415" draggable="false">
+            <Events>
+              <event name="OnClick">String toolName = textbox208.getText();
+String inputXML = toolinputxmltextbox.getText();
+boolean isEmpty = equalsTest(toolName, "");
+if(!isEmpty)
+{
+isEmpty = equalsTest(inputXML, "");
+if(!isEmpty)
+{
+addFormValue("toolName",toolName);
+addFormValue("inputXML",inputXML);
+invokeComponent("formDesignerComponent","generateFDXMLFromToolXML","com.oxymedical.component.formdesigner.FormDesignerComponent","");
+invokeComponent("id.rendering","renderToolXML","com.oxymedical.component.renderer.RendererComponent","");
+}
+}
+result=clientSideValidation("AddTool");
+if(result)
+{
+String actionName = textbox210.getText(); 
+String toolsId =getSessionData("rowId");
+resultbase=equalsTest(actionDataBase,actionName);
+if(resultbase)
+{
+invokeComponent("com.oxyentmedical.component.workflowcomponent","AddNewNodeFromUI","com.oxymedical.component.workflowComponent.WorkflowComponent","");
+updateSession("rowId",null);
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","visualmode");
+}
+else
+{
+invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","get nodedetails.id from appadmin.nodedetails conditions nodedetails.Action:=["+actionName+"]");
+boolean isPresent = isRecordExist();
+if(isPresent)
+{
+message("Workflow with this Action name already exists. Change Action name!");
+}
+else
+{
+updateSession("rowId",null);
+invokeComponent("com.oxyentmedical.component.workflowcomponent","AddNewNodeFromUI","com.oxymedical.component.workflowComponent.WorkflowComponent","");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","visualmode");
+}
+}
+}</event>
+            </Events>
+            <DataMappings />
+          </Button>
+          <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="16" backColor="Transparent" x="262" fontsize="9" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="Cancel" use="" forecolor="#316AC5" enabled="true" name="button230" backgroundImageLayout="tile" id="button230" width="89" y="415" draggable="false">
+            <Events>
+              <event name="OnClick">updateSession("rowId",null);
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","ListOfToolsNew");</event>
+            </Events>
+            <DataMappings />
+          </Button>
+          <Label visibleto="All" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="17" backColor="Transparent" x="0" fontsize="11.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="Description" use="" forecolor="#000000" enabled="true" name="label387" textalign="topleft" backgroundImageLayout="tile" id="label387" width="94" y="265" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="18" readonly="false" backColor="#FFFFFF" x="139" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox214" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox214" valuetype="Any" backgroundImageLayout="tile" password="false" draggable="false" width="330" y="265" passwordchar="" ismandatory="yes">
+            <Events />
+            <DataMappings>
+              <Mapping datafield="nodeDescription: String" datatable="NodeDetails" datapattern="appadmin" />
+              <Mapping datafield="nodeDescription: String" datatable="NodeDetails" datapattern="appadmin" />
+              <Mapping datafield="nodeDescription: String" datatable="NodeDetails" datapattern="appadmin" />
+              <Mapping datafield="nodeDescription: String" datatable="NodeDetails" datapattern="appadmin" />
+              <Mapping datafield="nodeDescription: String" datatable="NodeDetails" datapattern="appadmin" />
+              <Mapping datafield="nodeDescription: String" datatable="NodeDetails" datapattern="appadmin" />
+              <Mapping datafield="nodeDescription: String" datatable="NodeDetails" datapattern="appadmin" />
+            </DataMappings>
+          </TextBox>
+          <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="19" readonly="false" backColor="#FFFFFF" x="26" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="textbox218" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="textbox218" valuetype="Any" backgroundImageLayout="tile" password="false" width="100" y="551" passwordchar="" draggable="false">
+            <Events />
+            <DataMappings>
+              <Mapping datafield="id: Int16" datatable="NodeDetails" datapattern="appadmin" />
+              <Mapping datafield="id: Int16" datatable="NodeDetails" datapattern="appadmin" />
+              <Mapping datafield="id: Int16" datatable="NodeDetails" datapattern="appadmin" />
+              <Mapping datafield="id: Int16" datatable="NodeDetails" datapattern="appadmin" />
+              <Mapping datafield="id: Int16" datatable="NodeDetails" datapattern="appadmin" />
+            </DataMappings>
+          </TextBox>
+          <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="20" backColor="Transparent" x="3" fontsize="11.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="Tool Category" use="" forecolor="#000000" enabled="true" name="label388" textalign="topleft" backgroundImageLayout="tile" id="label388" width="125" y="332" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <Combobox visibleto="All" font="Microsoft Sans Serif" height="21" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="21" readonly="false" backColor="#FFFFFF" x="146" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" paddingright="0" netForeColor="WindowText" droppable="false" marginleft="0" marginbottom="0" text="combobox1" use="" forecolor="#000000" enabled="true" name="combobox43" backgroundImageLayout="tile" id="combobox43" draggable="false" width="200" y="331" ismandatory="yes">
+            <Events>
+              <event name="DefaultValue">invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","get toolcateogry .id,toolcateogry.category from appadmin.toolcateogry ");
+showComboData("combobox43");</event>
+              <event name="OnClick">getComboItemId1("combobox43");</event>
+            </Events>
+            <DataMappings>
+              <Mapping datafield="cateogryid: String" datatable="NodeDetails" datapattern="appadmin" />
+              <Mapping datafield="cateogryid: String" datatable="NodeDetails" datapattern="appadmin" />
+              <Mapping datafield="cateogryid: String" datatable="NodeDetails" datapattern="appadmin" />
+              <Mapping datafield="cateogryid: String" datatable="NodeDetails" datapattern="appadmin" />
+            </DataMappings>
+          </Combobox>
+          <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="InactiveCaptionText" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="22" backColor="#D8E4F8" x="381" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="Add Tool Cateogry" use="" forecolor="#316AC5" enabled="true" name="button221" backgroundImageLayout="tile" id="button221" width="128" y="327" draggable="false">
+            <Events>
+              <event name="OnClick">createPopUp("toolcategory");
+invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","get toolcateogry .id,toolcateogry.category from appadmin.toolcateogry ");
+showComboData("combobox43");</event>
+            </Events>
+            <DataMappings />
+          </Button>
+          <Label visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="23" backColor="Transparent" x="0" fontsize="11.25" paddingleft="0" position="absolute" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="InfoText" droppable="false" marginleft="0" marginbottom="0" text="Input XML" use="" forecolor="#000000" enabled="true" name="label407" textalign="topleft" backgroundImageLayout="tile" id="label407" width="102" y="105" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+          <TextBox visibleto="All" maxlength="32767" font="Microsoft Sans Serif" height="20" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="24" readonly="false" backColor="#FFFFFF" x="140" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" id="toolinputxmltextbox" paddingright="0" multiline="false" netForeColor="WindowText" searchfield="false" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="toolInputXMLTextBox" valuetype="Any" backgroundImageLayout="tile" password="false" width="329" y="105" passwordchar="" draggable="false">
+            <Events />
+            <DataMappings>
+              <Mapping datafield="inputxml: String" datatable="NodeDetails" datapattern="appadmin" />
+              <Mapping datafield="inputxml: String" datatable="NodeDetails" datapattern="appadmin" />
+            </DataMappings>
+          </TextBox>
+          <Checkbox visibleto="All" draggable="false" height="30" widthtype="Auto" netBackColor="InactiveCaptionText" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="25" font="Microsoft Sans Serif" backColor="#D8E4F8" x="408" fontsize="9" paddingleft="0" position="absolute" selected="false" paddingbottom="0" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="Visualizer" use="" forecolor="#316AC5" enabled="true" name="checkbox5" backgroundImageLayout="tile" id="checkbox5" width="97" y="9" visible="true">
+            <Events />
+            <DataMappings>
+              <Mapping datafield="isVisulaizer: Boolean" datatable="NodeDetails" datapattern="appadmin" />
+              <Mapping datafield="isVisualizer: Boolean" datatable="NodeDetails" datapattern="appadmin" />
+              <Mapping datafield="isVisualizer: Boolean" datatable="NodeDetails" datapattern="appadmin" />
+            </DataMappings>
+          </Checkbox>
+        </TabPage>
+      </MultiTab>
+    </Frame>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="1060" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="750" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="5" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame2584" boxalignment="none" backgroundImageLayout="tile" id="frame2584" width="203" y="0" draggable="false">
+      <Events />
+      <DataMappings />
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="646" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="5" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="left" name="frame2585" boxalignment="none" backgroundImageLayout="tile" id="frame2585" width="203" y="0" draggable="false">
+        <Events />
+        <DataMappings />
+        <PlaceHolder visibleto="All" draggable="false" height="55" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="Logo" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P2585" backgroundImageLayout="tile" id="placeholder75" width="203" y="0">
+          <Events />
+          <DataMappings />
+          <Item reference="Logo">
+            <Events />
+          </Item>
+        </PlaceHolder>
+        <PlaceHolder visibleto="All" draggable="false" height="200" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="CalendarPanel" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P2586" backgroundImageLayout="tile" id="placeholder76" width="203" y="56">
+          <Events />
+          <DataMappings />
+          <Item reference="CalendarPanel">
+            <Events />
+          </Item>
+        </PlaceHolder>
+      </Frame>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="White" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: System.Windows.Forms.Cursor]" margintop="0" tabindex="1" backColor="#FFFFFF" x="0" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="sign out" use="" forecolor="#316AC5" enabled="true" name="button2588" backgroundImageLayout="tile" id="button2588" width="75" y="730" draggable="false">
+        <Events>
+          <event name="OnClick">String retValue = logOut("login");</event>
+        </Events>
+        <DataMappings />
+      </Button>
+    </Frame>
+  </Frame>
+</basewindow>

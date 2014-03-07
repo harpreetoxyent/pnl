@@ -1,0 +1,299 @@
+<basewindow popup="false" visibleto="All" font="Microsoft Sans Serif" height="763" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="8" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="8" position="absolute" visible="true" border="none" paddingbottom="8" paddingright="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="HomeForm" boxalignment="none" backgroundImageLayout="tile" id="HomeForm" title="" width="984" y="0" draggable="false">
+  <Events>
+    <event name="DefaultValue">String userId = getSessionData("userId");
+String loginkey = getSessionData("login");
+String user = getSessionData("userPatterns");
+if(loginkey ==null)
+{
+invokeComponent("com.oxymedical.component.useradmin","executeListUserAdmin","com.oxymedical.component.useradmin.UserAdminComponent","get Logindetails.id,Logindetails.userId,Logindetails.loginDate,Logindetails.LoginTime,Logindetails.IPAddress,Logindetails.logout from useradmin.Logindetails conditions Logindetails.userId:=_STRINGSTART_"+userId+"_STRINGEND_");
+showLoginInfo("label32");
+}
+</event>
+    <event name="DefaultValue" internal="true">makeVisible("HomeForm")</event>
+  </Events>
+  <Frame visibleto="All" font="Microsoft Sans Serif" height="745" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="11" default="false" backColor="#FFFFFF" x="28" fontsize="8" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame5" boxalignment="horizontal" backgroundImageLayout="tile" id="frame5" width="941" y="6" draggable="false">
+    <Events />
+    <DataMappings />
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="719" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="11" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame11" boxalignment="none" backgroundImageLayout="tile" id="frame11" width="200" y="0" draggable="false">
+      <Events />
+      <DataMappings />
+      <PlaceHolder visibleto="All" draggable="false" height="200" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: Default]" margintop="0" tabindex="0" font="Microsoft Sans Serif" backColor="#FFFFFF" x="0" fontsize="8" reference="searchpanel" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="P12" backgroundImageLayout="tile" id="placeholder17" width="200" y="7">
+        <Events />
+        <DataMappings />
+        <Item reference="searchpanel">
+          <Events />
+        </Item>
+      </PlaceHolder>
+    </Frame>
+    <Frame visibleto="All" font="Microsoft Sans Serif" height="719" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="12" default="false" backColor="#FFFFFF" x="1" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="center" name="frame17" boxalignment="vertical" backgroundImageLayout="tile" id="frame7" width="940" y="0" draggable="false">
+      <Events />
+      <DataMappings />
+      <Picture visibleto="All" draggable="false" height="66" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="8" font="Microsoft Sans Serif" backColor="#FFFFFF" x="289" fontsize="8" paddingleft="0" position="relative" visible="true" paddingbottom="0" paddingright="0" source="\img\picture1.jpg" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="picture0" use="" forecolor="#000000" enabled="true" name="picture1" backgroundImageLayout="center" id="picture1" width="195" y="1">
+        <Events />
+        <DataMappings />
+      </Picture>
+      <Label visibleto="All" font="Microsoft Sans Serif" height="22" widthtype="Auto" netBackColor="Window" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="9" backColor="#FFFFFF" x="314" fontsize="9.75" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="label87" textalign="topleft" backgroundImageLayout="tile" id="label87" width="156" y="70" draggable="false">
+        <Events>
+          <event name="DefaultValue">textValue=session.getAttribute("userPatterns");
+textValue=splitString(textValue,"##");
+label87.value=(textValue+" User");</event>
+        </Events>
+        <DataMappings />
+      </Label>
+      <Frame visibleto="All" font="Microsoft Sans Serif" height="401" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" default="false" backColor="#FFFFFF" x="247" fontsize="8" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="center" name="frame15" boxalignment="vertical" backgroundImageLayout="none" id="frame15" width="285" y="146" draggable="false">
+        <Events>
+          <event name="DefaultValue">setHeight("frame15","0");</event>
+        </Events>
+        <DataMappings />
+        <Frame visibleto="All" font="Microsoft Sans Serif" height="63" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="24" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" y="8" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="-3" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame26" boxalignment="none" backgroundImageLayout="center" id="frame26" width="288" backgroundImage="\img\frame26.jpg" draggable="false">
+          <Events />
+          <DataMappings />
+        </Frame>
+        <Frame visibleto="All" font="Microsoft Sans Serif" height="272" widthtype="Auto" netBackColor="#EEECE0" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="11" default="false" backColor="#EEECE0" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="center" name="frame123" boxalignment="vertical" backgroundImageLayout="tile" id="frame123" width="288" y="69" draggable="false">
+          <Events>
+            <event name="DefaultValue">setHeight("frame123","0");</event>
+          </Events>
+          <DataMappings />
+          <MenuBar visibleto="PatientInformation" font="Microsoft Sans Serif" height="23" widthtype="Auto" netBackColor="GradientInactiveCaption" autosize="false" fontstyle="Regular" paddingtop="2" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="20" backColor="#9DB9EB" x="36" fontsize="8.25" paddingleft="6" position="relative" visible="true" paddingbottom="2" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="10" marginbottom="10" text="" use="" forecolor="#000000" enabled="true" align="center" orient="vertical" name="vmenubar15" backgroundImageLayout="tile" id="vmenubar15" width="215" y="9" draggable="false">
+            <Events />
+            <DataMappings />
+            <Menu backColor="#9DB9EB" id="menu22" width="208" forecolor="#000000" netBackColor="GradientInactiveCaption" netForeColor="ControlText" menuicon="\img\menu22.jpg" visibleto="PatientInformation" height="17" fontstyle="Regular" text="Patient Information" name="menu22" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+              <Events />
+              <MenuItem backColor="#ECE9D8" id="menuitem36" width="245" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" menuicon="\img\menuitem36.jpg" visibleto="AddPatient" height="22" fontstyle="Regular" text="ADD PATIENT" name="menuitem36" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                <Events>
+                  <event name="OnClick">setDataStatus("CreatePatient", "Patient", "neiswispicdb");
+</event>
+                </Events>
+              </MenuItem>
+              <MenuItem backColor="#ECE9D8" id="menuitem53" width="245" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" menuicon="\img\menuitem53.jpg" visibleto="Edit/Modify Patient Menu" height="22" fontstyle="Regular" text="EDIT/MODIFY PATIENT DETAILS" name="menuitem53" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                <Events>
+                  <event name="OnClick">updateSession("edit","true");
+				  setDataStatus("ModifyPatient", "search", "neiswispicdb");
+</event>
+                </Events>
+              </MenuItem>
+              <MenuItem backColor="#ECE9D8" id="menuitem54" width="245" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" menuicon="\img\menuitem54.jpg" visibleto="DeletePatient" height="22" fontstyle="Regular" text="DELETE PATIENT" name="menuitem54" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                <Events>
+                  <event name="OnClick">setDataStatus("DeletePatient", "search", "neiswispicdb");
+</event>
+                </Events>
+              </MenuItem>
+              <MenuItem backColor="#ECE9D8" id="menuitem55" width="245" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" menuicon="\img\menuitem55.jpg" visibleto="SchedulePatient" height="22" fontstyle="Regular" text="SCHEDULE PATIENT  " name="menuitem55" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                <Events>
+                  <event name="OnClick">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","Schedule");
+</event>
+                </Events>
+              </MenuItem>
+              <MenuItem backColor="#ECE9D8" id="menuitem56" width="245" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" menuicon="\img\menuitem56.jpg" visibleto="Acquisition" height="22" fontstyle="Regular" text="ACQUISITION" name="menuitem56" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                <Events>
+                  <event name="OnClick">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","hdPSG");
+</event>
+                </Events>
+              </MenuItem>
+            </Menu>
+          </MenuBar>
+          <MenuBar visibleto="All" font="Microsoft Sans Serif" height="23" widthtype="Auto" netBackColor="GradientInactiveCaption" autosize="false" fontstyle="Regular" paddingtop="2" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="27" backColor="#9DB9EB" x="35" fontsize="8.25" paddingleft="6" position="relative" visible="true" paddingbottom="2" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="10" marginbottom="10" text="" use="" forecolor="#000000" enabled="true" align="none" orient="vertical" name="vmenubar19" backgroundImageLayout="tile" id="vmenubar19" width="215" y="135" draggable="false">
+            <Events />
+            <DataMappings />
+            <Menu backColor="#9DB9EB" id="menu23" width="208" forecolor="#000000" netBackColor="GradientInactiveCaption" netForeColor="ControlText" menuicon="\img\menu23.jpg" visibleto="PatientAssignment" height="17" fontstyle="Regular" text="Patient Assignment" name="menu23" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+              <Events />
+              <MenuItem backColor="#ECE9D8" id="menuitem79" width="340" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" menuicon="\img\menuitem79.jpg" visibleto="SeePatientAssignment" height="22" fontstyle="Regular" text="VIEW PATIENT-SLEEP TECHNICIAN ASSIGNEMENT" name="menuitem79" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                <Events>
+                  <event name="OnClick">message("This Function  is not available");</event>
+                </Events>
+              </MenuItem>
+              <MenuItem backColor="#ECE9D8" id="menuitem73" width="340" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" visibleto="All" height="22" fontstyle="Regular" text="VIEW PATIENT ASSIGNMENT" name="menuitem73" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                <Events>
+                  <event name="OnClick">updateSession("pateintassign","true");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","ViewPatientAssignment");
+</event>
+                </Events>
+              </MenuItem>
+            </Menu>
+          </MenuBar>
+          <MenuBar visibleto="RoomManagement" font="Microsoft Sans Serif" height="23" widthtype="Auto" netBackColor="GradientInactiveCaption" autosize="false" fontstyle="Regular" paddingtop="2" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="21" backColor="#9DB9EB" x="35" fontsize="8.25" paddingleft="6" position="relative" visible="true" paddingbottom="2" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="10" marginbottom="10" text="" use="" forecolor="#000000" enabled="true" align="none" orient="vertical" name="vmenubar16" backgroundImageLayout="tile" id="vmenubar16" width="215" y="35" draggable="false">
+            <Events />
+            <DataMappings />
+            <Menu backColor="#9DB9EB" id="menu24" width="208" forecolor="#000000" netBackColor="GradientInactiveCaption" netForeColor="ControlText" menuicon="\img\menu24.jpg" visibleto="RoomManagement" height="17" fontstyle="Regular" text="Room Management" name="menu24" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+              <Events />
+              <MenuItem backColor="#ECE9D8" id="menuitem58" width="184" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" menuicon="\img\menuitem58.jpg" visibleto="AddRoom" height="22" fontstyle="Regular" text="ADD ROOM" name="menuitem58" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                <Events>
+                  <event name="OnClick">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","addroom");
+</event>
+                </Events>
+              </MenuItem>
+              <MenuItem backColor="#ECE9D8" id="menuitem59" width="184" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" menuicon="\img\menuitem59.jpg" visibleto="Edit/ModifyRoom" height="22" fontstyle="Regular" text="EDIT/MODIFY ROOM" name="menuitem59" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                <Events>
+                  <event name="OnClick">updateSession("editroom","true");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","addroom");
+</event>
+                </Events>
+              </MenuItem>
+              <MenuItem backColor="#ECE9D8" id="menuitem60" width="184" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" menuicon="\img\menuitem60.jpg" visibleto="DeleteRoom" height="22" fontstyle="Regular" text="DELETE ROOM" name="menuitem60" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                <Events>
+                  <event name="OnClick">updateSession("editroom","false");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","addroom");</event>
+                </Events>
+              </MenuItem>
+              <MenuItem backColor="#ECE9D8" id="menuitem50" width="184" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" menuicon="\img\menuitem50.jpg" visibleto="Room Assignment" height="22" fontstyle="Regular" text="ROOM ASSIGNMENT" name="menuitem50" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                <Events>
+                  <event name="OnClick">updateSession("roomassign","roomassign");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","roomassignment");
+</event>
+                </Events>
+              </MenuItem>
+            </Menu>
+          </MenuBar>
+          <MenuBar visibleto="ClinicalManagement" font="Microsoft Sans Serif" height="23" widthtype="Auto" netBackColor="GradientInactiveCaption" autosize="false" fontstyle="Regular" paddingtop="2" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="28" backColor="#9DB9EB" x="35" fontsize="8.25" paddingleft="6" position="relative" visible="true" paddingbottom="2" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="10" marginbottom="10" text="" use="" forecolor="#000000" enabled="true" align="none" orient="vertical" name="menubar8" backgroundImageLayout="tile" id="menubar8" width="215" y="60" draggable="false">
+            <Events />
+            <DataMappings />
+            <Menu backColor="#9DB9EB" id="menu11" width="208" forecolor="#000000" netBackColor="GradientInactiveCaption" netForeColor="ControlText" menuicon="\img\menu11.jpg" visibleto="ClinicalManagement" height="17" fontstyle="Regular" text="Clinician Management" name="menu11" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+              <Events />
+              <MenuItem backColor="#ECE9D8" id="menuitem40" width="229" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" menuicon="\img\menuitem40.jpg" visibleto="AddClincain" height="22" fontstyle="Regular" text="ADD CLINICAL GROUP" name="menuitem40" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                <Events>
+                  <event name="OnClick">setDataStatus("CreateClinical", "AddClinical", "useradmin");
+</event>
+                </Events>
+              </MenuItem>
+              <MenuItem backColor="#ECE9D8" id="menuitem46" width="229" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" menuicon="\img\menuitem46.jpg" visibleto="Edit/ModifyClincianList" height="22" fontstyle="Regular" text="EDIT/MODIFY CLINICIAN LIST" name="menuitem46" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                <Events>
+                  <event name="OnClick">updateSession("edit","true");				 
+setDataStatus("CreateClinical", "AddClinical", "useradmin");
+</event>
+                </Events>
+              </MenuItem>
+              <MenuItem backColor="#ECE9D8" id="menuitem41" width="229" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" menuicon="\img\menuitem41.jpg" visibleto="PrintingAssignments" height="22" fontstyle="Regular" text="PRINTING ASSIGNMENTS" name="menuitem41" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                <Events>
+                  <event name="OnClick">message("This Function  is not available");</event>
+                </Events>
+              </MenuItem>
+            </Menu>
+          </MenuBar>
+          <MenuBar visibleto="ReportingManagement" font="Microsoft Sans Serif" height="23" widthtype="Auto" netBackColor="GradientInactiveCaption" autosize="false" fontstyle="Regular" paddingtop="2" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="22" backColor="#9DB9EB" x="35" fontsize="8.25" paddingleft="6" position="relative" visible="true" paddingbottom="2" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="10" marginbottom="10" text="" use="" forecolor="#000000" enabled="true" align="none" orient="vertical" name="vmenubar17" backgroundImageLayout="tile" id="vmenubar17" width="215" y="85" draggable="false">
+            <Events />
+            <DataMappings />
+            <Menu backColor="#9DB9EB" id="menu29" width="208" forecolor="#000000" netBackColor="GradientInactiveCaption" netForeColor="ControlText" menuicon="\img\menu29.jpg" visibleto="ReportingManagement" height="17" fontstyle="Regular" text="Report Management " name="menu29" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+              <Events />
+              <MenuItem backColor="#ECE9D8" id="menuitem63" width="227" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" menuicon="\img\menuitem63.jpg" visibleto="ImportReportTemplate" height="22" fontstyle="Regular" text="IMPORT REPORT TEMPLATE" name="menuitem63" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                <Events>
+                  <event name="OnClick">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","ImportTemplate");</event>
+                </Events>
+              </MenuItem>
+              <MenuItem backColor="#ECE9D8" id="menuitem76" width="227" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" menuicon="\img\menuitem76.jpg" visibleto="PrintClinicalReport" height="22" fontstyle="Regular" text="PRINT CLINICIAN REPORT" name="menuitem76" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                <Events>
+                  <event name="OnClick">message("This Function  is not available");</event>
+                </Events>
+              </MenuItem>
+            </Menu>
+          </MenuBar>
+          <MenuBar visibleto="UserManagement" font="Microsoft Sans Serif" height="23" widthtype="Auto" netBackColor="GradientInactiveCaption" autosize="false" fontstyle="Regular" paddingtop="2" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="23" backColor="#9DB9EB" x="35" fontsize="8.25" paddingleft="6" position="relative" visible="true" paddingbottom="2" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="10" marginbottom="10" text="" use="" forecolor="#000000" enabled="true" align="none" orient="vertical" name="vmenubar18" backgroundImageLayout="tile" id="vmenubar18" width="215" y="110" draggable="false">
+            <Events />
+            <DataMappings />
+            <Menu backColor="#9DB9EB" id="menu30" width="208" forecolor="#000000" netBackColor="GradientInactiveCaption" netForeColor="ControlText" menuicon="\img\menu30.jpg" visibleto="UserManagement" height="17" fontstyle="Regular" text="User Management" name="menu30" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+              <Events />
+              <MenuItem backColor="#ECE9D8" id="menuitem61" width="236" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" menuicon="\img\menuitem61.jpg" visibleto="AddUserAccount" height="22" fontstyle="Regular" text="ADD USER ACCOUNT " name="menuitem61" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                <Events>
+                  <event name="OnClick">setDataStatus("CreateUser", "userinfo", "useradmin");
+</event>
+                </Events>
+              </MenuItem>
+              <MenuItem backColor="#ECE9D8" id="menuitem62" width="236" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" menuicon="\img\menuitem62.jpg" visibleto="Edit/ModifyUserAccount" height="22" fontstyle="Regular" text="EDIT/MODIFY USER ACCOUNT" name="menuitem62" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                <Events>
+                  <event name="OnClick">setDataStatus("UpdateUser", "ListUser", "useradmin");
+</event>
+                </Events>
+              </MenuItem>
+              <MenuItem backColor="#ECE9D8" id="menuitem68" width="236" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" menuicon="\img\menuitem68.jpg" visibleto="DeleteUserAccount" height="22" fontstyle="Regular" text="DELETE USER ACCOUNT" name="menuitem68" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                <Events>
+                  <event name="OnClick">setDataStatus("UpdateUser", "ListUser", "useradmin");
+</event>
+                </Events>
+              </MenuItem>
+            </Menu>
+          </MenuBar>
+          <MenuBar visibleto="Administrative Taks" font="Microsoft Sans Serif" height="23" widthtype="Auto" netBackColor="GradientInactiveCaption" autosize="false" fontstyle="Regular" paddingtop="2" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="29" backColor="#9DB9EB" x="36" fontsize="8.25" paddingleft="6" position="relative" visible="true" paddingbottom="2" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="10" marginbottom="10" text="" use="" forecolor="#000000" enabled="true" align="none" orient="vertical" name="menubar2" backgroundImageLayout="tile" id="menubar2" width="215" y="160" draggable="false">
+            <Events />
+            <DataMappings />
+            <Menu backColor="#9DB9EB" id="menu3" width="208" forecolor="#000000" netBackColor="GradientInactiveCaption" netForeColor="ControlText" menuicon="\img\menu3.jpg" visibleto="Administrative Taks" height="17" fontstyle="Regular" text="Administrative Tasks" name="menu3" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+              <Events />
+              <MenuItem backColor="#ECE9D8" id="menuitem74" width="331" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" menuicon="\img\menuitem74.jpg" visibleto="Task Setting" height="22" fontstyle="Regular" text="TASKS SETTINGS" name="menuitem74" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                <Events>
+                  <event name="OnClick">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","TaskSchedular");
+</event>
+                </Events>
+              </MenuItem>
+              <MenuItem backColor="#ECE9D8" id="menuitem69" width="331" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" menuicon="\img\menuitem69.jpg" visibleto="ImportPatientListToAcquisitionSystem" height="22" fontstyle="Regular" text="IMPORT PATIENT LIST TO ACQUISITION SYSTEM" name="menuitem69" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                <Events>
+                  <event name="OnClick">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","ImportData");</event>
+                </Events>
+              </MenuItem>
+              <Menu backColor="#9DB9EB" id="menu6" width="331" forecolor="#000000" netBackColor="GradientInactiveCaption" netForeColor="ControlText" visibleto="All" height="22" fontstyle="Regular" text="WORKFLOW MANAGEMENT" name="menu6" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                <Events />
+                <MenuItem backColor="#ECE9D8" id="menuitem88" width="188" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" visibleto="All" height="22" fontstyle="Regular" text="WORKFLOW LIST" name="menuitem88" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                  <Events>
+                    <event name="OnClick">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","listOfAvailableWorkflow");
+</event>
+                  </Events>
+                </MenuItem>
+                <MenuItem backColor="#ECE9D8" id="menuitem89" width="188" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" visibleto="All" height="22" fontstyle="Regular" text="WORKFLOW STATUS" name="menuitem89" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                  <Events>
+                    <event name="OnClick">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","workflowstatus");
+
+</event>
+                  </Events>
+                </MenuItem>
+                <MenuItem backColor="#ECE9D8" id="menuitem82" width="188" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" visibleto="All" height="22" fontstyle="Regular" text="WORKFLOW TOOLS" name="menuitem82" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                  <Events>
+                    <event name="OnClick">invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","ListOfToolsNew");
+</event>
+                  </Events>
+                </MenuItem>
+              </Menu>
+            </Menu>
+          </MenuBar>
+          <MenuBar visibleto="AcquisitionManagement" font="Microsoft Sans Serif" height="24" widthtype="Auto" netBackColor="GradientInactiveCaption" autosize="false" menuicon="\img\menubar4.jpg" fontstyle="Regular" paddingtop="2" marginright="10" cursor="[Cursor: SizeAll]" margintop="10" tabindex="30" backColor="#9DB9EB" x="37" fontsize="8.25" paddingleft="6" position="relative" visible="true" paddingbottom="2" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="10" marginbottom="10" text="" use="" forecolor="#000000" enabled="true" align="none" orient="vertical" name="menubar4" backgroundImageLayout="tile" id="menubar4" width="215" y="190" draggable="false">
+            <Events />
+            <DataMappings />
+            <Menu backColor="#9DB9EB" id="menu0" width="208" forecolor="#000000" netBackColor="GradientInactiveCaption" netForeColor="ControlText" menuicon="\img\menu0.jpg" visibleto="AcquisitionManagement" height="17" fontstyle="Regular" text="Acquisition Management" name="menu0" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+              <Events />
+              <Menu backColor="#9DB9EB" id="menu5" width="180" forecolor="#000000" netBackColor="GradientInactiveCaption" netForeColor="ControlText" visibleto="All" height="22" fontstyle="Regular" text="Studies Management " name="menu5" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                <Events />
+                <MenuItem backColor="#ECE9D8" id="menuitem75" width="99" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" menuicon="\img\menuitem75.jpg" visibleto="PSG" height="22" fontstyle="Regular" text="PSG" name="menuitem75" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                  <Events>
+                    <event name="OnClick">updateSession("PSG", "true");
+updateSession("HDEEG", null);
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","acquisitiondata");
+</event>
+                  </Events>
+                </MenuItem>
+                <MenuItem backColor="#ECE9D8" id="menuitem77" width="114" forecolor="#000000" netBackColor="Control" netForeColor="ControlText" menuicon="\img\menuitem77.jpg" visibleto="HighDensityEEG" height="22" fontstyle="Regular" text="hd-EEG" name="menuitem77" fontsize="8.25" font="Microsoft Sans Serif" textalign="middlecenter">
+                  <Events>
+                    <event name="OnClick">updateSession("PSG", null);
+updateSession("HDEEG", "true");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","acquisitiondata");
+</event>
+                  </Events>
+                </MenuItem>
+              </Menu>
+            </Menu>
+          </MenuBar>
+        </Frame>
+        <Frame visibleto="All" font="Microsoft Sans Serif" height="63" widthtype="Auto" netBackColor="White" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="-3" tabindex="25" default="false" backColor="#FFFFFF" x="0" fontsize="8" paddingleft="0" position="relative" visible="true" border="none" paddingbottom="0" paddingright="0" y="328" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" align="none" name="frame27" boxalignment="none" backgroundImageLayout="center" id="frame27" width="288" backgroundImage="\img\frame27.jpg" draggable="false">
+          <Events />
+          <DataMappings />
+          <Label visibleto="All" font="Microsoft Sans Serif" height="31" widthtype="Auto" netBackColor="Transparent" fontstyle="Regular" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="0" backColor="Transparent" x="38" fontsize="8.25" paddingleft="0" position="absolute" visible="true" border="fixedsingle" paddingbottom="0" paddingright="0" netForeColor="ControlText" droppable="false" marginleft="0" marginbottom="0" text="" use="" forecolor="#000000" enabled="true" name="label2" textalign="topleft" backgroundImageLayout="tile" id="label32" width="212" y="9" draggable="false">
+            <Events />
+            <DataMappings />
+          </Label>
+        </Frame>
+      </Frame>
+      <Button visibleto="All" font="Microsoft Sans Serif" height="30" widthtype="Auto" flatstyle="standard" netBackColor="Transparent" fontstyle="Bold" paddingtop="0" marginright="0" cursor="[Cursor: SizeAll]" margintop="0" tabindex="10" backColor="Transparent" x="628" fontsize="8.25" paddingleft="0" position="absolute" visible="true" paddingbottom="0" bordersize="1" paddingright="0" netForeColor="MenuHighlight" droppable="false" marginleft="0" marginbottom="0" text="sign out." use="" forecolor="#316AC5" enabled="true" name="button23" backgroundImageLayout="tile" id="button23" width="93" y="610" draggable="false">
+        <Events>
+          <event name="OnClick">String retValue = logOut("login");
+</event>
+        </Events>
+        <DataMappings />
+      </Button>
+    </Frame>
+  </Frame>
+</basewindow>
