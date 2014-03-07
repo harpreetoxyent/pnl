@@ -46,7 +46,8 @@ public class NLPComponent implements INLPComponent, IComponent {
 	public IHICData execute(IHICData hicData) throws IOException 
 	{
 		IData data = hicData.getData();
-		System.out.println("------------Inside execute of NLP Component---");
+		System.out.println("------------Inside execute of NLP Component---+ data="+data.getFormPattern().getFormValues().get("searchTextBox"));
+
 		InputStream sentenceModelFile = null;
 		InputStream tokenModelFile = null;
 		InputStream nameModelFile = null;

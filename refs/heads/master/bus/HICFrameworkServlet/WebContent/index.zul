@@ -1,7 +1,23 @@
 <zk>
 <zscript src="uilibrary.zs"/>
-<window title="My First ZK Application" border="normal">
-   Hello World!
-   <button label="Say Hello!" onClick='invokeComponent("pnl.nlp.comp" ,"executeNLP" ,"com.pnl.component.nlp.NLPComponent", "")' />
-</window>
+   <window title="PNL MVP Search Engine" border="normal">
+   <grid>
+        <rows>
+            <row>
+                Search Query:
+                <textbox id="searchTextBox" value="" constraint="no empty" />
+            </row>
+        </rows>
+   </grid>
+   <button label="Search">
+    	<attribute name="onClick"><![CDATA[
+			setFormPatternId("Search");
+			setDatapatternId("");
+			addFormValue("searchTextBox",searchTextBox.getValue());
+			invokeComponent("pnl.nlp.comp" ,"executeNLP" ,"com.pnl.component.nlp.NLPComponent", searchTextBox.getValue());   						
+			;
+			]]>
+		</attribute>
+	</button>
+	</window>
 </zk>
