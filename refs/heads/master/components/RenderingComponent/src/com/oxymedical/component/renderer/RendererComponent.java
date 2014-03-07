@@ -65,8 +65,8 @@ public class RendererComponent implements IComponent, IRendererComponent
 	/*@InjectNewType(implementationClass="com.oxymedical.servlet.HICServlet.HICRouter")
 	public static IRouter router;*/
 	
-	@InjectNewType(implementationClass="com.oxymedical.servlet.HICServlet.DataUnitRouter")
-	public static IRouter dataUnitRouter;
+	//@InjectNewType(implementationClass="com.oxymedical.servlet.HICServlet.DataUnitRouter")
+	public static IRouter dataUnitRouter = new com.oxymedical.servlet.HICServlet.DataUnitRouter();
 	
 	 @InjectNew
 	 static public LoggingComponent logger;

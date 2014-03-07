@@ -1,0 +1,7 @@
+<zk>
+<zscript src="uilibrary.zs"/>
+<window title="My First ZK Application" border="normal">
+   Hello World!
+   <button label="Say Hello!" onClick='invokeComponent("pnl.nlp.comp" ,"executeNLP" ,"com.pnl.component.nlp.NLPComponent", "")' />
+</window>
+</zk>

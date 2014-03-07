@@ -127,23 +127,33 @@ public class UiLibraryCompositeCommand implements IUiLibraryCompositeCommand {
 	}
 
 	@Override
-	public void execute() {
+	public void execute()
+	{
+		System.out.println("-------Inside Rendering Execute Method-----"+this.methodName+" router=="+this.router);
 		IUiLibraryCompositeCommand command = CommandFactory
 				.getUiLibraryCommand(this.methodName);
-		command.setMethodName(this.methodName);
-		command.setRouter(this.router);
-		command.setClassname(this.classname);
-		command.setComponentId(this.componentId);
-		command.setDataPatternId(this.dataPatternId);
-		command.setFormPatternId(this.formPatternId);
-		command.setFormValues(this.formValues);
-		command.setRootFormValue(this.rootFormValue);
-		command.setParamList(this.paramList);
-		command.setSession(this.session);
-		command.setComboSelectedValue(this.comboSelectedValue);
-		command.setValidListRequest(this.validListRequest);
-		command.setPagingId(this.pagingId);
-		command.execute();
+		try
+		{
+			command.setMethodName(this.methodName);
+			command.setRouter(this.router);
+			command.setClassname(this.classname);
+			command.setComponentId(this.componentId);
+			command.setDataPatternId(this.dataPatternId);
+			command.setFormPatternId(this.formPatternId);
+			command.setFormValues(this.formValues);
+			command.setRootFormValue(this.rootFormValue);
+			command.setParamList(this.paramList);
+			command.setSession(this.session);
+			command.setComboSelectedValue(this.comboSelectedValue);
+			command.setValidListRequest(this.validListRequest);
+			command.setPagingId(this.pagingId);
+			command.execute();
+		}
+		catch(Exception exp)
+		{
+			System.out.println("-------Exception in Rendering Execute Method-----");
+			exp.printStackTrace();
+		}
 		this.data = command.getHICData();
 	}
 

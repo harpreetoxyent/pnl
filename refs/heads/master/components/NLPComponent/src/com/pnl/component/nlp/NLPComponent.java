@@ -13,8 +13,10 @@ import java.util.Hashtable;
 import org.dom4j.Document;
 
 import com.oxymedical.component.baseComponent.IComponent;
+import com.oxymedical.component.baseComponent.annotations.EventSubscriber;
 import com.oxymedical.component.baseComponent.exception.ComponentException;
 import com.oxymedical.component.baseComponent.maintenance.annotations.MaintenancePublisher;
+import com.oxymedical.core.commonData.IData;
 import com.oxymedical.core.commonData.IHICData;
 import com.oxymedical.core.maintenanceData.IMaintenanceData;
 
@@ -36,8 +38,15 @@ import opennlp.tools.postag.POSSample;
 import opennlp.tools.postag.POSTaggerME;
 
 public class NLPComponent implements INLPComponent, IComponent {
-
-	public static void main(String[] args) throws IOException {
+	public static  void main(String[] args) throws IOException {
+	
+	}
+	
+	@EventSubscriber(topic = "executeNLP")
+	public IHICData execute(IHICData hicData) throws IOException 
+	{
+		IData data = hicData.getData();
+		System.out.println("------------Inside execute of NLP Component---");
 		InputStream sentenceModelFile = null;
 		InputStream tokenModelFile = null;
 		InputStream nameModelFile = null;
@@ -67,7 +76,6 @@ public class NLPComponent implements INLPComponent, IComponent {
 					"/com/pnl/component/nlp/model/en-pos-maxent.bin").toURI();
 
 
-
 			sentModel = new SentenceModel(sentenceModelFile);
 			tokenModel = new TokenizerModel(tokenModelFile);
 			nameFinderModel = new TokenNameFinderModel(nameModelFile);
@@ -82,8 +90,8 @@ public class NLPComponent implements INLPComponent, IComponent {
 		catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		finally {
+		finally 
+		{
 			if (sentenceModelFile != null) {
 				try {
 					sentenceModelFile.close();
@@ -177,7 +185,7 @@ public class NLPComponent implements INLPComponent, IComponent {
 		}
 		perfMon.stopAndPrintFinalResult();
 		System.out.println("*****************");
-
+		return hicData;
 	}
 
 	@Override

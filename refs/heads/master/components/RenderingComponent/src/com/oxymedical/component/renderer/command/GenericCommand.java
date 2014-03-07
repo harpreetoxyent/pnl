@@ -14,12 +14,20 @@ public class GenericCommand extends BaseCommand implements
 
 
 	@Override
-	public void execute() {
-		IDataUnit dataUnit = createDataUnit(this.getClassname(), this.getComponentId(),
-				this.getDataPatternId(), this.getFormPatternId(), this.getFormValues(),
-				this.getMethodName(), this.getSession());
-		
-		this.setData(this.getRouter().routeToModeler(dataUnit));
+	public void execute() 
+	{
+		try
+		{
+			System.out.println("-------Inside Generic Command Execute---");
+			IDataUnit dataUnit = createDataUnit(this.getClassname(), this.getComponentId(),
+					this.getDataPatternId(), this.getFormPatternId(), this.getFormValues(),
+					this.getMethodName(), this.getSession());
+			this.setData(this.getRouter().routeToModeler(dataUnit));
+		}
+		catch(Exception exp)
+		{
+			exp.printStackTrace();
+		}
 	}
 
 	@Override

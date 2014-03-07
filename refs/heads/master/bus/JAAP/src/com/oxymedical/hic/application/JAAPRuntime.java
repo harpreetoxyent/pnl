@@ -191,6 +191,7 @@ public class JAAPRuntime
 	
 	public static Object getHICData()
 	{
+		System.out.println("----------Inside JAAPRuntime----getHICHData hasStarted="+hasStarted);
 		Object obj = null;
 		try
 		{	

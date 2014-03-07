@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+	Copyright Oxyent Medical
+-->
+
+<zk>
+	<client-config>
+
+	<!--
+		It specifies the time, in milliseconds, to filter out consecutive
+		click events. If two click events (including onOK and onCancel) come
+		too close (within the specified delay), the second one will be removed
+		to avoid the denial-of-service attack. A non-positive value turns off
+		this feature.
+	-->
+		<click-filter-delay>500</click-filter-delay>
+
+	<!--
+		It specifies what URI to redirect the browser to. For example, if you
+		prefer to redirect to the login page, say, login.zul, you can specify
+		the following in zk.xml:
+	-->
+		<error-reload>
+			<error-code>301</error-code>        
+			<reload-uri></reload-uri>        
+		</error-reload>    
+
+	<!--
+		It specifies the time, in milliseconds, to wait before prompting the
+		user with a dialog indicating that the request is in processing.
+	-->
+		<processing-prompt-delay>900</processing-prompt-delay>    
+
+	<!--
+		It specifies the time, in milliseconds, to wait before resending the
+		AU requests to the server. There are many reasons an AU request is not
+		received by the server. For example, the server may drop the
+		connection if it is overloaded. To ensure the reliability, ZK will
+		abort the previous request and then resend the request, if the
+		specified delay expires.
+	-->
+		<resend-delay>9000</resend-delay>    
+	</client-config>
+	
+	
+	<desktop-config>
+		<desktop-timeout>3600</desktop-timeout>    
+	</desktop-config>
+	
+	<session-config>
+	    <session-timeout>1800</session-timeout>
+	</session-config>
+
+	<device-config>
+		<device-type>ajax</device-type>
+    	<timeout-uri>/zul/systimeout.zul</timeout-uri>
+	</device-config>
+	<system-config>
+		<max-upload-size>500000000</max-upload-size>
+		<disable-event-thread>false</disable-event-thread>
+	</system-config>  
+
+</zk>
