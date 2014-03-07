@@ -3,6 +3,7 @@ package com.pnl.component.nlp;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
@@ -10,6 +11,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Hashtable;
 
+import org.apache.commons.io.IOUtils;
 import org.dom4j.Document;
 
 import com.oxymedical.component.baseComponent.IComponent;
@@ -38,6 +40,10 @@ import opennlp.tools.postag.POSSample;
 import opennlp.tools.postag.POSTaggerME;
 
 public class NLPComponent implements INLPComponent, IComponent {
+	public static final String PREFIX = "posmodel";
+    public static final String SUFFIX = ".tmp";
+
+    
 	public static  void main(String[] args) throws IOException {
 	
 	}
@@ -52,16 +58,17 @@ public class NLPComponent implements INLPComponent, IComponent {
 		InputStream tokenModelFile = null;
 		InputStream nameModelFile = null;
 		InputStream locationModelFile = null;
-		URI posModelFile = null;
-
+		InputStream posModelFile = null;
 		SentenceModel sentModel = null;
 		TokenizerModel tokenModel = null;
 		TokenNameFinderModel nameFinderModel = null;
-		//POSModel posModel = null;
+		POSModel posModel = null;
 		TokenNameFinderModel locationFinderModel = null;
 		String paragraph = "This isn't the greatest example sentence in the world because I've seen better. Ankit Kumar Singh sweet and Mike Smith Kumar lives in California";
 		String line;
-		try 
+		File tempFile = File.createTempFile(PREFIX, SUFFIX);
+		tempFile.deleteOnExit();
+		try (FileOutputStream out = new FileOutputStream(tempFile))
 		{
 			// sentenceModelFile = new
 			// FileInputStream("/PNL/Technology/NLP_Models/en-sent.bin");
@@ -73,17 +80,14 @@ public class NLPComponent implements INLPComponent, IComponent {
 					.getResourceAsStream("/com/pnl/component/nlp/model/en-ner-person.bin");
 			locationModelFile = NLPComponent.class
 					.getResourceAsStream("/com/pnl/component/nlp/model/en-ner-location.bin");
-			posModelFile = NLPComponent.class.getResource(
-					"/com/pnl/component/nlp/model/en-pos-maxent.bin").toURI();
-
-
+			posModelFile = NLPComponent.class.
+					getResourceAsStream("/com/pnl/component/nlp/model/en-pos-maxent.bin");
 			sentModel = new SentenceModel(sentenceModelFile);
 			tokenModel = new TokenizerModel(tokenModelFile);
 			nameFinderModel = new TokenNameFinderModel(nameModelFile);
 			locationFinderModel = new TokenNameFinderModel(locationModelFile);
-			//posModel = new POSModelLoader().load(new File(posModelFile));
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
+			IOUtils.copy(posModelFile, out);
+			posModel = new POSModelLoader().load(tempFile);
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		}
@@ -168,7 +172,7 @@ public class NLPComponent implements INLPComponent, IComponent {
 		// Part-Of-Speech Model
 
 		PerformanceMonitor perfMon = new PerformanceMonitor(System.err, "sent");
-		//POSTaggerME tagger = new POSTaggerME(posModel);
+		POSTaggerME tagger = new POSTaggerME(posModel);
 		ObjectStream<String> lineStream = new PlainTextByLineStream(
 				new StringReader(paragraph));
 		perfMon.start();
@@ -177,11 +181,10 @@ public class NLPComponent implements INLPComponent, IComponent {
 
 			String whitespaceTokenizerLine[] = WhitespaceTokenizer.INSTANCE
 					.tokenize(line);
-			//String[] tags = tagger.tag(whitespaceTokenizerLine);
+			String[] tags = tagger.tag(whitespaceTokenizerLine);
 
-			//POSSample sample = new POSSample(whitespaceTokenizerLine, tags);
-			//System.out.println(sample.toString());
-
+			POSSample sample = new POSSample(whitespaceTokenizerLine, tags);
+			System.out.println(sample.toString());
 			perfMon.incrementCounter();
 		}
 		perfMon.stopAndPrintFinalResult();
