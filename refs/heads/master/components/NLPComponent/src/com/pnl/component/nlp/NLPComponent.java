@@ -51,9 +51,6 @@ public class NLPComponent implements INLPComponent, IComponent {
 	@EventSubscriber(topic = "executeNLP")
 	public IHICData execute(IHICData hicData) throws IOException 
 	{
-		IData data = hicData.getData();
-		System.out.println("------------Inside execute of NLP Component---+ data="+data.getFormPattern().getFormValues().get("searchTextBox"));
-
 		InputStream sentenceModelFile = null;
 		InputStream tokenModelFile = null;
 		InputStream nameModelFile = null;
@@ -64,12 +61,17 @@ public class NLPComponent implements INLPComponent, IComponent {
 		TokenNameFinderModel nameFinderModel = null;
 		POSModel posModel = null;
 		TokenNameFinderModel locationFinderModel = null;
-		String paragraph = "This isn't the greatest example sentence in the world because I've seen better. Ankit Kumar Singh sweet and Mike Smith Kumar lives in California";
-		String line;
+		String line = null;
+		String paragraph = null;
 		File tempFile = File.createTempFile(PREFIX, SUFFIX);
 		tempFile.deleteOnExit();
 		try (FileOutputStream out = new FileOutputStream(tempFile))
 		{
+			IData data = hicData.getData();
+			String queryToParse = (String) data.getFormPattern().getFormValues().get("searchTextBox");
+			paragraph = queryToParse;
+			System.out.println("------------Inside execute of NLP Component---+ data="+queryToParse);
+
 			// sentenceModelFile = new
 			// FileInputStream("/PNL/Technology/NLP_Models/en-sent.bin");
 			sentenceModelFile = NLPComponent.class
@@ -122,12 +124,11 @@ public class NLPComponent implements INLPComponent, IComponent {
 		SentenceDetectorME sdetector = new SentenceDetectorME(sentModel);
 		String sentences[] = sdetector.sentDetect(paragraph);
 		System.out.println("Output of sentence model");
-
-		System.out.println(sentences[0]);
-		System.out.println(sentences[1]);
-
-		System.out.println("*****************");
-
+		for(int i=0;i<sentences.length;i++)
+		{
+			System.out.println(sentences[i]);
+			System.out.println("*****************");
+		}
 		// Tokenizer Model
 		Tokenizer tokenizer = new TokenizerME(tokenModel);
 		String tokens[] = tokenizer.tokenize(paragraph);
