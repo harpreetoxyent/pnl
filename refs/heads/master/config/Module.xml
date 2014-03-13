@@ -19,6 +19,23 @@
 		    </maintenance>
 		</module>
 		<module
+			name="SocialMedia Component"
+			id="pnl.socialmedia.comp"
+			version="1.0.0"
+			provider-name="PNL"
+			class="com.pnl.component.socialmedia.SocialMediaComponent">
+	
+	 		<requires>
+		 		<jarFolder location="d://storageJar" />
+				<import module="baseComponent.jar"/>
+			</requires>
+		    <runtime>
+				<library name="testworld.jar"/>	
+		    </runtime>
+		    <maintenance>
+		    </maintenance>
+		</module>
+		<module
 			name="Rendering Component"
 			id="id.rendering"
 			version="1.0"
