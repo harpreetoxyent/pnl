@@ -14,6 +14,8 @@ import com.oxymedical.component.baseComponent.IComponent;
 import com.oxymedical.component.baseComponent.annotations.EventSubscriber;
 import com.oxymedical.component.baseComponent.exception.ComponentException;
 import com.oxymedical.component.baseComponent.maintenance.annotations.MaintenancePublisher;
+import com.oxymedical.core.commonData.Data;
+import com.oxymedical.core.commonData.FormPattern;
 import com.oxymedical.core.commonData.HICData;
 import com.oxymedical.core.commonData.IData;
 import com.oxymedical.core.commonData.IHICData;
@@ -103,6 +105,12 @@ public class SocialMediaComponent implements ISocialMediaComponent, IComponent {
 	{
 		SocialMediaComponent socialComponent = new SocialMediaComponent();
 		HICData hicData = new HICData();
+		IData data = new Data();
+		FormPattern formPattern = new FormPattern();
+		Hashtable<String, Object> formValues = new Hashtable<String, Object>();
+		formPattern.setFormValues(formValues);
+		data.setFormPattern(formPattern);
+		hicData.setData(data);
 		hicData.getData().getFormPattern().getFormValues().put("providerId", "facebook");
 		try {
 			socialComponent.execute(hicData);
