@@ -1,0 +1,72 @@
+<zk>
+<style>
+.z-row-inner, .z-cell{border: 1px solid #cccccc!important;}
+</style>
+<div style="width:320px; margin:50px auto;">
+		<grid>
+			<rows>
+				<row>
+				   <label value="E-mail" width="150px" />	
+					<cell>
+						<textbox width="150px" tabindex="9" />
+						</cell>
+				</row>
+				<row>
+					<label value="Name" width="150px" />
+					<hlayout>
+						<textbox width="150px" tabindex="1" />
+					</hlayout>
+
+				</row>
+				<row>
+					<label value="Date of Birth" width="150px" />
+					<hbox align="center">
+						<datebox width="150px"  tabindex="7"/>
+					</hbox>
+
+				</row>
+				<row>
+					<label value="Country" width="150px" />
+					<cell>
+						<textbox width="150px"  tabindex="4" />
+					</cell>
+				</row>
+				<row>
+					<label value="Language" width="150px" />
+					<textbox width="150px" maxlength="15" tabindex="5" />
+
+				</row>
+				<row>
+					<label value="Gender" width="150px" />
+					<cell>
+						<textbox width="150px"  tabindex="6" />
+					</cell>
+
+				</row>
+
+				<row>
+					<label value="Location" width="150px" />
+					<cell>
+						<textbox width="150px"  tabindex="6" />
+					</cell>
+
+				</row>
+
+				<row>
+					<label value="Profile Image" width="150px" />
+					<cell>
+						<image src="#"></image>
+					</cell>
+
+				</row>
+				<row>
+					<cell colspan="2" style="text-align:center">
+						<vlayout>
+							<button label="Submit" width="100px" height="30px" />
+						</vlayout>
+					</cell>
+				</row>
+			</rows>
+		</grid>
+		</div>
+</zk>

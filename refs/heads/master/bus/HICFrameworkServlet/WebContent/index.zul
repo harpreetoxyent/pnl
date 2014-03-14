@@ -35,7 +35,18 @@
 				</attribute>
 				</image>
 				</column>
-				<column label="" style="text-align:center!important;"><image src="images/twitter_icon.png"></image></column>
+				<column label="" style="text-align:center!important;"><image id = "twitter" src="images/twitter_icon.png">
+					<attribute name="onClick">
+					<![CDATA[				
+					setFormPatternId("SocialMedia");
+					setDatapatternId("");
+					addFormValue("providerId", "twitter");
+					invokeComponent("pnl.socialmedia.comp" ,"executeSocial" ,"com.pnl.component.socialmedia.SocialMediaComponent", "twitter");   							
+					;
+					]]>
+					</attribute>
+				</image>
+				</column>
 				<column label="" style="text-align:center!important;"><image src="images/linkedin.gif"></image></column>
 			</columns>	
 		</grid>
