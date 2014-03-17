@@ -19,12 +19,17 @@ import com.oxymedical.core.commonData.FormPattern;
 import com.oxymedical.core.commonData.HICData;
 import com.oxymedical.core.commonData.IData;
 import com.oxymedical.core.commonData.IHICData;
+import com.oxymedical.core.commonData.MetaData;
 import com.oxymedical.core.maintenanceData.IMaintenanceData;
 import com.pnl.component.socialmedia.controller.BusSocialAuthConfig;
 import com.pnl.component.socialmedia.controller.BusSocialAuthManager;
 
-public class SocialMediaComponent implements ISocialMediaComponent, IComponent {
-
+public class SocialMediaComponent implements ISocialMediaComponent, IComponent 
+{
+	public IHICData hicData = null;
+	
+	
+	
 	@Override
 	public void start(Hashtable<String, Document> configData) {
 		// TODO Auto-generated method stub
@@ -49,18 +54,24 @@ public class SocialMediaComponent implements ISocialMediaComponent, IComponent {
 
 	}
 
-	@Override
+	/**
+	 * This method is the inherited abstract method of the interface IComponent.
+	 * 
+	 * @returns IHICData
+	 */
 	public IHICData getHicData() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.hicData;
 	}
 
-	@Override
-	public void setHicData(IHICData hicData) {
-		// TODO Auto-generated method stub
-
+	/**
+	 * This method is the inherited abstract method of the interface IComponent.
+	 * 
+	 * @param arg0
+	 * @returns void
+	 */
+	public void setHicData(IHICData arg0) {
+		hicData = arg0;
 	}
-
 	@Override
 	@MaintenancePublisher
 	public void maintenance(IMaintenanceData maintenanceData) {
@@ -69,25 +80,34 @@ public class SocialMediaComponent implements ISocialMediaComponent, IComponent {
 	}
 
 	@EventSubscriber(topic = "executeSocial")
-	public IHICData execute(IHICData hicData) throws Exception {
-		// Basic Iniitalization needed for Social Auth
+	public IHICData execute(IHICData hicData) throws Exception
+	{
+		this.hicData = hicData;
 		BusSocialAuthConfig configAuth = new BusSocialAuthConfig();
 		BusSocialAuthManager socialAuthManager = new BusSocialAuthManager();
 		socialAuthManager.setSocialAuthConfig(configAuth);
-
-		// URL of YOUR application which will be called after authentication
 		String successUrl = "http://example.com:8080/HICFrameworkServlet/form.zul";
-
-		// Now get selected provider by user from zul
 		IData data = hicData.getData();
+		hicData.setMetaData(new MetaData());
 		String providerId = (String) data.getFormPattern().getFormValues()
 				.get("providerId");
+		data.getFormPattern().getFormValues().put("socialAuthManager",socialAuthManager);
 		System.out.println("**** Provider ID is ****" + providerId);
-		// get Provider URL to which you should redirect for authentication.
-		// id can have values "facebook", "twitter", "yahoo" etc. or the OpenID
-		// URL
 		String url = socialAuthManager.getAuthenticationUrl(providerId,
 				successUrl);
+		System.out.println("**** URL  is ****" + url);
+		hicData.getMetaData().setCommonObject(url);
+		return hicData;
+	}
+	@EventSubscriber(topic = "loadUserSocialProfile")
+	public void loadUserData(HICData hicData) throws Exception
+	{
+		
+		IData data = hicData.getData();
+		System.out.println("**** HIC Data  is ****" + data.toString());
+		BusSocialAuthManager socialAuthManager = (BusSocialAuthManager) data.getFormPattern().getFormValues()
+				.get("socialAuthManager");
+		
 		AuthProvider provider = socialAuthManager
 				.connect(new HashMap<String, String>());
 		System.out.println("**** Provider  is ****" + provider.getProviderId());
@@ -96,29 +116,27 @@ public class SocialMediaComponent implements ISocialMediaComponent, IComponent {
 		Profile p = provider.getUserProfile();
 		// you can obtain profile information
 		System.out.println(p.getFirstName());
-//
 		// OR also obtain list of contacts
 		List<Contact> contactsList = provider.getContactList();
-		return hicData;
 	}
-	public static void main(String[] args)
-	{
-		SocialMediaComponent socialComponent = new SocialMediaComponent();
-		HICData hicData = new HICData();
-		IData data = new Data();
-		FormPattern formPattern = new FormPattern();
-		Hashtable<String, Object> formValues = new Hashtable<String, Object>();
-		formPattern.setFormValues(formValues);
-		data.setFormPattern(formPattern);
-		hicData.setData(data);
-		hicData.getData().getFormPattern().getFormValues().put("providerId", "facebook");
-		try {
-			socialComponent.execute(hicData);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-				
-	}
+//	public static void main(String[] args)
+//	{
+//		SocialMediaComponent socialComponent = new SocialMediaComponent();
+//		HICData hicData = new HICData();
+//		IData data = new Data();
+//		FormPattern formPattern = new FormPattern();
+//		Hashtable<String, Object> formValues = new Hashtable<String, Object>();
+//		formPattern.setFormValues(formValues);
+//		data.setFormPattern(formPattern);
+//		hicData.setData(data);
+//		hicData.getData().getFormPattern().getFormValues().put("providerId", "facebook");
+//		try {
+//			socialComponent.execute(hicData);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//				
+//	}
 }

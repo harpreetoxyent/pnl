@@ -21,25 +21,25 @@ public class HICRouter implements IRouter {
 
 			Object[] objectArray = { hicData };
 			returnDO = hicData;
-			
-			returnDO = NOLISRuntime.FireEvent("GetUserDataObject", objectArray,
-					PublicationScope.Global);
-			
-			if (returnDO != null) 
-			{
-				hicData.setUniqueID(returnDO.getUniqueID());
-				hicData.getData().setWorkflowPattern(returnDO.getData().getWorkflowPattern());
-			}
-			
-			if (hicData.getData().getMethodName().equalsIgnoreCase("authenticateUserEx")) 
-			{
-				objectArray[0] = hicData;
-				IHICData workflowOutput = NOLISRuntime.FireEvent("InvokeWorkflow", objectArray,
-						PublicationScope.Global);
-				
-				if (workflowOutput != null)
-					hicData.setUniqueID(workflowOutput.getUniqueID());
-			}
+// COMMENTED BY RAVNEET ON 17TH MARCH 2014 FOR PNL DEMO			
+//			returnDO = NOLISRuntime.FireEvent("GetUserDataObject", objectArray,
+//					PublicationScope.Global);
+//			
+//			if (returnDO != null) 
+//			{
+//				hicData.setUniqueID(returnDO.getUniqueID());
+//				hicData.getData().setWorkflowPattern(returnDO.getData().getWorkflowPattern());
+//			}
+//			
+//			if (hicData.getData().getMethodName().equalsIgnoreCase("authenticateUserEx")) 
+//			{
+//				objectArray[0] = hicData;
+//				IHICData workflowOutput = NOLISRuntime.FireEvent("InvokeWorkflow", objectArray,
+//						PublicationScope.Global);
+//				
+//				if (workflowOutput != null)
+//					hicData.setUniqueID(workflowOutput.getUniqueID());
+//			}
 			
 			returnDO = hicData;
 
@@ -68,7 +68,7 @@ public class HICRouter implements IRouter {
 				}*/
 			}	
 			
-
+			System.out.println("-----Inside HIC Router-----before calling the component method");
 			/*
 			 * Send Notification to everyone who wants to know about new HICDATA
 			 * in system
@@ -87,10 +87,10 @@ public class HICRouter implements IRouter {
 					// TODO Need to implement for external components
 				}
 			}
-			
-			objectArray[0] = returnDO;
-			returnDO = NOLISRuntime.FireEvent("InvokeWorkflow", objectArray,
-					PublicationScope.Global);
+			// COMMENTED BY RAVNEET ON 17TH MARCH 2014 FOR PNL DEMO					
+//			objectArray[0] = returnDO;
+//			returnDO = NOLISRuntime.FireEvent("InvokeWorkflow", objectArray,
+//					PublicationScope.Global);
 
 			// If userId is null; move to Default screen since user is not authenticated
 			/*if (!"authenticateUserEx".equalsIgnoreCase(hicData.getData().getMethodName())) 

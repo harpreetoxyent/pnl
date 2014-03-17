@@ -2,7 +2,17 @@
 <style>
 .z-row-inner, .z-cell{border: 1px solid #cccccc!important;}
 </style>
-<div style="width:320px; margin:50px auto;">
+<zscript src="uilibrary.zs"/>
+<?page id="UserData"?>
+	<window class="Social Component" height="1092px" visible="true" droppable="false" id="SocialData" title="" width="100%" draggable="false">
+	   <attribute name="onCreate"><![CDATA[
+			setFormPatternId("UserSocialData");
+			setDatapatternId("");
+			addFormValue("socialAuth", "SocialAuthManager");
+			invokeComponent("pnl.socialmedia.comp" ,"loadUserSocialProfile" ,"com.pnl.component.socialmedia.SocialMediaComponent", "");
+		]]>
+		</attribute>	
+		<div style="width:320px; margin:50px auto;">
 		<grid>
 			<rows>
 				<row>
@@ -69,4 +79,5 @@
 			</rows>
 		</grid>
 		</div>
+	</window>	
 </zk>

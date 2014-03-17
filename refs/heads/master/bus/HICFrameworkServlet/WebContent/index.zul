@@ -29,8 +29,10 @@
 				setFormPatternId("SocialMedia");
 				setDatapatternId("");
 				addFormValue("providerId", "facebook");
-				invokeComponent("pnl.socialmedia.comp" ,"executeSocial" ,"com.pnl.component.socialmedia.SocialMediaComponent", "");   							
-				;
+				String redirectURL = invokeComponent("pnl.socialmedia.comp" ,"executeSocial" ,"com.pnl.component.socialmedia.SocialMediaComponent", "");   							
+				System.out.println("Redirect URL is" + redirectURL);
+				Executions.sendRedirect(redirectURL);
+		
 				]]>
 				</attribute>
 				</image>
@@ -41,8 +43,8 @@
 					setFormPatternId("SocialMedia");
 					setDatapatternId("");
 					addFormValue("providerId", "twitter");
-					invokeComponent("pnl.socialmedia.comp" ,"executeSocial" ,"com.pnl.component.socialmedia.SocialMediaComponent", "twitter");   							
-					;
+					String redirectURL = invokeComponent("pnl.socialmedia.comp" ,"executeSocial" ,"com.pnl.component.socialmedia.SocialMediaComponent", "twitter");   							
+					Executions.sendRedirect(redirectURL);
 					]]>
 					</attribute>
 				</image>
