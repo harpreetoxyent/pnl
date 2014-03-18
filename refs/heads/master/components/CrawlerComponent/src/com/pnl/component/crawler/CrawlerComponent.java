@@ -1,6 +1,7 @@
 package com.pnl.component.crawler;
 
 import java.util.*;
+import java.io.IOException;
 import java.text.*;
 
 // Commons Logging imports
@@ -9,8 +10,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.apache.hadoop.fs.*;
+import org.apache.hadoop.io.Text;
 import org.apache.hadoop.conf.*;
-import org.apache.hadoop.mapred.*;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 import org.apache.nutch.parse.ParseSegment;
@@ -28,14 +32,21 @@ import org.apache.nutch.fetcher.Fetcher;
 import org.dom4j.Document;
 
 import com.oxymedical.component.baseComponent.IComponent;
+import com.oxymedical.component.baseComponent.annotations.EventSubscriber;
 import com.oxymedical.component.baseComponent.exception.ComponentException;
 import com.oxymedical.component.baseComponent.maintenance.annotations.MaintenancePublisher;
+import com.oxymedical.core.commonData.HICData;
+import com.oxymedical.core.commonData.IData;
 import com.oxymedical.core.commonData.IHICData;
 import com.oxymedical.core.maintenanceData.IMaintenanceData;
+import com.oxymedical.core.propertyUtil.PropertyUtil;
 import com.pnl.component.crawler.exception.CrawlerComponentException;
 import com.pnl.component.crawler.exception.CrawlerExceptionConstants;
+import com.pnl.component.crawler.processor.ProcessMapper;
+import com.pnl.component.crawler.utilities.Utility;
 
-public class CrawlerComponent extends Configured implements Tool,ICrawlerComponent,IComponent {
+
+public class CrawlerComponent extends Configured implements ICrawlerComponent,IComponent {
 	  public static final Logger LOG = LoggerFactory.getLogger(CrawlerComponent.class);
 
 	  private static String getDate() {
@@ -46,137 +57,75 @@ public class CrawlerComponent extends Configured implements Tool,ICrawlerCompone
 
 	  /* Perform complete crawling and indexing (to Solr) given a set of root urls and the -solr
 	     parameter respectively. More information and Usage parameters can be found below. */
-	  public void process(String[] args) throws CrawlerComponentException {
-	    Configuration conf = NutchConfiguration.create();
-	    try
-	    {
-	     int res = ToolRunner.run(conf, new CrawlerComponent(), args);
-	     //System.exit(res);
-	    }catch(Exception exce)
-	    {
-	    	throw new CrawlerComponentException(CrawlerExceptionConstants.EXCEPTION+exce);
-	    }
+	  @EventSubscriber(topic = "executeCrawler")
+	  public void process(HICData hicData) throws CrawlerComponentException {
+		IData data = hicData.getData();
+		String urls="";
+		String depth="";
+		String topN="";
+		String jobTracker=PropertyUtil.setUpProperties("HADOOP_JOB_TRACKER");
+		String fsName=PropertyUtil.setUpProperties("HADOOP_FS_DEFAULT_NAME");
+		try
+		{
+		  urls = data.getFormPattern().getFormValues().get("searchTextBox").toString().trim();
+		  depth = data.getFormPattern().getFormValues().get("depth").toString().trim();
+		  topN = data.getFormPattern().getFormValues().get("topN").toString().trim();
+		}
+		catch(NullPointerException exce)
+		{
+			System.out.println("NullPointerException: CrawlerComponent.process()");
+		}
+		if(urls.lastIndexOf(",")==urls.length()-1)
+		{
+			urls=urls.substring(0,urls.length()-1);
+		}
+		String source = Utility.createFile("seedDummy.txt", urls);
+		//System.out.println("Created File in file system.");
+		String destination = "/usr/oxyent/demo2/";
+		try {
+			Utility.copyFileToHDFS(source, destination);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out
+				.println("------------Inside execute of Crawler Component---+ data="
+						+ urls+"-----"+depth+"--topN---"+topN);
+		try
+		{
+		Configuration conf = new Configuration();
+		// this should be like defined in your mapred-site.xml
+		conf.set("fs.default.name", fsName);
+		// like defined in hdfs-site.xml
+		conf.set("mapred.job.tracker", jobTracker);
+		
+	    // Replace CallJobFromServlet.class name with your servlet class
+	        Job job = new Job(conf, "Crawler Component");
+	        job.getConfiguration().set("depth", depth);
+	        job.getConfiguration().set("topN", topN);
+	        job.getConfiguration().set("rootUrl", destination);
+	        job.setJarByClass(CrawlerComponent.class);
+	        job.setJobName("Job Name");
+	        job.setOutputKeyClass(Text.class);
+	        job.setOutputValueClass(Text.class);
+	        job.setMapperClass(ProcessMapper.class); // Replace Map.class name with your Mapper class
+
+	        job.setMapOutputKeyClass(Text.class);
+	        job.setMapOutputValueClass(Text.class);
+	        
+	        // Job Input path
+	        FileInputFormat.setInputPaths(job, new Path(fsName+"/usr/oxyent/demo/")); 
+	        // Job Output path
+	        FileOutputFormat.setOutputPath(job, new Path(fsName+"/usr/oxyent/demo1/")); 
+
+	        job.waitForCompletion(true);
+		}catch(Exception exce)
+		{
+			exce.printStackTrace();
+			throw new CrawlerComponentException(exce);
+		}
 	  }
 	  
-	  @Override
-	  public int run(String[] args) throws Exception {
-	    if (args.length < 1) {
-	      System.out.println
-	      ("Usage: Crawl <urlDir> -solr <solrURL> [-dir d] [-threads n] [-depth i] [-topN N]");
-	      return -1;
-	    }
-	    Path rootUrlDir = null;
-	    Path dir = new Path("crawl-" + getDate());
-	    int threads = getConf().getInt("fetcher.threads.fetch", 10);
-	    int depth = 5;
-	    long topN = Long.MAX_VALUE;
-	    String solrUrl = null;
-	    
-	    for (int i = 0; i < args.length; i++) {
-	      if ("-dir".equals(args[i])) {
-	        dir = new Path(args[i+1]);
-	        i++;
-	      } else if ("-threads".equals(args[i])) {
-	        threads = Integer.parseInt(args[i+1]);
-	        i++;
-	      } else if ("-depth".equals(args[i])) {
-	        depth = Integer.parseInt(args[i+1]);
-	        i++;
-	      } else if ("-topN".equals(args[i])) {
-	          topN = Integer.parseInt(args[i+1]);
-	          i++;
-	      } else if ("-solr".equals(args[i])) {
-	        solrUrl = args[i + 1];
-	        i++;
-	      } else if (args[i] != null) {
-	        rootUrlDir = new Path(args[i]);
-	      }
-	    }
-	    
-	    JobConf job = new NutchJob(getConf());
-
-	    if (solrUrl == null) {
-	      LOG.warn("solrUrl is not set, indexing will be skipped...");
-	    }
-	    else {
-	        // for simplicity assume that SOLR is used 
-	        // and pass its URL via conf 
-	        getConf().set("solr.server.url", solrUrl);
-	    }
-
-	    FileSystem fs = FileSystem.get(job);
-
-	    if (LOG.isInfoEnabled()) {
-	      LOG.info("crawl started in: " + dir);
-	      LOG.info("rootUrlDir = " + rootUrlDir);
-	      LOG.info("threads = " + threads);
-	      LOG.info("depth = " + depth);      
-	      LOG.info("solrUrl=" + solrUrl);
-	      if (topN != Long.MAX_VALUE)
-	        LOG.info("topN = " + topN);
-	    }
-	    
-	    Path crawlDb = new Path(dir + "/crawldb");
-	    Path linkDb = new Path(dir + "/linkdb");
-	    Path segments = new Path(dir + "/segments");
-	    Path indexes = new Path(dir + "/indexes");
-	    Path index = new Path(dir + "/index");
-
-	    Path tmpDir = job.getLocalPath("crawl"+Path.SEPARATOR+getDate());
-	    Injector injector = new Injector(getConf());
-	    Generator generator = new Generator(getConf());
-	    Fetcher fetcher = new Fetcher(getConf());
-	    ParseSegment parseSegment = new ParseSegment(getConf());
-	    CrawlDb crawlDbTool = new CrawlDb(getConf());
-	    LinkDb linkDbTool = new LinkDb(getConf());
-	      
-	    // initialize crawlDb
-	    injector.inject(crawlDb, rootUrlDir);
-	    int i;
-	    for (i = 0; i < depth; i++) {             // generate new segment
-	      Path[] segs = generator.generate(crawlDb, segments, -1, topN, System
-	          .currentTimeMillis());
-	      
-	      if (segs == null) {
-	        LOG.info("Stopping at depth=" + i + " - no more URLs to fetch.");
-	        break;
-	      }else
-	      {
-	    	for(int k=0;k<segs.length;k++)
-	    	{
-	    		LOG.info(segs[k].getName());
-	    	}
-	      }
-	      
-	      fetcher.fetch(segs[0], threads);  // fetch it
-	      if (!Fetcher.isParsing(job)) {
-	        parseSegment.parse(segs[0]);    // parse it, if needed
-	      }
-	      crawlDbTool.update(crawlDb, segs, true, true); // update crawldb
-	    }
-	    if (i > 0) {
-	      linkDbTool.invert(linkDb, segments, true, true, false); // invert links
-
-	      if (solrUrl != null) {
-	        // index, dedup & merge
-	        FileStatus[] fstats = fs.listStatus(segments, HadoopFSUtil.getPassDirectoriesFilter(fs));
-	        IndexingJob indexer = new IndexingJob(getConf());
-	        indexer.index(crawlDb, linkDb, 
-	                Arrays.asList(HadoopFSUtil.getPaths(fstats)));
-
-	        SolrDeleteDuplicates dedup = new SolrDeleteDuplicates();
-	        dedup.setConf(getConf());
-	        dedup.dedup(solrUrl);
-	      }
-	      
-	    } else {
-	      LOG.warn("No URLs to fetch - check your seed list and URL filters.");
-	    }
-	    if (LOG.isInfoEnabled()) { LOG.info("crawl finished: " + dir); }
-	    return 0;
-	  }
-
-
 	@Override
 	public void start(Hashtable<String, Document> configData) {
 		// TODO Auto-generated method stub

@@ -1,0 +1,90 @@
+<zk>
+<zscript src="uilibrary.zs"/>
+   <window title="PNL MVP Search Engine" border="normal">
+    <groupbox>
+        <caption>
+            Total Urls : <label id="urlCount"/>
+        </caption>
+        <listbox id="urlList" rows="5">
+            <listhead>
+                <listheader label="Url" />
+            </listhead>
+        </listbox>
+    <hbox align="center">
+        Name :
+        <textbox id="urlName" constraint="no empty" width="200px" value="http://"/>
+        <!-- call a method directly in an event -->
+        <button label="Add Url" onClick="addUrl(urlName.getValue())" />
+        <button label="Delete Url" onClick="deleteUrl()" />
+	Depth : <intbox id="depth" maxlength="3" width="30px" value="1"/>
+    TopN : <textbox id="topN" maxlength="3"  width="30px" value="1"/>
+	<button label="Start Crawling">
+    	<attribute name="onClick"><![CDATA[
+			setFormPatternId("Search");
+			setDatapatternId("");
+			String urls="";
+          	int len=urlList.getItemCount();
+          	for(int i=0;i<len;i++)
+          	 {
+           		Listitem item = urlList.getItemAtIndex(i);
+           		urls=urls+item.getLabel()+",";
+          	 }
+            addFormValue("searchTextBox",urls);
+            addFormValue("depth",depth.getValue());
+            addFormValue("topN",topN.getValue());
+			invokeComponent("pnl.crawler.comp" ,"executeCrawler" ,"com.pnl.component.crawler.CrawlerComponent", urls);
+			]]>
+		</attribute>
+	</button>
+	<button label="Url" onClick="getUrlAsCSV()" />
+    </hbox>
+    </groupbox>
+    <!--
+        Programming with zscript is usually for prototyping or small-system only.
+        If you are developing a large system, you should use Presenter or Presentation Model
+        Pattern to control your application.   
+     -->
+    <zscript><![CDATA[
+         
+        //declare zscript methods
+        void addUrl(String name){
+            //you could new a component directly and append it to another component.
+            Listitem item = new Listitem(name);
+            urlList.appendChild(item);
+            //select the new created item.
+            urlList.setSelectedItem(item);
+	        urlName.setValue("http://");
+            updateUrlCount();
+        }
+        void deleteUrl(){
+            int index = urlList.getSelectedIndex();
+            if(index >= 0){
+                //remove the selected item
+                urlList.removeItemAt(index);
+                updateUrlCount();
+            }else{
+                //a easy way to show a message to user
+                alert("Please select an URL first!");
+            }
+        }
+        void updateUrlCount(){
+            //update extra information for user
+            urlCount.setValue(Integer.toString(urlList.getItemCount()));
+        }
+        void getUrlAsCSV()
+        {
+          String urls="";
+          int len=urlList.getItemCount();
+          for(int i=0;i<len;i++)
+          {
+           Listitem item = urlList.getItemAtIndex(i);
+           urls=urls+item.getLabel()+",";
+          }
+          urlName.setValue(urls);
+        }
+         
+        //initialize
+        updateUrlCount();
+    ]]></zscript>
+  </window>
+</zk>
