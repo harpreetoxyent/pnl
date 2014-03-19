@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 
 import org.brickred.socialauth.AuthProvider;
 import org.brickred.socialauth.Contact;
@@ -27,7 +28,22 @@ import com.pnl.component.socialmedia.controller.BusSocialAuthManager;
 public class SocialMediaComponent implements ISocialMediaComponent, IComponent 
 {
 	public IHICData hicData = null;
+	BusSocialAuthManager socialAuthManager = null;
+	String successUrl = "http://example.com:8080/HICFrameworkServlet/form.zul";
 	
+	public SocialMediaComponent()
+	{
+		try
+		{
+			BusSocialAuthConfig configAuth = new BusSocialAuthConfig();
+			socialAuthManager = new BusSocialAuthManager();
+			socialAuthManager.setSocialAuthConfig(configAuth);
+		}
+		catch(Exception exp)
+		{
+			exp.printStackTrace();
+		}
+	}
 	
 	
 	@Override
@@ -83,15 +99,10 @@ public class SocialMediaComponent implements ISocialMediaComponent, IComponent
 	public IHICData execute(IHICData hicData) throws Exception
 	{
 		this.hicData = hicData;
-		BusSocialAuthConfig configAuth = new BusSocialAuthConfig();
-		BusSocialAuthManager socialAuthManager = new BusSocialAuthManager();
-		socialAuthManager.setSocialAuthConfig(configAuth);
-		String successUrl = "http://example.com:8080/HICFrameworkServlet/form.zul";
 		IData data = hicData.getData();
 		hicData.setMetaData(new MetaData());
 		String providerId = (String) data.getFormPattern().getFormValues()
 				.get("providerId");
-		data.getFormPattern().getFormValues().put("socialAuthManager",socialAuthManager);
 		System.out.println("**** Provider ID is ****" + providerId);
 		String url = socialAuthManager.getAuthenticationUrl(providerId,
 				successUrl);
@@ -105,11 +116,17 @@ public class SocialMediaComponent implements ISocialMediaComponent, IComponent
 		
 		IData data = hicData.getData();
 		System.out.println("**** HIC Data  is ****" + data.toString());
-		BusSocialAuthManager socialAuthManager = (BusSocialAuthManager) data.getFormPattern().getFormValues()
-				.get("socialAuthManager");
-		
-		AuthProvider provider = socialAuthManager
-				.connect(new HashMap<String, String>());
+		String codeReturned = (String) data.getFormPattern().getFormValues()
+				.get("code");	
+		Map<String, String> paramsMap = new HashMap<String, String>();
+		paramsMap.put("code", codeReturned);
+		System.out.println("**** Code Returned  is ****" + codeReturned);
+		String providerId = (String) data.getFormPattern().getFormValues()
+				.get("providerId");	
+		String url = socialAuthManager.getAuthenticationUrl(providerId,
+				successUrl);
+		AuthProvider provider = socialAuthManager.connect(paramsMap);
+
 		System.out.println("**** Provider  is ****" + provider.getProviderId());
 
 		// get profile
@@ -119,6 +136,7 @@ public class SocialMediaComponent implements ISocialMediaComponent, IComponent
 		// OR also obtain list of contacts
 		List<Contact> contactsList = provider.getContactList();
 	}
+	
 //	public static void main(String[] args)
 //	{
 //		SocialMediaComponent socialComponent = new SocialMediaComponent();
