@@ -107,7 +107,6 @@ import java.sql.Time;
 import java.util.LinkedHashMap;
 import com.oxymedical.core.propertyUtil.PropertyUtil;
 import java.io.*;
-import com.oxymedical.core.braink.moduleparameterinfo.*;
 
 
 //tree variables
@@ -817,6 +816,52 @@ private String getComboItemId1(String comboBox)
 		comboSelectedValue=null;
 	}
 	return comboSelectedVal;
+}
+IHICData invokeBusComponent(String componentId ,String method ,String classname, String paramList)
+{
+	IDataUnitRouter router = RendererComponent.dataUnitRouter;
+	Object rootFormValue = self.getRoot();
+	/*
+	*Before completing any request it will check that session is valid or not.
+	*
+	*/
+	checkSessionTime(method);
+	
+	/*
+	*Following code is used when session would be time out
+	*/
+	String logOutValue = getSessionData("LogOut");	
+	if(logOutValue!=null)
+	{
+	
+		if(logOutValue=="true")
+		{
+			return null;
+		}
+		return null;
+	}
+	
+	System.out.println("-----Inside UILibrary Invoke Component-----");
+	if(validationValue)
+	{
+		UiLibraryCompositeCommand command=new UiLibraryCompositeCommand();
+		command.setMethodName(method);
+		command.setRouter(router);
+		command.setClassname(classname);
+		command.setComponentId(componentId);
+		command.setDataPatternId(dataPatternId);
+		command.setFormPatternId(formPatternId);
+		command.setFormValues(formValues);
+		command.setRootFormValue(rootFormValue);
+		command.setParamList(paramList);
+		command.setSession(session);
+		command.setComboSelectedValue(comboSelectedValue);
+		command.setValidListRequest(validListRequest);
+		command.setPagingId(pagingId);
+		command.execute();
+		returnHicData=command.getHICData();
+	}
+	return returnHicData;
 }
 String invokeComponent(String componentId ,String method ,String classname, String paramList)
 {

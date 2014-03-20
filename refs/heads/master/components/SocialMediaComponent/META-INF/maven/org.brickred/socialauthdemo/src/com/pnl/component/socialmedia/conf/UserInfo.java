@@ -1,7 +1,34 @@
 package com.pnl.component.socialmedia.conf;
 
+import java.sql.Date;
+import java.util.List;
+
+import org.brickred.socialauth.Contact;
+import org.brickred.socialauth.util.BirthDate;
+
 public class UserInfo 
 {
+	
+	
+	public UserInfo() {
+    }
+
+    public UserInfo(String firstName, String lastName, String email, String gender,String country, String location, String language, BirthDate dob, String profileImageURL , List<Contact> userContacts)
+    {
+        
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;   
+        this.gender = gender;
+        this.country = country;
+        this.location = location;
+        this.language = language;
+        this.profileImageURL = profileImageURL;
+        this.dob = dob;
+        this.userContacts = userContacts;
+        
+        
+    }
 	/**
 	 * Email
 	 */
@@ -40,7 +67,7 @@ public class UserInfo
 	/**
 	 * Date of Birth
 	 */
-	private String dob;
+	private BirthDate dob;
 
 	/**
 	 * Gender
@@ -67,6 +94,12 @@ public class UserInfo
 	 */
 	private String uniqueId;
 
+	/**
+	 * List Of Contacts
+	 */
+	private List<Contact> userContacts;
+	
+	
 	/**
 	 * Retrieves the first name
 	 * 
@@ -205,18 +238,18 @@ public class UserInfo
 	 * 
 	 * @return the date of birth different providers may use different formats
 	 */
-	public String getDob() {
+	public BirthDate getDob() {
 		return dob;
 	}
 
 	/**
 	 * Updates the date of birth
 	 * 
-	 * @param dob
+	 * @param birthDate
 	 *            the date of birth of user
 	 */
-	public void setDob(final String dob) {
-		this.dob = dob;
+	public void setDob(final BirthDate birthDate) {
+		this.dob = birthDate;
 	}
 
 	/**
@@ -295,6 +328,24 @@ public class UserInfo
 		this.providerId = providerId;
 	}
 
+	/**
+	 * Retrieves the contacts
+	 * 
+	 * @return String the contacts
+	 */
+	public String getUserContacts() {
+		return firstName;
+	}
+
+	/**
+	 * Updates the contacts
+	 * 
+	 * @param contacts
+	 *            the contacts of user
+	 */
+	public void setUserContacts(final List<Contact> contacts) {
+		this.userContacts = contacts;
+	}
 	/**
 	 * Retrieves the profile info as a string
 	 * 

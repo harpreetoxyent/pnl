@@ -4,8 +4,11 @@
 </style>
 <zscript src="uilibrary.zs"/>
 <?page id="UserData"?>
-	<window class="Social Component" height="1092px" visible="true" droppable="false" id="SocialData" title="" width="100%" draggable="false">
+	<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" ?>
+	<window class="Social Component" height="1092px"  visible="true" droppable="false" title="" width="100%" draggable="false">
 	   <attribute name="onCreate"><![CDATA[
+	   	import com.pnl.component.socialmedia.conf.UserInfo;
+	   	import java.util.List;
 			setFormPatternId("UserSocialData");
 			setDatapatternId("");
 			addFormValue("providerId", "facebook");
@@ -13,74 +16,74 @@
 			String codeReturned = Executions.getCurrent().getParameter("code");
 			System.out.println("codeReturned="+codeReturned);
 			addFormValue("code", codeReturned );
-			invokeComponent("pnl.socialmedia.comp" ,"loadUserSocialProfile" ,"com.pnl.component.socialmedia.SocialMediaComponent", "");
+			IHICData userInfoHIC = invokeBusComponent("pnl.socialmedia.comp" ,"loadUserSocialProfile" ,"com.pnl.component.socialmedia.SocialMediaComponent", "");
+			System.out.println("HICData returned from invokebuscomponent="+userInfoHIC.getMetaData().getCommonObject());			
+			UserInfo userInfo = (UserInfo)userInfoHIC.getMetaData().getCommonObject();
 		]]>
 		</attribute>	
-	<div style="width:320px; margin:50px auto;">
-	<grid>
-		<rows>
-			<row>
-				<label value="Name" width="150px" />
-				<hlayout>
-					<textbox id= "nameId" width="150px" tabindex="1" />
-				</hlayout>
-			</row>
-			<row>
-			    <label value="E-mail" width="150px" />	
-				<cell>
-					<textbox id= "emailId" width="150px" tabindex="9" />
-				</cell>
-			</row>
-			<row>
-				<label value="Date of Birth" width="150px" />
-				<hbox align="center">
-					<datebox id= "dateboxId" width="150px"  tabindex="7"/>
-				</hbox>
-
-			</row>
-			<row>
-				<label value="Country" width="150px" />
-				<cell>
-					<textbox id= "countryId" width="150px"  tabindex="4" />
-				</cell>
-			</row>
-			<row>
-				<label value="Language" width="150px" />
-				<textbox id= "languageId" width="150px" maxlength="15" tabindex="5" />
-
-			</row>
-			<row>
-				<label value="Gender" width="150px" />
-				<cell>
-					<textbox id= "genderId" width="150px"  tabindex="6" />
-				</cell>
-
-			</row>
-
-			<row>
-				<label value="Location" width="150px" />
-				<cell>
-					<textbox id= "locationId" width="150px"  tabindex="6" />
-				</cell>
-
-			</row>
-
-			<row>
-				<label value="Profile Image" width="150px" />
-				<cell>
-					<image id = "imageId" src="#">
-					</image>
-				</cell>
-			</row>
-			<row>
-				<cell colspan="2" style="text-align:center">
-					<vlayout>
-						<button label="Submit" width="100px" height="30px" />
-					</vlayout>
-				</cell>
-			</row>
-		</rows>
-	</grid>
-	</div>
+		<grid >
+			<rows>
+				<row>
+					<label value="Name" width="150px" />
+					<hlayout>
+						<textbox id= "nameId" value="@{userInfo.firstName}" width="150px" tabindex="1" />
+					</hlayout>
+				</row>
+				<row>
+				    <label value="E-mail" width="150px" />	
+					<cell>
+						<textbox id= "emailId" value="@{userInfo.email}" width="150px" tabindex="9" />
+					</cell>
+				</row>
+				<row>
+					<label value="Date of Birth" width="150px" />
+					<hbox align="center">
+						<datebox id= "dateboxId" width="150px"  tabindex="7"/>
+					</hbox>
+	
+				</row>
+				<row>
+					<label value="Country" width="150px" />
+					<cell>
+						<textbox id= "countryId" width="150px"  tabindex="4" />
+					</cell>
+				</row>
+				<row>
+					<label value="Language" width="150px" />
+					<textbox id= "languageId" width="150px" maxlength="15" tabindex="5" />
+	
+				</row>
+				<row>
+					<label value="Gender" width="150px" />
+					<cell>
+						<textbox id= "genderId" width="150px"  tabindex="6" />
+					</cell>
+	
+				</row>
+	
+				<row>
+					<label value="Location" width="150px" />
+					<cell>
+						<textbox id= "locationId" width="150px"  tabindex="6" />
+					</cell>
+	
+				</row>
+	
+				<row>
+					<label value="Profile Image" width="150px" />
+					<cell>
+						<image id = "imageId" src="#">
+						</image>
+					</cell>
+				</row>
+				<row>
+					<cell colspan="2" style="text-align:center">
+						<vlayout>
+							<button label="Submit" width="100px" height="30px" />
+						</vlayout>
+					</cell>
+				</row>
+			</rows>
+		</grid>
 	</window>	
 </zk>

@@ -1,6 +1,7 @@
 package com.pnl.component.socialmedia;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
@@ -24,12 +25,15 @@ import com.oxymedical.core.commonData.MetaData;
 import com.oxymedical.core.maintenanceData.IMaintenanceData;
 import com.pnl.component.socialmedia.controller.BusSocialAuthConfig;
 import com.pnl.component.socialmedia.controller.BusSocialAuthManager;
+import com.pnl.component.socialmedia.conf.UserInfo;
 
 public class SocialMediaComponent implements ISocialMediaComponent, IComponent 
 {
 	public IHICData hicData = null;
 	BusSocialAuthManager socialAuthManager = null;
 	String successUrl = "http://example.com:8080/HICFrameworkServlet/form.zul";
+	UserInfo userProfileInfo = null;
+	
 	
 	public SocialMediaComponent()
 	{
@@ -37,6 +41,7 @@ public class SocialMediaComponent implements ISocialMediaComponent, IComponent
 		{
 			BusSocialAuthConfig configAuth = new BusSocialAuthConfig();
 			socialAuthManager = new BusSocialAuthManager();
+			userProfileInfo = new UserInfo();
 			socialAuthManager.setSocialAuthConfig(configAuth);
 		}
 		catch(Exception exp)
@@ -111,10 +116,11 @@ public class SocialMediaComponent implements ISocialMediaComponent, IComponent
 		return hicData;
 	}
 	@EventSubscriber(topic = "loadUserSocialProfile")
-	public void loadUserData(HICData hicData) throws Exception
+	public IHICData  loadUserData(HICData hicData) throws Exception
 	{
 		
 		IData data = hicData.getData();
+		hicData.setMetaData(new MetaData());
 		System.out.println("**** HIC Data  is ****" + data.toString());
 		String codeReturned = (String) data.getFormPattern().getFormValues()
 				.get("code");	
@@ -131,10 +137,21 @@ public class SocialMediaComponent implements ISocialMediaComponent, IComponent
 
 		// get profile
 		Profile p = provider.getUserProfile();
-		// you can obtain profile information
-		System.out.println(p.getFirstName());
-		// OR also obtain list of contacts
-		List<Contact> contactsList = provider.getContactList();
+		
+		userProfileInfo.setFirstName(p.getFirstName());
+		userProfileInfo.setLastName(p.getLastName());
+		userProfileInfo.setEmail(p.getEmail());
+		userProfileInfo.setGender(p.getGender());
+		userProfileInfo.setCountry(p.getCountry());
+		userProfileInfo.setDob(p.getDob());
+		userProfileInfo.setCountry(p.getCountry());
+		userProfileInfo.setLocation(p.getLocation());
+		userProfileInfo.setLanguage(p.getLanguage());	
+		userProfileInfo.setProfileImageURL(p.getProfileImageURL());
+		
+		userProfileInfo.setUserContacts(provider.getContactList());
+		hicData.getMetaData().setCommonObject(userProfileInfo);
+		return hicData;
 	}
 	
 //	public static void main(String[] args)
