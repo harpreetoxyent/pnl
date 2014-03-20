@@ -1,0 +1,108 @@
+<zk>
+<style>
+* {margin: 0;}
+html, body {height: 100%; font-family:arial,sans-serif}
+.wrapper {min-height: 100%;height: auto;height: 100%;margin: 0 auto; width:1000px; position: relative;}
+.h1 {color:#666;margin-bottom:10px; float:left;}
+.h2 {padding: 0 0 1em;color: #d00;font: 1.4em helvetica,arial,sans-serif;}
+.footer {position: relative;width: 100%;margin: 0 auto;background: #f2f2f2; border-top: 1px solid #e4e4e4;}
+.footer a {color: #666;}
+.footer p {padding: 20px 30px 0 0;color: #666;font: 12px arial,sans-serif;text-align: right;}
+form{margin:auto; width:700px;}
+form p input[type="text"]{width:600px; height: 25px; border: 1px solid #ccc;}
+form p input[type="text"]:focus{border: 1px solid #4285f4; outline:none;}
+form p input[type="submit"]{width:100px; height: 25px; border: 1px solid #ccc; background: #f2f2f2; margin-top:20px;}
+form p{text-align:center;}
+.login{float:right; padding-top:15px; font-weight:bold;}
+.menu{width:1000px; border:1px solid #e4e4e4;}
+.menu ul{list-style-type:none; padding:0px; height:31px;}
+.menu ul li{list-style-type:none; display:inline-block; padding: 5px 10px 5px 10px; border-right:1px solid #ccc; float:left;}
+.menu ul li a{color: #333; text-decoration:none; font-size: 18px; padding:10px;}
+.menu ul li:hover{background: #f2f2f2;}
+.location{float:right; margin-top:10px;}
+.location div{font-size:14px;}
+.content{width:1000px; margin-top:40px;}
+.left{float:left; width:650px; border:1px solid #e4e4e4;}
+.search_result{min-height:591px;}
+.footer_menu{width:100%; border-top:1px solid #e4e4e4; border-top:1px solid #e4e4e4; background:#f2f2f2;}
+.footer_menu ul{list-style-type:none; padding:0px; height:31px;}
+.footer_menu ul li{list-style-type:none; display:inline-block; padding: 5px 10px 5px 10px; border-right:1px solid #ccc; float:left;}
+.footer_menu ul li a{color: #333; text-decoration:none; font-size: 18px; padding:10px;}
+.footer_menu ul li:hover{background: #ccc;}
+.right{float:right; width:310px; margin-left:24px; border:1px solid #e4e4e4; min-height: 431px;}
+.right h1{font-size:25px; text-align:center; float:none; margin-top:10px;}
+.right ul li{font-size:19px; color:#555555;}
+.right ul li ul li{font-size:14px; list-style-type:disc; color:#555555;}
+.right ul img{border:1px solid #e4e4e4; width:230px; height:120px; margin-top:10px;}
+.menu .z-listcell, .menu .z-listitem{float: left;width: 50px;display: inline;}
+.footer_menu .z-listcell, .footer_menu .z-listitem{float: left;width: 50px;display: inline;}
+</style>
+	<div class="wrapper">
+		<div class="h1"><image src="pnl_logo.png" height="60" width="100"/></div>
+		<div class="login">Logged in as - Harman Walia</div>
+		<div style="clear:both"></div>
+		
+		<div class="menu">
+			<listbox>
+				<listitem label="buy"></listitem>
+				<listitem label="blue"></listitem>
+				<listitem label="polo"></listitem>
+				<listitem label="shirt"></listitem>
+			</listbox>
+		</div>
+		<div class="location">
+			<div>Location: Vancouver, BC</div>
+		</div>
+		<div style="clear:both;"></div>
+		<div class="content">
+			<div class="left">
+				<div class="search_result">
+				</div>
+				<div class="footer1">
+					<div class="footer_menu">
+						<listbox>
+							<listitem label="price"></listitem>
+							<listitem label="popularity"></listitem>
+							<listitem label="brand"></listitem>
+						</listbox>
+					</div>				
+				</div>
+			</div>
+			<div class="right">
+				<div class="h11">Local stores nearby:</div>
+				<listbox>
+					<listhead>
+					<listheader label="Abercrombie"></listheader>
+					</listhead>
+							<listitem label="Pacific Center Mall, Downtown"></listitem>
+							<listitem label="2.5 km, 25 min - taxi"></listitem>
+							<listitem label="">
+							<listcell image="images/pnl_logo.png"></listcell>
+							</listitem>							
+</listbox>
+<listbox>
+					<listhead>
+					<listheader label="Hollister"></listheader>
+					</listhead>
+							<listitem label="Pacific Center Mall, Downtown"></listitem>
+							<listitem label="">
+							<listcell image="images/pnl_logo.png"></listcell>
+							</listitem>														
+	</listbox>
+<listbox>				
+					<listhead>
+					<listheader label="U.S. Polo"></listheader>
+					</listhead>
+	</listbox>
+<listbox>				
+						<listitem label="Pacific Center Mall, Downtown"></listitem>
+							<listitem label="2.5 km, 25 min - taxi"></listitem>							
+ 							<listitem label="">
+							<listcell image="images/pnl_logo.png"></listcell>
+							</listitem>							
+				</listbox>																
+			</div>
+		</div>
+		<div style="clear:both; margin-top:40px;"> </div>
+	</div>
+</zk>
