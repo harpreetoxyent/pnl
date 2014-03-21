@@ -1,7 +1,6 @@
 package com.pnl.component.socialmedia;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
@@ -143,35 +142,23 @@ public class SocialMediaComponent implements ISocialMediaComponent, IComponent
 		userProfileInfo.setEmail(p.getEmail());
 		userProfileInfo.setGender(p.getGender());
 		userProfileInfo.setCountry(p.getCountry());
-		userProfileInfo.setDob(p.getDob());
+		userProfileInfo.setDay(p.getDob().getDay());
+		userProfileInfo.setMonth(p.getDob().getMonth());
+		userProfileInfo.setYear(p.getDob().getYear());
 		userProfileInfo.setCountry(p.getCountry());
 		userProfileInfo.setLocation(p.getLocation());
 		userProfileInfo.setLanguage(p.getLanguage());	
 		userProfileInfo.setProfileImageURL(p.getProfileImageURL());
 		
 		userProfileInfo.setUserContacts(provider.getContactList());
+		List<Contact> list = userProfileInfo.getUserContacts();
+		for (int i=0; i<list.size(); i++)
+		{
+			System.out.println("User Contacts "+i+list.get(i));
+		}
 		hicData.getMetaData().setCommonObject(userProfileInfo);
 		return hicData;
 	}
 	
-//	public static void main(String[] args)
-//	{
-//		SocialMediaComponent socialComponent = new SocialMediaComponent();
-//		HICData hicData = new HICData();
-//		IData data = new Data();
-//		FormPattern formPattern = new FormPattern();
-//		Hashtable<String, Object> formValues = new Hashtable<String, Object>();
-//		formPattern.setFormValues(formValues);
-//		data.setFormPattern(formPattern);
-//		hicData.setData(data);
-//		hicData.getData().getFormPattern().getFormValues().put("providerId", "facebook");
-//		try {
-//			socialComponent.execute(hicData);
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//				
-//	}
+
 }

@@ -2,13 +2,16 @@
 <style>
 .z-row-inner, .z-cell{border: 1px solid #cccccc!important;}
 </style>
-<zscript src="uilibrary.zs"/>
+
 <?page id="UserData"?>
 	<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" ?>
 	<window class="Social Component" height="1092px"  visible="true" droppable="false" title="" width="100%" draggable="false">
 	   <attribute name="onCreate"><![CDATA[
 	   	import com.pnl.component.socialmedia.conf.UserInfo;
 	   	import java.util.List;
+	   	import java.net.URL;
+	   		URL profileURL;
+	   		String stringURL;
 			setFormPatternId("UserSocialData");
 			setDatapatternId("");
 			addFormValue("providerId", "facebook");
@@ -19,8 +22,23 @@
 			IHICData userInfoHIC = invokeBusComponent("pnl.socialmedia.comp" ,"loadUserSocialProfile" ,"com.pnl.component.socialmedia.SocialMediaComponent", "");
 			System.out.println("HICData returned from invokebuscomponent="+userInfoHIC.getMetaData().getCommonObject());			
 			UserInfo userInfo = (UserInfo)userInfoHIC.getMetaData().getCommonObject();
+			nameId.text = userInfo.getFirstName() + " " + userInfo.getLastName();	
+			emailId.text = userInfo.getEmail();
+			countryId.text = userInfo.getCountry();
+			dateboxId.text = userInfo.getDay() + "/" + userInfo.getMonth() + "/" + userInfo.getYear();
+			languageId.text = userInfo.getLanguage();
+			genderId.text = userInfo.getGender();
+			locationId.text = userInfo.getLocation();
+			stringURL = userInfo.getProfileImageURL();
+			System.out.println("getProfileImageURL="+stringURL);
+			profileURL = new URL(stringURL);
+			System.out.println(" URL Host = " + profileURL.getHost());
+			System.out.println(" URL File = " + profileURL.getFile());
+			//profileImageId.setAttribute("src", "stringURL");
 		]]>
 		</attribute>	
+		<div style="width:700px; margin:auto;">
+		<div style="width:355px; float:left;">
 		<grid >
 			<rows>
 				<row>
@@ -38,7 +56,7 @@
 				<row>
 					<label value="Date of Birth" width="150px" />
 					<hbox align="center">
-						<datebox id= "dateboxId" width="150px"  tabindex="7"/>
+						<textbox id= "dateboxId" width="150px"  tabindex="7"/>
 					</hbox>
 	
 				</row>
@@ -72,7 +90,7 @@
 				<row>
 					<label value="Profile Image" width="150px" />
 					<cell>
-						<image id = "imageId" src="#">
+						<image id = "profileImageId" src="http://profile.ak.fbcdn.net/hprofile-ak-ash3/t5.0-1/41699_100001871021233_3062253_q.jpg">
 						</image>
 					</cell>
 				</row>
@@ -85,5 +103,15 @@
 				</row>
 			</rows>
 		</grid>
+		</div>
+			<div style="width:345px; float:left;">
+	<listbox>
+	<listhead>
+	<listheader label="Contacts"></listheader>
+	</listhead>
+	<listitem label="This section will be called dynamically with LISTITEM tag"></listitem>
+	</listbox>			
+			</div>	
+		</div>
 	</window>	
 </zk>

@@ -13,7 +13,7 @@ public class UserInfo
 	public UserInfo() {
     }
 
-    public UserInfo(String firstName, String lastName, String email, String gender,String country, String location, String language, BirthDate dob, String profileImageURL , List<Contact> userContacts)
+    public UserInfo(String firstName, String lastName, String email, String gender,String country, String location, String language, int day, int month , int year, String profileImageURL , List<Contact> userContacts)
     {
         
         this.firstName = firstName;
@@ -24,8 +24,11 @@ public class UserInfo
         this.location = location;
         this.language = language;
         this.profileImageURL = profileImageURL;
-        this.dob = dob;
+       // this.dob = dob;
         this.userContacts = userContacts;
+        this.day = day;
+        this.month = month;
+        this.year = year;
         
         
     }
@@ -99,12 +102,31 @@ public class UserInfo
 	 */
 	private List<Contact> userContacts;
 	
+
+	/**
+	 * Date of Birth Day
+	 */
+	private int day;
+	
+	/**
+	 * Date of Birth Month
+	 */
+	private int month;
+	
+	/**
+	 * Date of Birth Year
+	 */
+	private int year;
+	
+	
+	
 	
 	/**
 	 * Retrieves the first name
 	 * 
 	 * @return String the first name
 	 */
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -233,24 +255,24 @@ public class UserInfo
 		this.name = name;
 	}
 
-	/**
-	 * Retrieves the date of birth
-	 * 
-	 * @return the date of birth different providers may use different formats
-	 */
-	public BirthDate getDob() {
-		return dob;
-	}
-
-	/**
-	 * Updates the date of birth
-	 * 
-	 * @param birthDate
-	 *            the date of birth of user
-	 */
-	public void setDob(final BirthDate birthDate) {
-		this.dob = birthDate;
-	}
+//	/**
+//	 * Retrieves the date of birth
+//	 * 
+//	 * @return the date of birth different providers may use different formats
+//	 */
+//	public BirthDate getDob() {
+//		return dob;
+//	}
+//
+//	/**
+//	 * Updates the date of birth
+//	 * 
+//	 * @param birthDate
+//	 *            the date of birth of user
+//	 */
+//	public void setDob(final BirthDate birthDate) {
+//		this.dob = birthDate;
+//	}
 
 	/**
 	 * Retrieves the gender
@@ -333,8 +355,8 @@ public class UserInfo
 	 * 
 	 * @return String the contacts
 	 */
-	public String getUserContacts() {
-		return firstName;
+	public List<Contact> getUserContacts() {
+		return userContacts;
 	}
 
 	/**
@@ -346,6 +368,67 @@ public class UserInfo
 	public void setUserContacts(final List<Contact> contacts) {
 		this.userContacts = contacts;
 	}
+	
+	/**
+	 * Retrieves the day
+	 * 
+	 * @return int day
+	 */
+	
+	public int getDay() {
+		return day;
+	}
+
+	/**
+	 * Updates the day
+	 * 
+	 * @param day
+	 *            the day of date of birth
+	 */
+	public void setDay(final int day) {
+		this.day = day;
+	}
+	
+	/**
+	 * Retrieves the month
+	 * 
+	 * @return int month
+	 */
+	
+	public int getMonth() {
+		return month;
+	}
+
+	/**
+	 * Updates the month
+	 * 
+	 * @param day
+	 *            the month of date of birth
+	 */
+	public void setMonth(final int month) {
+		this.month = month;
+	}
+	
+	/**
+	 * Retrieves the year
+	 * 
+	 * @return int year
+	 */
+	
+	public int getYear() {
+		return year;
+	}
+
+	/**
+	 * Updates the year
+	 * 
+	 * @param year
+	 *            the year of date of birth
+	 */
+	public void setYear(final int year) {
+		this.year = year;
+	}
+	
 	/**
 	 * Retrieves the profile info as a string
 	 * 
@@ -363,11 +446,12 @@ public class UserInfo
 		result.append(" language: " + language + NEW_LINE);
 		result.append(" name: " + name + NEW_LINE);
 		result.append(" displayName: " + displayName + NEW_LINE);
-		result.append(" dob: " + dob + NEW_LINE);
+		//result.append(" dob: " + dob + NEW_LINE);
 		result.append(" gender: " + gender + NEW_LINE);
 		result.append(" location: " + location + NEW_LINE);
 		result.append(" uniqueId: " + uniqueId + NEW_LINE);
 		result.append(" profileImageURL: " + profileImageURL + NEW_LINE);
+		result.append(" dob: " + day + month + year + NEW_LINE);
 		result.append(" providerId: " + providerId + NEW_LINE);
 		result.append("}");
 
