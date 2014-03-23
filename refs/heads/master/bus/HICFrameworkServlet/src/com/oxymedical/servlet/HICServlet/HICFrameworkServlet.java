@@ -40,6 +40,7 @@ import com.oxymedical.hic.application.NOLISRuntime;
 import com.oxymedical.hic.application.eventmanagement.PublicationScope;
 import com.oxymedical.hic.request.DatabaseRequest;
 import com.oxymedical.hic.request.RenderRequest;
+import com.oxymedical.hic.request.RuleRequest;
 import com.oxymedical.hic.request.UserRequest;
 import com.oxymedical.hic.request.WebServiceRequest;
 import com.oxymedical.hic.request.WorkflowRequest;
@@ -147,6 +148,15 @@ public class HICFrameworkServlet extends HttpServlet
 		Boolean createDatabaseResources = null;
 		try
 		{
+			
+			
+			
+			//By default setting up a default rule component
+			
+			RuleRequest ruleReq= new RuleRequest(hicData,getApplicationInfo());
+			ruleThread = new Thread(ruleReq);
+			ruleThread.start();
+			
 			hashEntries = readRequest(request);
 			if (hashEntries!=null 
 					&& hashEntries.get(URLConstants.applicationName)!=null 
@@ -572,4 +582,6 @@ public class HICFrameworkServlet extends HttpServlet
 	Thread useradminThread;
 	Thread dbThread;
 	Thread workflowThread;
+	Thread ruleThread;
+	
 }

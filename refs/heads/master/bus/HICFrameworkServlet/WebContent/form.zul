@@ -2,7 +2,7 @@
 <style>
 .z-row-inner, .z-cell{border: 1px solid #cccccc!important;}
 </style>
-
+<zscript src="uilibrary.zs"/>
 <?page id="UserData"?>
 	<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" ?>
 	<window class="Social Component" height="1092px"  visible="true" droppable="false" title="" width="100%" draggable="false">
