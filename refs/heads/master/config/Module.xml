@@ -53,6 +53,25 @@
 		    </maintenance>
 		</module>
 		<module
+			name="Rules Component"
+			id="ruleCompnent"
+			version="1.0"
+			provider-name="Oxyent"
+			class="com.oxymedical.component.rulesComponent.RuleComponent">
+	
+	 		<requires>
+			<import module="org.eclipse.core.resources"/>
+			<import module="org.eclipse.ui"/>
+		    </requires>
+	
+		    <runtime>
+			<library name="testworld.jar"/>	
+		    </runtime>
+	
+		    <maintenance>
+		    </maintenance>
+		</module>		
+		<module
 			name="Rendering Component"
 			id="id.rendering"
 			version="1.0"
