@@ -1,0 +1,85 @@
+<zk>
+<style src="/css/list0fTools.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="list0fTools"?>
+ <window class="list0fTools" height="1092px" visible="true" droppable="false" id="list0fTools" title="" width="100%" draggable="false">
+   <div class="frame2576" height="1070px" visible="true" droppable="false" align="none" id="frame2576" width="950px" draggable="false">
+    <div class="frame2577" height="1060px" visible="true" droppable="false" align="none" id="frame2577" width="175px" draggable="false">
+    <include class="placeholder71" draggable="false" height="200px" src="searchpanel.zul?formpattern=list0fTools&amp;datapattern=" visible="true" droppable="false" id="placeholder71" width="175px">
+    
+</include>
+
+</div>
+ <div class="frame2578" height="1060px" visible="true" droppable="false" align="none" id="frame2578" width="574px" draggable="false">
+    <div class="frame207" height="608px" visible="true" droppable="false" align="none" id="frame207" width="566px" draggable="false">
+    <div class="frame208" height="472px" visible="true" droppable="false" align="none" id="frame208" width="516px" draggable="false">
+    <listbox class="listbox6" draggable="false" height="325px" multiple="true" visible="true" droppable="false" id="listbox6" width="231px" fixedLayout= "true">
+   
+</listbox>
+ <listbox class="listbox7" draggable="false" height="325px" multiple="true" visible="true" droppable="false" id="listbox7" width="229px" fixedLayout= "true">
+   
+</listbox>
+ <button class="browse2" height="30px" width="85px" draggable="false" id="browse2" label="Browse" droppable="false" visible="true">
+   
+</button>
+ <label class="label363" height="20px" visible="true" droppable="false" value="Workflow Title:" id="label363" width="107px" draggable="false">
+   
+</label>
+ <textbox class="textbox207" maxlength="32767" height="20px" tabindex="12" readonly="false" visible="true" id="textbox207" droppable="false" value="" name="textbox207"  width="100px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <label class="label364" height="20px" visible="true" droppable="false" value="Tools" id="label364" width="53px" draggable="false">
+   
+</label>
+ <label class="label365" height="20px" visible="true" droppable="false" value="Arguments" id="label365" width="79px" draggable="false">
+   
+</label>
+
+</div>
+ <button class="button225" height="30px" tabindex="1" visible="true" droppable="false" label="Add" id="button225" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("list0fTools");
+setDatapatternId("");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","AddTool");
+;
+]]></attribute>
+  
+</button>
+ <button class="button226" height="30px" tabindex="8" visible="true" droppable="false" label="Delete" id="button226" width="75px" draggable="false">
+   
+</button>
+ <button class="button227" height="30px" tabindex="9" visible="true" droppable="false" label="Edit" id="button227" width="75px" draggable="false">
+   
+</button>
+
+</div>
+
+</div>
+ <div class="frame2579" height="1060px" visible="true" droppable="false" align="none" id="frame2579" width="203px" draggable="false">
+    <div class="frame2580" height="646px" visible="true" droppable="false" align="left" id="frame2580" width="203px" draggable="false">
+    <include class="placeholder72" draggable="false" height="55px" src="Logo.zul?formpattern=list0fTools&amp;datapattern=" visible="true" droppable="false" id="placeholder72" width="203px">
+    
+</include>
+ <include class="placeholder73" draggable="false" height="200px" src="CalendarPanel.zul?formpattern=list0fTools&amp;datapattern=" visible="true" droppable="false" id="placeholder73" width="203px">
+    
+</include>
+
+</div>
+ <button class="button2582" height="30px" tabindex="1" visible="true" droppable="false" label="sign out" id="button2582" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("list0fTools");
+setDatapatternId("");
+String retValue = logOut("login");
+]]></attribute>
+  
+</button>
+
+</div>
+
+</div>
+
+</window>
+</zk>
+

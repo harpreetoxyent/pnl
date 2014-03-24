@@ -1,0 +1,69 @@
+<zk>
+<style src="/css/ImportData.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="ImportData"?>
+ <window class="ImportData" height="805px" visible="true" droppable="false" id="ImportData" title="" width="100%" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("ImportData");
+setDatapatternId("");
+makeVisible("ImportData");
+]]></attribute>
+  <div class="frame101" height="790px" visible="true" droppable="false" align="none" id="frame101" width="700px" draggable="false">
+    <div class="frame5104" height="780px" visible="true" droppable="false" align="none" id="frame5104" width="175px" draggable="false">
+    <include class="placeholder40" draggable="false" height="200px" src="searchpanel.zul?formpattern=ImportData&amp;datapattern=" visible="true" droppable="false" id="placeholder40" width="175px">
+    
+</include>
+
+</div>
+ <div class="frame5404" height="769px" visible="true" droppable="false" align="none" id="frame5404" width="316px" draggable="false">
+ <custom-attributes accessrights ="ImportPatientListToAcquisitionSystem" />
+   <button class="button95" height="30px" tabindex="0" visible="true" droppable="false" label="Update NOLIS Patient database" id="button95" width="188px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("ImportData");
+setDatapatternId("");
+invokeComponent("com.oxymedical.component.HL7Component","ImportHL7Data","com.oxymedical.component.HL7Component.HL7Component","ImportData");
+message("Patient HL7 Data successfully stored in database.");
+setDataStatus("UserAuthenticated", "HomeForm", null);
+;
+]]></attribute>
+  
+</button>
+ <button class="button96" height="30px" tabindex="8" visible="true" droppable="false" label="Back" id="button96" width="105px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("ImportData");
+setDatapatternId("");
+setDataStatus("UserAuthenticated", "HomeForm", null);
+]]></attribute>
+  
+</button>
+
+</div>
+ <div class="frame1705" height="780px" visible="true" droppable="false" align="right" id="frame1705" width="203px" draggable="false">
+    <div class="frame1793" height="740px" visible="true" droppable="false" align="left" id="frame1793" width="203px" draggable="false">
+    <include class="placeholder41" draggable="false" height="55px" src="Logo.zul?formpattern=ImportData&amp;datapattern=" visible="true" droppable="false" id="placeholder41" width="203px">
+    
+</include>
+ <include class="placeholder42" draggable="false" height="200px" src="CalendarPanel.zul?formpattern=ImportData&amp;datapattern=" visible="true" droppable="false" id="placeholder42" width="203px">
+    
+</include>
+
+</div>
+ <button class="button361" height="30px" tabindex="27" visible="true" droppable="false" label="sign out" id="button361" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("ImportData");
+setDatapatternId("");
+String retValue = logOut("login");
+updateSession("login", null);
+]]></attribute>
+  
+</button>
+
+</div>
+
+</div>
+
+</window>
+</zk>
+

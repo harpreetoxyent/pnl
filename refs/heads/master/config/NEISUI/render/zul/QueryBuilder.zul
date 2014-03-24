@@ -1,0 +1,664 @@
+<zk>
+<style src="/css/QueryBuilder.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="QueryBuilder"?>
+ <window class="QueryBuilder" height="871px" visible="true" droppable="false" id="QueryBuilder" title="" width="100%" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+makeVisible("QueryBuilder");setFormPatternId("QueryBuilder");
+setDatapatternId("");
+updateSession("list","list");
+checkbox1.setVisible(false);
+textbox42.setVisible(false);
+textbox41.setVisible(false);
+textbox43.setVisible(false);
+String yes = getSessionData("QBBack");
+if(yes !=null)
+{
+String retValue = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get tempquerydetail.categoryName,tempquerydetail.fieldName,tempquerydetail.variableValue,tempquerydetail.firstRange,tempquerydetail.secondRange,tempquerydetail.logicalValue,tempquerydetail.checkboxValue from neiswispicdb.tempquerydetail");
+if(retValue=="true")
+{
+	showQueryUI("frame109");
+}
+updateSession("QBBack",null);
+};
+]]></attribute>
+  <hbox class="frame3" height="848px" visible="true" droppable="false" align="none" id="frame3" width="885px" draggable="false">
+ <custom-attributes accessrights ="Advance Search" />
+   <div class="frame22" height="641px" visible="true" droppable="false" align="center" id="frame22" width="120px" draggable="false">
+    <label class="label35" height="20px" visible="true" droppable="false" value="Custom Queries" id="label35" width="109px" draggable="false">
+   
+</label>
+ <listbox class="grid40" height="358px" multiple="False" visible="true" droppable="false" id="grid40" width="110px" draggable="false" fixedLayout= "true">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get customquery.queryId, customquery.customQueryName from neiswispicdb.customquery conditions customquery.deleted:=_STRINGSTART_0_STRINGEND_ orderby customquery.customQueryName");
+displayFieldDataInControl("grid40");
+;
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+x=getSelectedListId();
+String name = getSelectedListLabel();
+addFormValue("textbox42",name );
+String retValue = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get customquerydetail.categoryName,customquerydetail.fieldName,customquerydetail.variableValue,customquerydetail.firstRange,customquerydetail.secondRange,customquerydetail.logicalValue,customquerydetail.checkboxValue from neiswispicdb.customquerydetail conditions customquerydetail.queryId:="+x);
+if(retValue=="true")
+{
+	showQueryUI("frame109");
+}
+updateSession("rowId",x);
+]]></attribute>
+  
+</listbox>
+
+</div>
+ <div class="frame46" height="697px" visible="true" droppable="false" align="none" id="frame46" width="752px" draggable="false">
+ <custom-attributes accessrights ="Advance Search" />
+   <div class="frame34" height="51px" visible="true" droppable="false" align="center" id="frame34" width="730px" draggable="false">
+    <menubar class="menubar9" height="20px" visible="true" droppable="false" orient="horizontal" id="menubar9" width="93px" draggable="false">
+    <menu  id="menu13" width="60px" height="16px" label="category">
+ <menupopup>
+  <menuitem  id="menuitem38" label="Add Category">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+storFormValue("formValue");
+createPopUp("AddCategory");
+restorFormValue("formValue");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get qbcategory.Id,qbcategory.categoryName from neiswispicdb.qbcategory conditions qbcategory.deleted:=_STRINGSTART_0_STRINGEND_ orderby qbcategory.categoryName");
+showQueryComboData("frame46");
+]]></attribute>
+ 
+</menuitem>
+ <menuitem  id="menuitem39" label="Delete Category">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+storFormValue("formValue");
+createPopUp("EditCategory");
+restorFormValue("formValue");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get qbcategory.Id,qbcategory.categoryName from neiswispicdb.qbcategory conditions qbcategory.deleted:=_STRINGSTART_0_STRINGEND_ orderby qbcategory.categoryName");
+showQueryComboData("frame46");
+]]></attribute>
+ 
+</menuitem>
+ <menuitem  id="menuitem43" label="Edit Category">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+storFormValue("formValue");
+createPopUp("EditCategory");
+restorFormValue("formValue");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get qbcategory.Id,qbcategory.categoryName from neiswispicdb.qbcategory conditions qbcategory.deleted:=_STRINGSTART_0_STRINGEND_ orderby qbcategory.categoryName");
+showQueryComboData("frame46");
+]]></attribute>
+ 
+</menuitem>
+ <menuitem  id="menuitem51" label="Set All To...">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+createPopUp("SetCategory");
+setAllTo("category1");
+]]></attribute>
+ 
+</menuitem>
+ <menuitem  id="menuitem57" label="Clear All">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+boolean isYes = messageWithQuestion("Are you sure you wish to clear all entries?");
+if(isYes)
+{
+clearQueryValue("category1");
+message("All category entries have been cleared.");
+};
+]]></attribute>
+ 
+</menuitem>
+</menupopup>
+
+</menu>
+
+</menubar>
+ <menubar class="menubar10" height="20px" visible="true" droppable="false" orient="horizontal" id="menubar10" width="91px" draggable="false">
+    <menu  id="menu14" width="38px" height="16px" label="field">
+ <menupopup>
+  <menuitem  id="menuitem48" label="Add Fields">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+storFormValue("formValue");
+createPopUp("AddUserDefineField");
+restorFormValue("formValue");
+]]></attribute>
+ 
+</menuitem>
+ <menuitem  id="menuitem42" label="Edit Field">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+storFormValue("formValue");
+createPopUp("EditField");
+restorFormValue("formValue");
+]]></attribute>
+ 
+</menuitem>
+ <menuitem  id="menuitem52" label="Delete Field">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+storFormValue("formValue");
+createPopUp("EditField");
+restorFormValue("formValue");
+]]></attribute>
+ 
+</menuitem>
+ <menuitem  id="menuitem64" label="Set All To Fields...">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+createPopUp("SetAllFields");
+setAllTo("field1");
+]]></attribute>
+ 
+</menuitem>
+ <menuitem  id="menuitem66" label="Clear All Fields">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+boolean isYes = messageWithQuestion("Are you sure you wish to clear all entries?");
+if(isYes)
+{
+clearQueryValue("field1");
+message("All field entries have been cleared.");
+}
+;
+]]></attribute>
+ 
+</menuitem>
+ <menuitem  id="menuitem70" label="Set All  Checkboxes">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+setAllTo("check1");
+]]></attribute>
+ 
+</menuitem>
+ <menuitem  id="menuitem71" label="Clear All  Checkboxes">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+boolean isYes = messageWithQuestion("Are you sure you wish to clear all checked value?");
+if(isYes)
+{
+clearQueryValue("check1");
+message("All checkbox entries have been cleared.");
+}
+
+;
+]]></attribute>
+ 
+</menuitem>
+</menupopup>
+
+</menu>
+
+</menubar>
+ <menubar class="menubar11" height="20px" visible="true" droppable="false" orient="horizontal" id="menubar11" width="95px" draggable="false">
+    <menu  id="menu15" width="56px" height="16px" label="variable">
+ <menupopup>
+  <menuitem  id="menuitem47" label="Set All To...">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+createPopUp("SetVariable");
+setAllTo("variable1");
+]]></attribute>
+ 
+</menuitem>
+ <menuitem  id="menuitem49" label="Clear All">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+boolean isYes = messageWithQuestion("Are you sure you wish to clear all entries?");
+if(isYes)
+{
+clearQueryValue("variable1");
+message("All varibale entries have been cleared.");
+};
+]]></attribute>
+ 
+</menuitem>
+</menupopup>
+
+</menu>
+
+</menubar>
+ <menubar class="menubar12" height="20px" visible="true" droppable="false" orient="horizontal" id="menubar12" width="132px" draggable="false">
+    <menu  id="menu16" width="46px" height="16px" label="range">
+ <menupopup>
+  <menuitem  id="menuitem44" label="Set All To...">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+storFormValue("formValue");
+createPopUp("SetRange");
+restorFormValue("formValue");
+setRangeTo("range");
+]]></attribute>
+ 
+</menuitem>
+ <menuitem  id="menuitem45" label="Clear All">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+boolean isYes = messageWithQuestion("Are you sure you wish to clear all entries?");
+if(isYes)
+{
+clearRangeValue("range");
+message("All range entries have been cleared.");
+};
+]]></attribute>
+ 
+</menuitem>
+</menupopup>
+
+</menu>
+
+</menubar>
+ <menubar class="menubar1" height="20px" visible="true" droppable="false" orient="horizontal" id="menubar1" width="65px" draggable="false">
+    <menu  id="menu1" width="57px" height="16px" label="boolean">
+ <menupopup>
+  <menuitem  id="menuitem65" label="Set All To...">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+createPopUp("SetBoolean");
+setAllTo("logical2");
+]]></attribute>
+ 
+</menuitem>
+ <menuitem  id="menuitem67" label="Clear All">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+boolean isYes = messageWithQuestion("Are you sure you wish to clear all entries?");
+if(isYes)
+{
+clearQueryValue("logical2");
+message("All boolean entries have been cleared.");
+}
+;
+]]></attribute>
+ 
+</menuitem>
+</menupopup>
+
+</menu>
+
+</menubar>
+
+</div>
+ <div class="frame13" height="420px" visible="true" droppable="false" align="center" id="frame13" width="731px" draggable="false">
+    <grid class="lattice0" height="50px" visible="true" droppable="false" id="lattice0" width="716px" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+String gridStyle = "background-color:#DDD9C3;border:0px";
+	lattice0.setStyle(gridStyle);
+row61.setStyle(gridStyle);
+]]></attribute>
+<rows>
+   <row class="row61" draggable="false" height="44px" visible="true" droppable="false" id="row61" width="716px">
+ <hbox class="frame23" height="44px" visible="true" droppable="false" align="none" id="frame23" width="712px" draggable="false">
+    <combobox class="category1" tabindex="1" readonly="true" visible="true" droppable="false" text="" name="category" id="category1" draggable="false" width="80px" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get qbcategory.Id,qbcategory.categoryName from neiswispicdb.qbcategory conditions qbcategory.deleted:=_STRINGSTART_0_STRINGEND_ orderby qbcategory.categoryName");
+showComboData("category1");
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+String id =getComboItemId1("category1");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get qbuserdefinedfield.id,qbuserdefinedfield.UserDefinedFieldName from neiswispicdb.qbcategorydetail,neiswispicdb.qbuserdefinedfield conditions qbcategorydetail.categoryId:="+id+" and qbuserdefinedfield.id:=qbcategorydetail.UserDefinedFieldId orderby qbuserdefinedfield.UserDefinedFieldName");
+showComboData("field1");
+String categoryName = getComboBoxValue("category1");
+addFormValue("category1",categoryName);
+]]></attribute>
+  
+</combobox>
+ <textbox class="variable1" maxlength="32767" height="20px" tabindex="3" readonly="false" visible="true" id="variable1" droppable="false" value="" name="variable"  width="100px" draggable="false" onChange='setTextboxId()'>
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+createToolTip("variable1","For date, value should be in format yyyy-mm-dd.");
+]]></attribute>
+  
+</textbox>
+ <textbox class="firstrange1" maxlength="32767" height="20px" tabindex="4" readonly="false" visible="true" id="firstrange1" droppable="false" value="" name="range1"  width="61px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <label class="label36" height="20px" visible="true" droppable="false" value="to" id="label36" width="20px" draggable="false">
+   
+</label>
+ <textbox class="secondrange1" maxlength="32767" height="20px" tabindex="5" readonly="false" visible="true" id="secondrange1" droppable="false" value="" name="range2"  width="61px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <combobox class="field1" tabindex="2" readonly="true" visible="true" droppable="false" text="" name="field" id="field1" draggable="false" width="80px" >
+ <attribute name="onSelect"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+String field =getComboBoxValue("field1");
+addFormValue("field1",field);
+]]></attribute>
+  
+</combobox>
+ <combobox class="log1" draggable="false" tabindex="14" readonly="false" visible="false" droppable="false" text="logicalvalue" name="log1" id="log1" width="46px" >
+   
+</combobox>
+ <imagemap class="picture7" draggable="false" height="25px" visible="true" src="img/picture7.jpg" droppable="false" id="picture7" width="25px">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+addNewComponent("frame109");
+]]></attribute>
+  
+</imagemap>
+ <checkbox class="check1" style="font-size:8;font-family:Microsoft Sans Serif;font-style:Regular;"  draggable="false" height="30px" Checked="false" droppable="false" label="" id="check1" width="20px" visible="true" onCheck='setCheckboxId()'>
+   
+</checkbox>
+
+</hbox>
+
+</row>
+</rows>
+
+</grid>
+ <combobox class="combobox6" draggable="false" tabindex="15" readonly="false" visible="false" droppable="false" text="category" name="combobox6" id="combobox6" width="55px" >
+   
+</combobox>
+ <combobox class="combobox7" draggable="false" tabindex="16" readonly="false" visible="false" droppable="false" text="field" name="combobox7" id="combobox7" width="47px" >
+   
+</combobox>
+ <textbox class="textbox38" maxlength="32767" height="20px" tabindex="17" readonly="false" visible="false" id="textbox38" droppable="false" value="varibale" name="textbox38"  width="43px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox39" maxlength="32767" height="20px" tabindex="18" readonly="false" visible="false" id="textbox39" droppable="false" value="range1" name="textbox39"  width="30px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox40" maxlength="32767" height="20px" tabindex="19" readonly="false" visible="false" id="textbox40" droppable="false" value="range2" name="textbox40"  width="30px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox41" maxlength="32767" height="20px" tabindex="20" readonly="false" visible="true" id="textbox41" droppable="false" value="reference id" name="textbox41"  width="66px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox42" maxlength="32767" height="20px" tabindex="21" readonly="false" visible="true" id="textbox42" droppable="false" value="customequery name" name="textbox42"  width="101px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox43" maxlength="32767" height="20px" tabindex="22" readonly="false" visible="true" id="textbox43" droppable="false" value="deletedvalue" name="textbox43"  width="55px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <checkbox class="checkbox1" style="font-size:8;font-family:Microsoft Sans Serif;font-style:Regular;"  draggable="false" height="30px" Checked="false" droppable="false" label="checkbox1" id="checkbox1" width="38px" visible="true" onCheck='setCheckboxId()'>
+   
+</checkbox>
+ <div class="frame109" height="354px" visible="true" droppable="false" align="none" id="frame109" width="716px" draggable="false">
+   
+</div>
+
+</div>
+ <imagemap class="picture4" draggable="false" height="75px" visible="true" src="img/picture4.jpg" droppable="false" id="picture4" width="79px">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+updateSessionList("gridValue",null);
+updateSession("rowId",null);
+updateSession("IDCOUNTER",null);
+updateSession("CSVHEADER",null);
+setDataStatus("UserAuthenticated", "HomeForm", null);
+;
+]]></attribute>
+  
+</imagemap>
+ <imagemap class="picture0" draggable="false" height="75px" visible="true" src="img/picture0.jpg" droppable="false" id="picture0" width="75px">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+String fieldName = getCheckedField();
+fieldName = fieldName.trim();
+int len = fieldName.length();
+String defaultField = "firstName,lastName,id,medicalRecordNumber,dateOfBirth";
+if(len>0)
+{
+defaultField = addString(defaultField,",",fieldName);
+}
+updateSession("CSVHEADER",defaultField);
+String[] data=createArray("String", defaultField);
+addFormValue("SelectField",data);
+addFormValue("TableName","neiswispicdb.Patient");
+boolean isValid =clientSideValidation("QueryBuilder");
+String catValue = category1.getText();
+if(catValue=="")
+{
+	isValid = false;
+}
+if(isValid)
+{
+saveTempQuery("saveTempQuery");
+invokeComponent("com.oxymedical.component.query","queryBuilder","com.oxymedical.component.query.QueryComponent","");
+setListDataInSession("dbListValue");
+String excel = getSessionData("ResultInExcel");
+boolean isEqual = checkValueWithOperator(excel, "yes", "EQUAL");
+if(isEqual)
+{
+invokeComponent("export.Component","exportCSV","com.oxymedical.component.export.ExportComponent",defaultField);
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","ResultInExcel");
+}
+else
+{
+setDataStatus("QueryResult", "QueryResult", "neiswispicdb");
+}
+}
+else
+{
+validateDataInQueryObject(frame13);
+message("Cannot execute query.");
+}
+updateSession("rowId",null);
+updateSession("IDCOUNTER",null);
+
+;
+]]></attribute>
+  
+</imagemap>
+
+</div>
+ <label class="label180" height="32px" visible="true" droppable="false" value="queryBUILDER" id="label180" width="140px" draggable="false">
+   
+</label>
+ <label class="label181" height="21px" visible="true" droppable="false" value="PATIENTdatabase:" id="label181" width="129px" draggable="false">
+   
+</label>
+ <combobox class="combobox37" draggable="false" tabindex="17" readonly="false" visible="false" droppable="false" text="log" name="combobox37" id="combobox37" width="64px" >
+   
+</combobox>
+ <combobox class="combobox38" draggable="false" tabindex="18" readonly="false" visible="false" droppable="false" text="category" name="combobox38" id="combobox38" width="52px" >
+   
+</combobox>
+ <combobox class="combobox39" draggable="false" tabindex="19" readonly="false" visible="false" droppable="false" text="field" name="combobox39" id="combobox39" width="52px" >
+   
+</combobox>
+ <textbox class="textbox159" maxlength="32767" height="20px" tabindex="20" readonly="false" visible="false" id="textbox159" droppable="false" value="variable" name="textbox159"  width="44px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox160" maxlength="32767" height="20px" tabindex="21" readonly="false" visible="false" id="textbox160" droppable="false" value="range1" name="textbox160"  width="45px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox161" maxlength="32767" height="20px" tabindex="22" readonly="false" visible="false" id="textbox161" droppable="false" value="range2" name="textbox161"  width="40px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <checkbox class="checkbox3" style="font-size:8;font-family:Microsoft Sans Serif;font-style:Regular;"  draggable="false" height="30px" Checked="false" droppable="false" label="checkbox1" id="checkbox3" width="43px" visible="false" onCheck='setCheckboxId()'>
+   
+</checkbox>
+
+</hbox>
+ <div class="frame72" height="748px" visible="true" droppable="false" align="center" id="frame72" width="184px" draggable="false">
+    <button class="button2" height="30px" tabindex="7" visible="true" droppable="false" label="New Query" id="button2" width="122px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+String rowVal= getSessionData("rowId");
+if(rowVal !=null)
+{
+	String catVal = category1.getText();
+	if(catVal !="")
+	{
+		String mesg=getUpdatedMessage();
+		if(mesg==null)
+		{
+			boolean isYes = messageWithQuestion("Do you want to save current query?");
+			if(isYes)
+			{
+				updateRefferences("textbox41");
+				addFormValue("grid40",rowVal);
+				addFormValue("textbox43","0");
+				saveConditionList("");
+			}
+		}
+	}
+}
+updateSession("rowId",null);
+createPopUp("AddCustomQuery");
+]]></attribute>
+<custom-attributes accessrights ="Advance Search" />
+  
+</button>
+ <button class="button3" height="30px" tabindex="8" visible="true" droppable="false" label="Edit Query" id="button3" width="122px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+id = getSessionData("rowId");
+if(id!=null)
+{
+createPopUp("AddCustomQuery");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get customquery.queryId, customquery.customQueryName from neiswispicdb.customquery conditions customquery.deleted:=_STRINGSTART_0_STRINGEND_ orderby customquery.customQueryName");
+displayFieldDataInControl("grid40");
+updateSession("rowId",null);
+}
+else
+{
+message(" Please select  custom query to perform this operation.");
+}
+;
+]]></attribute>
+<custom-attributes accessrights ="Advance Search" />
+  
+</button>
+ <button class="button4" height="30px" tabindex="9" visible="true" droppable="false" label="Save Query" id="button4" width="122px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+id = getSessionData("rowId");
+if(id!=null)
+{
+updateRefferences("textbox41");
+addFormValue("grid40",id);
+addFormValue("textbox43","0");
+saveConditionList("");
+String msg ="Saved changes to query "+name;
+msg = addString(msg,".","");
+message(msg);
+String retValue = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get customquerydetail.categoryName,customquerydetail.fieldName,customquerydetail.variableValue,customquerydetail.firstRange,customquerydetail.secondRange,customquerydetail.logicalValue,customquerydetail.checkboxValue from neiswispicdb.customquerydetail conditions customquerydetail.queryId:="+id);
+if(retValue=="true")
+{
+	showQueryUI("frame109");
+            setUpdatedMessage("Saved.");
+}
+}
+else
+{
+message(" Please select custom query to perform this operation.");
+};
+]]></attribute>
+<custom-attributes accessrights ="Advance Search" />
+  
+</button>
+ <button class="button5" height="30px" tabindex="10" visible="true" droppable="false" label="Delete Query" id="button5" width="122px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+id = getSessionData("rowId");
+if(id!=null)
+{
+boolean isYes =messageWithQuestion("Are you sure you wish to delete this query?");
+if(isYes)
+{
+String retValue = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","update neiswispicdb.customquery set Deleted:=1 conditions customquery.queryId:=rowId");
+if(retValue == "true")
+{
+String msg =("Query "+name+" has been deleted.");
+message(msg);
+updateSession("rowId", null);
+setDataStatus("CreateQuery", "QueryBuilder", "neiswispicdb");
+
+}
+}
+}
+else
+{
+message(" Please select custom query to perform this operation.");
+}
+
+;
+]]></attribute>
+<custom-attributes accessrights ="Advance Search" />
+  
+</button>
+ <button class="button50" height="30px" tabindex="11" visible="true" droppable="false" label="Query Result Setting" id="button50" width="122px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+storFormValue("formValue");
+createPopUp("ResultSetting");
+restorFormValue("formValue");
+
+;
+]]></attribute>
+<custom-attributes accessrights ="Advance Search" />
+  
+</button>
+ <include class="placeholder30" draggable="false" height="90px" src="Logo.zul?formpattern=QueryBuilder&amp;datapattern=" visible="true" droppable="false" id="placeholder30" width="146px">
+    
+</include>
+ <button class="button6" height="30px" tabindex="13" visible="true" droppable="false" label="sign out" id="button6" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+String retValue = logOut("login");
+
+;
+]]></attribute>
+  
+</button>
+ <button class="button7" height="30px" tabindex="14" visible="true" droppable="false" label="Clear Query" id="button7" width="122px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryBuilder");
+setDatapatternId("");
+clearAllQueryField("");
+]]></attribute>
+<custom-attributes accessrights ="Advance Search" />
+  
+</button>
+
+</div>
+
+</window>
+</zk>
+

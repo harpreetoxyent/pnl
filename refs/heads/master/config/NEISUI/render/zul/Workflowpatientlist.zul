@@ -1,0 +1,194 @@
+<zk>
+<style src="/css/Workflowpatientlist.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="Workflowpatientlist"?>
+ <window class="Workflowpatientlist" height="730px" visible="true" droppable="false" id="Workflowpatientlist" title="" width="100%" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+makeVisible("Workflowpatientlist");setFormPatternId("Workflowpatientlist");
+setDatapatternId("");
+updateSession("mode",null);
+]]></attribute>
+  <hbox class="frame209" height="633px" visible="true" droppable="false" align="none" id="frame209" width="946px" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("Workflowpatientlist");
+setDatapatternId("");
+updateSession("rowId",null);
+updateSession("list","list");
+]]></attribute>
+   <div class="frame210" height="631px" visible="true" droppable="false" align="none" id="frame210" width="175px" draggable="false">
+    <include class="placeholder80" draggable="false" height="200px" src="searchpanel.zul?formpattern=Workflowpatientlist&amp;datapattern=" visible="true" droppable="false" id="placeholder80" width="175px">
+    
+</include>
+
+</div>
+ <div class="frame211" height="630px" visible="true" droppable="false" align="none" id="frame211" width="563px" draggable="false">
+ <custom-attributes accessrights ="Edit/Modify Patient Menu" />
+   <label class="label374" height="27px" visible="true" droppable="false" value="Patient List" id="label374" width="134px" draggable="false">
+   
+</label>
+ <listbox class="grid4" height="391px" multiple="False" visible="true" paginal="${paging0}" droppable="false" id="grid4" width="555px" draggable="false" fixedLayout= "true">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("Workflowpatientlist");
+setDatapatternId("");
+setPagingId("paging0");
+enableSorting("column310", "Patient.firstname");
+enableSorting("column311", "Patient.lastname");
+enableSorting("column308", "Patient.id");
+enableSorting("column309", "Patient.medicalRecordNumber");
+enableSorting("column312", "Patient.dateofbirth");
+;
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("Workflowpatientlist");
+setDatapatternId("");
+id=getRowData(0);
+name = getRowData(2);
+updateSession("rowId",id);
+]]></attribute>
+   <listhead sizable="true" draggable="false" height="30px" visible="true" droppable="false" id="row164" width="553px">
+ <listheader label="identifier" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column308" width="72px">
+
+</listheader>
+ <listheader label="MRN" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column309" width="73px">
+
+</listheader>
+ <listheader label="first name" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column310" width="91px">
+
+</listheader>
+ <listheader label="last name" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column311" width="92px">
+
+</listheader>
+ <listheader label="date of birth" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column312" width="99px">
+
+</listheader>
+
+</listhead>
+
+</listbox>
+ <hbox class="frame212" height="36px" visible="true" droppable="false" align="none" id="frame212" width="554px" draggable="false">
+    <paging class="paging3" pageSize="25" draggable="false" height="25px" visible="true" droppable="false" id="paging3" width="400px">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("Workflowpatientlist");
+setDatapatternId("");
+paginalSetter("grid4");
+setDisplayLabelId("label323");
+String lastName = getSessionData("lastname");
+String firstname= getSessionData("firstname");
+String dob= getSessionData("dob");
+String mrn= getSessionData("mrn");
+String condition = "";
+condition = createQueryForSearch(firstname,"firstname","Patient",condition);
+condition = createQueryForSearch(lastName,"lastname","Patient",condition);
+condition = createQueryForSearch(dob,"Dateofbirth","Patient",condition);
+condition = createQueryForSearch(mrn,"MedicalRecordNumber","Patient",condition);
+condition = addString(condition,"patient.deleted:=[0]","");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get Patient.id,Patient.medicalRecordNumber,Patient.firstname,Patient.lastname,Patient.dateofbirth from noliswispicdb.Patient conditions "+condition);
+boolean isDisplay = displayDataInControl("grid4");
+createPagingEvent("grid4");
+createSortingEvent("grid4", "paging0");
+boolean isInput = searchInputCheck(lastName,firstname,mrn,dob);
+if(isInput)
+{
+if(!isDisplay )
+{
+
+	msg ="Patient not found.Would you like to add this patient?";
+	boolean isYes = messageWithQuestion(msg);
+	if(isYes)
+	{
+		setDataStatus("CreatePatient", "Patient", "noliswispicdb");
+	}
+	else
+	{
+	updateSession("lastname",null);
+	updateSession("firstname",null);
+	updateSession("dob",null);
+	updateSession("mrn",null);
+	}
+}
+}
+else
+{
+updateSession("lastname",null);
+updateSession("firstname",null);
+updateSession("dob",null);
+updateSession("mrn",null);
+}
+updateSession("edit",null);
+String gridStyle = "background-color:Transparent;border:0px";
+paging0.setStyle(gridStyle);
+]]></attribute>
+  
+</paging>
+ <div class="frame213" height="25px" visible="true" droppable="false" align="center" id="frame213" width="160px" draggable="false">
+    <label class="label380" height="25px" visible="true" droppable="false" value="label1" id="label380" width="150px" draggable="false">
+   
+</label>
+
+</div>
+
+</hbox>
+ <div class="frame214" height="130px" visible="true" droppable="false" align="center" id="frame214" width="556px" draggable="false">
+    <button class="button228" height="30px" tabindex="9" visible="true" droppable="false" label="Cancel" id="button228" width="142px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("Workflowpatientlist");
+setDatapatternId("");
+updateSession("lastname",null);
+updateSession("firstname",null);
+updateSession("dob",null);
+updateSession("mrn",null);
+setDataStatus("UserAuthenticated", "HomeForm", null);
+]]></attribute>
+  
+</button>
+ <button class="button234" height="30px" tabindex="8" visible="true" droppable="false" label="OK" id="button234" width="142px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("Workflowpatientlist");
+setDatapatternId("");
+updateSession("lastname",null);
+updateSession("firstname",null);
+updateSession("dob",null);
+updateSession("mrn",null);
+id = getSessionData("rowId");
+if(id!=null)
+{
+setDataStatus("CreatePatient", "Patient", "noliswispicdb");
+}
+else
+{
+message(" Please select a record to perform this operation.");
+}
+;
+]]></attribute>
+<custom-attributes accessrights ="Edit/ModifyPatient" />
+  
+</button>
+
+</div>
+
+</div>
+ <div class="frame215" height="629px" visible="true" droppable="false" align="none" id="frame215" width="203px" draggable="false">
+    <include class="placeholder81" draggable="false" height="55px" src="Logo.zul?formpattern=Workflowpatientlist&amp;datapattern=" visible="true" droppable="false" id="placeholder81" width="203px">
+    
+</include>
+ <include class="placeholder82" draggable="false" height="200px" src="CalendarPanel.zul?formpattern=Workflowpatientlist&amp;datapattern=" visible="true" droppable="false" id="placeholder82" width="203px">
+    
+</include>
+ <button class="button240" height="30px" tabindex="16" visible="true" droppable="false" label="sign out" id="button240" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("Workflowpatientlist");
+setDatapatternId("");
+String retValue = logOut("login");
+]]></attribute>
+  
+</button>
+
+</div>
+
+</hbox>
+
+</window>
+</zk>
+

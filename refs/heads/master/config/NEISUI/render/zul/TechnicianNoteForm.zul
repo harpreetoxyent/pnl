@@ -1,0 +1,410 @@
+<zk>
+<style src="/css/TechnicianNoteForm.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="TechnicianNoteForm"?>
+ <window class="TechnicianNoteForm" height="1540px" visible="true" droppable="false" id="TechnicianNoteForm" title="" width="100%" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+makeVisible("TechnicianNoteForm");setFormPatternId("TechnicianNoteForm");
+setDatapatternId("");
+textbox120.setVisible(false);
+textbox121.setVisible(false);
+textbox122.setVisible(false);
+textbox123.setVisible(false);
+textbox124.setVisible(false);
+textbox126.setVisible(false);
+textbox169.setVisible(false);
+textbox170.setVisible(false);
+textbox171.setVisible(false);
+textbox172.setVisible(false);
+textbox173.setVisible(false);
+textbox174.setVisible(false);
+textbox175.setVisible(false);
+textbox176.setVisible(false);
+frame151.setVisible(false);
+button188.setVisible(false);
+String study = getSessionData("studyId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get techniciannote.id,techniciannote.studyId,techniciannote.SleepLatency,techniciannote.EEG,techniciannote.Snoring,techniciannote.Plms,techniciannote.Arousals,techniciannote.RespiratoryEvent,techniciannote.PatientTreatedWith,techniciannote.Pressures,techniciannote.SleepApneaHandOut,techniciannote.ChinStrap,techniciannote.GeneralComments,techniciannote.NoOfBreaths,techniciannote.ApneaLength,techniciannote.EKG,techniciannote.Proceduretype,techniciannote.Leak,techniciannote.EPOCHNO from neiswispicdb.techniciannote conditions techniciannote.studyId:="+study );
+data=createArray("String", "textbox125,textbox120,textbox71,textbox73,textbox77,textbox79,textbox103,textbox104,textbox108,textbox107,textbox109,textbox110,textbox115,textbox105,textbox106,textbox74,combobox32,textbox114,textbox116");
+showData(data);
+String id1 = textbox125.text;
+if(id1 !="")
+{
+isSave=true;
+editOnly("TechnicianNoteForm");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get medicationconsume.time,medicationconsume.NameDescription,medicationconsume.Dose from neiswispicdb.medicationconsume conditions medicationconsume.TechNoteId:="+id1);
+	
+	displayDataInControl("grid21");
+}
+else
+{
+	readOnly("TechnicianNoteForm");
+}
+String value = combobox32.getText();
+boolean isTrue = equalsTest(value,"Research");
+if(isTrue)
+{
+frame151.setVisible(true);
+}
+else
+{
+frame151.setVisible(false);
+}
+String isView = getSessionData("ViewNote");
+if(isView !=null)
+{
+	button155.setVisible(false);
+	readOnly("TechnicianNoteForm");
+	button188.setVisible(true);
+	readOnly("TechnicianNoteForm");
+	updateSession("ViewNote",null);
+}
+String studyId = getSessionData("studyId");
+if(studyId !=null)
+{
+addFormValue("textbox120",studyId);
+addFormValue("textbox169",studyId);
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.PatientID,studypatient.ReportType,studypatient.ScheduleID,studypatient.ReportPath,studypatient.ReportSigned,studypatient.UploadDate from neiswispicdb.studypatient conditions studypatient.ID:="+studyId);
+String PatientID = getSessionData("rowId");
+String ReportType = getDataFromAllValuesVar(0, 1);
+String ScheduleID = getDataFromAllValuesVar(0, 2);
+String reportpath = getDataFromAllValuesVar(0, 3);
+String ReportSigned = getDataFromAllValuesVar(0, 4);
+String UploadDate = getDataFromAllValuesVar(0, 5);
+addFormValue("textbox170",PatientID);
+addFormValue("textbox171",ReportType);
+addFormValue("textbox172",ScheduleID);
+addFormValue("textbox173",reportpath);
+addFormValue("textbox174",ReportSigned);
+addFormValue("textbox175",UploadDate);
+addFormValue("textbox176","Y");
+}
+else
+{
+addFormValue("textbox120","");
+addFormValue("textbox169","");
+String PatientID = getSessionData("rowId");
+addFormValue("textbox170",PatientID);
+String ScheduleID = getSessionData("scheduleId");
+addFormValue("textbox172",ScheduleID);
+addFormValue("textbox176","Y");
+}
+;
+]]></attribute>
+  <div class="frame148" height="1133px" visible="true" droppable="false" align="none" id="frame148" width="948px" draggable="false">
+    <div class="frame1569" height="1118px" visible="true" droppable="false" align="none" id="frame1569" width="569px" draggable="false">
+    <div class="frame149" height="982px" visible="true" droppable="false" align="none" id="frame149" width="569px" draggable="false">
+ <custom-attributes accessrights ="ViewTechinicanNote,CreateTechinicanNote" />
+   <label class="label207" height="24px" visible="true" droppable="false" value="REMARKS:" id="label207" width="103px" draggable="false">
+   
+</label>
+ <label class="label208" height="20px" visible="true" droppable="false" value="Sleep Latency:" id="label208" width="88px" draggable="false">
+   
+</label>
+ <textbox class="textbox71" maxlength="32767" height="20px" tabindex="2" readonly="false" visible="true" id="textbox71" droppable="false" value="" name="Sleep Latency:" constraint="/((^[0]{1}$|^[-]?[1-9]{1}\d*$)|)/:Numeric whole value only" width="100px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <label class="label227" height="22px" visible="true" droppable="false" value="EEG:" id="label227" width="35px" draggable="false">
+   
+</label>
+ <textbox class="textbox73" maxlength="32767" height="20px" tabindex="3" readonly="false" visible="true" id="textbox73" droppable="false" value="" name="EEG:" constraint="/((^[0]{1}$|^[-]?[1-9]{1}\d*$)|)/:Numeric whole value only" width="100px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <label class="label236" height="22px" visible="true" droppable="false" value="EKG:" id="label236" width="38px" draggable="false">
+   
+</label>
+ <textbox class="textbox74" maxlength="32767" height="20px" tabindex="4" readonly="false" visible="true" id="textbox74" droppable="false" value="" name="EKG:" constraint="/((^[0]{1}$|^[-]?[1-9]{1}\d*$)|)/:Numeric whole value only" width="100px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <label class="label240" height="21px" visible="true" droppable="false" value="Snoring:" id="label240" width="47px" draggable="false">
+   
+</label>
+ <textbox class="textbox77" maxlength="32767" height="20px" tabindex="5" readonly="false" visible="true" id="textbox77" droppable="false" value="" name="Snoring:" constraint="/((^[0]{1}$|^[-]?[1-9]{1}\d*$)|)/:Numeric whole value only" width="100px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <label class="label242" height="20px" visible="true" droppable="false" value="PLMS:" id="label242" width="43px" draggable="false">
+   
+</label>
+ <textbox class="textbox79" maxlength="32767" height="20px" tabindex="6" readonly="false" visible="true" id="textbox79" droppable="false" value="" name="PLMS:" constraint="/((^[0]{1}$|^[-]?[1-9]{1}\d*$)|)/:Numeric whole value only" width="100px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <label class="label243" height="20px" visible="true" droppable="false" value="Arousals:" id="label243" width="51px" draggable="false">
+   
+</label>
+ <textbox class="textbox103" maxlength="32767" height="20px" tabindex="7" readonly="false" visible="true" id="textbox103" droppable="false" value="" name="Arousals:" constraint="/((^[0]{1}$|^[-]?[1-9]{1}\d*$)|)/:Numeric whole value only" width="100px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <label class="label244" height="20px" visible="true" droppable="false" value="Respiratory Events:" id="label244" width="104px" draggable="false">
+   
+</label>
+ <textbox class="textbox104" maxlength="32767" height="20px" tabindex="8" readonly="false" visible="true" id="textbox104" droppable="false" value="" name="Respiratory Events:"  width="100px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <div class="frame150" height="744px" visible="true" droppable="false" align="none" id="frame150" width="537px" draggable="false">
+    <div class="frame151" height="118px" visible="true" droppable="false" align="none" id="frame151" width="433px" draggable="false">
+    <label class="label245" height="24px" visible="true" droppable="false" value="PEDIATRIC APNEA CALCULATION" id="label245" width="259px" draggable="false">
+   
+</label>
+ <label class="label246" height="20px" visible="true" droppable="false" value="EPOCH Number used:" id="label246" width="116px" draggable="false">
+   
+</label>
+ <label class="label247" height="20px" visible="true" droppable="false" value="Number of breaths in 30-sec EPOCH:" id="label247" width="187px" draggable="false">
+   
+</label>
+ <textbox class="textbox105" maxlength="32767" height="20px" tabindex="17" readonly="false" visible="true" id="textbox105" droppable="false" value="" name="Number of breaths in 30-sec EPOCH:" constraint="/((^[0]{1}$|^[-]?[1-9]{1}\d*$)|)/:Numeric whole value only" width="100px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <label class="label248" height="20px" visible="true" droppable="false" value="Minimum Apnea Length = 60/#breaths:" id="label248" width="195px" draggable="false">
+   
+</label>
+ <textbox class="textbox106" maxlength="32767" height="20px" tabindex="18" readonly="false" visible="true" id="textbox106" droppable="false" value="" name="Minimum Apnea Length = 60/#breaths:" constraint="/((^[0]{1}$|^[-]?[1-9]{1}\d*$)|)/:Numeric whole value only" width="100px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox116" maxlength="32767" height="20px" tabindex="16" readonly="false" visible="true" id="textbox116" droppable="false" value="" name="EPOCH Number used:" constraint="/((^[0]{1}$|^[-]?[1-9]{1}\d*$)|)/:Numeric whole value only" width="100px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+
+</div>
+ <div class="frame152" height="253px" visible="true" droppable="false" align="none" id="frame152" width="489px" draggable="false">
+    <label class="label249" height="20px" visible="true" droppable="false" value="POSTIVE AIRWAY PRESSURE" id="label249" width="225px" draggable="false">
+   
+</label>
+ <label class="label250" height="20px" visible="true" droppable="false" value="Patient was treated with:" id="label250" width="124px" draggable="false">
+   
+</label>
+ <textbox class="textbox107" maxlength="32767" height="66px" tabindex="10" readonly="false" visible="true" id="textbox107" rows="2"
+ cols="50" droppable="false" value="" name="textbox107"  width="185px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <label class="label251" height="23px" visible="true" droppable="false" value="Pressures:" id="label251" width="59px" draggable="false">
+   
+</label>
+ <textbox class="textbox108" maxlength="32767" height="66px" tabindex="9" readonly="false" visible="true" id="textbox108" rows="2"
+ cols="50" droppable="false" value="" name="Patient was treated with: "  width="185px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <label class="label252" height="22px" visible="true" droppable="false" value="Therapy for sleep apnea handout given to patient?" id="label252" width="246px" draggable="false">
+   
+</label>
+ <textbox class="textbox109" maxlength="32767" height="20px" tabindex="11" readonly="false" visible="true" id="textbox109" droppable="false" value="" name="Therapy for sleep apnea handout given to patient?"  width="100px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <label class="label253" height="20px" visible="true" droppable="false" value="Chin strap:" id="label253" width="57px" draggable="false">
+   
+</label>
+ <textbox class="textbox110" maxlength="32767" height="20px" tabindex="12" readonly="false" visible="true" id="textbox110" droppable="false" value="" name="Chin strap:"  width="100px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <label class="label254" height="20px" visible="true" droppable="false" value="Leak:" id="label254" width="37px" draggable="false">
+   
+</label>
+ <textbox class="textbox114" maxlength="32767" height="20px" tabindex="13" readonly="false" visible="true" id="textbox114" droppable="false" value="" name="Leak:"  width="100px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+
+</div>
+ <div class="frame156" height="344px" visible="true" droppable="false" align="none" id="frame156" width="490px" draggable="false">
+    <label class="label255" height="20px" visible="true" droppable="false" value="MEDICATIONS CONSUMED" id="label255" width="212px" draggable="false">
+   
+</label>
+ <listbox class="grid21" height="131px" multiple="False" visible="true" droppable="false" id="grid21" width="368px" draggable="false" fixedLayout= "true">
+    <listhead sizable="true" draggable="false" height="31px" visible="true" droppable="false" id="row64" width="366px">
+ <listheader label="Time" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="31px" visible="true" droppable="false" id="column332" width="100px">
+
+</listheader>
+ <listheader label="Name/Description" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="31px" visible="true" droppable="false" id="column333" width="184px">
+
+</listheader>
+ <listheader label="Dose" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="31px" visible="true" droppable="false" id="column334" width="99px">
+
+</listheader>
+
+</listhead>
+
+</listbox>
+ <label class="label259" height="22px" visible="true" droppable="false" value="General Comments:" id="label259" width="181px" draggable="false">
+   
+</label>
+ <textbox class="textbox115" maxlength="32767" height="104px" tabindex="15" readonly="false" visible="true" id="textbox115" rows="2"
+ cols="50" droppable="false" value="" name="textbox115"  width="365px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <button class="button154" height="30px" tabindex="14" visible="true" droppable="false" label="Add Medication Information" id="button154" width="163px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("TechnicianNoteForm");
+setDatapatternId("");
+storFormValue("formValue");
+createPopUp("MedicationForm");
+restorFormValue("formValue");
+showDataInGrid("grid21");
+]]></attribute>
+  
+</button>
+
+</div>
+
+</div>
+ <textbox class="textbox120" maxlength="32767" height="20px" tabindex="27" readonly="false" visible="true" id="textbox120" droppable="false" value="" name="textbox120"  width="73px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox121" maxlength="32767" height="20px" tabindex="28" readonly="false" visible="true" id="textbox121" droppable="false" value="time" name="textbox121"  width="57px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox122" maxlength="32767" height="20px" tabindex="29" readonly="false" visible="true" id="textbox122" droppable="false" value="name" name="textbox122"  width="33px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox123" maxlength="32767" height="20px" tabindex="30" readonly="false" visible="true" id="textbox123" droppable="false" value="dose" name="textbox123"  width="46px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox124" maxlength="32767" height="20px" tabindex="31" readonly="false" visible="true" id="textbox124" droppable="false" value="" name="textbox124"  width="44px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <combobox class="combobox32" draggable="false" tabindex="1" readonly="true" visible="true" droppable="false" text="" name="combobox32" id="combobox32" width="81px" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("TechnicianNoteForm");
+setDatapatternId("");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get ProcedureType.ProcedureId,ProcedureType.ProcedureName from neiswispicdb.ProcedureType");
+showComboData("combobox32");
+;
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("TechnicianNoteForm");
+setDatapatternId("");
+getComboItemId1("combobox32");
+editOnly("TechnicianNoteForm");
+String value = getComboBoxValue("combobox32");
+boolean isTrue = equalsTest(value,"Research");
+if(isTrue)
+{
+frame151.setVisible(true);
+}
+else
+{
+frame151.setVisible(false);
+};
+]]></attribute>
+  
+</combobox>
+ <label class="label263" height="21px" visible="true" droppable="false" value="Select Notes Type:" id="label263" width="102px" draggable="false">
+   
+</label>
+ <textbox class="textbox125" maxlength="32767" height="20px" tabindex="34" readonly="true" visible="true" id="textbox125" droppable="false" value="" name="textbox125"  width="52px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox126" maxlength="32767" height="20px" tabindex="35" readonly="false" visible="true" id="textbox126" droppable="false" value="" name="textbox126"  width="100px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <label class="label265" height="22px" visible="true" droppable="false" value="Note Id:" id="label265" width="57px" draggable="false">
+   
+</label>
+ <textbox class="textbox169" maxlength="32767" height="20px" tabindex="37" readonly="false" visible="true" id="textbox169" droppable="false" value="" name="textbox169"  width="40px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox170" maxlength="32767" height="20px" tabindex="38" readonly="false" visible="true" id="textbox170" droppable="false" value="" name="textbox170"  width="40px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox171" maxlength="32767" height="20px" tabindex="39" readonly="false" visible="true" id="textbox171" droppable="false" value="" name="textbox171"  width="40px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox172" maxlength="32767" height="20px" tabindex="40" readonly="false" visible="true" id="textbox172" droppable="false" value="" name="textbox172"  width="40px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox173" maxlength="32767" height="20px" tabindex="41" readonly="false" visible="true" id="textbox173" droppable="false" value="" name="textbox173"  width="40px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox174" maxlength="32767" height="20px" tabindex="42" readonly="false" visible="true" id="textbox174" droppable="false" value="" name="textbox174"  width="40px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox175" maxlength="32767" height="20px" tabindex="43" readonly="false" visible="true" id="textbox175" droppable="false" value="" name="textbox175"  width="40px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox176" maxlength="32767" height="20px" tabindex="44" readonly="false" visible="true" id="textbox176" droppable="false" value="" name="textbox176"  width="40px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+
+</div>
+ <div class="frame180" height="60px" visible="true" droppable="false" align="center" id="frame180" width="565px" draggable="false">
+    <button class="button188" height="35px" tabindex="19" visible="true" droppable="false" label="Edit Note" id="button188" width="106px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("TechnicianNoteForm");
+setDatapatternId("");
+editOnly("TechnicianNoteForm");
+button155.setVisible(true);
+button155.setLabel("Update");
+button188.setVisible(false);
+msg ="Patient Information has been updated.";
+;
+]]></attribute>
+  
+</button>
+ <button class="button155" height="35px" tabindex="20" visible="true" droppable="false" label="Save" id="button155" width="106px" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("TechnicianNoteForm");
+setDatapatternId("");
+boolean isSave=false;
+]]></attribute>
+<attribute name="onClick"><![CDATA[
+setFormPatternId("TechnicianNoteForm");
+setDatapatternId("");
+String retValue = invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","TechnicianNoteForm");
+if(retValue =="true")
+{
+saveForeignTable(grid21);
+isSave=true;
+message("Technician Notes has been saved successfully.");
+};
+]]></attribute>
+  
+</button>
+ <button class="button156" height="35px" tabindex="22" visible="true" droppable="false" label="Go Back" id="button156" width="106px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("TechnicianNoteForm");
+setDatapatternId("");
+updateSession("studyId",null);
+updateSession("scheduleId",null);
+updateSession("isNotes",null);
+setDataStatus("CreatePatient", "Patient", "neiswispicdb");
+]]></attribute>
+  
+</button>
+ <button class="button179" height="35px" tabindex="21" visible="true" droppable="false" label="Print Window" id="button179" width="106px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("TechnicianNoteForm");
+setDatapatternId("");
+if(isSave)
+{
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","TechNotePrint");
+}
+else
+{
+message("Please save information before printing note.");
+};
+]]></attribute>
+  
+</button>
+
+</div>
+
+</div>
+ <div class="frame153" height="522px" visible="true" droppable="false" align="none" id="frame153" width="212px" draggable="false">
+    <include class="placeholder55" draggable="false" height="114px" src="searchpanel.zul?formpattern=TechnicianNoteForm&amp;datapattern=" visible="true" droppable="false" id="placeholder55" width="202px">
+    
+</include>
+
+</div>
+ <div class="frame154" height="543px" visible="true" droppable="false" align="none" id="frame154" width="164px" draggable="false">
+    <include class="placeholder56" draggable="false" height="179px" src="Logo.zul?formpattern=TechnicianNoteForm&amp;datapattern=" visible="true" droppable="false" id="placeholder56" width="141px">
+    
+</include>
+
+</div>
+ <label class="label260" height="30px" visible="true" droppable="false" value="TECHNICIAN NOTE" id="label260" width="186px" draggable="false">
+   
+</label>
+
+</div>
+
+</window>
+</zk>
+

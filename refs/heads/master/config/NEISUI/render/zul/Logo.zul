@@ -1,0 +1,161 @@
+<zk>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="Logo"?>
+ <window height="70px" visible="true" droppable="false" id="Logo" title="" width="213px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:center;
+background-repeat:no-repeat;
+" >
+ 
+<custom-attributes formpattern="${param.formpattern}" datapattern="${param.datapattern}"/>
+  <imagemap draggable="false" height="51px" visible="true" src="img/picture13.jpg" droppable="false" id="picture13" width="213px" style="font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:center;
+background-repeat:no-repeat;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("Logo");
+setDatapatternId("");
+updateSession("oldWorkflowTitle",null);
+updateSession("workflowId",null);
+updateSession("workflowName",null);
+updateSession("editWorkflow",null);
+updateSession("lastname",null);
+updateSession("firstname",null);
+updateSession("dob",null);
+updateSession("mrn",null);
+updateSession("pateintassign",null);
+updateSession("roomType",null);
+updateSession("studyId",null);
+updateSession("roomassign",null);
+updateSession("Schedular",null);
+updateSessionList("dbListValue",null);
+updateSession("editroom",null);
+updateSession("CSVHEADER",null);
+String parentForm=getParentFormPattern("Logo");
+String updMsg = getSessionData("updatedMsg");
+values=session.getAttribute("formValues");
+String list=getSessionData("list");
+updateSession("userPatternId",null);
+updateSession("companyId",null);
+updateSessionList("fields",null);
+updateSessionList("privilege",null);
+updateSessionList("edit",null);
+updateSession("patientmrn",null);
+updateSession("workflowname", null);
+updateSession("nodename", null);
+updateSession("workstatus",null);
+updateSession("scheduleId", null);
+updateSession("workingarea", null);
+boolean result=false;
+if(list!=null)
+{
+result=equalsTest(list,"list");
+}
+if(result)
+{
+updateSession("rowId",null);
+setDataStatus("UserAuthenticated", "HomeForm", null);
+}
+else
+{
+addFormValues(values);
+String rowValue=getSessionData("rowId");
+if(rowValue!=null)
+{
+	if(updMsg == null)
+	{
+	  boolean isUpdated=false;
+		setFormPatternId(parentForm);
+		String val=messageLogoQuestion("Do you want to save changes to form?");
+		if(val=="yes")
+		{
+			result=equalsTest(parentForm,"Patient");
+			if(result)
+			{
+			setFormPatternId("PatientInfo");
+			isUpdated=clientSideValidationForLogo("PatientInfo");
+			if(isUpdated)
+			{
+			  String retValue=invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","Patient");
+			  setFormPatternId(parentForm);
+			}
+			}
+			result=equalsTest(parentForm,"userinfo");
+			if(result)
+			{
+			isUpdated=clientSideValidationForLogo("userinfo");
+			if(isUpdated)
+			{
+			invokeComponent("com.oxymedical.component.useradmin","addUserFromApplication","com.oxymedical.component.useradmin.UserAdminComponent","");
+			}
+			}
+                                    result=equalsTest(parentForm,"TechnicianNoteForm");
+			if(result)
+			{
+			isUpdated=clientSideValidationForLogo("TechnicianNoteForm");
+			if(isUpdated)
+			{
+			  String retValue=invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","TechnicianNoteForm");
+                                     obj=getComponentFromPage("TechnicianNoteForm","grid21");
+                                     saveForeignTable(obj);
+			}
+			}
+		  if(isUpdated)
+		  {
+			message("Changes made to form are saved.");
+			updateSession("rowId",null);
+			setDataStatus("UserAuthenticated", "HomeForm", null);
+		  }
+		}		
+		else if(val=="no")
+		{
+		updateSession("rowId",null);
+		setDataStatus("UserAuthenticated", "HomeForm", null);
+		}
+	}
+	else
+	{
+	updateSession("rowId",null);
+	setDataStatus("UserAuthenticated", "HomeForm", null);
+	}
+	
+}
+else
+{
+updateSession("rowId",null);
+setDataStatus("UserAuthenticated", "HomeForm", null);
+}
+};
+]]></attribute>
+  
+</imagemap>
+
+</window>
+</zk>
+

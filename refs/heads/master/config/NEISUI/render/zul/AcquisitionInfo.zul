@@ -1,0 +1,935 @@
+<zk>
+<style src="/css/AcquisitionInfo.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="AcquisitionInfo"?>
+ <window class="AcquisitionInfo" height="1014px" visible="true" droppable="false" id="AcquisitionInfo" title="" width="100%" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("AcquisitionInfo");
+setDatapatternId("");
+makeVisible("AcquisitionInfo");
+]]></attribute>
+  <tabbox class="multitab6" height="900px" width="565px" draggable="false" id="multitab6" droppable="false" tabscroll="false">
+ <tabs>
+   <tab  label="Reports" draggable="false" id="tabpage12" droppable="false">
+ 
+</tab>
+ <tab  label="PSG" draggable="false" id="tabpage13" droppable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AcquisitionInfo");
+setDatapatternId("");
+updateSession("studytype","PSG");
+String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.id,studytype.type,schedule.AppointmentStartDate,schedule.AppointmentStartTime,schedule.AppointmentEndDate,schedule.AppointmentEndTime,patientacquisition.AcquisitionFilePath from neiswispicdb.studytype,neiswispicdb.patientacquisition joins rightjoin patientacquisition.ScheduleID:=schedule.id conditions schedule.Cancelled:=["+0+"] and studytype.id:=schedule.StudyType and schedule.patientID:="+pid+" and studytype.id &gt;"+4+" and studytype.id &lt;"+16); 
+showListData(null,grid29);
+]]></attribute>
+
+</tab>
+ <tab  label="HD-EEG" draggable="false" id="tabpage28" droppable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AcquisitionInfo");
+setDatapatternId("");
+updateSession("studytype","HDEEG");
+String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.id,studytype.type,schedule.AppointmentStartDate,schedule.AppointmentStartTime,schedule.AppointmentEndDate,schedule.AppointmentEndTime,patientacquisition.AcquisitionFilePath,schedule.workingDirectory from neiswispicdb.studytype,neiswispicdb.patientacquisition joins rightjoin patientacquisition.ScheduleID:=schedule.id conditions schedule.Cancelled:=["+0+"] and studytype.id:=schedule.StudyType and schedule.patientID:="+pid+" and studytype.id &gt;"+13);
+showListData(null,grid30);
+]]></attribute>
+
+</tab>
+ <tab  label="PACS" draggable="false" id="tabpage27" droppable="false">
+ 
+</tab>
+</tabs>
+<tabpanels><tabpanel style="background-color:#FFFFFF;position:relative;" ><listbox class="grid146" height="268px" multiple="False" droppable="false" id="grid146" width="556px" draggable="false" fixedLayout= "true">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("AcquisitionInfo");
+setDatapatternId("");
+String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studytype.Type,studypatient.ReportPath,studypatient.ReportSigned,studypatient.UploadDate,studypatient.TechNote from neiswispicdb.studypatient,neiswispicdb.schedule joins leftjoin studypatient.PatientID:=Patient.ID,leftjoin schedule.StudyType:=studytype.ID conditions studypatient.ScheduleID:=schedule.ID and studypatient.PatientID:="+pid);
+displayDataInControl("grid146");
+;
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("AcquisitionInfo");
+setDatapatternId("");
+x=getRowData(0);
+updateSession("studyId",x);
+y=getRowData(8);
+updateSession("workingarea",y);
+]]></attribute>
+   <listhead sizable="true" draggable="false" height="30px" visible="true" droppable="false" id="row81" width="554px">
+ <listheader label="Study Id" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column153" width="62px">
+
+</listheader>
+ <listheader label="Study Type" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column94" width="66px">
+
+</listheader>
+ <listheader label="Study File Path" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column97" width="92px">
+
+</listheader>
+ <listheader label="Signature" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column483" width="56px">
+
+</listheader>
+ <listheader label="Date of Report Upload" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column908" width="82px">
+
+</listheader>
+ <listheader label="Technician Note" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column87" width="52px">
+
+</listheader>
+ <listheader label="Date of Study" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column88" width="47px">
+
+</listheader>
+ <listheader label="Sleep Technician" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column259" width="67px">
+
+</listheader>
+
+</listhead>
+
+</listbox>
+ <div class="frame174" height="95px" droppable="false" align="center" id="frame174" width="553px" draggable="false">
+    <button class="button102" height="30px" tabindex="10" visible="true" droppable="false" label="Export to EPIC" id="button102" width="120px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AcquisitionInfo");
+setDatapatternId("");
+String studyId=getSessionData("studyId");
+if(studyId!=null)
+{
+invokeComponent("com.oxymedical.component.HL7Component", "ExportToEpic", "com.oxymedical.component.HL7Component.HL7Component", studyId);
+message("Report exported to EPIC.");
+updateSession("studyId",null);
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studytype.Type,studypatient.ReportPath,studypatient.ReportSigned,studypatient.UploadDate,studypatient.TechNote from neiswispicdb.studypatient,neiswispicdb.schedule joins leftjoin studypatient.PatientID:=Patient.ID,leftjoin schedule.StudyType:=studytype.ID conditions studypatient.ScheduleID:=schedule.ID and studypatient.PatientID:="+pid);
+displayDataInControl("grid146");
+}
+else
+{
+message("Please select one record.");
+};
+]]></attribute>
+<custom-attributes accessrights ="SendReportToEpic" />
+  
+</button>
+ <button class="browse0" height="30px" width="120px" draggable="false" id="browse0" label="Import Report" droppable="false" visible="true">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AcquisitionInfo");
+setDatapatternId("");
+storFormValue("formValue");
+updateSession("isImporting","true");
+String pid = getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patient.firstname,patient.lastName from neiswispicdb.patient conditions patient.id:="+pid);
+String fname=getDataFromAllValuesVar(0, 0);
+updateSession("fname",fname);
+String lname=getDataFromAllValuesVar(0, 1);
+updateSession("lname",lname);
+updateSession("tnote","N");
+String sid=getSessionData("studyId");
+if(sid==null)
+{
+updateSession("nolisId",null);
+createPopUp("ShowAppointment");
+}
+else
+{
+String retval = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studypatient.ReportPath from neiswispicdb.studypatient conditions studypatient.ID:="+sid);
+String reportpath = null;
+if(retval=="true")
+{
+reportpath = getDataFromAllValuesVar(0, 1);
+}
+boolean isYes = false;
+if(reportpath!=null)
+{
+boolean isnull = checkValueWithOperator(reportpath,"null","EQUAL");
+if(!isnull)
+{
+isYes = messageWithQuestion("Report already exists. Are you sure you want to replace the report?");
+}
+if(isYes)
+{
+String found = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient1.ID,studypatient.ScheduleID,studypatient.TechNote from neiswispicdb.studypatient1,neiswispicdb.studypatient conditions studypatient.ID:=studypatient1.StudyID and studypatient1.StudyID:="+sid);
+if(found=="true")
+{
+String id = getDataFromAllValuesVar(0, 0);
+updateSession("nolisId", id);
+String schid = getDataFromAllValuesVar(0, 1);
+updateSession("scheduleId", schid);
+String tnote = getDataFromAllValuesVar(0, 2);
+updateSession("tnote",tnote);
+}
+else
+{
+String found = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient2.ID,studypatient.ScheduleID,studypatient.TechNote from neiswispicdb.studypatient2,neiswispicdb.studypatient conditions studypatient.ID:=studypatient1.StudyID and studypatient2.StudyID:="+sid);
+if(found=="true")
+{
+String id = getDataFromAllValuesVar(0, 0);
+updateSession("nolisId", id);
+String schid = getDataFromAllValuesVar(0, 1);
+updateSession("scheduleId", schid);
+String tnote = getDataFromAllValuesVar(0, 2);
+updateSession("tnote",tnote);
+}
+}
+}
+}
+else
+{
+String found = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ScheduleID,studypatient.TechNote from neiswispicdb.studypatient conditions studypatient.ID:="+sid);
+if(found=="true")
+{
+updateSession("nolisId", null);
+String schid = getDataFromAllValuesVar(0, 0);
+updateSession("scheduleId", schid);
+String tnote = getDataFromAllValuesVar(0, 1);
+updateSession("tnote",tnote);
+isYes = true;
+}
+}
+if(isYes)
+{
+String filePath=uploadFile("browse0");
+if(filePath!=null)
+{
+String retValue = invokeComponent("com.oxymedical.component.SleepWareComponent","extractfields",
+"com.oxymedical.component.sleepwarecomponent.SleepWareComponent",filePath);
+if(retValue == "false")
+{
+displayErrorMessageFromComponent("");
+}
+}
+}
+updateSession("studyId",null);
+updateSession("isImporting",null);
+}
+
+String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studytype.Type,studypatient.ReportPath,studypatient.ReportSigned,studypatient.UploadDate,studypatient.TechNote from neiswispicdb.studypatient,neiswispicdb.schedule joins leftjoin studypatient.PatientID:=Patient.ID,leftjoin schedule.StudyType:=studytype.ID conditions studypatient.ScheduleID:=schedule.ID and studypatient.PatientID:="+pid);
+displayDataInControl("grid146");
+restorFormValue("formValue");
+]]></attribute>
+<custom-attributes accessrights ="Import Report" />
+  
+</button>
+ <button class="button192" height="30px" tabindex="10" visible="true" droppable="false" label="Attach Signature" id="button192" width="120px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AcquisitionInfo");
+setDatapatternId("");
+String studyId=getSessionData("studyId");
+if(studyId!=null)
+{
+userId = getSessionData("userId");
+String ret = invokeComponent("com.oxymedical.component.signature.SignatureComponent","AttachElectronicSignature","com.oxymedical.component.signature.SignatureComponent","default;" + userId + ";" + studyId);
+boolean success = checkValueWithOperator(ret, "true", "EQUAL");
+if (success)
+{
+message("Signature attached successfully to report.");
+updateSession("studyId", null);
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studytype.Type,studypatient.ReportPath,studypatient.ReportSigned,studypatient.UploadDate,studypatient.TechNote from neiswispicdb.studypatient,neiswispicdb.schedule joins leftjoin studypatient.PatientID:=Patient.ID,leftjoin schedule.StudyType:=studytype.ID conditions studypatient.ScheduleID:=schedule.ID and studypatient.PatientID:="+pid);
+displayDataInControl("grid146");
+}
+else
+{
+message("There was an error while attaching signature to selected report. Please contact administrator.");
+}
+}
+else
+{
+message("Please select one record.");
+};
+]]></attribute>
+<custom-attributes accessrights ="Attach Signature" />
+  
+</button>
+ <button class="button163" height="30px" tabindex="11" visible="true" droppable="false" label="Import Patient Photos" id="button163" width="153px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AcquisitionInfo");
+setDatapatternId("");
+storFormValue("formValue");
+String studyId=getSessionData("studyId");
+if(studyId!=null)
+{
+updateSession("uploadphoto","true");
+createPopUp("PhotoAlbum");
+String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studytype.Type,studypatient.ReportPath,studypatient.ReportSigned,studypatient.UploadDate,studypatient.TechNote from neiswispicdb.studypatient,neiswispicdb.schedule joins leftjoin studypatient.PatientID:=Patient.ID,leftjoin schedule.StudyType:=studytype.ID conditions studypatient.ScheduleID:=schedule.ID and studypatient.PatientID:="+pid);
+displayDataInControl("grid146");
+}
+else
+{
+message("Please select one record.");
+}
+restorFormValue("formValue");
+]]></attribute>
+<custom-attributes accessrights ="Import patient Photos" />
+  
+</button>
+ <button class="button194" height="30px" tabindex="13" visible="true" droppable="false" label="View Report" id="button194" width="120px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AcquisitionInfo");
+setDatapatternId("");
+String sid = getSessionData("studyId");
+if(sid!=null)
+{
+String found = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studypatient.ReportPath from neiswispicdb.studypatient conditions studypatient.ID:="+sid);
+if(found=="true")
+{
+String filepath = getDataFromAllValuesVar(0, 1);
+if(filepath!=null)
+{
+boolean ok = showFileDownload(filepath);
+String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studytype.Type,studypatient.ReportPath,studypatient.ReportSigned,studypatient.UploadDate,studypatient.TechNote from neiswispicdb.studypatient,neiswispicdb.schedule joins leftjoin studypatient.PatientID:=Patient.ID,leftjoin schedule.StudyType:=studytype.ID conditions studypatient.ScheduleID:=schedule.ID and studypatient.PatientID:="+pid);
+displayDataInControl("grid146");
+}
+else
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studytype.Type,studypatient.ReportPath,studypatient.ReportSigned,studypatient.UploadDate,studypatient.TechNote from neiswispicdb.studypatient,neiswispicdb.schedule joins leftjoin studypatient.PatientID:=Patient.ID,leftjoin schedule.StudyType:=studytype.ID conditions studypatient.ScheduleID:=schedule.ID and studypatient.PatientID:="+pid);
+displayDataInControl("grid146");
+message("No report found.");
+}
+}
+updateSession("studyId", null);
+}
+else
+{
+message("Please select one record.");
+};
+]]></attribute>
+  
+</button>
+ <button class="button185" height="30px" tabindex="12" visible="true" droppable="false" label="Remove Report" id="button185" width="120px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AcquisitionInfo");
+setDatapatternId("");
+String sid = getSessionData("studyId");
+if(sid!=null)
+{
+String retval = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studypatient.ReportPath from neiswispicdb.studypatient conditions studypatient.ID:="+sid);
+String reportpath = null;
+if(retval=="true")
+{
+reportpath = getDataFromAllValuesVar(0, 1);
+}
+if(reportpath!=null)
+{
+boolean isYes =messageWithQuestion("Are you sure you wish to delete patient report?");
+if(isYes)
+{
+ invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient1.StudyID from neiswispicdb.studypatient1 conditions studypatient1.StudyID:="+sid);
+boolean found=isRecordExist();
+if(found)
+{
+String deleted = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","delete from neiswispicdb.studypatient1 conditions studyid:="+sid);
+}
+else
+{
+String deleted = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","delete from neiswispicdb.studypatient2 conditions studyid:="+sid);
+}
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get techniciannote.id from neiswispicdb.techniciannote conditions techniciannote.studyId:="+sid );
+boolean isTechNote = isRecordExist();
+String retValue = null;
+if(isTechNote)
+{
+String empty = null;
+retValue = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","update neiswispicdb.studypatient set ReportPath:="+empty+",ReportSigned:="+empty+",ReportType:="+empty+",UploadDate:="+empty+" conditions studypatient.id:="+sid);
+}
+else
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientalbum.photoid from neiswispicdb.patientalbum conditions patientalbum.studyId:="+sid );
+boolean isAlbum = isRecordExist();
+if(isAlbum)
+{
+boolean removeAlbum =messageWithQuestion("There are photos in the album for this study. Deleting patient report will delete them. Are you sure you wish to continue?");
+if(removeAlbum)
+{
+invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","delete from neiswispicdb.patientalbum conditions studyid:="+sid);
+retValue = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","delete from neiswispicdb.studypatient conditions id:="+sid);
+}
+}
+else
+{
+retValue = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","delete from neiswispicdb.studypatient conditions id:="+sid);
+}
+}
+updateSession("studyId", null);
+if(retValue == "true")
+{
+message("Deleted patient report.");
+String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studytype.Type,studypatient.ReportPath,studypatient.ReportSigned,studypatient.UploadDate,studypatient.TechNote from neiswispicdb.studypatient,neiswispicdb.schedule joins leftjoin studypatient.PatientID:=Patient.ID,leftjoin schedule.StudyType:=studytype.ID conditions studypatient.ScheduleID:=schedule.ID and studypatient.PatientID:="+pid);
+displayDataInControl("grid146");
+}
+}
+else
+{
+updateSession("studyId", null);
+String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studytype.Type,studypatient.ReportPath,studypatient.ReportSigned,studypatient.UploadDate,studypatient.TechNote from neiswispicdb.studypatient,neiswispicdb.schedule joins leftjoin studypatient.PatientID:=Patient.ID,leftjoin schedule.StudyType:=studytype.ID conditions studypatient.ScheduleID:=schedule.ID and studypatient.PatientID:="+pid);
+displayDataInControl("grid146");
+}
+}
+else
+{
+message("No report found.");
+}
+}
+else
+{
+message("Please select one record.");
+};
+]]></attribute>
+<custom-attributes accessrights ="Remove Report" />
+  
+</button>
+
+</div>
+ <div class="frame175" height="68px" droppable="false" align="center" id="frame175" width="511px" draggable="false">
+    <button class="button195" height="30px" tabindex="0" visible="true" droppable="false" label="Create Technician Note" id="button195" width="187px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AcquisitionInfo");
+setDatapatternId("");
+storFormValue("formValue");
+String sid = getSessionData("studyId");
+boolean isYes = true;
+if(sid==null)
+{
+isYes = messageWithQuestion("You have not selected any study record. Are you sure you want to create new study record for this technician note?");
+if(isYes)
+{
+updateSession("isNotes", "true");
+createPopUp("ShowAppointment");
+String note = getSessionData("isNotes");
+if(note!=null)
+{
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","TechnicianNoteForm");
+}
+}
+}
+else
+{
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","TechnicianNoteForm");
+}
+restorFormValue("formValue");
+]]></attribute>
+<custom-attributes accessrights ="CreateTechinicanNote" />
+  
+</button>
+ <button class="button196" height="30px" tabindex="8" visible="true" droppable="false" label="View Technician Note" id="button196" width="165px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AcquisitionInfo");
+setDatapatternId("");
+String sid = getSessionData("studyId");
+if(sid !=null)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get techniciannote.id from neiswispicdb.techniciannote conditions techniciannote.studyId:="+sid );
+boolean isYes = isRecordExist();
+if(isYes)
+{
+updateSession("ViewNote","yes");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","TechnicianNoteForm");}
+else
+{
+	message("Technician Note is not available for this study.");
+}
+}
+else
+{
+message("Please select study report.");
+};
+]]></attribute>
+<custom-attributes accessrights ="ViewTechinicanNote" />
+  
+</button>
+ <button class="button204" height="30px" tabindex="9" visible="true" droppable="false" label="Remove Technician Note" id="button204" width="180px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AcquisitionInfo");
+setDatapatternId("");
+String sid = getSessionData("studyId");
+if(sid !=null)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get techniciannote.id from neiswispicdb.techniciannote conditions techniciannote.studyId:="+sid );
+boolean isYes = isRecordExist();
+if(isYes)
+{
+boolean remove = messageWithQuestion("Are you sure you wish to delete techinician note for this study?");
+if(remove)
+{
+String deleted = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","delete from neiswispicdb.techniciannote conditions studyid:="+sid);
+String retval = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studypatient.ReportPath from neiswispicdb.studypatient conditions studypatient.ID:="+sid);
+String reportpath = null;
+String retValue = null;
+if(retval=="true")
+{
+reportpath = getDataFromAllValuesVar(0, 1);
+}
+if(reportpath!=null)
+{
+retValue = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","update neiswispicdb.studypatient set TechNote:="+"N"+" conditions studypatient.id:="+sid);
+}
+else
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientalbum.photoid from neiswispicdb.patientalbum conditions patientalbum.studyId:="+sid );
+boolean isAlbum = isRecordExist();
+if(isAlbum)
+{
+boolean removeAlbum =messageWithQuestion("There are photos in the album for this study. Deleting technician note will delete them. Are you sure you wish to continue?");
+if(removeAlbum)
+{
+invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","delete from neiswispicdb.patientalbum conditions studyid:="+sid);
+retValue = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","delete from neiswispicdb.studypatient conditions id:="+sid);
+}
+}
+else
+{
+retValue = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","delete from neiswispicdb.studypatient conditions id:="+sid);
+}
+}
+updateSession("studyId", null);
+if(retValue == "true")
+{
+message("Deleted technician note.");
+String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studytype.Type,studypatient.ReportPath,studypatient.ReportSigned,studypatient.UploadDate,studypatient.TechNote from neiswispicdb.studypatient,neiswispicdb.schedule joins leftjoin studypatient.PatientID:=Patient.ID,leftjoin schedule.StudyType:=studytype.ID conditions studypatient.ScheduleID:=schedule.ID and studypatient.PatientID:="+pid);
+displayDataInControl("grid146");
+}
+else
+{
+String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studytype.Type,studypatient.ReportPath,studypatient.ReportSigned,studypatient.UploadDate,studypatient.TechNote from neiswispicdb.studypatient,neiswispicdb.schedule joins leftjoin studypatient.PatientID:=Patient.ID,leftjoin schedule.StudyType:=studytype.ID conditions studypatient.ScheduleID:=schedule.ID and studypatient.PatientID:="+pid);
+displayDataInControl("grid146");
+}
+}
+else
+{
+String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studypatient.ID,studytype.Type,studypatient.ReportPath,studypatient.ReportSigned,studypatient.UploadDate,studypatient.TechNote from neiswispicdb.studypatient,neiswispicdb.schedule joins leftjoin studypatient.PatientID:=Patient.ID,leftjoin schedule.StudyType:=studytype.ID conditions studypatient.ScheduleID:=schedule.ID and studypatient.PatientID:="+pid);
+displayDataInControl("grid146");
+}
+}
+else
+{
+message("No technician note found.");
+}
+}
+else
+{
+message("Please select study report.");
+};
+]]></attribute>
+<custom-attributes accessrights ="Remove Technician Report" />
+  
+</button>
+
+</div></tabpanel><tabpanel style="background-color:#FFFFFF;position:relative;" ><applet class="applet2" name="NOLIS EDF Generator" height="150px" archive="applet/SSignedApplet.jar" droppable="false" code="ExportToEDFApplet.class" id="applet2" width="500px" draggable="false">
+ <custom-attributes accessrights ="ConvertAcquisitionToEuropeanDataManagement" />
+  
+</applet>
+ <div class="frame193" height="54px" droppable="false" align="center" id="frame193" width="554px" draggable="false">
+    <button class="button42" height="30px" tabindex="0" visible="true" droppable="false" label="Add Acquisition" id="button42" width="139px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AcquisitionInfo");
+setDatapatternId("");
+storFormValue("formValue");
+String pid=getSessionData("rowId");
+if(pid!=null)
+{
+String sid=getSessionData("scheduleId");
+if(sid!=null)
+{
+String acqfilepath = getSessionData("acuisitionpath");
+if(acqfilepath==null)
+{
+createPopUp("FileBrowse");
+restorFormValue("formValue");
+String file = getSessionData("filePath");
+if(file!=null)
+{
+String type = getSessionData("studytype");
+String retVal = invokeComponent("storage.comp","StoreDataToStorage","com.oxymedical.component.storage.StorageComponent",sid+"_SEP_"+file+"_SEP_"+type);
+if(retVal == "false")
+{
+updateSession("scheduleId",null);
+updateSession("filePath",null);
+displayErrorMessageFromComponent("");
+}
+else
+{
+updateSession("scheduleId",null);
+updateSession("filePath",null);
+}
+}
+else
+{
+message("No file selected.");
+}
+}
+else
+{
+message("Acquisition exists for this record.");
+}
+}
+else
+{
+message("Please select a record.");
+}
+}
+restorFormValue("formValue");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.id,studytype.type,schedule.AppointmentStartDate,schedule.AppointmentStartTime,schedule.AppointmentEndDate,schedule.AppointmentEndTime,patientacquisition.AcquisitionFilePath from neiswispicdb.studytype,neiswispicdb.patientacquisition joins rightjoin patientacquisition.ScheduleID:=schedule.id conditions schedule.Cancelled:=["+0+"] and studytype.id:=schedule.StudyType and schedule.patientID:="+pid+" and studytype.id &gt;"+4+" and studytype.id &lt;"+16); 
+showListData(null,grid29);
+]]></attribute>
+  
+</button>
+ <button class="button212" height="30px" tabindex="1" visible="true" droppable="false" label="Retrieve Acquisition" id="button212" width="195px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AcquisitionInfo");
+setDatapatternId("");
+storFormValue("formValue");
+String pid=getSessionData("rowId");
+if(pid!=null)
+{
+String sid=getSessionData("scheduleId");
+if(sid!=null)
+{
+String acqfilepath = getSessionData("acuisitionpath");
+if(acqfilepath!=null)
+{
+createPopUp("FileBrowse");
+String file = getSessionData("filePath");
+restorFormValue("formValue");
+if(file!=null)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientacquisition.ID,patientacquisition.scheduleid from neiswispicdb.patientacquisition conditions patientacquisition.scheduleid:="+sid);
+String acqid = getDataFromAllValuesVar(0, 0);
+String retVal = invokeComponent("storage.comp","RetrieveDataFromStorage","com.oxymedical.component.storage.StorageComponent",acqid+"_SEP_"+file);
+if(retVal == "false")
+{
+updateSession("scheduleId",null);	
+updateSession("filePath",null);
+displayErrorMessageFromComponent("");
+}
+else
+{
+updateSession("scheduleId",null);
+updateSession("filePath",null);
+}
+}
+else
+{
+message("No file selected.");
+}
+}
+else
+{
+message("There is no acquisition for this record.");
+}
+}
+else
+{
+message("Please select a record.");
+}
+}
+restorFormValue("formValue");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.id,studytype.type,schedule.AppointmentStartDate,schedule.AppointmentStartTime,schedule.AppointmentEndDate,schedule.AppointmentEndTime,patientacquisition.AcquisitionFilePath from neiswispicdb.studytype,neiswispicdb.patientacquisition joins rightjoin patientacquisition.ScheduleID:=schedule.id conditions schedule.Cancelled:=["+0+"] and studytype.id:=schedule.StudyType and schedule.patientID:="+pid+" and studytype.id &gt;"+4+" and studytype.id &lt;"+16); 
+showListData(null,grid29);
+]]></attribute>
+  
+</button>
+
+</div>
+ <listbox class="grid29" height="327px" multiple="False" droppable="false" id="grid29" width="548px" draggable="false" fixedLayout= "true">
+ <attribute name="onSelect"><![CDATA[
+setFormPatternId("AcquisitionInfo");
+setDatapatternId("");
+String sid=getRowData(0);
+updateSession("scheduleId",sid);
+String acuisitionpath=getRowData(6);
+updateSession("acuisitionpath",acuisitionpath);
+;
+]]></attribute>
+   <listhead sizable="true" draggable="false" height="30px" visible="true" droppable="false" id="row45" width="548px">
+ <listheader label="Identifier" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column108" width="76px">
+
+</listheader>
+ <listheader label="Study-Type" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column109" width="76px">
+
+</listheader>
+ <listheader label="Start-Date" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column110" width="76px">
+
+</listheader>
+ <listheader label="Start-time" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column111" width="76px">
+
+</listheader>
+ <listheader label="End-Date" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column112" width="76px">
+
+</listheader>
+ <listheader label="End-time" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column113" width="76px">
+
+</listheader>
+ <listheader label="Acquisition" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column115" width="101px">
+
+</listheader>
+
+</listhead>
+
+</listbox></tabpanel><tabpanel style="background-color:#FFFFFF;position:relative;" ><div class="frame201" height="58px" droppable="false" align="center" id="frame201" width="554px" draggable="false">
+    <button class="button235" height="30px" tabindex="12" visible="true" droppable="false" label="Select Workflow" id="button235" width="136px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AcquisitionInfo");
+setDatapatternId("");
+id = getSessionData("rowId");
+if(id!=null)
+{
+String scid=getSessionData("scheduleId");
+if(scid!=null)
+{
+String workingarea=getSessionData("workingarea");
+if(workingarea!=null)
+{
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","listOfAvailableWorkflow");
+}
+else
+{
+message("No working area present for this record.");
+}
+}
+else
+{
+message("Please select a record.");
+}
+}
+;
+]]></attribute>
+  
+</button>
+ <button class="button213" height="30px" tabindex="8" visible="true" droppable="false" label="Retrieve Acquisition" id="button213" width="145px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AcquisitionInfo");
+setDatapatternId("");
+storFormValue("formValue");
+String pid=getSessionData("rowId");
+if(pid!=null)
+{
+String sid=getSessionData("scheduleId");
+if(sid!=null)
+{
+String acqfilepath = getSessionData("acuisitionpath");
+if(acqfilepath!=null)
+{
+createPopUp("FileBrowse");
+restorFormValue("formValue");
+String file = getSessionData("filePath");
+if(file!=null)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientacquisition.ID,patientacquisition.scheduleid from neiswispicdb.patientacquisition conditions patientacquisition.scheduleid:="+sid);
+String acqid = getDataFromAllValuesVar(0, 0);
+String retVal = invokeComponent("storage.comp","RetrieveDataFromStorage","com.oxymedical.component.storage.StorageComponent",acqid+"_SEP_"+file);
+if(retVal == "false")
+{
+updateSession("scheduleId",null);	
+updateSession("filePath",null);
+displayErrorMessageFromComponent("");
+}
+else
+{
+updateSession("scheduleId",null);
+updateSession("filePath",null);
+}
+}
+else
+{
+message("No file selected.");
+}
+}
+else
+{
+message("There is no acquisition for this record.");
+}
+}
+else
+{
+message("Please select a record.");
+}
+}
+restorFormValue("formValue");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.id,studytype.type,schedule.AppointmentStartDate,schedule.AppointmentStartTime,schedule.AppointmentEndDate,schedule.AppointmentEndTime,patientacquisition.AcquisitionFilePath,schedule.workingDirectory from neiswispicdb.studytype,neiswispicdb.patientacquisition joins rightjoin patientacquisition.ScheduleID:=schedule.id conditions schedule.Cancelled:=["+0+"] and studytype.id:=schedule.StudyType and schedule.patientID:="+pid+" and studytype.id >"+13);
+showListData(null,grid30);
+]]></attribute>
+  
+</button>
+ <button class="button180" height="30px" tabindex="0" visible="true" droppable="false" label="Add Acquisition" id="button180" width="118px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AcquisitionInfo");
+setDatapatternId("");
+setFormPatternId("Patient");
+setDatapatternId("");
+storFormValue("formValue");
+String pid=getSessionData("rowId");
+if(pid!=null)
+{
+String sid=getSessionData("scheduleId");
+if(sid!=null)
+{
+String acqfilepath = getSessionData("acuisitionpath");
+if(acqfilepath==null)
+{
+createPopUp("FileBrowse");
+String file = getSessionData("filePath");
+restorFormValue("formValue");
+if(file!=null)
+{
+String type = getSessionData("studytype");
+String retVal = invokeComponent("storage.comp","StoreDataToStorage","com.oxymedical.component.storage.StorageComponent",sid+"_SEP_"+file+"_SEP_"+type);
+if(retVal == "false")
+{
+updateSession("scheduleId",null);
+updateSession("filePath",null);
+displayErrorMessageFromComponent("");
+}
+else
+{
+updateSession("scheduleId",null);
+updateSession("filePath",null);
+}
+}
+else
+{
+message("No file selected.");
+}
+}
+else
+{
+message("Acquisition exists for this record.");
+}
+}
+else
+{
+message("Please select a record.");
+}
+}
+restorFormValue("formValue");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.id,studytype.type,schedule.AppointmentStartDate,schedule.AppointmentStartTime,schedule.AppointmentEndDate,schedule.AppointmentEndTime,patientacquisition.AcquisitionFilePath,schedule.workingDirectory from neiswispicdb.studytype,neiswispicdb.patientacquisition joins rightjoin patientacquisition.ScheduleID:=schedule.id conditions schedule.Cancelled:=["+0+"] and studytype.id:=schedule.StudyType and schedule.patientID:="+pid+" and studytype.id >"+13);
+showListData(null,grid30);
+]]></attribute>
+  
+</button>
+ <button class="button237" height="30px" tabindex="13" visible="true" droppable="false" label="Set Working Directory" id="button237" width="150px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AcquisitionInfo");
+setDatapatternId("");
+String scid=getSessionData("scheduleId");
+			storFormValue("formValue");
+if(scid!=null)
+{
+createPopUp("workingDirectory");
+updateSession("scheduleId",null);
+String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.id,studytype.type,schedule.AppointmentStartDate,schedule.AppointmentStartTime,schedule.AppointmentEndDate,schedule.AppointmentEndTime,patientacquisition.AcquisitionFilePath,schedule.workingDirectory from neiswispicdb.studytype,neiswispicdb.patientacquisition joins rightjoin patientacquisition.ScheduleID:=schedule.id conditions schedule.Cancelled:=["+0+"] and studytype.id:=schedule.StudyType and schedule.patientID:="+pid+" and studytype.id &gt;"+13);
+restorFormValue("formValue");
+showListData(null,grid30);
+}
+else
+{
+message("Please select one record.");
+};
+]]></attribute>
+  
+</button>
+
+</div>
+ <listbox class="grid30" height="326px" multiple="False" droppable="false" id="grid30" width="553px" draggable="false" fixedLayout= "true">
+ <attribute name="onSelect"><![CDATA[
+setFormPatternId("AcquisitionInfo");
+setDatapatternId("");
+String sid=getRowData(0);
+updateSession("scheduleId",sid);
+String acuisitionpath=getRowData(6);
+updateSession("acuisitionpath",acuisitionpath);
+String workingarea =getRowData(7);
+updateSession("workingarea",workingarea);
+]]></attribute>
+   <listhead sizable="true" draggable="false" height="30px" visible="true" droppable="false" id="row276" width="553px">
+ <listheader label="Identifier" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column806" width="50px">
+
+</listheader>
+ <listheader label="Study-type" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column807" width="75px">
+
+</listheader>
+ <listheader label="Start-date" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column808" width="75px">
+
+</listheader>
+ <listheader label="Start-time" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column809" width="75px">
+
+</listheader>
+ <listheader label="End-date" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column810" width="75px">
+
+</listheader>
+ <listheader label="End-time" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column811" width="60px">
+
+</listheader>
+ <listheader label="Acquisition" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column812" width="90px">
+
+</listheader>
+ <listheader label="Working area" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column880" width="50px">
+
+</listheader>
+
+</listhead>
+
+</listbox></tabpanel><tabpanel style="background-color:#FFFFFF;position:relative;" ><div class="frame237" height="63px" droppable="false" align="none" id="frame237" width="524px" draggable="false">
+    <button class="button252" height="30px" tabindex="0" visible="true" droppable="false" label="Retrieve Study List" id="button252" width="142px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AcquisitionInfo");
+setDatapatternId("");
+String patientId = getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patient.DateOfBirth from neiswispicdb.patient conditions patient.ID:="+patientId);
+String dob = getDataFromAllValuesVar(0, 0);
+addFormValue("dateOfBirth", dob);
+invokeComponent("pacsComponent","getStudyListfromPACS","com.oxymedical.component.pacs.PACSComponent","");
+displayDataInControl("grid39");
+]]></attribute>
+  
+</button>
+ <button class="button253" height="30px" tabindex="8" visible="true" droppable="false" label="Select Workflow" id="button253" width="128px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AcquisitionInfo");
+setDatapatternId("");
+updateSession("workingarea", "c:/");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","listOfAvailableWorkflow");
+]]></attribute>
+  
+</button>
+
+</div>
+ <div class="frame257" height="185px" droppable="false" align="none" id="frame257" width="524px" draggable="false">
+    <listbox class="grid39" height="173px" multiple="False" visible="true" droppable="false" id="grid39" width="510px" draggable="false" fixedLayout= "true">
+ <attribute name="onSelect"><![CDATA[
+setFormPatternId("AcquisitionInfo");
+setDatapatternId("");
+String studyId = getRowData(0);
+addFormValue("studyId", studyId);
+updateSession("scheduleId",studyId);
+]]></attribute>
+   <listhead sizable="true" draggable="false" height="30px" visible="true" droppable="false" id="row55" width="510px">
+ <listheader label="Study Id" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column155" width="130px">
+
+</listheader>
+ <listheader label="Date" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column156" width="125px">
+
+</listheader>
+ <listheader label="Series Id" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column158" width="125px">
+
+</listheader>
+ <listheader label="No of Files" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column159" width="130px">
+
+</listheader>
+
+</listhead>
+
+</listbox>
+
+</div></tabpanel></tabpanels>
+</tabbox>
+
+
+</window>
+</zk>
+

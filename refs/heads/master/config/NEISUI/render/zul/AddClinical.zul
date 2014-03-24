@@ -1,0 +1,175 @@
+<zk>
+<style src="/css/AddClinical.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="AddClinical"?>
+ <window class="AddClinical" height="1092px" visible="true" droppable="false" id="AddClinical" title="" width="100%" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("AddClinical");
+setDatapatternId("");
+makeVisible("AddClinical");
+]]></attribute>
+  <hbox class="frame10" height="1070px" visible="true" droppable="false" align="none" id="frame10" width="950px" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("AddClinical");
+setDatapatternId("");
+String val="";
+	  textbox15.setVisible(false);
+	                            setLabelValue("textbox102");
+								setLabelValue("combobox8");                              
+							   editOnly=getSessionData("edit");
+							   if(editOnly=="true")
+							   {
+							   addFormValue("textbox102","test");
+							   textbox102.setVisible(false);
+							   label62.setVisible(false);							   
+							   }
+							   else
+							   {
+							   addFormValue("combobox8","test");							   
+							    label34.setVisible(false);
+								combobox8.setVisible(false);							    
+							   }
+
+;
+]]></attribute>
+   <div class="frame250" height="1060px" visible="true" droppable="false" align="none" id="frame250" width="175px" draggable="false">
+    <include class="placeholder18" draggable="false" height="200px" src="searchpanel.zul?formpattern=AddClinical&amp;datapattern=" visible="true" droppable="false" id="placeholder18" width="175px">
+    
+</include>
+
+</div>
+ <vbox class="frame16" height="1060px" visible="true" droppable="false" align="none" id="frame16" width="572px" draggable="false">
+ <custom-attributes accessrights ="AddClincain,Edit/ModifyClincianList" />
+   <tabbox class="multitab5" height="1060px" width="572px" draggable="false" id="multitab5" droppable="false" tabscroll="false">
+ <tabs>
+   <tab  label="Clinician" draggable="false" id="tabpage17" droppable="false">
+ 
+</tab>
+</tabs>
+<tabpanels><tabpanel style="background-color:#D8E4F8;position:relative;" ><div class="frame111" height="50px" droppable="false" align="center" id="frame111" width="560px" draggable="false">
+    <button class="button58" height="30px" tabindex="1" visible="true" droppable="false" label="Next" id="button58" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AddClinical");
+setDatapatternId("");
+editOnly=getSessionData("edit");
+ if(editOnly=="true")
+ {
+valid=clientSideValidation("AddClinical");
+if(valid)
+{
+updateSession("userPatternId",val);
+updateSession("companyId",textbox15.value);
+setDataStatus("CreateFields", "AddUserFields", "useradmin");
+}
+}
+else{
+invokeComponent("com.oxymedical.component.useradmin","executeListUserAdmin","com.oxymedical.component.useradmin.UserAdminComponent","get userpatterns.userPatternId,userpatterns.companyId from useradmin.userpatterns conditions userpatterns.userPatternId:=["+textbox102.value+"]");
+retVal=isRecordExist();
+if(!retVal)
+{
+valid=clientSideValidation("AddClinical");
+if(valid)
+{
+updateSession("userPatternId",textbox102.value);
+updateSession("companyId",textbox15.value);
+setDataStatus("CreateFields", "AddUserFields", "useradmin");
+}
+}
+else
+{
+message("The clinician with this name is already exist. Please choose another name.");
+textbox102.value="";
+textArgs=createArray("String","textbox102");
+setErrorColor(textArgs);
+}
+};
+]]></attribute>
+  
+</button>
+ <button class="button15" height="30px" tabindex="2" visible="true" droppable="false" label="Cancel" id="button15" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AddClinical");
+setDatapatternId("");
+updateSession("userPatternId",null);
+updateSession("companyId",null);
+updateSessionList("fields",null);
+updateSessionList("privilege",null);
+updateSessionList("edit",null);
+setDataStatus("UserAuthenticated", "HomeForm", null);
+;
+]]></attribute>
+  
+</button>
+
+</div>
+ <div class="frame18" height="964px" droppable="false" align="none" id="frame18" width="572px" draggable="false">
+    <label class="label62" height="20px" visible="true" droppable="false" value="Clinical Group:" id="label62" width="119px" draggable="false">
+   
+</label>
+ <textbox class="textbox102" maxlength="32767" height="20px" tabindex="8" readonly="false" visible="true" id="textbox102" droppable="false" value="" name="Clinical Group:"  draggable="false" width="201px" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox15" maxlength="32767" height="20px" tabindex="9" readonly="false" visible="true" id="textbox15" droppable="false" value="EGI" name="textbox15"  width="100px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <label class="label34" height="20px" visible="true" droppable="false" value="Select Name Of Clincian:" id="label34" width="136px" draggable="false">
+   
+</label>
+ <combobox class="combobox8" tabindex="11" readonly="true" visible="true" droppable="false" text="combobox0" name="Select Name Of Clincian:" id="combobox8" draggable="false" width="128px" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("AddClinical");
+setDatapatternId("");
+invokeComponent("com.oxymedical.component.useradmin","executeListUserAdmin","com.oxymedical.component.useradmin.UserAdminComponent","get userpatterns.userPatternId,userpatterns.userPatternId from useradmin.userpatterns");
+showComboData("combobox8");
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("AddClinical");
+setDatapatternId("");
+val=getComboItemId1("combobox8");
+patternId=getSessionData("userPatternId");
+result=equalsTest(val,patternId);
+if(!result){
+updateSession("userPatternId",null);
+updateSession("companyId",null);
+updateSessionList("fields",null);
+updateSessionList("privilege",null);
+}
+updateSession("userPatternId",val);
+;
+]]></attribute>
+  
+</combobox>
+
+</div></tabpanel></tabpanels>
+</tabbox>
+
+
+</vbox>
+ <div class="frame19" height="1060px" visible="true" droppable="false" align="right" id="frame19" width="203px" draggable="false">
+    <div class="frame679" height="1020px" visible="true" droppable="false" align="left" id="frame679" width="203px" draggable="false">
+    <include class="placeholder19" draggable="false" height="55px" src="Logo.zul?formpattern=AddClinical&amp;datapattern=" visible="true" droppable="false" id="placeholder19" width="203px">
+    
+</include>
+ <include class="placeholder20" draggable="false" height="200px" src="CalendarPanel.zul?formpattern=AddClinical&amp;datapattern=" visible="true" droppable="false" id="placeholder20" width="203px">
+    
+</include>
+
+</div>
+ <button class="button198" height="30px" tabindex="1" visible="true" droppable="false" label="sign out" id="button198" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AddClinical");
+setDatapatternId("");
+String retValue = logOut("login");
+]]></attribute>
+  
+</button>
+
+</div>
+
+</hbox>
+
+</window>
+</zk>
+

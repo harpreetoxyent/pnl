@@ -1,0 +1,518 @@
+<zk>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="WorkflowStatusList"?>
+ <window height="500px" visible="true" droppable="false" id="WorkflowStatusList" title="" width="550px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:10px;
+margin-top:10px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:10px;
+margin-bottom:10px;
+color:#000000;
+background-position:tile;
+" >
+ 
+<custom-attributes formpattern="${param.formpattern}" datapattern="${param.datapattern}"/>
+  <div height="76px" visible="true" droppable="false" align="none" id="frame265" width="542px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+    <label height="26px" visible="true" droppable="false" value="Workflow Status" id="label413" width="175px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:10px;
+margin-top:10px;
+background-color:#FFFFFF;
+font-size:11.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:10px;
+margin-bottom:10px;
+color:#000000;
+text-align:center;
+background-position:tile;
+" >
+   
+</label>
+ <combobox draggable="false" tabindex="1" readonly="false" visible="true" droppable="false" text="combobox1" name="combobox46" id="combobox46" width="113px" style="font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:#FFFFFF;
+left:81px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:48px;
+"  >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("WorkflowStatusList");
+setDatapatternId("");
+combobox46.setSelectedIndex(4);
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("WorkflowStatusList");
+setDatapatternId("");
+String value=getComboBoxValue("combobox46");
+displayWorkflowStatus("grid33",patientId,patientMRN,value);
+]]></attribute>
+   <comboitem value="All" id="All" label="All" >
+
+</comboitem>
+ <comboitem value="Completed" id="Completed" label="Completed" >
+
+</comboitem>
+ <comboitem value="Exception" id="Exception" label="Exception" >
+
+</comboitem>
+ <comboitem value="Processing" id="Processing" label="Processing" >
+
+</comboitem>
+ <comboitem value="Waiting" id="Waiting" label="Waiting" >
+
+</comboitem>
+
+</combobox>
+ <label height="26px" visible="true" droppable="false" value="Filter:" id="label362" width="63px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:2px;
+font-size:10.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+top:46px;
+" >
+   
+</label>
+
+</div>
+ <div height="492px" visible="true" droppable="false" align="none" id="frame252" width="548px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+    <listbox height="331px" multiple="False" visible="true" droppable="false" id="grid33" width="541px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  fixedLayout= "true">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("WorkflowStatusList");
+setDatapatternId("");
+patientId=getSessionData("rowId");
+patientMRN=getSessionData("patientmrn");
+displayWorkflowStatus("grid33",patientId,patientMRN,"Waiting");
+]]></attribute>
+   <listhead sizable="true" draggable="false" height="34px" visible="true" droppable="false" id="row384" width="539px" >
+ <listheader label="Workflow name" style="font-size:9;font-family:Microsoft Sans Serif;font-weight:bold;text-align:left;white-space:normal;"  draggable="false" height="34px" visible="true" droppable="false" id="column1016" width="50px" >
+
+</listheader>
+ <listheader label="Node name" style="font-size:9;font-family:Microsoft Sans Serif;font-weight:bold;text-align:left;white-space:normal;"  draggable="false" height="34px" visible="true" droppable="false" id="column1017" width="50px" >
+
+</listheader>
+ <listheader label="Patient ID" style="font-size:9;font-family:Microsoft Sans Serif;font-weight:bold;text-align:left;white-space:normal;"  draggable="false" height="34px" visible="true" droppable="false" id="column1018" width="30px" >
+
+</listheader>
+ <listheader label="Patient MRN" style="font-size:9;font-family:Microsoft Sans Serif;font-weight:bold;text-align:left;white-space:normal;"  draggable="false" height="34px" visible="true" droppable="false" id="column1019" width="50px" >
+
+</listheader>
+ <listheader label="Tool Name" style="font-size:8.25;font-family:Microsoft Sans Serif;font-weight:bold;text-align:left;white-space:normal;"  draggable="false" height="34px" visible="true" droppable="false" id="column133" width="50px" >
+
+</listheader>
+ <listheader label="status" style="font-size:8.25;font-family:Microsoft Sans Serif;font-weight:bold;text-align:left;white-space:normal;"  draggable="false" height="34px" visible="true" droppable="false" id="column674" width="50px" >
+
+</listheader>
+ <listheader label="ScheduleId" style="font-size:8.25;font-family:Microsoft Sans Serif;font-weight:bold;text-align:left;white-space:normal;"  draggable="false" height="34px" visible="true" droppable="false" id="column149" width="30px" >
+
+</listheader>
+ <listheader label="Working Area" style="font-size:8.25;font-family:Microsoft Sans Serif;font-weight:bold;text-align:left;white-space:normal;"  draggable="false" height="34px" visible="true" droppable="false" id="column150" width="50px" >
+
+</listheader>
+ <listheader label="Tool Start Date" style="font-size:8.25;font-family:Microsoft Sans Serif;font-weight:bold;text-align:left;white-space:normal;"  draggable="false" height="34px" visible="true" droppable="false" id="column158" width="50px" >
+
+</listheader>
+ <listheader label="Tool Start Time" style="font-size:8.25;font-family:Microsoft Sans Serif;font-weight:bold;text-align:left;white-space:normal;"  draggable="false" height="34px" visible="true" droppable="false" id="column159" width="60px" >
+
+</listheader>
+ <listheader label="% Complete" style="font-size:8.25;font-family:Microsoft Sans Serif;font-weight:bold;text-align:left;white-space:normal;"  draggable="false" height="34px" visible="true" droppable="false" id="column157" width="50px" >
+
+</listheader>
+
+</listhead>
+
+</listbox>
+ <div height="82px" visible="true" droppable="false" align="center" id="frame253" width="540px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+    <button height="30px" tabindex="8" visible="true" droppable="false" label="Refresh" id="button261" width="127px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:10px;
+margin-top:10px;
+background-color:#FFFFFF;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:10px;
+margin-bottom:10px;
+color:#316AC5;
+background-position:tile;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("WorkflowStatusList");
+setDatapatternId("");
+patientId=getSessionData("rowId");
+patientMRN=getSessionData("patientmrn");
+updateSession("rowId", null);
+updateSession("patientmrn", null);
+updateSession("scheduleId", null);
+updateSession("workingarea", null);
+updateSession("workflowname", null);
+updateSession("nodename", null);
+updateSession("workstatus",null);
+String value=getComboBoxValue("combobox46");
+displayWorkflowStatus("grid33",patientId,patientMRN,value);
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="1" visible="true" droppable="false" label="Goto" id="button264" width="93px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:10px;
+margin-top:10px;
+background-color:#FFFFFF;
+font-size:9pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:10px;
+margin-bottom:10px;
+color:#316AC5;
+background-position:tile;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("WorkflowStatusList");
+setDatapatternId("");
+String workname=getRowData(grid33,0);
+String nodename = getRowData(grid33,1);
+String patientId= getRowData(grid33,2);
+String patientMRN= getRowData(grid33,3);
+String workstatus = getRowData(grid33,5);
+String scheduleid= getRowData(grid33,6);
+String workingarea= getRowData(grid33,7);
+boolean isProcessing = equalsTest(workstatus ,"Processing");
+if(workname!=null)
+{
+if(isProcessing)
+{
+message("Please select different workflow. This workflow is currently processing on this patient.");
+}
+else
+{
+updateSession("workflowname",workname);
+updateSession("nodename",nodename );
+updateSession("rowId",patientId);
+updateSession("patientmrn",patientMRN);
+updateSession("scheduleId",scheduleid);
+updateSession("workingarea",workingarea);
+invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","get workflownodeinfo.status,nodeinfo.formpatternid from appadmin.workflownodeinfo joins leftjoin workflownodeinfo.nodeid:=nodeinfo.id,leftjoin workflownodeinfo.workflowid:=workflowinfo.id conditions workflowinfo.name:=["+workname+"] and nodeinfo.nodename:=["+nodename+"]");
+String status=getDataFromAllValuesVar(0, 0);
+String formPattern=getDataFromAllValuesVar(0, 1);
+updateSession("currentworkflownodestatus", status);
+invokeDynamicWorkflow(status, formPattern, null, patientId, patientMRN,scheduleid,workingarea);
+}
+}
+else
+{
+message("Select a Workflow!");
+}
+updateSession("workstatus",null);
+
+;
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="9" visible="true" droppable="false" label="Stop Processing" id="button270" width="147px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:10px;
+margin-top:10px;
+background-color:#FFFFFF;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:10px;
+margin-bottom:10px;
+color:#316AC5;
+background-position:tile;
+" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("WorkflowStatusList");
+setDatapatternId("");
+String parentForm=getParentFormPattern("WorkflowStatusList");
+;
+]]></attribute>
+<attribute name="onClick"><![CDATA[
+setFormPatternId("WorkflowStatusList");
+setDatapatternId("");
+String workname=getRowData(grid33,0);
+String nodename = getRowData(grid33,1);
+String patientId= getRowData(grid33,2);
+String patientMRN= getRowData(grid33,3);
+String workstatus = getRowData(grid33,5);
+String scheduleid= getRowData(grid33,6);
+String workingarea= getRowData(grid33,7);
+boolean isProcessing = equalsTest(workstatus ,"Processing");
+if(workname!=null)
+{
+if(isProcessing)
+{
+updateSession("workflowname",workname);
+updateSession("nodename",nodename );
+updateSession("rowId",patientId);
+updateSession("patientmrn",patientMRN);
+updateSession("scheduleId",scheduleid);
+updateSession("workingarea",workingarea);
+invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","get workflownodeinfo.status,nodeinfo.formpatternid from appadmin.workflownodeinfo joins leftjoin workflownodeinfo.nodeid:=nodeinfo.id,leftjoin workflownodeinfo.workflowid:=workflowinfo.id conditions workflowinfo.name:=["+workname+"] and nodeinfo.nodename:=["+nodename+"]");
+String status=getDataFromAllValuesVar(0, 0);
+invokeComponent("com.oxyentmedical.component.workflowcomponent","ProcessStopOperation","com.oxymedical.component.workflowComponent.WorkflowComponent","WORKFLOWNAME_SEP_"+workname+"_FIELDSEP_NODENAME_SEP_"+nodename +"_FIELDSEP_PATIENTID_SEP_"+patientId+"_FIELDSEP_PATIENTMRN_SEP_"+patientMRN+"_FIELDSEP_NODESTATUS_SEP_"+status+"_FIELDSEP_SCHEDULEID_SEP_"+scheduleid);
+message("Stop processing request is being processed.It might take few seconds.");
+boolean isStopped=checkWorkflowStopped("");
+isStopped=checkWorkflowStopped("");
+if(isStopped)
+{
+String parentForm=getParentFormPattern("WorkflowStatusList");
+isParent=equalsTest(parentForm,"workflowstatus");
+if(isParent)
+{
+updateSession("rowId",null);
+updateSession("patientmrn",null);
+}
+updateSession("workflowname", null);
+updateSession("nodename", null);
+updateSession("workstatus",null);
+patientId=getSessionData("rowId");
+patientMRN=getSessionData("patientmrn");
+String value=getComboBoxValue("combobox46");
+displayWorkflowStatus("grid33",patientId,patientMRN,value);
+}
+}
+else
+{
+message("Please select different workflow. This workflow is currently waiting on this patient");
+}
+}
+else
+{
+message("Select a Workflow!");
+};
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="10" visible="true" droppable="false" label="Revert" id="button271" width="117px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:10px;
+margin-top:10px;
+background-color:#FFFFFF;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:10px;
+margin-bottom:10px;
+color:#316AC5;
+background-position:tile;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("WorkflowStatusList");
+setDatapatternId("");
+String workname=getRowData(grid33,0);
+String nodename = getRowData(grid33,1);
+String patientId= getRowData(grid33,2);
+String patientMRN= getRowData(grid33,3);
+String workstatus = getRowData(grid33,5);
+String schedleId= getRowData(grid33,6);
+String workingarea= getRowData(grid33,7);
+boolean isException = equalsTest(workstatus ,"Exception");
+if(workname!=null)
+{
+if(isException)
+{
+invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","get workflownodeinfo.status,nodeinfo.formpatternid from appadmin.workflownodeinfo joins leftjoin workflownodeinfo.nodeid:=nodeinfo.id,leftjoin workflownodeinfo.workflowid:=workflowinfo.id conditions workflowinfo.name:=["+workname+"] and nodeinfo.nodename:=["+nodename+"]");
+String status=getDataFromAllValuesVar(0, 0);
+invokeComponent("com.oxyentmedical.component.workflowcomponent","ProcessRevertOperation","com.oxymedical.component.workflowComponent.WorkflowComponent","WORKFLOWNAME_SEP_"+workname+"_FIELDSEP_NODENAME_SEP_"+nodename+"_FIELDSEP_PATIENTID_SEP_"+patientId+"_FIELDSEP_PATIENTMRN_SEP_"+patientMRN+"_FIELDSEP_NODESTATUS_SEP_"+status+"_FIELDSEP_SCHEDULEID_SEP_"+schedleId);
+String value=getComboBoxValue("combobox46");
+displayWorkflowStatus("grid33",patientId,patientMRN,value);
+}
+else
+{
+message("Please select a record with exception.");
+}
+}
+else
+{
+message("Select a Workflow!");
+}
+
+;
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="11" visible="true" droppable="false" label="Go to Visualizer" id="button272" width="199px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:10px;
+margin-top:10px;
+background-color:#FFFFFF;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:10px;
+margin-bottom:10px;
+color:#316AC5;
+background-position:tile;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("WorkflowStatusList");
+setDatapatternId("");
+String workname=getRowData(grid33,0);
+String nodename = getRowData(grid33,1);
+String patientId= getRowData(grid33,2);
+String patientMRN= getRowData(grid33,3);
+String workstatus = getRowData(grid33,5);
+String schedleId= getRowData(grid33,6);
+String workingarea= getRowData(grid33,7);
+addFormValue("PATIENTMRN", patientMRN);
+addFormValue("PATIENTID", patientId);
+addFormValue("SCHEDULEID", schedleId);
+addFormValue("WORKFLOWNAME", workname);
+addFormValue("NODENAME", nodename);
+if(workname!=null)
+{
+boolean isCompleted = equalsTest(workstatus ,"Completed");
+if(isCompleted )
+{
+invokeComponent("com.oxyentmedical.component.workflowcomponent","OpenVisualiser","com.oxymedical.component.workflowComponent.WorkflowComponent",workname+"."+nodename);
+}
+else
+{
+message("Please select completed record.");
+}
+};
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="12" visible="true" droppable="false" label="Goto Workflow list" id="button266" width="143px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:10px;
+margin-top:10px;
+background-color:#FFFFFF;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:10px;
+margin-bottom:10px;
+color:#316AC5;
+background-position:tile;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("WorkflowStatusList");
+setDatapatternId("");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","listofAvailableWorkflow");
+;
+]]></attribute>
+  
+</button>
+
+</div>
+
+</div>
+
+</window>
+</zk>
+

@@ -1,0 +1,182 @@
+<zk>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="ResultSetting"?>
+ <window height="175px" visible="true" droppable="false" id="ResultSetting" title="Query Result Setting" width="262px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:8px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:8px;
+position:absolute;
+padding-bottom:8px;
+padding-right:8px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("ResultSetting");
+setDatapatternId("");
+String checkValue = getSessionData("ResultInExcel");
+boolean isEqual = equalsTest(checkValue,"yes");
+if(isEqual)
+{
+	checkbox0.setChecked(true);
+}
+String textValue = getSessionData("PageNo");
+if(textValue!=null)
+{
+textbox28.text = textValue;
+};
+]]></attribute>
+
+<custom-attributes formpattern="${param.formpattern}" datapattern="${param.datapattern}"/>
+  <div height="129px" visible="true" droppable="false" align="none" id="frame95" width="252px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:0px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:36px;
+" >
+    <checkbox draggable="false" height="30px" Checked="false" droppable="false" label="Export query results automatically into EXCEL" id="checkbox0" width="241px" visible="true" style="font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:#FFFFFF;
+left:11px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:6px;
+"  onCheck='setCheckboxId()'>
+   
+</checkbox>
+ <button height="30px" tabindex="1" visible="true" droppable="false" label="Apply" id="button84" width="75px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:15px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:80px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("ResultSetting");
+setDatapatternId("");
+boolean value = checkbox0.isChecked();
+String pageNo = textbox28.text;
+if(value)
+{
+updateSession("ResultInExcel","yes");
+}
+else
+{
+	updateSession("ResultInExcel","no");
+}
+updateSession("PageNo",pageNo);
+detachWindow("ResultSetting");
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="8" visible="true" droppable="false" label="Cancel" id="button85" width="75px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:123px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:81px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("ResultSetting");
+setDatapatternId("");
+detachWindow("ResultSetting");
+]]></attribute>
+  
+</button>
+ <label height="21px" visible="true" droppable="false" value="Result per-page:" id="label59" width="88px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:10px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+top:38px;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="10" readonly="false" visible="true" id="textbox28" droppable="false" value="" name="textbox28"  width="41px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+left:110px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:38px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+
+</div>
+
+</window>
+</zk>
+

@@ -1,0 +1,152 @@
+<zk>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="SetCategory"?>
+ <window height="134px" visible="true" droppable="false" id="SetCategory" title="Set All To" width="195px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:8px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:8px;
+position:absolute;
+padding-bottom:8px;
+padding-right:8px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ 
+<custom-attributes formpattern="${param.formpattern}" datapattern="${param.datapattern}"/>
+  <div height="89px" visible="true" droppable="false" align="center" id="frame86" width="184px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:1px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:35px;
+" >
+    <div height="77px" visible="true" droppable="false" align="center" id="frame87" width="167px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:5px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:4px;
+" >
+    <combobox draggable="false" tabindex="0" readonly="true" visible="true" droppable="false" text="" name="combobox3" id="combobox3" width="150px" style="font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:#FFFFFF;
+left:10px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:7px;
+"  >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("SetCategory");
+setDatapatternId("");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get qbcategory.Id,qbcategory.categoryName from neiswispicdb.qbcategory conditions qbcategory.deleted:=_STRINGSTART_0_STRINGEND_ ");
+showComboData("combobox3");
+String catName =null;
+;
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("SetCategory");
+setDatapatternId("");
+catName = getComboBoxValue("combobox3");
+String id =getComboItemId1("combobox3");
+updateSession("CategoryId", id);
+]]></attribute>
+  
+</combobox>
+ <button height="30px" tabindex="1" visible="true" droppable="false" label="Apply" id="button60" width="70px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:10px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:39px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("SetCategory");
+setDatapatternId("");
+updateSession("CategoryName",catName);
+detachWindow("SetCategory");
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="8" visible="true" droppable="false" label="Cancel" id="button70" width="70px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:89px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:40px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("SetCategory");
+setDatapatternId("");
+detachWindow("SetCategory");
+]]></attribute>
+  
+</button>
+
+</div>
+
+</div>
+
+</window>
+</zk>
+

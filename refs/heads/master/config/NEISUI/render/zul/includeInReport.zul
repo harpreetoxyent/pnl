@@ -1,0 +1,46 @@
+<zk>
+<style src="/css/includeInReport.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="includeInReport"?>
+ <window class="includeInReport" height="730px" visible="true" droppable="false" id="includeInReport" title="" width="100%" draggable="false">
+   <div class="frame83" height="297px" visible="true" droppable="false" align="none" id="frame83" width="468px" draggable="false">
+    <listbox class="listbox2" draggable="false" height="206px" multiple="true" visible="true" droppable="false" id="listbox2" width="159px" fixedLayout= "true">
+   
+</listbox>
+ <listbox class="listbox3" draggable="false" height="202px" multiple="true" visible="true" droppable="false" id="listbox3" width="156px" fixedLayout= "true">
+   
+</listbox>
+ <button class="button143" height="30px" tabindex="9" visible="true" droppable="false" label="OK" id="button143" width="75px" draggable="false">
+   
+</button>
+ <button class="button144" height="30px" tabindex="10" visible="true" droppable="false" label="GO BACK" id="button144" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("includeInReport");
+setDatapatternId("");
+  invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","Category");
+]]></attribute>
+  
+</button>
+ <label class="label26" height="27px" visible="true" droppable="false" value="categories not in report" id="label26" width="142px" draggable="false">
+   
+</label>
+ <label class="label27" height="29px" visible="true" droppable="false" value="categories in report" id="label27" width="125px" draggable="false">
+   
+</label>
+ <button class="button145" height="30px" tabindex="13" visible="true" droppable="false" label="move" id="button145" width="75px" draggable="false">
+   
+</button>
+ <button class="button146" height="30px" tabindex="14" visible="true" droppable="false" label="remove" id="button146" width="75px" draggable="false">
+   
+</button>
+
+</div>
+ <label class="label28" height="30px" visible="true" droppable="false" value="Include in Report" id="label28" width="108px" draggable="false">
+   
+</label>
+
+</window>
+</zk>
+

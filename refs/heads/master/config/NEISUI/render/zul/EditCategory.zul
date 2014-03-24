@@ -1,0 +1,720 @@
+<zk>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="EditCategory"?>
+ <window height="502px" visible="true" droppable="false" id="EditCategory" title="Edit/Delete Category" width="380px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:8px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:8px;
+position:absolute;
+padding-bottom:8px;
+padding-right:8px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("EditCategory");
+setDatapatternId("");
+textbox17.setVisible(false);
+textbox20.setVisible(false);
+textbox21.setVisible(false);
+]]></attribute>
+
+<custom-attributes formpattern="${param.formpattern}" datapattern="${param.datapattern}"/>
+  <div height="457px" visible="true" droppable="false" align="none" id="frame64" width="368px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:2px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:35px;
+" >
+    <div height="63px" visible="true" droppable="false" align="none" id="frame65" width="331px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:26px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:3px;
+" >
+    <label height="23px" visible="true" droppable="false" value="Category Name*:" id="label13" width="87px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:44px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+top:7px;
+" >
+   
+</label>
+ <combobox tabindex="8" readonly="true" visible="true" droppable="false" text="" name="Category Name*:" id="combobox0" draggable="false" width="114px" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:136px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:9px;
+"  >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("EditCategory");
+setDatapatternId("");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get qbcategory.Id,qbcategory.categoryName from neiswispicdb.qbcategory conditions qbcategory.deleted:=_STRINGSTART_0_STRINGEND_ orderby qbcategory.categoryName");
+showComboData("combobox0");
+String id = null;
+String name = null;
+;
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("EditCategory");
+setDatapatternId("");
+id =getComboItemId1("combobox0");
+name = getComboBoxValue("combobox0");
+textbox6.setText(name);
+addFormValue("textbox6",name);
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get qbuserdefinedfield.id,qbuserdefinedfield.UserDefinedFieldName from neiswispicdb.qbcategorydetail,neiswispicdb.qbuserdefinedfield conditions qbcategorydetail.categoryId:="+id+" and qbuserdefinedfield.id:=qbcategorydetail.UserDefinedFieldId orderby qbuserdefinedfield.UserDefinedFieldName");
+displayFieldDataInControl("grid44");
+;
+]]></attribute>
+  
+</combobox>
+ <label height="22px" visible="true" droppable="false" value="New Category Name:" id="label14" width="112px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:21px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+top:37px;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="10" readonly="false" visible="true" id="textbox6" droppable="false" value="" name="New Category Name:" constraint="/[a-zA-z0-9\s]*/:AlphaNumeric value only" draggable="false" width="133px" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+left:136px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:36px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox maxlength="32767" height="20px" tabindex="11" readonly="false" visible="true" id="textbox17" droppable="false" value="" name="textbox17"  width="20px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+left:273px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:5px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox maxlength="32767" height="20px" tabindex="12" readonly="false" visible="true" id="textbox20" droppable="false" value="" name="textbox20"  width="20px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+left:275px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:35px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox maxlength="32767" height="20px" tabindex="13" readonly="false" visible="true" id="textbox21" droppable="false" value="" name="textbox21"  width="24px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+left:300px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:38px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+
+</div>
+ <div height="334px" visible="true" droppable="false" align="none" id="frame66" width="130px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:10px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:72px;
+" >
+    <label height="20px" visible="true" droppable="false" value="All Fields" id="label15" width="81px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+top:4px;
+" >
+   
+</label>
+ <listbox height="300px" multiple="False" visible="true" droppable="false" id="grid43" width="120px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:3px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:24px;
+"  fixedLayout= "true">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("EditCategory");
+setDatapatternId("");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get QBUserDefinedField.id, QBUserDefinedField.userDefinedFieldName from neiswispicdb.QBUserDefinedField conditions QBUserDefinedField.deleted:=[0] orderby QBUserDefinedField.userDefinedFieldName");
+displayFieldDataInControl("grid43");
+;
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("EditCategory");
+setDatapatternId("");
+x=getSelectedListData();
+updateSession("rowId",x);
+]]></attribute>
+  
+</listbox>
+
+</div>
+ <button height="45px" tabindex="8" visible="true" image="img/button25.jpg" droppable="false" label="" id="button25" width="50px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:165px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:101px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("EditCategory");
+setDatapatternId("");
+rowID=getSessionData("rowId");
+moveValue(rowID,"grid43","grid44");
+updateSession("rowId",null);
+]]></attribute>
+  
+</button>
+ <label height="22px" visible="true" droppable="false" value="move" id="label16" width="50px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:169px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+top:151px;
+" >
+   
+</label>
+ <button height="45px" tabindex="10" visible="true" image="img/button26.jpg" droppable="false" label="" id="button26" width="50px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:165px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:183px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("EditCategory");
+setDatapatternId("");
+rowID=getSessionData("rowId");
+moveValue(rowID,"grid44","grid43");
+updateSession("rowId",null);
+]]></attribute>
+  
+</button>
+ <label height="30px" visible="true" droppable="false" value="remove" id="label17" width="50px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:165px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+top:229px;
+" >
+   
+</label>
+ <button height="45px" tabindex="12" visible="true" image="img/button33.jpg" droppable="false" label="" id="button33" width="50px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:165px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:260px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("EditCategory");
+setDatapatternId("");
+moveAllItems("grid43","grid44");
+]]></attribute>
+  
+</button>
+ <label height="21px" visible="true" droppable="false" value="move all" id="label18" width="46px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:165px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+top:306px;
+" >
+   
+</label>
+ <button height="45px" tabindex="14" visible="true" image="img/button44.jpg" droppable="false" label="" id="button44" width="50px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:165px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:337px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("EditCategory");
+setDatapatternId("");
+moveAllItems("grid44","grid43");
+]]></attribute>
+  
+</button>
+ <label height="20px" visible="true" droppable="false" value="remove all" id="label19" width="64px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:164px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+top:382px;
+" >
+   
+</label>
+ <div height="341px" visible="true" droppable="false" align="none" id="frame67" width="133px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:232px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:66px;
+" >
+    <label height="20px" visible="true" droppable="false" value="Fields in Category" id="label20" width="97px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:5px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+top:8px;
+" >
+   
+</label>
+ <listbox height="300px" multiple="False" visible="true" droppable="false" id="grid44" width="120px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:7px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:28px;
+"  fixedLayout= "true">
+ <attribute name="onSelect"><![CDATA[
+setFormPatternId("EditCategory");
+setDatapatternId("");
+x=getSelectedListData();
+updateSession("rowId",x);
+setListItemId("grid44");
+]]></attribute>
+  
+</listbox>
+
+</div>
+ <div height="40px" visible="true" droppable="false" align="none" id="frame68" width="358px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:2px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:414px;
+" >
+    <button height="30px" tabindex="0" visible="true" droppable="false" label="Save Category" id="button46" width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:6px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:4px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("EditCategory");
+setDatapatternId("");
+updateRefferences("textbox17");
+addFormValue("textbox20","0");
+if(id !=null)
+{
+addFormValue("textbox21",id);
+}
+createFieldsList("grid44");
+value = getListValue("fields");
+list = createListValues(value);
+addFormValue("grid44",list);
+String checkDup = textbox6.text;
+boolean isNewText = equalsTest(checkDup,name);
+boolean isValid = clientSideValidation("AddCategory");
+if(isValid)
+{
+int size = list.size();
+if(size>=1)
+{
+boolean isYes = false;
+if(!isNewText)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get qbcategory.id, qbcategory.CategoryName from neiswispicdb.qbcategory conditions qbcategory.CategoryName:=["+checkDup+"] and qbcategory.deleted:=[0]");
+isYes = isRecordExist();
+}
+if(!isYes)
+{
+String retStr = invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","EditCategory");
+isEqual = checkValueWithOperator(retStr ,"true", "EQUAL");
+if(isEqual )
+{
+  message("Category information saved successfully.");
+detachWindow("EditCategory");
+}
+}
+else
+{
+ String msg = "This category name already exist. Please enter another category name.";
+ message(msg);
+}
+}
+else
+{
+message("Fields in category is blank. Please select atleast one field.");
+}
+};
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="8" visible="true" droppable="false" label="Delete Category" id="button47" width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:130px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:5px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("EditCategory");
+setDatapatternId("");
+if(id!=null)
+{
+boolean isYes =messageWithQuestion("Are you sure you want to delete this category?");
+if(isYes)
+{
+String retValue = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","update neiswispicdb.qbcategory set Deleted:=1 conditions qbcategory.id:="+id);
+if(retValue == "true")
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get qbcategory.Id,qbcategory.categoryName from neiswispicdb.qbcategory conditions qbcategory.deleted:=_STRINGSTART_0_STRINGEND_ ");
+showComboData("combobox0");
+textbox6.text="";
+updateSession("rowId", null);
+detachWindow("EditCategory");
+
+}
+}
+}
+else
+{
+message(" Please select  category to perform this operation.");
+};
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="9" visible="true" droppable="false" label="Cancel" id="button48" width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:250px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:6px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("EditCategory");
+setDatapatternId("");
+detachWindow("EditCategory");
+]]></attribute>
+  
+</button>
+
+</div>
+
+</div>
+
+</window>
+</zk>
+

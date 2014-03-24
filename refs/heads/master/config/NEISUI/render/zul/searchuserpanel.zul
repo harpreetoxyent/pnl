@@ -1,0 +1,92 @@
+<zk>
+<style src="/css/searchuserpanel.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="searchuserpanel"?>
+ <window class="searchuserpanel" height="215px" visible="true" droppable="false" id="searchuserpanel" title="" width="100%" draggable="false">
+   <div class="frame73" height="205px" visible="true" droppable="false" align="none" id="frame73" width="176px" draggable="false">
+    <div class="frame74" height="144px" visible="true" droppable="false" align="none" id="frame74" width="172px" draggable="false">
+    <label class="label41" height="34px" visible="true" droppable="false" value="search
+USERdatabase:" id="label41" width="92px" draggable="false">
+   
+</label>
+ <textbox class="textbox2" maxlength="32767" height="20px" tabindex="21" readonly="false" visible="true" id="textbox2" droppable="false" value="user account" name="textbox2"  width="160px" draggable="false" onChange='setTextboxId()'>
+ <attribute name="onBlur"><![CDATA[
+setFormPatternId("searchuserpanel");
+setDatapatternId("");
+textNotEntered=checkValueWithOperator("",textbox2.value, "EQUAL");
+if (textNotEntered) { textbox2.text="user account"; textbox2.style="color:#D4D0C8";};
+]]></attribute>
+<attribute name="onFocus"><![CDATA[
+setFormPatternId("searchuserpanel");
+setDatapatternId("");
+textNotEntered=checkValueWithOperator("user account",textbox2.value, "EQUAL");
+if (textNotEntered) { textbox2.text=""; textbox2.style="color:#000000";};
+]]></attribute>
+  
+</textbox>
+ <textbox class="textbox3" maxlength="32767" height="20px" tabindex="22" readonly="false" visible="true" id="textbox3" droppable="false" value="first name" name="textbox3"  width="160px" draggable="false" onChange='setTextboxId()'>
+ <attribute name="onBlur"><![CDATA[
+setFormPatternId("searchuserpanel");
+setDatapatternId("");
+textNotEntered=checkValueWithOperator("",textbox3.value, "EQUAL");
+if (textNotEntered) { textbox3.text="first name"; textbox3.style="color:#D4D0C8";};
+]]></attribute>
+<attribute name="onFocus"><![CDATA[
+setFormPatternId("searchuserpanel");
+setDatapatternId("");
+textNotEntered=checkValueWithOperator("first name",textbox3.value, "EQUAL");
+if (textNotEntered) { textbox3.text=""; textbox3.style="color:#000000";};
+]]></attribute>
+  
+</textbox>
+ <textbox class="textbox4" maxlength="32767" height="20px" tabindex="23" readonly="false" visible="true" id="textbox4" droppable="false" value="last name" name="textbox4"  width="160px" draggable="false" onChange='setTextboxId()'>
+ <attribute name="onBlur"><![CDATA[
+setFormPatternId("searchuserpanel");
+setDatapatternId("");
+textNotEntered=checkValueWithOperator("",textbox4.value, "EQUAL");
+if (textNotEntered) { textbox4.text="last name"; textbox4.style="color:#D4D0C8";};
+]]></attribute>
+<attribute name="onFocus"><![CDATA[
+setFormPatternId("searchuserpanel");
+setDatapatternId("");
+textNotEntered=checkValueWithOperator("last name",textbox4.value, "EQUAL");
+if (textNotEntered) { textbox4.text=""; textbox4.style="color:#000000";};
+]]></attribute>
+  
+</textbox>
+
+</div>
+ <div class="frame75" height="41px" visible="true" droppable="false" align="center" id="frame75" width="173px" draggable="false">
+    <button class="button51" height="30px" tabindex="0" visible="true" droppable="false" label="search" id="button51" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("searchuserpanel");
+setDatapatternId("");
+isEqual = checkValueWithOperator("last name", textbox4.value, "EQUAL");
+if (!isEqual)
+{
+ updateSession("userlastname", textbox4.value);
+}
+isEqual = checkValueWithOperator("first name", textbox3.value, "EQUAL");
+if (!isEqual) 
+{
+updateSession("userfirstname",textbox3.value);
+}
+isEqual = checkValueWithOperator("user account",textbox2.value, "EQUAL");
+if (!isEqual){ 
+updateSession("searchUserId", textbox2.value);
+}
+setDataStatus("UpdateUser", "ListUser", "useradmin");
+;
+]]></attribute>
+  
+</button>
+
+</div>
+
+</div>
+
+</window>
+</zk>
+

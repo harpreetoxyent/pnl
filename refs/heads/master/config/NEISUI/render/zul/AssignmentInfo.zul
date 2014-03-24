@@ -1,0 +1,422 @@
+<zk>
+<style src="/css/AssignmentInfo.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="AssignmentInfo"?>
+ <window class="AssignmentInfo" height="955px" visible="true" droppable="false" id="AssignmentInfo" title="" width="100%" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+makeVisible("AssignmentInfo");setFormPatternId("AssignmentInfo");
+setDatapatternId("");
+textbox189.setVisible(false);
+]]></attribute>
+  <tabbox class="multitab8" height="950px" width="565px" draggable="false" id="multitab8" droppable="false" tabscroll="false">
+ <tabs>
+   <tab  label="Room Assignment" draggable="false" id="tabpage30" droppable="false">
+ 
+</tab>
+ <tab  label="PatientAssignment" draggable="false" id="tabpage32" droppable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AssignmentInfo");
+setDatapatternId("");
+String pid = getSessionData("rowId");
+if(pid != null)
+{
+String retval = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get roomassginment.sleeptechid,roomassginment.researchid,schedule.appointmentstarttime,room.RoomDescription,patient.dateofbirth,roomassginment.stat,roomassginment.physicianid,studytype.type,patient.physician,roomassginment.arrived,schedule.assigntoroom,roomassginment.comments,roomassginment.sleeptechid,patient.id,schedule.id from neiswispicdb.schedule,neiswispicdb.roomassginment joins leftjoin schedule.patientid:=patient.id,leftjoin schedule.StudyType:=studytype.id,leftjoin roomassginment.roomid:=room.id conditions roomassginment.schduleid:=schedule.id and patient.deleted:=["+0+"] and roomassginment.deleted:=["+0+"] and schedule.cancelled:=["+0+"] and patient.ID:="+pid);
+object=getComponentFromPage("PatientAssignment","frame191");
+addGridToFrame(object, "TECH,RA,TIME,RM,DOB,Stat,Reading Phys.,TYPE,Referring Phys.,Arrived,Pt. in Room,Comments,Lead", "Label,Label,Label,Label,Label,Checkbox,Label,Combobox,Label,Checkbox,Checkbox,Textbox,Label","user:user: : : :N:user:get studytype.id,studytype.type from neiswispicdb.studytype orderby studytype.type:user:N:N: :user");
+}
+;
+]]></attribute>
+
+</tab>
+</tabs>
+<tabpanels><tabpanel style="background-color:Transparent;position:relative;" ><div class="frame55" height="396px" droppable="false" align="none" id="frame55" width="554px" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("AssignmentInfo");
+setDatapatternId("");
+frame55.setStyle("overflow:auto;");
+textbox54.setVisible(false);
+textbox64.setVisible(false);
+textbox53.setVisible(false);
+textbox63.setVisible(false);
+textbox58.setVisible(false);
+textbox66.setVisible(false);
+textbox55.setVisible(false);
+String rowValue = getSessionData("rowId");
+removeRooms(frame55);
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get room.id,room.RoomDescription,room.roomtype from neiswispicdb.room,neiswispicdb.roomtype conditions room.deleted:=["+0+"] and room.roomtype:=roomtype.id and roomtype.deleted:=["+0+"]");
+boolean result=createRoomAssignment(frame55);
+if(result)
+{
+String toDate = getCurrentDate("yyyy-MM-dd");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get roomassginment.id,room.id,schedule.id,roomassginment.physicianid,roomassginment.sleeptechid,roomassginment.researchid,studytype.Type,patient.FirstName,schedule.AppointmentStartTime,patient.lastName,schedule.AppointmentStartDate,roomassginment.researchid2 from neiswispicdb.roomassginment,neiswispicdb.schedule joins leftjoin roomassginment.roomid:=room.id,leftjoin schedule.PatientID:=patient.id,leftjoin schedule.StudyType:=studytype.id conditions roomassginment.schduleid:=schedule.ID and schedule.Cancelled:=["+0+"] and roomassginment.deleted:=["+0+"] and patient.id:="+rowValue+" and schedule.AppointmentStartDate:=["+toDate+"] and patient.deleted:=["+0+"]");
+createRoomData(frame55);
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get room.id from neiswispicdb.roomassginment,neiswispicdb.schedule joins leftjoin roomassginment.roomid:=room.id,leftjoin schedule.PatientID:=patient.id,leftjoin schedule.StudyType:=studytype.id conditions roomassginment.schduleid:=schedule.ID and schedule.Cancelled:=["+0+"] and roomassginment.deleted:=["+0+"] and schedule.AppointmentStartDate:=["+toDate+"] and patient.deleted:=["+0+"]");
+updateRoomData(frame55);
+};
+]]></attribute>
+  
+</div>
+ <combobox class="combobox14" draggable="false" tabindex="8" readonly="true" droppable="false" text="combobox1" name="combobox14" id="combobox14" width="100px" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("AssignmentInfo");
+setDatapatternId("");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get roomtype.ID,roomtype.roomtype from neiswispicdb.roomtype conditions roomtype.deleted:=["+0+"]");
+showComboData("combobox14");
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("AssignmentInfo");
+setDatapatternId("");
+roomType=getComboItemId1("combobox14");
+String rowValue = getSessionData("rowId");
+removeRooms(frame55);
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get room.id,room.RoomDescription,room.roomtype from neiswispicdb.room conditions room.deleted:=["+0+"] and room.roomtype:="+roomType);
+boolean result=createRoomAssignment(frame55);
+if(result)
+{
+String toDate = getCurrentDate("yyyy-MM-dd");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get roomassginment.id,room.id,schedule.id,roomassginment.physicianid,roomassginment.sleeptechid,roomassginment.researchid,studytype.Type,patient.FirstName,schedule.AppointmentStartTime,patient.lastName,schedule.AppointmentStartDate,roomassginment.researchid2 from neiswispicdb.roomassginment,neiswispicdb.schedule joins leftjoin roomassginment.roomid:=room.id,leftjoin schedule.PatientID:=patient.id,leftjoin schedule.StudyType:=studytype.id conditions roomassginment.schduleid:=schedule.ID and schedule.Cancelled:=["+0+"] and roomassginment.deleted:=["+0+"] and patient.id:="+rowValue+" and room.roomtype:="+roomType+" and schedule.AppointmentStartDate:=["+toDate+"] and patient.deleted:=["+0+"]");
+createRoomData(frame55);
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get room.id from neiswispicdb.roomassginment,neiswispicdb.schedule joins leftjoin roomassginment.roomid:=room.id,leftjoin schedule.PatientID:=patient.id,leftjoin schedule.StudyType:=studytype.id conditions roomassginment.schduleid:=schedule.ID and schedule.Cancelled:=["+0+"] and roomassginment.deleted:=["+0+"] and schedule.AppointmentStartDate:=["+toDate+"] and room.roomtype:="+roomType+" and patient.deleted:=["+0+"]");
+updateRoomData(frame55);
+};
+]]></attribute>
+  
+</combobox>
+ <label class="label342" height="22px" droppable="false" value="Select room type" id="label342" width="102px" draggable="false">
+   
+</label>
+ <listbox class="grid17" height="140px" multiple="False" droppable="false" id="grid17" width="270px" draggable="false" fixedLayout= "true">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("AssignmentInfo");
+setDatapatternId("");
+invokeComponent("com.oxymedical.component.useradmin","GetListUserAdmin","com.oxymedical.component.useradmin.UserAdminComponent","get userpattern_users.userId,contact_.userName from useradmin.contact_,useradmin.userpattern_users conditions userpattern_users.userId:=contact_.userId and userpattern_users.userPatternId:=[Physician]");
+grid17.setMold("paging");
+grid17.setPageSize(5);
+displayDataInControlDragAndDrop("grid17"); 
+;
+]]></attribute>
+   <listhead sizable="true" draggable="false" height="20px" visible="true" droppable="false" id="row24" width="270px">
+ <listheader label="Physician Id" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="20px" visible="true" droppable="false" id="column123" width="110px">
+
+</listheader>
+ <listheader label="Physician Name" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="20px" visible="true" droppable="false" id="column124" width="100px">
+
+</listheader>
+
+</listhead>
+
+</listbox>
+ <listbox class="grid18" height="140px" multiple="False" droppable="false" id="grid18" width="270px" draggable="false" fixedLayout= "true">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("AssignmentInfo");
+setDatapatternId("");
+invokeComponent("com.oxymedical.component.useradmin","GetListUserAdmin","com.oxymedical.component.useradmin.UserAdminComponent","get userpattern_users.userId,contact_.userName from useradmin.contact_,useradmin.userpattern_users conditions userpattern_users.userId:=contact_.userId and userpattern_users.userPatternId:=[SleepTechnician]");
+grid18.setMold("paging");
+grid18.setPageSize(5);
+displayDataInControlDragAndDrop("grid18");
+;
+]]></attribute>
+   <listhead sizable="true" draggable="false" height="20px" visible="true" droppable="false" id="row27" width="270px">
+ <listheader label="Sleeptech Id" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="20px" visible="true" droppable="false" id="column125" width="100px">
+
+</listheader>
+ <listheader label="Sleep Technician Name" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="20px" visible="true" droppable="false" id="column126" width="150px">
+
+</listheader>
+
+</listhead>
+
+</listbox>
+ <listbox class="grid19" height="160px" multiple="False" droppable="false" id="grid19" width="270px" draggable="false" fixedLayout= "true">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("AssignmentInfo");
+setDatapatternId("");
+invokeComponent("com.oxymedical.component.useradmin","GetListUserAdmin","com.oxymedical.component.useradmin.UserAdminComponent","get userpattern_users.userId,contact_.userName from useradmin.contact_,useradmin.userpattern_users conditions userpattern_users.userId:=contact_.userId and userpattern_users.userPatternId:=[ResearchAssistant]");
+grid19.setMold("paging");
+grid19.setPageSize(5);
+displayDataInControlDragAndDrop("grid19");
+;
+]]></attribute>
+   <listhead sizable="true" draggable="false" height="20px" visible="true" droppable="false" id="row28" width="270px">
+ <listheader label="Research Id" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="20px" visible="true" droppable="false" id="column127" width="120px">
+
+</listheader>
+ <listheader label="Research Assisant Name" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="20px" visible="true" droppable="false" id="column128" width="170px">
+
+</listheader>
+
+</listhead>
+
+</listbox>
+ <listbox class="grid20" height="160px" multiple="False" droppable="false" id="grid20" width="270px" draggable="false" fixedLayout= "true">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("AssignmentInfo");
+setDatapatternId("");
+String rowValue = getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.ID,schedule.AppointmentStartTime,schedule.AppointmentStartDate,studytype.Type from schedule joins leftjoin schedule.PatientID:=patient.ID,leftjoin schedule.StudyType:=studytype.ID conditions schedule.Cancelled:=["+0+"] and schedule.Assigntoroom:=["+0+"] and patient.id:="+rowValue+" orderby schedule.AppointmentStartDate desc");
+grid20.setMold("paging");
+grid20.setPageSize(5);
+displayDataInControlDragAndDrop("grid20");
+;
+]]></attribute>
+   <listhead sizable="true" draggable="false" height="20px" visible="true" droppable="false" id="row15" width="270px">
+ <listheader label="Sch-id" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="20px" visible="true" droppable="false" id="column67" width="34px">
+
+</listheader>
+ <listheader label="Start_time" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="20px" visible="true" droppable="false" id="column71" width="80px">
+
+</listheader>
+ <listheader label="start-date" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="20px" visible="true" droppable="false" id="column2269" width="99px">
+
+</listheader>
+ <listheader label="study-type" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="20px" visible="true" droppable="false" id="column82" width="49px">
+
+</listheader>
+
+</listhead>
+
+</listbox>
+ <button class="button214" height="30px" tabindex="14" droppable="false" label="Save Patient Assignments" id="button214" width="173px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AssignmentInfo");
+setDatapatternId("");
+String returnMessage=saveRoomAssignment("frame55");
+message(returnMessage);
+String rowValue = getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.ID,schedule.AppointmentStartTime,schedule.AppointmentStartDate,studytype.Type from schedule joins leftjoin schedule.PatientID:=patient.ID,leftjoin schedule.StudyType:=studytype.ID conditions schedule.Cancelled:=["+0+"] and schedule.Assigntoroom:=["+0+"] and patient.id:="+rowValue+" orderby schedule.AppointmentStartDate desc");
+grid20.setMold("paging");
+grid20.setPageSize(5);
+displayDataInControlDragAndDrop("grid20");
+removeRooms(frame55);
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get room.id,room.RoomDescription,room.roomtype from neiswispicdb.room ,neiswispicdb.roomtype conditions room.deleted:=["+0+"] and roomtype.id:=room.roomtype and roomtype.deleted:=["+0+"]");
+boolean result=createRoomAssignment(frame55);
+if(result)
+{
+String toDate = getCurrentDate("yyyy-MM-dd");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get roomassginment.id,room.id,schedule.id,roomassginment.physicianid,roomassginment.sleeptechid,roomassginment.researchid,studytype.Type,patient.FirstName,schedule.AppointmentStartTime,patient.lastName,schedule.AppointmentStartDate,roomassginment.researchid2 from neiswispicdb.roomassginment,neiswispicdb.schedule joins leftjoin roomassginment.roomid:=room.id,leftjoin schedule.PatientID:=patient.id,leftjoin schedule.StudyType:=studytype.id conditions roomassginment.schduleid:=schedule.ID and schedule.Cancelled:=["+0+"] and roomassginment.deleted:=["+0+"] and patient.id:="+rowValue+" and schedule.AppointmentStartDate:=["+toDate+"] and patient.deleted:=["+0+"]");
+createRoomData(frame55);
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get room.id from neiswispicdb.roomassginment,neiswispicdb.schedule joins leftjoin roomassginment.roomid:=room.id,leftjoin schedule.PatientID:=patient.id,leftjoin schedule.StudyType:=studytype.id conditions roomassginment.schduleid:=schedule.ID and schedule.Cancelled:=["+0+"] and roomassginment.deleted:=["+0+"] and schedule.AppointmentStartDate:=["+toDate+"] and patient.deleted:=["+0+"]");
+updateRoomData(frame55);
+}
+combobox14.text="";
+]]></attribute>
+<custom-attributes accessrights ="Create Room Assignment" />
+  
+</button>
+ <textbox class="textbox54" maxlength="32767" height="20px" tabindex="16" readonly="false" id="textbox54" droppable="false" value="" name="textbox54"  width="100px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox55" maxlength="32767" height="20px" tabindex="17" readonly="false" id="textbox55" droppable="false" value="" name="textbox55"  width="100px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox53" maxlength="32767" height="20px" tabindex="18" readonly="false" id="textbox53" droppable="false" value="" name="textbox53"  width="100px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox58" maxlength="32767" height="20px" tabindex="19" readonly="false" id="textbox58" droppable="false" value="" name="textbox58"  width="100px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox63" maxlength="32767" height="20px" tabindex="20" readonly="false" id="textbox63" droppable="false" value="" name="textbox63"  width="100px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox64" maxlength="32767" height="20px" tabindex="21" readonly="false" id="textbox64" droppable="false" value="" name="textbox64"  width="100px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox66" maxlength="32767" height="20px" tabindex="22" readonly="false" id="textbox66" droppable="false" value="" name="textbox66"  width="100px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <label class="label353" height="21px" droppable="false" value="Physician List" id="label353" width="103px" draggable="false">
+   
+</label>
+ <label class="label354" height="20px" droppable="false" value="Sleep Technician List" id="label354" width="140px" draggable="false">
+   
+</label>
+ <label class="label355" height="20px" droppable="false" value="Research Assistant List" id="label355" width="154px" draggable="false">
+   
+</label>
+ <label class="label356" height="20px" droppable="false" value="Schedule List" id="label356" width="92px" draggable="false">
+   
+</label>
+ <button class="button215" height="30px" tabindex="27" droppable="false" label="show all" id="button215" width="72px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AssignmentInfo");
+setDatapatternId("");
+String rowValue = getSessionData("rowId");
+removeRooms(frame55);
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get room.id,room.RoomDescription,room.roomtype from neiswispicdb.room ,neiswispicdb.roomtype conditions room.deleted:=["+0+"] and roomtype.id:=room.roomtype and roomtype.deleted:=["+0+"]");
+boolean result=createRoomAssignment(frame55);
+if(result)
+{
+String toDate = getCurrentDate("yyyy-MM-dd");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get roomassginment.id,room.id,schedule.id,roomassginment.physicianid,roomassginment.sleeptechid,roomassginment.researchid,studytype.Type,patient.FirstName,schedule.AppointmentStartTime,patient.lastName,schedule.AppointmentStartDate,roomassginment.researchid2 from neiswispicdb.roomassginment,neiswispicdb.schedule joins leftjoin roomassginment.roomid:=room.id,leftjoin schedule.PatientID:=patient.id,leftjoin schedule.StudyType:=studytype.id conditions roomassginment.schduleid:=schedule.ID and schedule.Cancelled:=["+0+"] and roomassginment.deleted:=["+0+"] and patient.id:="+rowValue+" and schedule.AppointmentStartDate:=["+toDate+"] and patient.deleted:=["+0+"]");
+createRoomData(frame55);
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get room.id from neiswispicdb.roomassginment,neiswispicdb.schedule joins leftjoin roomassginment.roomid:=room.id,leftjoin schedule.PatientID:=patient.id,leftjoin schedule.StudyType:=studytype.id conditions roomassginment.schduleid:=schedule.ID and schedule.Cancelled:=["+0+"] and roomassginment.deleted:=["+0+"] and schedule.AppointmentStartDate:=["+toDate+"] and patient.deleted:=["+0+"]");
+updateRoomData(frame55);
+}
+combobox14.text="";
+]]></attribute>
+  
+</button>
+ <menubar class="menubar5" height="24px" droppable="false" orient="vertical" id="menubar5" width="114px" draggable="false">
+ <custom-attributes accessrights ="Clear Room Assginment" />
+   <menu  id="menu2" width="107px" height="17px" label="Select Action">
+ <menupopup>
+  <menuitem  id="menuitem78" label="clear physician">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AssignmentInfo");
+setDatapatternId("");
+objects=getSelectedRooms(frame55);
+boolean retVal=checkListSizeValid(objects,0);
+if(retVal)
+{
+boolean isCleared=clearSelectedData("clear physician",objects);
+if(isCleared)
+{
+message("Physician have been cleared from room assignments.");
+}
+else
+{
+message("No physician present for room assignments.");
+}
+}
+else
+{
+message("Please select rooms.");
+};
+]]></attribute>
+ 
+</menuitem>
+ <menuitem  id="menuitem81" label="clear sleep technician">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AssignmentInfo");
+setDatapatternId("");
+objects=getSelectedRooms(frame55);
+boolean retVal=checkListSizeValid(objects,0);
+if(retVal)
+{
+boolean isCleared=clearSelectedData("clear sleep technician",objects);
+if(isCleared)
+{
+message("Sleep Technician have been cleared from room assignments.");
+}
+else
+{
+message("No sleep technician present. ");
+}
+}
+else
+{
+message("Please select rooms for room assignments.");
+};
+]]></attribute>
+ 
+</menuitem>
+ <menuitem  id="menuitem83" label="clear research assistant">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AssignmentInfo");
+setDatapatternId("");
+objects=getSelectedRooms(frame55);
+boolean retVal=checkListSizeValid(objects,0);
+if(retVal)
+{
+boolean isCleared=clearSelectedData("clear research assisant",objects);
+if(isCleared)
+{
+message("Research Assistant have been cleared from room assignments.");
+}
+else
+{
+message("No research assistant present for room assignments.");
+}
+}
+else
+{
+message("Please select rooms.");
+};
+]]></attribute>
+ 
+</menuitem>
+ <menuitem  id="menuitem85" label="clear assignment">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AssignmentInfo");
+setDatapatternId("");
+objects=getSelectedRooms(frame55);
+boolean retVal=checkListSizeValid(objects,1);
+if(retVal)
+{
+String displayMessage = ("Are you sure you want to clear Patient Assignments?");
+boolean qresult=messageWithQuestion(displayMessage );
+if(qresult)
+{
+clearRoomAssignment(objects);
+updateSession("rowRoomId",null);
+message("Room Assignments have been cleared.");
+}
+String rowValue = getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.ID,schedule.AppointmentStartTime,schedule.AppointmentStartDate,studytype.Type from schedule joins leftjoin schedule.PatientID:=patient.ID,leftjoin schedule.StudyType:=studytype.ID conditions schedule.Cancelled:=["+0+"] and schedule.Assigntoroom:=["+0+"] and patient.id:="+rowValue+" orderby schedule.AppointmentStartDate");
+grid20.setMold("paging");
+grid20.setPageSize(5);
+displayDataInControlDragAndDrop("grid20");
+}
+else
+{
+message("Please select rooms.");
+}
+;
+]]></attribute>
+ 
+</menuitem>
+</menupopup>
+
+</menu>
+
+</menubar>
+ <button class="button216" height="30px" tabindex="29" droppable="false" label="See Room Details" id="button216" width="128px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AssignmentInfo");
+setDatapatternId("");
+storFormValue("formValue");
+objects=getSelectedRooms(frame55);
+String roomId=getSelectedId(objects);
+if(roomId!=null)
+{
+details=getAllRowsListData(roomId);
+boolean retVal=checkListSizeValid(details,1);
+if(retVal)
+{
+String desc=getDescription(roomId);
+String rDesc=splitString(desc,",");
+updateSessionList("roomdetails",details);
+updateSession("roomdesc",rDesc);
+storRoomValue("roomValues");
+createPopUp("roomdetails");
+restorRoomValue("roomValues");
+updateSessionList("roomdetails",null);
+updateSession("roomdesc",null);
+}
+else
+{
+message("No room assignment present.");
+}
+}
+else
+{
+message("Please select one room.");
+}
+restorFormValue("formValue");
+]]></attribute>
+<custom-attributes accessrights ="Create Room Assignment" />
+  
+</button>
+ <textbox class="textbox189" maxlength="32767" height="20px" tabindex="30" readonly="false" id="textbox189" droppable="false" value="" name="textbox189"  width="100px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox></tabpanel><tabpanel style="background-color:Transparent;position:relative;" ><include class="placeholder67" draggable="false" height="600px" src="PatientAssignment.zul?formpattern=AssignmentInfo&amp;datapattern=" droppable="false" id="placeholder67" width="550px">
+    
+</include></tabpanel></tabpanels>
+</tabbox>
+
+
+</window>
+</zk>
+

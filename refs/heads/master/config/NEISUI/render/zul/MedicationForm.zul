@@ -1,0 +1,246 @@
+<zk>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="MedicationForm"?>
+ <window height="204px" visible="true" droppable="false" id="MedicationForm" title="" width="244px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:8px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:8px;
+position:absolute;
+padding-bottom:8px;
+padding-right:8px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("MedicationForm");
+setDatapatternId("");
+textbox127.setVisible(false);
+]]></attribute>
+
+<custom-attributes formpattern="${param.formpattern}" datapattern="${param.datapattern}"/>
+  <div height="159px" visible="true" droppable="false" align="none" id="frame155" width="228px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:6px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:35px;
+" >
+    <label height="22px" visible="true" droppable="false" value="Time:" id="label261" width="41px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:70px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+top:13px;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="8" readonly="false" visible="true" id="textbox117" droppable="false" value="" name="textbox117"  width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+left:120px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:11px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <label height="30px" visible="true" droppable="false" value="Name/Description:" id="label262" width="103px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:7px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+top:47px;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="10" readonly="false" visible="true" id="textbox118" droppable="false" value="" name="textbox118"  width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+left:120px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:50px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <label height="30px" visible="true" droppable="false" value="Dose:" id="label264" width="50px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:65px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+top:89px;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="12" readonly="false" visible="true" id="textbox119" droppable="false" value="" name="textbox119"  width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+left:120px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:86px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <button height="30px" tabindex="13" visible="true" droppable="false" label="Add" id="button153" width="75px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:32px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:123px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("MedicationForm");
+setDatapatternId("");
+String time1 = textbox117.text;
+String name = textbox118.text;
+String dose = textbox119.text;
+updateSession("time",time1);
+updateSession("name",name);
+updateSession("dose",dose);
+detachWindow("MedicationForm");
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="14" visible="true" droppable="false" label="Cancel" id="button149" width="75px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:122px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:123px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("MedicationForm");
+setDatapatternId("");
+detachWindow("MedicationForm");
+]]></attribute>
+  
+</button>
+ <textbox maxlength="32767" height="20px" tabindex="15" readonly="false" visible="true" id="textbox127" droppable="false" value="" name="textbox127"  width="27px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+left:25px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:3px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+
+</div>
+
+</window>
+</zk>
+

@@ -1,0 +1,137 @@
+<zk>
+<style src="/css/listOfError.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="listOfError"?>
+ <window class="listOfError" height="1092px" visible="true" droppable="false" id="listOfError" title="" width="100%" draggable="false">
+   <div class="frame3271" height="1070px" visible="true" droppable="false" align="none" id="frame3271" width="950px" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("listOfError");
+setDatapatternId("");
+ updateSession("list","list");
+]]></attribute>
+   <div class="frame3272" height="1060px" visible="true" droppable="false" align="none" id="frame3272" width="175px" draggable="false">
+    <include class="placeholder90" draggable="false" height="200px" src="searchpanel.zul?formpattern=listOfError&amp;datapattern=" visible="true" droppable="false" id="placeholder90" width="175px">
+    
+</include>
+
+</div>
+ <div class="frame3273" height="1060px" visible="true" droppable="false" align="none" id="frame3273" width="574px" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("listOfError");
+setDatapatternId("");
+updateSession("list","list");
+]]></attribute>
+   <listbox class="grid35" height="384px" multiple="False" visible="true" droppable="false" id="grid35" width="564px" draggable="false" fixedLayout= "true">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("listOfError");
+setDatapatternId("");
+displayWorkflowErrorStatus("grid35");
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("listOfError");
+setDatapatternId("");
+String workflowname=getRowData(0);
+updateSession("workflowname",workflowname);
+String nodename = getRowData(6);
+updateSession("nodename",nodename);
+String patientId= getRowData(2);
+updateSession("rowId",patientId);
+String patientmrn= getRowData(3);
+updateSession("patientmrn",patientmrn);
+String scheduleId= getRowData(7);
+updateSession("scheduleId",scheduleId);
+]]></attribute>
+   <listhead sizable="true" draggable="false" height="30px" visible="true" droppable="false" id="row350" width="562px">
+ <listheader label="WorkFlow name" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:center;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column1096" width="90px">
+
+</listheader>
+ <listheader label="Tool Name" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:center;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column1374" width="90px">
+
+</listheader>
+ <listheader label="Patient Id" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:center;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column13740" width="50px">
+
+</listheader>
+ <listheader label="Patient MRN" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:center;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column13741" width="80px">
+
+</listheader>
+ <listheader label="Error Message" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:center;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column1514" width="100px">
+
+</listheader>
+ <listheader label="Status" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:center;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column1515" width="60px">
+
+</listheader>
+ <listheader label="Node Name" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:center;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column1516" width="60px">
+
+</listheader>
+ <listheader label="Schedule Id" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column447" width="50px">
+
+</listheader>
+
+</listhead>
+
+</listbox>
+ <label class="label392" height="23px" visible="true" droppable="false" value="List of Error" id="label392" width="120px" draggable="false">
+   
+</label>
+ <div class="frame217" height="51px" visible="true" droppable="false" align="center" id="frame217" width="566px" draggable="false">
+    <button class="button242" height="30px" tabindex="0" visible="true" droppable="false" label="Revert" id="button242" width="115px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("listOfError");
+setDatapatternId("");
+workname=getSessionData("workflowname");
+patientId=getSessionData("rowId");
+patientMRN=getSessionData("patientmrn");
+nodename = getSessionData("nodename");
+schedleId= getSessionData("scheduleId");
+if(workname!=null)
+{
+invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","get workflownodeinfo.status,nodeinfo.formpatternid from appadmin.workflownodeinfo joins leftjoin workflownodeinfo.nodeid:=nodeinfo.id,leftjoin workflownodeinfo.workflowid:=workflowinfo.id conditions workflowinfo.name:=["+workname+"] and nodeinfo.nodename:=["+nodename+"]");
+String status=getDataFromAllValuesVar(0, 0);
+invokeComponent("com.oxyentmedical.component.workflowcomponent","ProcessRevertOperation","com.oxymedical.component.workflowComponent.WorkflowComponent","WORKFLOWNAME_SEP_"+workname+"_FIELDSEP_NODENAME_SEP_"+nodename+"_FIELDSEP_PATIENTID_SEP_"+patientId+"_FIELDSEP_PATIENTMRN_SEP_"+patientMRN+"_FIELDSEP_NODESTATUS_SEP_"+status+"_FIELDSEP_SCHEDULEID_SEP_"+schedleId);
+displayWorkflowErrorStatus("grid35");
+updateSession("rowId",null);
+updateSession("patientmrn",null);
+updateSession("workflowname", null);
+updateSession("nodename", null);
+updateSession("workstatus",null);
+}
+else
+{
+message("Select a Workflow!");
+}
+;
+]]></attribute>
+  
+</button>
+
+</div>
+
+</div>
+ <div class="frame3274" height="1060px" visible="true" droppable="false" align="none" id="frame3274" width="203px" draggable="false">
+    <div class="frame3275" height="646px" visible="true" droppable="false" align="left" id="frame3275" width="203px" draggable="false">
+    <include class="placeholder91" draggable="false" height="55px" src="Logo.zul?formpattern=listOfError&amp;datapattern=" visible="true" droppable="false" id="placeholder91" width="203px">
+    
+</include>
+ <include class="placeholder92" draggable="false" height="200px" src="CalendarPanel.zul?formpattern=listOfError&amp;datapattern=" visible="true" droppable="false" id="placeholder92" width="203px">
+    
+</include>
+
+</div>
+ <button class="button3275" height="30px" tabindex="1" visible="true" droppable="false" label="sign out" id="button3275" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("listOfError");
+setDatapatternId("");
+String retValue = logOut("login");
+]]></attribute>
+  
+</button>
+
+</div>
+
+</div>
+
+</window>
+</zk>
+

@@ -1,0 +1,41 @@
+<zk>
+<style src="/css/InfoPatient.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="InfoPatient"?>
+ <window class="InfoPatient" height="80px" visible="true" droppable="false" id="InfoPatient" title="" width="100%" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("InfoPatient");
+setDatapatternId("");
+String rowValue = getSessionData("rowId"); 
+if(rowValue !=null)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get Patient.medicalRecordNumber,Patient.firstname,Patient.lastname from neiswispicdb.Patient conditions patient.id:="+rowValue );
+data=createArray("String", "textbox211,textbox212,textbox213");
+showData(data);
+}
+;
+]]></attribute>
+  <label class="label382" height="20px" visible="true" droppable="false" value="MRN" id="label382" width="41px" draggable="false">
+   
+</label>
+ <label class="label383" height="20px" visible="true" droppable="false" value="First Name" id="label383" width="77px" draggable="false">
+   
+</label>
+ <label class="label384" height="20px" visible="true" droppable="false" value="Last Name" id="label384" width="76px" draggable="false">
+   
+</label>
+ <textbox class="textbox211" maxlength="32767" height="20px" tabindex="10" readonly="true" visible="true" id="textbox211" droppable="false" value="" name="textbox211"  width="80px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox212" maxlength="32767" height="20px" tabindex="11" readonly="true" visible="true" id="textbox212" droppable="false" value="" name="textbox212"  width="80px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox213" maxlength="32767" height="20px" tabindex="12" readonly="true" visible="true" id="textbox213" droppable="false" value="" name="textbox213"  width="80px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+
+</window>
+</zk>
+

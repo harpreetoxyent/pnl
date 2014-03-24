@@ -1,0 +1,157 @@
+<zk>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="toolcategory"?>
+ <window height="180px" visible="true" droppable="false" id="toolcategory" title="Tool Cateogry" width="250px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ 
+<custom-attributes formpattern="${param.formpattern}" datapattern="${param.datapattern}"/>
+  <div height="84px" visible="true" droppable="false" align="none" id="frame256" width="245px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:0px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:32px;
+" >
+    <label height="30px" visible="true" droppable="false" value="Tool Category" id="label419" width="105px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+top:23px;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="8" readonly="false" visible="true" id="textbox221" droppable="false" value="" name="textbox221"  draggable="false" width="108px" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+left:128px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:28px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+
+</div>
+ <div height="40px" visible="true" droppable="false" align="none" id="frame258" width="244px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:0px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:118px;
+" >
+    <button height="30px" tabindex="0" visible="true" droppable="false" label="Save" id="button273" width="75px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:10px;
+margin-top:10px;
+background-color:#FFFFFF;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:10px;
+margin-bottom:10px;
+color:#000000;
+background-position:tile;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("toolcategory");
+setDatapatternId("");
+result=clientSideValidation("toolcategory");
+if(result)
+{
+invokeComponent("com.oxyentmedical.component.workflowcomponent","AddNewToolCateogry","com.oxymedical.component.workflowComponent.WorkflowComponent","");
+detachWindow("toolcategory");
+};
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="1" visible="true" droppable="false" label="Cancel" id="button274" width="75px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:10px;
+margin-top:10px;
+background-color:#FFFFFF;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:10px;
+margin-bottom:10px;
+color:#000000;
+background-position:tile;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("toolcategory");
+setDatapatternId("");
+detachWindow("toolcategory");
+]]></attribute>
+  
+</button>
+
+</div>
+
+</window>
+</zk>
+

@@ -1,0 +1,570 @@
+<zk>
+<style src="/css/userinfo.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="userinfo"?>
+ <window class="userinfo" height="1164px" visible="true" droppable="false" id="userinfo" title="" width="100%" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("userinfo");
+setDatapatternId("");
+makeVisible("userinfo");
+]]></attribute>
+  <hbox class="frame4" height="1153px" visible="true" droppable="false" align="none" id="frame4" width="948px" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("userinfo");
+setDatapatternId("");
+
+	  updateSession("list",null);
+	  String rowValue = getSessionData("rowId");
+datepicker5.setVisible(false);
+textbox19.setVisible(false);
+addFormValue("textbox19","0");
+buttonArgs=createArray("String","button27,button28,button43");
+hideControls(buttonArgs);
+args=createArray("String","frame28,frame29,frame30,frame31,frame32,frame33,frame36,frame37,frame38,frame39,frame40,frame41,frame42,frame43,frame44,frame45,frame48");
+hideControls(args);
+combobox10.readonly = (true);
+if(rowValue!=null)
+{
+textbox57.readonly = (true);
+invokeComponent("com.oxymedical.component.useradmin","executeListUserAdmin","com.oxymedical.component.useradmin.UserAdminComponent","get user_.userId,user_.password_,contact_.firstName,contact_.middleName,contact_.lastName,user_.emailAddress,contact_.employeeNumber,contact_.category,contact_.Address1,contact_.Address2,contact_.zipCode,contact_.telephoneNumber,contact_.universalProviderIdentificationNumber,contact_.state,contact_.city,contact_.nationalProvidedIdentificationNumber,contact_.prefixId,contact_.suffixId,user_.active_,user_.inactivedate from useradmin.user_,useradmin.contact_ conditions user_.userId:=_STRINGSTART_"+rowValue+"_STRINGEND_ and  contact_.userId:=_STRINGSTART_"+rowValue+"_STRINGEND_");
+data=createArray("String","textbox57,textbox56,textbox59,textbox60,textbox61,textbox83,textbox72,combobox21,textbox75,textbox76,textbox78,textbox80,textbox81,combobox23,combobox24,textbox82,combobox11,combobox13,combobox27,datepicker5");
+showData(data);
+invokeComponent("com.oxymedical.component.useradmin","getComboDataFromUserAdmin","com.oxymedical.component.useradmin.UserAdminComponent","userId :="+rowValue+"_SEP_userId");
+data=createArray("String","combobox10");
+showData(data);
+textbox18.value=(textbox56.value);
+addFormValue("textbox18",textbox18.value);
+buttonEdit=createArray("String","button59,button29");
+hideControls(buttonEdit);
+button43.setVisible(true);
+button28.setVisible(true);
+invokeComponent("com.oxymedical.component.useradmin","GetFields","com.oxymedical.component.useradmin.UserAdminComponent","userPatternId :="+combobox10.value);
+showControls("combobox10",args);
+String value=combobox27.value;
+result=equalsTest(value,"inactive");
+if(result)
+{
+datepicker5.setVisible(true);
+}
+}
+else
+{
+textbox57.readonly = (false);
+}
+if(rowValue ==null)
+{
+textbox57.readonly = (false);
+};
+]]></attribute>
+   <div class="frame51" height="1129px" visible="true" droppable="false" align="none" id="frame51" width="175px" draggable="false">
+    <include class="placeholder3" draggable="false" height="200px" src="searchuserpanel.zul?formpattern=userinfo&amp;datapattern=" visible="true" droppable="false" id="placeholder3" width="175px">
+    
+</include>
+
+</div>
+ <div class="frame50" height="1150px" visible="true" droppable="false" align="none" id="frame50" width="569px" draggable="false">
+ <custom-attributes accessrights ="AddUserAccount,Edit/ModifyUserAccount,DeleteUserAccount" />
+   <tabbox class="multitab6" height="1150px" width="570px" draggable="false" id="multitab6" droppable="false" tabscroll="false">
+ <tabs>
+   <tab  label="User Information" draggable="false" id="tabpage20" droppable="false">
+ 
+</tab>
+</tabs>
+<tabpanels><tabpanel style="background-color:#D8E4F8;position:relative;" ><div class="frame4300" height="22px" droppable="false" align="none" id="frame4300" width="562px" draggable="false">
+    <label class="label209" height="20px" visible="true" droppable="false" value="User Account Role:" id="label209" width="120px" draggable="false">
+   
+</label>
+ <combobox class="combobox10" tabindex="0" readonly="true" visible="true" droppable="false" text="" name="User Account Role:" id="combobox10" draggable="false" width="132px" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("userinfo");
+setDatapatternId("");
+invokeComponent("com.oxymedical.component.useradmin","executeListUserAdmin","com.oxymedical.component.useradmin.UserAdminComponent","get userpatterns.userPatternId,userpatterns.userPatternId from useradmin.userpatterns");
+showComboData("combobox10");
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("userinfo");
+setDatapatternId("");
+hideControls(args);
+String val=getComboItemId1("combobox10");
+invokeComponent("com.oxymedical.component.useradmin","GetFields","com.oxymedical.component.useradmin.UserAdminComponent","userPatternId :="+val);
+showControls("combobox10",args);
+]]></attribute>
+  
+</combobox>
+
+</div>
+ <div class="frame8" height="97px" droppable="false" align="center" id="frame8" width="566px" draggable="false">
+    <button class="button28" height="35px" tabindex="26" visible="true" droppable="false" label="Delete User Account" id="button28" width="147px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("userinfo");
+setDatapatternId("");
+updateSession("rowId",textbox57.value);
+label50.value="";
+String dId=getSessionData("rowId");
+String mes="Are you sure you wish to delete user account "+dId+"?";
+boolean result=messageWithQuestion(mes);
+if(result)
+{
+invokeComponent("com.oxymedical.component.useradmin","SoftDeleteUser","com.oxymedical.component.useradmin.UserAdminComponent","userId := rowId");
+updateSession("rowId",null);
+setDataStatus("UserAuthenticated", "HomeForm", null);
+}
+;
+]]></attribute>
+  
+</button>
+ <button class="button43" height="35px" tabindex="25" visible="true" droppable="false" label="Save to User Account" id="button43" width="161px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("userinfo");
+setDatapatternId("");
+msg = "";
+password=(textbox56.value);
+conPassword=(textbox18.value);
+result=equalsTest(password,conPassword);
+if(result)
+{
+String ret=invokeComponent("com.oxymedical.component.useradmin","addUserFromApplication","com.oxymedical.component.useradmin.UserAdminComponent","");
+if(ret=="true")
+{
+readOnly("userinfo");
+data=createArray("String", "combobox11,combobox13,combobox21,combobox27,combobox24,combobox23,combobox10");
+setDisable(data);
+showButtonControls(buttonArgs);
+button27.setVisible(true);
+button43.setVisible(false);
+String updMsg = getUpdatedMessage();	
+if(updMsg !=null)
+{
+msg = "";
+}
+else
+{
+msg ="User Account has been updated.";
+message(msg);
+}
+}
+}
+else{
+message("Please fill correct password.");}
+;
+]]></attribute>
+  
+</button>
+ <button class="button27" height="35px" tabindex="24" visible="true" droppable="false" label="Edit/Modify User Account" id="button27" width="181px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("userinfo");
+setDatapatternId("");
+editOnly("userinfo");
+label50.value="";
+button27.setVisible(false);
+button43.setVisible(true);
+data=createArray("String", "combobox11,combobox13,combobox21,combobox27,combobox24,combobox23,combobox10");
+setEnable(data);
+textbox57.setReadonly(true);
+setUpdatedValue("Patient Information has not been updated.");
+;
+]]></attribute>
+  
+</button>
+ <button class="button30" height="35px" tabindex="29" visible="true" droppable="false" label="Cancel" id="button30" width="68px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("userinfo");
+setDatapatternId("");
+updateSession("rowId",null);
+label50.value="";
+setDataStatus("UserAuthenticated", "HomeForm", null);
+;
+]]></attribute>
+  
+</button>
+ <button class="button59" height="35px" tabindex="27" visible="true" droppable="false" label="Create User Account" id="button59" width="191px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("userinfo");
+setDatapatternId("");
+password=(textbox56.value);
+conPassword=(textbox18.value);
+result=equalsTest(password,conPassword);
+if(result)
+{
+invokeComponent("com.oxymedical.component.useradmin","executeListUserAdmin","com.oxymedical.component.useradmin.UserAdminComponent","get user_.userId,user_.companyId from useradmin.user_ conditions user_.userId:=["+textbox57.value+"]");
+retVal=isRecordExist();
+
+if(!retVal)
+{
+ String ret=invokeComponent("com.oxymedical.component.useradmin","addUserFromApplication","com.oxymedical.component.useradmin.UserAdminComponent","");
+if(ret=="true")
+{
+readOnly("userinfo");
+showButtonControls(buttonArgs);
+button59.setVisible(false);
+button43.setVisible(false);
+message("User Account has been created.");
+}
+}
+else{
+message("This userid is marked for deletion or already exists. Please choose another name.");
+textbox57.value="";
+textbox56.value="";
+textbox18.value="";
+textArgs=createArray("String","textbox57,textbox56,textbox18");
+setErrorColor(textArgs);
+}
+}
+else{
+message("Please fill correct passowrd.");
+}
+;
+]]></attribute>
+  
+</button>
+ <button class="button29" height="35px" tabindex="28" visible="true" droppable="false" label="Create Another User Account" id="button29" width="206px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("userinfo");
+setDatapatternId("");
+password=(textbox56.value);
+conPassword=(textbox18.value);
+result=equalsTest(password,conPassword);
+if(result)
+{
+if(rowId!=null)
+{
+ String ret=invokeComponent("com.oxymedical.component.useradmin","addUserFromApplication","com.oxymedical.component.useradmin.UserAdminComponent","");
+}
+else
+{
+invokeComponent("com.oxymedical.component.useradmin","executeListUserAdmin","com.oxymedical.component.useradmin.UserAdminComponent","get user_.userId,user_.companyId from useradmin.user_ conditions user_.userId:=["+textbox57.value+"]");
+retVal=isRecordExist();
+if(!retVal)
+{
+ String ret=invokeComponent("com.oxymedical.component.useradmin","addUserFromApplication","com.oxymedical.component.useradmin.UserAdminComponent","");
+if(ret=="true")
+{
+readOnly("userinfo");
+showButtonControls(buttonArgs);
+button59.setVisible(false);
+button43.setVisible(false);
+message("User Account has been created.");
+}
+}
+else{
+message("This userid is marked for deletion or already exists. Please choose another name.");
+textbox57.value="";
+textbox56.value="";
+textbox18.value="";
+textArgs=createArray("String","textbox57,textbox56,textbox18");
+setErrorColor(textArgs);
+}
+}
+}
+else{
+message("Please fill correct passowrd");}
+updateSession("rowId",null);
+label50.value="";
+setDataStatus("CreateUser", "userinfo", "useradmin");
+;
+]]></attribute>
+  
+</button>
+
+</div>
+ <div class="frame97" height="20px" droppable="false" align="center" id="frame97" width="563px" draggable="false">
+    <label class="label50" height="20px" visible="true" droppable="false" value="" id="label50" width="245px" draggable="false">
+   
+</label>
+
+</div>
+ <div class="frame131" height="969px" droppable="false" align="none" id="frame131" width="562px" draggable="false">
+    <div class="frame28" height="26px" visible="true" droppable="false" align="none" id="frame28" width="548px" draggable="false">
+    <label class="label98" height="20px" visible="true" droppable="false" value="Prefix:" id="label98" width="39px" draggable="false">
+   
+</label>
+ <combobox class="combobox11" draggable="false" tabindex="4" readonly="true" visible="true" droppable="false" text="" name="combobox11" id="combobox11" width="185px" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("userinfo");
+setDatapatternId("");
+invokeComponent("com.oxymedical.component.useradmin","executeListUserAdmin","com.oxymedical.component.useradmin.UserAdminComponent","get preffix.prefixId,preffix.prefixName from useradmin.preffix ");
+showComboData("combobox11");
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("userinfo");
+setDatapatternId("");
+getComboItemId1("combobox11");
+]]></attribute>
+  
+</combobox>
+
+</div>
+ <div class="frame29" height="26px" visible="true" droppable="false" align="none" id="frame29" width="548px" draggable="false">
+    <label class="label99" height="21px" visible="true" droppable="false" value="First Name:" id="label99" width="60px" draggable="false">
+   
+</label>
+ <textbox class="textbox59" maxlength="32767" height="20px" tabindex="5" readonly="false" visible="true" id="textbox59" droppable="false" value="" name="textbox59"  width="204px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+
+</div>
+ <div class="frame30" height="26px" visible="true" droppable="false" align="none" id="frame30" width="548px" draggable="false">
+    <label class="label100" height="20px" visible="true" droppable="false" value="Middle Name:" id="label100" width="74px" draggable="false">
+   
+</label>
+ <textbox class="textbox60" maxlength="32767" height="20px" tabindex="6" readonly="false" visible="true" id="textbox60" droppable="false" value="" name="textbox60"  width="204px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+
+</div>
+ <div class="frame31" height="26px" visible="true" droppable="false" align="none" id="frame31" width="548px" draggable="false">
+    <label class="label101" height="20px" visible="true" droppable="false" value="Last Name:" id="label101" width="62px" draggable="false">
+   
+</label>
+ <textbox class="textbox61" maxlength="32767" height="20px" tabindex="7" readonly="false" visible="true" id="textbox61" droppable="false" value="" name="textbox61"  width="204px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+
+</div>
+ <div class="frame32" height="26px" visible="true" droppable="false" align="none" id="frame32" width="548px" draggable="false">
+    <label class="label102" height="20px" visible="true" droppable="false" value="Suffix" id="label102" width="37px" draggable="false">
+   
+</label>
+ <combobox class="combobox13" draggable="false" tabindex="8" readonly="true" visible="true" droppable="false" text="" name="combobox13" id="combobox13" width="185px" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("userinfo");
+setDatapatternId("");
+invokeComponent("com.oxymedical.component.useradmin","executeListUserAdmin","com.oxymedical.component.useradmin.UserAdminComponent","get Suffix.suffixId,Suffix.suffixName from useradmin.Suffix ");
+showComboData("combobox13");
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("userinfo");
+setDatapatternId("");
+getComboItemId1("combobox13");
+]]></attribute>
+  
+</combobox>
+
+</div>
+ <div class="frame33" height="26px" visible="true" droppable="false" align="none" id="frame33" width="548px" draggable="false">
+    <label class="label2" height="20px" visible="true" droppable="false" value="Employee Number:" id="label2" width="98px" draggable="false">
+   
+</label>
+ <textbox class="textbox72" maxlength="32767" height="20px" tabindex="9" readonly="false" visible="true" id="textbox72" droppable="false" value="" name="textbox72"  width="204px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+
+</div>
+ <div class="frame36" height="26px" visible="true" droppable="false" align="none" id="frame36" width="548px" draggable="false">
+    <label class="label104" height="20px" visible="true" droppable="false" value="Category:" id="label104" width="52px" draggable="false">
+   
+</label>
+ <combobox class="combobox21" draggable="false" tabindex="10" readonly="true" visible="true" droppable="false" text="" name="combobox21" id="combobox21" width="185px" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("userinfo");
+setDatapatternId("");
+invokeComponent("com.oxymedical.component.useradmin","executeListUserAdmin","com.oxymedical.component.useradmin.UserAdminComponent","get cateogry.cateogryId,cateogry.cateogryName from useradmin.cateogry");
+showComboData("combobox21");
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("userinfo");
+setDatapatternId("");
+getComboItemId1("combobox21");
+]]></attribute>
+  
+</combobox>
+
+</div>
+ <div class="frame37" height="26px" visible="true" droppable="false" align="none" id="frame37" width="548px" draggable="false">
+    <label class="label105" height="20px" visible="true" droppable="false" value="User Status:" id="label105" width="67px" draggable="false">
+   
+</label>
+ <combobox class="combobox27" draggable="false" tabindex="11" readonly="true" visible="true" droppable="false" text="combobox0" name="combobox27" id="combobox27" width="106px" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("userinfo");
+setDatapatternId("");
+invokeComponent("com.oxymedical.component.useradmin","executeListUserAdmin","com.oxymedical.component.useradmin.UserAdminComponent","get active.id,active.value from useradmin.active");
+showComboData("combobox27");
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("userinfo");
+setDatapatternId("");
+String value=getComboItemId1("combobox27");
+result=equalsTest(value,"0");
+if(result)
+{
+datepicker5.setVisible(true);
+}
+else
+{
+datepicker5.setVisible(false);
+};
+]]></attribute>
+  
+</combobox>
+ <datebox class="datepicker5" name="datepicker5" tabindex="12" width="100px" draggable="false" id="datepicker5" droppable="false" visible="true" onChange='setDateBoxId()'>
+   
+</datebox>
+
+</div>
+ <div class="frame38" height="26px" visible="true" droppable="false" align="none" id="frame38" width="548px" draggable="false">
+    <label class="label106" height="20px" visible="true" droppable="false" value="Address(1):" id="label106" width="60px" draggable="false">
+   
+</label>
+ <textbox class="textbox75" maxlength="32767" height="20px" tabindex="12" readonly="false" visible="true" id="textbox75" droppable="false" value="" name="textbox75"  width="204px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+
+</div>
+ <div class="frame39" height="26px" visible="true" droppable="false" align="none" id="frame39" width="548px" draggable="false">
+    <label class="label107" height="20px" visible="true" droppable="false" value="Address(2):" id="label107" width="61px" draggable="false">
+   
+</label>
+ <textbox class="textbox76" maxlength="32767" height="20px" tabindex="13" readonly="false" visible="true" id="textbox76" droppable="false" value="" name="textbox76"  width="204px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+
+</div>
+ <div class="frame40" height="26px" visible="true" droppable="false" align="none" id="frame40" width="548px" draggable="false">
+    <label class="label108" height="20px" visible="true" droppable="false" value="City:" id="label108" width="27px" draggable="false">
+   
+</label>
+ <combobox class="combobox24" draggable="false" tabindex="15" readonly="true" visible="true" droppable="false" text="combobox0" name="combobox24" id="combobox24" width="185px" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("userinfo");
+setDatapatternId("");
+invokeComponent("com.oxymedical.component.useradmin","executeListUserAdmin","com.oxymedical.component.useradmin.UserAdminComponent","get admincity.id,admincity.CityName from useradmin.admincity");
+storeComboData("combobox24");
+;
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("userinfo");
+setDatapatternId("");
+getComboItemId1("combobox24");
+;
+]]></attribute>
+  
+</combobox>
+
+</div>
+ <div class="frame41" height="26px" visible="true" droppable="false" align="none" id="frame41" width="548px" draggable="false">
+    <label class="label109" height="20px" visible="true" droppable="false" value="Zipcode/PostalCode:" id="label109" width="108px" draggable="false">
+   
+</label>
+ <textbox class="textbox78" maxlength="32767" height="20px" tabindex="16" readonly="false" visible="true" id="textbox78" droppable="false" value="" name="Zipcode/PostalCode:" constraint="/((^[0]{1}$|^[-]?[1-9]{1}\d*$)|)/:Numeric whole value only" width="204px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+
+</div>
+ <div class="frame42" height="26px" visible="true" droppable="false" align="none" id="frame42" width="548px" draggable="false">
+    <label class="label110" height="20px" visible="true" droppable="false" value="State/Province:" id="label110" width="83px" draggable="false">
+   
+</label>
+ <combobox class="combobox23" draggable="false" tabindex="14" readonly="true" visible="true" droppable="false" text="combobox0" name="combobox23" id="combobox23" width="185px" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("userinfo");
+setDatapatternId("");
+invokeComponent("com.oxymedical.component.useradmin","executeListUserAdmin","com.oxymedical.component.useradmin.UserAdminComponent","get region.regionId,region.name from useradmin.region");
+showComboData("combobox23");
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("userinfo");
+setDatapatternId("");
+String stateId=getComboItemId1("combobox23");
+if(stateId !=null)
+{
+invokeComponent("com.oxymedical.component.useradmin","executeListUserAdmin","com.oxymedical.component.useradmin.UserAdminComponent","get admincity.id,admincity.CityName from useradmin.admincity conditions admincity.stateId:="+stateId );
+showComboData("combobox24");
+};
+]]></attribute>
+  
+</combobox>
+
+</div>
+ <div class="frame43" height="26px" visible="true" droppable="false" align="none" id="frame43" width="548px" draggable="false">
+    <label class="label111" height="20px" visible="true" droppable="false" value="Telephone Number:" id="label111" width="102px" draggable="false">
+   
+</label>
+ <textbox class="textbox80" maxlength="32767" height="20px" tabindex="17" readonly="false" visible="true" id="textbox80" droppable="false" value="" name="Telephone Number:" constraint="/((^[0]{1}$|^[-]?[1-9]{1}\d*$)|)/:Numeric whole value only" width="204px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+
+</div>
+ <div class="frame44" height="26px" visible="true" droppable="false" align="none" id="frame44" width="548px" draggable="false">
+    <label class="label112" height="20px" visible="true" droppable="false" value="Universal Provider identification Number:" id="label112" width="198px" draggable="false">
+   
+</label>
+ <textbox class="textbox81" maxlength="32767" height="20px" tabindex="18" readonly="false" visible="true" id="textbox81" droppable="false" value="" name="textbox81"  width="204px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+
+</div>
+ <div class="frame45" height="26px" visible="true" droppable="false" align="none" id="frame45" width="548px" draggable="false">
+    <label class="label113" height="20px" visible="true" droppable="false" value="National Provided identification Number:" id="label113" width="197px" draggable="false">
+   
+</label>
+ <textbox class="textbox82" maxlength="32767" height="20px" tabindex="19" readonly="false" visible="true" id="textbox82" droppable="false" value="" name="textbox82"  width="204px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+
+</div>
+ <div class="frame48" height="26px" visible="true" droppable="false" align="none" id="frame48" width="548px" draggable="false">
+    <label class="label114" height="20px" visible="true" droppable="false" value="E-mail Address:" id="label114" width="82px" draggable="false">
+   
+</label>
+ <textbox class="textbox83" maxlength="32767" height="20px" tabindex="20" readonly="false" visible="true" id="textbox83" droppable="false" value="" name="textbox83"  width="204px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+
+</div>
+ <label class="label142" height="20px" visible="true" droppable="false" value="UserId" id="label142" width="42px" draggable="false">
+   
+</label>
+ <label class="label146" height="22px" visible="true" droppable="false" value="Password" id="label146" width="56px" draggable="false">
+   
+</label>
+ <label class="label147" height="20px" visible="true" droppable="false" value="Confirm Password" id="label147" width="92px" draggable="false">
+   
+</label>
+ <textbox class="textbox18" maxlength="32767" height="20px" tabindex="3" readonly="false" visible="true" id="textbox18" droppable="false" value="" name="Confirm Password"  type="password" draggable="false" width="204px" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox56" maxlength="32767" height="20px" tabindex="2" readonly="false" visible="true" id="textbox56" droppable="false" value="" name="Password"  type="password" draggable="false" width="204px" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox57" maxlength="32767" height="20px" tabindex="1" readonly="false" visible="true" id="textbox57" droppable="false" value="" name="UserId"  draggable="false" width="204px" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox19" maxlength="32767" height="20px" tabindex="66" readonly="false" visible="true" id="textbox19" droppable="false" value="0" name="textbox19"  width="100px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+
+</div></tabpanel></tabpanels>
+</tabbox>
+
+
+</div>
+ <div class="frame5800" height="1060px" visible="true" droppable="false" align="right" id="frame5800" width="203px" draggable="false">
+    <div class="frame58" height="1020px" visible="true" droppable="false" align="left" id="frame58" width="203px" draggable="false">
+    <include class="placeholder4" draggable="false" height="55px" src="Logo.zul?formpattern=userinfo&amp;datapattern=" visible="true" droppable="false" id="placeholder4" width="203px">
+    
+</include>
+ <include class="placeholder5" draggable="false" height="200px" src="CalendarPanel.zul?formpattern=userinfo&amp;datapattern=" visible="true" droppable="false" id="placeholder5" width="203px">
+    
+</include>
+
+</div>
+ <button class="button1" height="30px" tabindex="15" visible="true" droppable="false" label="sign out" id="button1" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("userinfo");
+setDatapatternId("");
+String retValue = logOut("login");
+updateSession("login", null);
+]]></attribute>
+  
+</button>
+
+</div>
+
+</hbox>
+
+</window>
+</zk>
+

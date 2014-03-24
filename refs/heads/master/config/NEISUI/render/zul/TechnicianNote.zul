@@ -1,0 +1,124 @@
+<zk>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="TechnicianNote"?>
+ <window height="284px" visible="true" droppable="false" id="TechnicianNote" title="" width="301px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:8px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:8px;
+position:absolute;
+padding-bottom:8px;
+padding-right:8px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ 
+<custom-attributes formpattern="${param.formpattern}" datapattern="${param.datapattern}"/>
+  <div height="239px" visible="true" droppable="false" align="none" id="frame134" width="276px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:15px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:28px;
+" >
+    <textbox maxlength="32767" height="96px" tabindex="0" readonly="false" visible="true" id="textbox70" rows="2"
+ cols="50" droppable="false" value="" name="textbox70"  width="259px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+left:10px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:7px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <button height="30px" tabindex="8" visible="true" droppable="false" label="Save" id="button147" width="75px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:44px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:201px;
+" >
+   
+</button>
+ <button height="30px" tabindex="9" visible="true" droppable="false" label="Cancel" id="button148" width="75px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:149px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:204px;
+" >
+   
+</button>
+ <button height="30px" width="111px" draggable="false" id="browse1" label="Import Technician Notes" droppable="false" visible="true" style="top:122px;
+background-color:#FFFFFF;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-right:0px;
+padding-left:0px;
+padding-top:0px;
+color:#000000;
+font-size:8.25pt;
+margin-bottom:0px;
+position:absolute;
+background-position:tile;
+margin-right:0px;
+margin-left:0px;
+padding-bottom:0px;
+left:132px;
+" >
+   
+</button>
+
+</div>
+
+</window>
+</zk>
+

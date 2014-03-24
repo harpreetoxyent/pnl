@@ -1,0 +1,202 @@
+<zk>
+<style src="/css/AddUserFields.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="AddUserFields"?>
+ <window class="AddUserFields" height="1070px" visible="true" droppable="false" id="AddUserFields" title="" width="100%" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+makeVisible("AddUserFields");setFormPatternId("AddUserFields");
+setDatapatternId("");
+editOnly=getSessionData("edit");
+if(editOnly=="true")
+{
+button61.setLabel("Edit Clinician Privileges");
+};
+]]></attribute>
+  <hbox class="frame20" height="1060px" visible="true" droppable="false" align="none" id="frame20" width="949px" draggable="false">
+    <div class="frame1251" height="1042px" visible="true" droppable="false" align="none" id="frame1251" width="175px" draggable="false">
+    <include class="placeholder24" draggable="false" height="200px" src="searchpanel.zul?formpattern=AddUserFields&amp;datapattern=" visible="true" droppable="false" id="placeholder24" width="175px">
+    
+</include>
+
+</div>
+ <vbox class="frame110" height="1055px" visible="true" droppable="false" align="none" id="frame110" width="569px" draggable="false">
+ <custom-attributes accessrights ="AddClincain,Edit/ModifyClincianList" />
+   <tabbox class="multitab6" height="1054px" width="569px" draggable="false" id="multitab6" droppable="false" tabscroll="false">
+ <tabs>
+   <tab  label="Entry fields" draggable="false" id="tabpage16" droppable="false">
+ 
+</tab>
+</tabs>
+<tabpanels><tabpanel style="background-color:#D8E4F8;position:relative;" ><div class="frame112" height="50px" droppable="false" align="center" id="frame112" width="559px" draggable="false">
+    <button class="button61" height="30px" tabindex="0" visible="true" droppable="false" label="Define Clinician Privileges" id="button61" width="214px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AddUserFields");
+setDatapatternId("");
+updateSessionList("fields",null);
+createFieldsList("listbox9");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","AddPrivileges");
+setDataStatus("AddPrivilege", "AddPrivileges", "useradmin");
+;
+]]></attribute>
+  
+</button>
+ <button class="button67" height="30px" tabindex="9" visible="true" droppable="false" label="Back" id="button67" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AddUserFields");
+setDatapatternId("");
+updateSessionList("fields",null);
+createFieldsList("listbox9");
+setDataStatus("CreateClinical", "AddClinical", "useradmin");
+;
+]]></attribute>
+  
+</button>
+ <button class="button14" height="30px" tabindex="10" visible="true" droppable="false" label="Cancel" id="button14" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AddUserFields");
+setDatapatternId("");
+updateSession("userPatternId",null);
+updateSession("companyId",null);
+updateSessionList("fields",null);
+updateSessionList("privilege",null);
+updateSessionList("edit",null);
+setDataStatus("UserAuthenticated", "HomeForm", null);
+;
+]]></attribute>
+  
+</button>
+
+</div>
+ <div class="frame113" height="970px" droppable="false" align="none" id="frame113" width="561px" draggable="false">
+    <listbox class="listbox8" draggable="false" height="491px" multiple="true" visible="true" droppable="false" id="listbox8" width="230px" fixedLayout= "true">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("AddUserFields");
+setDatapatternId("");
+invokeComponent("com.oxymedical.component.useradmin","executeListUserAdmin","com.oxymedical.component.useradmin.UserAdminComponent","get userfields.fieldid,userfields.fieldName from useradmin.userfields orderby userfields.fieldName ");
+displayFieldDataInControl("listbox8");
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("AddUserFields");
+setDatapatternId("");
+x=getSelectedListData();
+updateSession("rowId",x);
+]]></attribute>
+  
+</listbox>
+ <listbox class="listbox9" draggable="false" height="491px" multiple="true" visible="true" droppable="false" id="listbox9" width="230px" fixedLayout= "true">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("AddUserFields");
+setDatapatternId("");
+editOnly=getSessionData("edit");
+patternId=getSessionData("userPatternId");
+dValue=session.getAttribute("fields");
+ if(editOnly=="true")
+ {
+ if(dValue==null)
+ {
+invokeComponent("com.oxymedical.component.useradmin","GetFields","com.oxymedical.component.useradmin.UserAdminComponent","userPatternId :="+patternId);
+displayFieldDataInControl("listbox9");
+}
+}
+
+setDefaultValue(dValue,"listbox9");
+removeChilds("listbox9","listbox8"); ;
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("AddUserFields");
+setDatapatternId("");
+x=getSelectedListData();
+updateSession("rowId",x);
+]]></attribute>
+  
+</listbox>
+ <button class="button62" height="30px" tabindex="9" visible="true" image="img/button62.jpg" droppable="false" label="" id="button62" width="33px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AddUserFields");
+setDatapatternId("");
+rowID=getSessionData("rowId");
+moveValue(rowID,"listbox8","listbox9");
+updateSession("rowId",null);
+;
+]]></attribute>
+  
+</button>
+ <button class="button63" height="30px" tabindex="10" visible="true" image="img/button63.jpg" droppable="false" label="" id="button63" width="33px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AddUserFields");
+setDatapatternId("");
+rowID=getSessionData("rowId");
+moveValue(rowID,"listbox9","listbox8");
+updateSession("rowId",null);
+;
+]]></attribute>
+  
+</button>
+ <button class="button64" height="30px" tabindex="11" visible="true" image="img/button64.jpg" droppable="false" label="" id="button64" width="33px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AddUserFields");
+setDatapatternId("");
+moveAllItems("listbox8","listbox9");
+]]></attribute>
+  
+</button>
+ <button class="button65" height="30px" tabindex="12" visible="true" image="img/button65.jpg" droppable="false" label="" id="button65" width="33px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AddUserFields");
+setDatapatternId("");
+moveAllItems("listbox9","listbox8");
+]]></attribute>
+  
+</button>
+ <label class="label63" height="20px" visible="true" droppable="false" value="Move" id="label63" width="43px" draggable="false">
+   
+</label>
+ <label class="label64" height="20px" visible="true" droppable="false" value="Remove" id="label64" width="53px" draggable="false">
+   
+</label>
+ <label class="label65" height="20px" visible="true" droppable="false" value="Move All" id="label65" width="52px" draggable="false">
+   
+</label>
+ <label class="label66" height="20px" visible="true" droppable="false" value="Remove All" id="label66" width="63px" draggable="false">
+   
+</label>
+ <label class="label67" height="20px" visible="true" droppable="false" value="Entry Fields" id="label67" width="65px" draggable="false">
+   
+</label>
+ <label class="label68" height="20px" visible="true" droppable="false" value="User Selected Fields" id="label68" width="110px" draggable="false">
+   
+</label>
+
+</div></tabpanel></tabpanels>
+</tabbox>
+
+
+</vbox>
+ <div class="frame1700" height="1059px" visible="true" droppable="false" align="right" id="frame1700" width="203px" draggable="false">
+    <button class="button200" height="30px" tabindex="1" visible="true" droppable="false" label="sign out" id="button200" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AddUserFields");
+setDatapatternId("");
+String retValue = logOut("login");
+]]></attribute>
+  
+</button>
+ <div class="frame114" height="991px" visible="true" droppable="false" align="left" id="frame114" width="203px" draggable="false">
+    <include class="placeholder25" draggable="false" height="55px" src="Logo.zul?formpattern=AddUserFields&amp;datapattern=" visible="true" droppable="false" id="placeholder25" width="203px">
+    
+</include>
+ <include class="placeholder26" draggable="false" height="200px" src="CalendarPanel.zul?formpattern=AddUserFields&amp;datapattern=" visible="true" droppable="false" id="placeholder26" width="203px">
+    
+</include>
+
+</div>
+
+</div>
+
+</hbox>
+
+</window>
+</zk>
+

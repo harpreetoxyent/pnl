@@ -1,0 +1,225 @@
+<zk>
+<style src="/css/AddPrivileges.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="AddPrivileges"?>
+ <window class="AddPrivileges" height="1070px" visible="true" droppable="false" id="AddPrivileges" title="" width="100%" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+makeVisible("AddPrivileges");setFormPatternId("AddPrivileges");
+setDatapatternId("");
+editOnly=getSessionData("edit");
+if(editOnly=="true")
+{
+button66.setLabel("Update Clinician");
+};
+]]></attribute>
+  <hbox class="frame115" height="1057px" visible="true" droppable="false" align="none" id="frame115" width="946px" draggable="false">
+    <div class="frame1252" height="1048px" visible="true" droppable="false" align="none" id="frame1252" width="175px" draggable="false">
+    <include class="placeholder21" draggable="false" height="200px" src="searchpanel.zul?formpattern=AddPrivileges&amp;datapattern=" visible="true" droppable="false" id="placeholder21" width="175px">
+    
+</include>
+
+</div>
+ <vbox class="frame116" height="1054px" visible="true" droppable="false" align="none" id="frame116" width="565px" draggable="false">
+ <custom-attributes accessrights ="AddClincain,Edit/ModifyClincianList" />
+   <tabbox class="multitab7" height="1053px" width="566px" draggable="false" id="multitab7" droppable="false" tabscroll="false">
+ <tabs>
+   <tab  label="Privileges" draggable="false" id="tabpage29" droppable="false">
+ 
+</tab>
+</tabs>
+<tabpanels><tabpanel style="background-color:#D8E4F8;position:relative;" ><div class="frame117" height="50px" droppable="false" align="center" id="frame117" width="557px" draggable="false">
+    <button class="button66" height="30px" tabindex="0" visible="true" droppable="false" label="Create Clinician" id="button66" width="146px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AddPrivileges");
+setDatapatternId("");
+updateSessionList("privilege",null);
+createPrivilegesList("listbox11");
+createFormValuesForUserPattern("HomeForm");
+pattern=getSessionData("userPatternId");
+editOnly=getSessionData("edit");
+if(editOnly=="true")
+{
+createMessage=("  Are you sure you wish to update clinician  , "+pattern+" ?");
+displayMessage=("Clinician "+pattern+" has been updated.");
+}
+else
+{
+createMessage=("  Are you sure you wish to create clinician  , "+pattern+" ?");
+displayMessage=("Clinician "+pattern+" has been created.");
+}
+valid=messageWithQuestion(createMessage);
+if(valid)
+{
+invokeComponent("com.oxymedical.component.useradmin","AddUserPattern","com.oxymedical.component.useradmin.UserAdminComponent","");
+Messagebox.show(displayMessage,"NOLIS", Messagebox.OK, Messagebox.INFORMATION);
+updateSession("userPatternId",null);
+updateSessionList("edit",null);
+setDataStatus("UserAuthenticated", "HomeForm", null);
+};
+]]></attribute>
+  
+</button>
+ <button class="button68" height="30px" tabindex="8" visible="true" droppable="false" label="Back" id="button68" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AddPrivileges");
+setDatapatternId("");
+updateSessionList("privilege",null);
+createPrivilegesList("listbox11");
+setDataStatus("CreateFields", "AddUserFields", "useradmin");
+;
+]]></attribute>
+  
+</button>
+ <button class="button13" height="30px" tabindex="9" visible="true" droppable="false" label="Cancel" id="button13" width="88px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AddPrivileges");
+setDatapatternId("");
+updateSession("userPatternId",null);
+updateSession("companyId",null);
+updateSessionList("fields",null);
+updateSessionList("privilege",null);
+updateSessionList("edit",null);
+setDataStatus("UserAuthenticated", "HomeForm", null);
+;
+]]></attribute>
+  
+</button>
+
+</div>
+ <div class="frame118" height="966px" droppable="false" align="none" id="frame118" width="559px" draggable="false">
+    <listbox class="listbox10" draggable="false" height="491px" multiple="true" visible="true" droppable="false" id="listbox10" width="230px" fixedLayout= "true">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("AddPrivileges");
+setDatapatternId("");
+invokeComponent("com.oxymedical.component.useradmin","executeListUserAdmin","com.oxymedical.component.useradmin.UserAdminComponent","get rights_.name,rights_.name  from useradmin.rights_  orderby rights_.name");
+displayFieldDataInControl("listbox10");
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("AddPrivileges");
+setDatapatternId("");
+x=getSelectedListData();
+updateSession("rowId",x);
+]]></attribute>
+  
+</listbox>
+ <listbox class="listbox11" draggable="false" height="491px" multiple="true" visible="true" droppable="false" id="listbox11" width="230px" fixedLayout= "true">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("AddPrivileges");
+setDatapatternId("");
+editOnly=getSessionData("edit");
+patternId=getSessionData("userPatternId");
+dValue=session.getAttribute("privilege");
+ if(editOnly=="true")
+ {
+ if(dValue==null)
+ {
+invokeComponent("com.oxymedical.component.useradmin","GetRights","com.oxymedical.component.useradmin.UserAdminComponent","userPatternId :="+patternId);
+displayFieldDataInControl("listbox11");
+}
+}
+setDefaultValue(dValue,"listbox11");
+removeChilds("listbox11","listbox10"); ;
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("AddPrivileges");
+setDatapatternId("");
+x=getSelectedListData();
+updateSession("rowId",x);
+]]></attribute>
+  
+</listbox>
+ <label class="label69" height="20px" visible="true" droppable="false" value="Privileges" id="label69" width="66px" draggable="false">
+   
+</label>
+ <label class="label70" height="20px" visible="true" droppable="false" value="label0" id="label70" width="124px" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("AddPrivileges");
+setDatapatternId("");
+String defaultValue=getSessionData("userPatternId");
+label70.value=(defaultValue+" Privileges");
+]]></attribute>
+  
+</label>
+ <button class="button69" height="30px" tabindex="11" visible="true" image="img/button69.jpg" droppable="false" label="" id="button69" width="33px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AddPrivileges");
+setDatapatternId("");
+rowID=getSessionData("rowId");
+moveValue(rowID,"listbox10","listbox11");
+updateSession("rowId",null);
+]]></attribute>
+  
+</button>
+ <button class="button72" height="30px" tabindex="12" visible="true" image="img/button72.jpg" droppable="false" label="" id="button72" width="33px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AddPrivileges");
+setDatapatternId("");
+rowID=getSessionData("rowId");
+moveValue(rowID,"listbox11","listbox10");
+updateSession("rowId",null);
+;
+]]></attribute>
+  
+</button>
+ <button class="button78" height="30px" tabindex="13" visible="true" image="img/button78.jpg" droppable="false" label="" id="button78" width="33px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AddPrivileges");
+setDatapatternId("");
+moveAllItems("listbox10","listbox11");
+]]></attribute>
+  
+</button>
+ <button class="button79" height="30px" tabindex="14" visible="true" image="img/button79.jpg" droppable="false" label="" id="button79" width="33px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AddPrivileges");
+setDatapatternId("");
+moveAllItems("listbox11","listbox10");
+]]></attribute>
+  
+</button>
+ <label class="label71" height="20px" visible="true" droppable="false" value="Move" id="label71" width="39px" draggable="false">
+   
+</label>
+ <label class="label72" height="20px" visible="true" droppable="false" value="Remove" id="label72" width="50px" draggable="false">
+   
+</label>
+ <label class="label127" height="20px" visible="true" droppable="false" value="Move All" id="label127" width="54px" draggable="false">
+   
+</label>
+ <label class="label155" height="20px" visible="true" droppable="false" value="Remove All" id="label155" width="64px" draggable="false">
+   
+</label>
+
+</div></tabpanel></tabpanels>
+</tabbox>
+
+
+</vbox>
+ <div class="frame1753" height="1048px" visible="true" droppable="false" align="right" id="frame1753" width="203px" draggable="false">
+    <button class="button199" height="30px" tabindex="1" visible="true" droppable="false" label="sign out" id="button199" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AddPrivileges");
+setDatapatternId("");
+String retValue = logOut("login");
+]]></attribute>
+  
+</button>
+ <div class="frame121" height="1003px" visible="true" droppable="false" align="left" id="frame121" width="203px" draggable="false">
+    <include class="placeholder22" draggable="false" height="55px" src="Logo.zul?formpattern=AddPrivileges&amp;datapattern=" visible="true" droppable="false" id="placeholder22" width="203px">
+    
+</include>
+ <include class="placeholder23" draggable="false" height="200px" src="CalendarPanel.zul?formpattern=AddPrivileges&amp;datapattern=" visible="true" droppable="false" id="placeholder23" width="203px">
+    
+</include>
+
+</div>
+
+</div>
+
+</hbox>
+
+</window>
+</zk>
+

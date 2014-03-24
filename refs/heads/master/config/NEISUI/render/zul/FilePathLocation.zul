@@ -1,0 +1,138 @@
+<zk>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="FilePathLocation"?>
+ <window height="113px" visible="true" droppable="false" id="FilePathLocation" title="" width="430px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:8px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:8px;
+position:absolute;
+padding-bottom:8px;
+padding-right:8px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ 
+<custom-attributes formpattern="${param.formpattern}" datapattern="${param.datapattern}"/>
+  <div height="96px" visible="true" droppable="false" align="none" id="frame251" width="419px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:0px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:7px;
+" >
+    <label height="22px" visible="true" droppable="false" value="File Path Location" id="label412" width="130px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:11px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:center;
+background-position:tile;
+top:8px;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="1" readonly="false" visible="true" id="textbox219" droppable="false" value="" name="textbox219"  width="234px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+left:161px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:9px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <button height="30px" tabindex="8" visible="true" droppable="false" label="ok" id="button259" width="75px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:110px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:43px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("FilePathLocation");
+setDatapatternId("");
+String workingDirectory=textbox219.text;
+updateSession("XMLFilePath",workingDirectory);
+detachWindow("FilePathLocation");
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="9" visible="true" droppable="false" label="Cancel" id="button260" width="78px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:216px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:43px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("FilePathLocation");
+setDatapatternId("");
+detachWindow("FilePathLocation");
+]]></attribute>
+  
+</button>
+
+</div>
+
+</window>
+</zk>
+

@@ -1,0 +1,187 @@
+<zk>
+<style src="/css/AddTool.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="AddTool"?>
+ <window class="AddTool" height="1080px" visible="true" droppable="false" id="AddTool" title="" width="100%" draggable="false">
+   <div class="frame2581" height="1070px" visible="true" droppable="false" align="none" id="frame2581" width="950px" draggable="false">
+    <div class="frame2582" height="1060px" visible="true" droppable="false" align="none" id="frame2582" width="175px" draggable="false">
+    <include class="placeholder74" draggable="false" height="200px" src="searchpanel.zul?formpattern=AddTool&amp;datapattern=" visible="true" droppable="false" id="placeholder74" width="175px">
+    
+</include>
+
+</div>
+ <div class="frame2583" height="1035px" visible="true" droppable="false" align="none" id="frame2583" width="574px" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("AddTool");
+setDatapatternId("");
+String toolsId =getSessionData("rowId");
+textbox218.setVisible(false);
+String actionDataBase=null;
+if(toolsId!=null)
+{
+String query = "get nodedetails.formpattern,nodedetails.pacakge,nodedetails.Action,nodedetails.nodeDescription,nodedetails.id,nodedetails.isVisualizer,nodedetails.inputxml,toolcateogry.id from appadmin.nodedetails joins leftjoin nodedetails.cateogryid:=toolcateogry.id conditions nodedetails.id:="+toolsId;
+invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent",query);
+data=createArray("String", "textbox208,textbox209,textbox210,textbox214,textbox218,checkbox5,toolinputxmltextbox,combobox43");
+showData(data);
+actionDataBase=textbox210.getText();
+};
+]]></attribute>
+   <tabbox class="multitab9" height="693px" width="538px" draggable="false" id="multitab9" droppable="false" tabscroll="false">
+ <tabs>
+   <tab  label="Add Tool" draggable="false" id="tabpage25" droppable="false">
+ 
+</tab>
+</tabs>
+<tabpanels><tabpanel style="background-color:#D8E4F8;position:relative;" ><label class="label366" height="20px" droppable="false" value="Tool Name" id="label366" width="93px" draggable="false">
+   
+</label>
+ <label class="label367" height="20px" droppable="false" value="Package" id="label367" width="75px" draggable="false">
+   
+</label>
+ <label class="label368" height="20px" droppable="false" value="Action" id="label368" width="56px" draggable="false">
+   
+</label>
+ <textbox class="textbox208" maxlength="32767" height="20px" tabindex="10" readonly="false" id="textbox208" droppable="false" value="" name="Tool Name"  draggable="false" width="330px" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox209" maxlength="32767" height="20px" tabindex="11" readonly="false" id="textbox209" droppable="false" value="" name="Package"  draggable="false" width="330px" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox210" maxlength="32767" height="20px" tabindex="12" readonly="false" id="textbox210" droppable="false" value="" name="Action"  draggable="false" width="330px" onChange='setTextboxId()'>
+   
+</textbox>
+ <button class="button229" height="30px" tabindex="15" droppable="false" label="Ok" id="button229" width="89px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AddTool");
+setDatapatternId("");
+String toolName = textbox208.getText();
+String inputXML = toolinputxmltextbox.getText();
+boolean isEmpty = equalsTest(toolName, "");
+if(!isEmpty)
+{
+isEmpty = equalsTest(inputXML, "");
+if(!isEmpty)
+{
+addFormValue("toolName",toolName);
+addFormValue("inputXML",inputXML);
+invokeComponent("formDesignerComponent","generateFDXMLFromToolXML","com.oxymedical.component.formdesigner.FormDesignerComponent","");
+invokeComponent("id.rendering","renderToolXML","com.oxymedical.component.renderer.RendererComponent","");
+}
+}
+result=clientSideValidation("AddTool");
+if(result)
+{
+String actionName = textbox210.getText(); 
+String toolsId =getSessionData("rowId");
+resultbase=equalsTest(actionDataBase,actionName);
+if(resultbase)
+{
+invokeComponent("com.oxyentmedical.component.workflowcomponent","AddNewNodeFromUI","com.oxymedical.component.workflowComponent.WorkflowComponent","");
+updateSession("rowId",null);
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","visualmode");
+}
+else
+{
+invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","get nodedetails.id from appadmin.nodedetails conditions nodedetails.Action:=["+actionName+"]");
+boolean isPresent = isRecordExist();
+if(isPresent)
+{
+message("Workflow with this Action name already exists. Change Action name!");
+}
+else
+{
+updateSession("rowId",null);
+invokeComponent("com.oxyentmedical.component.workflowcomponent","AddNewNodeFromUI","com.oxymedical.component.workflowComponent.WorkflowComponent","");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","visualmode");
+}
+}
+};
+]]></attribute>
+  
+</button>
+ <button class="button230" height="30px" tabindex="16" droppable="false" label="Cancel" id="button230" width="89px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AddTool");
+setDatapatternId("");
+updateSession("rowId",null);
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","ListOfToolsNew");
+]]></attribute>
+  
+</button>
+ <label class="label387" height="20px" droppable="false" value="Description" id="label387" width="94px" draggable="false">
+   
+</label>
+ <textbox class="textbox214" maxlength="32767" height="20px" tabindex="18" readonly="false" id="textbox214" droppable="false" value="" name="Description"  draggable="false" width="330px" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox218" maxlength="32767" height="20px" tabindex="19" readonly="false" id="textbox218" droppable="false" value="" name="textbox218"  width="100px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <label class="label388" height="30px" droppable="false" value="Tool Category" id="label388" width="125px" draggable="false">
+   
+</label>
+ <combobox class="combobox43" tabindex="21" readonly="false" droppable="false" text="combobox1" name="Tool Category" id="combobox43" draggable="false" width="200px" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("AddTool");
+setDatapatternId("");
+invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","get toolcateogry .id,toolcateogry.category from appadmin.toolcateogry ");
+showComboData("combobox43");
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("AddTool");
+setDatapatternId("");
+getComboItemId1("combobox43");
+]]></attribute>
+  
+</combobox>
+ <button class="button221" height="30px" tabindex="22" droppable="false" label="Add Tool Cateogry" id="button221" width="128px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AddTool");
+setDatapatternId("");
+createPopUp("toolcategory");
+invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","get toolcateogry .id,toolcateogry.category from appadmin.toolcateogry ");
+showComboData("combobox43");
+]]></attribute>
+  
+</button>
+ <label class="label407" height="30px" droppable="false" value="Input XML" id="label407" width="102px" draggable="false">
+   
+</label>
+ <textbox class="toolinputxmltextbox" maxlength="32767" height="20px" tabindex="24" readonly="false" id="toolinputxmltextbox" droppable="false" value="" name="toolInputXMLTextBox"  width="329px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <checkbox class="checkbox5" style="font-size:9;font-family:Microsoft Sans Serif;font-style:Bold;"  draggable="false" height="30px" Checked="false" droppable="false" label="Visualizer" id="checkbox5" width="97px" onCheck='setCheckboxId()'>
+   
+</checkbox></tabpanel></tabpanels>
+</tabbox>
+
+
+</div>
+ <div class="frame2584" height="1060px" visible="true" droppable="false" align="none" id="frame2584" width="203px" draggable="false">
+    <div class="frame2585" height="646px" visible="true" droppable="false" align="left" id="frame2585" width="203px" draggable="false">
+    <include class="placeholder75" draggable="false" height="55px" src="Logo.zul?formpattern=AddTool&amp;datapattern=" visible="true" droppable="false" id="placeholder75" width="203px">
+    
+</include>
+ <include class="placeholder76" draggable="false" height="200px" src="CalendarPanel.zul?formpattern=AddTool&amp;datapattern=" visible="true" droppable="false" id="placeholder76" width="203px">
+    
+</include>
+
+</div>
+ <button class="button2588" height="30px" tabindex="1" visible="true" droppable="false" label="sign out" id="button2588" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AddTool");
+setDatapatternId("");
+String retValue = logOut("login");
+]]></attribute>
+  
+</button>
+
+</div>
+
+</div>
+
+</window>
+</zk>
+

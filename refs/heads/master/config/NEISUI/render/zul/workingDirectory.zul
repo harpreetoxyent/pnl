@@ -1,0 +1,153 @@
+<zk>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="workingDirectory"?>
+ <window height="100px" visible="true" droppable="false" id="workingDirectory" title="" width="435px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ 
+<custom-attributes formpattern="${param.formpattern}" datapattern="${param.datapattern}"/>
+  <div height="98px" visible="true" droppable="false" align="none" id="frame230" width="431px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:0px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:0px;
+" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("workingDirectory");
+setDatapatternId("");
+String workingDirectory=getSessionData("workingarea");
+if(workingDirectory!=null)
+{
+textbox216.setValue(workingDirectory);
+};
+]]></attribute>
+   <label height="20px" visible="true" droppable="false" value="Working Directory" id="label402" width="122px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:0px;
+font-size:9pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+top:11px;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="8" readonly="false" visible="true" id="textbox216" droppable="false" value="" name="textbox215"  width="286px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+left:124px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:10px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <button height="30px" tabindex="9" visible="true" droppable="false" label="Ok" id="button250" width="75px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:77px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#316AC5;
+background-position:tile;
+top:60px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("workingDirectory");
+setDatapatternId("");
+String scid=getSessionData("scheduleId");
+String workingDirectory=textbox216.text;
+if(scid!=null)
+{
+workingDirectory=replaceStringValue("\\\\","/",workingDirectory);
+invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","update neiswispicdb.schedule set workingDirectory:=["+workingDirectory+"] conditions ID:="+scid);
+detachWindow("workingDirectory");
+
+};
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="10" visible="true" droppable="false" label="Cancel" id="button254" width="75px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:208px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#316AC5;
+background-position:tile;
+top:60px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("workingDirectory");
+setDatapatternId("");
+detachWindow("workingDirectory");
+]]></attribute>
+  
+</button>
+
+</div>
+
+</window>
+</zk>
+

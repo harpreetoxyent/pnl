@@ -1,0 +1,316 @@
+<zk>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="AddUserDefineField"?>
+ <window height="228px" visible="true" droppable="false" id="AddUserDefineField" title="Add User Define Field" width="345px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:8px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:8px;
+position:absolute;
+padding-bottom:8px;
+padding-right:8px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("AddUserDefineField");
+setDatapatternId("");
+textbox10.setVisible(false);
+]]></attribute>
+
+<custom-attributes formpattern="${param.formpattern}" datapattern="${param.datapattern}"/>
+  <div height="175px" visible="true" droppable="false" align="none" id="frame76" width="334px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:0px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:35px;
+" >
+    <div height="167px" visible="true" droppable="false" align="none" id="frame77" width="329px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:0px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:2px;
+" >
+    <label height="30px" visible="true" droppable="false" value="Select Table Name*:" id="label42" width="106px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:54px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+top:17px;
+" >
+   
+</label>
+ <combobox tabindex="8" readonly="true" visible="true" droppable="false" text="" name="Select Table Name*:" id="combobox1" draggable="false" width="135px" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:172px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:17px;
+"  >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("AddUserDefineField");
+setDatapatternId("");
+invokeComponent("dbComponent","dbStructure","com.oxymedical.component.db.DBComponent","dbName=neiswispicdb");
+showComboData("combobox1");
+;
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("AddUserDefineField");
+setDatapatternId("");
+String table = getComboBoxValue("combobox1");
+addFormValue("combobox1",table);
+invokeComponent("dbComponent","dbStructure","com.oxymedical.component.db.DBComponent","tableName=neiswispicdb#"+table);
+showComboData("combobox2");
+;
+]]></attribute>
+  
+</combobox>
+ <label height="30px" visible="true" droppable="false" value="Select Field Name*:" id="label43" width="101px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:57px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+top:56px;
+" >
+   
+</label>
+ <combobox tabindex="10" readonly="true" visible="true" droppable="false" text="" name="Select Field Name*:" id="combobox2" draggable="false" width="135px" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:172px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:57px;
+"  >
+ <attribute name="onSelect"><![CDATA[
+setFormPatternId("AddUserDefineField");
+setDatapatternId("");
+String fieldName = getComboBoxValue("combobox2");
+addFormValue("combobox2",fieldName);
+]]></attribute>
+  
+</combobox>
+ <label height="30px" visible="true" droppable="false" value="User Define Field Name*:" id="label44" width="127px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:28px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+top:96px;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="12" readonly="false" visible="true" id="textbox9" droppable="false" value="" name="User Define Field Name*:"  draggable="false" width="154px" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+left:171px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:91px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <button height="30px" tabindex="13" visible="true" droppable="false" label="Save" id="button54" width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:77px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:130px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AddUserDefineField");
+setDatapatternId("");
+addFormValue("textbox10","0");
+String fieldName = textbox9.text;
+boolean isExist = false;
+if(fieldName !="")
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get qbuserdefinedfield.id, qbuserdefinedfield.UserDefinedFieldName from neiswispicdb.qbuserdefinedfield conditions qbuserdefinedfield.UserDefinedFieldName:=["+fieldName+"] and qbuserdefinedfield.deleted:=[0]");
+isExist = isRecordExist();
+}
+
+if(!isExist)
+{
+String isYes =invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","AddUserDefineField");
+if(isYes=="true")
+{
+msg ="Do you want to add more?";
+boolean isYes = messageWithQuestion(msg);
+if(isYes)
+{
+String[] data = createArray("String", "textbox9");
+clearFieldData(data);
+}
+else
+{
+detachWindow("AddUserDefineField");
+}
+}
+}
+else
+{
+	message("This field name already exist. Please enter another field name.");
+	textbox9.text = "";
+	addFormValue("textbox9","");
+};
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="14" visible="true" droppable="false" label="Cancel" id="button55" width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:207px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:130px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AddUserDefineField");
+setDatapatternId("");
+detachWindow("AddUserDefineField");
+]]></attribute>
+  
+</button>
+ <textbox maxlength="32767" height="20px" tabindex="15" readonly="false" visible="true" id="textbox10" droppable="false" value="" name="textbox3"  width="20px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+left:309px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:17px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+
+</div>
+
+</div>
+
+</window>
+</zk>
+

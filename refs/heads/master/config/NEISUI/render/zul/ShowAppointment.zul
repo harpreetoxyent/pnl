@@ -1,0 +1,259 @@
+<zk>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="ShowAppointment"?>
+ <window height="396px" visible="true" droppable="false" id="ShowAppointment" title="" width="451px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("ShowAppointment");
+setDatapatternId("");
+String isImporting=getSessionData("isImporting");
+button197.setVisible(false);
+if(isImporting==null)
+{
+button100.setVisible(true);
+button93.setVisible(false);
+}
+else
+{
+button100.setLabel("Go Back");
+button100.setVisible(true);
+button93.setVisible(true);
+}
+String note = getSessionData("isNotes");
+if(note !=null)
+{
+button197.setVisible(true);
+button93.setVisible(false);
+button100.setLabel("Go Back");
+button100.setVisible(true);
+}
+;
+]]></attribute>
+
+<custom-attributes formpattern="${param.formpattern}" datapattern="${param.datapattern}"/>
+  <div height="373px" visible="true" droppable="false" align="none" id="frame1646" width="449px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:0px;
+" >
+    <listbox height="331px" multiple="False" visible="true" droppable="false" id="grid47" width="446px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:2px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:0px;
+"  fixedLayout= "true">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("ShowAppointment");
+setDatapatternId("");
+String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.AppointmentStartDate,schedule.AppointmentEndDate,schedule.AppointmentStartTime,schedule.AppointmentEndTime,schedule.id from neiswispicdb.schedule joins leftjoin schedule.StudyType:=studytype.id conditions schedule.Cancelled:=["+0+"] and schedule.patientID:="+pid);  
+displayDataInControl("grid47"); ;
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("ShowAppointment");
+setDatapatternId("");
+String sid=getRowData(4);
+updateSession("scheduleId",sid);
+;
+]]></attribute>
+   <listhead sizable="true" draggable="false" height="30px" visible="true" droppable="false" id="row546" width="444px" >
+ <listheader label="Start Date" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column1521" width="69px" >
+
+</listheader>
+ <listheader label="End Date" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column1522" width="74px" >
+
+</listheader>
+ <listheader label="Start Time" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column1612" width="99px" >
+
+</listheader>
+ <listheader label="End Time" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column1613" width="98px" >
+
+</listheader>
+ <listheader label="Schedule ID" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column185" width="100px" >
+
+</listheader>
+
+</listhead>
+
+</listbox>
+ <div height="35px" visible="true" droppable="false" align="center" id="frame176" width="446px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:0px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:332px;
+" >
+    <button height="30px" tabindex="9" visible="true" droppable="false" label="Ok" id="button100" width="74px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:5px;
+margin-top:5px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:5px;
+margin-bottom:5px;
+color:#316AC5;
+background-position:tile;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("ShowAppointment");
+setDatapatternId("");
+String isImporting=getSessionData("isImporting");
+if(isImporting!=null)
+{
+updateSession("scheduleId",null);
+updateSession("isImporting",null);
+detachWindow("ShowAppointment");
+}
+else
+{
+updateSession("isNotes",null);
+detachWindow("ShowAppointment");
+};
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="10" visible="true" droppable="false" label="Assign Report" id="button93" width="120px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:5px;
+margin-top:5px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:5px;
+margin-bottom:5px;
+color:#316AC5;
+background-position:tile;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("ShowAppointment");
+setDatapatternId("");
+String scheduleId=getSessionData("scheduleId");
+if(scheduleId==null)
+{
+message("Please select a record to perform this operation.");
+}
+else
+{
+String filePath=uploadFile("browse0");
+if(filePath!=null)
+{
+String retValue = invokeComponent("com.oxymedical.component.SleepWareComponent","extractfields",
+"com.oxymedical.component.sleepwarecomponent.SleepWareComponent",filePath);
+if(retValue == "false")
+{
+displayErrorMessageFromComponent("");
+}
+updateSession("scheduleId",null);
+}
+else
+{
+updateSession("scheduleId",null);
+}
+updateSession("isImporting",null);
+detachWindow("ShowAppointment");
+};
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="11" visible="true" droppable="false" label="Create Technician Note" id="button197" width="163px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:5px;
+margin-top:5px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:5px;
+margin-bottom:5px;
+color:#316AC5;
+background-position:tile;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("ShowAppointment");
+setDatapatternId("");
+String scheduleId=getSessionData("scheduleId");
+if(scheduleId==null)
+{
+message("Please select a record to perform this operation.");
+}
+else
+{
+updateSession("scheduleId",scheduleId);
+updateSession("isImporting",null);
+detachWindow("ShowAppointment");
+}
+;
+]]></attribute>
+  
+</button>
+
+</div>
+
+</div>
+
+</window>
+</zk>
+

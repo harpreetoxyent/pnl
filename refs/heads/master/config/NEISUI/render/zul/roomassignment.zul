@@ -1,0 +1,103 @@
+<zk>
+<style src="/css/roomassignment.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="roomassignment"?>
+ <window class="roomassignment" height="1092px" visible="true" droppable="false" id="roomassignment" title="" width="100%" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+makeVisible("roomassignment");setFormPatternId("roomassignment");
+setDatapatternId("");
+updateSession("list","list");
+;
+]]></attribute>
+  <div class="frame1706" height="1070px" visible="true" droppable="false" align="none" id="frame1706" width="950px" draggable="false">
+    <div class="frame9712" height="1063px" visible="true" droppable="false" align="none" id="frame9712" width="175px" draggable="false">
+    <include class="placeholder49" draggable="false" height="200px" src="searchpanel.zul?formpattern=roomassignment&amp;datapattern=" visible="true" droppable="false" id="placeholder49" width="175px">
+    
+</include>
+ <button class="button107" height="30px" tabindex="1" visible="true" droppable="false" label="Go Back" id="button107" width="112px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("roomassignment");
+setDatapatternId("");
+updateSessionList("dbListValue",null);
+updateSession("roomassign",null);
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","HomeForm");
+;
+]]></attribute>
+  
+</button>
+
+</div>
+ <div class="frame9713" height="1060px" visible="true" droppable="false" align="none" id="frame9713" width="572px" draggable="false">
+ <custom-attributes accessrights ="Room Assignment" />
+   <div class="frame136" height="814px" visible="true" droppable="false" align="none" id="frame136" width="555px" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("roomassignment");
+setDatapatternId("");
+frame136.setStyle("overflow:auto;");
+String toDate = getCurrentDate("yyyy-MM-dd");
+removeRooms(frame136);
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get room.id,room.RoomDescription,room.roomtype from neiswispicdb.room ,neiswispicdb.roomtype conditions room.deleted:=["+0+"] and room.roomtype:=roomtype.id and roomtype.deleted:=["+0+"]");
+boolean result=createRoomAssignment(frame136);
+if(result)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get roomassginment.id,room.id,schedule.id,roomassginment.physicianid,roomassginment.sleeptechid,roomassginment.researchid,studytype.Type,patient.FirstName,schedule.AppointmentStartTime,patient.lastName,schedule.AppointmentStartDate,roomassginment.researchid2 from neiswispicdb.roomassginment,neiswispicdb.schedule joins leftjoin roomassginment.roomid:=room.id,leftjoin schedule.PatientID:=patient.id,leftjoin schedule.StudyType:=studytype.id conditions roomassginment.schduleid:=schedule.ID and schedule.Cancelled:=["+0+"] and roomassginment.deleted:=["+0+"] and schedule.AppointmentStartDate:=["+toDate +"] and patient.deleted:=["+0+"]");
+createRoomData(frame136);
+}
+else
+{
+message("No rooms present in the system.");
+};
+]]></attribute>
+  
+</div>
+ <button class="button119" height="30px" tabindex="1" visible="true" droppable="false" label="Export Assignment to Excel" id="button119" width="208px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("roomassignment");
+setDatapatternId("");
+resultObject=session.getAttribute("dbListValue");
+if(resultObject!=null)
+{
+invokeComponent("export.Component","exportCSV","com.oxymedical.component.export.ExportComponent"," ROOM,FIRST NAME,LAST NAME,APPOINTMENT START DATE,APPOINTMENT START TIME,STUDY TYPE,SLEEP TECHNICIAN,PHYSICIAN,RESEARCH ASSISANT");
+showCSVFile("");
+}
+else
+{
+message("No assignment is present to export to excel.");
+};
+]]></attribute>
+  
+</button>
+ <label class="label201" height="20px" visible="true" droppable="false" value="Patient-Room Assignments" id="label201" width="175px" draggable="false">
+   
+</label>
+
+</div>
+ <div class="frame9714" height="1060px" visible="true" droppable="false" align="right" id="frame9714" width="203px" draggable="false">
+    <div class="frame9715" height="756px" visible="true" droppable="false" align="left" id="frame9715" width="203px" draggable="false">
+    <include class="placeholder50" draggable="false" height="55px" src="Logo.zul?formpattern=roomassignment&amp;datapattern=" visible="true" droppable="false" id="placeholder50" width="203px">
+    
+</include>
+ <include class="placeholder51" draggable="false" height="200px" src="CalendarPanel.zul?formpattern=roomassignment&amp;datapattern=" visible="true" droppable="false" id="placeholder51" width="203px">
+    
+</include>
+
+</div>
+ <button class="button9515" height="30px" tabindex="27" visible="true" droppable="false" label="sign out" id="button9515" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("roomassignment");
+setDatapatternId("");
+String retValue = logOut("login");
+updateSession("login", null);
+]]></attribute>
+  
+</button>
+
+</div>
+
+</div>
+
+</window>
+</zk>
+

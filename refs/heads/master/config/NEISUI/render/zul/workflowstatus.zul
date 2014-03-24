@@ -1,0 +1,48 @@
+<zk>
+<style src="/css/workflowstatus.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="workflowstatus"?>
+ <window class="workflowstatus" height="1092px" visible="true" droppable="false" id="workflowstatus" title="" width="100%" draggable="false">
+   <div class="frame2671" height="1070px" visible="true" droppable="false" align="none" id="frame2671" width="1031px" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("workflowstatus");
+setDatapatternId("");
+updateSession("list","list");
+]]></attribute>
+   <div class="frame2672" height="1060px" visible="true" droppable="false" align="none" id="frame2672" width="175px" draggable="false">
+    <include class="placeholder83" draggable="false" height="200px" src="searchpanel.zul?formpattern=workflowstatus&amp;datapattern=" visible="true" droppable="false" id="placeholder83" width="175px">
+    
+</include>
+
+</div>
+ <include class="placeholder84" draggable="false" height="625px" src="WorkflowStatusList.zul?formpattern=workflowstatus&amp;datapattern=" visible="true" droppable="false" id="placeholder84" width="545px">
+    
+</include>
+ <div class="frame2674" height="1060px" visible="true" droppable="false" align="none" id="frame2674" width="203px" draggable="false">
+    <div class="frame2675" height="646px" visible="true" droppable="false" align="left" id="frame2675" width="203px" draggable="false">
+    <include class="placeholder85" draggable="false" height="55px" src="Logo.zul?formpattern=workflowstatus&amp;datapattern=" visible="true" droppable="false" id="placeholder85" width="203px">
+    
+</include>
+ <include class="placeholder86" draggable="false" height="200px" src="CalendarPanel.zul?formpattern=workflowstatus&amp;datapattern=" visible="true" droppable="false" id="placeholder86" width="203px">
+    
+</include>
+
+</div>
+ <button class="button2675" height="30px" tabindex="1" visible="true" droppable="false" label="sign out" id="button2675" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("workflowstatus");
+setDatapatternId("");
+String retValue = logOut("login");
+]]></attribute>
+  
+</button>
+
+</div>
+
+</div>
+
+</window>
+</zk>
+

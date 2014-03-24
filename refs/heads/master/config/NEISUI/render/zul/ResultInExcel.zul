@@ -1,0 +1,62 @@
+<zk>
+<style src="/css/ResultInExcel.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="ResultInExcel"?>
+ <window class="ResultInExcel" height="974px" visible="true" droppable="false" id="ResultInExcel" title="" width="100%" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("ResultInExcel");
+setDatapatternId("");
+showCSVFile("");
+]]></attribute>
+  <div class="frame96" height="959px" visible="true" droppable="false" align="none" id="frame96" width="821px" draggable="false">
+    <div class="frame5012" height="949px" visible="true" droppable="false" align="none" id="frame5012" width="175px" draggable="false">
+    <include class="placeholder37" draggable="false" height="200px" src="searchpanel.zul?formpattern=ResultInExcel&amp;datapattern=" visible="true" droppable="false" id="placeholder37" width="175px">
+    
+</include>
+
+</div>
+ <div class="frame9767" height="949px" visible="true" droppable="false" align="none" id="frame9767" width="415px" draggable="false">
+    <label class="label60" height="30px" visible="true" droppable="false" value="query complete" id="label60" width="160px" draggable="false">
+   
+</label>
+ <button class="button91" height="30px" tabindex="8" visible="true" droppable="false" label="Back" id="button91" width="127px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("ResultInExcel");
+setDatapatternId("");
+updateSessionList("dbListValue",null);
+updateSession("QBBack","yes");
+setDataStatus("CreateQuery", "QueryBuilder", "neiswispicdb");
+]]></attribute>
+  
+</button>
+
+</div>
+ <div class="frame1567" height="949px" visible="true" droppable="false" align="right" id="frame1567" width="203px" draggable="false">
+    <div class="frame1769" height="899px" visible="true" droppable="false" align="left" id="frame1769" width="203px" draggable="false">
+    <include class="placeholder38" draggable="false" height="55px" src="Logo.zul?formpattern=ResultInExcel&amp;datapattern=" visible="true" droppable="false" id="placeholder38" width="203px">
+    
+</include>
+ <include class="placeholder39" draggable="false" height="200px" src="CalendarPanel.zul?formpattern=ResultInExcel&amp;datapattern=" visible="true" droppable="false" id="placeholder39" width="203px">
+    
+</include>
+
+</div>
+ <button class="button3818" height="30px" tabindex="27" visible="true" droppable="false" label="sign out" id="button3818" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("ResultInExcel");
+setDatapatternId("");
+String retValue = logOut("login");
+updateSession("login", null);
+]]></attribute>
+  
+</button>
+
+</div>
+
+</div>
+
+</window>
+</zk>
+

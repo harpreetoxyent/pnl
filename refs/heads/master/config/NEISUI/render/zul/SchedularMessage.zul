@@ -1,0 +1,231 @@
+<zk>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="SchedularMessage"?>
+ <window height="150px" visible="true" droppable="false" id="SchedularMessage" title="" width="240px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("SchedularMessage");
+setDatapatternId("");
+String rowValue = getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get Patient.id,patient.firstname from neiswispicdb.Patient conditions patient.id:="+rowValue );
+data=createArray("String", "textbox37,textbox36");
+showData(data);
+]]></attribute>
+
+<custom-attributes formpattern="${param.formpattern}" datapattern="${param.datapattern}"/>
+  <div height="147px" visible="true" droppable="false" align="none" id="frame100" width="236px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:0px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:0px;
+" >
+    <label height="21px" visible="true" droppable="false" value="You have clicked on the Calendar tab." id="label96" width="227px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:10px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#316AC5;
+text-align:left;
+background-position:tile;
+top:10px;
+" >
+   
+</label>
+ <label height="20px" visible="true" droppable="false" value="Do you wish to schedule this patient?" id="label97" width="223px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:13px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#316AC5;
+text-align:left;
+background-position:tile;
+top:30px;
+" >
+   
+</label>
+ <label height="24px" visible="true" droppable="false" value="Patient Name:" id="label139" width="95px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:10px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#316AC5;
+text-align:left;
+background-position:tile;
+top:66px;
+" >
+   
+</label>
+ <label height="20px" visible="true" droppable="false" value="Identifier Number:" id="label140" width="93px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:10px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#316AC5;
+text-align:left;
+background-position:tile;
+top:88px;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="11" readonly="true" visible="true" id="textbox36" droppable="false" value="" name="textbox36"  width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+left:114px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:64px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox maxlength="32767" height="20px" tabindex="12" readonly="true" visible="true" id="textbox37" droppable="false" value="" name="textbox37"  width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+left:114px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:88px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <button height="30px" tabindex="13" visible="true" droppable="false" label="YES" id="button89" width="75px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:9px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#316AC5;
+background-position:tile;
+top:114px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("SchedularMessage");
+setDatapatternId("");
+updateSession("Schedular","true");
+updateSession("rowId",textbox37.value);
+createPopUp("patientScheduler");
+;
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="14" visible="true" droppable="false" label="NO" id="button90" width="73px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:143px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#316AC5;
+background-position:tile;
+top:113px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("SchedularMessage");
+setDatapatternId("");
+updateSession("Schedular","true");
+updateSession("rowId",textbox37.value);
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","Patient");
+]]></attribute>
+  
+</button>
+
+</div>
+
+</window>
+</zk>
+

@@ -1,0 +1,238 @@
+<zk>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="RoomCategory"?>
+ <window height="160px" visible="true" droppable="false" id="RoomCategory" title="" width="346px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("RoomCategory");
+setDatapatternId("");
+textbox164.setVisible(false);
+]]></attribute>
+<attribute name="onOK"><![CDATA[
+setFormPatternId("RoomCategory");
+setDatapatternId("");
+String category=textbox69.text;
+if(category!=null)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get roomtype.ID from neiswispicdb.roomtype conditions roomtype.roomType:=["+category+"] and roomtype.deleted:=["+0+"]");
+boolean retVal=isRecordExist();
+if(!retVal)
+{
+addFormValue("textbox164",textbox164.text);
+String retVal=invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","");
+if(retVal=="true")
+{
+message("Room Category is saved.");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","addroom");
+}
+}
+else
+{
+message("Room Category already exists. Please change the name of Room Category.");
+}
+}
+else
+{
+message("Room Category Name cannot be empty");
+}
+
+
+;
+]]></attribute>
+
+<custom-attributes formpattern="${param.formpattern}" datapattern="${param.datapattern}"/>
+  <div height="153px" visible="true" droppable="false" align="none" id="frame133" width="344px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:0px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:0px;
+" >
+    <label height="30px" visible="true" droppable="false" value="Add New Category For Room" id="label203" width="189px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:64px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+top:5px;
+" >
+   
+</label>
+ <label height="28px" visible="true" droppable="false" value="Room Category Name:" id="label204" width="125px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:8px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+top:47px;
+" >
+   
+</label>
+ <button height="30px" tabindex="9" visible="true" droppable="false" label="Save Category" id="button122" width="118px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:18px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#316AC5;
+background-position:tile;
+top:94px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("RoomCategory");
+setDatapatternId("");
+
+String category=textbox69.text;
+if(category!=null)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get roomtype.ID from neiswispicdb.roomtype conditions roomtype.roomType:=["+category+"] and roomtype.deleted:=["+0+"]");
+boolean retVal=isRecordExist();
+if(!retVal)
+{
+addFormValue("textbox164",textbox164.text);
+String retVal=invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","");
+if(retVal=="true")
+{
+message("Room Category is saved.");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","addroom");
+}
+}
+else
+{
+message("Room Category already exists. Please change the name of Room Category.");
+}
+}
+else
+{
+message("Room Category Name cannot be empty");
+}
+
+;
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="10" visible="true" droppable="false" label="Cancel" id="button123" width="114px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:189px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#316AC5;
+background-position:tile;
+top:94px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("RoomCategory");
+setDatapatternId("");
+detachWindow("RoomCategory");
+]]></attribute>
+  
+</button>
+ <textbox maxlength="32767" height="20px" tabindex="11" readonly="false" visible="true" id="textbox69" droppable="false" value="" name="Room Category Name:"  draggable="false" width="125px" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+left:177px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:47px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox maxlength="32767" height="20px" tabindex="12" readonly="false" visible="true" id="textbox164" droppable="false" value="0" name="textbox164"  width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+left:232px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:28px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+
+</div>
+
+</window>
+</zk>
+

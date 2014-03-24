@@ -1,0 +1,218 @@
+<zk>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="AddCustomQuery"?>
+ <window height="162px" visible="true" droppable="false" id="AddCustomQuery" title="Add Custom Query" width="287px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:8px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:8px;
+position:absolute;
+padding-bottom:8px;
+padding-right:8px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("AddCustomQuery");
+setDatapatternId("");
+String rowValue = getSessionData("rowId");
+String qName = null;
+String defaultMsg = null;
+if(rowValue!=null)
+{
+data=createArray("String", "textbox13,textbox11");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get customquery.queryId, customquery.customQueryName from neiswispicdb.customquery conditions customquery.queryId:="+rowValue+" and customquery.deleted:=_STRINGSTART_0_STRINGEND_ ");
+showData(data);
+updateSession("rowId", null);
+AddCustomQuery.setTitle("Edit Custom Query");
+qName = textbox11.text;
+defaultMsg = "Query "+qName+" has not been updated.";
+};
+]]></attribute>
+
+<custom-attributes formpattern="${param.formpattern}" datapattern="${param.datapattern}"/>
+  <div height="117px" visible="true" droppable="false" align="none" id="frame92" width="271px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:6px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:35px;
+" >
+    <label height="30px" visible="true" droppable="false" value="New Query Name:" id="label55" width="99px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:22px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+top:25px;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="8" readonly="false" visible="true" id="textbox11" droppable="false" value="Untitled Query" name="textbox11" constraint="/[a-zA-z0-9\s]*/:AlphaNumeric value only" draggable="false" width="118px" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+left:140px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:26px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <button height="30px" tabindex="9" visible="true" droppable="false" label="Save" id="button74" width="75px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:32px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:71px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AddCustomQuery");
+setDatapatternId("");
+String txt = textbox11.text;
+addFormValue("textbox12","0");
+addFormValue("textbox11",txt);
+boolean isYes = false;
+boolean isEqual = equalsTest(qName,txt);
+if(!isEqual)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get customquery.queryId, customquery.customQueryName from neiswispicdb.customquery conditions customquery.CustomQueryName:=["+txt+"] and customquery.deleted:=[0]");
+isYes = isRecordExist();
+defaultMsg =null;
+}
+if(!isYes)
+{
+invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","AddCustomQuery");
+updateSession("rowId",null);
+
+if(defaultMsg !=null)
+{
+message(defaultMsg);
+}
+setDataStatus("CreateQuery", "QueryBuilder", "neiswispicdb");
+}
+else
+{
+String msg = "This custom query name already exist. Please enter another query name.";
+message(msg);
+};
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="10" visible="true" droppable="false" label="Cancel" id="button77" width="75px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:148px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:71px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("AddCustomQuery");
+setDatapatternId("");
+updateSession("rowId",null);
+setDataStatus("CreateQuery", "QueryBuilder", "neiswispicdb");
+]]></attribute>
+  
+</button>
+ <textbox maxlength="32767" height="20px" tabindex="11" readonly="false" visible="false" id="textbox12" droppable="false" value="" name="textbox12"  width="25px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+left:142px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:51px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox maxlength="32767" height="20px" tabindex="12" readonly="false" visible="false" id="textbox13" droppable="false" value="" name="textbox13"  width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+left:140px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:0px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+
+</div>
+
+</window>
+</zk>
+

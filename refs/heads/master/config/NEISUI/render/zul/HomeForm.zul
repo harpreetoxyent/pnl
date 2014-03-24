@@ -1,0 +1,433 @@
+<zk>
+<style src="/css/HomeForm.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="HomeForm"?>
+ <window class="HomeForm" height="763px" visible="true" droppable="false" id="HomeForm" title="" width="100%" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+makeVisible("HomeForm");setFormPatternId("HomeForm");
+setDatapatternId("");
+String userId = getSessionData("userId");
+String loginkey = getSessionData("login");
+String user = getSessionData("userPatterns");
+if(loginkey ==null)
+{
+invokeComponent("com.oxymedical.component.useradmin","executeListUserAdmin","com.oxymedical.component.useradmin.UserAdminComponent","get Logindetails.id,Logindetails.userId,Logindetails.loginDate,Logindetails.LoginTime,Logindetails.IPAddress,Logindetails.logout from useradmin.Logindetails conditions Logindetails.userId:=_STRINGSTART_"+userId+"_STRINGEND_");
+showLoginInfo("label32");
+}
+;
+]]></attribute>
+  <hbox class="frame5" height="745px" visible="true" droppable="false" align="none" id="frame5" width="941px" draggable="false">
+    <div class="frame11" height="719px" visible="true" droppable="false" align="none" id="frame11" width="200px" draggable="false">
+    <include class="placeholder17" draggable="false" height="200px" src="searchpanel.zul?formpattern=HomeForm&amp;datapattern=" visible="true" droppable="false" id="placeholder17" width="200px">
+    
+</include>
+
+</div>
+ <vbox class="frame7" height="719px" visible="true" droppable="false" align="center" id="frame7" width="940px" draggable="false">
+    <imagemap class="picture1" draggable="false" height="66px" visible="true" src="img/picture1.jpg" droppable="false" id="picture1" width="195px">
+   
+</imagemap>
+ <label class="label87" height="22px" visible="true" droppable="false" value="" id="label87" width="156px" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+textValue=session.getAttribute("userPatterns");
+textValue=splitString(textValue,"##");
+label87.value=(textValue+" User");
+]]></attribute>
+  
+</label>
+ <vbox class="frame15" height="401px" visible="true" droppable="false" align="center" id="frame15" width="285px" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+setHeight("frame15","0");
+]]></attribute>
+   <div class="frame26" height="63px" visible="true" droppable="false" align="none" id="frame26" width="288px" draggable="false">
+   
+</div>
+ <vbox class="frame123" height="272px" visible="true" droppable="false" align="center" id="frame123" width="288px" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+setHeight("frame123","0");
+]]></attribute>
+   <menubar class="vmenubar15" height="23px" visible="true" droppable="false" orient="vertical" id="vmenubar15" width="215px" draggable="false">
+ <custom-attributes accessrights ="PatientInformation" />
+   <menu  id="menu22" width="208px" src="../zul/img/menu22.jpg" height="17px" label="Patient Information">
+ <custom-attributes accessrights ="PatientInformation" />
+<menupopup>
+  <menuitem  id="menuitem36" src="../zul/img/menuitem36.jpg" label="ADD PATIENT">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+setDataStatus("CreatePatient", "Patient", "neiswispicdb");
+;
+]]></attribute>
+<custom-attributes accessrights ="AddPatient" />
+ 
+</menuitem>
+ <menuitem  id="menuitem53" src="../zul/img/menuitem53.jpg" label="EDIT/MODIFY PATIENT DETAILS">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+updateSession("edit","true");
+				  setDataStatus("ModifyPatient", "search", "neiswispicdb");
+;
+]]></attribute>
+<custom-attributes accessrights ="Edit/Modify Patient Menu" />
+ 
+</menuitem>
+ <menuitem  id="menuitem54" src="../zul/img/menuitem54.jpg" label="DELETE PATIENT">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+setDataStatus("DeletePatient", "search", "neiswispicdb");
+;
+]]></attribute>
+<custom-attributes accessrights ="DeletePatient" />
+ 
+</menuitem>
+ <menuitem  id="menuitem55" src="../zul/img/menuitem55.jpg" label="SCHEDULE PATIENT">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","Schedule");
+;
+]]></attribute>
+<custom-attributes accessrights ="SchedulePatient" />
+ 
+</menuitem>
+ <menuitem  id="menuitem56" src="../zul/img/menuitem56.jpg" label="ACQUISITION">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","hdPSG");
+;
+]]></attribute>
+<custom-attributes accessrights ="Acquisition" />
+ 
+</menuitem>
+</menupopup>
+
+</menu>
+
+</menubar>
+ <menubar class="vmenubar19" height="23px" visible="true" droppable="false" orient="vertical" id="vmenubar19" width="215px" draggable="false">
+    <menu  id="menu23" width="208px" src="../zul/img/menu23.jpg" height="17px" label="Patient Assignment">
+ <custom-attributes accessrights ="PatientAssignment" />
+<menupopup>
+  <menuitem  id="menuitem79" src="../zul/img/menuitem79.jpg" label="VIEW PATIENT-SLEEP TECHNICIAN ASSIGNEMENT">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+message("This Function  is not available");
+]]></attribute>
+<custom-attributes accessrights ="SeePatientAssignment" />
+ 
+</menuitem>
+ <menuitem  id="menuitem73" label="VIEW PATIENT ASSIGNMENT">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+updateSession("pateintassign","true");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","ViewPatientAssignment");
+;
+]]></attribute>
+ 
+</menuitem>
+</menupopup>
+
+</menu>
+
+</menubar>
+ <menubar class="vmenubar16" height="23px" visible="true" droppable="false" orient="vertical" id="vmenubar16" width="215px" draggable="false">
+ <custom-attributes accessrights ="RoomManagement" />
+   <menu  id="menu24" width="208px" src="../zul/img/menu24.jpg" height="17px" label="Room Management">
+ <custom-attributes accessrights ="RoomManagement" />
+<menupopup>
+  <menuitem  id="menuitem58" src="../zul/img/menuitem58.jpg" label="ADD ROOM">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","addroom");
+;
+]]></attribute>
+<custom-attributes accessrights ="AddRoom" />
+ 
+</menuitem>
+ <menuitem  id="menuitem59" src="../zul/img/menuitem59.jpg" label="EDIT/MODIFY ROOM">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+updateSession("editroom","true");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","addroom");
+;
+]]></attribute>
+<custom-attributes accessrights ="Edit/ModifyRoom" />
+ 
+</menuitem>
+ <menuitem  id="menuitem60" src="../zul/img/menuitem60.jpg" label="DELETE ROOM">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+updateSession("editroom","false");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","addroom");
+]]></attribute>
+<custom-attributes accessrights ="DeleteRoom" />
+ 
+</menuitem>
+ <menuitem  id="menuitem50" src="../zul/img/menuitem50.jpg" label="ROOM ASSIGNMENT">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+updateSession("roomassign","roomassign");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","roomassignment");
+;
+]]></attribute>
+<custom-attributes accessrights ="Room Assignment" />
+ 
+</menuitem>
+</menupopup>
+
+</menu>
+
+</menubar>
+ <menubar class="menubar8" height="23px" visible="true" droppable="false" orient="vertical" id="menubar8" width="215px" draggable="false">
+ <custom-attributes accessrights ="ClinicalManagement" />
+   <menu  id="menu11" width="208px" src="../zul/img/menu11.jpg" height="17px" label="Clinician Management">
+ <custom-attributes accessrights ="ClinicalManagement" />
+<menupopup>
+  <menuitem  id="menuitem40" src="../zul/img/menuitem40.jpg" label="ADD CLINICAL GROUP">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+setDataStatus("CreateClinical", "AddClinical", "useradmin");
+;
+]]></attribute>
+<custom-attributes accessrights ="AddClincain" />
+ 
+</menuitem>
+ <menuitem  id="menuitem46" src="../zul/img/menuitem46.jpg" label="EDIT/MODIFY CLINICIAN LIST">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+updateSession("edit","true");				 
+setDataStatus("CreateClinical", "AddClinical", "useradmin");
+;
+]]></attribute>
+<custom-attributes accessrights ="Edit/ModifyClincianList" />
+ 
+</menuitem>
+ <menuitem  id="menuitem41" src="../zul/img/menuitem41.jpg" label="PRINTING ASSIGNMENTS">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+message("This Function  is not available");
+]]></attribute>
+<custom-attributes accessrights ="PrintingAssignments" />
+ 
+</menuitem>
+</menupopup>
+
+</menu>
+
+</menubar>
+ <menubar class="vmenubar17" height="23px" visible="true" droppable="false" orient="vertical" id="vmenubar17" width="215px" draggable="false">
+ <custom-attributes accessrights ="ReportingManagement" />
+   <menu  id="menu29" width="208px" src="../zul/img/menu29.jpg" height="17px" label="Report Management">
+ <custom-attributes accessrights ="ReportingManagement" />
+<menupopup>
+  <menuitem  id="menuitem63" src="../zul/img/menuitem63.jpg" label="IMPORT REPORT TEMPLATE">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","ImportTemplate");
+]]></attribute>
+<custom-attributes accessrights ="ImportReportTemplate" />
+ 
+</menuitem>
+ <menuitem  id="menuitem76" src="../zul/img/menuitem76.jpg" label="PRINT CLINICIAN REPORT">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+message("This Function  is not available");
+]]></attribute>
+<custom-attributes accessrights ="PrintClinicalReport" />
+ 
+</menuitem>
+</menupopup>
+
+</menu>
+
+</menubar>
+ <menubar class="vmenubar18" height="23px" visible="true" droppable="false" orient="vertical" id="vmenubar18" width="215px" draggable="false">
+ <custom-attributes accessrights ="UserManagement" />
+   <menu  id="menu30" width="208px" src="../zul/img/menu30.jpg" height="17px" label="User Management">
+ <custom-attributes accessrights ="UserManagement" />
+<menupopup>
+  <menuitem  id="menuitem61" src="../zul/img/menuitem61.jpg" label="ADD USER ACCOUNT">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+setDataStatus("CreateUser", "userinfo", "useradmin");
+;
+]]></attribute>
+<custom-attributes accessrights ="AddUserAccount" />
+ 
+</menuitem>
+ <menuitem  id="menuitem62" src="../zul/img/menuitem62.jpg" label="EDIT/MODIFY USER ACCOUNT">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+setDataStatus("UpdateUser", "ListUser", "useradmin");
+;
+]]></attribute>
+<custom-attributes accessrights ="Edit/ModifyUserAccount" />
+ 
+</menuitem>
+ <menuitem  id="menuitem68" src="../zul/img/menuitem68.jpg" label="DELETE USER ACCOUNT">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+setDataStatus("UpdateUser", "ListUser", "useradmin");
+;
+]]></attribute>
+<custom-attributes accessrights ="DeleteUserAccount" />
+ 
+</menuitem>
+</menupopup>
+
+</menu>
+
+</menubar>
+ <menubar class="menubar2" height="23px" visible="true" droppable="false" orient="vertical" id="menubar2" width="215px" draggable="false">
+ <custom-attributes accessrights ="Administrative Taks" />
+   <menu  id="menu3" width="208px" src="../zul/img/menu3.jpg" height="17px" label="Administrative Tasks">
+ <custom-attributes accessrights ="Administrative Taks" />
+<menupopup>
+  <menuitem  id="menuitem74" src="../zul/img/menuitem74.jpg" label="TASKS SETTINGS">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","TaskSchedular");
+;
+]]></attribute>
+<custom-attributes accessrights ="Task Setting" />
+ 
+</menuitem>
+ <menuitem  id="menuitem69" src="../zul/img/menuitem69.jpg" label="IMPORT PATIENT LIST TO ACQUISITION SYSTEM">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","ImportData");
+]]></attribute>
+<custom-attributes accessrights ="ImportPatientListToAcquisitionSystem" />
+ 
+</menuitem>
+ <menu  id="menu6" width="331px" height="22px" label="WORKFLOW MANAGEMENT">
+ <menupopup>
+  <menuitem  id="menuitem88" label="WORKFLOW LIST">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","listOfAvailableWorkflow");
+;
+]]></attribute>
+ 
+</menuitem>
+ <menuitem  id="menuitem89" label="WORKFLOW STATUS">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","workflowstatus");
+
+;
+]]></attribute>
+ 
+</menuitem>
+ <menuitem  id="menuitem82" label="WORKFLOW TOOLS">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","ListOfToolsNew");
+;
+]]></attribute>
+ 
+</menuitem>
+</menupopup>
+
+</menu>
+</menupopup>
+
+</menu>
+
+</menubar>
+ <menubar class="menubar4" height="24px" visible="true" droppable="false" orient="vertical" id="menubar4" width="215px" draggable="false">
+ <custom-attributes accessrights ="AcquisitionManagement" />
+   <menu  id="menu0" width="208px" src="../zul/img/menu0.jpg" height="17px" label="Acquisition Management">
+ <custom-attributes accessrights ="AcquisitionManagement" />
+<menupopup>
+  <menu  id="menu5" width="180px" height="22px" label="Studies Management">
+ <menupopup>
+  <menuitem  id="menuitem75" src="../zul/img/menuitem75.jpg" label="PSG">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+updateSession("PSG", "true");
+updateSession("HDEEG", null);
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","acquisitiondata");
+;
+]]></attribute>
+<custom-attributes accessrights ="PSG" />
+ 
+</menuitem>
+ <menuitem  id="menuitem77" src="../zul/img/menuitem77.jpg" label="hd-EEG">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+updateSession("PSG", null);
+updateSession("HDEEG", "true");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","acquisitiondata");
+;
+]]></attribute>
+<custom-attributes accessrights ="HighDensityEEG" />
+ 
+</menuitem>
+</menupopup>
+
+</menu>
+</menupopup>
+
+</menu>
+
+</menubar>
+
+</vbox>
+ <div class="frame27" height="63px" visible="true" droppable="false" align="none" id="frame27" width="288px" draggable="false">
+    <label class="label32" height="31px" visible="true" droppable="false" value="" id="label32" width="212px" draggable="false">
+   
+</label>
+
+</div>
+
+</vbox>
+ <button class="button23" height="30px" tabindex="10" visible="true" droppable="false" label="sign out." id="button23" width="93px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("HomeForm");
+setDatapatternId("");
+String retValue = logOut("login");
+;
+]]></attribute>
+  
+</button>
+
+</vbox>
+
+</hbox>
+
+</window>
+</zk>
+

@@ -1,0 +1,44 @@
+<zk>
+<style src="/css/Photo.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="Photo"?>
+ <window class="Photo" height="912px" visible="true" droppable="false" id="Photo" title="" width="100%" draggable="false">
+   <div class="frame104" height="893px" visible="true" droppable="false" align="none" id="frame104" width="755px" draggable="false">
+    <div class="frame105" height="873px" visible="true" droppable="false" align="none" id="frame105" width="578px" draggable="false">
+    <imagemap class="picture10" draggable="false" height="110px" visible="true" droppable="false" id="picture10" width="314px">
+   
+</imagemap>
+ <div class="frame106" height="120px" visible="true" droppable="false" align="none" id="frame106" width="218px" draggable="false">
+    <label class="label79" height="20px" visible="true" droppable="false" value="Patient Name:" id="label79" width="98px" draggable="false">
+   
+</label>
+ <label class="label80" height="21px" visible="true" droppable="false" value="MR#" id="label80" width="84px" draggable="false">
+   
+</label>
+ <label class="label81" height="30px" visible="true" droppable="false" value="Date of Study:" id="label81" width="98px" draggable="false">
+   
+</label>
+
+</div>
+ <div class="frame107" height="313px" visible="true" droppable="false" align="none" id="frame107" width="455px" draggable="false">
+    <label class="label82" height="30px" visible="true" droppable="false" value="PATIENT PHOTO (FRONT VIEW) IS INSERTED HERE" id="label82" width="354px" draggable="false">
+   
+</label>
+
+</div>
+ <div class="frame108" height="313px" visible="true" droppable="false" align="none" id="frame108" width="455px" draggable="false">
+    <label class="label83" height="30px" visible="true" droppable="false" value="PATIENT PHOTO (SIDE VIEW) IS INSERTED HERE" id="label83" width="343px" draggable="false">
+   
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+</window>
+</zk>
+

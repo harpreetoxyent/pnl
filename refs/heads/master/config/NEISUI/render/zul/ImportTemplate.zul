@@ -1,0 +1,99 @@
+<zk>
+<style src="/css/ImportTemplate.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="ImportTemplate"?>
+ <window class="ImportTemplate" height="1092px" visible="true" droppable="false" id="ImportTemplate" title="" width="100%" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+makeVisible("ImportTemplate");setFormPatternId("ImportTemplate");
+setDatapatternId("");
+updateSession("list","list");
+;
+]]></attribute>
+  <div class="frame142" height="1070px" visible="true" droppable="false" align="none" id="frame142" width="950px" draggable="false">
+    <div class="frame143" height="1063px" visible="true" droppable="false" align="none" id="frame143" width="175px" draggable="false">
+    <include class="placeholder52" draggable="false" height="200px" src="searchpanel.zul?formpattern=ImportTemplate&amp;datapattern=" visible="true" droppable="false" id="placeholder52" width="175px">
+    
+</include>
+ <button class="button124" height="30px" tabindex="1" visible="true" droppable="false" label="Go Back" id="button124" width="112px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("ImportTemplate");
+setDatapatternId("");
+updateSessionList("dbListValue",null);
+updateSession("roomassign",null);
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","HomeForm");
+;
+]]></attribute>
+  
+</button>
+
+</div>
+ <div class="frame144" height="1060px" visible="true" droppable="false" align="none" id="frame144" width="572px" draggable="false">
+ <custom-attributes accessrights ="ImportReportTemplate" />
+   <div class="frame145" height="814px" visible="true" droppable="false" align="none" id="frame145" width="555px" draggable="false">
+    <button class="button151" height="30px" tabindex="11" visible="true" droppable="false" label="Upload New Template" id="button151" width="193px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("ImportTemplate");
+setDatapatternId("");
+String value=combobox26.value;
+String testEmpty="";
+result=equalsTest(value,testEmpty);
+if(!result)
+{
+String value = uploadTemplate(combobox26.value );
+if(value != null)
+{
+message("Template is Uploaded.");
+}
+}
+else
+{
+message("Select a template type.");
+};
+]]></attribute>
+  
+</button>
+ <combobox class="combobox26" draggable="false" tabindex="12" readonly="true" visible="true" droppable="false" text="combobox1" name="combobox26" id="combobox26" width="77px" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("ImportTemplate");
+setDatapatternId("");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get TemplateType.TemplateId,TemplateType.TemplateName from neiswispicdb.TemplateType");
+showComboData("combobox26");
+]]></attribute>
+  
+</combobox>
+ <label class="label205" height="20px" visible="true" droppable="false" value="Select Template Type:" id="label205" width="122px" draggable="false">
+   
+</label>
+
+</div>
+
+</div>
+ <div class="frame146" height="1060px" visible="true" droppable="false" align="right" id="frame146" width="203px" draggable="false">
+    <div class="frame147" height="756px" visible="true" droppable="false" align="left" id="frame147" width="203px" draggable="false">
+    <include class="placeholder53" draggable="false" height="55px" src="Logo.zul?formpattern=ImportTemplate&amp;datapattern=" visible="true" droppable="false" id="placeholder53" width="203px">
+    
+</include>
+ <include class="placeholder54" draggable="false" height="200px" src="CalendarPanel.zul?formpattern=ImportTemplate&amp;datapattern=" visible="true" droppable="false" id="placeholder54" width="203px">
+    
+</include>
+
+</div>
+ <button class="button152" height="30px" tabindex="27" visible="true" droppable="false" label="sign out" id="button152" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("ImportTemplate");
+setDatapatternId("");
+String retValue = logOut("login");
+updateSession("login", null);
+]]></attribute>
+  
+</button>
+
+</div>
+
+</div>
+
+</window>
+</zk>
+

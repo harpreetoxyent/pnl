@@ -1,0 +1,91 @@
+<zk>
+<style src="/css/ScheduleInfo.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="ScheduleInfo"?>
+ <window class="ScheduleInfo" height="849px" visible="true" droppable="false" id="ScheduleInfo" title="" width="100%" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("ScheduleInfo");
+setDatapatternId("");
+makeVisible("ScheduleInfo");
+]]></attribute>
+  <calendars class="schedular1" height="830px" visible="true" firstDayOfWeek="Monday" droppable="false" id="schedular1" width="564px" draggable="false" mold="default">
+ <attribute name="onEventCreate"><![CDATA[
+setFormPatternId("ScheduleInfo");
+setDatapatternId("");
+storFormValue("formValue");
+String rowValue=getSessionData("rowId");
+if(rowValue!=null)
+{
+boolean isValid=getDefaultValuesForSchedular("schedular1");
+if(isValid)
+{
+updateSession("rowId",rowValue);
+createPopUp("patientScheduler");
+}
+}
+else
+{
+message("Please save patient information.");
+}
+restorFormValue("formValue");
+]]></attribute>
+<attribute name="onCreate"><![CDATA[
+setFormPatternId("ScheduleInfo");
+setDatapatternId("");
+String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get          schedule.AppointmentStartDate,schedule.AppointmentEndDate,schedule.AppointmentEndDate,schedule.AppointmentStartTime,schedule.AppointmentEndTime,schedule.id,patient.LastName,patient.firstName,studytype.Type from neiswispicdb.schedule joins leftjoin schedule.StudyType:=studytype.id,leftjoin schedule.PatientID:=patient.id conditions schedule.Cancelled:=["+0+"] and schedule.patientID:="+pid);   
+setDataInCalendars(schedular1);
+;
+]]></attribute>
+<attribute name="onEventEdit"><![CDATA[
+setFormPatternId("ScheduleInfo");
+setDatapatternId("");
+storFormValue("formValue");
+String id=onEditEventCalendar();
+String rowValue=getSessionData("rowId");
+updateSession("schId",id);
+updateSession("rowId",rowValue);
+createPopUp("patientScheduler");
+restorFormValue("formValue");
+]]></attribute>
+<custom-attributes accessrights ="Create Schedule" />
+  
+<toolbar sclass="calendar-toolbar">
+		<div class="float-left">
+			<hbox>
+				<divarrow type="arrow-left" command='schedular1.previousPage();Events.postEvent("onCreate", label, null)'/>
+				<divarrow type="arrow-right" command='schedular1.nextPage();Events.postEvent("onCreate", label, null)'/>
+			<div>
+			<button mold="os" label="today" onClick='schedular1.setCurrentDate(java.util.Calendar.getInstance(schedular1.getDefaultTimeZone()).getTime());Events.postEvent("onCreate", label, null);'/>			
+			<label id="label">
+				<attribute name="onCreate">
+					Date b = schedular1.getBeginDate();
+					Date e = schedular1.getEndDate();
+					java.text.DateFormat sdfV= DateFormat.getDateInstance();
+					sdfV.setTimeZone(schedular1.getDefaultTimeZone());
+					String[] begin=sdfV.format(b).split(",");
+					self.setValue(begin[0] + " - " + sdfV.format(e));
+				</attribute>
+			</label>			</div>
+				
+			</hbox>
+		</div>
+		<div >
+			<hbox class="float-right">
+				<divtab command='schedular1.mold = "default";schedular1.days = 1;Events.postEvent("onCreate", label, null);' text="Day"/>
+				<divtab command='schedular1.mold = "default";schedular1.days = 7;Events.postEvent("onCreate", label, null);' text="Week"/>
+				<divtab command='schedular1.mold = "default";schedular1.days = 5;Events.postEvent("onCreate", label, null);' text="5 Days"/>
+				<divtab command='schedular1.mold = "month";Events.postEvent("onCreate", label, null);' text="Month"/>
+			</hbox>
+		</div>
+</toolbar>
+
+</calendars>
+
+</window>
+</zk>
+
+<?component name="divarrow" macro-uri="divarrow.zul"?>
+<?component name="divtab" macro-uri="divtab.zul"?>

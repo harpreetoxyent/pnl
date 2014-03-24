@@ -1,0 +1,419 @@
+<zk>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="PhotoAlbum"?>
+ <window height="445px" visible="true" droppable="false" id="PhotoAlbum" title="" width="473px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <attribute name="onCreate"><![CDATA[
+makeVisible("PhotoAlbum");setFormPatternId("PhotoAlbum");
+setDatapatternId("");
+String isupload = getSessionData("uploadphoto");
+frame161.setStyle("overflow:auto;");
+if(isupload!="true")
+{
+button165.setLabel("Select Front View");
+String pid=getSessionData("rowId");
+String retvalue=invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientalbum.photo,patientalbum.photoid from neiswispicdb.patientalbum conditions patientalbum.PatientID:="+pid);
+displayImageArray("frame161",6);
+}
+else
+{
+button167.setVisible(false);
+String sid=getSessionData("studyId");
+String retvalue=invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientalbum.photo,patientalbum.photoid from neiswispicdb.patientalbum conditions patientalbum.StudyID:="+sid);
+displayImageArray("frame161",6);
+};
+]]></attribute>
+
+<custom-attributes formpattern="${param.formpattern}" datapattern="${param.datapattern}"/>
+  <div height="336px" visible="true" droppable="false" align="none" id="frame161" width="450px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:7px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:10px;
+" >
+    <textbox maxlength="32767" height="20px" tabindex="8" readonly="false" visible="false" id="textbox128" droppable="false" value="" name="textbox128"  width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+left:300px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:151px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <imagemap height="100px" width="100px" draggable="false" id="picture8" droppable="false" visible="false" style="top:4px;
+background-color:#FFFFFF;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-right:0px;
+padding-left:0px;
+padding-top:0px;
+color:#000000;
+font-size:8pt;
+margin-bottom:0px;
+position:absolute;
+background-position:tile;
+margin-right:0px;
+margin-left:0px;
+padding-bottom:0px;
+left:300px;
+" >
+   
+</imagemap>
+ <textbox maxlength="32767" height="20px" tabindex="9" readonly="false" visible="false" id="textbox129" droppable="false" value="" name="textbox129"  width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+left:300px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:153px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <imagemap height="100px" width="100px" draggable="false" id="picture9" droppable="false" visible="false" style="top:10px;
+background-color:#FFFFFF;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-right:0px;
+padding-left:0px;
+padding-top:0px;
+color:#000000;
+font-size:8pt;
+margin-bottom:0px;
+position:absolute;
+background-position:tile;
+margin-right:0px;
+margin-left:0px;
+padding-bottom:0px;
+left:10px;
+" >
+   
+</imagemap>
+ <imagemap height="100px" width="100px" draggable="false" id="picture11" droppable="false" visible="false" style="top:150px;
+background-color:#FFFFFF;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-right:0px;
+padding-left:0px;
+padding-top:0px;
+color:#000000;
+font-size:8pt;
+margin-bottom:0px;
+position:absolute;
+background-position:tile;
+margin-right:0px;
+margin-left:0px;
+padding-bottom:0px;
+left:10px;
+" >
+   
+</imagemap>
+ <textbox maxlength="32767" height="20px" tabindex="12" readonly="false" visible="false" id="textbox130" droppable="false" value="" name="textbox130"  width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+left:42px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:296px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox maxlength="32767" height="20px" tabindex="13" readonly="false" visible="false" id="textbox131" droppable="false" value="" name="textbox131"  width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+left:255px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:290px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+
+</div>
+ <div height="80px" visible="true" droppable="false" align="center" id="frame178" width="450px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:7px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:355px;
+" >
+    <button height="30px" tabindex="8" visible="true" droppable="false" label="Go Back" id="button166" width="86px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:5px;
+margin-top:5px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:5px;
+margin-bottom:5px;
+color:#316AC5;
+background-position:tile;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("PhotoAlbum");
+setDatapatternId("");
+updateSession("uploadphoto","false");
+updateSession("imageid", null);
+updateSession("studyId", null);
+detachWindow("PhotoAlbum");
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="10" visible="true" droppable="false" label="Upload a photo" id="button165" width="132px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:5px;
+margin-top:5px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:5px;
+margin-bottom:5px;
+color:#316AC5;
+background-position:tile;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("PhotoAlbum");
+setDatapatternId("");
+String isuploading = getSessionData("uploadphoto");
+if(isuploading=="true")
+{
+String imagevalue = uploadImage("picture8");
+String pid=getSessionData("rowId");
+String sid=getSessionData("studyId");
+if(imagevalue != null)
+{
+addFormValue("textbox128",pid);
+addFormValue("textbox129",sid);
+invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","Patient");
+message("Photo saved.");
+String retvalue=invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientalbum.photo,patientalbum.photoid from neiswispicdb.patientalbum conditions patientalbum.StudyID:="+sid);
+displayImageArray("frame161",6);
+}
+}
+else
+{
+String imgid = getSessionData("imageid");
+if(imgid!=null)
+{
+String pid = getSessionData("rowId");
+String retvalue=invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.id from neiswispicdb.patientphoto conditions patientphoto.PatientID:="+pid);
+String photoid = getDataFromAllValuesVar(0, 0);
+addFormValue("textbox130", photoid);
+addFormValue("textbox131", pid);
+String retvalue=invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientalbum.photo from neiswispicdb.patientalbum conditions patientalbum.PhotoID:="+imgid);
+String imgdata = getDataFromAllValuesVar(0, 0);
+addFormValue("picture9", imgdata);
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.sideview from neiswispicdb.patientphoto conditions patientphoto.patientid:="+pid);
+String sidedata = getDataFromAllValuesVar(0, 0);
+addFormValue("picture11", sidedata);
+invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","Patient");
+message("Photo saved.");
+updateSession("imageid", null);
+detachWindow("PhotoAlbum");}
+else
+{
+message("Please click on a photo.");
+}
+};
+]]></attribute>
+<custom-attributes accessrights ="Upload Photo" />
+  
+</button>
+ <button height="30px" tabindex="11" visible="true" droppable="false" label="Select Side View" id="button167" width="146px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:5px;
+margin-top:5px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:5px;
+margin-bottom:5px;
+color:#316AC5;
+background-position:tile;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("PhotoAlbum");
+setDatapatternId("");
+String imgid = getSessionData("imageid");
+if(imgid!=null)
+{
+String pid = getSessionData("rowId");
+String retvalue=invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.id from neiswispicdb.patientphoto conditions patientphoto.PatientID:="+pid);
+String photoid = getDataFromAllValuesVar(0, 0);
+addFormValue("textbox130", photoid);
+addFormValue("textbox131", pid);
+String retvalue=invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientalbum.photo from neiswispicdb.patientalbum conditions patientalbum.PhotoID:="+imgid);
+String imgdata = getDataFromAllValuesVar(0, 0);
+addFormValue("picture11", imgdata);
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.frontview from neiswispicdb.patientphoto conditions patientphoto.patientid:="+pid);
+String frontdata = getDataFromAllValuesVar(0, 0);
+addFormValue("picture9", frontdata);
+invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","Patient");
+message("Photo saved.");
+updateSession("imageid", null);
+detachWindow("PhotoAlbum");
+}
+else
+{
+message("Please click on a photo.");
+}
+;
+]]></attribute>
+<custom-attributes accessrights ="Upload Photo" />
+  
+</button>
+ <button height="30px" tabindex="12" visible="true" droppable="false" label="Delete" id="button184" width="76px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:5px;
+margin-top:5px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:5px;
+margin-bottom:5px;
+color:#316AC5;
+background-position:tile;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("PhotoAlbum");
+setDatapatternId("");
+String imgid = getSessionData("imageid");
+if(imgid!=null)
+{
+String retvalue=invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientalbum.photoid from neiswispicdb.patientalbum conditions patientalbum.photoid:="+imgid);
+boolean photoexists = isRecordExist();
+if(photoexists)
+{
+boolean isYes =messageWithQuestion("Are you sure you wish to delete patient photo?");
+if(isYes)
+{
+String retValue = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","delete from neiswispicdb.patientalbum conditions photoid:="+imgid);
+if(retValue == "true")
+{
+message("Deleted patient photo.");
+String isupload = getSessionData("uploadphoto");
+frame161.setStyle("overflow:auto;");
+if(isupload!="true")
+{
+String pid=getSessionData("rowId");
+String retvalue=invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientalbum.photo,patientalbum.photoid from neiswispicdb.patientalbum conditions patientalbum.PatientID:="+pid);
+displayImageArray("frame161",6);
+}
+else
+{
+String sid=getSessionData("studyId");
+String retvalue=invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientalbum.photo,patientalbum.photoid from neiswispicdb.patientalbum conditions patientalbum.StudyID:="+sid);
+displayImageArray("frame161",6);
+}
+}
+}
+}
+updateSession("imageid", null);
+}
+else
+{
+message("Please click on a photo.");
+};
+]]></attribute>
+<custom-attributes accessrights ="Delete Photo" />
+  
+</button>
+
+</div>
+
+</window>
+</zk>
+

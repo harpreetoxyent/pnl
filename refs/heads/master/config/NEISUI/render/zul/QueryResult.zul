@@ -1,0 +1,160 @@
+<zk>
+<style src="/css/QueryResult.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="QueryResult"?>
+ <window class="QueryResult" height="1092px" visible="true" droppable="false" id="QueryResult" title="" width="100%" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("QueryResult");
+setDatapatternId("");
+makeVisible("QueryResult");
+]]></attribute>
+  <div class="frame84" height="1070px" visible="true" droppable="false" align="none" id="frame84" width="950px" draggable="false">
+    <div class="frame5213" height="1060px" visible="true" droppable="false" align="none" id="frame5213" width="175px" draggable="false">
+    <include class="placeholder31" draggable="false" height="200px" src="searchpanel.zul?formpattern=QueryResult&amp;datapattern=" visible="true" droppable="false" id="placeholder31" width="175px">
+    
+</include>
+
+</div>
+ <div class="frame1430" height="1060px" visible="true" droppable="false" align="none" id="frame1430" width="556px" draggable="false">
+ <custom-attributes accessrights ="Advance Search" />
+   <label class="label45" height="30px" visible="true" droppable="false" value="query complete." id="label45" width="161px" draggable="false">
+   
+</label>
+ <div class="frame85" height="583px" visible="true" droppable="false" align="none" id="frame85" width="556px" draggable="false">
+    <listbox class="grid45" height="437px" multiple="False" visible="true" droppable="false" id="grid45" width="518px" draggable="false" fixedLayout= "true">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("QueryResult");
+setDatapatternId("");
+grid45.setMold("paging");
+String defaultPageNo = "25";
+String pageNo = getSessionData("PageNo");
+   if(pageNo !=null)
+   {
+   if(pageNo!="")
+   {
+   int pageValue = Integer.parseInt(pageNo);
+   grid45.setPageSize(pageValue);
+   }
+   }
+   else
+   {
+   int pageValue = Integer.parseInt(defaultPageNo);
+   grid45.setPageSize(pageValue);
+   }
+boolean isDisplay = displayDataInControl("grid45");
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("QueryResult");
+setDatapatternId("");
+id=getRowData(2);
+updateSession("rowId",id);
+;
+]]></attribute>
+   <listhead sizable="true" draggable="false" height="30px" visible="true" droppable="false" id="row82" width="516px">
+ <listheader label="first name" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column150" width="110px">
+
+</listheader>
+ <listheader label="last name" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column152" width="110px">
+
+</listheader>
+ <listheader label="identifier" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column153" width="85px">
+
+</listheader>
+ <listheader label="MRN" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column154" width="95px">
+
+</listheader>
+ <listheader label="birth date" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column155" width="116px">
+
+</listheader>
+
+</listhead>
+
+</listbox>
+ <button class="button52" height="30px" tabindex="9" visible="true" droppable="false" label="EXIT QUERY BUILDER" id="button52" width="146px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryResult");
+setDatapatternId("");
+updateSessionList("dbListValue",null);
+updateSession("rowId",null);
+updateSession("CSVHEADER",null);
+setDataStatus("UserAuthenticated", "HomeForm", null);
+]]></attribute>
+  
+</button>
+ <button class="button56" height="30px" tabindex="10" visible="true" droppable="false" label="VIEW RESULTS IN EXCEL" id="button56" width="175px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryResult");
+setDatapatternId("");
+String headerList = getSessionData("CSVHEADER");
+updateSession("rowId",null);
+invokeComponent("export.Component","exportCSV","com.oxymedical.component.export.ExportComponent",headerList);
+showCSVFile("");
+]]></attribute>
+  
+</button>
+ <button class="button92" height="30px" tabindex="11" visible="true" droppable="false" label="Go Back" id="button92" width="132px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryResult");
+setDatapatternId("");
+updateSessionList("dbListValue",null);
+updateSession("CSVHEADER",null);
+updateSession("rowId",null);
+updateSession("QBBack","yes");
+setDataStatus("CreateQuery", "QueryBuilder", "neiswispicdb");
+]]></attribute>
+  
+</button>
+
+</div>
+
+</div>
+ <div class="frame1274" height="1060px" visible="true" droppable="false" align="right" id="frame1274" width="203px" draggable="false">
+    <div class="frame1739" height="708px" visible="true" droppable="false" align="left" id="frame1739" width="203px" draggable="false">
+    <include class="placeholder32" draggable="false" height="55px" src="Logo.zul?formpattern=QueryResult&amp;datapattern=" visible="true" droppable="false" id="placeholder32" width="203px">
+    
+</include>
+ <include class="placeholder33" draggable="false" height="200px" src="CalendarPanel.zul?formpattern=QueryResult&amp;datapattern=" visible="true" droppable="false" id="placeholder33" width="203px">
+    
+</include>
+ <button class="button41" height="30px" tabindex="1" visible="true" droppable="false" label="View Patient Information" id="button41" width="166px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryResult");
+setDatapatternId("");
+updateSessionList("dbListValue",null);
+String id = session.getAttribute("rowId");
+if(id!=null)
+{
+updateSession("readOnly","true");
+updateSession("mode","read");
+setDataStatus("CreatePatient", "Patient", "neiswispicdb");
+}
+else
+{
+message(" Please select one record to see information.");
+}
+
+;
+]]></attribute>
+  
+</button>
+
+</div>
+ <button class="button3213" height="30px" tabindex="27" visible="true" droppable="false" label="sign out" id="button3213" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("QueryResult");
+setDatapatternId("");
+String retValue = logOut("login");
+updateSession("login", null);
+]]></attribute>
+  
+</button>
+
+</div>
+
+</div>
+
+</window>
+</zk>
+

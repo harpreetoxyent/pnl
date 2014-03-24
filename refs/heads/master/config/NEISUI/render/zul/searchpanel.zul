@@ -1,0 +1,298 @@
+<zk>
+<style src="/css/searchpanel.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="searchpanel"?>
+ <window class="searchpanel" height="240px" visible="true" droppable="false" id="searchpanel" title="" width="100%" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+makeVisible("searchpanel");setFormPatternId("searchpanel");
+setDatapatternId("");
+String lastName = getSessionData("lastname");
+String firstname= getSessionData("firstname");
+String dob= getSessionData("dob");
+String mrn= getSessionData("mrn");
+if(lastName !=null)
+{
+	textbox97.text = lastName;
+	textbox97.style="color:#000000";
+}
+if(firstname !=null)
+{
+	textbox91.text = firstname;
+	textbox91.style="color:#000000";
+}
+if(dob !=null)
+{
+	textbox98.text = dob;
+	textbox98.style="color:#000000";
+}
+if(mrn !=null)
+{
+	textbox44.text = mrn;
+	textbox44.style="color:#000000";
+};
+]]></attribute>
+<attribute name="onOK"><![CDATA[
+setFormPatternId("searchpanel");
+setDatapatternId("");
+updateSession("lastname",null);
+updateSession("firstname",null);
+updateSession("dob",null);
+updateSession("mrn",null);
+updateSessionList("dbListValue",null);
+updateSession("roomassign",null);
+boolean goNext = true;
+boolean isValid = clientSideValidation("searchpanel");
+if(isValid)
+{
+isEqual = checkValueWithOperator("last name", textbox97.value, "EQUAL");
+if (!isEqual)
+{
+	String lName = textbox97.value;
+	int len = lName.length();
+	if(len >0)
+	{
+	 updateSession("lastname", textbox97.value);
+ }
+}
+isEqual = checkValueWithOperator("first name", textbox91.value, "EQUAL");
+if (!isEqual) 
+{
+	String fName = textbox91.value;
+	int len = fName.length();
+	if(len >0)
+	{
+		updateSession("firstname", textbox91.value);}}
+isEqual = checkValueWithOperator("date of birth(yyyy-mm-dd)", textbox98.value, "EQUAL");
+if (!isEqual)
+{
+
+String dobValue = textbox98.value;
+int len = dobValue.length();
+	if(len >0)
+	{
+boolean valid = dateValidation(dobValue);
+if(valid)
+{
+ updateSession("dob", textbox98.value);
+ }
+ else
+ {
+	message("Invalid date. Please enter valid date as(yyyy-mm-dd).");
+	goNext = false;
+	textbox98.setText("date of birth(yyyy-mm-dd)");
+	textbox98.style="color:#D4D0C8";
+	textbox98.setFocus(true);
+ }
+ }
+ }
+isEqual = checkValueWithOperator("MRN", textbox44.value, "EQUAL");
+if (!isEqual){
+String mrnValue = textbox44.value;
+int length = mrnValue.length();
+if(length>0)
+{
+if(length==8)
+{
+ updateSession("mrn", textbox44.value);
+ }
+ else
+ {
+ message("MRN no is invalid. MRN should be eight-digit number.");
+ goNext = false;
+ }
+ }
+}
+if(goNext)
+{
+setDataStatus("ModifyPatient", "search", "neiswispicdb");
+}
+};
+]]></attribute>
+<custom-attributes accessrights ="" />
+  <vbox class="frame160" height="193px" visible="true" droppable="false" align="none" id="frame160" width="168px" draggable="false">
+ <custom-attributes accessrights ="SearchPatientInfo" />
+   <div class="frame2" height="142px" visible="true" droppable="false" align="none" id="frame2" width="164px" draggable="false">
+    <label class="label61" height="30px" visible="true" droppable="false" value="search
+PATIENTdatabase:" id="label61" width="103px" draggable="false">
+   
+</label>
+ <textbox class="textbox91" maxlength="32767" height="20px" tabindex="30" readonly="false" visible="true" id="textbox91" droppable="false" value="first name" name="FirstName:" constraint="/[a-zA-z0-9\s]*/:AlphaNumeric value only" width="158px" draggable="false" onChange='setTextboxId()'>
+ <attribute name="onBlur"><![CDATA[
+setFormPatternId("searchpanel");
+setDatapatternId("");
+textNotEntered=checkValueWithOperator("",textbox91.value, "EQUAL");
+if (textNotEntered) { textbox91.text="first name"; textbox91.style="color:#D4D0C8";};
+]]></attribute>
+<attribute name="onFocus"><![CDATA[
+setFormPatternId("searchpanel");
+setDatapatternId("");
+textNotEntered=checkValueWithOperator("first name",textbox91.value, "EQUAL");
+if (textNotEntered) { textbox91.text=""; textbox91.style="color:#000000";};
+]]></attribute>
+  
+</textbox>
+ <textbox class="textbox97" maxlength="32767" height="20px" tabindex="31" readonly="false" visible="true" id="textbox97" droppable="false" value="last name" name="LastName:" constraint="/[a-zA-z0-9\s]*/:AlphaNumeric value only" width="159px" draggable="false" onChange='setTextboxId()'>
+ <attribute name="onBlur"><![CDATA[
+setFormPatternId("searchpanel");
+setDatapatternId("");
+textNotEntered=checkValueWithOperator("",textbox97.value, "EQUAL");
+if (textNotEntered) { textbox97.text="last name"; textbox97.style="color:#D4D0C8";};
+]]></attribute>
+<attribute name="onFocus"><![CDATA[
+setFormPatternId("searchpanel");
+setDatapatternId("");
+textNotEntered=checkValueWithOperator("last name",textbox97.value, "EQUAL");
+if (textNotEntered) { textbox97.text=""; textbox97.style="color:#000000";};
+]]></attribute>
+  
+</textbox>
+ <textbox class="textbox98" maxlength="32767" height="20px" tabindex="32" readonly="false" visible="true" id="textbox98" droppable="false" value="date of birth(yyyy-mm-dd)" name="DOB:"  width="160px" draggable="false" onChange='setTextboxId()'>
+ <attribute name="onBlur"><![CDATA[
+setFormPatternId("searchpanel");
+setDatapatternId("");
+textNotEntered=checkValueWithOperator("", textbox98.value, "EQUAL");
+if (textNotEntered) { textbox98.text="date of birth(yyyy-mm-dd)"; textbox98.style="color:#D4D0C8";};
+]]></attribute>
+<attribute name="onFocus"><![CDATA[
+setFormPatternId("searchpanel");
+setDatapatternId("");
+textNotEntered=checkValueWithOperator("date of birth(yyyy-mm-dd)", textbox98.value, "EQUAL");
+if (textNotEntered) { textbox98.text=""; textbox98.style="color:#000000";};
+]]></attribute>
+  
+</textbox>
+ <textbox class="textbox44" maxlength="8" height="20px" tabindex="33" readonly="false" visible="true" id="textbox44" droppable="false" value="MRN" name="MRN:" constraint="/((^[0]{1}$|^[-]?[1-9]{1}\d*$)|)/:Numeric whole value only" width="160px" draggable="false" onChange='setTextboxId()'>
+ <attribute name="onBlur"><![CDATA[
+setFormPatternId("searchpanel");
+setDatapatternId("");
+textNotEntered=checkValueWithOperator("",textbox44.value, "EQUAL");
+if (textNotEntered) { textbox44.text="MRN"; textbox44.style="color:#D4D0C8";};
+]]></attribute>
+<attribute name="onFocus"><![CDATA[
+setFormPatternId("searchpanel");
+setDatapatternId("");
+textNotEntered=checkValueWithOperator("MRN",textbox44.value, "EQUAL");
+if (textNotEntered) { textbox44.text=""; textbox44.style="color:#000000";};
+]]></attribute>
+  
+</textbox>
+
+</div>
+ <div class="frame127" height="33px" visible="true" droppable="false" align="center" id="frame127" width="164px" draggable="false">
+    <button class="button20" height="30px" tabindex="33" visible="true" droppable="false" label="search" id="button20" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("searchpanel");
+setDatapatternId("");
+updateSession("lastname",null);
+updateSession("firstname",null);
+updateSession("dob",null);
+updateSession("mrn",null);
+updateSessionList("dbListValue",null);
+updateSession("roomassign",null);
+boolean goNext = true;
+boolean isValid = clientSideValidation("searchpanel");
+if(isValid)
+{
+isEqual = checkValueWithOperator("last name", textbox97.value, "EQUAL");
+if (!isEqual)
+{
+	String lName = textbox97.value;
+	int len = lName.length();
+	if(len >0)
+	{
+	 updateSession("lastname", textbox97.value);
+ }
+}
+isEqual = checkValueWithOperator("first name", textbox91.value, "EQUAL");
+if (!isEqual) 
+{
+	String fName = textbox91.value;
+	int len = fName.length();
+	if(len >0)
+	{
+		updateSession("firstname", textbox91.value);}}
+isEqual = checkValueWithOperator("date of birth(yyyy-mm-dd)", textbox98.value, "EQUAL");
+if (!isEqual)
+{
+
+String dobValue = textbox98.value;
+int len = dobValue.length();
+	if(len >0)
+	{
+boolean valid = dateValidation(dobValue);
+if(valid)
+{
+ updateSession("dob", textbox98.value);
+ }
+ else
+ {
+	message("Invalid date. Please enter valid date as(yyyy-mm-dd).");
+	goNext = false;
+	textbox98.setText("date of birth(yyyy-mm-dd)");
+	textbox98.style="color:#D4D0C8";
+	textbox98.setFocus(true);
+ }
+ }
+ }
+isEqual = checkValueWithOperator("MRN", textbox44.value, "EQUAL");
+if (!isEqual){
+String mrnValue = textbox44.value;
+int length = mrnValue.length();
+if(length>0)
+{
+if(length==8)
+{
+ updateSession("mrn", textbox44.value);
+ }
+ else
+ {
+ message("MRN no is invalid. MRN should be eight-digit number.");
+ goNext = false;
+ }
+ }
+}
+if(goNext)
+{
+setDataStatus("ModifyPatient", "search", "neiswispicdb");
+}
+}
+;
+]]></attribute>
+  
+</button>
+ <button class="button32" height="30px" tabindex="34" visible="true" droppable="false" label="advance" id="button32" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("searchpanel");
+setDatapatternId("");
+updateSession("lastname",null);
+updateSession("firstname",null);
+updateSession("dob",null);
+updateSession("mrn",null);
+updateSession("roomassign",null);
+updateSessionList("dbListValue",null);
+updateSession("rowId",null);
+setDataStatus("CreateQuery", "QueryBuilder", "neiswispicdb");
+]]></attribute>
+<custom-attributes accessrights ="Advance Search" />
+  
+</button>
+
+</div>
+
+</vbox>
+ <imagemap class="picture15" draggable="false" height="24px" visible="true" src="img/picture15.jpg" droppable="false" id="picture15" width="88px">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("searchpanel");
+setDatapatternId("");
+String serverIp=session.getServerName();
+String address="http://"+serverIp+":8080/NeisInstallationManual/index.html";
+openNewWindow(address,picture15);
+]]></attribute>
+  
+</imagemap>
+
+</window>
+</zk>
+

@@ -1,0 +1,494 @@
+<zk>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="RoomDescription"?>
+ <window height="185px" visible="true" droppable="false" id="RoomDescription" title="Add Room Description" width="295px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("RoomDescription");
+setDatapatternId("");
+String editRoom=getSessionData("editroom");
+label172.setVisible(false);
+combobox33.setVisible(false);
+if(editRoom!=null)
+{
+result=equalsTest(editRoom,"true");
+if(result)
+{
+button108.setLabel("Save");
+label172.setVisible(true);
+combobox33.setVisible(true);
+String roomId=getSessionData("roomId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get room.RoomDescription,room.roomtype,room.basestation from neiswispicdb.room conditions room.deleted:=["+0+"] and room.id:="+roomId);
+data=createArray("String", "textbox51,combobox33,textbox191");
+showData(data);
+roomType=getComboItemId1("combobox33");
+updateSession("typeRoom",roomType);
+desc=textbox51.text;
+}
+};
+]]></attribute>
+<attribute name="onOK"><![CDATA[
+setFormPatternId("RoomDescription");
+setDatapatternId("");
+String parentId=getSessionData("parent");
+String parentForm=getSessionData("parentForm");
+String editRoom=getSessionData("editroom");
+String testEmpty="";
+resultbase=equalsTest(textbox191.text,testEmpty);
+if(!resultbase)
+{
+updateSession("basestation",textbox191.text);	
+}
+result=equalsTest(textbox51.text,testEmpty);
+if(result)
+{
+message("Please enter value in room description.");
+}
+else
+{
+if(editRoom!=null)
+{
+result=equalsTest(editRoom,"true");
+String rowId=getSessionData("rowId");
+setDescription(textbox51.text,parentForm,rowId);
+boolean result=equalsTest(desc,textbox51.text);
+if(result)
+{
+
+updateSession("parent",null);
+updateSession("parentForm",null);
+detachWindow("RoomDescription");
+}
+else
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get room.id from neiswispicdb.room conditions room.deleted:=["+0+"] and room.RoomDescription:=["+textbox51.text+"]");
+boolean retVal=isRecordExist();
+if(!retVal)
+{
+updateSession("parent",null);
+updateSession("parentForm",null);
+detachWindow("RoomDescription");
+}
+else
+{
+message("Please change room description as it already exists.");
+}
+}
+}
+else
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get room.id from neiswispicdb.room conditions room.deleted:=["+0+"] and room.RoomDescription:=["+textbox51.text+"]");
+boolean retVal=isRecordExist();
+if(!retVal)
+{
+String rid=addRoomList(textbox51.text,parentId,parentForm);
+if(id!=null)
+{
+updateSession("roomid",rid);
+}
+updateSession("parent",null);
+updateSession("parentForm",null);
+detachWindow("RoomDescription");
+}
+else
+{
+message("Please change room description as it already exists.");
+}
+}
+};
+]]></attribute>
+
+<custom-attributes formpattern="${param.formpattern}" datapattern="${param.datapattern}"/>
+  <div height="157px" visible="true" droppable="false" align="none" id="frame122" width="290px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:0px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:22px;
+" >
+    <hbox height="111px" visible="true" droppable="false" align="none" id="frame124" width="287px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+    <grid height="105px" visible="true" droppable="false" id="lattice100" width="287px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("RoomDescription");
+setDatapatternId("");
+String gridStyle = "background-color:Transparent;border:0px";
+lattice100.setStyle(gridStyle);
+row5500.setStyle(gridStyle);
+row5501.setStyle(gridStyle);
+row301.setStyle(gridStyle);
+
+;
+]]></attribute>
+<rows>
+   <row draggable="false" height="30px" visible="true" droppable="false" id="row5500" width="285px" style="font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:Transparent;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <label height="26px" visible="true" droppable="false" value="Room Descripition:" id="label191" width="138px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="8" readonly="false" visible="true" id="textbox51" droppable="false" value="new room" name="textbox51"  draggable="false" width="126px" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+
+</row>
+ <row draggable="false" height="30px" visible="true" droppable="false" id="row5501" width="285px" style="font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:Transparent;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <label height="26px" visible="true" droppable="false" value="Room Type:" id="label172" width="111px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+" >
+   
+</label>
+ <combobox draggable="false" tabindex="9" readonly="false" visible="true" droppable="false" text="combobox1" name="combobox33" id="combobox33" width="75px" style="font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:#FFFFFF;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("RoomDescription");
+setDatapatternId("");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get roomtype.ID,roomtype.roomtype from neiswispicdb.roomtype conditions roomtype.deleted:=[0]");
+showComboData("combobox33");
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("RoomDescription");
+setDatapatternId("");
+ roomType=getComboItemId1("combobox33");
+updateSession("typeRoom",roomType);
+]]></attribute>
+  
+</combobox>
+
+</row>
+ <row draggable="false" height="30px" visible="true" droppable="false" id="row301" width="285px" style="font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:Transparent;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <label height="30px" visible="true" droppable="false" value="Base Station:" id="label327" width="111px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="1" readonly="false" visible="true" id="textbox191" droppable="false" value="" name="textbox191"  width="126px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+
+</row>
+</rows>
+
+</grid>
+
+</hbox>
+ <hbox height="43px" visible="true" droppable="false" align="center" id="frame157" width="287px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+    <button height="30px" tabindex="8" visible="true" droppable="false" label="Ok" id="button108" width="101px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:5px;
+margin-top:5px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:5px;
+margin-bottom:5px;
+color:#316AC5;
+background-position:tile;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("RoomDescription");
+setDatapatternId("");
+String parentId=getSessionData("parent");
+String parentForm=getSessionData("parentForm");
+String editRoom=getSessionData("editroom");
+String testEmpty="";
+resultbase=equalsTest(textbox191.text,testEmpty);
+if(!resultbase)
+{
+updateSession("basestation",textbox191.text);	
+}
+result=equalsTest(textbox51.text,testEmpty);
+if(result)
+{
+message("Please enter value in room description.");
+}
+else
+{
+if(editRoom!=null)
+{
+result=equalsTest(editRoom,"true");
+String rowId=getSessionData("rowId");
+setDescription(textbox51.text,parentForm,rowId);
+boolean result=equalsTest(desc,textbox51.text);
+if(result)
+{
+
+updateSession("parent",null);
+updateSession("parentForm",null);
+detachWindow("RoomDescription");
+}
+else
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get room.id from neiswispicdb.room conditions room.deleted:=["+0+"] and room.RoomDescription:=["+textbox51.text+"]");
+boolean retVal=isRecordExist();
+if(!retVal)
+{
+updateSession("parent",null);
+updateSession("parentForm",null);
+detachWindow("RoomDescription");
+}
+else
+{
+message("Please change room description as it already exists.");
+}
+}
+}
+else
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get room.id from neiswispicdb.room conditions room.deleted:=["+0+"] and room.RoomDescription:=["+textbox51.text+"]");
+boolean retVal=isRecordExist();
+if(!retVal)
+{
+String rid=addRoomList(textbox51.text,parentId,parentForm);
+if(id!=null)
+{
+updateSession("roomid",rid);
+}
+updateSession("parent",null);
+updateSession("parentForm",null);
+detachWindow("RoomDescription");
+}
+else
+{
+message("Please change room description as it already exists.");
+}
+}
+};
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="9" visible="true" droppable="false" label="Cancel" id="button109" width="125px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:5px;
+margin-top:5px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:5px;
+margin-bottom:5px;
+color:#316AC5;
+background-position:tile;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("RoomDescription");
+setDatapatternId("");
+updateSession("popup","cancel");
+detachWindow("RoomDescription");
+]]></attribute>
+  
+</button>
+
+</hbox>
+
+</div>
+
+</window>
+</zk>
+

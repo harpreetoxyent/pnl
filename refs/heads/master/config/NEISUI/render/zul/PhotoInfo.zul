@@ -1,0 +1,355 @@
+<zk>
+<style src="/css/PhotoInfo.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="PhotoInfo"?>
+ <window class="PhotoInfo" height="992px" visible="true" droppable="false" id="PhotoInfo" title="" width="100%" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+makeVisible("PhotoInfo");setFormPatternId("PhotoInfo");
+setDatapatternId("");
+textbox192.setVisible(false);
+String rowValue = getSessionData("rowId");
+msg ="Patient saved successfully.";
+if(rowValue!=null)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.SideView,patientphoto.FrontView,patientphoto.id  from neiswispicdb.Patient,neiswispicdb.patientphoto conditions patient.id:="+rowValue+" and patient.deleted:=_STRINGSTART_0_STRINGEND_ and patientphoto.patientid:=patient.id");
+data=createArray("String", "picture3,picture2,textbox16");
+showData(data);
+}
+
+;
+]]></attribute>
+  <div class="frame25" height="976px" visible="true" droppable="false" align="none" id="frame25" width="560px" draggable="false">
+    <textbox class="textbox16" maxlength="32767" height="20px" tabindex="71" readonly="false" visible="false" id="textbox16" droppable="false" value="" name="textbox16"  width="20px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <div class="frame162" height="400px" visible="true" droppable="false" align="center" id="frame162" width="500px" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("PhotoInfo");
+setDatapatternId("");
+frame162.setStyle("overflow:auto;border:2px solid;");
+
+;
+]]></attribute>
+<attribute name="onClick"><![CDATA[
+setFormPatternId("PhotoInfo");
+setDatapatternId("");
+storFormValue("formValue");
+		String pid = getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.ID,patientphoto.frontview from neiswispicdb.patientphoto conditions patientphoto.patientID:="+pid);
+String fview = getDataFromAllValuesVar(0, 1);
+boolean isYes = true;
+if(fview!=null)
+{
+isYes = false;
+}
+if(isYes)
+{
+String imagevalue  = uploadImage("picture2");
+if(imagevalue != null)
+{
+if(pid!=null)
+{
+addFormValue("textbox163",pid);
+addFormValue("picture14",imagevalue);
+addFormValue("textbox192",pid);
+invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","Patient");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.SideView,patientphoto.FrontView,patientphoto.id  from neiswispicdb.Patient,neiswispicdb.patientphoto conditions patient.id:="+rowValue+" and patient.deleted:=_STRINGSTART_0_STRINGEND_ and patientphoto.patientid:=patient.id");
+data=createArray("String", "picture3,picture2,textbox16");
+restorFormValue("formValue");
+showData(data);
+message("Photo saved.");
+}
+}
+};
+]]></attribute>
+   <imagemap class="picture2" height="90px" width="75px" draggable="false" id="picture2" droppable="false" visible="true">
+   
+</imagemap>
+
+</div>
+ <div class="frame163" height="400px" visible="true" droppable="false" align="center" id="frame163" width="500px" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("PhotoInfo");
+setDatapatternId("");
+frame163.setStyle("overflow:auto;border:2px solid;");
+]]></attribute>
+<attribute name="onClick"><![CDATA[
+setFormPatternId("PhotoInfo");
+setDatapatternId("");
+storFormValue("formValue");
+		String pid = getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.ID,patientphoto.sideview from neiswispicdb.patientphoto conditions patientphoto.patientID:="+pid);
+String sview = getDataFromAllValuesVar(0, 1);
+boolean isYes = true;
+if(sview!=null)
+{
+isYes = false;
+}
+if(isYes)
+{
+String imagevalue  = uploadImage("picture3");
+if(imagevalue != null)
+{
+if(pid!=null)
+{
+addFormValue("textbox163",pid);
+addFormValue("picture14",imagevalue);
+addFormValue("textbox192",pid);
+invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","Patient");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.SideView,patientphoto.FrontView,patientphoto.id  from neiswispicdb.Patient,neiswispicdb.patientphoto conditions patient.id:="+rowValue+" and patient.deleted:=_STRINGSTART_0_STRINGEND_ and patientphoto.patientid:=patient.id");
+data=createArray("String", "picture3,picture2,textbox16");
+restorFormValue("formValue");
+showData(data);
+message("Photo saved.");
+}
+}
+};
+]]></attribute>
+   <imagemap class="picture3" height="91px" width="79px" draggable="false" id="picture3" droppable="false" visible="true">
+   
+</imagemap>
+
+</div>
+ <imagemap class="picture5" draggable="false" height="15px" visible="true" src="img/picture5.jpg" droppable="false" id="picture5" width="15px">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("PhotoInfo");
+setDatapatternId("");
+createToolTip("picture5"," Delete Front View Photo. ");
+]]></attribute>
+<attribute name="onClick"><![CDATA[
+setFormPatternId("PhotoInfo");
+setDatapatternId("");
+storFormValue("formValue");
+		id = getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.ID,patientphoto.frontview from neiswispicdb.patientphoto conditions patientphoto.patientID:="+id);
+String fview = getDataFromAllValuesVar(0, 1);
+if(fview!=null)
+{
+boolean isnull = checkValueWithOperator(fview,"null","EQUAL");
+if(!isnull)
+{
+if(id!=null)
+{
+String photoId=textbox16.text;
+boolean result=checkValueWithOperator(photoId,"","EQUAL");
+if(!result)
+{
+boolean isYes =messageWithQuestion("Are you sure you wish to delete patient photo (front)?");
+if(isYes)
+{
+String retValue = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","update neiswispicdb.patientphoto set FrontView:="+null+" conditions PatientID:="+id+" and patientphoto.id:="+photoId);
+removeFromFormValue("picture2");
+if(retValue == "true")
+{
+message("Deleted patient photo.");
+String retvalue=invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.frontview,patientphoto.sideview from neiswispicdb.patientphoto conditions patientphoto.patientID:="+id);
+restorFormValue("formValue");
+displayImageContent(picture2,0,0);
+displayImageContent(picture3,0,1);
+}
+}
+}
+}
+}
+else
+{
+message("No photo is present.");
+}
+}
+else
+{
+message("No photo is present.");
+};
+]]></attribute>
+<custom-attributes accessrights ="Delete Photo" />
+  
+</imagemap>
+ <imagemap class="picture12" draggable="false" height="15px" visible="true" src="img/picture12.jpg" droppable="false" id="picture12" width="15px">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("PhotoInfo");
+setDatapatternId("");
+createToolTip("picture12"," Delete Side View Photo. ");
+]]></attribute>
+<attribute name="onClick"><![CDATA[
+setFormPatternId("PhotoInfo");
+setDatapatternId("");
+storFormValue("formValue");
+		id = getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.ID,patientphoto.sideview from neiswispicdb.patientphoto conditions patientphoto.patientID:="+id);
+String sview = getDataFromAllValuesVar(0, 1);
+if(sview!=null)
+{
+boolean isnull = checkValueWithOperator(sview,"null","EQUAL");
+if(!isnull)
+{
+if(id!=null)
+{
+String photoId=textbox16.text;
+boolean result=checkValueWithOperator(photoId,"","EQUAL");
+if(!result)
+{
+boolean isYes =messageWithQuestion("Are you sure you wish to delete patient photo (side)?");
+if(isYes)
+{
+String retValue = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","update neiswispicdb.patientphoto set SideView:="+null+" conditions PatientID:="+id);
+removeFromFormValue("picture3");
+if(retValue == "true")
+{
+message("Deleted patient photo.");
+String retvalue=invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.frontview,patientphoto.sideview from neiswispicdb.patientphoto conditions patientphoto.patientID:="+id);
+restorFormValue("formValue");
+displayImageContent(picture2,0,0);
+displayImageContent(picture3,0,1);
+}
+}
+}
+}
+}
+else
+{
+message("No photo is present.");
+}
+}
+else
+{
+message("No photo is present.");
+};
+]]></attribute>
+<custom-attributes accessrights ="Delete Photo" />
+  
+</imagemap>
+ <imagemap class="picture14" height="20px" width="20px" draggable="false" id="picture14" droppable="false" visible="false">
+   
+</imagemap>
+ <textbox class="textbox163" maxlength="32767" height="20px" tabindex="82" readonly="false" visible="false" id="textbox163" droppable="false" value="" name="textbox163"  width="20px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <div class="frame177" height="39px" visible="true" droppable="false" align="center" id="frame177" width="558px" draggable="false">
+    <button class="button57" height="30px" tabindex="8" visible="true" droppable="false" label="Upload Side View" id="button57" width="142px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("PhotoInfo");
+setDatapatternId("");
+storFormValue("formValue");
+		  String pid = getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.ID,patientphoto.sideview from neiswispicdb.patientphoto conditions patientphoto.patientID:="+pid);
+String sview = getDataFromAllValuesVar(0, 1);
+boolean isYes = true;
+if(sview!=null)
+{
+boolean isnull = checkValueWithOperator(sview,"null","EQUAL");
+if(!isnull)
+{
+isYes = messageWithQuestion("Photo already exists. Are you sure you want to replace the picture?");
+}
+}
+if(isYes)
+{
+String imagevalue  = uploadImage("picture3");
+if(imagevalue != null)
+{
+if(pid!=null)
+{
+addFormValue("textbox192",pid);
+addFormValue("textbox163",pid);
+addFormValue("picture14",imagevalue);
+setFormPatternId("PhotoInfo");
+invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","Patient");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.SideView,patientphoto.FrontView,patientphoto.id  from neiswispicdb.Patient,neiswispicdb.patientphoto conditions patient.id:="+rowValue+" and patient.deleted:=_STRINGSTART_0_STRINGEND_ and patientphoto.patientid:=patient.id");
+restorFormValue("formValue");
+data=createArray("String", "picture3,picture2,textbox16");
+showData(data);
+message("Photo saved.");
+}
+}
+else
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.SideView,patientphoto.FrontView,patientphoto.id  from neiswispicdb.Patient,neiswispicdb.patientphoto conditions patient.id:="+rowValue+" and patient.deleted:=_STRINGSTART_0_STRINGEND_ and patientphoto.patientid:=patient.id");
+restorFormValue("formValue");
+data=createArray("String", "picture3,picture2,textbox16");
+showData(data);
+}
+};
+]]></attribute>
+<custom-attributes accessrights ="Upload Photo" />
+  
+</button>
+ <button class="button36" height="30px" tabindex="73" visible="true" droppable="false" label="Upload Front View" id="button36" width="142px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("PhotoInfo");
+setDatapatternId("");
+storFormValue("formValue");
+		  String pid = getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.ID,patientphoto.frontview from neiswispicdb.patientphoto conditions patientphoto.patientID:="+pid);
+String fview = getDataFromAllValuesVar(0, 1);
+boolean isYes = true;
+if(fview!=null)
+{
+boolean isnull = checkValueWithOperator(fview,"null","EQUAL");
+if(!isnull)
+{
+isYes = messageWithQuestion("Photo already exists. Are you sure you want to replace the picture?");
+}
+}
+if(isYes)
+{
+String imagevalue  = uploadImage("picture2");
+if(imagevalue != null)
+{
+if(pid!=null)
+{
+addFormValue("textbox192",pid);
+addFormValue("textbox163",pid);
+addFormValue("picture14",imagevalue);
+setFormPatternId("PhotoInfo");
+invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","Patient");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.SideView,patientphoto.FrontView,patientphoto.id  from neiswispicdb.Patient,neiswispicdb.patientphoto conditions patient.id:="+rowValue+" and patient.deleted:=_STRINGSTART_0_STRINGEND_ and patientphoto.patientid:=patient.id");
+restorFormValue("formValue");
+data=createArray("String", "picture3,picture2,textbox16");
+showData(data);
+message("Photo saved.");
+}
+}
+else
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.SideView,patientphoto.FrontView,patientphoto.id  from neiswispicdb.Patient,neiswispicdb.patientphoto conditions patient.id:="+rowValue+" and patient.deleted:=_STRINGSTART_0_STRINGEND_ and patientphoto.patientid:=patient.id");
+restorFormValue("formValue");
+data=createArray("String", "picture3,picture2,textbox16");
+showData(data);
+}
+};
+]]></attribute>
+<custom-attributes accessrights ="Upload Photo" />
+  
+</button>
+ <button class="button159" height="30px" tabindex="76" visible="true" droppable="false" label="Show Album" id="button159" width="157px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("PhotoInfo");
+setDatapatternId("");
+storFormValue("formValue");
+updateSession("imageid", null);
+createPopUp("PhotoAlbum");
+String pid = getSessionData("rowId");
+String retvalue=invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.frontview,patientphoto.sideview from neiswispicdb.patientphoto conditions patientphoto.patientID:="+pid);
+displayImageContent(picture2,0,0);
+displayImageContent(picture3,0,1);
+restorFormValue("formValue");
+String front = getDataFromAllValuesVar(0, 0);
+String side = getDataFromAllValuesVar(0, 1);
+addFormValue("picture2",front);
+addFormValue("picture3",side);
+]]></attribute>
+  
+</button>
+
+</div>
+ <textbox class="textbox192" maxlength="32767" height="20px" tabindex="84" readonly="false" visible="true" id="textbox192" droppable="false" value="" name="textbox192"  width="100px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+
+</div>
+
+</window>
+</zk>
+

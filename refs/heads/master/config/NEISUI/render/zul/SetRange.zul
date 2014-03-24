@@ -1,0 +1,184 @@
+<zk>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="SetRange"?>
+ <window height="158px" visible="true" droppable="false" id="SetRange" title="Add Range Value" width="265px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:8px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:8px;
+position:absolute;
+padding-bottom:8px;
+padding-right:8px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ 
+<custom-attributes formpattern="${param.formpattern}" datapattern="${param.datapattern}"/>
+  <div height="113px" visible="true" droppable="false" align="none" id="frame94" width="254px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:1px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:35px;
+" >
+    <label height="30px" visible="true" droppable="false" value="Enter First Range:" id="label57" width="98px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:26px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+top:13px;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="8" readonly="false" visible="true" id="textbox26" droppable="false" value="" name="textbox26" constraint="/((^[0]{1}$|^[-]?[1-9]{1}\d*$)|)/:Numeric whole value only" width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+left:148px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:10px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <label height="30px" visible="true" droppable="false" value="Enter Second Range:" id="label58" width="112px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:8px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+top:46px;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="10" readonly="false" visible="true" id="textbox27" droppable="false" value="" name="textbox27" constraint="/((^[0]{1}$|^[-]?[1-9]{1}\d*$)|)/:Numeric whole value only" width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+left:148px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:44px;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <button height="30px" tabindex="11" visible="true" droppable="false" label="Apply" id="button82" width="75px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:39px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:77px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("SetRange");
+setDatapatternId("");
+boolean isValid =clientSideValidation("SetRange");
+if(isValid)
+{
+String range1 = textbox26.text;
+String range2 = textbox27.text;
+updateSession("range1",range1);
+updateSession("range2",range2);
+detachWindow("SetRange");
+};
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="12" visible="true" droppable="false" label="Cancel" id="button83" width="75px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:146px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:76px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("SetRange");
+setDatapatternId("");
+detachWindow("SetRange");
+]]></attribute>
+  
+</button>
+
+</div>
+
+</window>
+</zk>
+

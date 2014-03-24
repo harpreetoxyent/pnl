@@ -1,0 +1,235 @@
+<zk>
+<style src="/css/listOfAvailableWorkflow.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="listOfAvailableWorkflow"?>
+ <window class="listOfAvailableWorkflow" height="1092px" visible="true" droppable="false" id="listOfAvailableWorkflow" title="" width="100%" draggable="false">
+   <div class="frame2591" height="1070px" visible="true" droppable="false" align="none" id="frame2591" width="950px" draggable="false">
+    <div class="frame2592" height="1060px" visible="true" droppable="false" align="none" id="frame2592" width="175px" draggable="false">
+    <include class="placeholder77" draggable="false" height="200px" src="searchpanel.zul?formpattern=listOfAvailableWorkflow&amp;datapattern=" visible="true" droppable="false" id="placeholder77" width="175px">
+    
+</include>
+
+</div>
+ <div class="frame2593" height="1060px" visible="true" droppable="false" align="none" id="frame2593" width="574px" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("listOfAvailableWorkflow");
+setDatapatternId("");
+updateSession("list","list");
+]]></attribute>
+   <listbox class="grid31" height="444px" multiple="False" visible="true" droppable="false" id="grid31" width="284px" draggable="false" fixedLayout= "true">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("listOfAvailableWorkflow");
+setDatapatternId("");
+invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","get workflowinfo.id,workflowinfo.displayname from appadmin.workflowinfo conditions workflowinfo.deleted:=[0] and workflowinfo.isCreatedFromUI:=true");
+displayFieldDataInControl("grid31");
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("listOfAvailableWorkflow");
+setDatapatternId("");
+x=getSelectedListId();
+y = getSelectedListLabel();
+updateSession("workflowId",x);
+updateSession("workflowName",y);
+]]></attribute>
+  
+</listbox>
+ <label class="label369" height="30px" visible="true" droppable="false" value="List Of Available Workflow" id="label369" width="206px" draggable="false">
+   
+</label>
+ <paging class="paging4" pageSize="25" draggable="false" height="25px" visible="true" droppable="false" id="paging4" width="282px">
+   
+</paging>
+ <div class="frame216" height="114px" visible="true" droppable="false" align="center" id="frame216" width="562px" draggable="false">
+    <button class="button236" height="30px" tabindex="13" visible="true" droppable="false" label="Execute Workflow" id="button236" width="142px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("listOfAvailableWorkflow");
+setDatapatternId("");
+workid=getSessionData("workflowId");
+workname=getSessionData("workflowName");
+patientId=getSessionData("rowId");
+patientMRN=getSessionData("patientmrn");
+scheduleId=getSessionData("scheduleId");
+workingArea=getSessionData("workingarea");
+if(workid!=null)
+{
+invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","get workflownodeinfo.status,nodeinfo.formpatternid from appadmin.workflownodeinfo joins leftjoin workflownodeinfo.nodeid:=nodeinfo.id,leftjoin workflownodeinfo.workflowid:=workflowinfo.id conditions workflowinfo.id:="+workid+" and workflownodeinfo.isStartNode:=true");
+String status=getDataFromAllValuesVar(0, 0);
+String formPattern=getDataFromAllValuesVar(0, 1);
+if(status!=null)
+{
+invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","get dataobject.id from appadmin.dataobject conditions dataobject.status:=["+status+"] and dataobject.uniqueid:=["+patientId+"_"+patientMRN+"_"+scheduleId+"_"+workname+"]");
+isExist=isRecordExist();
+if(isExist)
+{
+result=messageWithQuestion("This Workflow already exits for this patient at this schedule.\n This will delete the previously executed workflow.\nDo you want to process");
+if(result)
+{
+workflowName=getSessionData("workflowName");
+addFormValue("PATIENTMRN",patientMRN);
+addFormValue("PATIENTID", patientId);
+addFormValue("SCHEDULEID", scheduleId);
+addFormValue("WORKFLOWNAME",workflowName);
+invokeComponent("com.oxyentmedical.component.workflowcomponent","ClearPatientWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","");
+updateSession("currentworkflownodestatus", status);
+invokeDynamicWorkflow(status, formPattern,null,patientId,patientMRN,scheduleId,workingArea);
+}
+}
+else
+{
+updateSession("currentworkflownodestatus", status);
+invokeDynamicWorkflow(status, formPattern,null,patientId,patientMRN,scheduleId,workingArea);
+}
+}
+else
+{
+message("No tool present for this workflow.Please add tools.");
+}
+};
+]]></attribute>
+  
+</button>
+ <button class="button233" height="30px" tabindex="12" visible="true" droppable="false" label="Edit" id="button233" width="95px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("listOfAvailableWorkflow");
+setDatapatternId("");
+
+String id = getSessionData("workflowId");
+if(id != null)
+{
+updateSession("editWorkflow","true");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","visualmode");
+}
+else
+{
+message("Select a Workflow!");
+};
+]]></attribute>
+  
+</button>
+ <button class="button232" height="30px" tabindex="11" visible="true" droppable="false" label="Delete" id="button232" width="98px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("listOfAvailableWorkflow");
+setDatapatternId("");
+String workflowId = getSessionData("workflowId");
+if(workflowId !=null)
+{
+boolean isresult=messageWithQuestion("This action will stop and delete on going processing and existing processing on this workflow.\nDo you want to proceed?");
+if(isresult)
+{
+String retValue = invokeComponent("com.oxyentmedical.component.workflowcomponent","DeleteWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent",workflowId);
+if(retValue == "true")
+{
+message("Workflow Deleted.");
+updateSession("workflowId",null);
+updateSession("workflowName",null);
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","listOfAvailableWorkflow");
+}
+}
+};
+]]></attribute>
+  
+</button>
+ <button class="button231" height="30px" tabindex="10" visible="true" droppable="false" label="Add" id="button231" width="86px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("listOfAvailableWorkflow");
+setDatapatternId("");
+updateSession("workflowId",null);
+updateSession("workflowName",null);
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","visualmode");
+;
+]]></attribute>
+  
+</button>
+ <button class="button248" height="30px" tabindex="14" visible="true" droppable="false" label="Clear  All Workflow" id="button248" width="152px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("listOfAvailableWorkflow");
+setDatapatternId("");
+result=messageWithQuestion("Performing this action will stop all the tools which are in process for this workflow.\n Do you want to continue?");
+if(result)
+{
+invokeComponent("com.oxyentmedical.component.workflowcomponent","ProcessClearAllWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","");
+message("All workflow related information is cleared successfully.");
+};
+]]></attribute>
+  
+</button>
+ <button class="button238" height="30px" tabindex="15" visible="true" droppable="false" label="Clear Selected Workflow" id="button238" width="198px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("listOfAvailableWorkflow");
+setDatapatternId("");
+String id=getSessionData("workflowId");
+if(id!=null)
+{
+result=messageWithQuestion("Performing this action will stop all the tools which are in process for this workflow.\n Do you want to continue?");
+if(result)
+{
+invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","get workflowinfo.name from appadmin.workflowinfo conditions workflowinfo.deleted:=[0] and workflowinfo.isCreatedFromUI:=true and workflowinfo.id:="+id);
+String workflowname=getDataFromAllValuesVar(0, 0);
+addFormValue("WORKFLOWNAME",workflowname);
+invokeComponent("com.oxyentmedical.component.workflowcomponent","ClearSelectedWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","");
+}
+}
+else
+{
+message("Please select one record.");
+};
+]]></attribute>
+  
+</button>
+ <button class="button269" height="30px" tabindex="16" visible="true" droppable="false" label="Duplicate Workflow" id="button269" width="143px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("listOfAvailableWorkflow");
+setDatapatternId("");
+String name = getSessionData("workflowName");
+if(name!=null)
+{
+addFormValue("WORKFLOWNAME",name);
+invokeComponent("com.oxyentmedical.component.workflowcomponent","DuplicateWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","");
+invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","get workflowinfo.id,workflowinfo.displayname from appadmin.workflowinfo conditions workflowinfo.deleted:=[0] and workflowinfo.isCreatedFromUI:=true");
+displayFieldDataInControl("grid31");
+};
+]]></attribute>
+  
+</button>
+ <button class="button224" height="30px" tabindex="17" visible="true" droppable="false" label="Goto Status List" id="button224" width="139px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("listOfAvailableWorkflow");
+setDatapatternId("");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","workflowstatus");
+;
+]]></attribute>
+  
+</button>
+
+</div>
+
+</div>
+ <div class="frame2594" height="1060px" visible="true" droppable="false" align="none" id="frame2594" width="203px" draggable="false">
+    <div class="frame2595" height="646px" visible="true" droppable="false" align="left" id="frame2595" width="203px" draggable="false">
+    <include class="placeholder78" draggable="false" height="55px" src="Logo.zul?formpattern=listOfAvailableWorkflow&amp;datapattern=" visible="true" droppable="false" id="placeholder78" width="203px">
+    
+</include>
+ <include class="placeholder79" draggable="false" height="200px" src="CalendarPanel.zul?formpattern=listOfAvailableWorkflow&amp;datapattern=" visible="true" droppable="false" id="placeholder79" width="203px">
+    
+</include>
+
+</div>
+ <button class="button2595" height="30px" tabindex="1" visible="true" droppable="false" label="sign out" id="button2595" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("listOfAvailableWorkflow");
+setDatapatternId("");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","listOfAvailableWorkflow");
+;
+]]></attribute>
+  
+</button>
+
+</div>
+
+</div>
+
+</window>
+</zk>
+

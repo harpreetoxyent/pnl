@@ -1,0 +1,181 @@
+<zk>
+<style src="/css/Patient.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="Patient"?>
+ <window class="Patient" height="1092px" visible="true" droppable="false" id="Patient" title="" width="100%" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+makeVisible("Patient");setFormPatternId("Patient");
+setDatapatternId("");
+updateSession("list",null);
+addFormValue("textbox14","0");
+tabpage19.setVisible(false);
+String rowValue = getSessionData("rowId");
+msg ="Patient saved successfully.";
+String schedule=getSessionData("Schedular");
+String assgin=getSessionData("assign");
+button76.setVisible(false);
+if(assgin!=null)
+{
+tabpage22.setSelected(true);
+updateSession("assign",null);
+}
+if(schedule!=null)
+{
+tabpage11.setSelected(true);
+updateSession("Schedular",null);
+}
+if(rowValue!=null)
+{
+visibleControl("button76");
+}
+else
+{
+button76.setDisabled(true);
+button99.setDisabled(true);
+}
+;
+]]></attribute>
+  <hbox class="frame14" height="1070px" visible="true" droppable="false" align="none" id="frame14" width="950px" draggable="false">
+    <div class="frame125" height="1063px" visible="true" droppable="false" align="none" id="frame125" width="175px" draggable="false">
+    <button class="button76" height="30px" tabindex="1" visible="true" droppable="false" label="Create Appointment" id="button76" width="137px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("Patient");
+setDatapatternId("");
+storFormValue("formValue");
+if(rowValue!=null)
+{
+updateSession("rowId",rowValue);
+createPopUp("patientScheduler");
+}
+else
+{
+message("Please save patient information.");
+}
+restorFormValue("formValue");
+]]></attribute>
+<custom-attributes accessrights ="Create Schedule" />
+  
+</button>
+ <include class="placeholder6" draggable="false" height="200px" src="searchpanel.zul?formpattern=Patient&amp;datapattern=" visible="true" droppable="false" id="placeholder6" width="175px">
+    
+</include>
+ <button class="button99" height="30px" tabindex="2" visible="true" droppable="false" label="Show Appointment" id="button99" width="137px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("Patient");
+setDatapatternId("");
+storFormValue("formValue");
+updateSession("Schedular","Schedular");
+createPopUp("ShowAppointment");
+restorFormValue("formValue");
+]]></attribute>
+  
+</button>
+ <include class="placeholder7" draggable="false" height="203px" src="InfoPatient.zul?formpattern=Patient&amp;datapattern=" visible="true" droppable="false" id="placeholder7" width="163px">
+    
+</include>
+ <button class="button239" height="30px" tabindex="9" visible="true" droppable="false" label="Visiualize" id="button239" width="123px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("Patient");
+setDatapatternId("");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","workflow");
+;
+]]></attribute>
+  
+</button>
+
+</div>
+ <div class="frame140" height="1060px" visible="true" droppable="false" align="none" id="frame140" width="577px" draggable="false">
+ <custom-attributes accessrights ="Edit/Modify Patient Menu" />
+   <tabbox class="multitab7" height="1060px" width="572px" draggable="false" id="multitab7" droppable="false" tabscroll="false">
+ <tabs>
+   <tab  label="Patient Info" draggable="false" id="tabpage18" droppable="false">
+ 
+</tab>
+ <tab  label="Study doc" draggable="false" id="tabpage19" droppable="false">
+ 
+</tab>
+ <tab  label="Assignment" draggable="false" id="tabpage22" droppable="false">
+ 
+</tab>
+ <tab  label="Photo" draggable="false" id="tabpage23" droppable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("Patient");
+setDatapatternId("");
+String pid = getSessionData("rowId");
+String retvalue=invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientphoto.frontview,patientphoto.sideview from neiswispicdb.patientphoto conditions patientphoto.patientID:="+pid);
+object=getComponentFromPage("PhotoInfo","picture2");
+displayImageContent(object,0,0);
+object=getComponentFromPage("PhotoInfo","picture3");
+displayImageContent(object,0,1);
+;
+]]></attribute>
+
+</tab>
+ <tab  label="Acquisitions" draggable="false" id="tabpage24" droppable="false">
+ 
+</tab>
+ <tab  label="Calendar" draggable="false" id="tabpage11" droppable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("Patient");
+setDatapatternId("");
+String pid=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get          schedule.AppointmentStartDate,schedule.AppointmentEndDate,schedule.AppointmentEndDate,schedule.AppointmentStartTime,schedule.AppointmentEndTime,schedule.id,patient.LastName,patient.firstName,studytype.Type from neiswispicdb.schedule joins leftjoin schedule.StudyType:=studytype.id,leftjoin schedule.PatientID:=patient.id conditions schedule.Cancelled:=["+0+"] and schedule.patientID:="+pid);   
+object=getComponentFromPage("ScheduleInfo","schedular1");
+setDataInCalendars(object);
+
+;
+]]></attribute>
+
+</tab>
+ <tab  label="Workflow" draggable="false" id="tabpage34" droppable="false">
+ 
+</tab>
+</tabs>
+<tabpanels><tabpanel style="background-color:#FFFFFF;position:relative;" ><include class="placeholder8" draggable="false" height="992px" src="PatientInfo.zul?formpattern=Patient&amp;datapattern=" droppable="false" id="placeholder8" width="567px">
+    
+</include></tabpanel><tabpanel style="background-color:#D8E4F8;position:relative;" ><include class="placeholder9" draggable="false" height="987px" src="StudyInfo.zul?formpattern=Patient&amp;datapattern=" droppable="false" id="placeholder9" width="566px">
+    
+</include></tabpanel><tabpanel style="background-color:#FFFFFF;position:relative;" ><include class="placeholder10" draggable="false" height="996px" src="AssignmentInfo.zul?formpattern=Patient&amp;datapattern=" droppable="false" id="placeholder10" width="565px">
+    
+</include></tabpanel><tabpanel style="background-color:#FFFFFF;position:relative;" ><include class="placeholder11" draggable="false" height="1002px" src="PhotoInfo.zul?formpattern=Patient&amp;datapattern=" droppable="false" id="placeholder11" width="564px">
+    
+</include></tabpanel><tabpanel style="background-color:#FFFFFF;position:relative;" ><include class="placeholder12" draggable="false" height="970px" src="AcquisitionInfo.zul?formpattern=Patient&amp;datapattern=" droppable="false" id="placeholder12" width="567px">
+    
+</include></tabpanel><tabpanel style="background-color:Transparent;position:relative;" ><include class="placeholder13" draggable="false" height="870px" src="ScheduleInfo.zul?formpattern=Patient&amp;datapattern=" droppable="false" id="placeholder13" width="567px">
+    
+</include></tabpanel><tabpanel style="background-color:#FFFFFF;position:relative;" ><include class="placeholder14" draggable="false" height="600px" src="WorkflowStatusList.zul?formpattern=Patient&amp;datapattern=" droppable="false" id="placeholder14" width="533px">
+    
+</include></tabpanel></tabpanels>
+</tabbox>
+
+
+</div>
+ <div class="frame17" height="1060px" visible="true" droppable="false" align="right" id="frame17" width="203px" draggable="false">
+    <div class="frame179" height="1020px" visible="true" droppable="false" align="left" id="frame179" width="203px" draggable="false">
+    <include class="placeholder15" draggable="false" height="55px" src="Logo.zul?formpattern=Patient&amp;datapattern=" visible="true" droppable="false" id="placeholder15" width="203px">
+    
+</include>
+ <include class="placeholder16" draggable="false" height="200px" src="CalendarPanel.zul?formpattern=Patient&amp;datapattern=" visible="true" droppable="false" id="placeholder16" width="203px">
+    
+</include>
+
+</div>
+ <button class="button31" height="30px" tabindex="27" visible="true" droppable="false" label="sign out" id="button31" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("Patient");
+setDatapatternId("");
+String retValue = logOut("login");
+;
+]]></attribute>
+  
+</button>
+
+</div>
+
+</hbox>
+
+</window>
+</zk>
+

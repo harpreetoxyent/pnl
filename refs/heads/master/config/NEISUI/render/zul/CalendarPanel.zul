@@ -1,0 +1,91 @@
+<zk>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="CalendarPanel"?>
+ <window height="210px" visible="true" droppable="false" id="CalendarPanel" title="" width="213px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:8px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:8px;
+position:absolute;
+padding-bottom:8px;
+padding-right:8px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:none;
+" >
+ 
+<custom-attributes formpattern="${param.formpattern}" datapattern="${param.datapattern}"/>
+  <calendar height="200px" width="203px" draggable="false" id="calender12" droppable="false" visible="true" style="top:0px;
+background-color:#FFFFFF;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-right:0px;
+padding-left:0px;
+padding-top:0px;
+color:#000000;
+font-size:8.25pt;
+margin-bottom:0px;
+position:absolute;
+background-position:none;
+margin-right:0px;
+margin-left:0px;
+padding-bottom:0px;
+left:0px;
+" >
+ <attribute name="onChange"><![CDATA[
+setFormPatternId("CalendarPanel");
+setDatapatternId("");
+value=calender12.getValue();
+String selectedDate= getSelectedDate(value,"yyyy/MM/dd HH:mm");
+String parentForm=getParentFormPattern("CalendarPanel");
+boolean result=equalsTest(parentForm,"Schedule");
+if(result)
+{
+setCalendarDate(selectedDate,parentForm);
+}
+else
+{
+boolean result=equalsTest(parentForm,"roomassignment");
+if(result)
+{
+String selectedDate= getSelectedDate(value,"yyyy-MM-dd");
+setDataForRoomManagement(parentForm,selectedDate,"frame136");
+}
+else
+{
+boolean result=equalsTest(parentForm,"Patient");
+if(result)
+{
+setCalendarDate(selectedDate,"ScheduleInfo");
+}
+else
+{
+updateSession("parentform",parentForm);
+updateSessionList("selectedDate",value);
+String retValue=invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","Schedule");
+}
+}
+};
+]]></attribute>
+<attribute name="onCreate"><![CDATA[
+setFormPatternId("CalendarPanel");
+setDatapatternId("");
+data=session.getAttribute("selectedDate");
+if(data!=null)
+{
+calender12.setValue(data);
+updateSessionList("selectedDate",null);
+};
+]]></attribute>
+  
+</calendar>
+
+</window>
+</zk>
+

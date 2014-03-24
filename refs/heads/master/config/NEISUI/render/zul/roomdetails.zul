@@ -1,0 +1,526 @@
+<zk>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="roomdetails"?>
+ <window height="350px" visible="true" droppable="false" id="roomdetails" title="Room Details" width="520px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("roomdetails");
+setDatapatternId("");
+String rowValue = getSessionData("rowId");
+String roomAssignmentId = getSessionData("roomId");
+if(rowValue!=null)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patient.FirstName,patient.lastName from neiswispicdb.patient conditions patient.id:="+rowValue);
+data=createArray("String", "textbox152,textbox154");
+showData(data);
+}
+if(roomAssignmentId!=null)
+{
+String toDate = getCurrentDate("yyyy-MM-dd");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get roomassginment.physicianid,roomassginment.sleeptechid,roomassginment.researchid,studytype.Type,schedule.AppointmentStartTime,room.RoomDescription from neiswispicdb.roomassginment,neiswispicdb.schedule joins leftjoin roomassginment.roomid:=room.id,leftjoin schedule.PatientID:=patient.id,leftjoin schedule.StudyType:=studytype.id conditions roomassginment.schduleid:=schedule.ID and schedule.Cancelled:=["+0+"] and roomassginment.deleted:=["+0+"] and patient.id:="+rowValue+" and schedule.AppointmentStartDate:=["+toDate+"] and patient.deleted:=["+0+"] and roomassginment.id:="+roomAssignmentId);
+data=createArray("String", "textbox153,textbox156,textbox158,textbox151,textbox157,textbox150");
+displayRoomDetails(data);
+}
+else
+{
+String roomDesc = getSessionData("roomdesc");
+textbox150.text=roomDesc;
+details=session.getAttribute("roomdetails");
+data=createArray("String", "textbox153,textbox156,textbox158,textbox151,textbox157,textbox185");
+displayRoomDetailsInPopUp(details,data);
+};
+]]></attribute>
+
+<custom-attributes formpattern="${param.formpattern}" datapattern="${param.datapattern}"/>
+  <grid height="250px" visible="true" droppable="false" id="lattice0" width="512px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:40px;
+" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("roomdetails");
+setDatapatternId("");
+String gridStyle = "background-color:Transparent;border:0px";
+lattice0.setStyle(gridStyle);
+row40.setStyle(gridStyle);
+row188.setStyle(gridStyle);
+row212.setStyle(gridStyle);
+row236.setStyle(gridStyle);
+row283.setStyle(gridStyle);
+;
+]]></attribute>
+<rows>
+   <row draggable="false" height="45px" visible="true" droppable="false" id="row40" width="512px" style="font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <label height="20px" visible="true" droppable="false" value="Room:" id="label31" width="130px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="8" readonly="true" visible="true" id="textbox150" droppable="false" value="" name="textbox150"  width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <label height="20px" visible="true" droppable="false" value="Study Type:" id="label272" width="130px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="10" readonly="true" visible="true" id="textbox151" droppable="false" value="" name="textbox151"  width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+
+</row>
+ <row draggable="false" height="45px" visible="true" droppable="false" id="row188" width="512px" style="font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <label height="20px" visible="true" droppable="false" value="First Name:" id="label285" width="130px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="8" readonly="true" visible="true" id="textbox152" droppable="false" value="" name="textbox152"  width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <label height="20px" visible="true" droppable="false" value="Physician:" id="label286" width="130px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="10" readonly="true" visible="true" id="textbox153" droppable="false" value="" name="textbox153"  width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+
+</row>
+ <row draggable="false" height="45px" visible="true" droppable="false" id="row212" width="512px" style="font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <label height="20px" visible="true" droppable="false" value="Last Name:" id="label287" width="130px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="8" readonly="true" visible="true" id="textbox154" droppable="false" value="" name="textbox154"  width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <label height="20px" visible="true" droppable="false" value="Sleept Technician:" id="label288" width="130px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="10" readonly="true" visible="true" id="textbox156" droppable="false" value="" name="textbox156"  width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+
+</row>
+ <row draggable="false" height="45px" visible="true" droppable="false" id="row236" width="512px" style="font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <label height="20px" visible="true" droppable="false" value="Appointment Time:" id="label289" width="130px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="8" readonly="true" visible="true" id="textbox157" droppable="false" value="" name="textbox157"  width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <label height="20px" visible="true" droppable="false" value="Research Assisant1:" id="label310" width="130px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="10" readonly="true" visible="true" id="textbox158" droppable="false" value="" name="textbox158"  width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+
+</row>
+ <row draggable="false" height="45px" visible="true" droppable="false" id="row283" width="512px" style="font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <label height="30px" visible="true" droppable="false" value="Research Assisant2:" id="label315" width="130px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="8" readonly="true" visible="true" id="textbox185" droppable="false" value="" name="textbox185"  width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+
+</row>
+</rows>
+
+</grid>
+ <button height="30px" tabindex="1" visible="true" droppable="false" label="Ok" id="button181" width="75px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:154px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#316AC5;
+background-position:tile;
+top:311px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("roomdetails");
+setDatapatternId("");
+detachWindow("roomdetails");
+]]></attribute>
+  
+</button>
+
+</window>
+</zk>
+

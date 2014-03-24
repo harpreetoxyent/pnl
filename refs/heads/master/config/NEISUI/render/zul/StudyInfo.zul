@@ -1,0 +1,149 @@
+<zk>
+<style src="/css/StudyInfo.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="StudyInfo"?>
+ <window class="StudyInfo" height="1018px" visible="true" droppable="false" id="StudyInfo" title="" width="100%" draggable="false">
+   <div class="frame53" height="422px" visible="true" droppable="false" align="none" id="frame53" width="624px" draggable="false">
+    <listbox class="grid34" height="142px" multiple="False" visible="true" droppable="false" id="grid34" width="606px" draggable="false" fixedLayout= "true">
+    <listhead sizable="true" draggable="false" height="30px" visible="false" droppable="false" id="row160" width="606px">
+ <listheader label="Patient Name" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column133" width="74px">
+
+</listheader>
+ <listheader label="Study Type" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column203" width="62px">
+
+</listheader>
+ <listheader label="Procedure Type" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column24" width="85px">
+
+</listheader>
+ <listheader label="Acquasition Date" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column51" width="91px">
+
+</listheader>
+ <listheader label="AcquisitionTime" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column53" width="83px">
+
+</listheader>
+ <listheader label="Acquisition Duration" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column54" width="104px">
+
+</listheader>
+ <listheader label="Video" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column83" width="38px">
+
+</listheader>
+ <listheader label="Archived" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column84" width="64px">
+
+</listheader>
+
+</listhead>
+
+</listbox>
+ <listbox class="grid35" height="133px" multiple="False" visible="true" droppable="false" id="grid35" width="608px" draggable="false" fixedLayout= "true">
+    <listhead sizable="true" draggable="false" height="30px" visible="false" droppable="false" id="row162" width="608px">
+ <listheader label="Technician Note" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column145" width="110px">
+
+</listheader>
+ <listheader label="Date Created" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column146" width="89px">
+
+</listheader>
+ <listheader label="Last Modified" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column147" width="89px">
+
+</listheader>
+
+</listhead>
+
+</listbox>
+ <listbox class="grid36" height="125px" multiple="False" visible="true" droppable="false" id="grid36" width="611px" draggable="false" fixedLayout= "true">
+    <listhead sizable="true" draggable="false" height="30px" visible="false" droppable="false" id="row163" width="611px">
+ <listheader label="Clinical Report" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column214" width="99px">
+
+</listheader>
+ <listheader label="Date Created" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column215" width="99px">
+
+</listheader>
+ <listheader label="Last Modified" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column216" width="98px">
+
+</listheader>
+
+</listhead>
+
+</listbox>
+
+</div>
+ <div class="frame54" height="417px" visible="true" droppable="false" align="none" id="frame54" width="627px" draggable="false">
+    <listbox class="grid37" height="134px" multiple="False" visible="true" droppable="false" id="grid37" width="616px" draggable="false" fixedLayout= "true">
+    <listhead sizable="true" draggable="false" height="30px" visible="false" droppable="false" id="row385" width="616px">
+ <listheader label="Patient Name" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column397" width="74px">
+
+</listheader>
+ <listheader label="Study Type" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column398" width="65px">
+
+</listheader>
+ <listheader label="Procedure Type" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column399" width="86px">
+
+</listheader>
+ <listheader label="Acquasition Date" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column400" width="91px">
+
+</listheader>
+ <listheader label="AcquisitionTime" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column401" width="85px">
+
+</listheader>
+ <listheader label="Acquisition Duration" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column402" width="105px">
+
+</listheader>
+ <listheader label="Video" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column403" width="38px">
+
+</listheader>
+ <listheader label="Archived" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column404" width="66px">
+
+</listheader>
+
+</listhead>
+
+</listbox>
+ <listbox class="grid38" height="130px" multiple="False" visible="true" droppable="false" id="grid38" width="617px" draggable="false" fixedLayout= "true">
+    <listhead sizable="true" draggable="false" height="30px" visible="false" droppable="false" id="row386" width="617px">
+ <listheader label="Technician Note" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column405" width="110px">
+
+</listheader>
+ <listheader label="Date Created" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column406" width="100px">
+
+</listheader>
+ <listheader label="Last Modified" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column407" width="100px">
+
+</listheader>
+
+</listhead>
+
+</listbox>
+ <listbox class="grid39" height="125px" multiple="False" visible="true" droppable="false" id="grid39" width="613px" draggable="false" fixedLayout= "true">
+    <listhead sizable="true" draggable="false" height="30px" visible="false" droppable="false" id="row387" width="613px">
+ <listheader label="Clinical Report" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column408" width="110px">
+
+</listheader>
+ <listheader label="Date Created" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column409" width="100px">
+
+</listheader>
+ <listheader label="Last Modified" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column410" width="100px">
+
+</listheader>
+
+</listhead>
+
+</listbox>
+
+</div>
+ <label class="label163" height="30px" visible="true" droppable="false" value="Study 1   C2M3J   (Research)" id="label163" width="178px" draggable="false">
+   
+</label>
+ <label class="label164" height="30px" visible="true" droppable="false" value="Appointment 7:00PM" id="label164" width="134px" draggable="false">
+   
+</label>
+ <label class="label223" height="30px" visible="true" droppable="false" value="" id="label223" width="177px" draggable="false">
+   
+</label>
+ <label class="label224" height="30px" visible="true" droppable="false" value="Appointment 9:00PM" id="label224" width="127px" draggable="false">
+   
+</label>
+
+</window>
+</zk>
+

@@ -1,0 +1,311 @@
+<zk>
+<style src="/css/search.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="search"?>
+ <window class="search" height="643px" visible="true" droppable="false" id="search" title="" width="100%" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+makeVisible("search");setFormPatternId("search");
+setDatapatternId("");
+updateSession("mode",null);
+]]></attribute>
+  <hbox class="frame119" height="633px" visible="true" droppable="false" align="none" id="frame119" width="946px" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("search");
+setDatapatternId("");
+updateSession("rowId",null);
+updateSession("list","list");
+]]></attribute>
+   <div class="frame128" height="631px" visible="true" droppable="false" align="none" id="frame128" width="175px" draggable="false">
+    <include class="placeholder0" draggable="false" height="200px" src="searchpanel.zul?formpattern=search&amp;datapattern=" visible="true" droppable="false" id="placeholder0" width="175px">
+    
+</include>
+
+</div>
+ <div class="frame120" height="630px" visible="true" droppable="false" align="none" id="frame120" width="563px" draggable="false">
+ <custom-attributes accessrights ="Edit/Modify Patient Menu" />
+   <label class="label103" height="27px" visible="true" droppable="false" value="Patient List" id="label103" width="134px" draggable="false">
+   
+</label>
+ <listbox class="grid4" height="391px" multiple="False" visible="true" paginal="${paging0}" droppable="false" id="grid4" width="555px" draggable="false" fixedLayout= "true">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("search");
+setDatapatternId("");
+setPagingId("paging0");
+enableSorting("column310", "Patient.firstname");
+enableSorting("column311", "Patient.lastname");
+enableSorting("column308", "Patient.id");
+enableSorting("column309", "Patient.medicalRecordNumber");
+enableSorting("column312", "Patient.dateofbirth");
+;
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("search");
+setDatapatternId("");
+id=getRowData(0);
+mrnnumber=getRowData(1);
+name = getRowData(2);
+updateSession("rowId",id);
+updateSession("patientmrn",mrnnumber);
+]]></attribute>
+   <listhead sizable="true" draggable="false" height="30px" visible="true" droppable="false" id="row164" width="553px">
+ <listheader label="identifier" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column308" width="72px">
+
+</listheader>
+ <listheader label="MRN" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column309" width="73px">
+
+</listheader>
+ <listheader label="first name" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column310" width="91px">
+
+</listheader>
+ <listheader label="last name" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column311" width="92px">
+
+</listheader>
+ <listheader label="date of birth" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column312" width="99px">
+
+</listheader>
+
+</listhead>
+
+</listbox>
+ <hbox class="frame199" height="32px" visible="true" droppable="false" align="none" id="frame199" width="556px" draggable="false">
+    <paging class="paging0" pageSize="25" draggable="false" height="25px" visible="true" droppable="false" id="paging0" width="366px">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("search");
+setDatapatternId("");
+paginalSetter("grid4");
+setDisplayLabelId("label325");
+String gridStyle = "background-color:Transparent;border:0px";
+paging0.setStyle(gridStyle);
+String lastName = getSessionData("lastname");
+String firstname= getSessionData("firstname");
+String dob= getSessionData("dob");
+String mrn= getSessionData("mrn");
+String condition = "";
+condition = createQueryForSearch(firstname,"firstname","Patient",condition);
+condition = createQueryForSearch(lastName,"lastname","Patient",condition);
+condition = createQueryForSearch(dob,"Dateofbirth","Patient",condition);
+condition = createQueryForSearch(mrn,"MedicalRecordNumber","Patient",condition);
+condition = addString(condition,"patient.deleted:=[0]","");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get Patient.id,Patient.medicalRecordNumber,Patient.firstname,Patient.lastname,Patient.dateofbirth from neiswispicdb.Patient conditions "+condition);
+boolean isDisplay = displayDataInControl("grid4");
+createPagingEvent("grid4");
+createSortingEvent("grid4", "paging0");
+boolean isInput = searchInputCheck(lastName,firstname,mrn,dob);
+if(isInput)
+{
+if(!isDisplay )
+{
+
+	msg ="Patient not found.Would you like to add this patient?";
+	boolean isYes = messageWithQuestion(msg);
+	if(isYes)
+	{
+		setDataStatus("CreatePatient", "Patient", "neiswispicdb");
+	}
+	else
+	{
+	updateSession("lastname",null);
+	updateSession("firstname",null);
+	updateSession("dob",null);
+	updateSession("mrn",null);
+	}
+}
+}
+else
+{
+updateSession("lastname",null);
+updateSession("firstname",null);
+updateSession("dob",null);
+updateSession("mrn",null);
+}
+updateSession("edit",null);
+]]></attribute>
+  
+</paging>
+ <div class="frame200" height="25px" visible="true" droppable="false" align="none" id="frame200" width="200px" draggable="false">
+    <label class="label325" height="25px" visible="true" droppable="false" value="" id="label325" width="109px" draggable="false">
+   
+</label>
+
+</div>
+
+</hbox>
+ <div class="frame220" height="130px" visible="true" droppable="false" align="center" id="frame220" width="556px" draggable="false">
+    <button class="button110" height="30px" tabindex="9" visible="true" droppable="false" label="Cancel" id="button110" width="142px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("search");
+setDatapatternId("");
+updateSession("lastname",null);
+updateSession("firstname",null);
+updateSession("dob",null);
+updateSession("mrn",null);
+setDataStatus("UserAuthenticated", "HomeForm", null);
+]]></attribute>
+  
+</button>
+ <button class="button11" height="30px" tabindex="10" visible="true" droppable="false" label="Assign To Room" id="button11" width="142px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("search");
+setDatapatternId("");
+updateSession("lastname",null);
+updateSession("firstname",null);
+updateSession("dob",null);
+updateSession("mrn",null);
+updateSession("assign","true");
+id = getSessionData("rowId");
+if(id!=null)
+{
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","Patient");
+}
+else
+{
+message(" Please select a record to perform this operation.");
+}
+
+;
+]]></attribute>
+<custom-attributes accessrights ="AssignToRoom" />
+  
+</button>
+ <button class="button112" height="30px" tabindex="8" visible="true" droppable="false" label="Schedule Appointment" id="button112" width="142px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("search");
+setDatapatternId("");
+updateSession("lastname",null);
+updateSession("firstname",null);
+updateSession("dob",null);
+updateSession("mrn",null);
+id = getSessionData("rowId");
+if(id!=null)
+{
+updateSession("Schedular","true");
+setDataStatus("CreatePatient", "Patient", "neiswispicdb");
+}
+else
+{
+message(" Please select a record to perform this operation.");
+}
+;
+]]></attribute>
+<custom-attributes accessrights ="Create Schedule" />
+  
+</button>
+ <button class="button173" height="30px" tabindex="8" visible="true" droppable="false" label="See Patient&apos;s Information" id="button173" width="142px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("search");
+setDatapatternId("");
+id = session.getAttribute("rowId");
+updateSession("lastname",null);
+updateSession("firstname",null);
+updateSession("dob",null);
+updateSession("mrn",null);
+if(id!=null)
+{
+updateSession("readOnly","true");
+updateSession("mode","read");
+setDataStatus("CreatePatient", "Patient", "neiswispicdb");
+}
+else
+{
+message(" Please select one record to see information.");
+}
+
+;
+]]></attribute>
+<custom-attributes accessrights ="" />
+  
+</button>
+ <button class="button115" height="30px" tabindex="8" visible="true" droppable="false" label="Delete Patient" id="button115" width="142px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("search");
+setDatapatternId("");
+updateSession("lastname",null);
+updateSession("firstname",null);
+updateSession("dob",null);
+updateSession("mrn",null);
+id = getSessionData("rowId");
+if(id!=null)
+{
+boolean isYes =messageWithQuestion("Do you wish to delete this patient?");
+if(isYes)
+{
+String retValue = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","update neiswispicdb.patient set Deleted:=1 conditions patient.id:=rowId");
+if(retValue == "true")
+{
+String msg =("Patient has been deleted.\n Patient Name-  "+name+", Identifier- "+id);
+message(msg);updateSession("rowId", null);
+setDataStatus("UserAuthenticated", "HomeForm", null);
+}
+}
+}
+else
+{
+message(" Please select a record to perform this operation.");
+}
+
+;
+]]></attribute>
+<custom-attributes accessrights ="DeletePatient" />
+  
+</button>
+ <button class="button114" height="30px" tabindex="8" visible="true" droppable="false" label="Edit / Modify Patient" id="button114" width="142px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("search");
+setDatapatternId("");
+updateSession("lastname",null);
+updateSession("firstname",null);
+updateSession("dob",null);
+updateSession("mrn",null);
+id = getSessionData("rowId");
+if(id!=null)
+{
+setDataStatus("CreatePatient", "Patient", "neiswispicdb");
+}
+else
+{
+message(" Please select a record to perform this operation.");
+}
+;
+]]></attribute>
+<custom-attributes accessrights ="Edit/ModifyPatient" />
+  
+</button>
+ <button class="button187" height="30px" tabindex="11" visible="true" droppable="false" label="Add New Patient" id="button187" width="142px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("search");
+setDatapatternId("");
+updateSession("rowId", null);
+setDataStatus("CreatePatient", "Patient", "neiswispicdb");
+]]></attribute>
+<custom-attributes accessrights ="AddPatient" />
+  
+</button>
+
+</div>
+
+</div>
+ <div class="frame130" height="629px" visible="true" droppable="false" align="none" id="frame130" width="203px" draggable="false">
+    <include class="placeholder1" draggable="false" height="55px" src="Logo.zul?formpattern=search&amp;datapattern=" visible="true" droppable="false" id="placeholder1" width="203px">
+    
+</include>
+ <include class="placeholder2" draggable="false" height="200px" src="CalendarPanel.zul?formpattern=search&amp;datapattern=" visible="true" droppable="false" id="placeholder2" width="203px">
+    
+</include>
+ <button class="button125" height="30px" tabindex="16" visible="true" droppable="false" label="sign out" id="button125" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("search");
+setDatapatternId("");
+String retValue = logOut("login");
+]]></attribute>
+  
+</button>
+
+</div>
+
+</hbox>
+
+</window>
+</zk>
+

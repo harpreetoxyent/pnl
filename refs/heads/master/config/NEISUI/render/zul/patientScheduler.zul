@@ -1,0 +1,957 @@
+<zk>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="patientScheduler"?>
+ <window height="310px" visible="true" droppable="false" id="patientScheduler" title="" width="770px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("patientScheduler");
+setDatapatternId("");
+textbox32.setVisible(false);
+textbox33.setVisible(false);
+textbox45.setVisible(false);
+textbox48.setVisible(false);
+textbox67.setVisible(false);
+button94.setVisible(false);
+String rowValue=getSessionData("rowId");
+setDefaultForSchedule("datepicker1","datepicker17","eibtimebase","time1");
+if(rowValue!=null)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patient.FirstName,patient.lastName,patient.MedicalRecordNumber from neiswispicdb.patient conditions patient.id:="+rowValue);
+data=createArray("String", "textbox47,textbox29,textbox30");
+showData(data);
+}
+String id=getSessionData("schId");
+if(id!=null)
+{
+button94.setVisible(true);
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.AppointmentStartDate,schedule.AppointmentEndDate,schedule.AppointmentStartTime,schedule.AppointmentEndTime,patient.FirstName,patient.lastName,StudyType.id,proceduretype.ProcedureName,patient.MedicalRecordNumber,schedule.id,patient.id,schedule.visitNo from neiswispicdb.schedule,neiswispicdb.patient joins leftjoin schedule.StudyType:=StudyType.id,leftjoin schedule.ProcedureType:=proceduretype.ProcedureId conditions patient.id :=schedule.PatientID and schedule.id:="+id);
+data=createArray("String", "datepicker1,datepicker17,eibtimebase,time1,textbox47,textbox29,combobox4,combobox22,textbox30,textbox32,textbox33,textbox31");
+showData(data);
+button86.setLabel("Update Patient's Appointment");
+};
+]]></attribute>
+
+<custom-attributes formpattern="${param.formpattern}" datapattern="${param.datapattern}"/>
+  <vbox height="308px" visible="true" droppable="false" align="none" id="frame398" width="760px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+    <textbox maxlength="32767" height="20px" tabindex="32" readonly="false" visible="true" id="textbox32" droppable="false" value="" name="textbox12"  width="50px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox maxlength="32767" height="20px" tabindex="33" readonly="false" visible="true" id="textbox33" droppable="false" value="" name="textbox13"  width="50px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox maxlength="32767" height="20px" tabindex="34" readonly="false" visible="true" id="textbox45" droppable="false" value="0" name="textbox45"  width="50px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox maxlength="32767" height="20px" tabindex="35" readonly="false" visible="true" id="textbox48" droppable="false" value="0" name="textbox48"  width="50px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox maxlength="32767" height="20px" tabindex="41" readonly="false" visible="true" id="textbox67" droppable="false" value="0" name="textbox67"  width="50px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <vbox height="305px" visible="true" droppable="false" align="none" id="frame397" width="764px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+    <label height="20px" visible="true" droppable="false" value="PATIENTscheduler" id="label73" width="135px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:9pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#4169E1;
+text-align:left;
+background-position:tile;
+" >
+   
+</label>
+ <vbox height="250px" visible="true" droppable="false" align="none" id="frame98" width="750px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+    <grid height="250px" visible="true" droppable="false" id="lattice2" width="750px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:0px;
+" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("patientScheduler");
+setDatapatternId("");
+String gridStyle = "background-color:Transparent;border:0px";
+lattice2.setStyle(gridStyle);
+row75.setStyle(gridStyle);
+row76.setStyle(gridStyle);
+row80.setStyle(gridStyle);
+row79.setStyle(gridStyle);
+row77.setStyle(gridStyle);
+;
+]]></attribute>
+<rows>
+   <row draggable="false" height="45px" visible="true" droppable="false" id="row75" width="750px" style="font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <label height="20px" visible="true" droppable="false" value="First Name:" id="label158" width="190px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="36" readonly="true" visible="true" id="textbox47" droppable="false" value="" name="textbox47"  width="120px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <label height="30px" visible="true" droppable="false" value="Medical Record Number:" id="label92" width="190px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+font-size:9pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="17" readonly="true" visible="true" id="textbox30" droppable="false" value="" name="textbox17"  width="120px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+
+</row>
+ <row draggable="false" height="45px" visible="true" droppable="false" id="row76" width="750px" style="font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <label height="20px" visible="true" droppable="false" value="Last Name:" id="label75" width="190px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+font-size:9pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="11" readonly="true" visible="true" id="textbox29" droppable="false" value="" name="textbox11"  width="120px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <label height="20px" visible="true" droppable="false" value="Procedure Type:" id="label93" width="190px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+font-size:9pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+" >
+   
+</label>
+ <combobox tabindex="38" readonly="true" visible="true" droppable="false" text="combobox1" name="combobox22" id="combobox22" draggable="false" width="101px" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("patientScheduler");
+setDatapatternId("");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get ProcedureType.ProcedureId,ProcedureType.ProcedureName from neiswispicdb.ProcedureType orderby  ProcedureType.ProcedureName ");
+showComboData("combobox22");
+;
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("patientScheduler");
+setDatapatternId("");
+getComboItemId1("combobox22");
+]]></attribute>
+  
+</combobox>
+
+</row>
+ <row draggable="false" height="45px" visible="true" droppable="false" id="row77" width="750px" style="font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <label height="20px" visible="true" droppable="false" value="Study Type:" id="label76" width="190px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+font-size:9pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+" >
+   
+</label>
+ <combobox draggable="false" tabindex="12" readonly="true" visible="true" droppable="false" text="combobox0" name="combobox4" id="combobox4" width="103px" style="font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:#FFFFFF;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("patientScheduler");
+setDatapatternId("");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get studytype.Id,studytype.type from neiswispicdb.studytype orderby studytype.type ");
+showComboData("combobox4");
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("patientScheduler");
+setDatapatternId("");
+getComboItemId1("combobox4");
+]]></attribute>
+  
+</combobox>
+ <label height="20px" visible="true" droppable="false" value="Visit Id:" id="label160" width="190px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+font-size:9pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="39" readonly="true" visible="true" id="textbox31" droppable="false" value="" name="textbox31"  width="120px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("patientScheduler");
+setDatapatternId("");
+int number = generateUniqueNumber();
+String visitId = "E7"+number;
+textbox31.text = visitId;
+addFormValue("textbox31",visitId);
+
+;
+]]></attribute>
+  
+</textbox>
+
+</row>
+ <row draggable="false" height="45px" visible="true" droppable="false" id="row79" width="750px" style="font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <label height="36px" visible="true" droppable="false" value="Appointment Start Date:" id="label74" width="190px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+font-size:9pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+" >
+   
+</label>
+ <datebox draggable="false" tabindex="27" visible="true" droppable="false" name="Appointment Start Date:" id="datepicker1" width="120px" style="font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:#FFFFFF;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setDateBoxId()'>
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("patientScheduler");
+setDatapatternId("");
+String selectedDate1=(null);
+;
+]]></attribute>
+<attribute name="onSelection"><![CDATA[
+setFormPatternId("patientScheduler");
+setDatapatternId("");
+valid = selectCurrentOrFutureDate("datepicker1");
+selectedDate1 = getDate();
+]]></attribute>
+  
+</datebox>
+ <label height="30px" visible="true" droppable="false" value="Appointment Start Time:" id="label94" width="190px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+font-size:9pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+" >
+   
+</label>
+ <timebox tabindex="28" visible="true" droppable="false" name="Appointment Start Time:" id="eibtimebase" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+timebox:23:49;
+background-position:tile;
+"  onChanging='setTimeId()'>
+   
+</timebox>
+
+</row>
+ <row draggable="false" height="45px" visible="true" droppable="false" id="row80" width="750px" style="font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <label height="30px" visible="true" droppable="false" value="Appointment End Date:" id="label77" width="190px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+font-size:9pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+" >
+   
+</label>
+ <datebox draggable="false" tabindex="30" visible="true" droppable="false" name="Appointment End Date:" id="datepicker17" width="120px" style="font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:#FFFFFF;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setDateBoxId()'>
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("patientScheduler");
+setDatapatternId("");
+String selectedDate2=(null);
+;
+]]></attribute>
+<attribute name="onSelection"><![CDATA[
+setFormPatternId("patientScheduler");
+setDatapatternId("");
+boolean isDateValid=validateDate("datepicker17","datepicker1");
+]]></attribute>
+  
+</datebox>
+ <label height="34px" visible="true" droppable="false" value="Appointment End Time:" id="label95" width="190px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+font-size:9pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+" >
+   
+</label>
+ <timebox tabindex="29" visible="true" droppable="false" name="Appointment End Time:" id="time1" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+timebox:17:49;
+background-position:tile;
+"  onChanging='setTimeId()'>
+   
+</timebox>
+
+</row>
+</rows>
+
+</grid>
+
+</vbox>
+ <div height="37px" visible="true" droppable="false" align="center" id="frame99" width="761px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+    <button height="30px" tabindex="24" visible="true" droppable="false" label="Save Patient&apos;s Appointment" id="button86" width="198px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:5px;
+margin-top:5px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:5px;
+margin-bottom:5px;
+color:#7A96DF;
+background-position:tile;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("patientScheduler");
+setDatapatternId("");
+addFormValue("textbox32",textbox32.value);
+addFormValue("textbox45",textbox45.value);
+addFormValue("textbox48",textbox48.value);
+addFormValue("textbox67",textbox67.value);
+String studytype = combobox4.getText();
+boolean isempty = checkValueWithOperator(studytype,"","EQUAL");
+if(isempty)
+{
+addFormValue("combobox4",4);
+}
+else
+{
+if(studytype==null)
+{
+addFormValue("combobox4",4);
+}
+}
+if(rowValue!=null)
+{
+addFormValue("textbox33",rowValue);
+}
+addFormValue("textbox30",textbox30.value);
+boolean  valid=clientSideValidation("patientScheduler");
+if(valid)
+{
+boolean isTimeValid=validateTime("eibtimebase","time1","datepicker1","datepicker17");
+if(isTimeValid)
+{
+invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","patientScheduler");
+message("Patient’s Appointment has been saved.");
+updateSession("schId",null);
+String mode=getSessionData("mode");
+if(mode!=null)
+{
+result=equalsTest(mode,"schedule");
+if(result)
+{
+updateSession("mode",null);
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","Schedule");
+}
+else
+{
+updateSession("rowId",rowValue);
+updateSession("Schedular","true");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","Patient");
+}
+}
+else
+{
+updateSession("rowId",rowValue);
+updateSession("Schedular","true");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","Patient");
+}
+}
+};
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="26" visible="true" droppable="false" label="Go Back" id="button88" width="87px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:5px;
+margin-top:5px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:5px;
+margin-bottom:5px;
+color:#7A96DF;
+background-position:tile;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("patientScheduler");
+setDatapatternId("");
+result=messageWithQuestion("Do you wish leave Scheduler? Any changes made to appointment will be discarded.");
+String mode=getSessionData("mode");
+if(result)
+{
+updateSession("schId",null);
+if(mode!=null)
+{
+result=equalsTest(mode,"schedule");
+if(result)
+{
+updateSession("mode",null);
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","Schedule");
+}
+else
+{
+updateSession("rowId",rowValue);
+updateSession("Schedular","true");
+detachWindow("patientScheduler");
+}
+}
+else
+{
+updateSession("rowId",rowValue);
+updateSession("Schedular","true");
+detachWindow("patientScheduler");
+}
+};
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="27" visible="true" droppable="false" label="Cancel Patient&apos;s Appointment" id="button94" width="196px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:5px;
+margin-top:5px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:5px;
+margin-bottom:5px;
+color:#7A96DF;
+background-position:tile;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("patientScheduler");
+setDatapatternId("");
+if(id!=null)
+{
+boolean isYes =messageWithQuestion("Do you wish to cancel this patient appointment?");
+if(isYes)
+{
+String retValue = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","update neiswispicdb.schedule set Cancelled:=1 conditions schedule.ID:="+id);
+updateSession("schId",null);
+String mode=getSessionData("mode");
+if(mode!=null)
+{
+result=equalsTest(mode,"schedule");
+if(result)
+{
+updateSession("mode",null);
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","Schedule");
+}
+else
+{
+updateSession("rowId",rowValue);
+updateSession("Schedular","true");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","Patient");
+}
+}
+else
+{
+updateSession("rowId",rowValue);
+updateSession("Schedular","true");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","Patient");
+}
+}
+}
+;
+]]></attribute>
+  
+</button>
+
+</div>
+
+</vbox>
+
+</vbox>
+
+</window>
+</zk>
+

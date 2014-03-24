@@ -1,0 +1,92 @@
+<zk>
+<style src="/css/workflow.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="workflow"?>
+ <window class="workflow" height="1092px" visible="true" droppable="false" id="workflow" title="" width="100%" draggable="false">
+   <div class="frame3071" height="1070px" visible="true" droppable="false" align="none" id="frame3071" width="950px" draggable="false">
+    <div class="frame3072" height="1060px" visible="true" droppable="false" align="none" id="frame3072" width="175px" draggable="false">
+    <include class="placeholder87" draggable="false" height="200px" src="searchpanel.zul?formpattern=workflow&amp;datapattern=" visible="true" droppable="false" id="placeholder87" width="175px">
+    
+</include>
+
+</div>
+ <div class="frame3073" height="1060px" visible="true" droppable="false" align="none" id="frame3073" width="574px" draggable="false">
+    <listbox class="grid34" height="371px" multiple="False" visible="true" droppable="false" id="grid34" width="542px" draggable="false" fixedLayout= "true">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("workflow");
+setDatapatternId("");
+String rowId=getSessionData("rowId");
+String mrnNumber=getSessionData("patientmrn");
+String scheduleId=getSessionData("scheduleId");
+displayWorkflowStatusForVisulaizer("grid34",rowId,mrnNumber,scheduleId);
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("workflow");
+setDatapatternId("");
+String workflowname=getRowData(0);
+updateSession("workflowname",workflowname);
+String nodename = getRowData(1);
+updateSession("nodename",nodename);
+]]></attribute>
+   <listhead sizable="true" draggable="false" height="30px" visible="true" droppable="false" id="row98" width="540px">
+ <listheader label="Workflow name" style="font-size:9;font-family:Microsoft Sans Serif;font-weight:bold;text-align:center;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column262" width="150px">
+
+</listheader>
+ <listheader label="Node name" style="font-size:9;font-family:Microsoft Sans Serif;font-weight:bold;text-align:center;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column263" width="200px">
+
+</listheader>
+ <listheader label="Tool Name" style="font-size:8.25;font-family:Microsoft Sans Serif;font-weight:bold;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column268" width="110px">
+
+</listheader>
+ <listheader label="Status" style="font-size:8.25;font-family:Microsoft Sans Serif;font-weight:bold;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column1356" width="90px">
+
+</listheader>
+
+</listhead>
+
+</listbox>
+ <button class="button241" height="30px" tabindex="1" visible="true" droppable="false" label="Go to Visualizer" id="button241" width="167px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("workflow");
+setDatapatternId("");
+String patientId=getSessionData("rowId");
+String nodeName=getSessionData("nodename");
+String workflowName=getSessionData("workflowname");
+String patientMRN=getSessionData("patientmrn");
+String userId=getSessionData("userId");
+String scheduleId=getSessionData("scheduleId");
+updateJNLPFile(patientId, patientMRN, nodeName, userId, workflowName, scheduleId,"NEISUI");
+Executions.sendRedirect("Visualizer/EDFVisualizer.jsp");
+]]></attribute>
+  
+</button>
+
+</div>
+ <div class="frame3074" height="1060px" visible="true" droppable="false" align="none" id="frame3074" width="203px" draggable="false">
+    <div class="frame3075" height="646px" visible="true" droppable="false" align="left" id="frame3075" width="203px" draggable="false">
+    <include class="placeholder88" draggable="false" height="55px" src="Logo.zul?formpattern=workflow&amp;datapattern=" visible="true" droppable="false" id="placeholder88" width="203px">
+    
+</include>
+ <include class="placeholder89" draggable="false" height="200px" src="CalendarPanel.zul?formpattern=workflow&amp;datapattern=" visible="true" droppable="false" id="placeholder89" width="203px">
+    
+</include>
+
+</div>
+ <button class="button3075" height="30px" tabindex="1" visible="true" droppable="false" label="sign out" id="button3075" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("workflow");
+setDatapatternId("");
+String retValue = logOut("login");
+]]></attribute>
+  
+</button>
+
+</div>
+
+</div>
+
+</window>
+</zk>
+

@@ -1,0 +1,122 @@
+<zk>
+<style src="/css/Schedule.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="Schedule"?>
+ <window class="Schedule" height="1092px" visible="true" droppable="false" id="Schedule" title="" width="100%" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+makeVisible("Schedule");setFormPatternId("Schedule");
+setDatapatternId("");
+value=session.getAttribute("selectedDate");
+if(value!=null)
+{
+String selectedDate= getSelectedDate(value,"yyyy/MM/dd HH:mm");
+setCalendarDate(selectedDate,"Schedule");
+};
+]]></attribute>
+  <hbox class="frame1400" height="1070px" visible="true" droppable="false" align="none" id="frame1400" width="950px" draggable="false">
+    <div class="frame1250" height="1060px" visible="true" droppable="false" align="none" id="frame1250" width="175px" draggable="false">
+    <button class="button75" height="30px" tabindex="8" visible="true" droppable="false" label="GoBack" id="button75" width="134px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("Schedule");
+setDatapatternId("");
+String parentForm=getSessionData("parentform");
+if(parentForm!=null)
+{
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent",parentForm);
+updateSession("parentform",null);
+}
+else
+{
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","HomeForm");
+}
+;
+]]></attribute>
+  
+</button>
+ <include class="placeholder34" draggable="false" height="200px" src="searchpanel.zul?formpattern=Schedule&amp;datapattern=" visible="true" droppable="false" id="placeholder34" width="175px">
+    
+</include>
+
+</div>
+ <div class="frame1402" height="1060px" visible="true" droppable="false" align="none" id="frame1402" width="572px" draggable="false">
+    <calendars class="schedular0" height="850px" visible="true" firstDayOfWeek="Monday" droppable="false" id="schedular0" width="570px" draggable="false" mold="default">
+ <attribute name="onEventEdit"><![CDATA[
+setFormPatternId("Schedule");
+setDatapatternId("");
+updateSession("mode","schedule");
+String id=onEditEventCalendar();
+updateSession("schId",id);
+createPopUp("patientScheduler");
+]]></attribute>
+<attribute name="onCreate"><![CDATA[
+setFormPatternId("Schedule");
+setDatapatternId("");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get          schedule.AppointmentStartDate,schedule.AppointmentEndDate,schedule.AppointmentEndDate,schedule.AppointmentStartTime,schedule.AppointmentEndTime,schedule.id,patient.LastName,patient.firstName,studytype.Type from neiswispicdb.schedule joins leftjoin schedule.StudyType:=studytype.id,leftjoin schedule.PatientID:=patient.id conditions patient.Deleted:=["+0+"] and schedule.Cancelled:=["+0+"]"); 
+setDataInCalendars(schedular0);
+]]></attribute>
+<custom-attributes accessrights ="Create Schedule" />
+  
+<toolbar sclass="calendar-toolbar">
+		<div class="float-left">
+			<hbox>
+				<divarrow type="arrow-left" command='schedular0.previousPage();Events.postEvent("onCreate", label, null)'/>
+				<divarrow type="arrow-right" command='schedular0.nextPage();Events.postEvent("onCreate", label, null)'/>
+			<div>
+			<button mold="os" label="today" onClick='schedular0.setCurrentDate(java.util.Calendar.getInstance(schedular0.getDefaultTimeZone()).getTime());Events.postEvent("onCreate", label, null);'/>			
+			<label id="label">
+				<attribute name="onCreate">
+					Date b = schedular0.getBeginDate();
+					Date e = schedular0.getEndDate();
+					java.text.DateFormat sdfV= DateFormat.getDateInstance();
+					sdfV.setTimeZone(schedular0.getDefaultTimeZone());
+					String[] begin=sdfV.format(b).split(",");
+					self.setValue(begin[0] + " - " + sdfV.format(e));
+				</attribute>
+			</label>			</div>
+				
+			</hbox>
+		</div>
+		<div >
+			<hbox class="float-right">
+				<divtab command='schedular0.mold = "default";schedular0.days = 1;Events.postEvent("onCreate", label, null);' text="Day"/>
+				<divtab command='schedular0.mold = "default";schedular0.days = 7;Events.postEvent("onCreate", label, null);' text="Week"/>
+				<divtab command='schedular0.mold = "default";schedular0.days = 5;Events.postEvent("onCreate", label, null);' text="5 Days"/>
+				<divtab command='schedular0.mold = "month";Events.postEvent("onCreate", label, null);' text="Month"/>
+			</hbox>
+		</div>
+</toolbar>
+
+</calendars>
+
+</div>
+ <div class="frame88" height="1060px" visible="true" droppable="false" align="right" id="frame88" width="203px" draggable="false">
+    <div class="frame1701" height="1020px" visible="true" droppable="false" align="left" id="frame1701" width="203px" draggable="false">
+    <include class="placeholder35" draggable="false" height="55px" src="Logo.zul?formpattern=Schedule&amp;datapattern=" visible="true" droppable="false" id="placeholder35" width="203px">
+    
+</include>
+ <include class="placeholder36" draggable="false" height="200px" src="CalendarPanel.zul?formpattern=Schedule&amp;datapattern=" visible="true" droppable="false" id="placeholder36" width="203px">
+    
+</include>
+
+</div>
+ <button class="button3100" height="30px" tabindex="27" visible="true" droppable="false" label="sign out" id="button3100" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("Schedule");
+setDatapatternId("");
+String retValue = logOut("login");
+updateSession("login", null);
+]]></attribute>
+  
+</button>
+
+</div>
+
+</hbox>
+
+</window>
+</zk>
+
+<?component name="divarrow" macro-uri="divarrow.zul"?>
+<?component name="divtab" macro-uri="divtab.zul"?>

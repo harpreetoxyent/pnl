@@ -1,0 +1,240 @@
+<zk>
+<style src="/css/hdPSG.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="hdPSG"?>
+ <window class="hdPSG" height="1092px" visible="true" droppable="false" id="hdPSG" title="" width="100%" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+makeVisible("hdPSG");setFormPatternId("hdPSG");
+setDatapatternId("");
+updateSession("rowId",null);
+updateSession("list","list");
+String toDate = getCurrentDate("yyyy-MM-dd");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.id from schedule conditions schedule.AppointmentStartDate:=["+toDate+"] and schedule.ExportToAlice:=["+0+"] and schedule.Cancelled:=["+0+"]");
+retVal=isRecordExist();
+if(retVal==false)
+{
+button98.setDisabled(true);
+};
+]]></attribute>
+  <hbox class="frame1425" height="1070px" visible="true" droppable="false" align="none" id="frame1425" width="950px" draggable="false">
+    <div class="frame5411" height="1129px" visible="true" droppable="false" align="none" id="frame5411" width="175px" draggable="false">
+    <include class="placeholder43" draggable="false" height="200px" src="searchpanel.zul?formpattern=hdPSG&amp;datapattern=" visible="true" droppable="false" id="placeholder43" width="175px">
+    
+</include>
+
+</div>
+ <div class="frame57" height="1060px" visible="true" droppable="false" align="none" id="frame57" width="558px" draggable="false">
+ <custom-attributes accessrights ="Acquisition" />
+   <listbox class="grid46" height="296px" multiple="False" visible="true" paginal="${paging1}" droppable="false" id="grid46" width="555px" draggable="false" fixedLayout= "true">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("hdPSG");
+setDatapatternId("");
+setPagingId("paging1");
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("hdPSG");
+setDatapatternId("");
+x=getRowData(0);
+updateSession("rowId",x);
+;
+]]></attribute>
+   <listhead sizable="true" draggable="false" height="30px" visible="true" droppable="false" id="row164" width="553px">
+ <listheader label="identifier" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column312" width="73px">
+
+</listheader>
+ <listheader label="MRN" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column392" width="75px">
+
+</listheader>
+ <listheader label="first name" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column393" width="93px">
+
+</listheader>
+ <listheader label="last name" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column394" width="90px">
+
+</listheader>
+ <listheader label="appointment start time" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column395" width="75px">
+
+</listheader>
+ <listheader label="appointment end time" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column396" width="75px">
+
+</listheader>
+ <listheader label="study type" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column90" width="74px">
+
+</listheader>
+
+</listhead>
+
+</listbox>
+ <combobox class="combobox9" draggable="false" tabindex="8" readonly="true" visible="true" droppable="false" text="" name="combobox9" id="combobox9" width="110px" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("hdPSG");
+setDatapatternId("");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get StudyType.Id,StudyType.Type from neiswispicdb.StudyType");
+showComboData("combobox9");
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("hdPSG");
+setDatapatternId("");
+String toDate = getCurrentDate("yyyy-MM-dd");
+String sid=getComboItemId1("combobox9");
+if(sid!=null)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule  .id,patient.MedicalRecordNumber,patient.FirstName,patient.LastName,schedule.AppointmentStartTime,schedule.AppointmentEndTime,studytype.Type from neiswispicdb.patient,neiswispicdb.schedule joins leftjoin schedule.StudyType:=studytype.id conditions patient.id:=schedule.PatientID and patient.Deleted:=["+0+"] and schedule.Cancelled:=["+0+"] and studytype.id:="+sid+" and schedule.AppointmentStartDate:=["+toDate+"]");
+boolean retVal=displayDataInControl("grid46"); 
+createPagingEvent("grid46");
+if(!retVal)
+{
+removeChildFromList("grid46");
+}
+};
+]]></attribute>
+  
+</combobox>
+ <combobox class="combobox12" draggable="false" tabindex="9" readonly="true" visible="true" droppable="false" text="" name="combobox12" id="combobox12" width="144px" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("hdPSG");
+setDatapatternId("");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get StudyType.Id,StudyType.Type from neiswispicdb.StudyType");
+showComboData("combobox12");
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("hdPSG");
+setDatapatternId("");
+String studyId=getComboItemId1("combobox12");
+updateSession("studyId",studyId);
+]]></attribute>
+<custom-attributes accessrights ="Export To Alice" />
+  
+</combobox>
+ <button class="button97" height="30px" tabindex="10" visible="true" droppable="false" label="Update Study Type" id="button97" width="157px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("hdPSG");
+setDatapatternId("");
+String toDate = getCurrentDate("yyyy-MM-dd");
+String sid=getSessionData("studyId");
+String rowId=getSessionData("rowId");
+if(rowId!=null)
+{
+if(sid!=null)
+{
+String retValue = invokeComponent("dbComponent","updateRecord","com.oxymedical.component.db.DBComponent","update neiswispicdb.schedule set StudyType:="+sid+" conditions schedule.id:="+rowId);
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule  .id,patient.MedicalRecordNumber,patient.FirstName,patient.LastName,schedule.AppointmentStartTime,schedule.AppointmentEndTime,studytype.Type from neiswispicdb.patient,neiswispicdb.schedule joins leftjoin schedule.StudyType:=studytype.id conditions patient.id:=schedule.PatientID and patient.Deleted:=["+0+"] and schedule.Cancelled:=["+0+"] and schedule.AppointmentStartDate:=["+toDate+"]");
+displayDataInControl("grid46"); 
+createPagingEvent("grid46");
+combobox12.setText("");
+combobox9.setText("");
+updateSession("studyId",null);
+updateSession("rowId",null);
+updateSession("mrn",null);
+}
+else
+{
+message("Please select studytype"); 
+}
+}
+else
+{
+message("Please select one record"); 
+};
+]]></attribute>
+<custom-attributes accessrights ="Export To Alice" />
+  
+</button>
+ <button class="button98" height="30px" tabindex="11" visible="true" droppable="false" label="Export to Alice" id="button98" width="157px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("hdPSG");
+setDatapatternId("");
+String toDate = getCurrentDate("yyyy-MM-dd");
+String createmessage=("Are you sure you want to export patients to Alice Sleepware for "+toDate +"?");
+boolean result=messageWithQuestion(createmessage);
+if(result)
+{
+String retval =invokeComponent("com.oxymedical.component.SleepWareComponent","retrivedata",
+"com.oxymedical.component.sleepwarecomponent.SleepWareComponent","export");
+result=equalsTest(retval,"true");
+if(result)
+{
+message("Patients have been exported to Alice Sleepware");
+ invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.id,patient.MedicalRecordNumber,patient.FirstName,patient.LastName,schedule.AppointmentStartTime,schedule.AppointmentEndTime,studytype.Type from neiswispicdb.patient,neiswispicdb.schedule joins leftjoin schedule.StudyType:=studytype.id conditions patient.id:=schedule.PatientID and patient.Deleted:=["+0+"] and schedule.Cancelled:=["+0+"] and schedule.AppointmentStartDate:=["+toDate+"]");
+boolean retVal=displayDataInControl("grid46"); 
+createPagingEvent("grid46");
+button98.setDisabled(true);
+if(!retVal)
+{
+removeChildFromList("grid46");
+}
+}
+};
+]]></attribute>
+<custom-attributes accessrights ="Export To Alice" />
+  
+</button>
+ <paging class="paging1" pageSize="25" draggable="false" height="25px" visible="true" droppable="false" id="paging1" width="549px">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("hdPSG");
+setDatapatternId("");
+String toDate = getCurrentDate("yyyy-MM-dd");
+paginalSetter("grid46");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule  .id,patient.MedicalRecordNumber,patient.FirstName,patient.LastName,schedule.AppointmentStartTime,schedule.AppointmentEndTime,studytype.Type  from neiswispicdb.patient,neiswispicdb.schedule  joins leftjoin schedule.StudyType:=studytype.id conditions patient.id:=schedule.PatientID and patient.Deleted:=["+0+"] and schedule.Cancelled:=["+0+"] and schedule.AppointmentStartDate:=["+ toDate+"]");
+displayDataInControl("grid46"); 
+createPagingEvent("grid46");
+;
+]]></attribute>
+  
+</paging>
+ <label class="label156" height="23px" visible="true" droppable="false" value="Study Type" id="label156" width="90px" draggable="false">
+   
+</label>
+ <label class="label157" height="26px" visible="true" droppable="false" value="Select Study Type" id="label157" width="160px" draggable="false">
+ <custom-attributes accessrights ="Export To Alice" />
+  
+</label>
+ <button class="button101" height="30px" tabindex="15" visible="true" droppable="false" label="Show All" id="button101" width="115px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("hdPSG");
+setDatapatternId("");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.id,patient.MedicalRecordNumber,patient.FirstName,patient.LastName,schedule.AppointmentStartTime,schedule.AppointmentEndTime,studytype.Type from neiswispicdb.patient,neiswispicdb.schedule joins leftjoin schedule.StudyType:=studytype.id conditions patient.id:=schedule.PatientID and patient.Deleted:=["+0+"] and schedule.Cancelled:=["+0+"] and schedule.AppointmentStartDate:=["+toDate+"]");
+boolean retVal=displayDataInControl("grid46"); 
+createPagingEvent("grid46");
+combobox9.setText("");
+if(!retVal)
+{
+removeChildFromList("grid46");
+}
+;
+]]></attribute>
+  
+</button>
+ <label class="label159" height="20px" visible="true" droppable="false" value="APPOINTMENTS FOR CLINIC" id="label159" width="323px" draggable="false">
+   
+</label>
+
+</div>
+ <div class="frame1473" height="1060px" visible="true" droppable="false" align="right" id="frame1473" width="203px" draggable="false">
+    <div class="frame102" height="703px" visible="true" droppable="false" align="left" id="frame102" width="203px" draggable="false">
+    <include class="placeholder44" draggable="false" height="55px" src="Logo.zul?formpattern=hdPSG&amp;datapattern=" visible="true" droppable="false" id="placeholder44" width="203px">
+    
+</include>
+ <include class="placeholder45" draggable="false" height="200px" src="CalendarPanel.zul?formpattern=hdPSG&amp;datapattern=" visible="true" droppable="false" id="placeholder45" width="203px">
+    
+</include>
+
+</div>
+ <button class="button3161" height="30px" tabindex="27" visible="true" droppable="false" label="sign out" id="button3161" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("hdPSG");
+setDatapatternId("");
+String retValue = logOut("login");
+updateSession("login", null);
+]]></attribute>
+  
+</button>
+
+</div>
+
+</hbox>
+
+</window>
+</zk>
+

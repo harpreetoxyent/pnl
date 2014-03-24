@@ -1,0 +1,180 @@
+<zk>
+<style src="/css/ListOfToolsNew.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="ListOfToolsNew"?>
+ <window class="ListOfToolsNew" height="730px" visible="true" droppable="false" id="ListOfToolsNew" title="" width="100%" draggable="false">
+   <div class="frame240" height="631px" visible="true" droppable="false" align="none" id="frame240" width="941px" draggable="false">
+    <div class="frame241" height="642px" visible="true" droppable="false" align="none" id="frame241" width="200px" draggable="false">
+    <div class="frame243" height="230px" visible="true" droppable="false" align="none" id="frame243" width="198px" draggable="false">
+    <include class="placeholder96" draggable="false" height="217px" src="searchpanel.zul?formpattern=ListOfToolsNew&amp;datapattern=" visible="true" droppable="false" id="placeholder96" width="188px">
+    
+</include>
+
+</div>
+
+</div>
+ <div class="frame242" height="622px" visible="true" droppable="false" align="none" id="frame242" width="203px" draggable="false">
+    <div class="frame244" height="274px" visible="true" droppable="false" align="none" id="frame244" width="174px" draggable="false">
+    <div class="frame245" height="77px" visible="true" droppable="false" align="none" id="frame245" width="169px" draggable="false">
+    <include class="placeholder97" draggable="false" height="63px" src="Logo.zul?formpattern=ListOfToolsNew&amp;datapattern=" visible="true" droppable="false" id="placeholder97" width="157px">
+    
+</include>
+
+</div>
+ <div class="frame246" height="184px" visible="true" droppable="false" align="none" id="frame246" width="166px" draggable="false">
+    <include class="placeholder98" draggable="false" height="172px" src="CalendarPanel.zul?formpattern=ListOfToolsNew&amp;datapattern=" visible="true" droppable="false" id="placeholder98" width="155px">
+    
+</include>
+
+</div>
+
+</div>
+
+</div>
+ <div class="frame247" height="627px" visible="true" droppable="false" align="none" id="frame247" width="551px" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("ListOfToolsNew");
+setDatapatternId("");
+updateSession("list","list");
+]]></attribute>
+   <div class="frame248" height="57px" visible="true" droppable="false" align="none" id="frame248" width="531px" draggable="false">
+    <label class="label410" height="30px" visible="true" droppable="false" value="Tool List Form" id="label410" width="221px" draggable="false">
+   
+</label>
+
+</div>
+ <listbox class="grid37" height="382px" multiple="False" visible="true" droppable="false" id="grid37" width="527px" draggable="false" fixedLayout= "true">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("ListOfToolsNew");
+setDatapatternId("");
+invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","get nodedetails.id,nodedetails.nodeDescription from appadmin.nodedetails conditions nodedetails.deleted:=["+0+"]");
+displayDataInControl("grid37");
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("ListOfToolsNew");
+setDatapatternId("");
+rowId = getRowData(0);
+updateSession("rowId",rowId);
+;
+]]></attribute>
+   <listhead sizable="true" draggable="false" height="29px" visible="true" droppable="false" id="row156" width="525px">
+ <listheader label="Identifier" style="font-size:8.25;font-family:Microsoft Sans Serif;font-weight:bold;text-align:center;white-space:normal;"  draggable="false" height="29px" visible="true" droppable="false" id="column447" width="250px">
+
+</listheader>
+ <listheader label="Tool Name" style="font-size:8.25;font-family:Microsoft Sans Serif;font-weight:bold;text-align:center;white-space:normal;"  draggable="false" height="29px" visible="true" droppable="false" id="column449" width="250px">
+
+</listheader>
+
+</listhead>
+
+</listbox>
+ <div class="frame249" height="50px" visible="true" droppable="false" align="center" id="frame249" width="524px" draggable="false">
+    <button class="button255" height="30px" tabindex="0" visible="true" droppable="false" label="Edit" id="button255" width="77px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("ListOfToolsNew");
+setDatapatternId("");
+String identifierID = getSessionData("rowId");
+if(identifierID != null)
+{
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","AddTool");
+}
+else
+{
+message("Select a Tool!");
+};
+]]></attribute>
+  
+</button>
+ <button class="button256" height="30px" tabindex="9" visible="true" droppable="false" label="Delete" id="button256" width="81px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("ListOfToolsNew");
+setDatapatternId("");
+
+String identifierID = getSessionData("rowId");
+if(identifierID !=null)
+{
+invokeComponent("com.oxyentmedical.component.workflowcomponent","updateDataWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","update appadmin.nodedetails set Deleted:=1 conditions nodedetails.id:="+identifierID );
+invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","get nodedetails.id,nodedetails.nodeDescription from appadmin.nodedetails conditions nodedetails.deleted:=["+0+"]");
+displayDataInControl("grid37");
+//updateSession("rowId",null);
+}
+;
+]]></attribute>
+  
+</button>
+ <button class="button257" height="30px" tabindex="10" visible="true" droppable="false" label="Add" id="button257" width="87px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("ListOfToolsNew");
+setDatapatternId("");
+
+			invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","AddTool");
+]]></attribute>
+  
+</button>
+ <button class="button258" height="30px" tabindex="11" visible="true" droppable="false" label="Load Tools" id="button258" width="87px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("ListOfToolsNew");
+setDatapatternId("");
+
+createPopUp("FilePathLocation");
+String xmlPath=getSessionData("XMLFilePath");
+if(xmlPath!=null)
+{
+XMLtoTools(xmlPath,"textbox208","textbox209","textbox210","textbox214","combobox43","checkbox5", "toolInputXMLTextBox");
+updateSession("XMLFilePath",null);
+invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","get nodedetails.id,nodedetails.nodeDescription from appadmin.nodedetails conditions nodedetails.deleted:=["+0+"]");
+displayDataInControl("grid37");
+};
+]]></attribute>
+  
+</button>
+ <button class="button268" height="30px" tabindex="12" visible="true" droppable="false" label="Goto Workflow List" id="button268" width="121px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("ListOfToolsNew");
+setDatapatternId("");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","listOfAvailableWorkflow");
+;
+]]></attribute>
+  
+</button>
+
+</div>
+ <combobox class="combobox44" draggable="false" tabindex="10" readonly="false" visible="true" droppable="false" text="combobox1" name="combobox44" id="combobox44" width="138px" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("ListOfToolsNew");
+setDatapatternId("");
+invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","get toolcateogry .id,toolcateogry.category from appadmin.toolcateogry ");
+showComboData("combobox44");
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("ListOfToolsNew");
+setDatapatternId("");
+String toolId=getComboItemId1("combobox44");
+invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","get nodedetails.id,nodedetails.nodeDescription from appadmin.nodedetails conditions nodedetails.cateogryid:="+toolId+" and nodedetails.deleted:=["+0+"]");
+displayDataInControl("grid37");
+]]></attribute>
+  
+</combobox>
+ <button class="button265" height="30px" tabindex="11" visible="true" droppable="false" label="Show All" id="button265" width="92px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("ListOfToolsNew");
+setDatapatternId("");
+invokeComponent("com.oxyentmedical.component.workflowcomponent","executeListWorkflow","com.oxymedical.component.workflowComponent.WorkflowComponent","get nodedetails.id,nodedetails.nodeDescription from appadmin.nodedetails conditions nodedetails.deleted:=["+0+"]");
+displayDataInControl("grid37");
+combobox44.text="";
+]]></attribute>
+  
+</button>
+ <label class="label390" height="27px" visible="true" droppable="false" value="Filter:" id="label390" width="57px" draggable="false">
+   
+</label>
+
+</div>
+
+</div>
+
+</window>
+</zk>
+

@@ -1,0 +1,209 @@
+<zk>
+<style src="/css/ListUser.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="ListUser"?>
+ <window class="ListUser" height="740px" visible="true" droppable="false" id="ListUser" title="" width="100%" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+makeVisible("ListUser");setFormPatternId("ListUser");
+setDatapatternId("");
+
+	  updateSession("list","list");
+	  ;
+]]></attribute>
+  <hbox class="frame24" height="730px" visible="true" droppable="false" align="none" id="frame24" width="838px" draggable="false">
+    <div class="frame21" height="730px" visible="true" droppable="false" align="none" id="frame21" width="175px" draggable="false">
+    <include class="placeholder27" draggable="false" height="200px" src="searchuserpanel.zul?formpattern=ListUser&amp;datapattern=" visible="true" droppable="false" id="placeholder27" width="175px">
+    
+</include>
+
+</div>
+ <div class="frame52" height="730px" visible="true" droppable="false" align="none" id="frame52" width="451px" draggable="false">
+ <custom-attributes accessrights ="AddUserAccount,Edit/ModifyUserAccount,DeleteUserAccount" />
+   <button class="button45" height="30px" tabindex="8" visible="true" droppable="false" label="Edit UserAccount" id="button45" width="138px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("ListUser");
+setDatapatternId("");
+
+String rowValue = getSessionData("rowId");
+ if(rowValue==null)
+  {
+  message(" Please select one record to delete/edit.");
+  }
+  else
+  {
+ setDataStatus("CreateUser", "userinfo", "useradmin");
+  };
+]]></attribute>
+<custom-attributes accessrights ="Edit/ModifyUserAccount" />
+  
+</button>
+ <button class="button49" height="30px" tabindex="9" visible="true" droppable="false" label="Delete UserAccount" id="button49" width="140px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("ListUser");
+setDatapatternId("");
+String rowValue = getSessionData("rowId");
+ if(rowValue==null)
+  {
+  message(" Please select one record to delete/edit.");
+  }
+  else
+  {
+String mes="Are you sure you wish to delete user account "+rowValue+"?" ;
+boolean result=messageWithQuestion(mes);
+if(result)
+{
+invokeComponent("com.oxymedical.component.useradmin","SoftDeleteUser","com.oxymedical.component.useradmin.UserAdminComponent","userId := rowId");
+invokeComponent("com.oxymedical.component.useradmin","executeListUserAdmin","com.oxymedical.component.useradmin.UserAdminComponent","get user_.userId,user_.emailAddress,contact_.firstname,contact_.lastName from useradmin.user_,useradmin.contact_ conditions user_.userId:=contact_.userId and user_.deleted:=[0]");
+displayDataInControl("grid72");
+updateSession("rowId",null);
+createPagingEvent("grid72");
+createSortingEvent("grid72", "paging2");
+}
+};
+]]></attribute>
+<custom-attributes accessrights ="DeleteUserAccount" />
+  
+</button>
+ <listbox class="grid72" height="400px" multiple="False" visible="true" paginal="${paging2}" droppable="false" id="grid72" width="447px" draggable="false" fixedLayout= "true">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("ListUser");
+setDatapatternId("");
+setPagingId("paging2");
+		  enableSorting("column168", "user_.userId");
+enableSorting("column169", "user_.emailAddress");
+enableSorting("column170", "contact_.firstname");
+enableSorting("column172", "contact_.lastName");
+;
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("ListUser");
+setDatapatternId("");
+x=getRowData(0);
+updateSession("rowId",x);
+]]></attribute>
+   <listhead sizable="true" draggable="false" height="31px" visible="true" droppable="false" id="row140" width="445px">
+ <listheader label="User Id" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="31px" visible="true" droppable="false" id="column168" width="98px">
+
+</listheader>
+ <listheader label="Email Address" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="31px" visible="true" droppable="false" id="column169" width="148px">
+
+</listheader>
+ <listheader label="First Name" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="31px" visible="true" droppable="false" id="column170" width="98px">
+
+</listheader>
+ <listheader label="LastName" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="31px" visible="true" droppable="false" id="column172" width="98px">
+
+</listheader>
+
+</listhead>
+
+</listbox>
+ <paging class="paging2" pageSize="25" draggable="false" height="26px" visible="true" droppable="false" id="paging2" width="272px">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("ListUser");
+setDatapatternId("");
+paginalSetter("grid72");
+setDisplayLabelId("label326");
+String gridStyle = "background-color:Transparent;border:0px";
+paging2.setStyle(gridStyle);
+String lastName = getSessionData("userlastname");
+String firstname= getSessionData("userfirstname");
+String userId= getSessionData("searchUserId");
+String condition = createUserQueryForSearch(lastName,firstname,userId);
+invokeComponent("com.oxymedical.component.useradmin","executeListUserAdmin","com.oxymedical.component.useradmin.UserAdminComponent","get user_.userId,user_.emailAddress,contact_.firstname,contact_.lastName from useradmin.user_,useradmin.contact_ conditions "+condition);
+boolean isDisplay = displayDataInControl("grid72");
+createPagingEvent("grid72");
+createSortingEvent("grid72","paging2");
+updateSession("userlastname",null);
+updateSession("userfirstname",null);
+updateSession("searchUserId",null);
+if(!isDisplay)
+{
+	msg ="User not found.Would you like to add this user?";
+	boolean isYes = messageWithQuestion(msg);
+	if(isYes)
+	{
+		setDataStatus("CreateUser", "userinfo", "useradmin");
+	}
+}
+;
+]]></attribute>
+  
+</paging>
+ <label class="label51" height="30px" visible="true" droppable="false" value="User List" id="label51" width="101px" draggable="false">
+   
+</label>
+ <button class="button164" height="30px" tabindex="13" visible="true" droppable="false" label="Add ESignature" id="button164" width="134px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("ListUser");
+setDatapatternId("");
+String rowValue = getSessionData("rowId");
+ if(rowValue==null)
+ {
+ message(" Please select a record.");
+ }
+else
+{
+String mes="Are you sure you wish to upload Signature for "+rowValue+"?" ;
+boolean result=messageWithQuestion(mes);
+if(result)
+{
+invokeComponent("com.oxymedical.component.useradmin","GetListUserAdmin","com.oxymedical.component.useradmin.UserAdminComponent","get userpattern_users.userPatternId from useradmin.userpattern_users conditions userpattern_users.userId:=["+rowValue+"]");
+String usertype = getDataFromAllValuesVar(0,0);
+boolean isPhysician = checkValueWithOperator(usertype,"Physician","EQUAL");
+if(isPhysician)
+{
+boolean isUploaded = uploadSignature(rowValue);
+if(isUploaded)
+{
+invokeComponent("com.oxymedical.component.signature.SignatureComponent","SaveElectronicSignature","com.oxymedical.component.signature.SignatureComponent","");
+message("Signature uploaded.");
+}
+}
+else
+{
+message("Selected user is not a Physician.");
+}
+}
+};
+]]></attribute>
+<custom-attributes accessrights ="Attach Signature" />
+  
+</button>
+ <div class="frame198" height="26px" visible="true" droppable="false" align="none" id="frame198" width="206px" draggable="false">
+    <label class="label326" height="25px" visible="true" droppable="false" value="label1" id="label326" width="121px" draggable="false">
+   
+</label>
+
+</div>
+
+</div>
+ <vbox class="frame126" height="730px" visible="true" droppable="false" align="right" id="frame126" width="203px" draggable="false">
+    <div class="frame1791" height="730px" visible="true" droppable="false" align="left" id="frame1791" width="203px" draggable="false">
+    <include class="placeholder28" draggable="false" height="55px" src="Logo.zul?formpattern=ListUser&amp;datapattern=" visible="true" droppable="false" id="placeholder28" width="203px">
+    
+</include>
+ <include class="placeholder29" draggable="false" height="200px" src="CalendarPanel.zul?formpattern=ListUser&amp;datapattern=" visible="true" droppable="false" id="placeholder29" width="203px">
+    
+</include>
+ <button class="button160" height="30px" tabindex="9" visible="true" droppable="false" label="sign out" id="button160" width="93px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("ListUser");
+setDatapatternId("");
+String retValue = logOut("login");
+updateSession("login", null);
+]]></attribute>
+  
+</button>
+
+</div>
+
+</vbox>
+
+</hbox>
+
+</window>
+</zk>
+

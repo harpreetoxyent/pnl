@@ -1,0 +1,72 @@
+<zk>
+<style src="/css/PatientAssignment.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="PatientAssignment"?>
+ <window class="PatientAssignment" height="750px" visible="true" droppable="false" id="PatientAssignment" title="" width="100%" draggable="false">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("PatientAssignment");
+setDatapatternId("");
+String pid = getSessionData("rowId");
+String passign = getSessionData("pateintassign");
+if(passign!=null)
+{
+String retval = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get roomassginment.sleeptechid,roomassginment.researchid,schedule.appointmentstarttime,room.RoomDescription,patient.dateofbirth,roomassginment.stat,roomassginment.physicianid,studytype.type,patient.physician,roomassginment.arrived,schedule.assigntoroom,roomassginment.comments,roomassginment.sleeptechid,patient.id,schedule.id from neiswispicdb.schedule,neiswispicdb.roomassginment joins leftjoin schedule.patientid:=patient.id,leftjoin schedule.StudyType:=studytype.id,leftjoin roomassginment.roomid:=room.id conditions roomassginment.schduleid:=schedule.id and patient.deleted:=["+0+"] and roomassginment.deleted:=["+0+"] and schedule.cancelled:=["+0+"]");
+}
+else
+{
+if(pid != null)
+{
+String retval = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get roomassginment.sleeptechid,roomassginment.researchid,schedule.appointmentstarttime,room.RoomDescription,patient.dateofbirth,roomassginment.stat,roomassginment.physicianid,studytype.type,patient.physician,roomassginment.arrived,schedule.assigntoroom,roomassginment.comments,roomassginment.sleeptechid,patient.id,schedule.id from neiswispicdb.schedule,neiswispicdb.roomassginment joins leftjoin schedule.patientid:=patient.id,leftjoin schedule.StudyType:=studytype.id,leftjoin roomassginment.roomid:=room.id conditions roomassginment.schduleid:=schedule.id and patient.deleted:=["+0+"] and roomassginment.deleted:=["+0+"] and schedule.cancelled:=["+0+"] and patient.ID:="+pid);
+}
+}
+addGridToFrame(frame191, "TECH,RA,TIME,RM,DOB,Stat,Reading Phys.,TYPE,Referring Phys.,Arrived,Pt. in Room,Comments,Lead", "Label,Label,Label,Label,Label,Checkbox,Label,Combobox,Label,Checkbox,Checkbox,Textbox,Label","user:user: : : :N:user:get studytype.id,studytype.type from neiswispicdb.studytype orderby studytype.type:user:N:N: :user");
+]]></attribute>
+  <div class="frame190" height="727px" visible="true" droppable="false" align="none" id="frame190" width="540px" draggable="false">
+    <div class="frame141" height="122px" visible="true" droppable="false" align="none" id="frame141" width="530px" draggable="false">
+    <button class="button10" height="30px" tabindex="0" visible="true" droppable="false" label="Print Patient Assignment" id="button10" width="196px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("PatientAssignment");
+setDatapatternId("");
+String sid = getSessionData("scheduleid");
+if(sid!=null)
+{
+createPopUp("PrintAssignment");
+String pid = getSessionData("rowId");
+if(pid != null)
+{
+String retval = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get roomassginment.sleeptechid,roomassginment.researchid,schedule.appointmentstarttime,room.RoomDescription,patient.dateofbirth,roomassginment.stat,roomassginment.physicianid,studytype.type,patient.physician,roomassginment.arrived,schedule.assigntoroom,roomassginment.comments,roomassginment.sleeptechid,patient.id,schedule.id from neiswispicdb.schedule,neiswispicdb.roomassginment joins leftjoin schedule.patientid:=patient.id,leftjoin schedule.StudyType:=studytype.id,leftjoin roomassginment.roomid:=room.id conditions roomassginment.schduleid:=schedule.id and patient.deleted:=["+0+"] and roomassginment.deleted:=["+0+"] and schedule.cancelled:=["+0+"] and patient.ID:="+pid);
+}
+else
+{
+String retval = invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get roomassginment.sleeptechid,roomassginment.researchid,schedule.appointmentstarttime,room.RoomDescription,patient.dateofbirth,roomassginment.stat,roomassginment.physicianid,studytype.type,patient.physician,roomassginment.arrived,schedule.assigntoroom,roomassginment.comments,roomassginment.sleeptechid,patient.id,schedule.id from neiswispicdb.schedule,neiswispicdb.roomassginment joins leftjoin schedule.patientid:=patient.id,leftjoin schedule.StudyType:=studytype.id,leftjoin roomassginment.roomid:=room.id conditions roomassginment.schduleid:=schedule.id and patient.deleted:=["+0+"] and roomassginment.deleted:=["+0+"] and schedule.cancelled:=["+0+"]");
+}
+addGridToFrame(frame191, "TECH,RA,TIME,RM,DOB,Stat,Reading Phys.,TYPE,Referring Phys.,Arrived,Pt. in Room,Comments,Lead", "Label,Label,Label,Label,Label,Checkbox,Label,Combobox,Label,Checkbox,Checkbox,Textbox,Label","user:user: : : :N:user:get studytype.id,studytype.type from neiswispicdb.studytype orderby studytype.type:user:N:N: :user");
+}
+else
+{
+message("Please select a record.");
+};
+]]></attribute>
+  
+</button>
+ <button class="button37" height="30px" tabindex="8" visible="true" droppable="false" label="Save Patient Assignments" id="button37" width="202px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("PatientAssignment");
+setDatapatternId("");
+saveDataFromGrid("PatientAssignmentGrid");
+]]></attribute>
+  
+</button>
+
+</div>
+ <div class="frame191" height="604px" visible="true" droppable="false" align="none" id="frame191" width="530px" draggable="false">
+   
+</div>
+
+</div>
+
+</window>
+</zk>
+

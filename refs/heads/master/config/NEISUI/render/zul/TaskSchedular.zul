@@ -1,0 +1,102 @@
+<zk>
+<style src="/css/TaskSchedular.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="TaskSchedular"?>
+ <window class="TaskSchedular" height="730px" visible="true" droppable="false" id="TaskSchedular" title="" width="100%" draggable="false">
+   <hbox class="frame183" height="701px" visible="true" droppable="false" align="none" id="frame183" width="750px" draggable="false">
+    <div class="frame184" height="1063px" visible="true" droppable="false" align="none" id="frame184" width="175px" draggable="false">
+    <include class="placeholder57" draggable="false" height="200px" src="searchpanel.zul?formpattern=TaskSchedular&amp;datapattern=" visible="true" droppable="false" id="placeholder57" width="175px">
+    
+</include>
+
+</div>
+ <div class="frame186" height="1070px" visible="true" droppable="false" align="none" id="frame186" width="384px" draggable="false">
+    <div class="frame187" height="45px" visible="true" droppable="false" align="center" id="frame187" width="348px" draggable="false">
+    <button class="button205" height="30px" tabindex="0" visible="true" droppable="false" label="Edit Settings" id="button205" width="112px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("TaskSchedular");
+setDatapatternId("");
+String id=getSessionData("rowId");
+if(id!=null)
+{
+createPopUp("EditTaskSchedular");
+updateSession("rowId",null);
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get SchedularTime.ID,Schedular.Description,SchedularTime.ScheduleTime from neiswispicdb.SchedularTime,neiswispicdb.Schedular conditions SchedularTime.SchedularID:=Schedular.ID");
+boolean isDisplay = displayDataInControl("grid26");
+}
+else
+{
+message("Please select one record.");
+};
+]]></attribute>
+  
+</button>
+ <button class="button209" height="30px" tabindex="8" visible="true" droppable="false" label="Go back" id="button209" width="80px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("TaskSchedular");
+setDatapatternId("");
+updateSession("rowId",null);
+setDataStatus("UserAuthenticated", "HomeForm", null);
+]]></attribute>
+  
+</button>
+
+</div>
+ <listbox class="grid26" height="292px" multiple="False" visible="true" droppable="false" id="grid26" width="350px" draggable="false" fixedLayout= "true">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("TaskSchedular");
+setDatapatternId("");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get SchedularTime.ID,Schedular.Description,SchedularTime.ScheduleTime from neiswispicdb.SchedularTime,neiswispicdb.Schedular conditions SchedularTime.SchedularID:=Schedular.ID");
+boolean isDisplay = displayDataInControl("grid26");
+;
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("TaskSchedular");
+setDatapatternId("");
+id=getRowData(0);
+updateSession("rowId",id);
+]]></attribute>
+   <listhead sizable="true" draggable="false" height="30px" visible="true" droppable="false" id="row509" width="350px">
+ <listheader label="Identifier" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:center;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column1191" width="70px">
+
+</listheader>
+ <listheader label="Description" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:center;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column1192" width="200px">
+
+</listheader>
+ <listheader label="Time" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:center;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column1193" width="80px">
+
+</listheader>
+
+</listhead>
+
+</listbox>
+ <label class="label316" height="30px" visible="true" droppable="false" value="Task Schedular" id="label316" width="142px" draggable="false">
+   
+</label>
+
+</div>
+ <div class="frame185" height="1020px" visible="true" droppable="false" align="none" id="frame185" width="203px" draggable="false">
+    <include class="placeholder58" draggable="false" height="55px" src="Logo.zul?formpattern=TaskSchedular&amp;datapattern=" visible="true" droppable="false" id="placeholder58" width="203px">
+    
+</include>
+ <include class="placeholder59" draggable="false" height="200px" src="CalendarPanel.zul?formpattern=TaskSchedular&amp;datapattern=" visible="true" droppable="false" id="placeholder59" width="203px">
+    
+</include>
+ <button class="button206" height="30px" tabindex="9" visible="true" droppable="false" label="sign out" id="button206" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("TaskSchedular");
+setDatapatternId("");
+String retValue = logOut("login");
+]]></attribute>
+  
+</button>
+
+</div>
+
+</hbox>
+
+</window>
+</zk>
+

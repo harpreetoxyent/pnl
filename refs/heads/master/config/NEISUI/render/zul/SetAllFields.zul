@@ -1,0 +1,155 @@
+<zk>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="SetAllFields"?>
+ <window height="143px" visible="true" droppable="false" id="SetAllFields" title="Set Fields" width="254px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:8px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:8px;
+position:absolute;
+padding-bottom:8px;
+padding-right:8px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("SetAllFields");
+setDatapatternId("");
+String id =getSessionData("CategoryId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get qbuserdefinedfield.id,qbuserdefinedfield.UserDefinedFieldName from neiswispicdb.qbcategorydetail,neiswispicdb.qbuserdefinedfield conditions qbcategorydetail.categoryId:="+id+" and qbuserdefinedfield.id:=qbcategorydetail.UserDefinedFieldId");
+showComboData("combobox5");
+]]></attribute>
+
+<custom-attributes formpattern="${param.formpattern}" datapattern="${param.datapattern}"/>
+  <div height="98px" visible="true" droppable="false" align="none" id="frame89" width="238px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:6px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:35px;
+" >
+    <label height="22px" visible="true" droppable="false" value="Select Field:" id="label54" width="70px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:32px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+top:17px;
+" >
+   
+</label>
+ <combobox draggable="false" tabindex="10" readonly="true" visible="true" droppable="false" text="" name="combobox5" id="combobox5" width="100px" style="font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:#FFFFFF;
+left:126px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:12px;
+"  >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("SetAllFields");
+setDatapatternId("");
+String field =null;
+]]></attribute>
+<attribute name="onSelect"><![CDATA[
+setFormPatternId("SetAllFields");
+setDatapatternId("");
+field = getComboBoxValue("combobox5");
+]]></attribute>
+  
+</combobox>
+ <button height="30px" tabindex="11" visible="true" droppable="false" label="Apply" id="button71" width="75px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:27px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:53px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("SetAllFields");
+setDatapatternId("");
+updateSession("FieldName",field);
+detachWindow("SetAllFields");
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="12" visible="true" droppable="false" label="Cancel" id="button73" width="75px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:122px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:52px;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("SetAllFields");
+setDatapatternId("");
+detachWindow("SetAllFields");
+]]></attribute>
+  
+</button>
+
+</div>
+
+</window>
+</zk>
+

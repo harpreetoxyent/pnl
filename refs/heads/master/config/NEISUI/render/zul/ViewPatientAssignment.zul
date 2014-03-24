@@ -1,0 +1,46 @@
+<zk>
+<style src="/css/ViewPatientAssignment.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="ViewPatientAssignment"?>
+ <window class="ViewPatientAssignment" height="910px" visible="true" droppable="false" id="ViewPatientAssignment" title="" width="100%" draggable="false">
+   <div class="frame71" height="900px" visible="true" droppable="false" align="none" id="frame71" width="950px" draggable="false">
+    <div class="frame135" height="900px" visible="true" droppable="false" align="none" id="frame135" width="175px" draggable="false">
+    <include class="placeholder60" draggable="false" height="200px" src="searchpanel.zul?formpattern=ViewPatientAssignment&amp;datapattern=" visible="true" droppable="false" id="placeholder60" width="175px">
+    
+</include>
+
+</div>
+ <div class="frame137" height="812px" visible="true" droppable="false" align="none" id="frame137" width="203px" draggable="false">
+    <include class="placeholder61" draggable="false" height="55px" src="Logo.zul?formpattern=ViewPatientAssignment&amp;datapattern=" visible="true" droppable="false" id="placeholder61" width="203px">
+    
+</include>
+ <include class="placeholder62" draggable="false" height="200px" src="CalendarPanel.zul?formpattern=ViewPatientAssignment&amp;datapattern=" visible="true" droppable="false" id="placeholder62" width="203px">
+    
+</include>
+
+</div>
+ <div class="frame138" height="897px" visible="true" droppable="false" align="none" id="frame138" width="568px" draggable="false">
+    <include class="placeholder63" draggable="false" height="895px" src="PatientAssignment.zul?formpattern=ViewPatientAssignment&amp;datapattern=" visible="true" droppable="false" id="placeholder63" width="567px">
+    
+</include>
+
+</div>
+ <div class="frame139" height="85px" visible="true" droppable="false" align="none" id="frame139" width="202px" draggable="false">
+    <button class="button162" height="30px" tabindex="0" visible="true" droppable="false" label="sign out" id="button162" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("ViewPatientAssignment");
+setDatapatternId("");
+String retValue = logOut("login");
+]]></attribute>
+  
+</button>
+
+</div>
+
+</div>
+
+</window>
+</zk>
+

@@ -1,0 +1,107 @@
+<zk>
+<style src="/css/acquisitiondata.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="acquisitiondata"?>
+ <window class="acquisitiondata" height="1092px" visible="true" droppable="false" id="acquisitiondata" title="" width="100%" draggable="false">
+   <div class="frame2568" height="1070px" visible="true" droppable="false" align="none" id="frame2568" width="950px" draggable="false">
+    <div class="frame2563" height="1060px" visible="true" droppable="false" align="none" id="frame2563" width="175px" draggable="false">
+    <include class="placeholder64" draggable="false" height="200px" src="searchpanel.zul?formpattern=acquisitiondata&amp;datapattern=" visible="true" droppable="false" id="placeholder64" width="175px">
+    
+</include>
+
+</div>
+ <div class="frame4320" height="1060px" visible="true" droppable="false" align="none" id="frame4320" width="574px" draggable="false">
+    <listbox class="grid127" height="393px" multiple="False" visible="true" droppable="false" id="grid127" width="572px" draggable="false" fixedLayout= "true">
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("acquisitiondata");
+setDatapatternId("");
+studytype = getSessionData("PSG");
+if(studytype!=null)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patient.firstname,patient.lastname,patient.medicalrecordnumber,studypatient.ID,studypatient.uploaddate,studytype.Type,patient.physician,studypatient.TechNote,studypatient.ReportPath,proceduretype.procedurename,schedule.appointmentstarttime,schedule.appointmentendtime from neiswispicdb.studypatient,neiswispicdb.schedule joins leftjoin studypatient.PatientID:=Patient.ID,leftjoin schedule.StudyType:=studytype.ID,leftjoin schedule.proceduretype:=proceduretype.id conditions studypatient.ScheduleID:=schedule.ID and studytype.id &gt;"+4+" and studytype.id &lt;"+16);
+displayDataInControl("grid127");
+}
+else
+{
+studytype = getSessionData("HDEEG");
+if(studytype!=null)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patient.firstname,patient.lastname,patient.medicalrecordnumber,studypatient.ID,studypatient.uploaddate,studytype.Type,patient.physician,studypatient.TechNote,studypatient.ReportPath,proceduretype.procedurename,schedule.appointmentstarttime,schedule.appointmentendtime from neiswispicdb.studypatient,neiswispicdb.schedule joins leftjoin studypatient.PatientID:=Patient.ID,leftjoin schedule.StudyType:=studytype.ID,leftjoin schedule.proceduretype:=proceduretype.id conditions studypatient.ScheduleID:=schedule.ID and studytype.id &gt;"+13);
+displayDataInControl("grid127");
+}
+};
+]]></attribute>
+   <listhead sizable="true" draggable="false" height="30px" visible="true" droppable="false" id="row2460" width="570px">
+ <listheader label="first name" style="font-size:7;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column5280" width="54px">
+
+</listheader>
+ <listheader label="last name" style="font-size:7;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column7960" width="56px">
+
+</listheader>
+ <listheader label="MRN" style="font-size:7;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column8870" width="32px">
+
+</listheader>
+ <listheader label="Id" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column8880" width="20px">
+
+</listheader>
+ <listheader label="Date" style="font-size:7;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column8910" width="32px">
+
+</listheader>
+ <listheader label="Study " style="font-size:7;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column8920" width="36px">
+
+</listheader>
+ <listheader label="Physician" style="font-size:7;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column893" width="53px">
+
+</listheader>
+ <listheader label="Note" style="font-size:7;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column989" width="33px">
+
+</listheader>
+ <listheader label="Report" style="font-size:7;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column1182" width="40px">
+
+</listheader>
+ <listheader label="Procedure" style="font-size:7;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column97" width="57px">
+
+</listheader>
+ <listheader label="Start time" style="font-size:7;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column392" width="53px">
+
+</listheader>
+ <listheader label="End Time" style="font-size:7;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column393" width="53px">
+
+</listheader>
+ <listheader label="duration" style="font-size:7;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column4940" width="50px">
+
+</listheader>
+
+</listhead>
+
+</listbox>
+
+</div>
+ <div class="frame4321" height="1060px" visible="true" droppable="false" align="none" id="frame4321" width="203px" draggable="false">
+    <div class="frame4322" height="1020px" visible="true" droppable="false" align="left" id="frame4322" width="203px" draggable="false">
+    <include class="placeholder65" draggable="false" height="55px" src="Logo.zul?formpattern=acquisitiondata&amp;datapattern=" visible="true" droppable="false" id="placeholder65" width="203px">
+    
+</include>
+ <include class="placeholder66" draggable="false" height="200px" src="CalendarPanel.zul?formpattern=acquisitiondata&amp;datapattern=" visible="true" droppable="false" id="placeholder66" width="203px">
+    
+</include>
+
+</div>
+ <button class="button1338" height="30px" tabindex="1" visible="true" droppable="false" label="sign out" id="button1338" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("acquisitiondata");
+setDatapatternId("");
+String retValue = logOut("login");
+]]></attribute>
+  
+</button>
+
+</div>
+
+</div>
+
+</window>
+</zk>
+

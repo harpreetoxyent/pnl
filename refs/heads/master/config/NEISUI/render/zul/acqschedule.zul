@@ -1,0 +1,273 @@
+<zk>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="acqschedule"?>
+ <window height="309px" visible="true" droppable="false" id="acqschedule" title="" width="595px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("acqschedule");
+setDatapatternId("");
+String pid=getSessionData("rowId");
+String type=getSessionData("studytype");
+if(type!=null)
+{
+boolean valid=equalsTest(type,"PSG");
+if(valid)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.id,studytype.type,schedule.AppointmentStartDate,schedule.AppointmentStartTime,schedule.AppointmentEndDate,schedule.AppointmentEndTime,patientacquisition.AcquisitionFilePath from neiswispicdb.studytype,neiswispicdb.patientacquisition joins rightjoin patientacquisition.ScheduleID:=schedule.id conditions schedule.Cancelled:=["+0+"] and studytype.id:=schedule.StudyType and schedule.patientID:="+pid+" and studytype.id &gt;"+4+" and studytype.id &lt;"+16); 
+displayDataInControl("grid27"); 
+}
+else
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get schedule.id,studytype.type,schedule.AppointmentStartDate,schedule.AppointmentStartTime,schedule.AppointmentEndDate,schedule.AppointmentEndTime,patientacquisition.AcquisitionFilePath from neiswispicdb.studytype,neiswispicdb.patientacquisition joins rightjoin patientacquisition.ScheduleID:=schedule.id conditions schedule.Cancelled:=["+0+"] and studytype.id:=schedule.StudyType and schedule.patientID:="+pid+" and studytype.id  &gt;"+13); 
+displayDataInControl("grid27"); 
+}
+};
+]]></attribute>
+
+<custom-attributes formpattern="${param.formpattern}" datapattern="${param.datapattern}"/>
+  <div height="307px" visible="true" droppable="false" align="none" id="frame194" width="590px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:0px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:0px;
+" >
+    <listbox height="265px" multiple="False" visible="true" droppable="false" id="grid27" width="590px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:0px;
+"  fixedLayout= "true">
+ <attribute name="onSelect"><![CDATA[
+setFormPatternId("acqschedule");
+setDatapatternId("");
+String sid=getRowData(0);
+updateSession("scheduleId",sid);
+String acuisitionpath=getRowData(6);
+updateSession("acuisitionpath",acuisitionpath);
+]]></attribute>
+   <listhead sizable="true" draggable="false" height="30px" visible="true" droppable="false" id="row205" width="590px" >
+ <listheader label="Identifier" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column440" width="75px" >
+
+</listheader>
+ <listheader label="Study Type" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column530" width="100px" >
+
+</listheader>
+ <listheader label="Start Date" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column531" width="75px" >
+
+</listheader>
+ <listheader label="Start Time" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column532" width="80px" >
+
+</listheader>
+ <listheader label="End Date" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column533" width="80px" >
+
+</listheader>
+ <listheader label="End Time" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column534" width="75px" >
+
+</listheader>
+ <listheader label="Acquisition" style="font-size:8.25;font-family:Microsoft Sans Serif;text-align:left;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column2445" width="150px" >
+
+</listheader>
+
+</listhead>
+
+</listbox>
+ <div height="36px" visible="true" droppable="false" align="center" id="frame195" width="585px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+left:0px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:270px;
+" >
+    <button height="30px" tabindex="0" visible="true" droppable="false" label="Get File Path" id="button106" width="112px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:5px;
+margin-top:5px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:5px;
+margin-bottom:5px;
+color:#316AC5;
+background-position:tile;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("acqschedule");
+setDatapatternId("");
+String pid=getSessionData("rowId");
+if(pid!=null)
+{
+String sid=getSessionData("scheduleId");
+if(sid!=null)
+{
+String retrieving = getSessionData("retrieve");
+if(retrieving ==null)
+{
+String acqfilepath = getSessionData("acuisitionpath");
+if(acqfilepath==null)
+{
+createPopUp("FileBrowse");
+String file = getSessionData("filePath");
+if(file!=null)
+{
+String type = getSessionData("studytype");
+String retVal = invokeComponent("storage.comp","StoreDataToStorage","com.oxymedical.component.storage.StorageComponent",sid+"_"+file+"_"+type);
+if(retVal == "false")
+{
+updateSession("scheduleId",null);
+updateSession("filePath",null);
+updateSession("studytype",null);
+displayErrorMessageFromComponent("");
+}
+else
+{
+updateSession("scheduleId",null);
+updateSession("filePath",null);
+updateSession("studytype",null);
+detachWindow("acqschedule");
+}
+}
+else
+{
+message("No file selected.");
+}
+}
+else
+{
+message("Acquisition exists for this record.");
+}
+}
+else
+{
+String acqfilepath = getSessionData("acuisitionpath");
+if(acqfilepath!=null)
+{
+createPopUp("FileBrowse");
+String file = getSessionData("filePath");
+if(file!=null)
+{
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get patientacquisition.ID,patientacquisition.scheduleid from neiswispicdb.patientacquisition conditions patientacquisition.scheduleid:="+sid);
+String acqid = getDataFromAllValuesVar(0, 0);
+String retVal = invokeComponent("storage.comp","RetrieveDataFromStorage","com.oxymedical.component.storage.StorageComponent",acqid+"_"+file);
+if(retVal == "false")
+{
+updateSession("scheduleId",null);
+updateSession("filePath",null);
+updateSession("studytype",null);
+displayErrorMessageFromComponent("");
+}
+else
+{
+updateSession("retrieve",null);
+updateSession("scheduleId",null);
+updateSession("filePath",null);
+updateSession("studytype",null);
+detachWindow("acqschedule");
+}
+}
+else
+{
+message("No file selected.");
+}
+}
+else
+{
+message("There is no acquisition for this record.");
+}
+}
+}
+else
+{
+message("Please select a record.");
+}
+};
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="8" visible="true" droppable="false" label="Cancel" id="button118" width="138px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:5px;
+margin-top:5px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:5px;
+margin-bottom:5px;
+color:#316AC5;
+background-position:tile;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("acqschedule");
+setDatapatternId("");
+updateSession("filePath",null);
+updateSession("scheduleId",null);
+updateSession("studytype",null);
+detachWindow("acqschedule");
+]]></attribute>
+  
+</button>
+
+</div>
+
+</div>
+
+</window>
+</zk>
+

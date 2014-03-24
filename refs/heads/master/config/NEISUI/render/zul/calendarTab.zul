@@ -1,0 +1,53 @@
+<zk>
+<style src="/css/calendarTab.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="calendarTab"?>
+ <window class="calendarTab" height="730px" visible="true" droppable="false" id="calendarTab" title="" width="100%" draggable="false">
+   <div class="frame90" height="648px" visible="true" droppable="false" align="none" id="frame90" width="768px" draggable="false">
+    <div class="frame91" height="217px" visible="true" droppable="false" align="none" id="frame91" width="356px" draggable="false">
+    <label class="label37" height="23px" visible="true" droppable="false" value="You have clicked on the Calender tab." id="label37" width="309px" draggable="false">
+   
+</label>
+ <label class="label38" height="30px" visible="true" droppable="false" value="Do you wish to schedule this patient?" id="label38" width="307px" draggable="false">
+   
+</label>
+ <button class="button157" height="30px" tabindex="9" visible="true" droppable="false" label="YES" id="button157" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("calendarTab");
+setDatapatternId("");
+
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","patientschedular");
+;
+]]></attribute>
+  
+</button>
+ <button class="button158" height="30px" tabindex="10" visible="true" droppable="false" label="NO" id="button158" width="75px" draggable="false">
+   
+</button>
+ <label class="label39" height="20px" visible="true" droppable="false" value="Patient Name:" id="label39" width="102px" draggable="false">
+   
+</label>
+ <label class="label40" height="30px" visible="true" droppable="false" value="Identifier Number:" id="label40" width="127px" draggable="false">
+   
+</label>
+ <textbox class="textbox34" maxlength="32767" height="20px" tabindex="13" readonly="false" visible="true" id="textbox34" droppable="false" value="" name="textbox34"  width="125px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox35" maxlength="32767" height="20px" tabindex="14" readonly="false" visible="true" id="textbox35" droppable="false" value="" name="textbox35"  width="124px" draggable="false" onChange='setTextboxId()'>
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("calendarTab");
+setDatapatternId("");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","search");
+]]></attribute>
+  
+</textbox>
+
+</div>
+
+</div>
+
+</window>
+</zk>
+

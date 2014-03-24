@@ -1,0 +1,47 @@
+<zk>
+<style src="/css/PopupFileList.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="PopupFileList"?>
+ <window class="PopupFileList" height="500px" visible="true" droppable="false" id="PopupFileList" title="" width="100%" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("PopupFileList");
+setDatapatternId("");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","ToolPreprocessorInput");
+;
+]]></attribute>
+  <div class="frame226" height="448px" visible="true" droppable="false" align="none" id="frame226" width="448px" draggable="false">
+    <div class="frame227" height="343px" visible="true" droppable="false" align="none" id="frame227" width="425px" draggable="false">
+    <listbox class="listbox12" draggable="false" height="272px" multiple="true" visible="true" droppable="false" id="listbox12" width="403px" fixedLayout= "true">
+   
+</listbox>
+ <div class="frame228" height="41px" visible="true" droppable="false" align="none" id="frame228" width="400px" draggable="false">
+    <label class="label401" height="30px" visible="true" droppable="false" value="Select A File" id="label401" width="159px" draggable="false">
+   
+</label>
+
+</div>
+
+</div>
+ <div class="frame229" height="71px" visible="true" droppable="false" align="none" id="frame229" width="417px" draggable="false">
+    <button class="button247" height="30px" tabindex="0" visible="true" droppable="false" label="Ok" id="button247" width="75px" draggable="false">
+   
+</button>
+ <button class="button249" height="30px" tabindex="8" visible="true" droppable="false" label="Cancel" id="button249" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("PopupFileList");
+setDatapatternId("");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","ToolPreprocessorInput");
+;
+]]></attribute>
+  
+</button>
+
+</div>
+
+</div>
+
+</window>
+</zk>
+

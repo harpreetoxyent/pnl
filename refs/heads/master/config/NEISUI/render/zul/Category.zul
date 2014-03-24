@@ -1,0 +1,135 @@
+<zk>
+<style src="/css/Category.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="Category"?>
+ <window class="Category" height="749px" visible="true" droppable="false" id="Category" title="" width="100%" draggable="false">
+   <div class="frame69" height="726px" visible="true" droppable="false" align="none" id="frame69" width="898px" draggable="false">
+    <div class="frame70" height="493px" visible="true" droppable="false" align="none" id="frame70" width="464px" draggable="false">
+    <listbox class="listbox0" draggable="false" height="363px" multiple="true" visible="true" droppable="false" id="listbox0" width="137px" fixedLayout= "true">
+   
+</listbox>
+ <listbox class="listbox1" draggable="false" height="360px" multiple="true" visible="true" droppable="false" id="listbox1" width="140px" fixedLayout= "true">
+   
+</listbox>
+ <button class="button131" height="30px" tabindex="9" visible="true" droppable="false" label="all categories" id="button131" width="85px" draggable="false">
+   
+</button>
+ <button class="button132" height="30px" tabindex="10" visible="true" droppable="false" label="categories in query" id="button132" width="105px" draggable="false">
+   
+</button>
+ <button class="button141" height="30px" tabindex="11" visible="true" droppable="false" label="move" id="button141" width="75px" draggable="false">
+   
+</button>
+ <button class="button142" height="30px" tabindex="12" visible="true" droppable="false" label="remove" id="button142" width="75px" draggable="false">
+   
+</button>
+
+</div>
+ <button class="button126" height="96px" tabindex="8" visible="true" droppable="false" label="EXIT QUERY BUILDER" id="button126" width="104px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("Category");
+setDatapatternId("");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","adminuser");
+]]></attribute>
+  
+</button>
+ <button class="button127" height="96px" tabindex="9" visible="true" droppable="false" label="BEGIN QUERY" id="button127" width="104px" draggable="false">
+   
+</button>
+ <div class="frame78" height="116px" visible="true" droppable="false" align="none" id="frame78" width="465px" draggable="false">
+    <button class="button128" height="30px" tabindex="0" visible="true" droppable="false" label="add category" id="button128" width="90px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("Category");
+setDatapatternId("");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","AddingCategory");
+]]></attribute>
+  
+</button>
+ <button class="button129" height="30px" tabindex="8" visible="true" droppable="false" label="edit category" id="button129" width="93px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("Category");
+setDatapatternId("");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","EditingCategory");
+]]></attribute>
+  
+</button>
+ <button class="button130" height="30px" tabindex="9" visible="true" droppable="false" label="delete category" id="button130" width="105px" draggable="false">
+   
+</button>
+
+</div>
+ <div class="frame79" height="397px" visible="true" droppable="false" align="none" id="frame79" width="159px" draggable="false">
+    <button class="button135" height="30px" tabindex="0" visible="true" droppable="false" label="Query Result Settings" id="button135" width="138px" draggable="false">
+   
+</button>
+ <button class="button136" height="30px" tabindex="8" visible="true" droppable="false" label="New Query" id="button136" width="127px" draggable="false">
+   
+</button>
+ <button class="button137" height="30px" tabindex="9" visible="true" droppable="false" label="Edit Query" id="button137" width="135px" draggable="false">
+   
+</button>
+ <button class="button138" height="30px" tabindex="10" visible="true" droppable="false" label="Save Query" id="button138" width="131px" draggable="false">
+   
+</button>
+ <button class="button139" height="30px" tabindex="11" visible="true" droppable="false" label="Delete Query" id="button139" width="131px" draggable="false">
+   
+</button>
+ <button class="button140" height="30px" tabindex="12" visible="true" droppable="false" label="button0" id="button140" width="75px" draggable="false">
+   
+</button>
+
+</div>
+ <textbox class="textbox22" maxlength="32767" height="20px" tabindex="12" readonly="false" visible="true" id="textbox22" droppable="false" value="last name" name="textbox22"  width="157px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox23" maxlength="32767" height="20px" tabindex="13" readonly="false" visible="true" id="textbox23" droppable="false" value="first name" name="textbox23"  width="157px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox class="textbox24" maxlength="32767" height="20px" tabindex="14" readonly="false" visible="true" id="textbox24" droppable="false" value="date Of Birth(yyyymmdd)" name="textbox24"  width="157px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <button class="button133" height="30px" tabindex="15" visible="true" droppable="false" label="search" id="button133" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("Category");
+setDatapatternId("");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","search");
+]]></attribute>
+  
+</button>
+ <button class="button134" height="30px" tabindex="16" visible="true" droppable="false" label="advance" id="button134" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("Category");
+setDatapatternId("");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","Category");
+]]></attribute>
+  
+</button>
+ <label class="label22" height="20px" visible="true" droppable="false" value="PATIENTdatabase" id="label22" width="103px" draggable="false">
+   
+</label>
+ <label class="label23" height="20px" visible="true" droppable="false" value="query BUILDER" id="label23" width="145px" draggable="false">
+   
+</label>
+ <div class="frame80" height="371px" visible="true" droppable="false" align="none" id="frame80" width="174px" draggable="false">
+    <div class="frame81" height="355px" visible="true" droppable="false" align="none" id="frame81" width="161px" draggable="false">
+    <label class="label24" height="23px" visible="true" droppable="false" value="Custom Queries" id="label24" width="113px" draggable="false">
+   
+</label>
+
+</div>
+
+</div>
+ <div class="frame82" height="10px" visible="true" droppable="false" align="none" id="frame82" width="464px" draggable="false">
+   
+</div>
+ <label class="label25" height="21px" visible="true" droppable="false" value="Category" id="label25" width="92px" draggable="false">
+   
+</label>
+
+</div>
+
+</window>
+</zk>
+

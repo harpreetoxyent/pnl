@@ -1,0 +1,96 @@
+<zk>
+<style src="/css/login.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?page id="login"?>
+ <window class="login" height="733px" visible="true" droppable="false" id="login" title="" width="100%" draggable="false">
+ <attribute name="onOK"><![CDATA[
+setFormPatternId("login");
+setDatapatternId("");
+boolean isValid = checkLoginBlankValue("textbox0","textbox1");
+if(isValid)
+{
+String retValue = invokeComponent("com.oxymedical.component.useradmin","authenticateUserEx","com.oxymedical.component.useradmin.UserAdminComponent","userId_SEP_textbox0_FIELDSEP_password_SEP_textbox1");
+if(retValue!="true")
+{
+message("username and/or password invalid");
+textbox0.text="";
+textbox1.text="";
+setFocus("textbox0");
+}
+}
+else
+{
+	message("sign-in failed. please try again ");
+	textbox0.text="";
+	textbox1.text="";
+	setFocus("textbox0");
+	
+}
+;
+]]></attribute>
+  <div class="frame0" height="721px" visible="true" droppable="false" align="center" id="frame0" width="823px" draggable="false">
+    <div class="frame1" height="190px" visible="true" droppable="false" align="none" id="frame1" width="299px" draggable="false">
+    <label class="label0" height="15px" visible="true" droppable="false" value="username" id="label0" width="71px" draggable="false">
+   
+</label>
+ <label class="label1" height="19px" visible="true" droppable="false" value="password" id="label1" width="68px" draggable="false">
+   
+</label>
+ <textbox class="textbox0" maxlength="32767" height="20px" tabindex="1" readonly="false" visible="true" id="textbox0" droppable="false" value="" name="textbox0"  width="155px" draggable="false" onChange='setTextboxId()'>
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("login");
+setDatapatternId("");
+setFocus("textbox0");
+]]></attribute>
+  
+</textbox>
+ <textbox class="textbox1" maxlength="32767" height="20px" tabindex="2" readonly="false" visible="true" id="textbox1" droppable="false" value="" name="textbox1"  type="password" width="155px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <imagemap class="picture6" draggable="false" height="24px" visible="true" src="img/picture6.jpg" droppable="false" id="picture6" width="101px">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("login");
+setDatapatternId("");
+createPopUp("ForgotPassword");
+]]></attribute>
+  
+</imagemap>
+
+</div>
+ <button class="button0" height="30px" tabindex="3" visible="true" droppable="false" label="sign in." id="button0" width="101px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("login");
+setDatapatternId("");
+boolean isValid = checkLoginBlankValue("textbox0","textbox1");
+if(isValid)
+{
+String retValue = invokeComponent("com.oxymedical.component.useradmin","authenticateUserEx","com.oxymedical.component.useradmin.UserAdminComponent","userId_SEP_textbox0_FIELDSEP_password_SEP_textbox1");
+if(retValue!="true")
+{
+message("username and/or password invalid");
+textbox0.text="";
+textbox1.text="";
+setFocus("textbox0");
+}
+}
+else
+{
+	message("sign-in failed. please try again ");
+	textbox0.text="";
+	textbox1.text="";
+	setFocus("textbox0");
+	
+};
+]]></attribute>
+  
+</button>
+ <div class="frame59" height="105px" visible="true" droppable="false" align="center" id="frame59" width="669px" draggable="false">
+   
+</div>
+
+</div>
+
+</window>
+</zk>
+

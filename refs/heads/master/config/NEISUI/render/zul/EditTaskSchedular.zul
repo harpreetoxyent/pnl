@@ -1,0 +1,367 @@
+<zk>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="EditTaskSchedular"?>
+ <window height="183px" visible="true" droppable="false" id="EditTaskSchedular" title="" width="280px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <attribute name="onEventCreate"><![CDATA[
+setFormPatternId("EditTaskSchedular");
+setDatapatternId("");
+String id=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get  SchedularTime.ID,SchedularTime.ScheduleTime,Schedular.ID,Schedular.Method,Schedular.Description,Schedular.ClassName,Schedular.Component from neiswispicdb.SchedularTime,neiswispicdb.Schedular conditions SchedularTime.SchedularID:=Schedular.ID and SchedularTime.ID:="+id);
+data=createArray("String", "textbox182,textbox181,textbox183,textbox184,textbox180,textbox186,textbox187");
+showData(data);
+]]></attribute>
+<attribute name="onCreate"><![CDATA[
+setFormPatternId("EditTaskSchedular");
+setDatapatternId("");
+String id=getSessionData("rowId");
+textbox182.setVisible(false);
+textbox183.setVisible(false);
+textbox184.setVisible(false);
+textbox186.setVisible(false);
+textbox187.setVisible(false);
+String id=getSessionData("rowId");
+invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get  SchedularTime.ID,SchedularTime.ScheduleTime,Schedular.ID,Schedular.Method,Schedular.Description,Schedular.ClassName,Schedular.Component from neiswispicdb.SchedularTime,neiswispicdb.Schedular conditions SchedularTime.SchedularID:=Schedular.ID and SchedularTime.ID:="+id);
+data=createArray("String", "textbox182,textbox181,textbox183,textbox184,textbox180,textbox186,textbox187");
+showData(data);
+
+;
+]]></attribute>
+
+<custom-attributes formpattern="${param.formpattern}" datapattern="${param.datapattern}"/>
+  <vbox height="173px" visible="true" droppable="false" align="none" id="frame188" width="260px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:5px;
+margin-top:5px;
+background-color:#FFFFFF;
+left:0px;
+font-size:8pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:5px;
+margin-bottom:5px;
+color:#000000;
+background-position:tile;
+top:0px;
+" >
+    <grid height="104px" visible="true" droppable="false" id="lattice6" width="300px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("EditTaskSchedular");
+setDatapatternId("");
+String gridStyle = "background-color:Transparent;border:0px";
+lattice6.setStyle(gridStyle);
+row700.setStyle(gridStyle);
+row701.setStyle(gridStyle);
+;
+]]></attribute>
+<rows>
+   <row draggable="false" height="44px" visible="true" droppable="false" id="row700" width="300px" style="font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <label height="30px" visible="true" droppable="false" value="Description:" id="label313" width="80px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="8" readonly="false" visible="true" id="textbox180" droppable="false" value="" name="Description:"  draggable="false" width="150px" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+
+</row>
+ <row draggable="false" height="44px" visible="true" droppable="false" id="row701" width="300px" style="font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <label height="30px" visible="true" droppable="false" value="Time:" id="label314" width="80px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+text-align:left;
+background-position:tile;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="8" readonly="false" visible="true" id="textbox181" droppable="false" value="z" name="Time:" constraint="/((^[0]{1}$|^[-]?[1-9]{1}\d*$)|)/:Numeric whole value only" draggable="false" width="150px" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+
+</row>
+</rows>
+
+</grid>
+ <div height="40px" visible="true" droppable="false" align="center" id="frame189" width="261px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+    <button height="30px" tabindex="0" visible="true" droppable="false" label="Update" id="button207" width="75px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:5px;
+margin-top:5px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:5px;
+margin-bottom:5px;
+color:#000000;
+background-position:tile;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("EditTaskSchedular");
+setDatapatternId("");
+String timeValue=textbox181.text;
+String isValid = checkIntegerValueWithOperator(timeValue,"5","GREATERTHAN");
+if(isValid!=null )
+{
+String getValue=invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","");
+if(getValue=="true")
+{
+invokeComponent("com.oxymedical.component.SchedularComponent","rescheduleTask","com.oxymedical.component.schedularcomponent.SchedularComponent","");
+invokeComponent("com.oxymedical.component.SchedularComponent","scheduleTask","com.oxymedical.component.schedularcomponent.SchedularComponent","");
+detachWindow("EditTaskSchedular");
+}
+};
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="8" visible="true" droppable="false" label="Cancel" id="button208" width="75px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:5px;
+margin-top:5px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:5px;
+margin-bottom:5px;
+color:#000000;
+background-position:tile;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("EditTaskSchedular");
+setDatapatternId("");
+detachWindow("EditTaskSchedular");
+]]></attribute>
+  
+</button>
+
+</div>
+
+</vbox>
+ <textbox maxlength="32767" height="20px" tabindex="1" readonly="false" visible="true" id="textbox182" droppable="false" value="" name="textbox182"  width="95px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox maxlength="32767" height="20px" tabindex="2" readonly="false" visible="true" id="textbox183" droppable="false" value="" name="textbox183"  width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox maxlength="32767" height="20px" tabindex="8" readonly="false" visible="true" id="textbox184" droppable="false" value="" name="textbox184"  width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox maxlength="32767" height="20px" tabindex="10" readonly="false" visible="true" id="textbox186" droppable="false" value="" name="textbox186"  width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+ <textbox maxlength="32767" height="20px" tabindex="11" readonly="false" visible="true" id="textbox187" droppable="false" value="" name="textbox187"  width="100px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+
+</window>
+</zk>
+

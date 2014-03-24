@@ -1,0 +1,81 @@
+<zk>
+<style src="/css/WaveFormJobs.css"/>
+<style src="/css/__common.css"/>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="WaveFormJobs"?>
+ <window class="WaveFormJobs" height="731px" visible="true" droppable="false" id="WaveFormJobs" title="" width="100%" draggable="false">
+   <div class="frame164" height="720px" visible="true" droppable="false" align="none" id="frame164" width="770px" draggable="false">
+    <tabbox class="multitab7" height="710px" width="760px" draggable="false" id="multitab7" droppable="false" tabscroll="false">
+ <tabs>
+   <tab  label="Jobs" draggable="false" id="tabpage26" droppable="false">
+ 
+</tab>
+ <tab  label="Set Up" draggable="false" id="tabpage15" droppable="false">
+ 
+</tab>
+</tabs>
+<tabpanels><tabpanel style="background-color:#FFFFFF;position:relative;" ><div class="frame165" height="680px" droppable="false" align="none" id="frame165" width="750px" draggable="false">
+    <listbox class="grid24" height="393px" multiple="False" visible="true" droppable="false" id="grid24" width="713px" draggable="false" fixedLayout= "true">
+    <listhead sizable="true" draggable="false" height="30px" visible="true" droppable="false" id="row73" width="711px">
+ <listheader label="Job ID" style="font-size:9;font-family:Microsoft Sans Serif;font-weight:bold;text-align:center;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column348" width="129px">
+
+</listheader>
+ <listheader label="Job Tool Name" style="font-size:9;font-family:Microsoft Sans Serif;font-weight:bold;text-align:center;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column437" width="149px">
+
+</listheader>
+ <listheader label="Created By" style="font-size:9;font-family:Microsoft Sans Serif;font-weight:bold;text-align:center;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column527" width="150px">
+
+</listheader>
+ <listheader label="Created Date" style="font-size:9;font-family:Microsoft Sans Serif;font-weight:bold;text-align:center;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column528" width="149px">
+
+</listheader>
+ <listheader label="Status" style="font-size:9;font-family:Microsoft Sans Serif;font-weight:bold;text-align:center;white-space:normal;"  draggable="false" height="30px" visible="true" droppable="false" id="column620" width="134px">
+
+</listheader>
+
+</listhead>
+
+</listbox>
+ <button class="button175" height="30px" tabindex="1" visible="true" droppable="false" label="Create Job" id="button175" width="97px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("WaveFormJobs");
+setDatapatternId("");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","WaveFormTools");
+;
+]]></attribute>
+  
+</button>
+ <button class="button176" height="30px" tabindex="8" visible="true" droppable="false" label="Cancel Job" id="button176" width="96px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("WaveFormJobs");
+setDatapatternId("");
+invokeComponent("id.rendering","moveForm","com.oxymedical.component.renderer.RendererComponent","HomeForm");
+;
+]]></attribute>
+  
+</button>
+
+</div></tabpanel><tabpanel style="background-color:#FFFFFF;position:relative;" ><label class="label273" height="30px" droppable="false" value="Net Station IP:" id="label273" width="119px" draggable="false">
+   
+</label>
+ <textbox class="textbox133" maxlength="32767" height="20px" tabindex="8" readonly="false" id="textbox133" droppable="false" value="" name="textbox131"  width="223px" draggable="false" onChange='setTextboxId()'>
+   
+</textbox>
+ <button class="button178" height="30px" tabindex="9" droppable="false" label="Save" id="button178" width="75px" draggable="false">
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("WaveFormJobs");
+setDatapatternId("");
+addFormValue("ipAddress", textbox131.text);
+invokeComponent("com.oxymedical.component.HDEEGComponent","setUpNetStation","com.oxymedical.component.HDEEGComponent.HDEEGComponent ", "");
+]]></attribute>
+  
+</button></tabpanel></tabpanels>
+</tabbox>
+
+
+</div>
+
+</window>
+</zk>
+

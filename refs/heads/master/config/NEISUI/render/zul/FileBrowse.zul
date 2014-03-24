@@ -1,0 +1,202 @@
+<zk>
+<zscript src="/library/uilibrary.zs"/>
+<?init zscript="/library/init.zs"?>
+<?page id="FileBrowse"?>
+ <window height="120px" visible="true" droppable="false" id="FileBrowse" title="" width="340px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:2px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:2px;
+position:absolute;
+padding-bottom:2px;
+padding-right:2px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ 
+<custom-attributes formpattern="${param.formpattern}" datapattern="${param.datapattern}"/>
+  <div height="63px" visible="true" droppable="false" align="center" id="frame196" width="323px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+    <grid height="70px" visible="true" droppable="false" id="lattice7" width="320px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:#FFFFFF;
+left:5px;
+font-size:8.25pt;
+padding-left:0px;
+position:absolute;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+top:3px;
+" >
+ <attribute name="onCreate"><![CDATA[
+setFormPatternId("FileBrowse");
+setDatapatternId("");
+String gridStyle = "background-color:Transparent;border:0px";
+lattice7.setStyle(gridStyle);
+row168.setStyle(gridStyle);
+]]></attribute>
+<rows>
+   <row draggable="false" height="40px" visible="true" droppable="false" id="row168" width="320px" style="font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-family:Microsoft Sans Serif;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+ <label height="20px" visible="true" droppable="false" value="Give the file path" id="label323" width="123px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#316AC5;
+text-align:left;
+background-position:tile;
+" >
+   
+</label>
+ <textbox maxlength="32767" height="20px" tabindex="0" readonly="false" visible="true" id="textbox188" droppable="false" value="" name="textbox188"  width="160px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+"  onChange='setTextboxId()'>
+   
+</textbox>
+
+</row>
+</rows>
+
+</grid>
+
+</div>
+ <div height="38px" visible="true" droppable="false" align="center" id="frame197" width="317px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-style:normal;
+padding-top:0px;
+margin-right:0px;
+margin-top:0px;
+background-color:Transparent;
+font-size:8pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:0px;
+margin-bottom:0px;
+color:#000000;
+background-position:tile;
+" >
+    <button height="30px" tabindex="8" visible="true" droppable="false" label="Set Path" id="button210" width="114px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:5px;
+margin-top:5px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:5px;
+margin-bottom:5px;
+color:#316AC5;
+background-position:tile;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("FileBrowse");
+setDatapatternId("");
+String filepath = textbox188.getText();
+if(filepath!=null)
+{
+String newfilepath = filepath.replaceAll("/","\\\\");
+updateSession("filePath", newfilepath);
+detachWindow("FileBrowse");
+}
+else
+{
+message("Not a valid path.");
+};
+]]></attribute>
+  
+</button>
+ <button height="30px" tabindex="0" visible="true" droppable="false" label="Cancel" id="button211" width="113px" draggable="false" style="font-family:Microsoft Sans Serif;
+font-weight:bold;
+padding-top:0px;
+margin-right:5px;
+margin-top:5px;
+background-color:Transparent;
+font-size:8.25pt;
+padding-left:0px;
+position:relative;
+padding-bottom:0px;
+padding-right:0px;
+margin-left:5px;
+margin-bottom:5px;
+color:#316AC5;
+background-position:tile;
+" >
+ <attribute name="onClick"><![CDATA[
+setFormPatternId("FileBrowse");
+setDatapatternId("");
+updateSession("filePath", null);
+detachWindow("FileBrowse");
+]]></attribute>
+  
+</button>
+
+</div>
+
+</window>
+</zk>
+
