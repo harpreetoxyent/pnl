@@ -1,0 +1,257 @@
+options 
+    {
+      MULTI=false;
+      STATIC=false;               
+    }
+
+
+    PARSER_BEGIN( RuleParser )
+    package com.oxymedical.component.rulesComponent.parser.javacc;    
+    public class RuleParser{}; 
+    PARSER_END( RuleParser )
+
+
+    SimpleNode parse(): 
+    {} 
+    { 
+	( ruleSetLine() )* <EOF> 	
+	{		
+		return jjtThis;} 
+    }   
+
+	// a ruleset consists of a variable list and a rule list
+    void ruleSetLine():
+    {Token t;}
+    { 
+	( (exitLine())* (<openrulesetattr> t=<WORD> <RA>) variablesList() ruleList() <endruleset> (exitLine())* )	
+	{
+		jjtThis.setToken(t.kind, t.image); 
+	}
+    }
+   
+    // variable list consists of number of variables 
+    void variablesList() #void :
+    {}
+    { 
+	( (exitLine())* <openvariables> (variable())* <endvariables> (exitLine())* )
+    }
+      
+    // Each variable has a type and an id    
+    void variable():
+    {}
+    {
+	( (exitLine())* <openvariable> type() id() <endvariable> (exitLine())* )
+    }
+
+	// type consists of a word
+    void type():
+    {Token t;}
+    {
+	( (exitLine())* <openType> (exitLine())*  t=<WORD> (exitLine())* <endType> (exitLine())* )
+	{
+		jjtThis.setToken(t.kind, t.image); 		
+	}
+    }
+
+	// id consists of a word
+    void id():
+    {Token t;}
+    {
+	( (exitLine())* <openID> (exitLine())* t=<WORD> (exitLine())* <endID> (exitLine())* )
+	{
+		jjtThis.setToken(t.kind, t.image);
+	}
+    }
+
+	// rule list has number of rules
+    void ruleList() #void :
+    {}
+    { 
+	(ruleLine())*
+    }
+
+	// each rule has a name which is unique across the rule set and consists of an if line and then line
+    void ruleLine():
+    {Token t;}
+    { 
+	((exitLine())* (<openruleattr> t=<WORD> <RA>) salienceLine() ifLine() thenLine() urlLine() <endrule> (exitLine())*)
+	{
+		jjtThis.setToken(t.kind, t.image);
+	}
+    }
+    
+    // if line has a list of conditions
+    void salienceLine():
+    {Token t;}
+    { 
+	((exitLine())* <opensalience> (exitLine())* t=<WORD> (exitLine())* <endsalience> (exitLine())* )
+	{
+		jjtThis.setToken(t.kind, t.image);		
+	}
+    }
+	
+	// if line has a list of conditions
+    void ifLine():
+    {}
+    { 
+	((exitLine())* <openif> conditionList() <endif> (exitLine())* )
+    }
+
+	// Condition list consists of number of conditions
+    void conditionList() #void :
+    {}
+    { 
+	( (exitLine())* <openconditionlist> condition() <endconditionlist> (exitLine())*)
+    }
+    
+    // Each condition has a name and consists of word which defines complex conditions   
+    void condition():
+    {Token t;}
+    { 
+	( (exitLine())* (<opencondition> | <openconditionattr> <WORD> <RA>) (exitLine())* t=<WORD> (exitLine())* <endcondition> (exitLine())*)
+	{
+		jjtThis.setToken(t.kind, t.image);		
+	}
+    }
+    
+    // Then line consists of list of consequences
+    void thenLine():
+    {}
+    { 
+	((exitLine())* <openthen> consequenceList() <endthen> (exitLine())*)
+    }
+
+	// consequences list consists of number of consequences
+    void consequenceList() #void :
+    {}
+    { 
+	((exitLine())* <openconsequencelist> (consequenceLine())* <endconsequencelist> (exitLine())*)
+    }
+   
+    void consequenceLine() #void :
+    {}
+    { 
+	( consequence() )
+    }
+
+	// Each consequence has a name and consists of word that defines the consequence to be executed when the condition is satisfied
+    void consequence():
+    {Token t;}
+    { 
+	((exitLine())* (<openconsequence> | <openconsequenceattr> <WORD> <RA>) (exitLine())* t=<WORD> (exitLine())* <endconsequence> (exitLine())*)
+	{
+		jjtThis.setToken(t.kind, t.image);
+	}
+    }
+    
+    void urlLine():
+    {Token t=new Token();}
+    { 
+	((exitLine())* <openurl> (t=<WORD>)? <endurl> (exitLine())*)
+	{
+		jjtThis.setToken(t.kind, t.image);
+	}
+    }
+    
+    // Exit line defines the terminating characters or characters to be ignored in a rule
+    void exitLine() #void :
+    {}
+    {
+	(<SPC> | <CRLF>)
+    }
+
+
+    SKIP : { "\n" | "\r" | "\t" }
+
+    TOKEN : 
+    {
+    	< LA  : "<" > 
+    |
+    	< RA  : ">" >
+    |
+    	< SLASH  : "/" >
+    |
+    	< openruleset  : "<ruleset>" >
+    |
+    	< openrulesetattr  : "<ruleset name=" >
+    |
+    	< endruleset  : "</ruleset>" >
+    |
+    	< openvariables  : "<variable-list>" >
+    |
+    	< endvariables  : "</variable-list>" >
+    |
+    	< openvariable  : "<variable>" >
+    |
+    	< openvariableattr  : "<variable name=" >
+    |
+    	< endvariable  : "</variable>" >
+    |
+    	< openType  : "<type>" >
+    |
+    	< endType  : "</type>" >
+    |
+    	< openID  : "<id>" >
+    |
+    	< endID  : "</id>" >
+    |
+    	< openrule  : "<rule>" >
+    |
+    	< openruleattr  : "<rule name=" >
+    |
+    	< endrule  : "</rule>" >
+    |	
+    	< opensalience : "<salience>">
+    |	
+    	< endsalience : "</salience>">
+    |
+    	< openif  : "<if>" >
+    |
+    	< endif  : "</if>" >
+    |
+    	< openconditionlist  : "<condition-list>" >
+    |
+    	< endconditionlist  : "</condition-list>" >
+    |
+    	< opencondition  : "<condition>" >
+    |
+    	< openconditionattr  : "<condition name=" >
+    |
+    	< endcondition  : "</condition>" >
+    |
+    	< openoperator  : "<operator>" >
+    |
+    	< openoperatorattr  : "<operator name=" >
+    | 
+    	< endoperator  : "</operator>" >
+    |
+    	< openthen  : "<then>" >
+    |
+    	< endthen  : "</then>" >
+    |	
+    	< openurl	: "<url>">
+    |	
+    	< endurl	: "</url>">
+    |
+    	< openconsequencelist  : "<consequence-list>" >
+    |
+    	< endconsequencelist  : "</consequence-list>" >
+    |
+    	< openconsequence  : "<consequence>" >
+    |
+    	< openconsequenceattr  : "<consequence name=" >
+    |
+    	< endconsequence  : "</consequence>" >
+    |
+    	< DIGITS : ( ["0" - "9"] )+  > 
+    |
+    	< WORD   : ( ["a"-"z" , "A"-"Z" , "," , "0"-"9" , "-" , "=" , "." , "\"" , " " ,"(" ,")", "&" , ";" , "|" , "!" , ":" , "/" , "\\"])+ >
+    |
+    	< SPC   : ( [" ", "\t"])+ >
+    |
+   		< CRLF   : ( ["\r","\n"])+ >
+   	|	
+   		< ESC   : ( ["\"", "\'"])+ >    	
+  } 
+ 
+ 
