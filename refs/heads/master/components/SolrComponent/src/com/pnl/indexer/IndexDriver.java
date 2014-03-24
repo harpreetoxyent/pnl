@@ -16,6 +16,8 @@ import org.apache.hadoop.mapred.FileOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
+import com.oxymedical.core.propertyUtil.PropertyUtil;
+
 public class IndexDriver extends Configured implements Tool {
 
 	public static void main(String[] args) throws Exception {
@@ -49,7 +51,9 @@ public class IndexDriver extends Configured implements Tool {
 		 * success = job.waitForCompletion(true); //System.exit(success ? 0 :
 		 * 1); return success?0:1;
 		 */
-
+		String jobTracker = PropertyUtil.setUpProperties("HADOOP_JOB_TRACKER");
+		String fsName = PropertyUtil.setUpProperties("HADOOP_FS_DEFAULT_NAME");
+		
 		JobConf conf = new JobConf(getConf(), IndexDriver.class);
 		conf.setJobName("IndexDriver");
 		conf.setSpeculativeExecution(false);
