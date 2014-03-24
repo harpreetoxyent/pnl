@@ -1,5 +1,9 @@
 package com.pnl.component.search;
 
-public interface ISearchComponent {
+import com.oxymedical.core.commonData.IHICData;
+
+public interface ISearchComponent
+{
+	public IHICData executeSearch(IHICData searchDataObject);
 
 }
