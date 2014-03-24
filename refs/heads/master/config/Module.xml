@@ -36,6 +36,23 @@
 		    </maintenance>
 		</module>
 		<module
+			name="Search Component"
+			id="pnl.search.comp"
+			version="1.0.0"
+			provider-name="PNL"
+			class="com.pnl.component.search.SearchComponent">
+	
+	 		<requires>
+		 		<jarFolder location="d://storageJar" />
+				<import module="baseComponent.jar"/>
+			</requires>
+		    <runtime>
+				<library name="testworld.jar"/>	
+		    </runtime>
+		    <maintenance>
+		    </maintenance>
+		</module>
+		<module
 			name="Crawler Component"
 			id="pnl.crawler.comp"
 			version="1.0.0"
