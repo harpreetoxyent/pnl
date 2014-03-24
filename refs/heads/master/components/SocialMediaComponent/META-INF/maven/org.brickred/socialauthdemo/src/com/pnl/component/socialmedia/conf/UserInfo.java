@@ -13,7 +13,7 @@ public class UserInfo
 	public UserInfo() {
     }
 
-    public UserInfo(String firstName, String lastName, String email, String gender,String country, String location, String language, int day, int month , int year, String profileImageURL , List<Contact> userContacts)
+    public UserInfo(String firstName, String lastName, String email, String gender,String country, String location, String language, int day, int month , int year, String profileImageURL , int age , List<Contact> userContacts)
     {
         
         this.firstName = firstName;
@@ -29,6 +29,7 @@ public class UserInfo
         this.day = day;
         this.month = month;
         this.year = year;
+        this.age = age;
         
         
     }
@@ -118,9 +119,11 @@ public class UserInfo
 	 */
 	private int year;
 	
+	/**
+	 * Age to be calculated
+	 */
 	
-	
-	
+	private int age;
 	/**
 	 * Retrieves the first name
 	 * 
@@ -417,6 +420,26 @@ public class UserInfo
 	
 	public int getYear() {
 		return year;
+	}
+
+	/**
+	 * Updates the age
+	 * 
+	 * @param year
+	 *            the age
+	 */
+	public void setAge(final int age) {
+		this.age = age;
+	}
+	
+	/**
+	 * Retrieves the age
+	 * 
+	 * @return int age
+	 */
+	
+	public int getAge() {
+		return age;
 	}
 
 	/**

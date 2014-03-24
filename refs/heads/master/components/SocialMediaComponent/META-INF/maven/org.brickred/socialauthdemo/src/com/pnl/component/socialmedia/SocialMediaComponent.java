@@ -1,6 +1,8 @@
 package com.pnl.component.socialmedia;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
@@ -152,6 +154,35 @@ public class SocialMediaComponent implements ISocialMediaComponent, IComponent
 		userProfileInfo.setLanguage(p.getLanguage());	
 		userProfileInfo.setProfileImageURL(p.getProfileImageURL());
 		
+		int yearDOB = userProfileInfo.getYear();
+		int monthDOB = userProfileInfo.getMonth();
+		int dayDOB = userProfileInfo.getDay();
+		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy");
+		java.util.Date date = new java.util.Date();
+		int thisYear = Integer.parseInt(dateFormat.format(date));
+		
+		dateFormat = new SimpleDateFormat("MM");
+		date = new java.util.Date();
+		int thisMonth = Integer.parseInt(dateFormat.format(date));
+
+		dateFormat = new SimpleDateFormat("dd");
+		date = new java.util.Date();
+		int thisDay = Integer.parseInt(dateFormat.format(date));
+		
+		int age = thisYear-yearDOB;
+		
+		if(thisMonth < monthDOB)
+		{
+			age = age - 1;
+		}
+		
+		if(thisMonth == monthDOB && thisDay < dayDOB)
+		{
+			age = age - 1;
+		}
+		userProfileInfo.setAge(age);
+		System.out.println(" AGE CALCULATED = " + age );
 		userProfileInfo.setUserContacts(provider.getContactList());
 		List<Contact> list = userProfileInfo.getUserContacts();
 		for (int i=0; i<list.size(); i++)
@@ -172,5 +203,12 @@ public class SocialMediaComponent implements ISocialMediaComponent, IComponent
 		return hicData;
 	}
 	
-
+	public void addUnivURLToAnswerData()
+	{
+		System.out.println("------Execute the addUniversity URLToAnswerData consequence-------- ");
+	}
+	public void addTouURLToAnswerData()
+	{
+		System.out.println("------Execute the addTourist URLToAnswerData consequence-------- ");
+	}
 }

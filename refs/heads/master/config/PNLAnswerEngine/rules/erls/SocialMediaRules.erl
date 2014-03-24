@@ -5,8 +5,8 @@
 			<id>dataObject</id>
 		</variable>
 		<variable>
-			<type>com.recommender.datamodel.ISocialMediaObject</type>
-			<id>socObject</id>
+			<type>com.pnl.component.socialmedia.SocialMediaComponent</type>
+			<id>socialObject</id>
 		</variable>
 	</variable-list>
 	<rule name="TestRule1">
@@ -14,14 +14,14 @@
 		<if>
 			<condition-list>
 				<condition name="cond1">
-					(dataObject.getLocation() == "US")
+					(dataObject.getMetaData().getCommonObject().getLocation() == "US")
 				</condition>
 			</condition-list>
 		</if>
 		<then>
 			<consequence-list>
 				<consequence name="c1">
-					socObject.addUniURLIntoData()
+					socialObject.addURLToAnswerData()
 				</consequence>
 			</consequence-list>
 			</then>
@@ -32,14 +32,14 @@
 		<if>
 			<condition-list>
 				<condition name="cond1">
-					(dataObject.getLocation() == "US")
+					(dataObject.getMetaData().getCommonObject().getAge == "58")
 				</condition>
 			</condition-list>
 		</if>
 			<then>
 				<consequence-list>
 					<consequence name="c1">
-						socObject.addLocURLIntoData()
+						socialObject.addURLToAnswerData()
 					</consequence>
 				</consequence-list>
 			</then>
