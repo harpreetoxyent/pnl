@@ -8,7 +8,9 @@ import java.util.Map;
 
 import org.brickred.socialauth.AuthProvider;
 import org.brickred.socialauth.Contact;
+import org.brickred.socialauth.Feed;
 import org.brickred.socialauth.Profile;
+import org.brickred.socialauth.plugin.FeedPlugin;
 import org.dom4j.Document;
 
 import com.oxymedical.component.baseComponent.IComponent;
@@ -157,6 +159,16 @@ public class SocialMediaComponent implements ISocialMediaComponent, IComponent
 			System.out.println("User Contacts "+i+list.get(i));
 		}
 		hicData.getMetaData().setCommonObject(userProfileInfo);
+		
+		if (provider.isSupportedPlugin(org.brickred.socialauth.plugin.FeedPlugin.class)) 
+		{
+		    FeedPlugin feedPlugin = provider.getPlugin(org.brickred.socialauth.plugin.FeedPlugin.class);
+		    List<Feed> feeds = feedPlugin.getFeeds();
+		    for (int i=0; i<feeds.size(); i++)
+			{
+				System.out.println("------Feeds-------- "+i+feeds.get(i));
+			}
+		}
 		return hicData;
 	}
 	

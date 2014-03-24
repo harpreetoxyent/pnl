@@ -16,9 +16,6 @@
 				<condition name="cond1">
 					(dataObject.getLocation() == "US")
 				</condition>
-				<condition name="cond2">
-					((dataObject.getAge() >= 18) && (dataObject.getAge() <= 25))
-				</condition>
 			</condition-list>
 		</if>
 		<then>
@@ -36,9 +33,6 @@
 			<condition-list>
 				<condition name="cond1">
 					(dataObject.getLocation() == "US")
-				</condition>
-				<condition name="cond2">
-					((dataObject.getAge() >= 25) && (dataObject.getAge() <= 40))
 				</condition>
 			</condition-list>
 		</if>

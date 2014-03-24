@@ -54,7 +54,7 @@
 		</module>
 		<module
 			name="Rules Component"
-			id="ruleCompnent"
+			id="ruleComponent"
 			version="1.0"
 			provider-name="Oxyent"
 			class="com.oxymedical.component.rulesComponent.RuleComponent">

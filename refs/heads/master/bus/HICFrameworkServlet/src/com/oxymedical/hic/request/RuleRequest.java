@@ -22,31 +22,28 @@ public class RuleRequest implements Runnable {
 	public void setApplication(IApplication application) {
 		this.application = application;
 	}
-	public RuleRequest(IHICData hicData,IApplication application)
+	public RuleRequest(IHICData hicData)
 	{
 		this.hicData= hicData;
-		this.application = application;
 	}
 	public void intializeRules()
 	{
-//		IWorkflowComponent workflowComp
-//		= (IWorkflowComponent)NOLISRuntime.getComponent(IComponentIdConstants.WORKFLOW_COMP_ID);
-//		System.out.println("----Inside workflow workflowComp-----"+workflowComp+ " --this.application"+this.application);
-
 		this.hicData.setApplication(this.application);
-		try {
-			NOLISRuntime.FireEvent("buildReteRules", new Object[]{hicData}, PublicationScope.Global);
-		} catch (Exception e) {
+		System.out.println("----Inside intializeRules----");
+		try
+		{
+			NOLISRuntime.FireEvent("buildReteRules", new Object[]{null}, PublicationScope.Global);
+		}
+		catch (Exception e) {
 			e.printStackTrace();
 		}
-//		workflowComp.initalizeWorkFlow(this.hicData);
 	}
 	@Override
 	public void run() 
 	{
 		try
 		{
-			System.out.println("----Inside Rules initiated thread-----");
+			System.out.println("----Inside Rules run method-----");
 			intializeRules();
 		}
 		catch (Exception e)

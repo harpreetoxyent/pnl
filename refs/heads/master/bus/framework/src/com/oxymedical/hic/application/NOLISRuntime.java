@@ -56,7 +56,7 @@ public class NOLISRuntime extends JAAPRuntime
 		JAAPRuntime.getKernel();
 		System.out.println("NOLISRuntime.FireEvent: " + topicName);
 		IHICData returnHIC = JAAPRuntime.FireEvent(JAAPKernel.getKernelContext(), topicName, parameters, scope);
-	//	logger.log(0,"----in sdie jaap FireEvent ============="+returnHIC);
+		//logger.log(0,"----in sdie jaap FireEvent ============="+returnHIC);
 		return returnHIC;
 	}
 

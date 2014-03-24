@@ -117,7 +117,7 @@ public class HICFrameworkServlet extends HttpServlet
 	private void initializeComponents()
 	{
 		String Module_XML_Key = HICServiceUtil.NOLISStartupUtility.Module_XML_Key;
-		System.out.println("-------------Module_XML_Key---------"+Module_XML_Key);
+		System.out.println("------------Module_XML_Key----------"+Module_XML_Key);
 		Document doc = HICServiceUtil.NOLISStartupUtility.ConfigData.get(Module_XML_Key);
 		List<Node> list = doc.selectNodes( "//container/modulelist/module" );
 		for (int i=0; i<list.size(); i++)
@@ -149,12 +149,11 @@ public class HICFrameworkServlet extends HttpServlet
 		try
 		{
 			
+			System.out.println("--------------doGetForRules-----------");		//By default setting up a default rule component
 			
-			
-			//By default setting up a default rule component
-			
-			RuleRequest ruleReq= new RuleRequest(hicData,getApplicationInfo());
+			RuleRequest ruleReq= new RuleRequest(hicData);
 			ruleThread = new Thread(ruleReq);
+			System.out.println("--------------startRules-----------");
 			ruleThread.start();
 			
 			hashEntries = readRequest(request);
@@ -294,19 +293,24 @@ public class HICFrameworkServlet extends HttpServlet
 
 	private IApplication getApplicationInfo()
 	{
+		System.out.println("*******Inside getApplication Info *******");
 		IApplication application = new Application();
+		System.out.println("*******Inside getApplication Info 2 *******");
 		String sourceDir = null;
 		String serverLibDir = null;
 		String appName = null;
 		String serverDir = null;
 		appName = (String)hashEntries.get("ApplicationName");
+		System.out.println("Application Info = " + appName);
 		sourceDir = (String)hashEntries.get("sourcedir");
+		System.out.println("Source Directory = " + sourceDir);
 		serverLibDir = (String)hashEntries.get("serverLibDirectory");
+		System.out.println("Server Lib directory = " + serverLibDir);
 		serverDir = (String)hashEntries.get("serverDirectory");
+		System.out.println("Server  directory = " + serverDir);
 		String applicationFolderPath=sourceDir+"/";
 		application.setApplicationName(appName);
 		application.setServerDirectory(serverDir);
-
 		application.setBaseDirectoryPath(serverLibDir);
 		application.setApplicationFileName(appName+".esp");
 		application.setApplicationFolderPath(applicationFolderPath);
