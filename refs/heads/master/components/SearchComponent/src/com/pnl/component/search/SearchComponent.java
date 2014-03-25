@@ -77,6 +77,11 @@ public class SearchComponent implements ISearchComponent, IComponent
 			socialRuleData.getData().getDataPattern().setDataPatternId("");
 			socialRuleData.getData().getFormPattern().getFormValues().put("socialRuleData", socialRuleData);
 			
+			IHICData solrData = NOLISRuntime.FireEvent("processQuery", new Object[]{searchDataObject}, PublicationScope.Global);
+			socialRuleData.getData().getFormPattern().setFormId("solrData");
+			socialRuleData.getData().getDataPattern().setDataPatternId("");
+			socialRuleData.getData().getFormPattern().getFormValues().put("socialRuleData", solrData);
+			
 			
 			
 		}

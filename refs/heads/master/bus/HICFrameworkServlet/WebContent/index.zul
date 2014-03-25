@@ -53,34 +53,36 @@ img:hover{cursor:pointer;}
 img:hover{cursor:pointer;}
 </style>
 <zscript src="uilibrary.zs"/>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" ?>
 	<window title="" border="normal">
 	<div class="header">
-<div class="sign">Sign In</div>
-</div>
+		<div class="sign">Sign In</div>
+	</div>
 	<div class="wrapper">
-
 		<div class="search">
 			<image src="images/pnl_logo.png" class="image"/>
 		    <textbox id="searchTextBox" value="" constraint="no empty" class="search_box"/>
 		   	<button label="Search" class="search_button">
 		    	<attribute name="onClick"><![CDATA[
+					import com.oxymedical.core.commonData.IHICData;
 					setFormPatternId("Search");
 					setDatapatternId("");
 					addFormValue("searchTextBox",searchTextBox.getValue());
-					invokeComponent("pnl.search.comp" ,"executeSearch" ,"com.pnl.component.search.SearchComponent", searchTextBox.getValue());   						
+					IHICData searchAnswerHIC = invokeBusComponent("pnl.search.comp" ,"executeSearch" ,"com.pnl.component.search.SearchComponent", searchTextBox.getValue());   						
+				//	System.out.println("HICData returned from invokesearchcomponent="+ searchAnswerHIC.getMetaData().getCommonObject());			
 					
 					]]>
 				</attribute>
 			</button>
 		</div>
-	
-	<div class="main">
-	
-	<div class="left">Main Content</div>
-	<div class="right">
-	<div class="item1">News Feed</div>
-	<div class="item2">News Feed</div>
-	</div>
+		<div class="main">
+			<div class="left">
+				<label id = "answerSearch"/>
+			</div>
+			<div class="right">
+			<div class="item1">News Feed</div>
+			<div class="item2">News Feed</div>
+		</div>
 	</div>
 
 	</div>
