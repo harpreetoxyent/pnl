@@ -10,6 +10,8 @@ import com.oxymedical.component.baseComponent.exception.ComponentException;
 import com.oxymedical.core.commonData.HICData;
 import com.oxymedical.core.commonData.IHICData;
 import com.oxymedical.core.maintenanceData.IMaintenanceData;
+import com.oxymedical.hic.application.NOLISRuntime;
+import com.oxymedical.hic.application.eventmanagement.PublicationScope;
 
 public class SearchComponent implements ISearchComponent, IComponent
 {
@@ -62,6 +64,15 @@ public class SearchComponent implements ISearchComponent, IComponent
 	public IHICData executeSearch(IHICData searchDataObject)
 	{
 		System.out.println("Executing Search");
+		try
+		{
+			NOLISRuntime.FireEvent("executeNLP", new Object[]{searchDataObject}, PublicationScope.Global);
+			NOLISRuntime.FireEvent("checkRuleForSocialData", new Object[]{searchDataObject}, PublicationScope.Global);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 		return null;
 	}	
 	

@@ -3,6 +3,7 @@ package com.oxymedical.component.rulesComponent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -17,6 +18,7 @@ import com.oxymedical.component.rulesComponent.parser.javacc.ParseException;
 import com.oxymedical.component.rulesComponent.parser.javacc.RuleParser;
 import com.oxymedical.component.rulesComponent.parser.javacc.SimpleNode;
 import com.oxymedical.component.rulesComponent.rete.productionMemory.ReteRuleBase;
+import com.oxymedical.component.rulesComponent.rule.elements.Consequence;
 import com.oxymedical.component.rulesComponent.rule.elements.RuleSet;
 import com.oxymedical.core.commonData.HICData;
 import com.oxymedical.core.commonData.Event;
@@ -39,13 +41,13 @@ public class RuleComponent implements IRuleComponent,IComponent {
 		return logger;
 	}
 	@EventSubscriber(topic = "buildReteRules")
-	public HICData buildPNLRete(HICData PNLHICData) throws ComponentException 
+	public HICData buildReteHIC(HICData hicData) throws ComponentException 
 	{
 		System.out.println("*********INSIDE RULE COMPONENT PNL BUILD RETE************");	
 		String masterPageLocation = PropertyUtil.setUpProperties("RULEFILE_LOCATION");
 		System.out.println("Master Page Location" + masterPageLocation);
 		buildRete(masterPageLocation);
-		return null;
+		return hicData;
 	}
 	
 	public void buildRete(String masterPageLocation) throws ComponentException 
@@ -97,6 +99,7 @@ public class RuleComponent implements IRuleComponent,IComponent {
 	}
 	public List<IRuleClass> executeRules(Object[] ob) throws ComponentException 
 	{
+		System.out.println("-------Inside Execute RULES---rulebase="+ruleBase);
 		try {
 			IWorkingMemory reteWorkingMemory = ruleBase.newWorkingMemory();
 			reteWorkingMemory.assertObject(ob);
@@ -106,6 +109,40 @@ public class RuleComponent implements IRuleComponent,IComponent {
 		}
 	}
 	
+	@EventSubscriber(topic = "executeRuleHICData")
+	public IHICData executeRuleHICData(IHICData dataObject) throws Exception
+	{
+		IHICData hicData = new HICData();
+		List<String> resultList = new ArrayList<String>();
+		try
+		{
+			String factInStrFormat = (String) dataObject.getData().getRawData();
+			System.out.println("-------Inside Execute RULES---factInStrFormat"+factInStrFormat);
+			Object[] facts = {dataObject};
+			List<IRuleClass> ruleClassList = new ArrayList<IRuleClass>();
+			ruleClassList = executeRules(facts);  // Should be called every time a fact arrives
+			System.out.println("-------Inside Execute RULES- number of rules mathcing=--ruleClassList.size()="+ruleClassList.size());
+			for (int i=0; i<ruleClassList.size();i++)
+			{
+				IRuleClass rule = ruleClassList.get(i);
+				Consequence con = (Consequence)rule.getConsequenceList().get(0);
+				resultList.add(con.getConsequenceString());
+			}
+			for (int i=0; i<resultList.size();i++)
+			{
+				System.out.println("Inside executeRuleHICData consequence list");
+				System.out.println(resultList.get(i));
+				//	hicData.getData().setRawData(resultLis
+			}
+		} 
+		catch (ComponentException e) 
+		{
+			e.printStackTrace();
+			throw new Exception(e.getMessage());
+		}
+		return hicData;
+		
+	}
 	public void actionHandler(List<IAction> actions) {
 		// TODO Auto-generated method stub
 

@@ -7,6 +7,7 @@ import com.oxymedical.component.baseComponent.annotations.EventSubscriber;
 import com.oxymedical.component.baseComponent.exception.ComponentException;
 import com.oxymedical.core.commonData.HICData;
 import com.oxymedical.core.commonData.Event;
+import com.oxymedical.core.commonData.IHICData;
 
 
 public interface IRuleComponent   {
@@ -24,7 +25,7 @@ public interface IRuleComponent   {
 
 	public void info(HICData object);
 
-	public HICData buildPNLRete(HICData PNLHICData) throws ComponentException;
+	public HICData buildReteHIC(HICData hicData) throws ComponentException;
 	
 	public void buildRete(String masterPageLocation) throws ComponentException;
 	
@@ -35,6 +36,8 @@ public interface IRuleComponent   {
 	public boolean modifyFactInRete(Object ob) throws ComponentException;
 	
 	public List<IAction> execute(HICData object);
+	
+	public IHICData executeRuleHICData(IHICData socialUsedataObjectrData) throws Exception;
 
 	public List<IAction> getAgendaList();
 

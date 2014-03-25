@@ -83,7 +83,7 @@ public class RuleComponentHelper {
 	
 	public List<String> getRules(IHICData dataObject) throws Exception
 	{
-		List<String> resultList = new ArrayList<String>();;
+		List<String> resultList = new ArrayList<String>();
 		try
 		{
 			Object[] facts = {dataObject};

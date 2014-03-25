@@ -28,7 +28,7 @@ html, body {height: 100%; font-family:arial,sans-serif}
 					setFormPatternId("Search");
 					setDatapatternId("");
 					addFormValue("searchTextBox",searchTextBox.getValue());
-					invokeComponent("pnl.nlp.comp" ,"executeNLP" ,"com.pnl.component.nlp.NLPComponent", searchTextBox.getValue());   						
+					invokeComponent("pnl.search.comp" ,"executeSearch" ,"com.pnl.component.search.SearchComponent", searchTextBox.getValue());   						
 					;
 					]]>
 				</attribute>

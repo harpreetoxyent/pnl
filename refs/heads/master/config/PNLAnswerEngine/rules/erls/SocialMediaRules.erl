@@ -14,14 +14,14 @@
 		<if>
 			<condition-list>
 				<condition name="cond1">
-					(dataObject.getMetaData().getCommonObject().getLocation() == "US")
+					(dataObject.getData().getRawData().toString() != "")
 				</condition>
 			</condition-list>
 		</if>
 		<then>
 			<consequence-list>
 				<consequence name="c1">
-					socialObject.addURLToAnswerData()
+					socialObject.addUnivURLToAnswerData()
 				</consequence>
 			</consequence-list>
 			</then>
@@ -32,14 +32,14 @@
 		<if>
 			<condition-list>
 				<condition name="cond1">
-					(dataObject.getMetaData().getCommonObject().getAge == "58")
+					(dataObject.getData().getRawData().toString() == "57")
 				</condition>
 			</condition-list>
 		</if>
 			<then>
 				<consequence-list>
 					<consequence name="c1">
-						socialObject.addURLToAnswerData()
+						socialObject.addTouURLToAnswerData()
 					</consequence>
 				</consequence-list>
 			</then>
