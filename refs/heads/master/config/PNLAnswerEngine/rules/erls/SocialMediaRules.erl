@@ -14,7 +14,7 @@
 		<if>
 			<condition-list>
 				<condition name="cond1">
-					(dataObject.getData().getRawData().toString() != "")
+					(dataObject.getUniqueID() == "25")
 				</condition>
 			</condition-list>
 		</if>
@@ -32,7 +32,7 @@
 		<if>
 			<condition-list>
 				<condition name="cond1">
-					(dataObject.getData().getRawData().toString() == "57")
+					(dataObject.getUniqueID() == "57")
 				</condition>
 			</condition-list>
 		</if>

@@ -66,8 +66,17 @@ public class SearchComponent implements ISearchComponent, IComponent
 		System.out.println("Executing Search");
 		try
 		{
-			NOLISRuntime.FireEvent("executeNLP", new Object[]{searchDataObject}, PublicationScope.Global);
-			NOLISRuntime.FireEvent("checkRuleForSocialData", new Object[]{searchDataObject}, PublicationScope.Global);
+			IHICData nlpData = NOLISRuntime.FireEvent("executeNLP", new Object[]{searchDataObject}, PublicationScope.Global);
+			nlpData.getData().getFormPattern().setFormId("nlpData");
+			nlpData.getData().getDataPattern().setDataPatternId("");
+			nlpData.getData().getFormPattern().getFormValues().put("nlpdata", nlpData);
+			
+			
+			IHICData socialRuleData = NOLISRuntime.FireEvent("checkRuleForSocialData", new Object[]{searchDataObject}, PublicationScope.Global);
+			socialRuleData.getData().getFormPattern().setFormId("socialRuleData");
+			socialRuleData.getData().getDataPattern().setDataPatternId("");
+			socialRuleData.getData().getFormPattern().getFormValues().put("socialRuleData", socialRuleData);
+			
 		}
 		catch (Exception e)
 		{

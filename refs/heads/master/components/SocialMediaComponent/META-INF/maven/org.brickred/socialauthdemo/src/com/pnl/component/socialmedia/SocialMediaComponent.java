@@ -243,7 +243,7 @@ public class SocialMediaComponent implements ISocialMediaComponent, IComponent
 			userProfileInfo.setAge(age+"");
 			System.out.println(" AGE CALCULATED = " + age );
 			
-			data.setRawData(userProfileInfo.getAge());
+			data.setSqlQuery(userProfileInfo.getAge());
 			userObject.setData(data);
 			//Call Rule Component to check matching rules
 			NOLISRuntime.FireEvent("executeRuleHICData", new Object[]{userObject}, PublicationScope.Global);

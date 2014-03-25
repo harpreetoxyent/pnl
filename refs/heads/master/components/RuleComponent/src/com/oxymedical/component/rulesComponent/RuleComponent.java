@@ -116,7 +116,8 @@ public class RuleComponent implements IRuleComponent,IComponent {
 		List<String> resultList = new ArrayList<String>();
 		try
 		{
-			String factInStrFormat = (String) dataObject.getData().getRawData();
+			String factInStrFormat = dataObject.getData().getSqlQuery();
+			dataObject.setUniqueID(factInStrFormat);
 			System.out.println("-------Inside Execute RULES---factInStrFormat"+factInStrFormat);
 			Object[] facts = {dataObject};
 			List<IRuleClass> ruleClassList = new ArrayList<IRuleClass>();
