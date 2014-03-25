@@ -53,12 +53,49 @@
 		    </maintenance>
 		</module>
 		<module
+
 			name="Crawler Component"
+
 			id="pnl.crawler.comp"
+
 			version="1.0.0"
+
 			provider-name="PNL"
+
 			class="com.pnl.component.crawler.CrawlerComponent">
 	
+	 		<requires>
+		 		<jarFolder location="d://storageJar" />
+				<import module="baseComponent.jar"/>
+			</requires>
+		    <runtime>
+				<library name="testworld.jar"/>	
+		    </runtime>
+		    <maintenance>
+		    </maintenance>
+		</module>
+		<module
+			name="BigData Component"
+			id="pnl.bigdata.comp"
+			version="1.0.0"
+			provider-name="PNL"
+			class="com.pnl.component.bigdata.BigDataComponent">
+	 		<requires>
+		 		<jarFolder location="d://storageJar" />
+				<import module="baseComponent.jar"/>
+			</requires>
+		    <runtime>
+				<library name="testworld.jar"/>	
+		    </runtime>
+		    <maintenance>
+		    </maintenance>
+		</module>
+		<module
+			name="Solr Component"
+			id="pnl.solr.comp"
+			version="1.0.0"
+			provider-name="PNL"
+			class="com.pnl.component.solr.SolrComponent">
 	 		<requires>
 		 		<jarFolder location="d://storageJar" />
 				<import module="baseComponent.jar"/>
