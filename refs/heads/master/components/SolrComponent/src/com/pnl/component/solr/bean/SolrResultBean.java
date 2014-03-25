@@ -17,7 +17,7 @@ public class SolrResultBean {
 	    @Field
 	    private String governor;
 	    @Field
-	    private String lieutenant_governo;
+	    private String lieutenant_governor;
 	    @Field
 	    private String senators;
 	    @Field
@@ -28,6 +28,23 @@ public class SolrResultBean {
 	    private String website;
 	    @Field
 	    private String short_description;
+	    @Field
+	    private String tourist_urls;
+	    
+	    public String getTourist_urls() {
+			return tourist_urls;
+		}
+		public void setTourist_urls(String tourist_urls) {
+			this.tourist_urls = tourist_urls;
+		}
+		public String getUniv_urls() {
+			return univ_urls;
+		}
+		public void setUniv_urls(String univ_urls) {
+			this.univ_urls = univ_urls;
+		}
+		@Field
+	    private String univ_urls;
 	    
 		public String getId() {
 			return id;
@@ -65,11 +82,11 @@ public class SolrResultBean {
 		public void setGovernor(String governor) {
 			this.governor = governor;
 		}
-		public String getLieutenant_governo() {
-			return lieutenant_governo;
+		public String getLieutenant_governor() {
+			return lieutenant_governor;
 		}
-		public void setLieutenant_governo(String lieutenant_governo) {
-			this.lieutenant_governo = lieutenant_governo;
+		public void setLieutenant_governor(String lieutenant_governor) {
+			this.lieutenant_governor = lieutenant_governor;
 		}
 		public String getSenators() {
 			return senators;
