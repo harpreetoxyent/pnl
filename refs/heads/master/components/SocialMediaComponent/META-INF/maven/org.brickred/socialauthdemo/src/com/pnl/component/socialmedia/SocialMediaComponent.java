@@ -247,7 +247,6 @@ public class SocialMediaComponent implements ISocialMediaComponent, IComponent
 			userObject.setData(data);
 			//Call Rule Component to check matching rules
 			NOLISRuntime.FireEvent("executeRuleHICData", new Object[]{userObject}, PublicationScope.Global);
-			
 			return userObject;
 		}
 		else
