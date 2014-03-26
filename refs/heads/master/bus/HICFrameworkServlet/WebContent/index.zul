@@ -68,9 +68,8 @@ img:hover{cursor:pointer;}
 					setFormPatternId("Search");
 					setDatapatternId("");
 					addFormValue("searchTextBox",searchTextBox.getValue());
-					IHICData searchAnswerHIC = invokeBusComponent("pnl.search.comp" ,"executeSearch" ,"com.pnl.component.search.SearchComponent", searchTextBox.getValue());   						
-				//	System.out.println("HICData returned from invokesearchcomponent="+ searchAnswerHIC.getMetaData().getCommonObject());			
-					
+					IHICData searchAnswerHIC = invokeBusComponent("pnl.search.comp" ,"executeSearch" ,"com.pnl.component.search.SearchComponent", searchTextBox.getValue());   							
+					answerSearch.value = searchAnswerHIC.getData().getFormPattern().getFormValues().get("TouristURL");
 					]]>
 				</attribute>
 			</button>

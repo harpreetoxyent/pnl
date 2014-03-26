@@ -30,6 +30,7 @@ import com.oxymedical.framework.objectbroker.annotations.InjectNew;
 
 public class RuleComponent implements IRuleComponent,IComponent {
 	
+	public IHICData hicData = null;
 	String masterPagePath;
 	IRuleBase ruleBase;
    	@InjectNew
@@ -43,6 +44,7 @@ public class RuleComponent implements IRuleComponent,IComponent {
 	@EventSubscriber(topic = "buildReteRules")
 	public HICData buildReteHIC(HICData hicData) throws ComponentException 
 	{
+		this.hicData = hicData;
 		System.out.println("*********INSIDE RULE COMPONENT PNL BUILD RETE************");	
 		String masterPageLocation = PropertyUtil.setUpProperties("RULEFILE_LOCATION");
 		System.out.println("Master Page Location" + masterPageLocation);
@@ -112,14 +114,15 @@ public class RuleComponent implements IRuleComponent,IComponent {
 	@EventSubscriber(topic = "executeRuleHICData")
 	public IHICData executeRuleHICData(IHICData dataObject) throws Exception
 	{
-		IHICData hicData = new HICData();
+		this.hicData = dataObject;
+		System.out.println("-----Inside ExecuteRuleHICData----hicData="+hicData);
 		List<String> resultList = new ArrayList<String>();
 		try
 		{
-			String factInStrFormat = dataObject.getData().getSqlQuery();
-			dataObject.setUniqueID(factInStrFormat);
+			String factInStrFormat = hicData.getData().getSqlQuery();
+			hicData.setUniqueID(factInStrFormat);
 			System.out.println("-------Inside Execute RULES---factInStrFormat"+factInStrFormat);
-			Object[] facts = {dataObject};
+			Object[] facts = {hicData};
 			List<IRuleClass> ruleClassList = new ArrayList<IRuleClass>();
 			ruleClassList = executeRules(facts);  // Should be called every time a fact arrives
 			System.out.println("-------Inside Execute RULES- number of rules mathcing=--ruleClassList.size()="+ruleClassList.size());
@@ -128,6 +131,8 @@ public class RuleComponent implements IRuleComponent,IComponent {
 				IRuleClass rule = ruleClassList.get(i);
 				Consequence con = (Consequence)rule.getConsequenceList().get(0);
 				resultList.add(con.getConsequenceString());
+				hicData.getData().getFormPattern().getFormValues().put("RulesComponent", con.getConsequenceString());
+
 			}
 			for (int i=0; i<resultList.size();i++)
 			{
@@ -141,6 +146,7 @@ public class RuleComponent implements IRuleComponent,IComponent {
 			e.printStackTrace();
 			throw new Exception(e.getMessage());
 		}
+		System.out.println("-----Done with ExecuteRuleHICData----hicData="+hicData);
 		return hicData;
 		
 	}
@@ -207,7 +213,7 @@ public class RuleComponent implements IRuleComponent,IComponent {
 
 	public IHICData getHicData() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.hicData;
 	}
 
 	public void maintenance(IMaintenanceData arg0) {
@@ -220,8 +226,8 @@ public class RuleComponent implements IRuleComponent,IComponent {
 		
 	}
 
-	public void setHicData(IHICData arg0) {
-		// TODO Auto-generated method stub
+	public void setHicData(IHICData hicData) {
+		this.hicData = hicData;
 		
 	}
 

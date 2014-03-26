@@ -189,7 +189,8 @@ public class NLPComponent implements INLPComponent, IComponent {
 			perfMon.incrementCounter();
 		}
 		perfMon.stopAndPrintFinalResult();
-		System.out.println("*****************");
+		System.out.println("*********TOKENS********" + tokens);
+		hicData.getData().getFormPattern().getFormValues().put("NLPComponent",tokens);
 		return hicData;
 	}
 

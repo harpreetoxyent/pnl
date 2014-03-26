@@ -5,8 +5,8 @@
 			<id>dataObject</id>
 		</variable>
 		<variable>
-			<type>com.pnl.component.socialmedia.SocialMediaComponent</type>
-			<id>socialObject</id>
+			<type>com.pnl.component.socialrules.SocialRules</type>
+			<id>socialRuleObject</id>
 		</variable>
 	</variable-list>
 	<rule name="TestRule1">
@@ -39,7 +39,7 @@
 			<then>
 				<consequence-list>
 					<consequence name="c1">
-						socialObject.addTouURLToAnswerData()
+						socialRuleObject.addTouristURLToData()
 					</consequence>
 				</consequence-list>
 			</then>

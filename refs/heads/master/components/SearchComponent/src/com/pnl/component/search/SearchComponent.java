@@ -7,7 +7,11 @@ import org.dom4j.Document;
 import com.oxymedical.component.baseComponent.IComponent;
 import com.oxymedical.component.baseComponent.annotations.EventSubscriber;
 import com.oxymedical.component.baseComponent.exception.ComponentException;
+import com.oxymedical.core.commonData.Data;
+import com.oxymedical.core.commonData.FormPattern;
 import com.oxymedical.core.commonData.HICData;
+import com.oxymedical.core.commonData.IData;
+import com.oxymedical.core.commonData.IFormPattern;
 import com.oxymedical.core.commonData.IHICData;
 import com.oxymedical.core.maintenanceData.IMaintenanceData;
 import com.oxymedical.hic.application.NOLISRuntime;
@@ -61,26 +65,25 @@ public class SearchComponent implements ISearchComponent, IComponent
 	}
 
 	@EventSubscriber(topic = "executeSearch")	
-	public IHICData executeSearch(IHICData searchDataObject)
+	public IHICData executeSearch(IHICData searchData)
 	{
 		System.out.println("Executing Search");
 		try
 		{
-			IHICData nlpData = NOLISRuntime.FireEvent("executeNLP", new Object[]{searchDataObject}, PublicationScope.Global);
-			nlpData.getData().getFormPattern().setFormId("nlpData");
-			nlpData.getData().getDataPattern().setDataPatternId("");
-			nlpData.getData().getFormPattern().getFormValues().put("nlpdata", nlpData);
+//			IData data = new Data();
+//			IFormPattern formPattern = new FormPattern();
+//			searchData.setData(data);
+//			searchData.getData().setFormPattern(formPattern);
+//			searchData.getData().getFormPattern().setFormValues(new Hashtable<String,Object>());
+//
+//			System.out.println("************EXECUTING SEARCH ANNSWER*******");
+//			System.out.println("************ SEARCH ANNSWER*******" + searchData.getData());
+//			searchData.getData().getFormPattern().setFormId("search");
+			//searchData.getData().getDataPattern().setDataPatternId("");			
+			searchData = NOLISRuntime.FireEvent("executeNLP", new Object[]{searchData}, PublicationScope.Global);				
+			searchData= NOLISRuntime.FireEvent("checkRuleForSocialData", new Object[]{searchData}, PublicationScope.Global);
 			
-			
-			IHICData socialRuleData = NOLISRuntime.FireEvent("checkRuleForSocialData", new Object[]{searchDataObject}, PublicationScope.Global);
-			socialRuleData.getData().getFormPattern().setFormId("socialRuleData");
-			socialRuleData.getData().getDataPattern().setDataPatternId("");
-			socialRuleData.getData().getFormPattern().getFormValues().put("socialRuleData", socialRuleData);
-			
-			IHICData solrData = NOLISRuntime.FireEvent("processQuery", new Object[]{searchDataObject}, PublicationScope.Global);
-			socialRuleData.getData().getFormPattern().setFormId("solrData");
-			socialRuleData.getData().getDataPattern().setDataPatternId("");
-			socialRuleData.getData().getFormPattern().getFormValues().put("socialRuleData", solrData);
+		//	searchData = NOLISRuntime.FireEvent("processQuery", new Object[]{searchDataObject}, PublicationScope.Global);
 			
 			
 			
@@ -89,7 +92,7 @@ public class SearchComponent implements ISearchComponent, IComponent
 		{
 			e.printStackTrace();
 		}
-		return null;
+		return searchData;
 	}	
 	
 
