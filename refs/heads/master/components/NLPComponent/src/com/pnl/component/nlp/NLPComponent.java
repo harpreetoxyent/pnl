@@ -42,15 +42,18 @@ import opennlp.tools.postag.POSTaggerME;
 public class NLPComponent implements INLPComponent, IComponent {
 	public static final String PREFIX = "posmodel";
     public static final String SUFFIX = ".tmp";
-
+    static public IHICData hicData;
     
-	public static  void main(String[] args) throws IOException {
+    
+	public static  void main(String[] args) throws IOException 
+	{
 	
 	}
 	
 	@EventSubscriber(topic = "executeNLP")
-	public IHICData execute(IHICData hicData) throws IOException 
+	public IHICData execute(IHICData hicDataObject) throws IOException 
 	{
+		NLPComponent.hicData = hicDataObject;
 		InputStream sentenceModelFile = null;
 		InputStream tokenModelFile = null;
 		InputStream nameModelFile = null;
@@ -134,8 +137,8 @@ public class NLPComponent implements INLPComponent, IComponent {
 		String tokens[] = tokenizer.tokenize(paragraph);
 		System.out.println("Output of token model");
 
-		for (String a : tokens) {
-			System.out.println(a);
+		for (String tokenData : tokens) {
+			System.out.println(tokenData);
 		}
 		System.out.println("*****************");
 
@@ -190,7 +193,9 @@ public class NLPComponent implements INLPComponent, IComponent {
 		}
 		perfMon.stopAndPrintFinalResult();
 		System.out.println("*********TOKENS********" + tokens);
-		hicData.getData().getFormPattern().getFormValues().put("NLPComponent",tokens);
+		for(int i = 0; i < tokens.length; i++) { 
+		hicData.getData().getFormPattern().getFormValues().put("NLPComponent",tokens[i]);
+		}
 		return hicData;
 	}
 
@@ -221,13 +226,14 @@ public class NLPComponent implements INLPComponent, IComponent {
 	@Override
 	public IHICData getHicData() {
 		// TODO Auto-generated method stub
-		return null;
+		return NLPComponent.hicData;
 	}
 
 	@Override
-	public void setHicData(IHICData hicData) {
-		// TODO Auto-generated method stub
-
+	public void setHicData(IHICData hicData) 
+	{
+		NLPComponent.hicData = hicData;
+		
 	}
 
 	@Override

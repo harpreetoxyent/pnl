@@ -4,8 +4,8 @@ import com.pnl.component.socialmedia.*;;
 
 public class SocialRules
 {
-	private String univURL;
-	private String touristURL;
+	private  String univURL;
+	private  String touristURL;
 	
 	
 	public String getUnivURL() {
@@ -26,7 +26,15 @@ public class SocialRules
 	public void addTouristURLToData()
 	{
 		this.setTouristURL("www.yahoo.com");
+		System.out.println("URL in Social rules" + this.getTouristURL());
 		SocialMediaComponent.getInstanceOfSocialHICObject().getData().getFormPattern().getFormValues().put("TouristURL", this.getTouristURL());
+	}
+	
+	public void addUnivURLToData()
+	{
+		this.setUnivURL("www.timesofindia.com");
+		System.out.println("URL in Social rules" + this.getUnivURL());
+		SocialMediaComponent.getInstanceOfSocialHICObject().getData().getFormPattern().getFormValues().put("UnivURL", this.getUnivURL());
 	}
 
 }

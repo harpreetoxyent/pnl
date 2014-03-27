@@ -20,7 +20,7 @@ import com.oxymedical.hic.application.eventmanagement.PublicationScope;
 public class SearchComponent implements ISearchComponent, IComponent
 {
 
-	
+	 static public IHICData hicData;
 	
 	@Override
 	public void start(Hashtable<String, Document> configData) {
@@ -49,12 +49,12 @@ public class SearchComponent implements ISearchComponent, IComponent
 	@Override
 	public IHICData getHicData() {
 		// TODO Auto-generated method stub
-		return null;
+		return hicData;
 	}
 
 	@Override
 	public void setHicData(IHICData hicData) {
-		// TODO Auto-generated method stub
+		this.hicData = hicData;
 		
 	}
 
@@ -67,6 +67,7 @@ public class SearchComponent implements ISearchComponent, IComponent
 	@EventSubscriber(topic = "executeSearch")	
 	public IHICData executeSearch(IHICData searchData)
 	{
+		this.hicData = searchData;
 		System.out.println("Executing Search");
 		try
 		{
@@ -81,8 +82,8 @@ public class SearchComponent implements ISearchComponent, IComponent
 //			searchData.getData().getFormPattern().setFormId("search");
 			//searchData.getData().getDataPattern().setDataPatternId("");			
 			searchData = NOLISRuntime.FireEvent("executeNLP", new Object[]{searchData}, PublicationScope.Global);				
-			searchData= NOLISRuntime.FireEvent("checkRuleForSocialData", new Object[]{searchData}, PublicationScope.Global);
-			
+			searchData = NOLISRuntime.FireEvent("processQuery", new Object[]{searchData}, PublicationScope.Global);
+			searchData=  NOLISRuntime.FireEvent("checkRuleForSocialData", new Object[]{searchData}, PublicationScope.Global);
 		//	searchData = NOLISRuntime.FireEvent("processQuery", new Object[]{searchDataObject}, PublicationScope.Global);
 			
 			
@@ -92,7 +93,7 @@ public class SearchComponent implements ISearchComponent, IComponent
 		{
 			e.printStackTrace();
 		}
-		return searchData;
+		return hicData;
 	}	
 	
 

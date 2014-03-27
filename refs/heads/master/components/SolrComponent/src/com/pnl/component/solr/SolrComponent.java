@@ -46,11 +46,13 @@ public class SolrComponent implements ISolrComponent, IComponent {
 	private static CommonsHttpSolrServer server = null;
 	private static Logger logger = Logger.getLogger(SolrComponent.class
 			.getName());
-
+	public static IHICData hicData;
 	@Override
 	@EventSubscriber(topic = "storeData")
-	public void storeData(HICData hicData) throws SolrComponentException {
+	public void storeData(HICData solrHICData) throws SolrComponentException {
 		// TODO Auto-generated method stub
+		
+		SolrComponent.hicData = solrHICData;
 		Job job = null;
 		boolean success = false;
 		try {
@@ -103,9 +105,9 @@ public class SolrComponent implements ISolrComponent, IComponent {
 
 	@Override
 	@EventSubscriber(topic = "processQuery")
-	public IHICData getResult(HICData hicData) throws SolrComponentException {
+	public IHICData getResult(HICData queryHICData) throws SolrComponentException {
 		// TODO Auto-generated method stub
-
+		SolrComponent.hicData = queryHICData;
 		url = PropertyUtil.setUpProperties("SOLR_URL");
 
 		IData data = hicData.getData();
@@ -116,11 +118,13 @@ public class SolrComponent implements ISolrComponent, IComponent {
 		SolrQuery query = new SolrQuery();
 		QueryResponse rsp = null;
 		List<SolrResultBean> respList = new ArrayList<SolrResultBean>();
+		System.out.println("Inside Solr component get result");
 		try {
 			query.setQuery(solrQry);
 			// if (fields != null)
 			// query.setFields(fields);
 			rsp = getSolrConnection().query(query);
+			System.out.println("RSP in Solr Component" + rsp );
 			if (rsp == null) {
 				return null;
 			} else {
@@ -131,8 +135,8 @@ public class SolrComponent implements ISolrComponent, IComponent {
 					long iNumberfound = docList.getNumFound();
 					if (respList.size() > 0) {
 						resultBean = respList.get(0);
-						// System.out.println("Capital===>"+resultBean.getCapital());
-						// System.out.println("Flag===>"+resultBean.getFlag());
+						 System.out.println("Capital===>"+resultBean.getCapital());
+						 System.out.println("Flag===>"+resultBean.getFlag());
 					}
 					// this will not work if the respList is zero
 					/*
@@ -155,18 +159,33 @@ public class SolrComponent implements ISolrComponent, IComponent {
 			throw new SolrComponentException(exc.getMessage());
 		}
 
+		System.out.println("******* Solr HIC DATA  before setCommonObject*********");
 		hicData.getMetaData().setCommonObject(resultBean);
+		System.out.println("******* Solr HIC DATA  after setCommonObject*********");
+
+		hicData.getData().getFormPattern().getFormValues().put("SolrComponent", resultBean);
+		System.out.println("******* Solr HIC DATA  after inserting data in FormValues*********");
+
 		return hicData;
 	}
 
 	private CommonsHttpSolrServer getSolrConnection() throws Exception {
 		try {
 			// configure a server object with actual solr values.
-			if (server == null) {
+			if (server == null)
+			{
+				System.out.println("******* Solr connection URL is " + url);
 				server = new CommonsHttpSolrServer(url);
+				System.out.println("******* Solr connection URL 1 " );
 				server.setParser(new XMLResponseParser());
+				System.out.println("******* Solr connection URL 2 " );
+
 				server.setSoTimeout(1000);
+				System.out.println("******* Solr connection URL 3 " );
+
 				server.setConnectionTimeout(1000);
+				System.out.println("******* Solr connection URL 4" );
+
 			}
 
 		} catch (MalformedURLException exc) {
@@ -208,7 +227,7 @@ public class SolrComponent implements ISolrComponent, IComponent {
 	@Override
 	public IHICData getHicData() {
 		// TODO Auto-generated method stub
-		return null;
+		return hicData;
 	}
 
 	@Override

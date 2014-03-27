@@ -14,14 +14,14 @@
 		<if>
 			<condition-list>
 				<condition name="cond1">
-					(dataObject.getUniqueID() == "25")
+					(dataObject.getUniqueID() == null)
 				</condition>
 			</condition-list>
 		</if>
 		<then>
 			<consequence-list>
 				<consequence name="c1">
-					socialObject.addUnivURLToAnswerData()
+					socialRuleObject.addUnivURLToData()
 				</consequence>
 			</consequence-list>
 			</then>

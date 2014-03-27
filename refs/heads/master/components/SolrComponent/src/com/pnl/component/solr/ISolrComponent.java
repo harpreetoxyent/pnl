@@ -8,5 +8,5 @@ public interface ISolrComponent {
 
 	public void storeData(HICData hicData) throws SolrComponentException;
 
-	public IHICData getResult(HICData hicData) throws SolrComponentException;
-}
+	public IHICData getResult(HICData queryHICData) throws SolrComponentException;
+	}
