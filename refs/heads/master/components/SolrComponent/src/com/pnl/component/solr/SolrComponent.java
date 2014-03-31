@@ -114,7 +114,7 @@ public class SolrComponent implements ISolrComponent, IComponent {
 		String solrQry = data.getFormPattern().getFormValues()
 				.get("searchTextBox").toString().trim();
 
-		SolrResultBean resultBean = null;
+		SolrResultBean resultBean = new SolrResultBean();
 		SolrQuery query = new SolrQuery();
 		QueryResponse rsp = null;
 		List<SolrResultBean> respList = new ArrayList<SolrResultBean>();
