@@ -55,43 +55,51 @@ img:hover{cursor:pointer;}
 <zscript src="uilibrary.zs"/>
 <?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" ?>
 	<window title="" border="normal">
-	<div class="header">
-		<div class="sign">Sign In</div>
-	</div>
-	<div class="wrapper">
-		<div class="search">
-			<image src="images/pnl_logo.png" class="image"/>
-		    <textbox id="searchTextBox" value="" constraint="no empty" class="search_box"/>
-		   	<button label="Search" class="search_button">
-		    	<attribute name="onClick"><![CDATA[
-					import com.oxymedical.core.commonData.IHICData;
-					import com.pnl.component.solr.bean.SolrResultBean;
-					setFormPatternId("Search");
-					setDatapatternId("");
-					addFormValue("searchTextBox",searchTextBox.getValue());
-					IHICData searchAnswerHIC = invokeBusComponent("pnl.search.comp" ,"executeSearch" ,"com.pnl.component.search.SearchComponent", searchTextBox.getValue());   							
-					//answerSearch.value = searchAnswerHIC.getData().getFormPattern().getFormValues().get("NLPComponent");
-					//answerSearch.value += " " + searchAnswerHIC.getData().getFormPattern().getFormValues().get("TouristURL");
-					SolrResultBean solrResultBean =  searchAnswerHIC.getData().getFormPattern().getFormValues().get("SolrComponent");
-					answerSearch.value = solrResultBean.getName();
-					answerSearch.value += " " + solrResultBean.getCapital();
-					answerSearch.value += " " + solrResultBean.getLargest_city();
-					answerSearch.value += " " + solrResultBean.getTourist_urls();
-					]]>
-				</attribute>
-			</button>
+		<div class="header">
+			<div class="sign">Sign In</div>
 		</div>
-		<div class="main">
-			<div class="left">
-				<label id = "answerSearch"/>
+		<div class="wrapper">
+			<div class="search">
+				<image src="images/pnl_logo.png" class="image"/>
+		    	<textbox id="searchTextBox" value="" constraint="no empty" class="search_box"/>
+		   		<button label="Search" class="search_button">
+		    		<attribute name="onClick"><![CDATA[
+						import com.oxymedical.core.commonData.IHICData;
+						import com.pnl.component.solr.bean.SolrResultBean;
+						setFormPatternId("Search");
+						setDatapatternId("");
+						addFormValue("searchTextBox",searchTextBox.getValue());
+						IHICData searchAnswerHIC = invokeBusComponent("pnl.search.comp" ,"executeSearch" ,"com.pnl.component.search.SearchComponent", searchTextBox.getValue());   							
+						//answerSearch.value = searchAnswerHIC.getData().getFormPattern().getFormValues().get("NLPComponent");
+						//answerSearch.value += " " + searchAnswerHIC.getData().getFormPattern().getFormValues().get("TouristURL");
+						SolrResultBean solrResultBean =  searchAnswerHIC.getData().getFormPattern().getFormValues().get("SolrComponent");
+						if (solrResultBean != null)
+						{
+							System.out.println("Wisconsin flag src url = " +solrResultBean.getFlag());
+							answerSearch.value = solrResultBean.getName();
+							answerSearch.value += " " + solrResultBean.getCapital();
+							answerSearch.value += " " + solrResultBean.getLargest_city();
+							answerSearch.value += " " + solrResultBean.getTourist_urls();
+							flagSource.src = solrResultBean.getFlag();
+						}	
+						]]>
+					</attribute>
+				</button>
+			</div>
+			<div class="main">
+				<div class="left">
+					<label id = "answerSearch"/>
+					<image id = "flagSource" src=""></image>
+				</div>
+				<div id="text1" class="text1">
+					
+				</div>
 			</div>
 			<div class="right">
-			<div class="item1">News Feed</div>
-			<div class="item2">News Feed</div>
+				<div class="item1">News Feed</div>
+				<div class="item2">News Feed</div>
+			</div>
 		</div>
-	</div>
-
-	</div>
 	<div class="footer">
 		<span>
 			<image src="images/facebook.png">
