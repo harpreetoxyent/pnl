@@ -83,6 +83,8 @@ public class SearchComponent implements ISearchComponent, IComponent
 			//searchData.getData().getDataPattern().setDataPatternId("");			
 			searchData = NOLISRuntime.FireEvent("executeNLP", new Object[]{searchData}, PublicationScope.Global);				
 			searchData = NOLISRuntime.FireEvent("processQuery", new Object[]{searchData}, PublicationScope.Global);
+			System.out.println("After query is proceesed" + searchData);
+			System.out.println("Beofre Fire event" + new Object[]{searchData});
 			searchData=  NOLISRuntime.FireEvent("checkRuleForSocialData", new Object[]{searchData}, PublicationScope.Global);
 		//	searchData = NOLISRuntime.FireEvent("processQuery", new Object[]{searchDataObject}, PublicationScope.Global);
 			

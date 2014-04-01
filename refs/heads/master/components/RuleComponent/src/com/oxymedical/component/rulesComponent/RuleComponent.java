@@ -126,14 +126,17 @@ public class RuleComponent implements IRuleComponent,IComponent {
 			List<IRuleClass> ruleClassList = new ArrayList<IRuleClass>();
 			ruleClassList = executeRules(facts);  // Should be called every time a fact arrives
 			System.out.println("-------Inside Execute RULES- number of rules mathcing=--ruleClassList.size()="+ruleClassList.size());
-			for (int i=0; i<ruleClassList.size();i++)
+			if (ruleClassList.size() > 0 )
 			{
-				IRuleClass rule = ruleClassList.get(i);
-				Consequence con = (Consequence)rule.getConsequenceList().get(0);
-				resultList.add(con.getConsequenceString());
-				hicData.getData().getFormPattern().getFormValues().put("RulesComponent", con.getConsequenceString());
-
-			}
+				for (int i=0; i<ruleClassList.size();i++)
+				{
+					IRuleClass rule = ruleClassList.get(i);
+					Consequence con = (Consequence)rule.getConsequenceList().get(1);
+					resultList.add(con.getConsequenceString());
+					hicData.getData().getFormPattern().getFormValues().put("RulesComponent", con.getConsequenceString());
+	
+				}
+			}	
 			for (int i=0; i<resultList.size();i++)
 			{
 				System.out.println("Inside executeRuleHICData consequence list");

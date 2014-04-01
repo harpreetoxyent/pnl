@@ -4,24 +4,20 @@
 			<type>com.oxymedical.core.commonData.HICData</type>
 			<id>dataObject</id>
 		</variable>
-		<variable>
-			<type>com.pnl.component.socialrules.SocialRules</type>
-			<id>socialRuleObject</id>
-		</variable>
 	</variable-list>
 	<rule name="TestRule1">
 		<salience> 0 </salience>
 		<if>
 			<condition-list>
 				<condition name="cond1">
-					(dataObject.getUniqueID() == null)
+					(dataObject.getUniqueID() == "2014")
 				</condition>
 			</condition-list>
 		</if>
 		<then>
 			<consequence-list>
 				<consequence name="c1">
-					socialRuleObject.addUnivURLToData()
+					dataObject.getUniv_urls()
 				</consequence>
 			</consequence-list>
 			</then>
@@ -39,7 +35,7 @@
 			<then>
 				<consequence-list>
 					<consequence name="c1">
-						socialRuleObject.addTouristURLToData()
+						dataObject.getTourist_urls()
 					</consequence>
 				</consequence-list>
 			</then>

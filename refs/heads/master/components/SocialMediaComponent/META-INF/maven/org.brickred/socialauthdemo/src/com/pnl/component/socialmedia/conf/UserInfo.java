@@ -29,7 +29,7 @@ public class UserInfo
         this.day = day;
         this.month = month;
         this.year = year;
-        this.age = age+"";
+        this.age = age;
         
         
     }
@@ -123,7 +123,7 @@ public class UserInfo
 	 * Age to be calculated
 	 */
 	
-	private String age;
+	private int age;
 	/**
 	 * Retrieves the first name
 	 * 
@@ -428,7 +428,7 @@ public class UserInfo
 	 * @param year
 	 *            the age
 	 */
-	public void setAge(String age) {
+	public void setAge(int age) {
 		this.age = age;
 	}
 	
@@ -438,7 +438,7 @@ public class UserInfo
 	 * @return int age
 	 */
 	
-	public String getAge() {
+	public int getAge() {
 		return age;
 	}
 
