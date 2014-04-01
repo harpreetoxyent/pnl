@@ -77,10 +77,7 @@ System.out.println("Source Path===>"+source+"-----Destination Path===>"+dest);
 		 for(int i=0;i<urls.length;i++)
 		 {
 			 raf.write(urls[i].getBytes());	
-			 if(i<urls.length-1)
-			 {
-			  raf.write("\n".getBytes());
-			 }
+			 raf.write("\n".getBytes());
 		 }
 		 raf.close();
 	} catch (FileNotFoundException e) {

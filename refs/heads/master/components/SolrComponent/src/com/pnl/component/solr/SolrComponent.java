@@ -34,6 +34,7 @@ import com.oxymedical.core.commonData.IHICData;
 import com.oxymedical.core.maintenanceData.IMaintenanceData;
 import com.oxymedical.core.propertyUtil.PropertyUtil;
 import com.pnl.component.solr.processor.ProcessMapper;
+import com.pnl.component.solr.processor.WholeFileInputFormat;
 import com.pnl.component.solr.bean.SolrResultBean;
 import com.pnl.component.solr.exception.SolrComponentException;
 import com.pnl.component.solr.exception.SolrExceptionConstants;
@@ -48,7 +49,7 @@ public class SolrComponent implements ISolrComponent, IComponent {
 			.getName());
 	public static IHICData hicData;
 	@Override
-	@EventSubscriber(topic = "storeData")
+	@EventSubscriber(topic = "indexData")
 	public void storeData(HICData solrHICData) throws SolrComponentException {
 		// TODO Auto-generated method stub
 		
@@ -63,25 +64,27 @@ public class SolrComponent implements ISolrComponent, IComponent {
 			String fsName = PropertyUtil
 					.setUpProperties("HADOOP_FS_DEFAULT_NAME");
 
+			url = PropertyUtil.setUpProperties("SOLR_URL");
+			
 			// this should be like defined in your mapred-site.xml
 			conf.set("fs.default.name", fsName);
 			// like defined in hdfs-site.xml
 			conf.set("mapred.job.tracker", jobTracker);
 
-			job = new Job(conf, "solrStoreData");
+			job = new Job(conf, "solrIndexData");
 			job.setJarByClass(SolrComponent.class);
 			job.getConfiguration().set("hadoopFSDefault", fsName);
 
 			// Job Input path
 			FileInputFormat.setInputPaths(job, new Path(fsName
-					+ "/usr/oxyent/dataprocessor/files"));
+					+ "/usr/oxyent/bigData/savedsites/"));
 			// Job Output path
 			FileOutputFormat.setOutputPath(job, new Path(fsName
-					+ "/usr/oxyent/dataprocessor1/"));
+					+ "/usr/oxyent/indexprocessor1/"));
 
 			job.setMapperClass(ProcessMapper.class);
 
-			job.setInputFormatClass(SequenceFileInputFormat.class);
+			job.setInputFormatClass(WholeFileInputFormat.class);
 
 			job.setMapOutputKeyClass(Text.class);
 			job.setMapOutputValueClass(Text.class);
@@ -94,7 +97,7 @@ public class SolrComponent implements ISolrComponent, IComponent {
 			success = job.waitForCompletion(true);
 		} catch (IOException | ClassNotFoundException | InterruptedException e) {
 			// TODO Auto-generated catch block
-			// e.printStackTrace();
+			 e.printStackTrace();
 			throw new SolrComponentException(
 					SolrExceptionConstants.IO_EXCEPTION);
 		} catch (Exception exce) {

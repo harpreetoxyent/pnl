@@ -1,29 +1,26 @@
 package com.pnl.component.solr.processor;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.util.StringTokenizer;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.StringWriter;
 
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.Mapper;
-import org.apache.solr.client.solrj.SolrServerException;
-import org.apache.solr.client.solrj.impl.BinaryRequestWriter;
-import org.apache.solr.client.solrj.impl.StreamingUpdateSolrServer;
-import org.apache.solr.common.SolrInputDocument;
+import com.pnl.component.solr.util.SimplePostTool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ProcessMapper extends
 		Mapper<LongWritable, Text, NullWritable, NullWritable> {
-	private StreamingUpdateSolrServer server = null;
-	private SolrInputDocument thisDoc = new SolrInputDocument();
-	private String fileName;
-	private StringTokenizer st = null;
-	private int lineCounter = 0;
 	public static final Logger LOG = LoggerFactory
 			.getLogger(ProcessMapper.class);
 
 	@Override
 	public void setup(org.apache.hadoop.mapreduce.Mapper.Context context) {
+		
+		System.out.println("Setup called....");
 		/*
 		 * String url = "http://localhost:8983/solr"; fileName =
 		 * job.get("map.input.file").substring(
@@ -37,30 +34,20 @@ public class ProcessMapper extends
 	@Override
 	public void map(LongWritable key, Text value, Context context)
 			throws IOException, InterruptedException {
-		System.out.println("Mapper");
-		st = new StringTokenizer(value.toString());
-		lineCounter = 0;
 		LOG.info("Map starts...");
-		thisDoc = new SolrInputDocument();
-		/*
-		 * while (st.hasMoreTokens()) { thisDoc = new SolrInputDocument();
-		 * LOG.info("value===>"+st.nextToken()); thisDoc.addField("id", fileName
-		 * + " " + key.toString() + " " + lineCounter++);
-		 * thisDoc.addField("text", "text");
-		 * 
-		 * try { server.add(thisDoc); } catch (SolrServerException e) {
-		 * e.printStackTrace(); } catch (IOException e) { e.printStackTrace(); }
-		 * }
-		 */
-		server.setRequestWriter(new BinaryRequestWriter());
+		//thisDoc = new SolrInputDocument();
+		InputStream is = new ByteArrayInputStream(value.getBytes());
+		final StringWriter sw = new StringWriter();
+		SimplePostTool.indexData(new InputStreamReader(is));
 		LOG.info("End...");
 	}
 
 	@Override
 	public void cleanup(org.apache.hadoop.mapreduce.Mapper.Context context) throws IOException {
+		System.out.println("CleanUp called....");
 		try {
-			server.commit();
-		} catch (SolrServerException e) {
+			//server.commit();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
