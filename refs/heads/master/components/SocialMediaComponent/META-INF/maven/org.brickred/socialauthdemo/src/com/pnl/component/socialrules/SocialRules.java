@@ -1,6 +1,7 @@
 package com.pnl.component.socialrules;
 
-import com.pnl.component.socialmedia.*;;
+import com.pnl.component.socialmedia.*;
+import com.pnl.component.solr.bean.SolrResultBean;
 
 public class SocialRules
 {
@@ -25,16 +26,19 @@ public class SocialRules
 	}
 	public void addTouristURLToData()
 	{
-		this.setTouristURL("www.yahoo.com");
-		System.out.println("URL in Social rules" + this.getTouristURL());
-		SocialMediaComponent.getInstanceOfSocialHICObject().getData().getFormPattern().getFormValues().put("TouristURL", this.getTouristURL());
+		SolrResultBean solrResultBean = (SolrResultBean) SocialMediaComponent.getInstanceOfSocialHICObject().getMetaData().getCommonObject();
+		System.out.println("URL in Social rules" + solrResultBean.getTourist_urls());
+		this.setTouristURL(solrResultBean.getTourist_urls());
+		
+		SocialMediaComponent.getInstanceOfSocialHICObject().getData().getFormPattern().getFormValues().put("URL", this.getTouristURL());
 	}
 	
 	public void addUnivURLToData()
 	{
-		this.setUnivURL("www.timesofindia.com");
-		System.out.println("URL in Social rules" + this.getUnivURL());
-		SocialMediaComponent.getInstanceOfSocialHICObject().getData().getFormPattern().getFormValues().put("UnivURL", this.getUnivURL());
+		SolrResultBean solrResultBean = (SolrResultBean) SocialMediaComponent.getInstanceOfSocialHICObject().getMetaData().getCommonObject();
+		System.out.println("URL in Social rules" + solrResultBean.getUniv_urls());
+		this.setUnivURL(solrResultBean.getUniv_urls());
+		SocialMediaComponent.getInstanceOfSocialHICObject().getData().getFormPattern().getFormValues().put("URL", this.getUnivURL());
 	}
 
 }

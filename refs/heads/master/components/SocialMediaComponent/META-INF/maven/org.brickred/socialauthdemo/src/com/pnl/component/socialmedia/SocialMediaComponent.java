@@ -34,7 +34,8 @@ import com.pnl.component.socialmedia.conf.UserInfo;
 
 public class SocialMediaComponent implements ISocialMediaComponent, IComponent 
 {
-	public IHICData hicData = null;
+	 static public IHICData hicData;
+	
 	BusSocialAuthManager socialAuthManager = null;
 	String successUrl = "http://example.com:8080/HICFrameworkServlet/form.zul";
 	UserInfo userProfileInfo = null;
@@ -86,7 +87,7 @@ public class SocialMediaComponent implements ISocialMediaComponent, IComponent
 	 * @returns IHICData
 	 */
 	public IHICData getHicData() {
-		return this.hicData;
+		return hicData;
 	}
 
 	/**
@@ -95,8 +96,8 @@ public class SocialMediaComponent implements ISocialMediaComponent, IComponent
 	 * @param arg0
 	 * @returns void
 	 */
-	public void setHicData(IHICData arg0) {
-		hicData = arg0;
+	public void setHicData(IHICData data) {
+		SocialMediaComponent.hicData = data;
 	}
 	@Override
 	@MaintenancePublisher
@@ -108,7 +109,7 @@ public class SocialMediaComponent implements ISocialMediaComponent, IComponent
 	@EventSubscriber(topic = "executeSocial")
 	public IHICData execute(IHICData hicData) throws Exception
 	{
-		this.hicData = hicData;
+		SocialMediaComponent.hicData = hicData;
 		IData data = hicData.getData();
 		hicData.setMetaData(new MetaData());
 		String providerId = (String) data.getFormPattern().getFormValues()
@@ -208,8 +209,7 @@ public class SocialMediaComponent implements ISocialMediaComponent, IComponent
 	@EventSubscriber(topic = "checkRuleForSocialData")
 	public IHICData checkRuleForSocialData(IHICData userObject) throws Exception
 	{
-		IData data = new Data();
-		
+		SocialMediaComponent.hicData = userObject;
 		if(userProfileInfo != null)
 		{
 			System.out.println(" User Object is not null");
@@ -240,14 +240,25 @@ public class SocialMediaComponent implements ISocialMediaComponent, IComponent
 			{
 				age = age - 1;
 			}
-			userProfileInfo.setAge(age+"");
 			System.out.println(" AGE CALCULATED = " + age );
-			
-			data.setSqlQuery(userProfileInfo.getAge());
-			userObject.setData(data);
+			if (age >= 1 && age <= 100 )
+			{
+				userProfileInfo.setAge(age);
+				hicData.getData().setSqlQuery(userProfileInfo.getAge()+ "");	
+
+			}
+			else
+			{
+				hicData.getData().setSqlQuery("null");
+			}
+			System.out.println("------hicData before rule-------- ="+hicData);
 			//Call Rule Component to check matching rules
-			NOLISRuntime.FireEvent("executeRuleHICData", new Object[]{userObject}, PublicationScope.Global);
-			return userObject;
+			if (hicData.getData()!= null)
+			{
+				IHICData solrData = NOLISRuntime.FireEvent("executeRuleHICData", new Object[]{hicData}, PublicationScope.Global);
+				hicData.getMetaData().setCommonObject(solrData);
+			}
+			return hicData;
 		}
 		else
 		{
@@ -255,12 +266,8 @@ public class SocialMediaComponent implements ISocialMediaComponent, IComponent
 			return null;
 		}
 	}
-	public void addUnivURLToAnswerData()
+	public static IHICData getInstanceOfSocialHICObject ()
 	{
-		System.out.println("------Execute the addUniversity URLToAnswerData consequence-------- ");
-	}
-	public void addTouURLToAnswerData()
-	{
-		System.out.println("------Execute the addTourist URLToAnswerData consequence-------- ");
+		return hicData;
 	}
 }
