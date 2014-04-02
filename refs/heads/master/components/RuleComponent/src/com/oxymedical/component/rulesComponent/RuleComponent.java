@@ -121,7 +121,7 @@ public class RuleComponent implements IRuleComponent,IComponent {
 		{
 			String factInStrFormat = hicData.getData().getSqlQuery();
 			hicData.setUniqueID(factInStrFormat);
-			System.out.println("-------Inside Execute RULES---factInStrFormat"+factInStrFormat);
+			System.out.println("-------Inside Execute RULES---factInStrFormat" + factInStrFormat);
 			Object[] facts = {hicData};
 			List<IRuleClass> ruleClassList = new ArrayList<IRuleClass>();
 			ruleClassList = executeRules(facts);  // Should be called every time a fact arrives
@@ -131,7 +131,7 @@ public class RuleComponent implements IRuleComponent,IComponent {
 				for (int i=0; i<ruleClassList.size();i++)
 				{
 					IRuleClass rule = ruleClassList.get(i);
-					Consequence con = (Consequence)rule.getConsequenceList().get(1);
+					Consequence con = (Consequence)rule.getConsequenceList().get(0);
 					resultList.add(con.getConsequenceString());
 					hicData.getData().getFormPattern().getFormValues().put("RulesComponent", con.getConsequenceString());
 	
