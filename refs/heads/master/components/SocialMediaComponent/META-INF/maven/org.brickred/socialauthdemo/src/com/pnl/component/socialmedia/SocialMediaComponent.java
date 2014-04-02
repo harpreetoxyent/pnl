@@ -244,12 +244,10 @@ public class SocialMediaComponent implements ISocialMediaComponent, IComponent
 			if (age >= 1 && age <= 100 )
 			{
 				userProfileInfo.setAge(age);
-				hicData.getData().setSqlQuery(userProfileInfo.getAge()+ "");	
-
 			}
-			else
+			if ((userProfileInfo.getAge()) >= 1 && (userProfileInfo.getAge()) <= 100 )
 			{
-				hicData.getData().setSqlQuery("null");
+				hicData.getData().setSqlQuery(userProfileInfo.getAge()+ "");	
 			}
 			System.out.println("------hicData before rule-------- ="+hicData);
 			//Call Rule Component to check matching rules
