@@ -96,6 +96,7 @@ public class Crawl extends Configured implements Tool
 		    Path index = new Path(dir + "/index");
 
 		    Path tmpDir = job.getLocalPath("crawl"+Path.SEPARATOR+getDate());
+		    System.out.println("\n\n\n\n\nPluginfolder path ======>"+getConf().get("plugin.folders"));
 		    Injector injector = new Injector(getConf());
 		    Generator generator = new Generator(getConf());
 		    Fetcher fetcher = new Fetcher(getConf());

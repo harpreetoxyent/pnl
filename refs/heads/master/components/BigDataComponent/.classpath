@@ -23,5 +23,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/JAAP"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Logging"/>
 	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/DBComponent"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

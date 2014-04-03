@@ -51,6 +51,7 @@ public class CrawlerComponent extends Configured implements ICrawlerComponent,
 		String urls = "";
 		String depth = "";
 		String topN = "";
+		long uID = new Date().getTime();
 		String jobTracker = PropertyUtil.setUpProperties("HADOOP_JOB_TRACKER");
 		String fsName = PropertyUtil.setUpProperties("HADOOP_FS_DEFAULT_NAME");
 		try {
@@ -69,7 +70,7 @@ public class CrawlerComponent extends Configured implements ICrawlerComponent,
 		}
 		String source = Utility.createFile("seedDemo.txt", urls);
 		// System.out.println("Created File in file system.");
-		String destination = "/usr/oxyent/demo2/";
+		String destination = "/usr/oxyent/testrun/"+uID+"/demo2/";
 		try {
 			Utility.copyFileToHDFS(source, destination);
 		} catch (IOException e) {
@@ -105,14 +106,15 @@ public class CrawlerComponent extends Configured implements ICrawlerComponent,
 
 			// Job Input path
 			FileInputFormat.setInputPaths(job, new Path(fsName
-					+ "/usr/oxyent/demo2/"));
+					+ "/usr/oxyent/testrun/"+uID+"/demo2/"));
+			job.getConfiguration().set("outputDir", "/usr/oxyent/testrun/"+uID+"/demo2/");
 			// Job Output path
 			FileOutputFormat.setOutputPath(job, new Path(fsName
-					+ "/usr/oxyent/demo1/"));
+					+ "/usr/oxyent/testrun/"+uID+"/demo1/"));
 			System.out.println("Before calling waitforcompletion");
 			job.waitForCompletion(true);
-			System.out.println("Before calling fire event...");
-			
+			//System.out.println("Before calling fire event...");
+			hicData.getData().getFormPattern().getFormValues().put("uID",String.valueOf(uID));
 			hicData.getData().getFormPattern().getFormValues().put("contentDirectory", job.getConfiguration().get("contentDirectory"));
 			NOLISRuntime.FireEvent("processData", new Object[] { hicData },
 					PublicationScope.Global);

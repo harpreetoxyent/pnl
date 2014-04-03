@@ -40,6 +40,7 @@ public class BigDataComponent implements IBigDataComponent, IComponent {
 		Job job = null;
 		boolean success = false;
 		String inputPaths=null;
+		String uID = null;
 		try {
 			System.out.println("process() called");
 			Configuration conf = new Configuration();
@@ -61,10 +62,11 @@ public class BigDataComponent implements IBigDataComponent, IComponent {
 			inputPaths = (String)hicData.getData().getFormPattern().getFormValues().get("contentDirectory");
 			//FileInputFormat.setInputPaths(job, new Path(fsName + "/usr/oxyent/dataprocessor/files"));
 			FileInputFormat.setInputPaths(job, new Path(fsName + inputPaths));
-			
+			uID = (String)hicData.getData().getFormPattern().getFormValues().get("uID");
+			job.getConfiguration().set("uID", uID);
 			// Job Output path
 			FileOutputFormat.setOutputPath(job, new Path(fsName
-					+ "/usr/oxyent/dataprocessor1/"));
+					+ "/usr/oxyent/testrun/"+uID+"/dataprocessor1/"));
 
 			job.setMapperClass(ProcessMapper.class);
 			//job.setReducerClass(ProcessReducer.class);
@@ -80,17 +82,17 @@ public class BigDataComponent implements IBigDataComponent, IComponent {
 			// job.setNumReduceTasks(3);
 
 			success = job.waitForCompletion(true);
-			
+			hicData.getData().getFormPattern().getFormValues().put("uID",uID);
+			System.out.println("Before calling indexData...");
 			NOLISRuntime.FireEvent("indexData", new Object[] { hicData },
 					PublicationScope.Global);
-			
+			System.out.println("After calling indexData fire event...");
 		} catch (IOException | ClassNotFoundException | InterruptedException e) {
 			// TODO Auto-generated catch block
 			 e.printStackTrace();
 			throw new BigDataComponentException(
 					BigDataExceptionConstants.IO_EXCEPTION);
 		} catch (Exception exce) {
-			System.out.println("Exception aayi re bhai...");
 			exce.printStackTrace();
 		}
 		//System.exit(success ? 0 : 1);

@@ -1,10 +1,8 @@
 package com.pnl.component.bigdata.processor;
 
-import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Date;
 
@@ -18,14 +16,10 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataInputStream;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.BytesWritable;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
-import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
-import org.apache.hadoop.mapreduce.Mapper.Context;
-import org.apache.nutch.protocol.Content;
 
 public class ProcessMapper extends Mapper<LongWritable, Text, Text, Text> {
 	private final static IntWritable one = new IntWritable(1);
@@ -40,28 +34,32 @@ public class ProcessMapper extends Mapper<LongWritable, Text, Text, Text> {
 		// context.write(new Text("key"), new Text(value.getBytes()));
 
 		Configuration conf = context.getConfiguration();
+		String uID = conf.get("uID");
 		FileSystem fileSystem = FileSystem.get(conf);
 		String hadoopFSDefault = conf.get("hadoopFSDefault");
 		System.out.println("\n\n\nhapdoopFSDefault=====>" + hadoopFSDefault);
 		TransformerFactory tFactory = TransformerFactory.newInstance();
+		InputStream in = null;
 		try {
 			// System.out.println("Values=====>"+value);
-			String file="/usr/oxyent/bigData/CleanupWikiState.xsl";
-			Path path = new Path(file);
-			if (!fileSystem.exists(path)) {
-				System.out.println("File does not exists");
-				return;
-			}
+			// String file="/usr/oxyent/bigData/CleanupWikiState.xsl";
+			// Path path = new Path(file);
+			// if (!fileSystem.exists(path)) {
+			// System.out.println("File does not exists");
+			// return;
+			// }
 
-			FSDataInputStream in = fileSystem.open(path);
+			// FSDataInputStream in = fileSystem.open(path);
+			in = ProcessMapper.class
+					.getResourceAsStream("/com/pnl/component/bigdata/xslt/CleanupWikiState.xsl");
+			// String filename = file.substring(file.lastIndexOf('/') + 1,
+			// file.length());
 
-			//String filename = file.substring(file.lastIndexOf('/') + 1,
-			//		file.length());
+			// OutputStream out = new BufferedOutputStream(new FileOutputStream(
+			// new File(filename)));
 
-			//OutputStream out = new BufferedOutputStream(new FileOutputStream(
-			//		new File(filename)));
-
-			//Source xslDoc = new StreamSource("/usr/oxyent/bigData/CleanupWikiState.xsl");
+			// Source xslDoc = new
+			// StreamSource("/usr/oxyent/bigData/CleanupWikiState.xsl");
 			Source xslDoc = new StreamSource(in);
 
 			// Source xmlDoc = new
@@ -77,9 +75,10 @@ public class ProcessMapper extends Mapper<LongWritable, Text, Text, Text> {
 			Source xmlDoc = new StreamSource(new ByteArrayInputStream(
 					str.getBytes()));
 
-			String outputFileName = "/usr/oxyent/bigData/savedsites/infoNew123.xml";
+			String outputFileName = "/usr/oxyent/testrun/"+uID+"/bigData/savedsites/"+new Date().getTime()+".xml";
 
-			OutputStream htmlFile =fileSystem.create(new Path(outputFileName));// new FileOutputStream(outputFileName);
+			OutputStream htmlFile = fileSystem.create(new Path(outputFileName));// new
+																				// FileOutputStream(outputFileName);
 
 			Transformer trasform;
 			trasform = tFactory.newTransformer(xslDoc);

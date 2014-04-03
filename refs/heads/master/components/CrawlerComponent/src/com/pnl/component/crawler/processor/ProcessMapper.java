@@ -29,7 +29,8 @@ public class ProcessMapper extends  Mapper <LongWritable, Text, NullWritable, Nu
 		String contentDirectory = conf1.get("contentDirectory");
 		conf.set("contentDirectory", contentDirectory);
 		//String outputDir = rootUrl+"/output/";
-		String outputDir = "/usr/oxyent/demo2";
+		//String outputDir = "/usr/oxyent/demo2";
+		String outputDir = conf1.get("outputDir");
 		String[] args = new String[]{rootUrl,"-dir",outputDir,"-depth",depth,"-topN",topN};
 		
 	/*	java.util.Iterator<Entry<String, String>> itr=conf.iterator();

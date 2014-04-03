@@ -52,10 +52,11 @@ public class SolrComponent implements ISolrComponent, IComponent {
 	@EventSubscriber(topic = "indexData")
 	public void storeData(HICData solrHICData) throws SolrComponentException {
 		// TODO Auto-generated method stub
-		
+		System.out.println("storeData called....");
 		SolrComponent.hicData = solrHICData;
 		Job job = null;
 		boolean success = false;
+		String uID = null;
 		try {
 			Configuration conf = new Configuration();
 
@@ -74,13 +75,13 @@ public class SolrComponent implements ISolrComponent, IComponent {
 			job = new Job(conf, "solrIndexData");
 			job.setJarByClass(SolrComponent.class);
 			job.getConfiguration().set("hadoopFSDefault", fsName);
-
+			uID = (String)hicData.getData().getFormPattern().getFormValues().get("uID");
 			// Job Input path
 			FileInputFormat.setInputPaths(job, new Path(fsName
-					+ "/usr/oxyent/bigData/savedsites/"));
+					+ "/usr/oxyent/testrun/"+uID+"/bigData/savedsites/"));
 			// Job Output path
 			FileOutputFormat.setOutputPath(job, new Path(fsName
-					+ "/usr/oxyent/indexprocessor1/"));
+					+ "/usr/oxyent/testrun/"+uID+"/indexprocessor1/"));
 
 			job.setMapperClass(ProcessMapper.class);
 
@@ -95,6 +96,7 @@ public class SolrComponent implements ISolrComponent, IComponent {
 			// job.setNumReduceTasks(3);
 
 			success = job.waitForCompletion(true);
+			System.out.println("leaving solrcomponent...");
 		} catch (IOException | ClassNotFoundException | InterruptedException e) {
 			// TODO Auto-generated catch block
 			 e.printStackTrace();
