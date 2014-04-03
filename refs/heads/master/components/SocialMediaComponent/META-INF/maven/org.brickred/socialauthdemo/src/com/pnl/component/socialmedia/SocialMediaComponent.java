@@ -157,35 +157,6 @@ public class SocialMediaComponent implements ISocialMediaComponent, IComponent
 		userProfileInfo.setLanguage(p.getLanguage());	
 		userProfileInfo.setProfileImageURL(p.getProfileImageURL());
 		
-//		int yearDOB = userProfileInfo.getYear();
-//		int monthDOB = userProfileInfo.getMonth();
-//		int dayDOB = userProfileInfo.getDay();
-//		
-//		DateFormat dateFormat = new SimpleDateFormat("yyyy");
-//		java.util.Date date = new java.util.Date();
-//		int thisYear = Integer.parseInt(dateFormat.format(date));
-//		
-//		dateFormat = new SimpleDateFormat("MM");
-//		date = new java.util.Date();
-//		int thisMonth = Integer.parseInt(dateFormat.format(date));
-//
-//		dateFormat = new SimpleDateFormat("dd");
-//		date = new java.util.Date();
-//		int thisDay = Integer.parseInt(dateFormat.format(date));
-//		
-//		int age = thisYear-yearDOB;
-//		
-//		if(thisMonth < monthDOB)
-//		{
-//			age = age - 1;
-//		}
-//		
-//		if(thisMonth == monthDOB && thisDay < dayDOB)
-//		{
-//			age = age - 1;
-//		}
-//		userProfileInfo.setAge(age);
-//		System.out.println(" AGE CALCULATED = " + age );
 		userProfileInfo.setUserContacts(provider.getContactList());
 		List<Contact> list = userProfileInfo.getUserContacts();
 		for (int i=0; i<list.size(); i++)
@@ -210,7 +181,7 @@ public class SocialMediaComponent implements ISocialMediaComponent, IComponent
 	public IHICData checkRuleForSocialData(IHICData userObject) throws Exception
 	{
 		SocialMediaComponent.hicData = userObject;
-		if(userProfileInfo != null)
+		if(userProfileInfo.getFirstName() != null)
 		{
 			System.out.println(" User Object is not null");
 			int yearDOB = userProfileInfo.getYear();
@@ -244,25 +215,27 @@ public class SocialMediaComponent implements ISocialMediaComponent, IComponent
 			if (age >= 1 && age <= 100 )
 			{
 				userProfileInfo.setAge(age);
-			}
-			if ((userProfileInfo.getAge()) >= 1 && (userProfileInfo.getAge()) <= 100 )
-			{
 				hicData.getData().setSqlQuery(userProfileInfo.getAge()+ "");	
 			}
-			System.out.println("------hicData before rule-------- ="+hicData);
-			//Call Rule Component to check matching rules
-			if (hicData.getData()!= null)
+			else
 			{
-				IHICData solrData = NOLISRuntime.FireEvent("executeRuleHICData", new Object[]{hicData}, PublicationScope.Global);
-				hicData.getMetaData().setCommonObject(solrData);
+				hicData.getData().setSqlQuery("");
 			}
-			return hicData;
 		}
 		else
 		{
 			System.out.println(" User Object is null");
-			return null;
 		}
+		
+		//Call Rule Component to check matching rules
+
+		if (hicData!= null)
+		{
+			IHICData solrData = NOLISRuntime.FireEvent("executeRuleHICData", new Object[]{hicData}, PublicationScope.Global);
+			hicData.getMetaData().setCommonObject(solrData);
+
+		}
+		return hicData;
 	}
 	public static IHICData getInstanceOfSocialHICObject ()
 	{

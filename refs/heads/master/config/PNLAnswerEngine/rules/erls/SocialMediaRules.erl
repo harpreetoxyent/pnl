@@ -14,7 +14,7 @@
 		<if>
 			<condition-list>
 				<condition name="cond1">
-					(dataObject.getUniqueID().equals(null))
+					(dataObject.getUniqueID() == "null")
 				</condition>
 			</condition-list>
 		</if>

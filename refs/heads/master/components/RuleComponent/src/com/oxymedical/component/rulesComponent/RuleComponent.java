@@ -101,7 +101,9 @@ public class RuleComponent implements IRuleComponent,IComponent {
 	}
 	public List<IRuleClass> executeRules(Object[] ob) throws ComponentException 
 	{
-		System.out.println("-------Inside Execute RULES---rulebase="+ruleBase);
+		System.out.println("-------Inside Execute RULES---rulebase=" + ruleBase);
+		System.out.println("-------Inside Execute RULES---object=" + ob);
+
 		try {
 			IWorkingMemory reteWorkingMemory = ruleBase.newWorkingMemory();
 			reteWorkingMemory.assertObject(ob);
@@ -123,6 +125,8 @@ public class RuleComponent implements IRuleComponent,IComponent {
 			hicData.setUniqueID(factInStrFormat);
 			System.out.println("-------Inside Execute RULES---factInStrFormat" + factInStrFormat);
 			Object[] facts = {hicData};
+			System.out.println("------Facts Object-------- ="+facts);
+
 			List<IRuleClass> ruleClassList = new ArrayList<IRuleClass>();
 			ruleClassList = executeRules(facts);  // Should be called every time a fact arrives
 			System.out.println("-------Inside Execute RULES- number of rules mathcing=--ruleClassList.size()="+ruleClassList.size());
