@@ -27,12 +27,14 @@ public class ProcessMapper extends  Mapper <LongWritable, Text, NullWritable, Nu
 		String topN = conf1.get("topN");
 		String rootUrl = conf1.get("rootUrl");
 		String contentDirectory = conf1.get("contentDirectory");
+		String nutchPlugin = conf1.get("nutchPlugin");
 		conf.set("contentDirectory", contentDirectory);
 		//String outputDir = rootUrl+"/output/";
 		//String outputDir = "/usr/oxyent/demo2";
 		String outputDir = conf1.get("outputDir");
 		String[] args = new String[]{rootUrl,"-dir",outputDir,"-depth",depth,"-topN",topN};
-		
+		conf.set("plugin.folders", conf1.get("nutchPlugin"));
+		System.out.println("plugin.folders====>"+conf1.get("nutchPlugin"));
 	/*	java.util.Iterator<Entry<String, String>> itr=conf.iterator();
 		while (itr.hasNext()) {
 		      System.out.println(itr.next());

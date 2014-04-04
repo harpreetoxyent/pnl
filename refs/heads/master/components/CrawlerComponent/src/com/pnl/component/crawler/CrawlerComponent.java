@@ -51,9 +51,11 @@ public class CrawlerComponent extends Configured implements ICrawlerComponent,
 		String urls = "";
 		String depth = "";
 		String topN = "";
+		String nutchPlugin="";
 		long uID = new Date().getTime();
 		String jobTracker = PropertyUtil.setUpProperties("HADOOP_JOB_TRACKER");
 		String fsName = PropertyUtil.setUpProperties("HADOOP_FS_DEFAULT_NAME");
+		nutchPlugin=PropertyUtil.setUpProperties("NUTCH_PLUGIN_LOCATION");
 		try {
 			urls = data.getFormPattern().getFormValues().get("searchTextBox")
 					.toString().trim();
@@ -86,7 +88,7 @@ public class CrawlerComponent extends Configured implements ICrawlerComponent,
 			conf.set("fs.default.name", fsName);
 			// like defined in hdfs-site.xml
 			conf.set("mapred.job.tracker", jobTracker);
-
+			conf.set("nutchPlugin", nutchPlugin);
 			// Replace CallJobFromServlet.class name with your servlet class
 			Job job = new Job(conf, "Crawler Component");
 			job.getConfiguration().set("depth", depth);
