@@ -11,6 +11,7 @@ import org.apache.hadoop.fs.*;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.conf.*;
 import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.dom4j.Document;
@@ -21,15 +22,15 @@ import com.oxymedical.component.baseComponent.exception.ComponentException;
 import com.oxymedical.component.baseComponent.maintenance.annotations.MaintenancePublisher;
 import com.oxymedical.core.commonData.Application;
 import com.oxymedical.core.commonData.Data;
+import com.oxymedical.core.commonData.FormPattern;
 import com.oxymedical.core.commonData.HICData;
 import com.oxymedical.core.commonData.IData;
+import com.oxymedical.core.commonData.IFormPattern;
 import com.oxymedical.core.commonData.IHICData;
 import com.oxymedical.core.maintenanceData.IMaintenanceData;
 import com.oxymedical.core.propertyUtil.PropertyUtil;
-import com.oxymedical.hic.application.NOLISRuntime;
-import com.oxymedical.hic.application.eventmanagement.PublicationScope;
 import com.pnl.component.crawler.exception.CrawlerComponentException;
-import com.pnl.component.crawler.processor.ProcessMapper;
+import com.pnl.component.crawler.processor.NutchProcessMapper;
 import com.pnl.component.crawler.utilities.Utility;
 
 public class CrawlerComponent extends Configured implements ICrawlerComponent,
@@ -86,6 +87,7 @@ public class CrawlerComponent extends Configured implements ICrawlerComponent,
 						+ urls + "-----" + depth + "--topN---" + topN);
 		try {
 			Configuration conf = new Configuration();
+			String ipAddressOfHadoop = conf.get("mapred.job.tracker");
 			// this should be like defined in your mapred-site.xml
 			conf.set("fs.default.name", fsName);
 			// like defined in hdfs-site.xml
@@ -101,10 +103,7 @@ public class CrawlerComponent extends Configured implements ICrawlerComponent,
 			job.setJobName("Crawler");
 			job.setOutputKeyClass(Text.class);
 			job.setOutputValueClass(Text.class);
-			job.setMapperClass(ProcessMapper.class); // Replace Map.class name
-														// with your Mapper
-														// class
-
+			job.setMapperClass(NutchProcessMapper.class); 
 			job.setMapOutputKeyClass(Text.class);
 			job.setMapOutputValueClass(Text.class);
 
@@ -120,9 +119,12 @@ public class CrawlerComponent extends Configured implements ICrawlerComponent,
 			//System.out.println("Before calling fire event...");
 			hicData.getData().getFormPattern().getFormValues().put("uID",String.valueOf(uID));
 			hicData.getData().getFormPattern().getFormValues().put("contentDirectory", job.getConfiguration().get("contentDirectory"));
-			NOLISRuntime.FireEvent("processData", new Object[] { hicData },
-					PublicationScope.Global);
-			System.out.println("After calling fire event...");
+			
+			
+			//Commented by HS for time being
+			//NOLISRuntime.FireEvent("processData", new Object[] { hicData },
+			//		PublicationScope.Global);
+			//System.out.println("After calling fire event...");
 		} catch (Exception exce) {
 			exce.printStackTrace();
 			throw new CrawlerComponentException(exce);
@@ -178,7 +180,7 @@ public class CrawlerComponent extends Configured implements ICrawlerComponent,
 		{
 			CrawlerComponent crawlComponent = new CrawlerComponent();
 			Application app = new Application();
-			app.setApplicationName("RecommendationEngine");
+			app.setApplicationName("CrawlerComponent");
 			IHICData hicData = new HICData();
 			IData data = new Data();
 			data.setStatus("newfact");
@@ -186,6 +188,14 @@ public class CrawlerComponent extends Configured implements ICrawlerComponent,
 			hicData.setUniqueID("user");
 			hicData.setApplication(app);
 			hicData.setData(data);		
+			IFormPattern formPattern = new FormPattern();
+			formPattern.setFormValues(new Hashtable<String,Object>());
+			data.setFormPattern(formPattern);
+			data.getFormPattern().getFormValues().put("searchTextBox","http://en.wikipedia.org/wiki/Wisconsin");
+			data.getFormPattern().getFormValues().put("depth","1");
+			data.getFormPattern().getFormValues().put("topN","1");
+			data.getFormPattern().getFormValues().put("contentDirectory", "/app/hadoop/tmp/savedsites/");
+			
 			crawlComponent.process(hicData);
 		}
 		catch(Exception exp)
