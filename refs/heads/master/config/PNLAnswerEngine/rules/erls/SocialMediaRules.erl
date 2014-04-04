@@ -14,7 +14,7 @@
 		<if>
 			<condition-list>
 				<condition name="cond1">
-					(dataObject.getUniqueID() == "null")
+					(dataObject.getSqlQuery() == "")
 				</condition>
 			</condition-list>
 		</if>
@@ -32,7 +32,7 @@
 		<if>
 			<condition-list>
 				<condition name="cond1">
-					(dataObject.getUniqueID() == "57")
+					(dataObject.getSqlQuery() == "57")
 				</condition>
 			</condition-list>
 		</if>

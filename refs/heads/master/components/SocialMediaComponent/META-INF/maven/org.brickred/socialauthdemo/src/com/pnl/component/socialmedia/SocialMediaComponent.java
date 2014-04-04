@@ -217,15 +217,20 @@ public class SocialMediaComponent implements ISocialMediaComponent, IComponent
 				userProfileInfo.setAge(age);
 				hicData.getData().setSqlQuery(userProfileInfo.getAge()+ "");	
 			}
-			else
+			// If age is not valid , then the age set to data object will be empty string	
+			else 
 			{
 				hicData.getData().setSqlQuery("");
 			}
 		}
+		
+		// If there is no user object , then the age set to data object will be empty string
 		else
 		{
 			System.out.println(" User Object is null");
+			hicData.getData().setSqlQuery("");
 		}
+		
 		
 		//Call Rule Component to check matching rules
 
