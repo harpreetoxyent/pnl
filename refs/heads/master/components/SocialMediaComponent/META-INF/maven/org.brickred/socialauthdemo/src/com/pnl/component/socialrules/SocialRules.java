@@ -2,7 +2,6 @@ package com.pnl.component.socialrules;
 
 import com.pnl.component.socialmedia.*;
 import com.pnl.component.solr.bean.SolrResultBean;
-
 public class SocialRules
 {
 	private  String univURL;
