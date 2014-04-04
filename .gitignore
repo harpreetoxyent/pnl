@@ -6,3 +6,7 @@
 *.class
 
 *.class
+
+refs/heads/master/bus/HICFrameworkServlet/WebContent/WEB-INF/lib/BigDataComponent.jar
+
+*.jar
