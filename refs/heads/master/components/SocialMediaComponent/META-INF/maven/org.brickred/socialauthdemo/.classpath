@@ -16,6 +16,6 @@
 	<classpathentry kind="lib" path="lib/json-20080701.jar"/>
 	<classpathentry kind="lib" path="lib/openid4java.jar"/>
 	<classpathentry kind="lib" path="lib/socialauth-4.0.jar"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/SolrComponent"/>
+	<classpathentry kind="lib" path="/Users/RohitBhatt/git/pnl/refs/heads/master/components/SocialMediaComponent/WEB-INF/lib/solrcomponent.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
