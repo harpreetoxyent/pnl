@@ -19,6 +19,8 @@ import com.oxymedical.component.baseComponent.IComponent;
 import com.oxymedical.component.baseComponent.annotations.EventSubscriber;
 import com.oxymedical.component.baseComponent.exception.ComponentException;
 import com.oxymedical.component.baseComponent.maintenance.annotations.MaintenancePublisher;
+import com.oxymedical.core.commonData.Application;
+import com.oxymedical.core.commonData.Data;
 import com.oxymedical.core.commonData.HICData;
 import com.oxymedical.core.commonData.IData;
 import com.oxymedical.core.commonData.IHICData;
@@ -46,7 +48,7 @@ public class CrawlerComponent extends Configured implements ICrawlerComponent,
 	 * parameters can be found below.
 	 */
 	@EventSubscriber(topic = "executeCrawler")
-	public void process(HICData hicData) throws CrawlerComponentException {
+	public IHICData process(IHICData hicData) throws CrawlerComponentException {
 		IData data = hicData.getData();
 		String urls = "";
 		String depth = "";
@@ -123,6 +125,7 @@ public class CrawlerComponent extends Configured implements ICrawlerComponent,
 			exce.printStackTrace();
 			throw new CrawlerComponentException(exce);
 		}
+		return hicData;
 	}
 
 	@Override
@@ -166,5 +169,26 @@ public class CrawlerComponent extends Configured implements ICrawlerComponent,
 	public void maintenance(IMaintenanceData maintenanceData) {
 		// TODO Auto-generated method stub
 
+	}
+	public static void main(String[] args)
+	{
+		try
+		{
+			CrawlerComponent crawlComponent = new CrawlerComponent();
+			Application app = new Application();
+			app.setApplicationName("RecommendationEngine");
+			IHICData hicData = new HICData();
+			IData data = new Data();
+			data.setStatus("newfact");
+			data.setUserId("user");
+			hicData.setUniqueID("user");
+			hicData.setApplication(app);
+			hicData.setData(data);		
+			crawlComponent.process(hicData);
+		}
+		catch(Exception exp)
+		{
+			exp.printStackTrace();
+		}
 	}
 }
