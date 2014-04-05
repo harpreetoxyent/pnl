@@ -75,7 +75,7 @@ public class ProcessMapper extends Mapper<LongWritable, Text, Text, Text> {
 			Source xmlDoc = new StreamSource(new ByteArrayInputStream(
 					str.getBytes()));
 
-			String outputFileName = "/usr/oxyent/testrun/"+uID+"/bigData/savedsites/"+new Date().getTime()+".xml";
+			String outputFileName = "/usr/oxyent/testrun/"+uID+"/bigdata/savedsites/"+new Date().getTime()+".xml";
 
 			OutputStream htmlFile = fileSystem.create(new Path(outputFileName));// new
 																				// FileOutputStream(outputFileName);
