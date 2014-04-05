@@ -68,7 +68,7 @@ public class SolrComponent implements ISolrComponent, IComponent {
 			conf.set("fs.default.name", fsName);
 			// like defined in hdfs-site.xml
 			conf.set("mapred.job.tracker", jobTracker);
-			conf.set("solr.url", url);
+			conf.set("solr.url", url+"update");
 			job = new Job(conf, "solrIndexData");
 			job.setJarByClass(SolrComponent.class);
 			job.getConfiguration().set("hadoopFSDefault", fsName);
