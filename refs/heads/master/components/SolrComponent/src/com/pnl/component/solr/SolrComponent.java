@@ -11,11 +11,9 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
-import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.log4j.Logger;
 import org.apache.solr.client.solrj.SolrQuery;
-import org.apache.solr.client.solrj.SolrServer;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.CommonsHttpSolrServer;
 import org.apache.solr.client.solrj.impl.HttpSolrServer;
@@ -27,7 +25,6 @@ import com.oxymedical.component.baseComponent.IComponent;
 import com.oxymedical.component.baseComponent.annotations.EventSubscriber;
 import com.oxymedical.component.baseComponent.exception.ComponentException;
 import com.oxymedical.component.baseComponent.maintenance.annotations.MaintenancePublisher;
-import com.oxymedical.core.commonData.Data;
 import com.oxymedical.core.commonData.HICData;
 import com.oxymedical.core.commonData.IData;
 import com.oxymedical.core.commonData.IHICData;
@@ -71,17 +68,17 @@ public class SolrComponent implements ISolrComponent, IComponent {
 			conf.set("fs.default.name", fsName);
 			// like defined in hdfs-site.xml
 			conf.set("mapred.job.tracker", jobTracker);
-
+			conf.set("solr.url", url+"update");
 			job = new Job(conf, "solrIndexData");
 			job.setJarByClass(SolrComponent.class);
 			job.getConfiguration().set("hadoopFSDefault", fsName);
 			uID = (String)hicData.getData().getFormPattern().getFormValues().get("uID");
 			// Job Input path
 			FileInputFormat.setInputPaths(job, new Path(fsName
-					+ "/usr/oxyent/testrun/"+uID+"/bigData/savedsites/"));
+					+ "/usr/oxyent/testrun/"+uID+"/bigdata/savedsites/"));
 			// Job Output path
 			FileOutputFormat.setOutputPath(job, new Path(fsName
-					+ "/usr/oxyent/testrun/"+uID+"/indexprocessor1/"));
+					+ "/usr/oxyent/testrun/"+uID+"/solr/"));
 
 			job.setMapperClass(ProcessMapper.class);
 

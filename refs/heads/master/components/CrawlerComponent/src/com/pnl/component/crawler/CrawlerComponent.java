@@ -7,14 +7,11 @@ import java.text.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.apache.hadoop.fs.*;
-import org.apache.hadoop.io.Text;
-import org.apache.hadoop.conf.*;
-import org.apache.hadoop.mapreduce.Job;
-import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
-import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.conf.Configured;
+import org.apache.hadoop.util.ToolRunner;
+import org.apache.nutch.util.NutchConfiguration;
 import org.dom4j.Document;
-
 import com.oxymedical.component.baseComponent.IComponent;
 import com.oxymedical.component.baseComponent.annotations.EventSubscriber;
 import com.oxymedical.component.baseComponent.exception.ComponentException;
@@ -29,7 +26,7 @@ import com.oxymedical.core.propertyUtil.PropertyUtil;
 import com.oxymedical.hic.application.NOLISRuntime;
 import com.oxymedical.hic.application.eventmanagement.PublicationScope;
 import com.pnl.component.crawler.exception.CrawlerComponentException;
-import com.pnl.component.crawler.processor.ProcessMapper;
+import com.pnl.component.crawler.processor.Crawl;
 import com.pnl.component.crawler.utilities.Utility;
 
 public class CrawlerComponent extends Configured implements ICrawlerComponent,
@@ -42,23 +39,24 @@ public class CrawlerComponent extends Configured implements ICrawlerComponent,
 				.currentTimeMillis()));
 	}
 
-	/*
-	 * Perform complete crawling and indexing (to Solr) given a set of root urls
-	 * and the -solr parameter respectively. More information and Usage
-	 * parameters can be found below.
-	 */
 	@EventSubscriber(topic = "executeCrawler")
 	public IHICData process(IHICData hicData) throws CrawlerComponentException {
 		IData data = hicData.getData();
-		String urls = "";
-		String depth = "";
-		String topN = "";
-		String nutchPlugin="";
+
+		String urls = null;
+		String depth = null;
+		String topN = null;
+		String jobTracker = null;
+		String fsName = null;
+		String nutchPlugin = null;
+
 		long uID = new Date().getTime();
-		String jobTracker = PropertyUtil.setUpProperties("HADOOP_JOB_TRACKER");
-		String fsName = PropertyUtil.setUpProperties("HADOOP_FS_DEFAULT_NAME");
-		nutchPlugin=PropertyUtil.setUpProperties("NUTCH_PLUGIN_LOCATION");
+
 		try {
+			jobTracker = PropertyUtil.setUpProperties("HADOOP_JOB_TRACKER");
+			fsName = PropertyUtil.setUpProperties("HADOOP_FS_DEFAULT_NAME");
+			nutchPlugin = PropertyUtil.setUpProperties("NUTCH_PLUGIN_LOCATION");
+
 			urls = data.getFormPattern().getFormValues().get("searchTextBox")
 					.toString().trim();
 			depth = data.getFormPattern().getFormValues().get("depth")
@@ -69,14 +67,11 @@ public class CrawlerComponent extends Configured implements ICrawlerComponent,
 			System.out
 					.println("NullPointerException: CrawlerComponent.process()");
 		}
-		if (urls.lastIndexOf(",") == urls.length() - 1) {
-			urls = urls.substring(0, urls.length() - 1);
-		}
-		String source = Utility.createFile("seedDemo.txt", urls);
+		//String source = Utility.createFile("seedDemo.txt", urls);
 		// System.out.println("Created File in file system.");
-		String destination = "/usr/oxyent/testrun/"+uID+"/demo2/";
+		String destination = "/usr/oxyent/testrun/" + uID + "/crawler/";
 		try {
-			Utility.copyFileToHDFS(source, destination);
+			Utility.copyFileToHDFS(urls, destination);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -84,42 +79,25 @@ public class CrawlerComponent extends Configured implements ICrawlerComponent,
 		System.out
 				.println("------------Inside execute of Crawler Component---+ data="
 						+ urls + "-----" + depth + "--topN---" + topN);
+
+		// TODO Auto-generated method stub
+		Configuration conf = NutchConfiguration.create();
+		String[] args = new String[] { destination, "-dir", destination,
+				"-depth", depth, "-topN", topN };
+		conf.set("plugin.folders", nutchPlugin);
+		conf.set("mapred.job.tracker", jobTracker);
+		conf.set("fs.default.name", fsName);
+		conf.set("contentDirectory", "/usr/oxyent/testrun/"+uID+"/savedsites/");
+		System.out.println("plugin.folders====>" + nutchPlugin);
 		try {
-			Configuration conf = new Configuration();
-			// this should be like defined in your mapred-site.xml
-			conf.set("fs.default.name", fsName);
-			// like defined in hdfs-site.xml
-			conf.set("mapred.job.tracker", jobTracker);
-			conf.set("nutchPlugin", nutchPlugin);
-			// Replace CallJobFromServlet.class name with your servlet class
-			Job job = new Job(conf, "Crawler Component");
-			job.getConfiguration().set("depth", depth);
-			job.getConfiguration().set("topN", topN);
-			job.getConfiguration().set("rootUrl", destination);
-			job.getConfiguration().set("contentDirectory", "/app/hadoop/tmp/savedsites/");
-			job.setJarByClass(CrawlerComponent.class);
-			job.setJobName("Crawler");
-			job.setOutputKeyClass(Text.class);
-			job.setOutputValueClass(Text.class);
-			job.setMapperClass(ProcessMapper.class); // Replace Map.class name
-														// with your Mapper
-														// class
-
-			job.setMapOutputKeyClass(Text.class);
-			job.setMapOutputValueClass(Text.class);
-
-			// Job Input path
-			FileInputFormat.setInputPaths(job, new Path(fsName
-					+ "/usr/oxyent/testrun/"+uID+"/demo2/"));
-			job.getConfiguration().set("outputDir", "/usr/oxyent/testrun/"+uID+"/demo2/");
-			// Job Output path
-			FileOutputFormat.setOutputPath(job, new Path(fsName
-					+ "/usr/oxyent/testrun/"+uID+"/demo1/"));
-			System.out.println("Before calling waitforcompletion");
-			job.waitForCompletion(true);
-			//System.out.println("Before calling fire event...");
-			hicData.getData().getFormPattern().getFormValues().put("uID",String.valueOf(uID));
-			hicData.getData().getFormPattern().getFormValues().put("contentDirectory", job.getConfiguration().get("contentDirectory"));
+			int res = ToolRunner.run(conf, new Crawl(), args);
+			// System.exit(res);
+		
+			// System.out.println("Before calling fire event...");
+			hicData.getData().getFormPattern().getFormValues()
+					.put("uID", String.valueOf(uID));
+			hicData.getData().getFormPattern().getFormValues()
+					.put("contentDirectory", conf.get("contentDirectory"));
 			NOLISRuntime.FireEvent("processData", new Object[] { hicData },
 					PublicationScope.Global);
 			System.out.println("After calling fire event...");
@@ -130,7 +108,6 @@ public class CrawlerComponent extends Configured implements ICrawlerComponent,
 		return hicData;
 	}
 
-	@Override
 	public void start(Hashtable<String, Document> configData) {
 		// TODO Auto-generated method stub
 
@@ -172,10 +149,9 @@ public class CrawlerComponent extends Configured implements ICrawlerComponent,
 		// TODO Auto-generated method stub
 
 	}
-	public static void main(String[] args)
-	{
-		try
-		{
+
+	public static void main(String[] args) {
+		try {
 			CrawlerComponent crawlComponent = new CrawlerComponent();
 			Application app = new Application();
 			app.setApplicationName("RecommendationEngine");
@@ -185,11 +161,9 @@ public class CrawlerComponent extends Configured implements ICrawlerComponent,
 			data.setUserId("user");
 			hicData.setUniqueID("user");
 			hicData.setApplication(app);
-			hicData.setData(data);		
+			hicData.setData(data);
 			crawlComponent.process(hicData);
-		}
-		catch(Exception exp)
-		{
+		} catch (Exception exp) {
 			exp.printStackTrace();
 		}
 	}

@@ -26,7 +26,7 @@ import java.net.URL;
  * 
  */
 public class SimplePostTool {
-	public static final String DEFAULT_POST_URL = "http://localhost:8080/solr/update";
+	public static String DEFAULT_POST_URL = "http://localhost:8080/solr/update";
 	public static final String POST_ENCODING = "UTF-8";
 	public static final String VERSION_OF_THIS_TOOL = "1.2";
 	private static final String SOLR_OK_RESPONSE_EXCERPT = "<int name=\"status\">0</int>";

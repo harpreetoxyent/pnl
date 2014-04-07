@@ -3,8 +3,6 @@ package com.pnl.component.solr.processor;
 import java.io.IOException;
 
 import org.apache.hadoop.io.LongWritable;
-import org.apache.hadoop.io.NullWritable;
-import org.apache.hadoop.io.BytesWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 import org.apache.hadoop.mapreduce.InputSplit;
@@ -24,6 +22,7 @@ class WholeFileRecordReader extends RecordReader<LongWritable, Text> {
 	private LongWritable key = new LongWritable();
 	private Text value = new Text();
 
+	@Override
 	public void initialize(InputSplit inputSplit,
 			TaskAttemptContext taskAttemptContext) throws IOException,
 			InterruptedException {
@@ -31,6 +30,7 @@ class WholeFileRecordReader extends RecordReader<LongWritable, Text> {
 		this.conf = taskAttemptContext.getConfiguration();
 	}
 
+	@Override
 	public boolean nextKeyValue() throws IOException {
 		if (!processed) {
 			byte[] contents = new byte[(int) fileSplit.getLength()];

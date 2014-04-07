@@ -66,7 +66,7 @@ public class BigDataComponent implements IBigDataComponent, IComponent {
 			job.getConfiguration().set("uID", uID);
 			// Job Output path
 			FileOutputFormat.setOutputPath(job, new Path(fsName
-					+ "/usr/oxyent/testrun/"+uID+"/dataprocessor1/"));
+					+ "/usr/oxyent/testrun/"+uID+"/bigdata/"));
 
 			job.setMapperClass(ProcessMapper.class);
 			//job.setReducerClass(ProcessReducer.class);

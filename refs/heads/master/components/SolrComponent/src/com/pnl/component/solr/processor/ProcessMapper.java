@@ -8,6 +8,8 @@ import java.io.StringWriter;
 
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.Mapper;
+
+import com.oxymedical.core.propertyUtil.PropertyUtil;
 import com.pnl.component.solr.util.SimplePostTool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,6 +40,7 @@ public class ProcessMapper extends
 		//thisDoc = new SolrInputDocument();
 		InputStream is = new ByteArrayInputStream(value.getBytes());
 		final StringWriter sw = new StringWriter();
+		SimplePostTool.DEFAULT_POST_URL = context.getConfiguration().get("solr.url");
 		SimplePostTool.indexData(new InputStreamReader(is));
 		LOG.info("End...");
 	}
