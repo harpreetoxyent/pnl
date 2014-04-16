@@ -58,7 +58,7 @@ public class Utility {
 		if (source.lastIndexOf(",") == source.length() - 1) {
 			source = source.substring(0, source.length() - 1);
 		}
-
+		source.replaceAll(",", "\n");
 		// Create a new file and write data to it.
 		FSDataOutputStream out = fileSystem.create(path);
 		// InputStream in = new BufferedInputStream(new FileInputStream(new

@@ -12,6 +12,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataInputStream;
 import org.apache.hadoop.fs.FileSystem;
@@ -20,6 +21,14 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.lib.input.FileSplit;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Attribute;
+import org.jsoup.nodes.Attributes;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.safety.Whitelist;
+import org.jsoup.select.Elements;
 
 public class ProcessMapper extends Mapper<LongWritable, Text, Text, Text> {
 	private final static IntWritable one = new IntWritable(1);
@@ -41,6 +50,11 @@ public class ProcessMapper extends Mapper<LongWritable, Text, Text, Text> {
 		TransformerFactory tFactory = TransformerFactory.newInstance();
 		InputStream in = null;
 		try {
+			
+			String filename=  ((FileSplit)context.getInputSplit()).getPath().getName();//context.getConfiguration().get("map.input.file");
+			filename = filename.replace('-', '/');
+			filename = filename.replace('_', ':');
+			System.out.println("File name ====> "+filename);
 			// System.out.println("Values=====>"+value);
 			// String file="/usr/oxyent/bigData/CleanupWikiState.xsl";
 			// Path path = new Path(file);
@@ -69,9 +83,26 @@ public class ProcessMapper extends Mapper<LongWritable, Text, Text, Text> {
 					.replace(
 							"<!DOCTYPE html>",
 							"<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">");
-			str = str.replace(
-					"<html lang=\"en\" dir=\"ltr\" class=\"client-nojs\">",
-					"<html xmlns=\"http://www.w3.org/1999/xhtml\">");
+			
+			Document doc = Jsoup.parse(str);
+			Elements ele = doc.getElementsByTag("html");
+			Element el = ele.get(0);
+			Attributes atbr = el.attributes();
+			
+			    for (Attribute a : atbr) {
+			        el.removeAttr(a.getKey());
+			    }
+			
+			atbr.put("xmlns", "http://www.w3.org/1999/xhtml");
+			doc.head().append("<url>"+filename+"</url>");
+			doc.outputSettings().charset("UTF-8");
+			
+			
+			//str = Jsoup.clean(doc.toString(), Whitelist.basic());
+			str = doc.toString();//StringEscapeUtils.unescapeHtml(doc.toString());
+			str.replaceAll("& ", "&amp;");
+			//System.out.println(str);
+			
 			Source xmlDoc = new StreamSource(new ByteArrayInputStream(
 					str.getBytes()));
 
