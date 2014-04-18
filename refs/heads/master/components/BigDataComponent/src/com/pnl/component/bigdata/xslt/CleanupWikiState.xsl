@@ -6,12 +6,18 @@
                 exclude-result-prefixes="html">
 
 <xsl:output method="xml" indent="yes" encoding="MacRoman"/>
-
+<xsl:strip-space elements="*"/>
 <xsl:template match="html:html">
   <add>
    <doc>
     <field name="id">
       <xsl:value-of select="html:body/html:div[3]/html:h1"/>
+    </field>
+    <field name="url">
+      <xsl:value-of select="html:head/html:url"/>
+    </field>
+    <field name="content">
+      <xsl:value-of select="html:body"/>
     </field>
     <field name="title">
       <xsl:value-of select="html:head/html:title"/>

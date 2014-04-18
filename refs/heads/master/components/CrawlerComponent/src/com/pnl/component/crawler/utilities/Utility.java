@@ -22,13 +22,13 @@ public class Utility {
 	public static boolean copyFileToHDFS(String source, String dest)
 			throws IOException {
 		Configuration conf = new Configuration();
-		System.out.println("Source Path===>" + source
-				+ "-----Destination Path===>" + dest);
+
+		//System.out.println("Source Path===>" + source + "-----Destination Path===>" + dest);
 
 		// Conf object will read the HDFS configuration parameters from these
 		// XML files.
 		String hadoopHome = PropertyUtil.setUpProperties("HADOOP_HOME");
-		System.out.println(hadoopHome);
+		//System.out.println(hadoopHome);
 		conf.addResource(new Path(hadoopHome + "/conf/core-site.xml"));
 		conf.addResource(new Path(hadoopHome + "/conf/hdfs-site.xml"));
 
@@ -58,7 +58,8 @@ public class Utility {
 		if (source.lastIndexOf(",") == source.length() - 1) {
 			source = source.substring(0, source.length() - 1);
 		}
-
+		source = source.replaceAll(",", "\n");
+		//System.out.println("source======>" + source);
 		// Create a new file and write data to it.
 		FSDataOutputStream out = fileSystem.create(path);
 		// InputStream in = new BufferedInputStream(new FileInputStream(new
