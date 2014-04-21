@@ -417,7 +417,7 @@
 
 <property>
   <name>db.ignore.internal.links</name>
-  <value>true</value>
+  <value>false</value>
   <description>If true, when adding new links to a page, links from
   the same host are ignored.  This is an effective way to limit the
   size of the link database, keeping only the highest quality

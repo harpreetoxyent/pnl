@@ -27,6 +27,7 @@ import org.jsoup.nodes.Attribute;
 import org.jsoup.nodes.Attributes;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.nodes.Node;
 import org.jsoup.safety.Whitelist;
 import org.jsoup.select.Elements;
 
@@ -55,54 +56,12 @@ public class ProcessMapper extends Mapper<LongWritable, Text, Text, Text> {
 			filename = filename.replace('-', '/');
 			filename = filename.replace('_', ':');
 			System.out.println("File name ====> "+filename);
-			// System.out.println("Values=====>"+value);
-			// String file="/usr/oxyent/bigData/CleanupWikiState.xsl";
-			// Path path = new Path(file);
-			// if (!fileSystem.exists(path)) {
-			// System.out.println("File does not exists");
-			// return;
-			// }
-
-			// FSDataInputStream in = fileSystem.open(path);
 			in = ProcessMapper.class
 					.getResourceAsStream("/com/pnl/component/bigdata/xslt/CleanupWikiState.xsl");
-			// String filename = file.substring(file.lastIndexOf('/') + 1,
-			// file.length());
-
-			// OutputStream out = new BufferedOutputStream(new FileOutputStream(
-			// new File(filename)));
-
-			// Source xslDoc = new
-			// StreamSource("/usr/oxyent/bigData/CleanupWikiState.xsl");
 			Source xslDoc = new StreamSource(in);
-
-			// Source xmlDoc = new
-			// StreamSource("/usr/oxyent/bigData/wikiWisconsin.xml");
-			String str = value.toString();
-			str = str
-					.replace(
-							"<!DOCTYPE html>",
-							"<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">");
 			
-			Document doc = Jsoup.parse(str);
-			Elements ele = doc.getElementsByTag("html");
-			Element el = ele.get(0);
-			Attributes atbr = el.attributes();
-			
-			    for (Attribute a : atbr) {
-			        el.removeAttr(a.getKey());
-			    }
-			
-			atbr.put("xmlns", "http://www.w3.org/1999/xhtml");
-			doc.head().append("<url>"+filename+"</url>");
-			doc.outputSettings().charset("UTF-8");
-			
-			
-			//str = Jsoup.clean(doc.toString(), Whitelist.basic());
-			str = doc.toString();//StringEscapeUtils.unescapeHtml(doc.toString());
-			str.replaceAll("& ", "&amp;");
-			//System.out.println(str);
-			
+			String str = parser(value,filename);
+					
 			Source xmlDoc = new StreamSource(new ByteArrayInputStream(
 					str.getBytes()));
 
@@ -122,4 +81,63 @@ public class ProcessMapper extends Mapper<LongWritable, Text, Text, Text> {
 		}
 		System.out.println("End" + new Date().getTime());
 	}
+	
+	private String parser(Text value,String url)
+	{
+		String str = value.toString();
+		str = str
+				.replace(
+						"<!DOCTYPE html>",
+						"<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">");
+		
+		Document doc = Jsoup.parse(str);
+		doc.select("script,jscript,br,hr,link").remove();
+
+		removeComments(doc);
+		Elements ele = doc.getElementsByTag("html");
+		Element el = ele.get(0);
+		Attributes atbr = el.attributes();
+		
+		    for (Attribute a : atbr) {
+		        el.removeAttr(a.getKey());
+		    }
+		ele = doc.getElementsByTag("img");
+		    for (Element e : ele) {
+		        atbr = e.attributes();
+		        for (Attribute a : atbr) {
+		        	if(!a.getKey().equals("src"))
+		            e.removeAttr(a.getKey());
+		        }
+		    }
+		    
+		 ele = doc.getElementsByTag("a");
+		    for (Element e : ele) {
+		        atbr = e.attributes();
+		        for (Attribute a : atbr) {
+		        	if(!a.getKey().equals("href"))
+		            e.removeAttr(a.getKey());
+		        }
+		    }
+	
+		atbr.put("xmlns", "http://www.w3.org/1999/xhtml");
+		doc.head().append("<url>"+url+"</url>");
+		doc.outputSettings().charset("UTF-8");
+		
+		
+		str = doc.toString();//StringEscapeUtils.unescapeHtml(doc.toString());
+		str=str.replaceAll("& ", "&amp;");
+		return str;
+	}
+	
+	 private void removeComments(Node node) {
+	        for (int i = 0; i < node.childNodes().size();) {
+	            Node child = node.childNode(i);
+	            if (child.nodeName().equals("#comment"))
+	                child.remove();
+	            else {
+	                removeComments(child);
+	                i++;
+	            }
+	        }
+	    }
 }
