@@ -25,19 +25,19 @@ public class SocialRules
 	}
 	public void addTouristURLToData()
 	{
-		SolrResultBean solrResultBean = (SolrResultBean) SocialMediaComponent.getInstanceOfSocialHICObject().getMetaData().getCommonObject();
-		System.out.println("URL in Social rules" + solrResultBean.getTourist_urls());
-		this.setTouristURL(solrResultBean.getTourist_urls());
+//		SolrResultBean solrResultBean = (SolrResultBean) SocialMediaComponent.getInstanceOfSocialHICObject().getMetaData().getCommonObject();
+//		System.out.println("URL in Social rules" + solrResultBean.getTourist_urls());
+//		this.setTouristURL(solrResultBean.getTourist_urls());
 		
-		SocialMediaComponent.getInstanceOfSocialHICObject().getData().getFormPattern().getFormValues().put("URL", this.getTouristURL());
+		SocialMediaComponent.getInstanceOfSocialHICObject().getData().getFormPattern().getFormValues().put("URL", "www.google.com");
 	}
 	
 	public void addUnivURLToData()
 	{
-		SolrResultBean solrResultBean = (SolrResultBean) SocialMediaComponent.getInstanceOfSocialHICObject().getMetaData().getCommonObject();
-		System.out.println("URL in Social rules" + solrResultBean.getUniv_urls());
-		this.setUnivURL(solrResultBean.getUniv_urls());
-		SocialMediaComponent.getInstanceOfSocialHICObject().getData().getFormPattern().getFormValues().put("URL", this.getUnivURL());
+//		SolrResultBean solrResultBean = (SolrResultBean) SocialMediaComponent.getInstanceOfSocialHICObject().getMetaData().getCommonObject();
+//		System.out.println("URL in Social rules" + solrResultBean.getUniv_urls());
+//		this.setUnivURL(solrResultBean.getUniv_urls());
+		SocialMediaComponent.getInstanceOfSocialHICObject().getData().getFormPattern().getFormValues().put("URL", "www.oxyent.com");
 	}
 
 }
