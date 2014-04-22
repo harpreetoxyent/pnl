@@ -147,7 +147,7 @@
 		
 		<module
 			name="Database Component"
-			id="dbCompnent"
+			id="dbComponent"
 			version="1.0"
 			provider-name="Oxyent"
 			class="com.oxymedical.component.db.DBComponent">

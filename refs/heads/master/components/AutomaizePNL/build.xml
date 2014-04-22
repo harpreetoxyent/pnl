@@ -10,7 +10,8 @@
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.7"/>
     <property name="source" value="1.7"/>
-    <property name="JAVA_OPTS" value="$JAVA_OPTS -Dsolr.solr.home=$CATALINA_HOME/webapps/solr/"/>  
+    <property name="dbComponentCLib" value="/Users/RohitBhatt/git/pnl/refs/heads/master/components/DBComponent/component_lib"/>
+    <property name="dbComponentLib" value="/Users/RohitBhatt/git/pnl/refs/heads/master/components/DBComponent/lib"/>  
     <property name="servletReleaseDir" value="/Users/RohitBhatt/git/pnl/refs/heads/master/release/"></property>
   
     <path id="AutomaizePNL.classpath">
@@ -56,9 +57,7 @@
   	    <echo>Deploying solr to ${env.CATALINA_HOME}</echo>
   	    <copy file="${servletReleaseDir}/solr.war" todir="${env.CATALINA_HOME}/webapps"/>
   	  </target> 
-       <exec os= "MAC OS X">
-       		<env key="PATH" path="${JAVA_OPTS}"/>
-       	</exec>
+      
 	 <target name="deployHicServlet" depends="deploySolr">
 	  	    <echo>Deploying hic framework servlet to ${env.CATALINA_HOME}</echo>
 	  	    <copy file="${servletReleaseDir}/HICFrameworkServlet.war" todir="${env.CATALINA_HOME}/webapps"/>
