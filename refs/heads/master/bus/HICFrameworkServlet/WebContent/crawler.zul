@@ -1,6 +1,70 @@
 <zk>
+<style>
+* {margin: 0;}
+.header{background: rgba(117,168,189,.5); width:100%!important; height: 32px;margin:0px; padding:6px 0;}
+.header div.sign{text-align: right;padding-left: 10px; position: absolute; right: 120px; color: #fff;}
+.sign span.z-label{font-weight: bold;}
+html, body {height: 100%; font-family:arial,sans-serif; padding:0px!important; background: #98bac8;}
+.wrapper {margin:auto; width: 850px;}
+.search{width:600px; border: 1px solid #ccc; margin-top:10px; height: 150px; box-shadow: 0 0 20px 2px rgba(0,62,92,.5);
+background-color: #fff;
+border-radius: 20px;
+-moz-border-radius: 20px;
+-webkit-border-radius: 20px;
+text-align:center;
+padding:10px;
+}
+.footer {clear: both; width: 100%; margin:auto; height: 70px; background: -webkit-linear-gradient(bottom, rgba(91,155,181,.6) 0%, rgba(91, 155, 181,.9) 100%); border-top: 1px solid #e4e4e4; text-align:center; padding:20px; float:left; margin-top:30px;}
+.search_box{width:500px; height: 25px; border: 1px solid #ccc; float:left; margin-top:20px;}
+.search_box:focus{border: 1px solid #4285f4; outline:none;}
+.search_button{width:60px; height: 30px; border: 1px solid #ccc; background: #f2f2f2; float:right; margin-top:20px;}
+.image{width:100px; height; 60px;}
+.main{width:850px; margin-top:40px; clear:both;}
+.left{width:600px; border: 1px solid #cccccc; float:left; padding:10px; box-shadow: 0 0 20px 2px rgba(0,62,92,.5);
+background-color: #fff;
+border-radius: 20px;
+-moz-border-radius: 20px;
+-webkit-border-radius: 20px;
+min-height: 400px;
+}
+.right{float:right; width:220px;}
+.item1{width:220px; border: 1px solid #cccccc; padding: 10px;box-shadow: 0 0 20px 2px rgba(0,62,92,.5);
+background-color: #fff;
+border-radius: 20px;
+-moz-border-radius: 20px;
+-webkit-border-radius: 20px;
+min-height: 300px;
+margin-bottom:10px;
+}
+
+.item2{width:220px; border: 1px solid #cccccc; padding: 10px;box-shadow: 0 0 20px 2px rgba(0,62,92,.5);
+background-color: #fff;
+border-radius: 20px;
+-moz-border-radius: 20px;
+-webkit-border-radius: 20px;
+min-height: 40px;
+}
+
+img:hover{cursor:pointer;}
+.z-window{border:none!important; border-radius:0px!important; padding:0px!important; background:none; width:100%!important; height: auto!important;}
+.z-window-content{border:none!important; margin:0px!important; padding:0px!important; background: #98bac8;!important; width:100%!important; height: auto!important;}
+.z-window-embedded{border:none!important; border-radius:0px!important; padding:0px!important; background:none; width:100%!important; height: auto!important;}
+.z-window-embedded-cnt{border:none!important; margin:0px!important; padding:0px!important; background: #98bac8;!important; width:100%!important; height: auto!important;}
+img:hover{cursor:pointer;}
+.admin{font-weight:bold; color: #fff; text-decoration:none;}
+.z-listbox-body{background: #ffffff;}
+.z-listbox{box-shadow:0 0 20px 2px rgba(0,62,92,.5); border-radius: 10px;}
+.z-groupbox>.z-groupbox-header{border:none;}
+.z-groupbox-content{border:none; overflow:visible;}
+.z-hbox{margin: auto;margin-top: 15px;width: 775px;}
+.z-messagebox-window{width:350px!important;}
+</style>
 <zscript src="uilibrary.zs"/>
-   <window title="PNL MVP Search Engine" border="normal">
+   <window border="normal">
+   	<div class="header">
+<div class="sign"><a href="index.zul" class="admin">Home</a></div>
+</div>
+	<div class="wrapper">
     <groupbox>
         <caption>
             Total Urls : <label id="urlCount"/>
@@ -36,7 +100,6 @@
 			]]>
 		</attribute>
 	</button>
-	<button label="Url" onClick="getUrlAsCSV()" />
     </hbox>
     </groupbox>
     <!--
@@ -86,5 +149,6 @@
         //initialize
         updateUrlCount();
     ]]></zscript>
+    </div>
   </window>
 </zk>

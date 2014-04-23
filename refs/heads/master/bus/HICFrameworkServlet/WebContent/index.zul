@@ -51,12 +51,13 @@ img:hover{cursor:pointer;}
 .z-window-embedded{border:none!important; border-radius:0px!important; padding:0px!important; background:none; width:100%!important; height: auto!important;}
 .z-window-embedded-cnt{border:none!important; margin:0px!important; padding:0px!important; background: #98bac8;!important; width:100%!important; height: auto!important;}
 img:hover{cursor:pointer;}
+.admin{font-weight:bold; color: #fff; text-decoration:none;}
 </style>
 <zscript src="uilibrary.zs"/>
 <?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" ?>
 	<window title="" border="normal">
 		<div class="header">
-			<div class="sign">Sign In</div>
+			<div class="sign"><a href="crawler.zul" class="admin">Admin</a> | Sign In</div>
 		</div>
 		<div class="wrapper">
 			<div class="search">
@@ -76,11 +77,11 @@ img:hover{cursor:pointer;}
 						if (solrResultBean != null)
 						{
 							System.out.println("Wisconsin flag src url = " +solrResultBean.getFlag());
-							answerSearch.value = solrResultBean.getName();
-							answerSearch.value += " " + solrResultBean.getCapital();
-							answerSearch.value += " " + solrResultBean.getLargest_city();
-							answerSearch.value += " " + searchAnswerHIC.getData().getFormPattern().getFormValues().get("URL");
-							flagSource.src = solrResultBean.getFlag();
+							//answerSearch.value = solrResultBean.getId();
+							answerSearch.value = " " + solrResultBean.getUrl();
+							answerSearch.value += "\n \n \n \n " + solrResultBean.getContent();
+							//answerSearch.value += " " + searchAnswerHIC.getData().getFormPattern().getFormValues().get("URL");
+							//flagSource.src = solrResultBean.getFlag();
 						}	
 						]]>
 					</attribute>
@@ -88,7 +89,7 @@ img:hover{cursor:pointer;}
 			</div>
 			<div class="main">
 				<div class="left">
-					<label id = "answerSearch"/>
+					<label multiline="true" id = "answerSearch"/>
 					<image id = "flagSource" src=""></image>
 				</div>
 				<div id="text1" class="text1">

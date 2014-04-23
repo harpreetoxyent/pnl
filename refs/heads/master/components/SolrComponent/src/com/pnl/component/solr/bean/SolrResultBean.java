@@ -32,6 +32,26 @@ public class SolrResultBean {
 	private String tourist_urls;
 	@Field
 	private String univ_urls;
+	@Field
+	private String url;
+	@Field
+	private String content;
+	
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
 
 	public String getTourist_urls() {
 		return tourist_urls;
