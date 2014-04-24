@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-cascade="none"
+	default-access="property" default-lazy="true" auto-import="true">
+	<!--
+		Created by the Middlegen Hibernate plugin 2.2
+
+		http://boss.bekk.no/boss/middlegen/ http://www.hibernate.org/
+	-->
+	<class name="com.oxymedical.component.appadmin.model.resources_app.Nodeinfo"
+		table="nodeinfo" lazy="false" dynamic-update="true" dynamic-insert="true"
+		mutable="true" polymorphism="implicit" select-before-update="false"
+		optimistic-lock="version">
+		<id name="id" type="java.lang.Integer" column="id">
+			<generator class="native" />
+		</id>
+		<property name="formpatternid" type="java.lang.String"
+			column="formpatternid" length="255" unique="false" optimistic-lock="true"
+			lazy="false" generated="never" />
+		<property name="datapatternid" type="java.lang.String"
+			column="datapatternid" length="255" unique="false" optimistic-lock="true"
+			lazy="false" generated="never" />
+		<property name="userpatternid" type="java.lang.String"
+			column="userpatternid" length="255" unique="false" optimistic-lock="true"
+			lazy="false" generated="never" />
+		<property name="scenario" type="java.lang.String" column="scenario"
+			length="150" unique="false" optimistic-lock="true" lazy="false"
+			generated="never" />
+		<property name="info" type="java.lang.String" column="info"
+			length="50" unique="false" optimistic-lock="true" lazy="false"
+			generated="never" />
+		<property name="data" type="java.lang.String" column="data"
+			length="50" unique="false" optimistic-lock="true" lazy="false"
+			generated="never" />
+		<property name="nodename" type="java.lang.String" column="nodename"
+			unique="true" length="150" optimistic-lock="true" lazy="false"
+			generated="never" />
+		<property name="nodetype" type="java.lang.String" column="nodetype"
+			unique="false" length="1" optimistic-lock="true" lazy="false"
+			generated="never" />
+	
+		
+		<!-- Associations -->
+		<!--
+			bi-directional many-to-one association to Nodedetail
+		-->
+		<many-to-one name="nodedetail"
+			class="com.oxymedical.component.appadmin.model.resources_app.Nodedetail"
+			not-null="true" unique="false" update="true" insert="true"
+			optimistic-lock="true" not-found="exception" embed-xml="true">
+			<column name="nodeDetail" />
+		</many-to-one>
+		
+		<!--
+			bi-directional one-to-many association to Workflownodeinfo
+		-->
+		<set name="workflownodeinfos" lazy="true" inverse="true" cascade="none"
+			sort="unsorted" mutable="true" optimistic-lock="true" embed-xml="true">
+			<key on-delete="noaction">
+				<column name="nodeid" />
+			</key>
+			<one-to-many
+				class="com.oxymedical.component.appadmin.model.resources_app.Workflownodeinfo"
+				not-found="exception" embed-xml="true" />
+		</set>
+		
+		<!-- 
+			bi-directional one-to-many association to Nodeconnector 
+		-->
+		<set name="nodeconnectorsByToNodeId" lazy="true" inverse="true"
+			cascade="none" sort="unsorted" mutable="true" optimistic-lock="true"
+			embed-xml="true">
+			<key on-delete="noaction">
+				<column name="toNodeId" />
+			</key>
+			<one-to-many
+				class="com.oxymedical.component.appadmin.model.resources_app.Nodeconnector"
+				not-found="exception" embed-xml="true" />
+		</set>
+		
+		<!-- 
+			bi-directional one-to-many association to Nodeconnector 
+		-->
+		<set name="nodeconnectorsByFromNodeId" lazy="true" inverse="true"
+			cascade="none" sort="unsorted" mutable="true" optimistic-lock="true"
+			embed-xml="true">
+			<key on-delete="noaction">
+				<column name="fromNodeId" />
+			</key>
+			<one-to-many
+				class="com.oxymedical.component.appadmin.model.resources_app.Nodeconnector"
+				not-found="exception" embed-xml="true" />
+		</set>
+	</class>
+</hibernate-mapping>

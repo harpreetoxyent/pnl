@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+		<mapping resource="com/oxymedical/component/appadmin/model/resources_app/Dataobject.hbm.xml" />
+		<mapping resource="com/oxymedical/component/appadmin/model/resources_app/Workflowinfo.hbm.xml" />
+		<mapping resource="com/oxymedical/component/appadmin/model/resources_app/Nodeevent.hbm.xml" />
+		<mapping resource="com/oxymedical/component/appadmin/model/resources_app/Errorinfo.hbm.xml" />
+		<mapping resource="com/oxymedical/component/appadmin/model/resources_app/Nodeinfo.hbm.xml" />
+		<mapping resource="com/oxymedical/component/appadmin/model/resources_app/Workflownodeinfo.hbm.xml" />
+		<mapping resource="com/oxymedical/component/appadmin/model/resources_app/Nodeconnector.hbm.xml" />
+		<mapping resource="com/oxymedical/component/appadmin/model/resources_app/Dataobjectmetadata.hbm.xml" />
+		<mapping resource="com/oxymedical/component/appadmin/model/resources_app/Nodedetail.hbm.xml" />
+		<mapping resource="com/oxymedical/component/appadmin/model/resources_app/Eventtype.hbm.xml" />
+		<mapping resource="com/oxymedical/component/appadmin/model/resources_app/Toolcateogry.hbm.xml" />
+		
+	</session-factory>
+</hibernate-configuration>

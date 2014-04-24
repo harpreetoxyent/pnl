@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-cascade="none"
+	default-access="property" default-lazy="true" auto-import="true">
+	<!--
+		Created by the Middlegen Hibernate plugin 2.2
+
+		http://boss.bekk.no/boss/middlegen/ http://www.hibernate.org/
+	-->
+	<class
+		name="com.oxymedical.component.appadmin.model.resources_app.Workflownodeinfo"
+		table="workflownodeinfo" lazy="false" dynamic-update="true"
+		dynamic-insert="true" mutable="true" polymorphism="implicit"
+		select-before-update="false" optimistic-lock="version">
+		<id name="id" type="java.lang.Integer" column="id">
+			<generator class="native" />
+		</id>
+		<property name="isStartNode" type="java.lang.Boolean" column="isStartNode"
+			unique="false" optimistic-lock="true" lazy="false" generated="never" />
+		<property name="status" type="java.lang.String" column="status"
+			length="150" unique="false" optimistic-lock="true" lazy="false"
+			generated="never" />
+		
+		<!-- Associations -->
+		<!--
+			bi-directional one-to-many association to Nodeevent
+		-->
+		<set name="nodeevents" lazy="true" inverse="true" cascade="none"
+			sort="unsorted" mutable="true" optimistic-lock="true" embed-xml="true">
+			<key on-delete="noaction">
+				<column name="workflownodeid" />
+			</key>
+			<one-to-many
+				class="com.oxymedical.component.appadmin.model.resources_app.Nodeevent"
+				not-found="exception" embed-xml="true" />
+		</set>
+		<!-- 
+			bi-directional one-to-many association to Dataobject 
+		-->
+		<set name="dataobjects" lazy="true" inverse="true" cascade="none"
+			sort="unsorted" mutable="true" optimistic-lock="true" embed-xml="true">
+			<key on-delete="noaction">
+				<column name="workflownodeid" />
+			</key>
+			<one-to-many
+				class="com.oxymedical.component.appadmin.model.resources_app.Dataobject"
+				not-found="exception" embed-xml="true" />
+		</set>
+		<!-- 
+			bi-directional many-to-one association to Workflowinfo 
+		-->
+		<many-to-one name="workflowinfo"
+			class="com.oxymedical.component.appadmin.model.resources_app.Workflowinfo"
+			not-null="true" unique="false" update="true" insert="true"
+			optimistic-lock="true" not-found="exception" embed-xml="true">
+			<column name="workflowid" />
+		</many-to-one>
+		<!--
+			bi-directional many-to-one association to Nodeinfo
+		-->
+		<many-to-one name="nodeinfo"
+			class="com.oxymedical.component.appadmin.model.resources_app.Nodeinfo"
+			not-null="true" unique="false" update="true" insert="true"
+			optimistic-lock="true" not-found="exception" embed-xml="true">
+			<column name="nodeid" />
+		</many-to-one>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-cascade="none"
+	default-access="property" default-lazy="true" auto-import="true">
+	<!--
+		Created by the Middlegen Hibernate plugin 2.2
+
+		http://boss.bekk.no/boss/middlegen/ http://www.hibernate.org/
+	-->
+	<class
+		name="com.oxymedical.component.appadmin.model.resources_app.Toolcateogry"
+		table="toolcateogry" lazy="false" dynamic-update="true"
+		dynamic-insert="true" mutable="true" polymorphism="implicit"
+		select-before-update="false" optimistic-lock="version">
+		<id name="id" type="java.lang.Integer" column="id">
+			<generator class="native" />
+		</id>
+		<property name="category" type="java.lang.String" column="category"
+			length="150" unique="false" optimistic-lock="true" lazy="false"
+			generated="never" /><!-- Associations -->
+		<!--
+			bi-directional one-to-many association to Nodedetail
+		-->
+		<set name="nodedetails" lazy="true" inverse="true" cascade="none"
+			sort="unsorted" mutable="true" optimistic-lock="true" embed-xml="true">
+			<key on-delete="noaction">
+				<column name="cateogryid" />
+			</key>
+			<one-to-many
+				class="com.oxymedical.component.appadmin.model.resources_app.Nodedetail"
+				not-found="exception" embed-xml="true" />
+		</set>
+	</class>
+</hibernate-mapping>

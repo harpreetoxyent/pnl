@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-cascade="none"
+	default-access="property" default-lazy="true" auto-import="true">
+	<!--
+		Created by the Middlegen Hibernate plugin 2.2
+
+		http://boss.bekk.no/boss/middlegen/ http://www.hibernate.org/
+	-->
+	<class
+		name="com.oxymedical.component.appadmin.model.resources_app.Dataobjectmetadata"
+		table="dataobjectmetadata" lazy="false" dynamic-update="true"
+		dynamic-insert="true" mutable="true" polymorphism="implicit"
+		select-before-update="false" optimistic-lock="version">
+		<id name="id" type="java.lang.Integer" column="id">
+			<generator class="native" />
+		</id>
+		<property name="datakey" type="java.lang.String" column="datakey"
+			length="255" unique="false" optimistic-lock="true" lazy="false"
+			generated="never" />
+		<property name="datavalue" type="java.lang.String" column="datavalue"
+			length="255" unique="false" optimistic-lock="true" lazy="false"
+			generated="never" />
+		<property name="datavalueblob" type="java.lang.String" column="datavalueblob"
+			length="5120" unique="false" optimistic-lock="true" lazy="false"
+			generated="never" />
+		
+		<!-- Associations -->
+		<!--
+			bi-directional many-to-one association to Dataobject
+		-->
+		<many-to-one name="dataobject"
+			class="com.oxymedical.component.appadmin.model.resources_app.Dataobject"
+			not-null="true" unique="false" update="true" insert="true"
+			optimistic-lock="true" not-found="exception" embed-xml="true">
+			<column name="dataobject" />
+		</many-to-one>
+	</class>
+</hibernate-mapping>

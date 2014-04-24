@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-cascade="none"
+	default-access="property" default-lazy="true" auto-import="true">
+	<!--
+		Created by the Middlegen Hibernate plugin 2.2
+
+		http://boss.bekk.no/boss/middlegen/ http://www.hibernate.org/
+	-->
+	<class
+		name="com.oxymedical.component.appadmin.model.resources_app.Eventtype"
+		table="eventtype" lazy="false" dynamic-update="true" dynamic-insert="true"
+		mutable="true" polymorphism="implicit" select-before-update="false"
+		optimistic-lock="version">
+		<id name="id" type="java.lang.Integer" column="id">
+			<generator class="native" />
+		</id>
+		<property name="eventtype" type="java.lang.String" column="eventtype"
+			length="50" unique="false" optimistic-lock="true" lazy="false"
+			generated="never" />
+		
+		<!-- Associations -->
+		<!--
+			bi-directional one-to-many association to Nodeevent
+		-->
+		<set name="nodeevents" lazy="true" inverse="true" cascade="none"
+			sort="unsorted" mutable="true" optimistic-lock="true" embed-xml="true">
+			<key on-delete="noaction">
+				<column name="eventtype" />
+			</key>
+			<one-to-many
+				class="com.oxymedical.component.appadmin.model.resources_app.Nodeevent"
+				not-found="exception" embed-xml="true" />
+		</set>
+	</class>
+</hibernate-mapping>
