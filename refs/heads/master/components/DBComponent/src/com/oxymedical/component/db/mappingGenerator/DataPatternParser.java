@@ -31,6 +31,7 @@ public class DataPatternParser
 	static public void parseDataPattern(IApplication app,String dataPatternName)
 	{
 		String applicationPath = app.getApplicationFolderPath();
+		System.out.println("--------Inside parseDataPattern ----"+applicationPath);
 		String dataFilePath = applicationPath+"data/"+dataPatternName+ ".xml";
 		DBComponent.logger.log(0,"-----------datafile name-------"+dataFilePath);
 		listObject = readDataPattern(dataFilePath);

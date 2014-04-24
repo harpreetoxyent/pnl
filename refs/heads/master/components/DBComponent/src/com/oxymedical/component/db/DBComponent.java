@@ -1471,6 +1471,7 @@ public class DBComponent implements IComponent, IDBComponent {
 							}
 							else
 							{
+								System.out.println("--------Register the window with database component---formPatternDoc="+formPatternDoc);
 								getRegisterWindow().registerBaseWindow(formPatternDoc,
 										application.getApplicationName());
 							}

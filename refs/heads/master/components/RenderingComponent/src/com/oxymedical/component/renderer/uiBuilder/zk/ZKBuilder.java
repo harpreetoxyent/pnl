@@ -190,7 +190,7 @@ public class ZKBuilder implements IUIBuilder
 										application, page.attributeValue(ZKConstants.ELEMENT_ID));
 							// read mapFile xml 
 							String mapFilePath = application.getApplicationFolderPath()+ZKConstants.FORM_PATTERN_FOLDER_NAME+ZKConstants.MAPFILE_NAME;
-							renderPage(formPatternDoc,mapFilePath, false);
+							//renderPage(formPatternDoc,mapFilePath, false);
 
 						}
 

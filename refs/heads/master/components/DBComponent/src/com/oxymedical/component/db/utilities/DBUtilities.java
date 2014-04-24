@@ -67,7 +67,7 @@ public class DBUtilities {
 					.getApplicationFolderPath()
 					+ RegisterConstants.FORM_PATTERN_FOLDER_NAME
 					+ "/"
-					+ formPatternId + RegisterConstants.PATTERN_EXTN;
+					+ formPatternId + RegisterConstants.PATTERN_EXTN_ZUL;
 			// DBComponent.logger.log(0," formPatternXmlFileSrc = "
 			// +formPatternXmlFileSrc);
 			formPatternDoc = xmlReader

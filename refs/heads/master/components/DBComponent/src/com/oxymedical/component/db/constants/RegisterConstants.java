@@ -93,7 +93,9 @@ public class RegisterConstants
 	public static final String DATA_SETTINGS_PATH="data/datasettings.xml";
 	public static final String TRUE="true";
 	public static final String FORM_PATTERN_FOLDER_NAME ="forms";
-	public static final String PATTERN_EXTN = ".xml";
+	public static final String PATTERN_EXTN_XML = ".xml";
+	public static final String PATTERN_EXTN_ZUL = ".zul";
+
 	public static final String REG_ID_FIELDMAP = "DataMappings";
 	
 	
