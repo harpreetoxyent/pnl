@@ -20,6 +20,7 @@ import com.oxymedical.component.db.exception.DBComponentException;
 public interface IRegisterWindow 
 {
 	 public void registerBaseWindow(Document patternXML,String applicationNname) throws DBComponentException;
+	 public void registerZKWindow(Document patternZUL,String applicationName) throws DBComponentException;
 	 public Hashtable<String, List<String>> getApplicationPatternHash();
 	 public void setApplicationPatternHash(Hashtable<String, List<String>> applicationPatternHash); 
 	 public Hashtable<String, Hashtable> getBaseFormPatternHash(); 

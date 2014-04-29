@@ -1339,7 +1339,20 @@ public class DBComponent implements IComponent, IDBComponent {
 	public synchronized void storeConnection(String dbName, DatabaseOperation dbOpr){
 		dbOpers.put(dbName, dbOpr);
 	}
-
+    
+/**
+	 * This method will be load the resources jar file 
+	 * register with DB component.It parses the application.esp
+	 * (RenderingComponent sets the application info in createApplication)   
+	 * to retrieve the formpattern and datapattern information. 
+	 * This API further invokes registerZKWindow , parseDataPattern
+	 *	and	createDatabaseResources
+	 * This API is invoked by dbOperation() API of DatabaseComponent
+	 * @param dbName: Name of Database
+	 * @throws DBComponentException 
+	 * @returns void
+	 * modifiedBy :  Ravneet
+	*/
 	public synchronized void getConnection(String dbName) throws DBComponentException
 	{
 		System.out.println("getConnection dbName: " + dbName);
@@ -1400,12 +1413,11 @@ public class DBComponent implements IComponent, IDBComponent {
 				if (root.getName().trim().equalsIgnoreCase(RegisterConstants.APPROOT_TAGNAME))
 				{
 					Element formPattern = root.element(RegisterConstants.FORM_PATTERN_TAG_NAME);
-					List lst = root.elements(RegisterConstants.FORM_PATTERN_TAG_NAME);
-					List dataList = root.elements("DataPattern");
+					
+					List formTagList = root.elements(RegisterConstants.FORM_PATTERN_TAG_NAME);
+					List dataList = root.elements(RegisterConstants.DATA_PATTERN_TAG_NAME);
 					List formPatternList = formPattern.elements();
 					String mainAppDocStr;
-					// mainAppDocStr =
-					// zkBuilderUtility.startApplication(application);
 					if (dataList.size() > 0)
 					{
 						Element dataRoot = (org.dom4j.Element) dataList.get(0);
@@ -1415,14 +1427,6 @@ public class DBComponent implements IComponent, IDBComponent {
 						for (int i = 0; i < dataSubLst.size(); i++)
 						{
 							org.dom4j.Element page = (org.dom4j.Element) dataSubLst.get(i);
-							/*
-							 * if(page.attributeValue(UIConstants.defaultArg)!=null
-							 * &&
-							 * page.attributeValue(UIConstants.defaultArg).equals
-							 * ("true")) defaultForm =
-							 * page.attributeValue(UIConstants
-							 * .elementName).trim();
-							 */
 							dataPatternArray.add(page.attributeValue("name"));
 							logger.log(0, "page attribute value---------" + page.attributeValue("name"));
 						}
@@ -1430,30 +1434,21 @@ public class DBComponent implements IComponent, IDBComponent {
 
 					if (null != formPatternList && formPatternList.size() > 0)
 					{
-						// logger.log(0,"formPatternList:size:"+formPatternList.size());
 						for (int i = 0; i < formPatternList.size(); i++)
 						{
 							Element page = (Element) formPatternList.get(i);
 							String formPatternXmlName = page.attributeValue(RegisterConstants.ELEMENT_ID);
-							// logger.log(0,"formPatternXmlName1111111111111"+formPatternXmlName);
 							if (null != page.attributeValue(RegisterConstants.DEFAULT_ARG)
 									&& page.attributeValue(RegisterConstants.DEFAULT_ARG).equals(
 											RegisterConstants.TRUE))
 							{
 								defaultForm = page.attributeValue(RegisterConstants.ELEMENT_NAME).trim();
-								// mainAppDocStr = mainAppDocStr +
-								// zkBuilderUtility.includeDefaultFormPattern(formPatternXmlName);
+				
 							}
-
+							// Here it is retrieving the formpattern zul file
 							formPatternDoc = dbUtilities.getFormPatternXmlDoc(application, page
 									.attributeValue(RegisterConstants.ELEMENT_ID));
-							// ClientScriptBuilder.createDocList(formPatternDoc);
-
-							// logger.log(0,"The form pattern xml document, name = "
-							// +formPatternXmlName);
-							// formPatternDoc =
-							// zkBuilderUtility.getFormPatternXmlDoc(application,
-							// formPatternXmlName);
+							
 							if (null == formPatternDoc)
 							{
 								logger.log(0, "The form pattern xml document, name = " + formPatternXmlName
@@ -1472,20 +1467,20 @@ public class DBComponent implements IComponent, IDBComponent {
 							else
 							{
 								System.out.println("--------Register the window with database component---formPatternDoc="+formPatternDoc);
-								getRegisterWindow().registerBaseWindow(formPatternDoc,
-										application.getApplicationName());
+								// Invoked resgisterZKWindow() from Register class: Ravneet. Earlier it invoked registerBaseWindow()
+								getRegisterWindow().registerZKWindow(formPatternDoc,application.getApplicationName());
 							}
 						}
 					}
 
-					if (lst.size() > 0)
+					if (formTagList.size() > 0)
 					{
-						root = (org.dom4j.Element) lst.get(0);
-						lst = root.elements(RegisterConstants.FORM_TAG_NAME);
+						root = (org.dom4j.Element) formTagList.get(0);
+						formTagList = root.elements(RegisterConstants.FORM_TAG_NAME);
 
 					}
-
-					String connectionStr[] = dbUtilities.getConnectionSettings(application
+					// Referred from DBUtilities Class as getConnectionSettings() is static API : Ravneet
+					String connectionStr[] = DBUtilities.getConnectionSettings(application
 							.getApplicationFolderPath()
 							+ RegisterConstants.DATA_SETTINGS_PATH);
 					if (connectionStr != null)
@@ -1500,7 +1495,6 @@ public class DBComponent implements IComponent, IDBComponent {
 						// Creating Database Resources
 						dataPatternName = dataPatternArray.get(count);
 
-						// logger.log(0,"datapatternArray-----------"+dataPatternArray.get(count));
 						if (application.getApplicationName().equalsIgnoreCase("maintenance"))
 						{
 

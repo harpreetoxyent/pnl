@@ -61,6 +61,12 @@ public class RegisterConstants
 	  * that is used to return the attribute value i.e. elementId.
 	 */
 	public static final String REG_ID_ATTR = "id";
+	
+	/**
+	  * Declares the constant value for the REG_FRAME_ATTR as id 
+	  * that is used to return the attribute value i.e. frame.
+	 */
+	public static final String REG_FRAME_ATTR = "frame";
 	/**
 	  * Declares the constant value for the REG_DRIVER as jdbc:mysql:// is used to
 	  * create the server url.
@@ -82,10 +88,13 @@ public class RegisterConstants
 	  * checks that coming xml root element is basewindow.
 	 */
 	public static final String REG_BASE_WINDOW = "basewindow";
-	
+	// following variable declared by Ravneet to make dbcomponent read a zk file and parse the associated tags
+	public static final String REG_ZK_WINDOW = "zk";
+
 	
 	public static final String APPROOT_TAGNAME = "application";
 	public static final String FORM_PATTERN_TAG_NAME = "FormPattern";
+	public static final String DATA_PATTERN_TAG_NAME = "DataPattern";
 	public static final String FORM_TAG_NAME = "formpattern";
 	public static final String ELEMENT_ID = "id";
 	public static final String DEFAULT_ARG = "default";

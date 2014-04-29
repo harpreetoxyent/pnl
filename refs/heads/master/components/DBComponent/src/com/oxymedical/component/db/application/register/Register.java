@@ -117,22 +117,18 @@ public class Register implements IRegisterWindow
 		baseFormPatternHash.put(patternRoot.attributeValue(RegisterConstants.REG_NAME_ATTR), formPatternHash);
 		baseDataPatternHash.put(patternRoot.attributeValue(RegisterConstants.REG_NAME_ATTR), dataPatternHash);
 	 }
-	  //DBComponent.logger.log(0,"applicationPatternHash = " + applicationPatternHash);
-	 //DBComponent.logger.log(0,"#########Registering completed##################");
 	 
   }
   
   /*
    * It parses each element received from registerWindow Method.
-   * It will persist the information regarding each elemnt of 
+   * It will persist the information regarding each element of 
    * base window in memory
    */
   private void parsePattern(Element patternRoot, boolean parseSubElements) throws DBComponentException
   {   	
-	  	/*try
-	    {*/	    	
+	  	  	
 	  		Element childElement = null;
-			//req
 			String elName = null;
 			String parentId = null;
 			String rootId = null;
@@ -208,7 +204,9 @@ public class Register implements IRegisterWindow
 		    				if(null != subChildElement.attributeValue(RegisterConstants.REG_DATA_PATTERN))
 		    		    	{
 		    		    		databaseName = subChildElement.attributeValue(RegisterConstants.REG_DATA_PATTERN);
+		    		    		System.out.println(" ***** INSIDE REGISTER CLASS DATABASENAME = " + databaseName );
 		    		    		fieldNameType = subChildElement.attributeValue(RegisterConstants.REG_DATA_FIELD);
+		    		    		System.out.println(" *****INSIDE REGISTER CLASS FIELDNAMETYPE = " + fieldNameType );
 		    		    		if(null != fieldNameType)
 		    		    		{
 		    		    			int indexOfColon = fieldNameType.indexOf(DBConstants.DB_COLON);
@@ -265,6 +263,266 @@ public class Register implements IRegisterWindow
 //		    		dataPatternHash.put(dataPatternId, dataPattern);
 //		    		
 //		    	}
+  		    	frmPattern.setAssocDataPatternId(dataPatternId);
+		    	frmPattern.setElementName(elementName.trim());
+		    	frmPattern.setParentWindowId(parentId);
+		    	frmPattern.setRootWindowId(rootId);
+		    	frmPattern.setType(xmlTagName);
+		    	frmPattern.setElementId(elementId);
+		    	frmPattern.setSearchId(searchId);
+		    	formPatternHash.put(elementId, frmPattern);	
+		    	}
+		    	
+		    	
+		    	//for search tag
+		    	if(xmlTagName.equalsIgnoreCase(RegisterConstants.REG_SEARCH_TAG))
+		    	{
+		    		searchPatternList = new ArrayList<SearchPattern>();
+		    		List searchElementList = patternRoot.elements();
+		    		for(int searchCount = 0; searchCount < searchElementList.size(); searchCount++)
+		    		{
+		    			Element searchElement = (Element) searchElementList.get(searchCount);
+		    			if(null !=  searchElement.attribute(RegisterConstants.REG_NAME_ATTR))
+		    			{	
+		    				searchId = searchElement.attributeValue(RegisterConstants.REG_NAME_ATTR);
+		    				List queryElementList = searchElement.elements(RegisterConstants.REG_QUERY_ATTR);
+		    				for(int queryCount = 0; queryCount < queryElementList.size(); queryCount++)
+		    				{
+		    					srchPattern = new SearchPattern();
+		    					Element queryElement = (Element) queryElementList.get(queryCount);
+		    					if(null != queryElement.attribute(RegisterConstants.REG_FIELD_NAME_ATTR))
+		    					{
+		    						elementToSearch =  queryElement.attributeValue(RegisterConstants.REG_FIELD_NAME_ATTR);
+		    					}
+		    					if(null != queryElement.attribute(RegisterConstants.REG_OPER_ATTR))
+		    					{
+		    						joinOperator = queryElement.attributeValue(RegisterConstants.REG_OPER_ATTR);
+		    					}
+		    					if(null != queryElement.attribute(RegisterConstants.REG_COND_ATTR))
+		    					{
+		    						conditionOperator = queryElement.attributeValue(RegisterConstants.REG_COND_ATTR);
+		    					}
+		    					if(null != queryElement.attribute(RegisterConstants.REG_FIELD_VALUE_ATTR))
+		    					{
+		    						mappingValue = queryElement.attributeValue(RegisterConstants.REG_FIELD_VALUE_ATTR);
+		    					}
+		    					srchPattern.setSearchId(searchId);
+		    					srchPattern.setConditionOperator(conditionOperator);
+		    					srchPattern.setElementName(elementToSearch);
+		    					srchPattern.setJoinOperator(joinOperator);
+		    					srchPattern.setMappingValue(mappingValue);
+		    					searchPatternList.add(srchPattern);
+		    					
+		    				}
+		    			}
+		    		}
+		    		searchHash.put(searchId, searchPatternList);
+		    	}
+			 	
+		    }
+	    	if(parseSubElements)
+			{
+	    		
+				List lst = patternRoot.elements();
+				for(int count=0;count<lst.size();count++)
+				{
+					childElement = (Element)lst.get(count);
+					elName = childElement.getName();
+					if(elName.equals("search") || elName.equalsIgnoreCase("query"))
+					{
+						continue;
+					}
+					if(!(elName.toLowerCase().equals("event")) && !(elName.equalsIgnoreCase(RegisterConstants.REG_ID_FIELDMAP)))
+					{
+						parsePattern(childElement, true);
+					}
+				}
+			}
+	/*}catch(Exception e)
+	{
+	 	e.printStackTrace();
+	  	throw (new DBComponentException(e.getMessage()));
+	}*/
+  }
+	    
+  /**
+ 	 * This method will be called by all zk windows to
+ 	 * register with DB component.Receives an zk document as input
+ 	 * and will parse this information using parseZKPattern() method. 
+ 	 * This API is invoked by getConnection() API of DBComponent
+ 	 * 
+ 	 * @param patternZUL This ZUL document that contains all the elements in form pattern and its mappings.
+ 	 * @param applicationName This is the name  of the registering application.
+ 	 * @throws DBComponentException 
+ 	 * @returns void
+ 	 * @author Ravneet
+ 	*/
+  public void registerZKWindow(Document patternZUL,String applicationName) throws DBComponentException
+  {
+	  formPatternHash = new Hashtable<String,FormPattern>();
+	  dataPatternHash = new Hashtable<String,LinkedList<DataPattern>>();
+	 // DBComponent.logger.log(0,"registering started");
+	 
+	  applicationName = applicationName.trim();
+	  Element patternRoot = patternZUL.getRootElement();
+	 DBComponent.logger.log(0,"this doc information-----"+patternRoot.getName());
+	   if(patternRoot.getName().trim().equalsIgnoreCase(RegisterConstants.REG_ZK_WINDOW))
+	  {
+		  if(null != applicationPatternHash.get(applicationName))
+		  {
+			  applicationPatternList = applicationPatternHash.get(applicationName);
+			  applicationPatternHash.remove(applicationName);
+			  applicationPatternList.add(patternRoot.attributeValue(RegisterConstants.REG_NAME_ATTR));		
+			  applicationPatternHash.put(applicationName, applicationPatternList);
+		  }
+		  else
+		  {
+			  applicationPatternList = new ArrayList<String>();
+			  applicationPatternList.add(patternRoot.attributeValue(RegisterConstants.REG_NAME_ATTR));
+			  applicationPatternHash.put(applicationName, applicationPatternList);
+			  //DBComponent.logger.log(0,"applicationPatternHash = " + applicationPatternHash);
+		  }
+		  parseZULPattern(patternRoot,true);
+		
+		if(null == baseFormPatternHash)
+		{
+			baseFormPatternHash = new Hashtable();
+		}
+		if(null == baseDataPatternHash)
+		{
+			baseDataPatternHash = new Hashtable();
+		}
+		
+		baseFormPatternHash.put(patternRoot.attributeValue(RegisterConstants.REG_NAME_ATTR), formPatternHash);
+		baseDataPatternHash.put(patternRoot.attributeValue(RegisterConstants.REG_NAME_ATTR), dataPatternHash);
+	 }
+	 
+  }
+  /**
+	 * This method parses each element received from registerZKWindow Method
+	 * register with DB component.It will persist the information regarding each element of 
+	 * zk window in memory
+	 * 
+	 * @param patternRoot : The root element which represents the root tag of zul file : zk
+	 * @param parseSubElements : This value will be set to true if subElemnets has to be parsed
+	 * @throws DBComponentException 
+ 	 * @returns void
+ 	 * @author Ravneet
+  
+  **/
+  private void parseZULPattern(Element patternRoot, boolean parseSubElements) throws DBComponentException
+  {   	
+	  	  	
+	  		Element childElement = null;
+			String elName = null;
+			String parentId = null;
+			String rootId = null;
+			String xmlTagName = null;
+			String dataPatternId  = null;
+			String fieldNameType = null;
+			String fieldName = null;
+			String fieldType = null;
+			String tableName  = null;
+			String databaseName = null;
+			String elementToSearch = null;
+			String joinOperator = null;
+			String conditionOperator = null;
+			String mappingValue = null;
+			String elementName = null;
+			String elementId = null;	
+			String searchId = "";
+			String frame = null;
+			
+            frmPattern = new FormPattern();            
+            if( null == patternRoot.attribute(RegisterConstants.REG_ID_ATTR))
+            {	
+            	elementId = "";
+            	
+            }
+            else
+            {
+            	elementId = patternRoot.attributeValue(RegisterConstants.REG_ID_ATTR);
+            }
+	        if( null == patternRoot.attribute(RegisterConstants.REG_NAME_ATTR))
+	        {	
+	        	elementName = "";
+	        }
+	        else
+	        {
+	        	elementName = patternRoot.attributeValue(RegisterConstants.REG_NAME_ATTR);
+	        }
+	        
+		    if(patternRoot.isRootElement())
+		    {
+		    	rootId = patternRoot.getName();
+		    	frmPattern.setRootWindowId(rootId);
+		    	frmPattern.setType(rootId);
+		    	frmPattern.setElementId(elementId);
+		    	frmPattern.setElementName(elementName.trim());
+		    	formPatternHash.put(elementId, frmPattern);
+		    }
+		    
+		    else
+		    {
+		    	//root elementName
+		    	parentId = patternRoot.getParent().getName();
+		    	System.out.println("The parentId in zul file is " + parentId);
+		    	xmlTagName = patternRoot.getName();	
+		    	System.out.println("The xmlTagName in zul file is " + xmlTagName);
+
+		    	if(null != patternRoot.attribute(RegisterConstants.REG_SEARCH_TAG))
+	    		{
+	    			searchId = patternRoot.attributeValue(RegisterConstants.REG_SEARCH_TAG);
+	    		}
+		    	
+		    	if((null != patternRoot.elements()) && (patternRoot.elements().size()>0))
+		    	{
+
+		    	 dataPatternId = parentId + DBConstants.DB_SPACE + xmlTagName + DBConstants.DB_SPACE + elementId;
+		    	 List sublelemts= patternRoot.elements();	
+		    	 //Implementation changed for saving data in the multiple tables.
+		    	 LinkedList<DataPattern> data = new LinkedList<DataPattern>();
+		    	 for (int i=0; i<sublelemts.size();i++)
+		    	 {
+		    		 Element subChild = (Element) sublelemts.get(i);
+		    		 if(null!=subChild.elements() && subChild.getName().equalsIgnoreCase(RegisterConstants.REG_ID_FIELDMAP))
+		    		 {
+		    			List childs = subChild.elements();
+		    			for(int j=0;j<childs.size();j++)
+		    			{  
+		    				Element subChildElement = (Element)childs.get(j);
+		    				if(null != subChildElement.attributeValue(RegisterConstants.REG_DATA_PATTERN))
+		    		    	{
+		    		    		databaseName = subChildElement.attributeValue(RegisterConstants.REG_DATA_PATTERN);
+		    		    		System.out.println(" ***** INSIDE REGISTER CLASS DATABASENAME = " + databaseName );
+		    		    		fieldNameType = subChildElement.attributeValue(RegisterConstants.REG_DATA_FIELD);
+		    		    		System.out.println(" *****INSIDE REGISTER CLASS FIELDNAMETYPE = " + fieldNameType );
+		    		    		if(null != fieldNameType)
+		    		    		{
+		    		    			int indexOfColon = fieldNameType.indexOf(DBConstants.DB_COLON);
+		    		    			fieldName = fieldNameType.substring(0, indexOfColon);
+		    		    			fieldType = fieldNameType.substring(indexOfColon+1);
+		    		    			fieldType = fieldType.trim();
+		    		    		}
+		    		    		
+		    		    		if(null != subChildElement.attribute(RegisterConstants.REG_DATA_TABLE))
+		    		    		{
+		    		    			tableName = subChildElement.attributeValue(RegisterConstants.REG_DATA_TABLE);
+		    		    		}
+		    		    		dataPattern = new DataPattern();
+		    		    		dataPattern.setDataPatternId(dataPatternId);
+		    		    		dataPattern.setFieldName(fieldName);
+		    		    		dataPattern.setType(fieldType);
+		    		    		dataPattern.setTableName(tableName.toLowerCase());
+		    		    		dataPattern.setDatabaseName(databaseName);
+		    		    		data.add(dataPattern);
+		    		    		
+		    		    	}
+		    			}
+		    			dataPatternHash.put(dataPatternId, data);
+		    		 }
+		    	 }
+
   		    	frmPattern.setAssocDataPatternId(dataPatternId);
 		    	frmPattern.setElementName(elementName.trim());
 		    	frmPattern.setParentWindowId(parentId);
