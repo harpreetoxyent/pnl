@@ -410,9 +410,8 @@ public class Register implements IRegisterWindow {
 		Element patternRoot = patternZUL.getRootElement();
 		DBComponent.logger.log(0,
 				"this doc information-----" + patternRoot.getName());
-		// if(patternRoot.getName().trim().equalsIgnoreCase(RegisterConstants.REG_ZK_WINDOW))
-		if (patternRoot.getName().trim()
-				.equalsIgnoreCase(RegisterConstants.REG_BASE_WINDOW)) 
+		if(patternRoot.getName().trim().equalsIgnoreCase(RegisterConstants.REG_ZK_WINDOW))
+		//if (patternRoot.getName().trim().equalsIgnoreCase(RegisterConstants.REG_BASE_WINDOW)) 
 		{
 			if (null != applicationPatternHash.get(applicationName)) 
 			{
