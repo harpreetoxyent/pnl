@@ -662,7 +662,7 @@ public class Register implements IRegisterWindow {
 				if (!(elName.toLowerCase().equals("event"))
 						&& !(elName
 								.equalsIgnoreCase(RegisterConstants.REG_ID_FIELDMAP))) {
-					parsePattern(childElement, true);
+					parseZULPattern(childElement, true);
 				}
 			}
 		}

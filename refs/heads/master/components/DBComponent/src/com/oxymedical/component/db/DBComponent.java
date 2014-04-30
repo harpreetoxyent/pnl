@@ -1263,9 +1263,9 @@ public class DBComponent implements IComponent, IDBComponent {
 		Hashtable h = new Hashtable();
 
 		// DatabaseMetadata dd = new DatabaseMetadata();
-		formValues.put("textbox47", "test");
-		formValues.put("textbox49", "0");
-		formValues.put("combobox22", "1");
+		formValues.put("doctorExamining", "D1");
+//		formValues.put("textbox49", "0");
+//		formValues.put("combobox22", "1");
 	
 		
 		/*select s.appointmentEndDate,s.appointmentEndTime,s.appointmentStartDate, s.appointmentStartTime, s.id,p.firstName ,st.type
@@ -1283,34 +1283,32 @@ public class DBComponent implements IComponent, IDBComponent {
 		com.oxymedical.core.commonData.IData data = new com.oxymedical.core.commonData.Data();
 
 		com.oxymedical.core.commonData.IFormPattern formPattern = new com.oxymedical.core.commonData.FormPattern();
-		//formPattern.setFormId("initial_examination");
-		formPattern.setFormId("AddCity");
+		formPattern.setFormId("initial_examination");
+		//formPattern.setFormId("AddCity");
 		formPattern.setFormValues(formValues);
 		Object[] array = data.getClass().getMethods();
 		data.setMethodName("save");
 
 		com.oxymedical.core.commonData.IDataPattern dataPattern = new com.oxymedical.core.commonData.DataPattern();
-		//dataPattern.setDataPatternId("FORTIS");
-		dataPattern.setDataPatternId("neiswispicdb");
+		dataPattern.setDataPatternId("FORTIS");
+		//dataPattern.setDataPatternId("neiswispicdb");
 		data.setDataPattern(dataPattern);
 		data.setFormPattern(formPattern);
 		QueryData qd = new QueryData();
-		qd.setCondition("get room.id,room.deleted" +
-				" from neiswispicdb.room");
+		qd.setCondition("get INITIALEXAMINATION.id,INITIALEXAMINATION.DOCTOR_EXAMINING" +
+				" from FORTIS.INITIALEXAMINATION");
 
 		// data.setColumnOrder(columnOrder);
 		data.setQueryData(qd);
 		IApplication application = new Application();
-		application.setApplicationName("NEISUI");
-		application
-				.setBaseDirectoryPath("/NEISUI/");
-		application.setApplicationFileName("NEISUI.esp");
-		application
-				.setApplicationFolderPath("/NEISUI/");
-		application
-				.setServerDirectory("/apache-tomcat-7.0.42/");
-		application
-				.setBaseDirectoryPath("/apache-tomcat-7.0.42/lib");
+		//application.setApplicationName("NEISUI");
+		application.setApplicationName("Fortis");
+		application.setBaseDirectoryPath("/Fortis");
+		application.setApplicationFileName("Fortis.esp");
+	//	application.setApplicationFolderPath("/NEISUI/");
+		application.setApplicationFolderPath("/Fortis/");
+		application.setServerDirectory("/apache-tomcat-7.0.52/");
+		application.setBaseDirectoryPath("/apache-tomcat-7.0.52/lib");
 		hicData.setApplication(application);
 		hicData.setData(data);
 		DBComponent dbComponent = new DBComponent();
