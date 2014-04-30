@@ -1,0 +1,25 @@
+2014-04-29 12:25:07,674 - Log4JLogChute initialized using file 'velocity.log'
+2014-04-29 12:25:07,676 - Starting Apache Velocity v1.5 (compiled: 2007-02-22 08:52:29)
+2014-04-29 12:25:07,676 - Default Properties File: org/apache/velocity/runtime/defaults/velocity.properties
+2014-04-29 12:25:07,676 - Trying to use logger class middlegen.DontCloseLog4JLogSystem
+2014-04-29 12:25:07,676 - Using logger class middlegen.DontCloseLog4JLogSystem
+2014-04-29 12:25:07,680 - Default ResourceManager initializing. (class org.apache.velocity.runtime.resource.ResourceManagerImpl)
+2014-04-29 12:25:07,691 - ResourceLoader instantiated: middlegen.KindFileResourceLoader
+2014-04-29 12:25:07,694 - Do unicode file recognition:  false
+2014-04-29 12:25:07,694 - FileResourceLoader : adding path '.'
+2014-04-29 12:25:07,728 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl)
+2014-04-29 12:25:07,732 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2014-04-29 12:25:07,735 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2014-04-29 12:25:07,737 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2014-04-29 12:25:07,740 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2014-04-29 12:25:07,742 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2014-04-29 12:25:07,780 - Created '20' parsers.
+2014-04-29 12:25:07,793 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2014-04-29 12:25:07,794 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-04-29 12:25:07,794 - Velocimacro : adding VMs from VM library : VM_global_library.vm
+2014-04-29 12:25:07,796 - KindFileResourceLoader : file loader failed to load: VM_global_library.vm
+2014-04-29 12:25:07,805 - ResourceManager : found VM_global_library.vm with loader middlegen.KindFileResourceLoader
+2014-04-29 12:25:07,805 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2014-04-29 12:25:07,805 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2014-04-29 12:25:07,805 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2014-04-29 12:25:07,805 - Velocimacro : autoload off : VM system will not automatically reload global library macros

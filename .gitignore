@@ -14,3 +14,5 @@ refs/heads/master/bus/HICFrameworkServlet/WebContent/WEB-INF/lib/BigDataComponen
 *.class
 
 *.class
+
+*.class

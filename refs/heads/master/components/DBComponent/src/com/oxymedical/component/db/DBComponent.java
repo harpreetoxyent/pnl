@@ -1283,32 +1283,34 @@ public class DBComponent implements IComponent, IDBComponent {
 		com.oxymedical.core.commonData.IData data = new com.oxymedical.core.commonData.Data();
 
 		com.oxymedical.core.commonData.IFormPattern formPattern = new com.oxymedical.core.commonData.FormPattern();
-		formPattern.setFormId("addroom");
+		//formPattern.setFormId("initial_examination");
+		formPattern.setFormId("AddCity");
 		formPattern.setFormValues(formValues);
 		Object[] array = data.getClass().getMethods();
 		data.setMethodName("save");
 
 		com.oxymedical.core.commonData.IDataPattern dataPattern = new com.oxymedical.core.commonData.DataPattern();
+		//dataPattern.setDataPatternId("FORTIS");
 		dataPattern.setDataPatternId("neiswispicdb");
 		data.setDataPattern(dataPattern);
 		data.setFormPattern(formPattern);
 		QueryData qd = new QueryData();
-		qd.setCondition("get primarycarephysician.id,concat(primarycarephysician.PrimaryRefDocFName|primarycarephysician.PrimaryRefDocMName|primarycarephysician.PrimaryRefDocLName)" +
-				" from neiswispicdb.primarycarephysician");
+		qd.setCondition("get room.id,room.deleted" +
+				" from neiswispicdb.room");
 
 		// data.setColumnOrder(columnOrder);
 		data.setQueryData(qd);
 		IApplication application = new Application();
-		application.setApplicationName("NOLISUI");
+		application.setApplicationName("NEISUI");
 		application
-				.setBaseDirectoryPath("D:\\CDrive\\NOLIS_SVN\\NOLIS\\trunk\\dev\\src\\main\\NOLISApps\\NOLIS_Wisconsin\\NOLISUI\\");
-		application.setApplicationFileName("NOLISUI.esp");
+				.setBaseDirectoryPath("/NEISUI/");
+		application.setApplicationFileName("NEISUI.esp");
 		application
-				.setApplicationFolderPath("D:\\CDrive\\NOLIS_SVN\\NOLIS\\trunk\\dev\\src\\main\\NOLISApps\\NOLIS_Wisconsin\\NOLISUI\\");
+				.setApplicationFolderPath("/NEISUI/");
 		application
-				.setServerDirectory("c:/glassfish/domains/domain1/autodeploy");
+				.setServerDirectory("/apache-tomcat-7.0.42/");
 		application
-				.setBaseDirectoryPath("c:/glassfish/domains/domain1/lib/ext");
+				.setBaseDirectoryPath("/apache-tomcat-7.0.42/lib");
 		hicData.setApplication(application);
 		hicData.setData(data);
 		DBComponent dbComponent = new DBComponent();
