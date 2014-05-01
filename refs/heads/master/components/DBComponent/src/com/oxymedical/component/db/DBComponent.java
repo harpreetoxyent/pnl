@@ -1313,13 +1313,14 @@ public class DBComponent implements IComponent, IDBComponent {
 		hicData.setData(data);
 		DBComponent dbComponent = new DBComponent();
 		DBComponent.getInstanceOfLoggingComponent();
-		try {
-			IHICData hic = dbComponent.getListData(hicData);
-			/*
-			 * for(int i=0;i<1000;i++) { IHICData hic =
-			 * dbComponent.dbOperation(hicData); }
-			 */
-
+		try 
+		{
+		//	IHICData hic = dbComponent.getListData(hicData);
+			
+		 // for(int i=0;i<1000;i++) {
+			dbComponent.dbOperation(hicData); 		
+//		}
+			 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -2459,6 +2460,7 @@ public class DBComponent implements IComponent, IDBComponent {
 			if (null != windowFormID && null != formValues) {
 				if (sourceMethod.equals("save")) {
 
+					
 					Object objId = dataHandler.save(windowFormID, formValues,"");
 					//return inserted data unique id. changes by Wasim Khan.30-July-2009
 					System.out.println("table primary key is " + objId.getClass());
