@@ -2447,20 +2447,18 @@ public class DBComponent implements IComponent, IDBComponent {
 			if (hicData != null) {
 				data = hicData.getData();
 				IFormPattern formPatternData = data.getFormPattern();
+				System.out.println("Inside DBComponent dbOperation() value of formPatternData" +formPatternData.getFormId() );
 				windowFormID = formPatternData.getFormId();
 				// windowFormID="formpattern0";
 				formValues = formPatternData.getFormValues();
-
+				System.out.println("Inside DBComponent dbOperation() value of formValues" +formPatternData.getFormValues().size());
 				sourceMethod = data.getMethodName();
-
-				// sourceMethod = "saveForm";
-
 			}
 
 			if (null != windowFormID && null != formValues) {
 				if (sourceMethod.equals("save")) {
 
-					
+					System.out.println("Inside Save Method");
 					Object objId = dataHandler.save(windowFormID, formValues,"");
 					//return inserted data unique id. changes by Wasim Khan.30-July-2009
 					System.out.println("table primary key is " + objId.getClass());

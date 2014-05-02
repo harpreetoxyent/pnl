@@ -6,7 +6,9 @@
 	<property name="build.gen-hbm.dir" value="${build.dir}/gen-hbm"/>
 	<property name="src.dir" value="${build.dir}/src"/>
 	<property name="build.classes.dir" value="${build.dir}/classes"/>
-	<!--	 <property name="java.home" value="C:\\Program Files\\Java\\jdk1.6.0_12"/> -->
+	<!--	<property name="build.javac.source" value="1.5"/>
+	<property name="build.javac.target" value="1.5"/>
+	<property name="java.home" value="C:\\Program Files\\Java\\jdk1.6.0_12"/> -->
 	<target name="middlegen" description="Run Middlegen" unless="middlegen.skip">
 		<path id="middlegen.task.classpath">
 			<fileset dir="${basedir}/lib">

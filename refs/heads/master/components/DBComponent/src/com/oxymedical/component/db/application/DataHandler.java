@@ -372,11 +372,14 @@ public class DataHandler implements IDataHandler {
 	 * @throws DBComponentException
 	 */
 	public Object save(String baseWindow, Hashtable requestTable,
-			String queryType) throws DBComponentException {
+			String queryType) throws DBComponentException 
+			{
 		Hashtable<String, Hashtable<String, List<Field>>> databaseTableHash = new Hashtable<String, Hashtable<String, List<Field>>>();
 		formPatternHash = new Hashtable<String, FormPattern>();
 		dataPatternHash = new Hashtable<String, LinkedList<DataPattern>>();
 		registerWindow = dbComponent.getRegisterWindow();
+		
+		
 		try {
 			// DBComponent.logger.log(0,"##### solving query In save");
 			applicationFormList = registerWindow.getApplicationPatternHash()
@@ -387,11 +390,13 @@ public class DataHandler implements IDataHandler {
 						DBExceptionConstants.NULL_POINTER_EXCEPTION
 								+ DBConstants.DB_APPLICATION_FORM_LIST
 								+ applicationFormList + "in save");
+			System.out.println("Inside Data Handler applicationName " + applicationName);
 			for (int formListCounter = 0; formListCounter < applicationFormList
 					.size(); formListCounter++) {
 
 				String selFormPattern = (String) applicationFormList
 						.get(formListCounter);
+				System.out.println("Inside Data Handler selected Form Pattern" +  selFormPattern);
 				if (selFormPattern.equalsIgnoreCase(baseWindow.trim())) {
 					formPatternHash = registerWindow.getBaseFormPatternHash()
 							.get(selFormPattern);
@@ -432,6 +437,13 @@ public class DataHandler implements IDataHandler {
 							String tableName = dataPattern.getTableName();
 							databaseName = dataPattern.getDatabaseName();
 							String selField = dataPattern.getFieldName();
+							
+							
+							System.out.println("Inside Data Handler Data Pattern Table Name" + dataPattern.getTableName());
+							System.out.println("Inside Data Handler Data Pattern Database Name" + dataPattern.getDatabaseName());
+							System.out.println("Inside Data Handler Data Pattern selField" + selField);
+	
+	
 							if (null == databaseTableHash.get(databaseName)) {
 								tableFieldHash = new Hashtable<String, List<Field>>();
 								fieldList = new ArrayList<Field>();
