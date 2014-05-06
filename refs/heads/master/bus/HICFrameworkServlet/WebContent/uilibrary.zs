@@ -107,6 +107,7 @@ import java.sql.Time;
 import java.util.LinkedHashMap;
 import com.oxymedical.core.propertyUtil.PropertyUtil;
 import java.io.*;
+import com.oxymedical.core.braink.moduleparameterinfo.*;
 
 
 //tree variables
@@ -789,8 +790,6 @@ public void setCurrentDate(Object controlId)
 		
 	}
 
-
-
 private String getComboItemId1(String comboBox)
 {
 	String comboSelectedVal = null;
@@ -812,56 +811,9 @@ private String getComboItemId1(String comboBox)
 		}
 		comboSelectedValue = comboSelectedVal;
 		checkFormValue(self.id,comboSelectedValue);
-		formValues.put(self.id,comboSelectedValue);
 		comboSelectedValue=null;
 	}
 	return comboSelectedVal;
-}
-IHICData invokeBusComponent(String componentId ,String method ,String classname, String paramList)
-{
-	IDataUnitRouter router = RendererComponent.dataUnitRouter;
-	Object rootFormValue = self.getRoot();
-	/*
-	*Before completing any request it will check that session is valid or not.
-	*
-	*/
-	checkSessionTime(method);
-	
-	/*
-	*Following code is used when session would be time out
-	*/
-	String logOutValue = getSessionData("LogOut");	
-	if(logOutValue!=null)
-	{
-	
-		if(logOutValue=="true")
-		{
-			return null;
-		}
-		return null;
-	}
-	
-	System.out.println("-----Inside UILibrary Invoke Component-----");
-	if(validationValue)
-	{
-		UiLibraryCompositeCommand command=new UiLibraryCompositeCommand();
-		command.setMethodName(method);
-		command.setRouter(router);
-		command.setClassname(classname);
-		command.setComponentId(componentId);
-		command.setDataPatternId(dataPatternId);
-		command.setFormPatternId(formPatternId);
-		command.setFormValues(formValues);
-		command.setRootFormValue(rootFormValue);
-		command.setParamList(paramList);
-		command.setSession(session);
-		command.setComboSelectedValue(comboSelectedValue);
-		command.setValidListRequest(validListRequest);
-		command.setPagingId(pagingId);
-		command.execute();
-		returnHicData=command.getHICData();
-	}
-	return returnHicData;
 }
 String invokeComponent(String componentId ,String method ,String classname, String paramList)
 {
@@ -877,8 +829,7 @@ String invokeComponent(String componentId ,String method ,String classname, Stri
 	/*
 	*Following code is used when session would be time out
 	*/
-	String logOutValue = getSessionData("LogOut");	
-	webMessage = "false";	
+	String logOutValue = getSessionData("LogOut");		
 	if(logOutValue!=null)
 	{
 	
@@ -902,35 +853,251 @@ String invokeComponent(String componentId ,String method ,String classname, Stri
 			isValidStatus = "false";
 		}
 	}
-	System.out.println("-----Inside UILibrary Invoke Component validationValue="+validationValue);
 	if(validationValue)
 	{
-		UiLibraryCompositeCommand command=new UiLibraryCompositeCommand();
-		command.setMethodName(method);
-		command.setRouter(router);
-		command.setClassname(classname);
-		command.setComponentId(componentId);
-		command.setDataPatternId(dataPatternId);
-		command.setFormPatternId(formPatternId);
-		command.setFormValues(formValues);
-		command.setRootFormValue(rootFormValue);
-		command.setParamList(paramList);
-		command.setSession(session);
-		command.setComboSelectedValue(comboSelectedValue);
-		command.setValidListRequest(validListRequest);
-		command.setPagingId(pagingId);
-		command.execute();
-		returnHicData=command.getHICData();
-		if(returnHicData==null)
+    UiLibraryCompositeCommand command=new UiLibraryCompositeCommand();
+	command.setMethodName(method);
+	command.setRouter(router);
+    command.setClassname(classname);
+	command.setComponentId(componentId);
+    command.setDataPatternId(dataPatternId);
+    command.setFormPatternId(formPatternId);
+    command.setFormValues(formValues);
+	command.setRootFormValue(rootFormValue);
+	command.setParamList(paramList);
+	command.setSession(session);
+	command.setComboSelectedValue(comboSelectedValue);
+	command.setValidListRequest(validListRequest);
+	command.setPagingId(pagingId);
+	command.execute();
+	returnHicData=command.getHICData();
+	if(returnHicData==null)
+	{
+		isValidStatus = "false";
+		return isValidStatus;
+	}
+	if (returnHicData.getData()!=null) 
+    {
+		if ((returnHicData.getData().getStatus()!=null) && ((returnHicData.getData().getStatus().equalsIgnoreCase("error")) || (returnHicData.getData().getStatus().equalsIgnoreCase("false"))) )
 		{
 			isValidStatus = "false";
 			return isValidStatus;
 		}
-		sessionUpdate(returnHicData);
-		webMessage = (String) returnHicData.getMetaData().getCommonObject();
 	}
-	return webMessage;
-	//return isValidStatus;
+  }
+  else
+  {
+ 	  return "false";
+  }
+
+	if(method.equalsIgnoreCase("authenticateUserInLDAP")){
+		if(returnHicData.getLdapData() != null) {
+			return (String)returnHicData.getLdapData().getAttributes().get("UserAuthenticatedInLDAP");
+		}
+	}else if(method.equalsIgnoreCase("searchInLDAP")){
+		if(returnHicData.getLdapData() != null) {
+			org.dom4j.Document resultDoc = returnHicData.getLdapData().getLdapDoc();
+			if(resultDoc != null){
+				return resultDoc.asXML();
+			}else{
+				return null;
+			}
+		}
+	}
+	if(method.equalsIgnoreCase("authenticateUserEx"))
+	{
+		if(returnHicData.getData()!=null && returnHicData.getData().getStatus()!=null) 
+		{
+			if(returnHicData.getData().getStatus().equalsIgnoreCase("invalid"))
+			{
+				//formValues =new Hashtable();
+				return "false";
+			}
+			else
+			{
+				loginStatus = true;
+				
+								
+			}
+		}
+	}
+	if(method.equalsIgnoreCase("userDetails") && (paramList.equalsIgnoreCase("ArtworkDraftApproval")))
+	{
+		if(returnHicData.getData()!=null && returnHicData.getData().getStatus()!=null) 
+		{
+			IData data=returnHicData.getData();
+			String department=data.getGroupName();
+			return department;
+		}
+	}
+	if(method.equalsIgnoreCase("executeList"))
+	{
+		if(returnHicData.getData()!=null && returnHicData.getData().getStatus()!=null) 
+		{
+			IData data=returnHicData.getData();
+			IFormPattern formpattern=data.getFormPattern();
+			String formPatternId=formpattern.getFormId();
+			Hashtable formvalues=new Hashtable();
+			formvalues=data.getFormPattern().getFormValues();
+			if(formPatternId.equals("changeRequest"))
+			{
+				formvalues.put("label","");
+				formvalues.put("showbox","");
+				formvalues.put("packageinsert","");
+				formvalues.put("packageoutset","");
+				formvalues.put("psbox","");
+				formvalues.put("foil","");
+				formvalues.put("psfoil","");	
+				QueryData querydata=data.getQueryData();
+				List linkofFiles=(List) querydata.getListData();
+				String[][] iteraterlinkrecords=querydata.iterateListData(linkofFiles);
+				Object rootFormValue = self.getRoot();
+				for(int i=0;i<iteraterlinkrecords.length;i++)
+				{
+					if(!(iteraterlinkrecords[i][5].equals("")))
+					{
+						if(iteraterlinkrecords[i][5].equals("Label"))
+						{
+							formvalues.put("label",iteraterlinkrecords[i][8]);
+							formvalues.put("artworkcodelabel",iteraterlinkrecords[i][11]);
+						}
+						else if(iteraterlinkrecords[i][5].equals("ShowBox"))
+						{
+							formvalues.put("showbox",iteraterlinkrecords[i][8]);
+							formvalues.put("artworkcodeshowbox",iteraterlinkrecords[i][11]);
+						}
+						else if(iteraterlinkrecords[i][5].equals("PackageInsert"))
+						{
+							formvalues.put("packageinsert",iteraterlinkrecords[i][8]);
+							formvalues.put("artworkcodepackageinsert",iteraterlinkrecords[i][11]);
+						}
+						else if(iteraterlinkrecords[i][5].equals("PackageOutsert"))
+						{
+							formvalues.put("packageoutset",iteraterlinkrecords[i][8]);
+							formvalues.put("artworkcodepackageoutset",iteraterlinkrecords[i][11]);
+						}
+						else if(iteraterlinkrecords[i][5].equals("PsBox"))
+						{
+							formvalues.put("psbox",iteraterlinkrecords[i][8]);
+							formvalues.put("artworkcodepsbox",iteraterlinkrecords[i][11]);
+						}
+						else if(iteraterlinkrecords[i][5].equals("FOIL"))
+						{
+							formvalues.put("foil",iteraterlinkrecords[i][8]);
+							formvalues.put("artworkcodefoil",iteraterlinkrecords[i][11]);
+						}
+						else if(iteraterlinkrecords[i][5].equals("PsFOIL"))
+						{
+							formvalues.put("psfoil",iteraterlinkrecords[i][8]);
+							formvalues.put("artworkcodepsfoil",iteraterlinkrecords[i][11]);
+						}
+					}
+				}
+			}
+			if(formPatternId.equals("ArtworkDraftUpload"))
+			{
+				String forexecution=formValues.get("forexecution");
+				if(forexecution!=null)
+				{
+					if(forexecution.equalsIgnoreCase("true"))
+					{
+						QueryData querydata=data.getQueryData();
+						List artworkCodeList=(List)querydata.getListData();
+						String[][] iteraterartworkcode=querydata.iterateListData(artworkCodeList);
+						formValues.put("size",iteraterartworkcode.length);
+						formValues.put("artworkCode",iteraterartworkcode[iteraterartworkcode.length-1][0]);
+						formValues.put("productName",iteraterartworkcode[iteraterartworkcode.length-1][1]);
+					}
+				}
+				String getLinkNotFromSession=formValues.get("getLinkNotFromSession");
+				if(getLinkNotFromSession!=null)
+				{
+					if(getLinkNotFromSession.equalsIgnoreCase("true"))
+					{
+						QueryData querydata=data.getQueryData();
+						List linkPDFList=(List)querydata.getListData();
+						String[][] iteraterLinkPDF=querydata.iterateListData(linkPDFList);
+						if(!(linkPDFList.size()==0))
+						{
+							if(null==iteraterLinkPDF[iteraterLinkPDF.length-1][10] || null==iteraterLinkPDF[iteraterLinkPDF.length-1][11])
+							{
+								formValues.put("link","");
+								formValues.put("linkofCS4","");
+							}
+							else
+							{
+							
+							formValues.put("link",iteraterLinkPDF[iteraterLinkPDF.length-1][10]);
+							formValues.put("linkofCS4",iteraterLinkPDF[iteraterLinkPDF.length-1][11]);
+							}	
+						}
+						
+					}
+				}	
+			}
+			if(formPatternId.equals("ArtworkDraftUploadAET"))
+			{
+				String aetworkpdfcs4=formValues.get("aetworkpdfcs4");		
+				boolean aetworkpdfcs4result=equalsTest(aetworkpdfcs4,"aetworkpdfcs4");
+				if(aetworkpdfcs4result)
+				{
+						QueryData querydata=data.getQueryData();
+						List linkPDFList=(List)querydata.getListData();
+						String[][] iteraterLinkPDF=querydata.iterateListData(linkPDFList);
+						if(null==iteraterLinkPDF[iteraterLinkPDF.length-1][5] || null==iteraterLinkPDF[iteraterLinkPDF.length-1][6])
+						{
+							formValues.put("link","");
+							formValues.put("linkofCS4","");
+						}
+						else
+						{
+							formValues.put("link",iteraterLinkPDF[iteraterLinkPDF.length-1][5]);
+							formValues.put("linkofCS4",iteraterLinkPDF[iteraterLinkPDF.length-1][6]);
+						}	
+				}
+			}
+			
+		}
+	}
+	if(method.equalsIgnoreCase("save") && paramList.equalsIgnoreCase("Artworkrequisition"))
+	{
+		if(returnHicData.getData()!=null && returnHicData.getData().getStatus()!=null ) 
+	    {
+	             String message= returnHicData.getUniqueID();
+	             return message;
+	             
+	    }
+	}
+	if(method.equalsIgnoreCase("validatingRefNo") && paramList.equalsIgnoreCase("Artworkrequisition"))
+	{
+		if(returnHicData.getData()!=null && returnHicData.getData().getStatus()!=null ) 
+	    {
+	        IData data=returnHicData.getData();
+			IFormPattern formpattern=data.getFormPattern();
+			String formPatternId=formpattern.getFormId();
+			Hashtable formvalues=new Hashtable();
+			formvalues=data.getFormPattern().getFormValues();
+			
+	    }
+		
+	}
+    if(method.equalsIgnoreCase("sendandrecieve"))
+    {
+	      if(returnHicData.getData()!=null && returnHicData.getData().getStatus()!=null ) 
+	      {
+	            String message= returnHicData.getData().getStatus();
+	            String msg = "The return message is:"+message;
+	            message(msg);
+	            return message;
+	       }
+  	}
+	if(method.equalsIgnoreCase("invokeClientCall"))
+	{
+		webMessage = (String) returnHicData.getMetaData().getCommonObject();
+		return webMessage;
+	}
+	sessionUpdate(returnHicData);
+	return isValidStatus;
 }
 //added argument as formdesginer not allowing method without argument.
 void displayErrorMessageFromComponent(String id)
@@ -7672,7 +7839,7 @@ public String downloadFolder(String ID,String button)
 }
 public Hashtable createFormValues(Object formObj,Hashtable formValues) 
 {
-
+	
   	List childElement;
 	if (formObj != null) 
 	{
@@ -7686,8 +7853,10 @@ public Hashtable createFormValues(Object formObj,Hashtable formValues)
 				if (value instanceof Combobox) 
 				{
 				  String id=((Combobox) value).getId();			  
-				  getComboItemId1(id);
-				}				else if(value instanceof Textbox)
+				  String valueCombobox = getComboItemId1(id);
+				  formValues.put(id,valueCombobox);
+				}				
+				else if(value instanceof Textbox)
 				{
 					if(((Textbox) value).getValue()!=null && !(((Textbox) value).getValue().trim().isEmpty()))
 					{
@@ -7699,22 +7868,27 @@ public Hashtable createFormValues(Object formObj,Hashtable formValues)
 				else if(value instanceof Datebox)
 				{
 					String date="";
-					if(((Datebox) value)!=null)
+					Object dateboxValue = ((Datebox) value);
+					if(dateboxValue!=null)
 					{
-					date= (new SimpleDateFormat("yyyy-MM-dd").format(((Datebox) value).getValue()));
-					checkFormValue(((Datebox) value).getId(),date);
+						if(dateboxValue.getValue() != null && !(dateboxValue.trim().isEmpty()))
+						{
+							date= (new SimpleDateFormat("yyyy-MM-dd").format(((Datebox) value).getValue()));
+							checkFormValue(((Datebox) value).getId(),date);
+						}
 					}
-
-
-
 					formValues.put(((Datebox) value).getId(),date);
 				}
 			}
 			else
 			{
-			 formValues = createFormValues(value,formValues);
+			 	formValues = createFormValues(value,formValues);
 			}
 		}
+	}
+	else
+	{
+		System.out.println("form obj is null");
 	}
 	return formValues;
 }
