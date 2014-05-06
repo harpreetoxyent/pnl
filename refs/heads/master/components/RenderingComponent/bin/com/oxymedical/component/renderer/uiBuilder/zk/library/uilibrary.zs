@@ -790,8 +790,6 @@ public void setCurrentDate(Object controlId)
 		
 	}
 
-
-
 private String getComboItemId1(String comboBox)
 {
 	String comboSelectedVal = null;
@@ -813,7 +811,6 @@ private String getComboItemId1(String comboBox)
 		}
 		comboSelectedValue = comboSelectedVal;
 		checkFormValue(self.id,comboSelectedValue);
-		formValues.put(self.id,comboSelectedValue);
 		comboSelectedValue=null;
 	}
 	return comboSelectedVal;
@@ -7842,7 +7839,7 @@ public String downloadFolder(String ID,String button)
 }
 public Hashtable createFormValues(Object formObj,Hashtable formValues) 
 {
-
+	
   	List childElement;
 	if (formObj != null) 
 	{
@@ -7856,8 +7853,10 @@ public Hashtable createFormValues(Object formObj,Hashtable formValues)
 				if (value instanceof Combobox) 
 				{
 				  String id=((Combobox) value).getId();			  
-				  getComboItemId1(id);
-				}				else if(value instanceof Textbox)
+				  String valueCombobox = getComboItemId1(id);
+				  formValues.put(id,valueCombobox);
+				}				
+				else if(value instanceof Textbox)
 				{
 					if(((Textbox) value).getValue()!=null && !(((Textbox) value).getValue().trim().isEmpty()))
 					{
@@ -7869,22 +7868,27 @@ public Hashtable createFormValues(Object formObj,Hashtable formValues)
 				else if(value instanceof Datebox)
 				{
 					String date="";
-					if(((Datebox) value)!=null)
+					Object dateboxValue = ((Datebox) value);
+					if(dateboxValue!=null)
 					{
-					date= (new SimpleDateFormat("yyyy-MM-dd").format(((Datebox) value).getValue()));
-					checkFormValue(((Datebox) value).getId(),date);
+						if(dateboxValue.getValue() != null && !(dateboxValue.trim().isEmpty()))
+						{
+							date= (new SimpleDateFormat("yyyy-MM-dd").format(((Datebox) value).getValue()));
+							checkFormValue(((Datebox) value).getId(),date);
+						}
 					}
-
-
-
 					formValues.put(((Datebox) value).getId(),date);
 				}
 			}
 			else
 			{
-			 formValues = createFormValues(value,formValues);
+			 	formValues = createFormValues(value,formValues);
 			}
 		}
+	}
+	else
+	{
+		System.out.println("form obj is null");
 	}
 	return formValues;
 }
