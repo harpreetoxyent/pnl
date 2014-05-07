@@ -7865,7 +7865,7 @@ public Hashtable createFormValues(Object formObj,Hashtable formValues)
 						textId.add(((Textbox) value).getId());
 					}
 				} 
-				else if(value instanceof Doublebox)
+			else if(value instanceof Doublebox)
 				{
 					Object doubleboxValue = ((Doublebox) value);
 					System.out.println("Inside Doublebox in uilibrary id ="+doubleboxValue.getId());
@@ -7876,6 +7876,7 @@ public Hashtable createFormValues(Object formObj,Hashtable formValues)
 
 					}
 				} 
+				
 				else if(value instanceof Datebox)
 				{
 					String date="";
@@ -7889,6 +7890,21 @@ public Hashtable createFormValues(Object formObj,Hashtable formValues)
 							
 							System.out.println("Inside Datebox in uilibrary id ="+ ((Datebox) value).getId() + "value="+ date);
 							checkFormValue(((Datebox) value).getId(),date);
+						}
+					}
+					
+				}
+				else if(value instanceof Timebox)
+				{
+					String time="";
+					Object timeboxValue = ((Timebox) value);
+					if(timeboxValue!=null)
+					{
+						if(timeboxValue.getValue() != null)
+						{
+							time= (new SimpleDateFormat("HH:MM:ss").format(((Timebox) value).getValue()));
+							formValues.put(timeboxValue.getId(),time);				
+							System.out.println("Inside Timebox in uilibrary id ="+ ((Timebox) value).getId() + "value="+ time);
 						}
 					}
 					
