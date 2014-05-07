@@ -7865,19 +7865,33 @@ public Hashtable createFormValues(Object formObj,Hashtable formValues)
 						textId.add(((Textbox) value).getId());
 					}
 				} 
+				else if(value instanceof Doublebox)
+				{
+					Object doubleboxValue = ((Doublebox) value);
+					System.out.println("Inside Doublebox in uilibrary id ="+doubleboxValue.getId());
+					if(doubleboxValue.getValue()!=null )
+					{
+						formValues.put(((Doublebox) value).getId(),((Doublebox) value).getValue());
+						System.out.println("Inside Doublebox in uilibrary id ="+ ((Doublebox) value).getId() + "value="+ ((Doublebox) value).getValue());
+
+					}
+				} 
 				else if(value instanceof Datebox)
 				{
 					String date="";
 					Object dateboxValue = ((Datebox) value);
 					if(dateboxValue!=null)
 					{
-						if(dateboxValue.getValue() != null && !(dateboxValue.trim().isEmpty()))
+						if(dateboxValue.getValue() != null)
 						{
 							date= (new SimpleDateFormat("yyyy-MM-dd").format(((Datebox) value).getValue()));
+							formValues.put(((Datebox) value).getId(),date);
+							
+							System.out.println("Inside Datebox in uilibrary id ="+ ((Datebox) value).getId() + "value="+ date);
 							checkFormValue(((Datebox) value).getId(),date);
 						}
 					}
-					formValues.put(((Datebox) value).getId(),date);
+					
 				}
 			}
 			else
