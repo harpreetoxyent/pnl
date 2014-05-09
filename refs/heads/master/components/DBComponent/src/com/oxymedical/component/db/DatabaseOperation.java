@@ -388,39 +388,48 @@ public class DatabaseOperation {
 			mappedClass = persistentClass.getMappedClass();
 			fieldIterator = fieldList.iterator();
 			obj = mappedClass.newInstance();
-			while (fieldIterator.hasNext()) {
+			while (fieldIterator.hasNext()) 
+			{
 				Field field = (Field) fieldIterator.next();
 				String fieldName = field.getName();
 				Object fieldValue = field.getValue();
-				String classField = (String) DBOperationUtilities
-						.retClassField(persistentClass, fieldName);
+				System.out.println("Inside DatabaseOperation retrieveObjectConcreteDAO fieldName = " + fieldName);
+				System.out.println("Inside DatabaseOperation retrieveObjectConcreteDAO fieldValue = " + fieldValue);
+				System.out.println("Inside DatabaseOperation retrieveObjectConcreteDAO persistentClass = " + persistentClass.getClassName());
+
+				String classField = (String) DBOperationUtilities.retClassField(persistentClass, fieldName);
+				System.out.println("Inside DatabaseOperation retrieveObjectConcreteDAO classField = " + classField);
+
 				Iterator propertyIt = persistentClass.getPropertyIterator();
 				boolean primaryKeysPresent = false;
 				while (propertyIt.hasNext()) {
 					primaryKeysPresent = true;
 					Property property = (Property) propertyIt.next();
-					if (property.getName().equalsIgnoreCase(classField)) {
+					if (property.getName().equalsIgnoreCase(classField)) 
+					{
 						// property.
+						System.out.println("Inside DatabaseOperation retrieveObjectConcreteDAO property.getName() = " + property.getName());
+						System.out.println("Inside DatabaseOperation retrieveObjectConcreteDAO classField = " + classField);
 						Setter setter = property.getSetter(mappedClass);
-						Class[] parameterTypes = setter.getMethod()
-								.getParameterTypes();
-						Method method = javaClass.getMethod(setter
-								.getMethodName(), parameterTypes);
-						fieldValue = cnvtDataType.setObjectValue(fieldValue,
-								parameterTypes[0].getName());
+						Class[] parameterTypes = setter.getMethod().getParameterTypes();
+						Method method = javaClass.getMethod(setter.getMethodName(), parameterTypes);
+						fieldValue = cnvtDataType.setObjectValue(fieldValue,parameterTypes[0].getName());
 						Object parObj = null;
-						if (property.getValue().getType().isAssociationType()) {
-							PersistentClass parPersClass = configuration
-									.getClassMapping(parameterTypes[0]
-											.getName());
-							parObj = DBOperationUtilities.extractParentObject(
-									parPersClass, parObj, fieldValue);
+						
+						if (property.getValue().getType().isAssociationType())
+						{
+							PersistentClass parPersClass = configuration.getClassMapping(parameterTypes[0].getName());
+							parObj = DBOperationUtilities.extractParentObject(parPersClass, parObj, fieldValue);
 
-							if (null != fieldValue) {
+							if (null != fieldValue) 
+							{
 								method.invoke(obj, parObj);
 							}
-						} else {
-							if (null != fieldValue) {
+						} 
+						else 
+						{
+							if (null != fieldValue)
+							{
 								method.invoke(obj, fieldValue);
 							}
 						}

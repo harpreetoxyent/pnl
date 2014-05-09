@@ -206,9 +206,12 @@ public class DBOperationUtilities {
 	public static Object retClassField(PersistentClass persistentClass,
 			String fieldName) 
 	{
+		fieldName = fieldName.trim();
 		if (fieldName.indexOf(DBConstants.DB_AS_BLANK) > 0)
 		{
 			fieldName = fieldName.substring(0, fieldName.indexOf(DBConstants.DB_AS_BLANK));
+			System.out.println("Inside DBOpertaionUtilities fieldName after retrieving substring="+fieldName);
+
 		}
 		Iterator propertyIt = persistentClass.getPropertyIterator();
 		List<String> propertyList = new ArrayList<String>();
@@ -221,21 +224,25 @@ public class DBOperationUtilities {
 			while (propColomnIterator.hasNext())
 			{
 				Column col = (Column) propColomnIterator.next();
-
 				String propertyName = property.getName();
+				System.out.println("Inside DBOpertaionUtilities primaryKeysPresent col.getName()=" + col.getName());
+				System.out.println("Inside DBOpertaionUtilities primaryKeysPresent propertyName=" + propertyName);
 				if (fieldName.equalsIgnoreCase(DBConstants.DB_BLANK))
 				{
 					propertyList.add(propertyName);
 				}
 				else if (col.getName().equalsIgnoreCase(fieldName))
 				{
+					System.out.println("Inside DBOpertaionUtilities colname ="+col.getName()+" and fieldName equal= " + fieldName);
 					return propertyName;
 				}
 			}
 		}
-		
+		System.out.println("Inside DBOpertaionUtilities fieldName not found after iteration");
+
 		if (!primaryKeysPresent)
 		{
+			System.out.println("Inside DBOpertaionUtilities and not primaryKeysPresent");
 			// Table might contain composite id's
 			Component identifier = (Component) persistentClass.getIdentifier();
 			Iterator columnIterator = identifier.getPropertyIterator();
@@ -248,6 +255,8 @@ public class DBOperationUtilities {
 					Column col = (Column) propColomnIterator.next();
 					// DBComponent.logger.log(0,"col.getName() = "+col.getName());
 					String propertyName = property.getName();
+					System.out.println("Inside DBOpertaionUtilities !primaryKeysPresent col.getName()=" + col.getName());
+					System.out.println("Inside DBOpertaionUtilities !primaryKeysPresent propertyName=" + propertyName);
 					if (fieldName.equalsIgnoreCase(DBConstants.DB_BLANK))
 					{
 						propertyList.add(propertyName);
@@ -261,16 +270,19 @@ public class DBOperationUtilities {
 		}
 		
 		Property property = persistentClass.getIdentifierProperty();
+		System.out.println("Inside DBOpertaionUtilities !primaryKeysPresent also could not find field property= " + property);
 		if (null != property)
 		{
 			if (null != property.getValue())
 			{
+				System.out.println("Inside DBOpertaionUtilities property.getValue()= " + property.getValue());
 				Iterator propColomnIterator = property.getValue().getColumnIterator();
 				while (propColomnIterator.hasNext())
 				{
 					Column col = (Column) propColomnIterator.next();
-
 					String propertyName = property.getName();
+					System.out.println("Inside DBOpertaionUtilities null != property col.getName()=" + col.getName());
+					System.out.println("Inside DBOpertaionUtilities null != property propertyName=" + propertyName);
 					if (fieldName.equalsIgnoreCase(DBConstants.DB_BLANK))
 					{
 						propertyList.add(propertyName);
@@ -282,6 +294,7 @@ public class DBOperationUtilities {
 				}
 			}
 		}
+		System.out.println("Inside DBOpertaionUtilities and fieldname not found..approaching null return ");
 		
 		if (fieldName.equalsIgnoreCase(DBConstants.DB_BLANK))
 		{

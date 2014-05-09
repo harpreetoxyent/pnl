@@ -413,9 +413,12 @@ public class DataHandler implements IDataHandler {
 				while (formPatternElementEnum.hasMoreElements()) {
 					String retId = (String) formPatternElementEnum
 							.nextElement();
+					System.out.println("Inside datahandler save retId = "+retId);
+					
 					FormPattern selElement = formPatternHash.get(retId);
 					if (selElement.getElementId().trim().equalsIgnoreCase(
 							requestFieldName.trim())) {
+						System.out.println("Inside datahandler save selElement = "+selElement);
 						String dataPatternId = selElement
 								.getAssocDataPatternId();
 						if (null == dataPatternId) {
@@ -444,7 +447,17 @@ public class DataHandler implements IDataHandler {
 							System.out.println("Inside Data Handler Data Pattern selField" + selField);
 	
 	
-							if (null == databaseTableHash.get(databaseName)) {
+							if (null == databaseTableHash.get(databaseName)) 
+							{
+								if(selField.equalsIgnoreCase("EYE_RED_REFLEX" ))
+								{
+									System.out.println("Iterating in Radiogroup" + selField);
+								}
+								if(selField.equalsIgnoreCase("TEMP" ))
+								{
+									System.out.println("Parsing in Textbox" + selField);
+								}
+								System.out.println("Iterating if selField is not a  Radiogroup" + selField);
 								tableFieldHash = new Hashtable<String, List<Field>>();
 								fieldList = new ArrayList<Field>();
 							} else {
@@ -457,12 +470,26 @@ public class DataHandler implements IDataHandler {
 								}
 							}
 							field = new Field();
-							field.setName(selField);
-							field.setValue(requestTable.get(requestFieldName));
-							fieldList.add(field);
-							tableFieldHash.put(tableName, fieldList);
+							if(selField.equalsIgnoreCase("EYE_RED_REFLEX" ))
+							{
+								System.out.println("In case the selField is radiogroup" + selField);
+								field.setName(selField);
+								field.setValue(requestTable.get(requestFieldName));
+								fieldList.add(field);
+								tableFieldHash.put(tableName, fieldList);
+							}
+							else
+							{
+								System.out.println("In case the selField is not a radiogroup");
+								field.setName(selField);
+								field.setValue(requestTable.get(requestFieldName));
+								fieldList.add(field);
+								tableFieldHash.put(tableName, fieldList);
+							}
 							databaseTableHash.put(databaseName, tableFieldHash);
+							
 						}
+						
    // This code is commented as the implementation for the saving the data is changed.
 						/*
 						 * } String tableName =""; String databaseName ="";
