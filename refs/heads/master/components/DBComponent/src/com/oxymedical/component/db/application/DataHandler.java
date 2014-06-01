@@ -384,13 +384,12 @@ public class DataHandler implements IDataHandler {
 			// DBComponent.logger.log(0,"##### solving query In save");
 			applicationFormList = registerWindow.getApplicationPatternHash()
 					.get(applicationName);
-
 			if (null == applicationFormList || applicationFormList.isEmpty())
 				throw new DBComponentException(
 						DBExceptionConstants.NULL_POINTER_EXCEPTION
 								+ DBConstants.DB_APPLICATION_FORM_LIST
 								+ applicationFormList + "in save");
-			System.out.println("Inside Data Handler applicationName " + applicationName);
+			System.out.println("Inside Data Handler applicationName " + applicationName +"baseWindow="+baseWindow);
 			for (int formListCounter = 0; formListCounter < applicationFormList
 					.size(); formListCounter++) {
 

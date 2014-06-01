@@ -1,0 +1,203 @@
+<zk id="blood_gas_tests" name="blood_gas_tests">
+	<!-- <zscript src="/library/uilibrary.zs"/>--> 
+<?page id="blood_gas_tests"?>	
+<zscript>
+<![CDATA[
+public void showChildMenu()
+{
+this.self.getFellow("childMenu").setStyle("display:block;");
+}
+]]>
+</zscript>
+<style>
+body{background: #f0f0f0;}
+.z-panel-tr,.z-panel-tl,.z-panel-hl,.z-panel-hr,.z-panel-children,.z-panel-hm{background: none; border: none;}
+.sub_menu{margin-left: 10px; border-left: 4px solid #CCC; padding-left: 10px;}
+.z-toolbarbutton-cnt{background: none!important; background-image:none!important; outline: none!important; width: 137px;}
+.sub_menu:hover{border-left: 4px solid green; padding-left: 10px; margin-left: 10px; border-right:none; border-top:none; border-bottom:none; cursor: pointer;}
+.z-center,.z-east{border:none;}
+.z-panel-hm .z-panel-header, .z-panel-header{font-size:13px; font-weight: bold; color:#6297BC}
+.z-toolbar{background: #f0f0f0!important; border:none!important;}
+tr.z-grid-odd td.z-row-inner, tr.z-grid-odd .z-cell{border:none; background:none; background-color: none;}
+tr.z-grid-odd td.z-row-inner, tr.z-grid-odd .z-cell, tr.z-grid-odd{border:none; background:none; background-color: none;}
+tr.z-row td.z-row-inner, tr.z-row .z-cell{border:none; background: #f0f0f0;}
+.z-combobox-rounded-inp, .z-bandbox-rounded-inp, .z-datebox-rounded-inp, .z-timebox-rounded-inp, .z-spinner-rounded-inp, .z-doublespinner-rounded-inp, .z-combobox-inp, .z-bandbox-inp, .z-datebox-inp, .z-timebox-inp, .z-spinner-inp, .z-doublespinner-inp{width: 150px;}
+.z-textbox, .z-decimalbox, .z-intbox, .z-longbox, .z-doublebox{width: 85px;}
+.z-textbox{width: 120px; border:none; resize:none;}
+.z-textbox:focus{outline:none;}
+.z-vlayout{height: auto!important;}
+div.z-grid-header th.z-column, div.z-grid-header th.z-auxheader{border:1px solid #ccc; border-collapse: collapse;}
+.tablegrid tr.z-row td.z-row-inner, tr.z-row .z-cell{border:1px solid #ccc; border-collapse: collapse;}
+div.z-grid-body{background:none;}
+div.z-grid{background:none;}
+.z-label{float:left; width: 185px;}
+tr.z-row td.z-row-inner, tr.z-row .z-cell{padding:5px 0;}
+.z-a{text-decoration:none; color:#333;}
+.z-a:visited{text-decoration:none; color:#333;}
+.active{color: green; border-left: 4px solid green; padding-left: 10px; margin-left: 10px; border-right:none; border-top:none; border-bottom:none;}
+div.z-grid-header tr.z-columns, div.z-grid-header tr.z-auxhead{background: none;}
+div.z-grid-header th.z-column, div.z-grid-header th.z-auxheader{border:none;}
+.z-grid-header-bg{background:none;}
+.inner_label{width: auto!important; padding-left: 5px; }
+.radio_left{float:left;}
+.child_menu{margin-left:20px;}
+.z-combobox-inp{width: 100px;}
+.show:nth-child(-n+23){display:none;}
+.z-row-inner{float:left; width: 125px;}
+tr.z-row td.z-row-inner, tr.z-row .z-cell{padding: 5px 0;float: left; height: 43px; width:778px;}
+.medicineName{float: left;width: 120px;text-align: left;padding-left: 5px; resize: none;}
+.submit,.cancel{background: green; padding:5px 15px; border:none; color: #fff; font-weight: bold; border-radius:5px; cursor:pointer;}
+.child_menu{margin-left: 20px; display:none}
+</style>
+
+<window  style="background: #f0f0f0">
+   <div style="width: 1024px; margin:auto;">
+        <borderlayout sclass="complex-layout" height="1000px">
+            <north size="90px" border="0" style=" background:none;">
+            <image src="images/fortis.png"/>
+            </north>
+            <!-- Sidebar -->
+            <west width="23%" border="0" flex="true" margins="0,5,0,0" style="background:none;">
+
+                <vlayout spacing="0" style="height: auto;">
+                    <panel width="100%" border="normal" title="Admission And Examination" >
+                        <panelchildren style="padding:5px;">
+                        
+                            <vbox>
+                                <a href="admission.zul"><label value="Admission Form" class="sub_menu"/></a>
+                                <a href="initial_examination.zul"><label value="Initial Examination" class="sub_menu"/></a>
+                            </vbox>
+                            
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Nursing Progress Notes ">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="nursing_progress_notes.zul"><label value="Nursing Progress Notes" class="sub_menu"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Doctor's Progress Notes">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="doctor_progress_notes.zul"><label value="Doctor's Progress Notes " class="sub_menu"/></a>
+                                <a href="growth_chart.zul"><label value="Growth Chart " class="sub_menu"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                     <panel width="100%" border="normal"
+                        title="Medication">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <label value="Doctor's Prescription" class="sub_menu" onClick="showChildMenu();"/>
+	                                <div class="child_menu" id="childMenu">
+	                                <a href="infusion_list.zul"><label value="Infusion List" class="sub_menu"/></a>
+	                                <a href="regular_medi.zul"><label value="Regular Medication" class="sub_menu"/></a>
+	                                <a href="once_only.zul"><label value="Once Only" class="sub_menu" /></a>                                                                
+	                                </div>
+                                <a href="nurse_administration.zul"><label value="Nurse Administration" class="sub_menu"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Blood Gas Tests">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="blood_gas_tests.zul"><label value="Blood Gas Tests" class="sub_menu active"/></a>
+                               
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                     <panel width="100%" border="normal"
+                        title="Blood Test's">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="basic.zul"><label value="Basic " class="sub_menu"/></a>
+                                 <a href="specialised.zul"><label value="Specialised " class="sub_menu"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                     <panel width="100%" border="normal"
+                        title="Screening Tests">
+                       <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="screening_tests.zul"><label value="Screening Tests" class="sub_menu"/></a>
+                                 
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Ultrasound">
+                       <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="cranial.zul"><label value="Cranial" class="sub_menu"/></a>
+                                <a href="abdomen.zul"><label value="Abdomen" class="sub_menu"/></a>
+                                 
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Xray">
+                         <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="xray.zul"><label value="Xray" class="sub_menu"/></a>
+
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    
+                    <panel width="100%" border="normal"
+                        title="Neonatal">
+                         <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="neonatal_unit.zul"><label value="Neonatal Unit" class="sub_menu"/></a>
+                                <a href="neonatal_icu.zul"><label value="Neonatal ICU" class="sub_menu"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>                    
+                    <panel width="100%" border="normal"
+                        title="Discharge Summary">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="discharge_summary.zul"><label value="Discharge Summary" class="sub_menu"/></a>
+
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                </vlayout>
+
+            </west>
+            <east>
+                <vlayout>
+                    <html>
+                    </html>
+                </vlayout>
+            </east>
+            <!-- Content -->
+            <center>
+
+                <borderlayout sclass="inner-border">
+                    <north size="90px" border="0" height="4%" margins="2,3,0,0" style=" background: green;">
+                        <label value="Blood Gas Tests"  style="font-size:17px; color: #fff; background: green; padding: 5px 10px; float:left; font-weight: bold; " />
+                    </north>
+                    <center border="0" margins="0,3,3,3" style=" background: none; overflow:auto;">
+            <div style="padding: 0; width: 780px; overflow-y: auto; overflow-x: hidden">
+
+
+</div>
+
+                    </center>
+                   
+
+                </borderlayout>
+
+            </center>
+
+        </borderlayout>
+    </div>
+
+</window>
+
+</zk>

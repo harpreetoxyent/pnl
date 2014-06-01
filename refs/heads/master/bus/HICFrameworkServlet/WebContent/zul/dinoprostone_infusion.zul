@@ -1,0 +1,112 @@
+<zk>
+<html><![CDATA[
+<head>
+
+<style>
+input{width: auto!important; float: none!important; padding-left: 0px!important; margin-top: 0px!important;}
+</style>
+<script language="javascript">
+
+
+function Solve1()
+
+{
+   var A = 2.5;		
+   var B = document.Infusion.InputB.value;
+	var C = document.Infusion.InputC.value;
+	var D = 20;
+
+
+      Answer1 = ((A*B*60*D/C/1000)/100);
+      Answer2 = (D-Answer1);
+		Answer3 = Answer1*100;
+
+	document.Infusion.Answer1.value = round(Answer1);
+	document.Infusion.Answer2.value = round(Answer2);
+	document.Infusion.Answer3.value = round(Answer3);
+
+}
+function round(x)	{
+	return Math.round(x*10)/10;
+}
+window.load= Solve1();
+</script>
+<script>
+
+$('.close').click(function()
+{
+$('.showdiv1').css('display', 'none');
+});
+
+</script>
+
+<title>Dinoprostone Infusion Calculator</title>
+
+<meta name="Microsoft Theme" content="blank 111, default">
+<script>
+var l = jQuery.noConflict();
+l(window).load(function ()
+	{
+		l('.drug').click(function()
+	{
+		l('.show').css('display', 'block');
+	});
+
+});
+</script>
+<style>
+li.drug ul.show{display:none;}
+</style>
+</head>
+
+<body background="../_themes/blank/blbkgnd.gif" bgcolor="#CCCCCC" text="#000000" link="#003399" vlink="#993300" alink="#336633"><!--mstheme--><font face="Arial, Arial, Helvetica">
+
+<h1 align="center"><!--mstheme--><font color="#330099"><small><font size="4" face="Arial">Dinoprostone (PgE2) Infusion
+Calculator</font></small><!--mstheme--></font></h1>
+<form method="post" name="Infusion">
+  <div align="center" style="display:none;"><center><!--mstheme--></font><table border="2" bgcolor="#D5D5FF" bordercolordark="#000000" bordercolorlight="#999999">
+    <tr>
+      <td><!--mstheme--><font face="Arial, Arial, Helvetica"><font face="Arial">Wt of infant (kg)</font><!--mstheme--></font></td>
+      <td><!--mstheme--><font face="Arial, Arial, Helvetica"><font face="Arial"><input type="text" size="6" name="InputA"></font><!--mstheme--></font></td>
+    </tr>
+    <tr>
+      <td><!--mstheme--><font face="Arial, Arial, Helvetica"><font face="Arial">Dose (range 5-20 nanograms/kg/min)</font><!--mstheme--></font></td>
+      <td><!--mstheme--><font face="Arial, Arial, Helvetica"><font face="Arial"><input type="text" size="6" name="InputB" value="5"></font><!--mstheme--></font></td>
+    </tr>
+    <tr>
+      <td><!--mstheme--><font face="Arial, Arial, Helvetica"><font face="Arial">Flow rate (ml/hr)</font><!--mstheme--></font></td>
+      <td><!--mstheme--><font face="Arial, Arial, Helvetica"><font face="Arial"><input type="text" size="6" name="InputC" value="0.1"></font><!--mstheme--></font></td>
+    </tr>
+    <tr>
+      <td><!--mstheme--><font face="Arial, Arial, Helvetica"><font face="Arial">Volume of infusion to be made up (ml)</font><!--mstheme--></font></td>
+      <td><!--mstheme--><font face="Arial, Arial, Helvetica"><font face="Arial"><input type="text" size="6" name="InputD"></font><!--mstheme--></font></td>
+    </tr>
+  </table><!--mstheme--><font face="Arial, Arial, Helvetica">
+  </center></div><div align="center" style="display:none;"><center><p><font face="Arial"><input type="button" name="Button_Solve" value="Solve" onclick="Solve()"><input type="reset" value="Reset" name="B1"></font></p>
+  </center></div><div align="left" style="display:none;"><p><font face="Arial">First add 1 ml dinoprostone
+  injection (1mg/ml) to 9 ml 5% glucose or 0.9% sodium chloride and mix well. This solution
+  contains 100 micrograms/ml</font></p>
+  </div><div align="left" style="display:none;"><p><font face="Arial">Diluent: 5% glucose or 0.9% sodium
+  chloride</font></p>
+  </div><div align="center"><center><!--mstheme--></font><table border="1" bordercolordark="#000000" bordercolorlight="#999999">
+    <tr>
+      <td><!--mstheme--><font face="Arial, Arial, Helvetica"><font face="Arial">Amount</font><font face="Arial"> of dinoprostone to add to diluent (micrograms)</font><!--mstheme--></font></td>
+      <td><!--mstheme--><font face="Arial, Arial, Helvetica"><font face="Arial"><input type="text" name="Answer3" size="6"></font><!--mstheme--></font></td>
+    </tr>
+    <tr>
+      <td><!--mstheme--><font face="Arial, Arial, Helvetica"><font face="Arial">Volume of dinoprostone injection (100 micrograms/1ml) to
+      add to diluent (ml)</font><!--mstheme--></font></td>
+      <td><!--mstheme--><font face="Arial, Arial, Helvetica"><font face="Arial"><input type="text" size="6" name="Answer1"></font><!--mstheme--></font></td>
+    </tr>
+    <tr>
+      <td><!--mstheme--><font face="Arial, Arial, Helvetica"><font face="Arial">Volume of diluent(ml)</font><!--mstheme--></font></td>
+      <td><!--mstheme--><font face="Arial, Arial, Helvetica"><font face="Arial"><input type="text" size="6" name="Answer2"></font><!--mstheme--></font></td>
+    </tr>
+  </table><!--mstheme--><font face="Arial, Arial, Helvetica">
+  </center></div>
+</form>
+
+<!--mstheme--></font></body>
+
+]]></html>
+</zk>

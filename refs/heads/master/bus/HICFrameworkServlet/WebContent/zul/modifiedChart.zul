@@ -1,0 +1,54 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk xmlns:w="http://www.zkoss.org/2005/zk/client">
+<!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1.1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart(divUid) {
+        var data = google.visualization.arrayToDataTable([
+          ['Weeks', 'L1', 'L2'],
+          [22,  0.5,      0.4],
+          [24,  0.65,     0.5],
+          [26,  0.83,     0.6],
+          [28,  1.1,      0.8],
+          [30,  1.4,      1],
+          [32,  1.8,      1.3],
+          [34,  2.3,      1.7],
+          [36,  2.7,      2.2],
+          [38,  3.15,     2.6],
+          [40,  3.6,      3],
+          [42,  4,        3.4],
+          [44,  4.5,      3.8],
+          [46,  5,        4.2],
+          [48,  5.4,      4.6],
+          [50,  5.8,      5]
+        ]);
+
+         var options = {
+    title: 'Fenton preterm growth chart - boys',
+    crosshair: { trigger: 'both' },
+    curveType: 'function',
+    legend: { position: 'bottom' },
+    pointSize:3,
+    series: {0:{lineWidth: 1},1:{lineWidth: 1}},
+    hAxis: {ticks: [22,24,26,28,30,32,34,36,38,40,42,44,46,48,50],title: 'DateGestational age (weeks)', titleTextStyle: {color: 'black'}},
+    vAxis: { ticks: [0,0.5,1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,6.5],title: 'Weight (Kilograms)__________________________________ Centimeters', titleTextStyle: {color: 'black'}}
+  };
+        var chart = new google.visualization.ScatterChart(document.getElementById(divUid));
+        chart.draw(data, options);
+      }
+    </script>
+
+<window title="new page title" border="normal">
+<hbox>
+<button label="Create Charts">
+<attribute w:name="onClick">
+divUuid = this.$f().chart.uuid;
+drawChart(divUuid);
+</attribute>
+</button>
+</hbox>
+<div id="chart" style="width: 900px; height: 900px;"></div>
+</window>
+</zk>

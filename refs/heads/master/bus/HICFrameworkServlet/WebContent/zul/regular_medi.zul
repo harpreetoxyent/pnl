@@ -1,0 +1,292 @@
+<zk>
+<html><![CDATA[
+<head>
+<title>Regular Medication</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="images/BrightSide.css" type="text/css" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="select.js"></script>
+<link rel="stylesheet" type="text/css" media="all" href="jsDatePick_ltr.min.css" />
+<script type="text/javascript">
+var l = jQuery.noConflict();	
+        l(window).load(function(){
+		new JsDatePick({
+			useMode:2,
+			target:"inputField",
+			dateFormat:"%d-%M-%Y"
+	});
+		});
+</script>
+<script type="text/javascript" src="jsDatePick.min.1.3.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/redmond/jquery-ui.css" />		
+<link rel="stylesheet" type="text/css" href="jquery.ptTimeSelect.css" />
+<script type="text/javascript" src="jquery.ptTimeSelect.js"></script>		
+
+
+    <script type="text/javascript">
+var k = jQuery.noConflict();
+        k(window).load(function(){
+            // find the input fields and apply the time select to them.
+            k('#sample2').ptTimeSelect({
+            }); //end ptTimeSelect()
+        }); // end ready()
+    </script>
+
+
+
+
+
+
+<script>
+var j = jQuery.noConflict();
+j(window).load(function()
+{
+function fixIds(elem, cntr) {
+    j(elem).find("#inputField").add(elem).each(function() {
+        this.id = this.id.replace(/\d+$/, "") + cntr;
+    })
+}
+
+var cloneCntr = 1;
+j("#insert-more").click(function () { 
+    var table = j("#mytable").clone(true,true) 
+    fixIds(table, cloneCntr);
+    table.insertAfter("#mytable") 
+    cloneCntr++;
+	for (var i=1; i&lt;=1000; i++)
+	{
+	new JsDatePick({
+			useMode:2,
+			target:"inputField" + i,
+			dateFormat:"%d-%M-%Y"
+	});
+	
+	}
+		});
+});
+</script>
+<style>
+#main1{min-width:600px; overflow-x:auto; overflow-y: hidden;}
+#main table{border-collapse:collapse;}
+#main table tr td{border: 1px solid #ccc; padding:4px; border-right:none; font-size:10px; line-height:1em; vertical-align:top; text-align:center;}
+input[type="text"]{width:auto!important;}
+input:focus{outline:none;}
+input:not([type="submit"]){float:none!important; padding:0px!important; margin:0px!important; height:25px!important; background:none!important;;}
+select{margin-top:0px!important; width:auto!important; float:none!important;}
+input.timepicker{width:30px!important;}
+input:focus{outline:none;}
+p.submit{text-align:right; width: 97%; margin-top:50px;}
+p.submit input{width: 100px;}
+td.last{border-right: 1px solid #cccccc!important;}
+label{float:none!important; display:inline!important;}
+li.drug ul.show{display:block;}
+#show_medicine_ceftriaxone1,#show_medicine_ceftriaxone2,#show_medicine_ceftriaxone3,#show_medicine_ceftriaxone4,#show_medicine_ceftriaxone5,#show_medicine_tazobaff1,#show_medicine_tazobaff2,#show_medicine_tazobaff3,#show_medicine_tazobaff4,#show_medicine_tazobaff5,#show_medicine_colistin1,#show_medicine_colistin2,#show_medicine_colistin3,#show_medicine_colistin4,#show_medicine_colistin5{display:none;}
+</style>
+<script>
+var l = jQuery.noConflict();
+l(window).load(function ()
+	{
+		l('.drug').click(function()
+	{
+		l('.show').css('display', 'block');
+	});
+
+});
+
+</script>
+<script>
+function change()
+{
+var value = document.getElementById('changevalue').value;
+if(value == 'Colistin')
+{
+for(var i=1; i&lt;=5; i++)
+{
+	document.getElementById('show_medicine_ceftriaxone'+i).style.display = "none";
+	document.getElementById('show_medicine_tazobaff'+i).style.display = "none";
+	document.getElementById('show_medicine_colistin'+i).style.display = "table-cell";
+	document.getElementById('none_medicine'+i).style.display = "none";
+}
+}
+
+else if(value == 'TazoBaff Piperacillin')
+{
+for(var i=1; i&lt;=5; i++)
+{
+	document.getElementById('show_medicine_ceftriaxone'+i).style.display = "none";
+	document.getElementById('show_medicine_tazobaff'+i).style.display = "table-cell";
+	document.getElementById('show_medicine_colistin'+i).style.display = "none";	
+	document.getElementById('none_medicine'+i).style.display = "none";
+}
+}
+
+else if(value == 'Ceftriaxone')
+{
+for(var i=1; i&lt;=5; i++)
+{
+	document.getElementById('show_medicine_ceftriaxone'+i).style.display = "table-cell";
+	document.getElementById('show_medicine_tazobaff'+i).style.display = "none";
+	document.getElementById('show_medicine_colistin'+i).style.display = "none";	
+	document.getElementById('none_medicine'+i).style.display = "none";
+}
+}
+
+else if(value == '')
+{
+for(var i=1; i&lt;=5; i++)
+{
+	document.getElementById('show_medicine_ceftriaxone'+i).style.display = "none";
+	document.getElementById('show_medicine_tazobaff'+i).style.display = "none";
+	document.getElementById('show_medicine_colistin'+i).style.display = "none";	
+	document.getElementById('none_medicine'+i).style.display = "table-cell";
+}
+}
+
+
+}
+</script>
+</head>
+<body>
+<div id="wrap">
+  <div id="header">
+  <include src="diamorphine_infusion.zul"/>
+  
+    <h1 id="logo"><a href="menu.zul" class="logo"><img src="images/fortis.png" /></a></h1>
+
+   </div>
+  <div id="content-wrap">
+    <div id="sidebar" >
+      <h1>Admission &amp; Examination</h1>
+      <ul class="sidemenu">
+        <li><a href="admission.zul">Admission Form</a></li>
+        <li><a href="initial_examination.zul">Initial Examination</a></li>
+      </ul>
+	  <h1>Nursing Progress Notes</h1>
+      <ul class="sidemenu">
+        <li><a href="nursing_progress_notes.zul">Nursing Progress Notes</a></li>
+	</ul>
+      <h1>Doctor's Progress Notes</h1>
+      <ul class="sidemenu">
+        <li><a href="progress_notes.zul">Doctor's Progress Notes</a></li>
+<li><a href="growth_chart.zul">Growth Chart</a></li>
+	</ul>	  	  	
+		  	  
+      <h1>Medication</h1>
+      <ul class="sidemenu">
+        <li class="drug"><a href="#" class="drug">Doctor's Prescription</a>
+        <ul class="show">
+        <li><a href="diamorphine_infusion.zul">Infusion List</a></li>
+        <li><a href="regular_medi.zul" class="active">Regular Medication</a></li>
+        <li><a href="sos_medi.zul">SOS Medication</a></li>
+        
+<li><a href="once.zul">Once Only</a></li>                
+        </ul>
+        </li>
+        <!--<li><a href="doctor_prescription.zul">Doctor's Prescription</a></li>-->
+        <li><a href="nurse_administration.zul">Nurse Administration</a></li>				
+	</ul>	
+	      
+	  <h1>Blood Gas Tests</h1>
+      <ul class="sidemenu">
+        <li><a href="blood_gas_test.zul">Blood Gas Tests</a></li>
+      </ul>
+      <h1>Blood Tests</h1>
+      <ul class="sidemenu">
+        <li><a href="basic.zul">Basic</a></li>
+        <li><a href="specialised.zul">Specialised</a></li>
+      </ul>
+      <h1>Screening Tests</h1>
+      <ul class="sidemenu">
+        <li><a href="screeningtests.zul">Screening Tests</a></li>
+      </ul>      
+      	  
+      <h1>UltraSounds</h1>
+      <ul class="sidemenu">
+        <li><a href="cranial.zul">Cranial</a></li>
+        <li><a href="abdomen.zul">Abdomen</a></li>
+      </ul>
+      <h1>Xray</h1>
+      <ul class="sidemenu">
+        <li><a href="xray.zul">Xray</a></li>
+	</ul>	  
+
+	  <h1>Discharge Summary</h1>
+      <ul class="sidemenu">
+        <li><a href="discharge_summary.zul">Discharge Summary</a></li>
+	</ul>	  	  	
+    </div>
+    <div id="main">
+	      <h1 class="head">Regular Medication</h1>
+
+		  <div id="main1">
+<table>
+<tr>
+<td>Medicine Name</td>
+<td>Type</td>
+<td>Present Wt.</td>
+<td>Dose</td>
+<td>Final Dose</td>
+<td class="last">Doses</td>
+</tr>
+
+<tr>
+ 
+<td> <input list="medicine" placeholder="start typing medicine name"  onchange="change()" id="changevalue"/>
+        
+		<datalist id="medicine">
+			<option value="Colistin"/>
+            <option value="TazoBaff Piperacillin"/>
+            <option value="Ceftriaxone"/>
+		</datalist>
+		</td>
+
+<td id="none_medicine1" name="none_medicine"><select style="display:none;"><option>Oral</option><option selected="selected">I.V.</option></select></td>
+<td id="none_medicine2" name="none_medicine"><input type="text" class="input" value="" disabled="disabled"/></td>
+<td id="none_medicine3" name="none_medicine"><input type="text" class="input" value="" disabled="disabled"/></td>
+<td id="none_medicine4" name="none_medicine"><input type="text" class="input" value="" disabled="disabled"/></td>
+<td id="none_medicine5" name="none_medicine" class="last"><input type="text" class="input" value=""/></td>
+
+
+
+<td id="show_medicine_colistin1" name="show_medicine"><select><option>Oral</option><option selected="selected">I.V.</option></select></td>
+<td id="show_medicine_colistin2" name="show_medicine"><input type="text" class="input" value="2.5 kg" disabled="disabled"/></td>
+<td id="show_medicine_colistin3" name="show_medicine"><input type="text" class="input" value="2 mg/kg/ml" disabled="disabled"/></td>
+<td id="show_medicine_colistin4" name="show_medicine"><input type="text" class="input" value="5.0" disabled="disabled"/></td>
+<td id="show_medicine_colistin5" name="show_medicine" class="last"><input type="text" value=""/></td>
+
+
+<td id="show_medicine_tazobaff1" name="show_medicine"><select><option>Oral</option><option selected="selected">I.V.</option></select></td>
+<td id="show_medicine_tazobaff2" name="show_medicine"><input type="text" class="input" value="2.5 kg" disabled="disabled"/></td>
+<td id="show_medicine_tazobaff3" name="show_medicine"><input type="text" class="input" value="1 mg/kg/ml" disabled="disabled"/></td>
+<td id="show_medicine_tazobaff4" name="show_medicine"><input type="text" class="input" value="2.5" disabled="disabled"/></td>
+<td id="show_medicine_tazobaff5" name="show_medicine" class="last"><input type="text" value=""/></td>
+
+
+<td id="show_medicine_ceftriaxone1" name="show_medicine"><select><option>Oral</option><option selected="selected">I.V.</option></select></td>
+<td id="show_medicine_ceftriaxone2" name="show_medicine"><input type="text" class="input" value="2.5 kg" disabled="disabled"/></td>
+<td id="show_medicine_ceftriaxone3" name="show_medicine"><input type="text" class="input" value="1.5 mg/kg/ml" disabled="disabled"/></td>
+<td id="show_medicine_ceftriaxone4" name="show_medicine"><input type="text" class="input" value="3.75" disabled="disabled"/></td>
+<td id="show_medicine_ceftriaxone5" name="show_medicine" class="last"><input type="text" value=""/></td>
+
+</tr>
+
+
+</table>
+<p style="text-align:center;" id="buttons"> <input type="submit"  value="Prescribe" id="submit"/> <input type="submit"  value="Stop" id="submit"/> 	</p>
+</div>
+</div>
+
+    
+  </div>
+</div>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            // find the input fields and apply the time select to them.
+            $('#sample2').ptTimeSelect({
+            }); //end ptTimeSelect()
+        }); // end ready()
+    </script>
+</body>
+]]></html>
+</zk>

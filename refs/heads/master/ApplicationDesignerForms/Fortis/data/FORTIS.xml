@@ -1,0 +1,241 @@
+<?xml version="1.0" standalone="yes"?>
+<FORTIS>
+  <xs:schema id="FORTIS" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="FORTIS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="INITIALEXAMINATION" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="ID" msdata:AutoIncrement="true" type="xs:int" />
+                <xs:element name="DOCTOR_EXAMINING" msdata:Caption="50" type="xs:string" minOccurs="0" />
+                <xs:element name="DATE" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="TIME" type="xs:duration" minOccurs="0" />
+                <xs:element name="BITRH_WEIGHT" type="xs:decimal" minOccurs="0" />
+                <xs:element name="CENTILE_BW" type="xs:decimal" minOccurs="0" />
+                <xs:element name="OFC" type="xs:decimal" minOccurs="0" />
+                <xs:element name="CENTILE_OFC" type="xs:decimal" minOccurs="0" />
+                <xs:element name="TEMP" type="xs:decimal" minOccurs="0" />
+                <xs:element name="EYE_RED_REFLEX" msdata:Caption="1" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:length value="1" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="EARS" msdata:Caption="1" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:length value="1" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="HANDS" msdata:Caption="1" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:length value="1" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="UPPAR_LIMBS" msdata:Caption="1" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:length value="1" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="TESTIS" msdata:Caption="1" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:length value="1" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="HIPS" msdata:Caption="1" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:length value="1" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="LEGS" msdata:Caption="1" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:length value="1" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="FEET" msdata:Caption="1" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:length value="1" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="PALATE" msdata:Caption="1" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:length value="1" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="TONE" msdata:Caption="1" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:length value="1" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="MOUTH" msdata:Caption="1" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:length value="1" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="HEART" msdata:Caption="1" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:length value="1" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="LEVER" msdata:Caption="1" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:length value="1" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="SPLEEN" msdata:Caption="1" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:length value="1" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="GENITALIA" msdata:Caption="1" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:length value="1" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="SPINE" msdata:Caption="1" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:length value="1" />
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="PROBLEMS_AT_ADMISSION" msdata:Caption="1000" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="nursingProgressReport" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="ID" msdata:AutoIncrement="true" type="xs:int" />
+                <xs:element name="Name" msdata:Caption="50" type="xs:string" />
+                <xs:element name="UID" msdata:Caption="50" type="xs:string" />
+                <xs:element name="BirthWeight" type="xs:decimal" />
+                <xs:element name="YesterdayWt" type="xs:decimal" />
+                <xs:element name="PresentWt" type="xs:decimal" />
+                <xs:element name="WeightChangeFromBirth" type="xs:decimal" />
+                <xs:element name="WeightChangeFromYesterday" type="xs:decimal" />
+                <xs:element name="Time" type="xs:int" />
+                <xs:element name="MethodID" type="xs:int" />
+                <xs:element name="FeedType" msdata:Caption="50" type="xs:string" />
+                <xs:element name="Volume" type="xs:decimal" />
+                <xs:element name="Total" type="xs:decimal" />
+                <xs:element name="IVFluids" msdata:Caption="50" type="xs:string" />
+                <xs:element name="IV_Hr" type="xs:decimal" />
+                <xs:element name="AA_Hr" type="xs:decimal" />
+                <xs:element name="Lipid_Hr" type="xs:decimal" />
+                <xs:element name="IVTotal" type="xs:decimal" />
+                <xs:element name="Aspirate_Vomit" type="xs:decimal" />
+                <xs:element name="Urine" type="xs:decimal" />
+                <xs:element name="urineCalculated" type="xs:decimal" />
+                <xs:element name="BO" msdata:Caption="50" type="xs:string" />
+                <xs:element name="Sao2" msdata:Caption="50" type="xs:string" />
+                <xs:element name="HR" msdata:Caption="50" type="xs:string" />
+                <xs:element name="RR" msdata:Caption="50" type="xs:string" />
+                <xs:element name="BP" msdata:Caption="50" type="xs:string" />
+                <xs:element name="FIO2" msdata:Caption="50" type="xs:string" />
+                <xs:element name="TempAxilla" msdata:Caption="50" type="xs:string" />
+                <xs:element name="TempIncBed" msdata:Caption="50" type="xs:string" />
+                <xs:element name="CPAP" msdata:Caption="50" type="xs:string" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="AdmissionForm" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="ID" msdata:AutoIncrement="true" type="xs:int" />
+                <xs:element name="InfantName" msdata:Caption="50" type="xs:string" minOccurs="0" />
+                <xs:element name="BirthWeight" type="xs:decimal" minOccurs="0" />
+                <xs:element name="DOB" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="Gestation" msdata:Caption="50" type="xs:string" minOccurs="0" />
+                <xs:element name="EDD" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="FromLMP" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="FromConceptionDate" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="DateOfUSS" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="Week" type="xs:int" minOccurs="0" />
+                <xs:element name="Days" type="xs:int" minOccurs="0" />
+                <xs:element name="Obstetrician" msdata:Caption="50" type="xs:string" minOccurs="0" />
+                <xs:element name="TimeofBirth" type="xs:duration" minOccurs="0" />
+                <xs:element name="Sex" msdata:Caption="50" type="xs:string" minOccurs="0" />
+                <xs:element name="AdmittingDoctor" msdata:Caption="50" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Login" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="ID" msdata:AutoIncrement="true" type="xs:int" />
+                <xs:element name="UserName" msdata:Caption="50" type="xs:string" minOccurs="0" />
+                <xs:element name="Code" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="MasterMethod" M2M="No">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="ID" msdata:AutoIncrement="true" type="xs:int" />
+                <xs:element name="MethodName" msdata:Caption="50" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//INITIALEXAMINATION" />
+        <xs:field xpath="ID" />
+      </xs:unique>
+      <xs:unique name="Constraint2" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//nursingProgressReport" />
+        <xs:field xpath="ID" />
+      </xs:unique>
+      <xs:unique name="nursingProgressReport_Constraint1" msdata:ConstraintName="Constraint1">
+        <xs:selector xpath=".//nursingProgressReport" />
+        <xs:field xpath="MethodID" />
+      </xs:unique>
+      <xs:unique name="AdmissionForm_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//AdmissionForm" />
+        <xs:field xpath="ID" />
+      </xs:unique>
+      <xs:unique name="Login_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Login" />
+        <xs:field xpath="ID" />
+      </xs:unique>
+      <xs:unique name="MasterMethod_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//MasterMethod" />
+        <xs:field xpath="ID" />
+      </xs:unique>
+      <xs:keyref name="nursingMethod" refer="nursingProgressReport_Constraint1">
+        <xs:selector xpath=".//MasterMethod" />
+        <xs:field xpath="ID" />
+      </xs:keyref>
+    </xs:element>
+  </xs:schema>
+</FORTIS>

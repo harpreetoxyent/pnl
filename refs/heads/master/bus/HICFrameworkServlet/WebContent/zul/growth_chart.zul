@@ -1,0 +1,190 @@
+<zk>
+
+<html><![CDATA[
+<head>
+<title>Xray</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="images/BrightSide.css" type="text/css" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script>
+	var MSEC_PER_MONTH = 2628000000;
+	var MSEC_PER_DAY = 86400000;
+	function bmiRound(value, factor) {
+		var temp, result;
+		temp = value * factor;
+		temp = Math.round(temp);
+		result = temp / factor;
+		return result;
+	}
+</script>
+<script src="z-values.js" type="text/javascript"></script>
+<script src="neo.js" type="text/javascript"></script>
+
+<script>
+var j = jQuery.noConflict();
+j( window ).load(function() {
+ j("#insert-more").click(function () {
+     j("#mytable").each(function () {
+         var tds = '<tr>';
+         jQuery.each(j('tr:last td', this), function () {
+             tds += '<td>' + j(this).html() + '</td>';
+         });
+         tds += '</tr>';
+         if (j('tbody', this).length > 0) {
+             j('tbody', this).append(tds);
+         } else {
+             j(this).append(tds);
+         }
+     });
+});
+});
+</script>
+<script>
+var l = jQuery.noConflict();
+l(window).load(function ()
+	{
+		l('.drug').click(function()
+	{
+		l('.show').css('display', 'block');
+	});
+
+});
+</script>
+<style>
+li.drug ul.show{display:none;}
+.z-window-embedded-tl,.z-window-embedded-hl,.z-window-embedded-hr,.z-window-embedded-hm{background:none;}
+.z-window-embedded-cl,.z-window-embedded-cr{background:none;}
+.z-window-embedded-cm, .z-window-overlapped-cm{border:none;}
+</style>
+</head>
+<body>
+<div id="wrap">
+  <div id="header">
+    <h1 id="logo"><a href="menu.zul" class="logo"><img src="images/fortis.png" /></a></h1>
+
+   </div>
+  <div id="content-wrap">
+    <div id="sidebar" >
+      <h1>Admission &amp; Examination</h1>
+      <ul class="sidemenu">
+        <li><a href="admission.zul">Admission Form</a></li>
+        <li><a href="initial_examination.zul">Initial Examination</a></li>
+      </ul>
+	  <h1>Nursing Progress Notes</h1>
+      <ul class="sidemenu">
+        <li><a href="nursing_progress_notes.zul">Nursing Progress Notes</a></li>
+	</ul>
+      <h1>Doctor's Progress Notes</h1>
+      <ul class="sidemenu">
+        <li><a href="progress_notes.zul">Doctor's Progress Notes</a></li>
+<li><a href="growth_chart.zul" class="active">Growth Chart</a></li>
+	</ul>	  	  	
+		  	  
+      <h1>Medication</h1>
+      <ul class="sidemenu">
+        <li class="drug"><a href="#" class="drug">Doctor's Prescription</a>
+        <ul class="show">
+        <li><a href="diamorphine_infusion.zul">Infusion List</a></li>
+        <li><a href="regular_medi.zul">Regular Medication</a></li>
+
+<li><a href="once.zul">Once Only</a></li>                
+        </ul>
+        </li>
+        <!--<li><a href="doctor_prescription.zul">Doctor's Prescription</a></li>-->
+        <li><a href="nurse_administration.zul">Nurse Administration</a></li>				
+	</ul>	
+	      
+	  <h1>Blood Gas Tests</h1>
+      <ul class="sidemenu">
+        <li><a href="blood_gas_test.zul">Blood Gas Tests</a></li>
+      </ul>
+      <h1>Blood Tests</h1>
+      <ul class="sidemenu">
+        <li><a href="basic.zul">Basic</a></li>
+        <li><a href="specialised.zul">Specialised</a></li>
+      </ul>
+      <h1>Screening Tests</h1>
+      <ul class="sidemenu">
+        <li><a href="screeningtests.zul">Screening Tests</a></li>
+      </ul>      
+      	  
+      <h1>UltraSounds</h1>
+      <ul class="sidemenu">
+        <li><a href="cranial.zul">Cranial</a></li>
+        <li><a href="abdomen.zul">Abdomen</a></li>
+      </ul>
+      <h1>Xray</h1>
+      <ul class="sidemenu">
+        <li><a href="xray.zul">Xray</a></li>
+	</ul>	  
+
+	  <h1>Discharge Summary</h1>
+      <ul class="sidemenu">
+        <li><a href="discharge_summary.zul">Discharge Summary</a></li>
+	</ul>	  	  	
+    </div>
+
+    <div id="main">
+      <h1 class="head">Growth Chart</h1>
+	  <form name="neo_form">
+           <input type="radio" value="boy" id="boy" name="gender" checked>Boy <input type="radio" name="gender" id="girl" value="girl">Girl
+           <br><br>
+	       <select id="neo_weeks" placeholder="weeks">
+		   <option id="-1">Weeks</option>
+		   <option id="22">22</option>
+		   <option id="23">23</option>
+		   <option id="24">24</option>
+		   <option id="25">25</option>
+		   <option id="26">26</option>
+		   <option id="27">27</option>
+		   <option id="28">28</option>
+		   <option id="29">29</option>
+		   <option id="30">30</option>
+		   <option id="31">31</option>
+		   <option id="32">32</option>
+		   <option id="33">33</option>
+		   <option id="34">34</option>
+		   <option id="35">35</option>
+		   <option id="36">36</option>
+		   <option id="37">37</option>
+		   <option id="38">38</option>
+		   <option id="39">39</option>
+		   <option id="40">40</option>
+		   <option id="41">41</option>
+		   <option id="42">42</option>
+		   <option id="43">43</option>
+		   <option id="44">44</option>
+		   <option id="45">45</option>
+		   <option id="46">46</option>
+		   <option id="47">47</option>
+		   <option id="48">48</option>
+		   <option id="49">49</option>
+		   <option id="50">50</option>
+		   </select>
+		   <select id="neo_days" placeholder="weeks">
+		   <option id="-1">Days</option>
+		   <option id="0">0</option>
+		   <option id="1">1</option>
+		   <option id="2">2</option>
+		   <option id="3">3</option>
+		   <option id="4">4</option>
+		   <option id="5">5</option>
+		   <option id="6">6</option>
+		   </select>
+		   <br><br>
+		  <input type="text" size="5" id="neo_weight" onkeyup="neo_calc()" placeholder="weight"> 
+		  <input type="hidden" id="neo_length">
+		  <input type="hidden" id="neo_head"> <input type="hidden" id="neo_weightlength">
+		  <span id="neo_percentile_weight"></span>
+		  <span id="neo_sds_weight"> </span>
+	</form>
+	  <center>
+	  <iframe src="modifiedChart.zul" style="width: 100%; min-height: 600px;"></iframe>
+
+		</center>
+    </div>
+  </div>
+</div>
+</body>
+]]></html>
+</zk>

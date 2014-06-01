@@ -1,0 +1,136 @@
+<zk>
+<html><![CDATA[
+<head>
+
+	<meta charset="utf-8" />
+
+	<title>Menu Item</title>
+
+	<link rel="stylesheet" href="accordionmenu.css" type="text/css" media="screen" />
+	<script type="text/javascript" src="cssrefresh.js"></script>
+	<style type="text/css">body{width:960px;margin:0 auto}#wrapper-200a{width:400px; float:left;}</style>
+<script>
+var l = jQuery.noConflict();
+l(window).load(function ()
+	{
+		l('.drug').click(function()
+	{
+		l('.show').css('display', 'block');
+	});
+
+});
+</script>
+<style>
+li.drug ul.show{display:none;}
+</style>
+</head>
+
+<body>
+<div style="margin: auto; width: 600px;">
+
+
+
+<div class="user"><image src="images/user.jpg" style="border: 1px solid #ccc; float:left; width: 100px; height: 150px; margin-top:96px;"></image></div>	
+	<div id="wrapper-200a">
+
+<p style="text-align:center; margin-bottom:50px;"><a href="menu.zul" class="logo"><img src="images/fortis.png" alt=""/></a></p>
+		<ul class="accordion">
+			<li id="one" class="files">
+				<a href="#one">Admission &amp; Examination<span><img src="images/arrow.png"/></span></a>
+				<ul class="sub-menu">
+				<li><a href="admission.zul"><em>01</em>Admission Form</a></li>
+				<li><a href="initial_examination.zul"><em>02</em>Initial Examination</a></li>
+				</ul>
+
+			</li>
+			<li id="eight" class="sign">
+
+			<a href="nursing_progress_notes.zul">Nursing Progress Notes</a>
+		</li>		
+		
+		<li id="six" class="sign">
+
+			<a href="#six">Doctor's Progress Notes<span><img src="images/arrow.png"/></span></a>
+		<ul class="sub-menu">
+			
+<li><a href="progress_notes.zul"><em>01</em>Doctor's Progress Notes</a></li>
+<li><a href="growth_chart.zul"><em>03</em> Growth Chart</a></li>				
+		</ul>			
+		</li>
+		
+		<li id="seven" class="sign">
+
+		<a href="#seven">Medication<span><img src="images/arrow.png"/></span></a>
+		<ul class="sub-menu">
+			
+<li><a href="diamorphine_infusion.zul"><em>01</em> Doctor's Prescription</a></li>
+<li><a href="nurse_administration.zul"><em>03</em> Nurse Administration</a></li>				
+		</ul>				
+		
+	</li>
+	
+	
+			<li id="two" class="mail">
+				<a href="blood_gas_test.zul">Blood Gas Tests</a>
+			</li>
+
+			<li id="three" class="mail">
+				<a href="#three">Blood Tests<span><img src="images/arrow.png"/></span></a>
+				<ul class="sub-menu">
+					
+					<li><a href="basic.zul"><em>01</em>Basic</a></li>
+					
+					<li><a href="specialised.zul"><em>02</em>Specialised</a></li>
+				</ul>
+
+			</li>
+			
+
+			<li id="two" class="mail">
+			<a href="blood_gas_test.zul">Screening Tests</a>
+		</li>
+			
+			
+			
+			<li id="four" class="cloud">
+
+				<a href="#four">UltraSounds<span><img src="images/arrow.png"/></span></a>
+
+				<ul class="sub-menu">
+					
+					<li><a href="cranial.zul"><em>01</em>Cranial</a></li>
+					
+					<li><a href="abdomen.zul"><em>02</em>Abdomen</a></li>
+				</ul>
+
+			</li>
+			
+			<li id="five" class="sign">
+
+				<a href="xray.zul">Xray</a>
+			</li>
+			
+
+		
+
+			
+
+			<li id="nine" class="sign">
+
+				<a href="discharge_summary.zul">Discharge Summary</a>
+			</li>			
+	
+		</ul>
+		
+	</div>
+
+	
+
+	
+
+	
+</div>
+</body>
+]]></html>
+
+</zk>

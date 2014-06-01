@@ -1,0 +1,369 @@
+.input-links {
+	min-width: 100px;
+	width: 60%;
+	display: inline-block
+}
+.ergebnis-sds {
+	width: 80px;
+	margin: 0 0 0 10px;
+	display: inline;
+	font-weight: normal;
+}
+.centerWrapper {
+	margin: 0 auto;
+	text-align: center
+}
+.bodyWrapper {
+	max-width: 600px;
+	margin: 0 auto;
+	text-align: center;
+}
+.resultTable, .resultTableSmall {
+	text-align: left;
+	width: 100%;
+	padding: 4px;
+ min-width:300px;
+	margin: 0 auto;
+}
+
+.resultTableArrow {
+	position:absolute;
+	font-size:3.5em;
+	margin-top:-0.5em;
+	}
+	
+	.mmodeInfoButton {
+		margin-left:3em;
+	}
+
+.resultTableSmall {
+	width: 70%;
+}
+.resultTableLabel {
+	width: 7em;
+}
+.resultTableLabelLarge {
+	width: 9em;
+}
+.resultTableResult {
+	width: 5em;
+}
+.perfusorDiv {
+	width: 90px;
+	float: left;
+	margin-right: 3px;
+	margin-left: 3px;
+	min-height: 80px;
+}
+.resultDiv {
+	margin: 10px 0 0 0;
+	font-weight: bold;
+	min-height: 50px;
+}
+#bp_result_mean {
+	display: none;
+	margin: 30px 0;
+	font-weight: bold;
+	text-align: center;
+}
+#bp_result_mean table {
+	margin: 0 auto;
+	width: 200px;
+	font-size: small;
+}
+#bp_result_mean td {
+	text-align: left;
+	font-weight: normal;
+}
+.bpResultFirstRow th {
+	text-align: center;
+	padding-bottom: 0;
+	font-style: italic;
+}
+#bp_result_day table {
+	font-size: small;
+}
+#bp_result_day {
+	display: none;
+	margin: 20px auto;
+	text-align: center;
+	width: 18em;
+}
+.bpResultHeader {
+	font-weight: bold;
+	text-align: center;
+}
+#bpMessageDiv {
+	margin: 20px auto;
+	font-weight: bold;
+}
+#ecgResult {
+	margin: 0 auto;
+	width: 250px;
+	font-size: small;
+}
+#fetal_radio {
+	width: 250px;
+}
+#indexGrid {
+	padding: 1px;
+	margin: 0px auto;
+	display:none;
+}
+#indexGrid li {
+	float: left;
+	width: 80px;
+	height: 80px;
+	margin: 3px 5px 22px 5px;
+	list-style-type: none;
+}
+#indexGrid a img, #appgrid img {
+	border: 1px solid #AAA;
+	-moz-border-radius: 10px; 
+	-webkit-border-radius: 10px; 
+	-khtml-border-radius: 10px; 
+	border-radius: 10px;
+}
+#indexGrid a:hover img, #indexGrid a:active img {
+	opacity: .5;
+}
+#indexGrid h3 {
+	position: relative;
+	margin: 0px;
+	top: -2px;
+	font-size: 12px;
+	color: rgba(0,0,0,.5);
+}
+#index_form {
+	text-align: right;
+	margin-right:20px;
+}
+#index_form .ui-slider-switch {
+	width: 7em;
+}
+
+.ui-content {
+	background: white url(icons/bg_image.png); 
+	background-repeat:repeat;
+background-position:center top; 
+background-size:contain;
+}
+
+
+.bmi_flip_div .ui-slider-switch.ui-mini {
+	width:200px;
+}
+
+.normalValueGrid .ui-bar {
+	font-size:small;
+}
+
+.zscoreinfo {
+	font-size:small;
+}
+
+
+.zscoreinfo a {
+	text-decoration:none;	
+	font-style:italic;
+	display:block;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+/* CSS for z score calculators */
+
+.zs-form {
+	text-align: center;
+}
+
+.zs-list{
+	text-decoration:none;
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+
+.zs-list li {
+	margin-top:20px;
+}
+
+.zs-box-left {
+	float: left;
+	width: 100px;
+
+}
+.zs-box-center {
+	padding-top: 20px;
+	padding-right: 10px;
+	padding-bottom: 20px;
+	padding-left: 10px;
+	
+}
+.zs-box-right {
+	float:right;
+	padding:15px 0;	
+}
+
+.zs-box-right a {
+	margin-left:2px;
+}
+
+.clearboth{
+	clear:both;
+}
+
+.zs-lln-marker{
+width:2px;
+height:12px;
+background-color:black;
+left:0px;
+top:-11px;
+position:absolute;
+}
+
+.zs-uln-marker{
+	
+width:2px;
+height:12px;
+background-color:black;
+left:100px;
+top:-11px;
+position:absolute;
+}
+
+.zs-result-marker{
+width:2px;
+height:8px;
+background-color:red;
+left:-1000px;
+top:-4px;
+position:absolute;
+}
+
+.zs-result-value {
+	position:absolute;
+	color:red;
+	font-size:13px;
+	top:-20px;
+	left:-20px;
+	width:4em;
+}
+
+.zs-result-perc-value {
+	position:absolute;
+	color:red;
+	font-size:13px;
+	top:-35px;
+	left:-20px;
+	width:4em;		
+}
+
+.zs-mean-marker{
+	width:2px;
+	border-radius:4px;
+height:7px;
+background-color:black;
+left:50px;
+top:-7px;
+position:absolute;
+}
+.zs-baseline{
+	width:102px;
+	height:1px;
+	background-color:black;
+	left:25px;
+	position:absolute;
+}
+.zs-diagram{
+	width:150px;
+	position:relative;
+	display:inline-block;
+	margin-top:25px;
+}
+
+.zs-uln-value, .zs-lln-value {
+	font-size:13px;
+	position:absolute;
+	top:15px;
+	left:-8px;
+}
+
+.zs-mean-value{
+	font-size:13px;
+	position:absolute;
+	top:11px;
+	left:-8px;
+}
+
+.zs-arrow-left, .zs-arrow-right {
+width: 0;
+  height: 0;
+  border-top:5px solid transparent;
+  border-bottom: 5px solid transparent;	
+  position:absolute;
+  top:-5px;
+}
+
+.zs-arrow-left{
+
+  border-left: 5px solid transparent;
+  border-right: 5px solid red;
+visibility:hidden;
+  left:-19px;
+}
+
+.zs-arrow-right {
+  border-left: 4px solid red;
+  border-right: 4px solid transparent;
+  left:110px;
+  visibility:hidden;
+}
+
+.pedzDate {
+	display:inline-block;
+}
+
+.pedzDate .pedZDateInput {
+	width:40px;
+	float:left;
+	margin-right:3px;
+}
+
+.pedzDate .pedZDateInput:last-child {
+	width:60px;
+}
+
+.pedzDate:first-child {
+padding-right:7px;	
+}
+
+.headerResult {
+}
+
+#calculatedAgeYears {
+	margin-left:0.2em;
+
+}
+
+#calculatedAgeMonthsUpper {
+		position:relative;
+		font-size:small;
+	top:-5px;
+}
+
+#dateInputMobile .pedzDate {
+	width:100px;
+}
+
+#calculatedAgeMonthsLower {
+		position:relative;
+		font-size:small;
+	top:5px;
+	left:-2px;
+}
+
+#headerResult {
+	display:none;
+	margin:7px 0 12px 0;
+}

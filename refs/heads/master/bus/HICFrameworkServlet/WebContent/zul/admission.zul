@@ -1,0 +1,1238 @@
+<zk id="admission" name="admission">
+<?page id="admission"?>
+<window>
+<zscript src="/library/uilibrary.zs"/>
+<zscript>
+<![CDATA[
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public void count()
+	{
+	if(this.self.getFellow("eddResultLmp").isChecked())
+	{
+		Date lmpDate=this.self.getFellow("eddFromLMPDate").getValue();
+		lmpDate.setDate(lmpDate.getDate()+280);		
+		this.self.getFellow("EDD").setValue(lmpDate);
+	}
+	else
+	{
+		if(this.self.getFellow("eddResultConception").isChecked())
+		{
+			Date fromConceptionDate=this.self.getFellow("eddFromConceptionDate").getValue();
+			fromConceptionDate.setDate(fromConceptionDate.getDate()+268);
+			this.self.getFellow("EDD").setValue(fromConceptionDate);
+			
+		}
+
+	else
+	{ 
+		if(this.self.getFellow("eddResultUSS").isChecked())
+		{
+			Date ussDate=this.self.getFellow("eddFromUSSDate").getValue();
+			String gweekString= this.self.getFellow("USSWeek").getValue();
+			int gweekInt=Integer.parseInt(gweekString);
+			String gdaysString= this.self.getFellow("USSDays").getValue();
+			int gdays=Integer.parseInt(gdaysString);
+			int gweek = gweekInt * 7;
+			int gtotaldays = gweek + gdays;
+			int addtotal = 280-gtotaldays;
+			ussDate.setDate(ussDate.getDate()+ addtotal);
+			this.self.getFellow("EDD").setValue(ussDate);
+		}
+		else
+		{
+			alert("please check atleast one option ");
+		}
+	}
+}
+}
+public void Gestation()
+{
+		if((this.self.getFellow("DOB").getValue() != null) && (this.self.getFellow("EDD").getValue() != null))
+		{
+			Date dobDate =this.self.getFellow("DOB").getValue();
+			Date eddDate =this.self.getFellow("EDD").getValue();
+			if(eddDate.getTime() >= dobDate.getTime())
+			{
+				long calculatedTime = eddDate.getTime()-dobDate.getTime();
+				long calculatedDays= calculatedTime/1000/60/60/24;
+				int differenceInDays = (280-calculatedDays);
+				int calculatedDifferenceInWeeks = differenceInDays/7;
+				int calculatedDifferenceInDays = differenceInDays - (calculatedDifferenceInWeeks*7);
+				this.self.getFellow("gestation").setValue(String.valueOf(calculatedDifferenceInWeeks+" + "+calculatedDifferenceInDays)); 	
+			}
+			else
+			{
+				alert("Kindly check values of EDD and DOB");
+			}
+	
+		}	
+		else
+		{
+		 	alert("Kindly enter values for EDD and DOB  ");
+		}	
+
+}
+
+public void showUSSDiv()
+{
+	this.self.getFellow("ussDiv").setStyle("display:block");
+	Date blankdate=null;
+	String empty=""; 
+	this.self.getFellow("eddFromLMPDate").setValue(blankdate);
+	this.self.getFellow("eddFromConceptionDate").setValue(blankdate);
+	this.self.getFellow("EDD").setValue(blankdate);
+	this.self.getFellow("gestation").setValue(empty);
+	
+	
+}
+public void FromLMP()
+{
+	this.self.getFellow("ussDiv").setStyle("display:none");
+	Date blankdate=null;
+	String empty=""; 
+	this.self.getFellow("eddFromUSSDate").setValue(blankdate);
+	this.self.getFellow("eddFromConceptionDate").setValue(blankdate);
+	this.self.getFellow("EDD").setValue(blankdate);
+	this.self.getFellow("gestation").setValue(empty);
+	this.self.getFellow("USSWeek").setValue(empty);
+	this.self.getFellow("USSDays").setValue(empty);
+	
+		
+	}
+public void FromConception()
+{
+	this.self.getFellow("ussDiv").setStyle("display:none");
+	Date blankdate=null;
+	String empty=""; 
+	this.self.getFellow("eddFromUSSDate").setValue(blankdate);
+	this.self.getFellow("eddFromLMPDate").setValue(blankdate);
+	this.self.getFellow("EDD").setValue(blankdate);
+	this.self.getFellow("gestation").setValue(empty);
+	this.self.getFellow("USSWeek").setValue(empty);
+	this.self.getFellow("USSDays").setValue(empty);
+	}
+public void showThyroid()
+{
+	this.self.getFellow("ThyroidPositive").setStyle("display:block");
+	}
+public void hideThyroid()
+{
+	this.self.getFellow("ThyroidPositive").setStyle("display:none");
+}
+]]>
+</zscript>
+   <style>
+    body{background: #f0f0f0;}
+    .ussDiv{display:none;}
+    .z-panel-tr,.z-panel-tl,.z-panel-hl,.z-panel-hr,.z-panel-children,.z-panel-hm{background: none; border: none;}
+    .sub_menu{margin-left: 10px; border-left: 4px solid #CCC; padding-left: 10px;}
+    .z-toolbarbutton-cnt{background: none!important; background-image:none!important; outline: none!important; width: 137px;}
+    .sub_menu:hover{border-left: 4px solid green; padding-left: 10px; margin-left: 10px; border-right:none; border-top:none; border-bottom:none; cursor: pointer;}
+    .z-center,.z-east{border:none;}
+    .z-panel-hm .z-panel-header, .z-panel-header{font-size:13px; font-weight: bold; color:#6297BC}
+    .z-toolbar{background: #f0f0f0!important; border:none!important;}
+    tr.z-grid-odd td.z-row-inner, tr.z-grid-odd .z-cell{border:none; background:none; background-color: none;}
+    tr.z-grid-odd td.z-row-inner, tr.z-grid-odd .z-cell, tr.z-grid-odd{border:none; background:none; background-color: none;}
+    tr.z-row td.z-row-inner, tr.z-row .z-cell{border:none; background: #f0f0f0;}
+    .z-combobox-rounded-inp, .z-bandbox-rounded-inp, .z-datebox-rounded-inp, .z-timebox-rounded-inp, .z-spinner-rounded-inp, .z-doublespinner-rounded-inp, .z-combobox-inp, .z-bandbox-inp, .z-datebox-inp, .z-timebox-inp, .z-spinner-inp, .z-doublespinner-inp{width: 150px;}
+    .z-textbox, .z-decimalbox, .z-intbox, .z-longbox, .z-doublebox{width: 85px;}
+    .z-textbox{width: 173px;}
+	.z-vlayout{height: auto!important;}
+	div.z-grid-header th.z-column, div.z-grid-header th.z-auxheader{border:1px solid #ccc; border-collapse: collapse;}
+	.tablegrid tr.z-row td.z-row-inner, tr.z-row .z-cell{border:1px solid #ccc; border-collapse: collapse;}
+	div.z-grid-body{background:none;}
+	div.z-grid{background:none;}
+	.z-label{float:left; width: 185px;}
+	tr.z-row td.z-row-inner, tr.z-row .z-cell{padding:5px 0;}
+	.z-a{text-decoration:none; color:#333;}
+	.z-a:visited{text-decoration:none; color:#333;}
+	.active{color: green; border-left: 4px solid green; padding-left: 10px; margin-left: 10px; border-right:none; border-top:none; border-bottom:none;}
+	div.z-grid-header tr.z-columns, div.z-grid-header tr.z-auxhead{background: none;}
+	div.z-grid-header th.z-column, div.z-grid-header th.z-auxheader{border:none;}
+	.z-grid-header-bg{background:none;}
+	.inner_label{width: auto!important; padding-left: 5px; }
+	.radio_left{float:left;}
+       <!-- .child_menu{margin-left: 20px; display:none} -->
+        .ussDateBox input{width: 76px; !important}
+</style>
+
+   		 <div style="width: 1024px; margin:auto;">
+        <borderlayout sclass="complex-layout" height="810px">
+            <north size="90px" border="0" style=" background:none;">
+            <image src="images/fortis.png"/>
+            </north>
+            <!-- Sidebar -->
+            <west width="23%" border="0" flex="true" margins="0,5,0,0" style="background:none;">
+
+                <vlayout spacing="0" style="height: auto;">
+                    <panel width="100%" border="normal" title="Admission And Examination" >
+                        <panelchildren style="padding:5px;">
+                        
+                            <vbox>
+                                <a href="admission.zul"><label value="Admission Form" class="sub_menu active"/></a>
+                                <a href="initial_examination.zul"><label value="Initial Examination" class="sub_menu"/></a>
+                            </vbox>
+                            
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Nursing Progress Notes ">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="nursing_progress_notes.zul"><label value="Nursing Progress Notes" class="sub_menu"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Doctor's Progress Notes">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <label value="Doctor's Progress Notes " class="sub_menu"/>
+                                <a href="growth_chart.zul"><label value="Growth Chart " class="sub_menu"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                     <panel width="100%" border="normal"
+                        title="Medication">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <label value="Doctor's Prescription" class="sub_menu"/>
+                                <label value="Nurse Administration" class="sub_menu"/>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Blood Gas Tests">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <label value="Blood Gas Tests" class="sub_menu"/>
+                               
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                     <panel width="100%" border="normal"
+                        title="Blood Test's">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <label value="Basic " class="sub_menu"/>
+                                 <label value="Specialised " class="sub_menu"/>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                     <panel width="100%" border="normal"
+                        title="Screening Tests">
+                       <panelchildren style="padding:5px;">
+                            <vbox>
+                                <label value="Screening Tests" class="sub_menu"/>
+                                 
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Ultrasound">
+                       <panelchildren style="padding:5px;">
+                            <vbox>
+                                <label value="Cranial" class="sub_menu"/>
+                                <label value="Abdomen" class="sub_menu"/>
+                                 
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Xray">
+                         <panelchildren style="padding:5px;">
+                            <vbox>
+                                <label value="Xray" class="sub_menu"/>
+
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                     <panel width="100%" border="normal"
+                        title="Neonatal">
+                         <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="neonatal_unit.zul"><label value="Neonatal Unit" class="sub_menu"/></a>
+                                <a href="neonatal_icu.zul"><label value="Neonatal ICU" class="sub_menu"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>     
+                    <panel width="100%" border="normal"
+                        title="Discharge Summary">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <label value="Discharge Summary" class="sub_menu"/>
+
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                </vlayout>
+
+            </west>
+            <east>
+                <vlayout>
+                    <html>
+                    </html>
+                </vlayout>
+            </east>
+            <!-- Content -->
+            <center>
+
+                <borderlayout sclass="inner-border">
+                    <north size="90px" border="0" height="4%" margins="2,3,0,0" style=" background: green;">
+                        <label value="Admission Form"  style="font-size:17px; color: #fff; background: green; padding: 5px 10px; float:left; font-weight: bold; " />
+                    </north>
+                    <center border="0" margins="0,3,3,3" style=" background: none; overflow:auto;">
+            <div style="padding: 0; width: 100%; height: 540px; overflow-y: auto; overflow-x: hidden">                    
+                        <panel> 
+                            <panelchildren >
+                                <grid style="border:0; float:left; width: 380px;">
+                                    <rows>
+                                        <row>
+                                            <div style=" background: none;">
+                                           
+                                                <label value="Infant Name" />
+                                                    <textbox id="infantName">                            	
+   		 											</textbox>	
+                                                    
+                                            </div>
+                                        </row>
+                                        <row>
+                                            <div>
+                                                     
+                                                <label value="Birth Weight" />
+                                                    <textbox id="babyBirthWeight">
+   		 											</textbox>
+                                            </div>
+                                        </row>
+
+                                        <row>
+                                            <div>
+                                            
+                                                <label value="DOB"/>
+													<datebox id="DOB">
+													
+   		 											</datebox>
+                                            </div>
+                                        </row>
+                                        <row>
+                                            <div>
+                                                <label value="Gestation" />
+                                                    <textbox id="gestation" onClick="Gestation()"> 
+   		 											</textbox> 
+                                            </div>
+                                        </row>   
+                                        <row>
+                                            <div>
+                                                <label value="EDD" />
+                                                <datebox id="EDD" onClick="count()"/>
+                                            </div>
+                                        </row>
+                                        <row>
+
+
+									<div style="margin-left: 150px;">
+									<radiogroup id="EDD_RG">
+										<radio id="eddResultLmp" style="float:none;" name="edd" onClick= "FromLMP();"/>
+										<label value="From LMP" style="width: 120px; font-size: 11px; float:none;"/>
+										<datebox id="eddFromLMPDate"  style="width: 100px; float:right; margin-right: 20px;" />  
+										<div style="width:230px; margin-top:8px;">
+											<radio id="eddResultConception"  style="float:none;" name="edd" onClick= "FromConception();"/>
+											<label value="From Conception" style="width: 100px; font-size: 11px; float:none;"/>
+											<datebox id="eddFromConceptionDate"  style="width: 100px; float:right; margin-right: 20px;" />  
+										</div>
+											<div style="width:230px; margin-top:8px;">
+									<radio id="eddResultUSS" style="float:none;" name="edd" onClick= "showUSSDiv();"/>
+									<label value="From USS" style="width: 100px; font-size: 11px; float:none;"/>
+									</div>          
+									</radiogroup>
+									<separator/>
+									 <div class="ussDiv" id="ussDiv">
+									<label value="Date of USS" style="width: 100px; margin-top:10px; margin-left: 30px; font-size: 11px;"/>
+									<datebox id="eddFromUSSDate" style="margin-left: 110px; margin-top:-20px; " class="ussDateBox"/>
+									<separator/>   
+									<label value="Gestation" style="width: 100px; margin-left:30px; font-size: 11px;"/>
+									<label value="Week" style="width: 20px; float:none; margin-left: -20px; font-size: 11px;"/>
+									<textbox id="USSWeek" style="width: 15px; float:none;"/>
+									<label value="Days" style="width: 20px; float:none; font-size: 11px;"/>
+									<textbox id="USSDays" style="width: 15px;" />    
+									</div>
+									</div>
+                                        </row>                                                                                                                                                                   
+                                    </rows>
+                                </grid>
+
+
+                                <grid style="border:0; width: 380px; float:left;">
+                                    <rows>
+                                        <row>
+                                            <div style=" background: none;">
+                                           
+                                                <label value="UID" />
+                                                    <textbox id="UID"/>
+                                                    
+                                            </div>
+                                        </row>
+                                        <row>
+                                            <div>
+                                                     
+                                                <label value="I.P. No." />
+                                                    <textbox id="IP_No"/>
+                                            </div>
+                                        </row>
+
+                                        <row>
+                                            <div>
+                                            
+                                                <label value="Time of Birth"/>
+													<timebox id="timeofBirth"/>
+                                            </div>
+                                        </row>
+                                        <row>
+                                            <div>
+                                            <radiogroup id = "Sex_RG">
+                                                <label value="Sex" />
+                                                <label value="Male"  style="width: 50px; float:none;"/>
+												<radio style="width: 50px;" id="male" value="M"/>
+                                                <label value="Female" style="width: 50px; float:none;"/>                                                    
+                                                <radio style="width: 50px;" id="female" value="F"/> 
+                                               </radiogroup> 
+                                            </div>
+                                        </row>   
+                                        <row>
+                                            <div>
+                                                <label value="Admitting Doctor" />
+                                                    <textbox id="admittingDoctor"/>  
+                                            </div>
+                                        </row>
+                                        <row>
+                                            <div>
+                                                <label value="Admitting Consultant" />
+                                                    <textbox id="admittingConsultant"/>  
+                                            </div>
+                                        </row>                                                                                   
+
+                                    </rows>
+                                </grid>
+        <div style="clear:both;"></div>
+          <grid style="border:0; margin-top:20px;">
+
+		<rows>
+			<row>	
+              <label value="Obstetrician" style="float:left; width: 100px;"/>
+              <textbox style="width: 100%; float:left; margin-left: -275px; position:absolute; margin-top:-13px;" id="obstetrician"/>  	
+			</row>
+		</rows>
+	</grid>    
+
+
+<grid style="border:0; margin-top:15px;">
+		<columns>
+			<column label="MOTHER'S DETAILS" style="border-bottom:1px solid red;" id="motherDetails"/>
+			<column label="FATHER'S DETAILS" style="border-bottom:1px solid red;" id="fatherDetails"/>
+		</columns>
+		<rows>
+			<row>
+
+			</row>
+		</rows>
+		</grid>
+		
+<grid style="border:0; float:left; width: 380px;">
+		<columns>
+
+		</columns>			
+		<rows>
+			<row>
+				<label value="UID" />
+				<textbox id="motherUID"/>
+			</row>
+			<row>
+				<label value="Name" />
+				<textbox id="motherName"/>
+			</row>	
+					<row>
+				<label value="DOB" />
+				<datebox id="motherDOB"/>
+			</row>	
+				<row>
+				<label value="Age" />
+                   <combobox id="motherAge">
+	                   <comboitem label="14" id="m14"/>
+	                   <comboitem label="15" id="m15"/>
+	                   <comboitem label="16" id="m16"/>
+	                   <comboitem label="17" id="m17"/>
+	                   <comboitem label="18" id="m18"/>
+	                   <comboitem label="19" id="m19"/>
+	                   <comboitem label="20" id="m20"/>	                   	                   	                   	                   	                   
+	                   <comboitem label="21" id="m21"/>
+	                   <comboitem label="22" id="m22"/>
+	                   <comboitem label="23" id="m23"/>
+	                   <comboitem label="24" id="m24"/>
+	                   <comboitem label="25" id="m25"/>
+	                   <comboitem label="26" id="m26"/>
+	                   <comboitem label="27" id="m27"/>	                   	                   	                   	                   	                   
+	                   <comboitem label="28" id="m28"/>
+	                   <comboitem label="29" id="m29"/>
+	                   <comboitem label="30" id="m30"/>
+	                   <comboitem label="31" id="m31"/>
+	                   <comboitem label="32" id="m32"/>
+	                   <comboitem label="33" id="m33"/>
+	                   <comboitem label="34" id="m34"/>	                   	                   	                   	                   	                   
+	                   <comboitem label="35" id="m35"/>
+	                   <comboitem label="36" id="m36"/>
+	                   <comboitem label="37" id="m37"/>
+	                   <comboitem label="38" id="m38"/>
+	                   <comboitem label="39" id="m39"/>
+	                   <comboitem label="40" id="m40"/>
+	                   <comboitem label="41" id="m41"/>	                   	                   	                   	                   	                   
+	                   <comboitem label="42" id="m42"/>
+	                   <comboitem label="43" id="m43"/>
+	                   <comboitem label="44" id="m44"/>
+	                   <comboitem label="45" id="m45"/>
+	                   	                   	                   	                   	                   	                   
+                   </combobox>
+			</row>	
+
+</rows>
+</grid>
+
+<grid style="border:0; float:left; width: 380px;">
+		<columns>
+
+		</columns>
+<rows>
+			<row>
+				<label value="Name" />
+				<textbox id="fatherName"/>
+			</row>	
+					<row>
+				<label value="DOB" />
+				<datebox id="fatherDOB"/>
+			</row>	
+				<row>
+				<label value="Age" />
+                   <combobox id="fatherAge">
+	                   <comboitem label="14" id="f14"/>
+	                   <comboitem label="15" id="f15"/>
+	                   <comboitem label="16" id="f16"/>
+	                   <comboitem label="17" id="f17"/>
+	                   <comboitem label="18" id="f18"/>
+	                   <comboitem label="19" id="f19"/>
+	                   <comboitem label="20" id="f20"/>	                   	                   	                   	                   	                   
+	                   <comboitem label="21" id="f21"/>
+	                   <comboitem label="22" id="f22"/>
+	                   <comboitem label="23" id="f23"/>
+	                   <comboitem label="24" id="f24"/>
+	                   <comboitem label="25" id="f25"/>
+	                   <comboitem label="26" id="f26"/>
+	                   <comboitem label="27" id="f27"/>	                   	                   	                   	                   	                   
+	                   <comboitem label="28" id="f28"/>
+	                   <comboitem label="29" id="f29"/>
+	                   <comboitem label="30" id="f30"/>
+	                   <comboitem label="31" id="f31"/>
+	                   <comboitem label="32" id="f32"/>
+	                   <comboitem label="33" id="f33"/>
+	                   <comboitem label="34" id="f34"/>	                   	                   	                   	                   	                   
+	                   <comboitem label="35" id="f35"/>
+	                   <comboitem label="36" id="f36"/>
+	                   <comboitem label="37" id="f37"/>
+	                   <comboitem label="38" id="f38"/>
+	                   <comboitem label="39" id="f39"/>
+	                   <comboitem label="40" id="f40"/>
+	                   <comboitem label="41" id="f41"/>	                   	                   	                   	                   	                   
+	                   <comboitem label="42" id="f42"/>
+	                   <comboitem label="43" id="f43"/>
+	                   <comboitem label="44" id="f44"/>
+	                   <comboitem label="45" id="f45"/>
+	                   	                   	                   	                   	                   	                   
+                   </combobox>
+			</row>	
+		</rows>
+	</grid>
+			
+	<div style="clear:both;"></div>		
+   <grid style="border:0px;">
+		<columns>
+			<column label="PAST OBSTETRIC HISTORY" style="border-bottom:1px solid red;" id="pastObestetricHistory"/>
+		</columns>
+		<rows>
+			<row>	
+			</row>
+		</rows>
+	</grid>
+
+   <grid style="border:0px;">
+		<columns>
+			<column label="Year" style="text-align:center;" id="yearColumn"/>
+			<column label="Place" style="text-align:center;" id="placeColumn"/>			
+			<column label="Delivery" style="text-align:center;" id="deliveryColumn"/>			
+			<column label="Gest Age" style="text-align:center;" id="gestAgeColumn"/>						
+			<column label="Birth Weight" style="text-align:center;" id="birthWeightColumn"/>												
+		</columns>
+		<rows>
+			<row align="center">
+			<textbox id="year"/> <textbox id="place"/> <textbox id="delivery"/> <textbox id="gestAge"/> <textbox id="birthWeight"/>	
+			</row>
+			<row style="padding: 10px 0;">
+			<label value="Complications" />
+			<textbox style="float: left; width: 100%; position: absolute; margin-top: -20px; height: 30px;" id="complications"/>
+			</row>
+			<row style="padding: 10px 0;">
+			<label value="Outcomes" />	<textbox style="float: left; width: 100%; position: absolute; margin-top: -20px; height: 30px;" id="outcomes"/>
+			</row>
+			<row style="padding: 10px 0;">
+			<label value="Comments" />	<textbox style="float: left; width: 100%; position: absolute; margin-top: -20px; height: 30px;" id="comments"/>
+			</row>
+			<row style="padding: 10px 0;">
+			<label value="Past Medical History" />	<textbox style="float: left; width: 100%; position: absolute; margin-top: -20px; height: 30px;" id="pastMedicalHistory"/>
+			</row>												
+		</rows>
+	</grid>
+
+
+<grid style="border:0">
+		<columns>
+			<column label="THIS PREGNANCY" style="border-bottom:1px solid red;" id="thisPregnancy"/>
+		</columns>
+		<rows>
+			<row>	
+		</row>
+		</rows>
+	</grid>
+
+<grid style="border:0; width: 380px; float:left;">
+		<rows>
+		<row>
+        
+
+		<label value="Blood Group"/>
+
+        
+        <div style="margin-left: -37px; position: absolute; width: 195px!important; margin-top:-5px;">
+        <radiogroup id="bloodGroup">
+        <label value="A" class="inner_label"/>
+		<radio class="radio_left" id="A"/>
+		<label value="B" class="inner_label"/>
+		<radio class="radio_left" id="B"/>
+		<label value="O" class="inner_label"/>
+		<radio class="radio_left" id="O"/>
+		<label value="AB" class="inner_label"/>
+		<radio style="float:left" id="AB"/>
+		</radiogroup>
+		</div>
+		
+		</row>
+		
+		<row>
+
+
+		<label value="RH Factor"/>	
+		<div style="margin-left: -37px; position: absolute; width: 195px!important; margin-top:-5px;">
+		<radiogroup id="RHFactor">
+		<label value="+Ve" class="inner_label"/>
+		<radio class="radio_left" id="RHfactorPositive"/>
+		<label value="-Ve" class="inner_label"/>
+		<radio class="radio_left" id="RHfactorNegative"/>
+		</radiogroup>
+		</div>
+		</row>		
+		</rows>
+	</grid>
+
+<grid style="border:0; width: 380px; float:left;">
+		<rows>
+		<row>
+		<label value="Smoking"/>
+		<div style="margin-left: 40px; position: absolute; width: 195px!important; margin-top:-5px;">
+        <radiogroup id="smoking">
+		<label value="Yes" class="inner_label"/>
+		<radio class="radio_left" id="smokingYes"/>
+		<label value="No" class="inner_label"/>
+		<radio class="radio_left" id="smokingNo"/>
+		</radiogroup>
+		</div>
+		</row>
+		<row>
+		<label value="Alcohol"/>	
+		<div style="margin-left: 40px; position: absolute; width: 195px!important; margin-top:-5px;">
+        <radiogroup id="alcohol">
+		<label value="Yes" class="inner_label"/>
+		<radio class="radio_left" id="alcoholYes"/>
+		<label value="No" class="inner_label"/>
+		<radio class="radio_left" id="alcoholNo"/>
+		</radiogroup>
+		</div>
+		</row>
+		<row>
+		<label value="Drug Dependent"/>	
+		<div style="margin-left: 40px; position: absolute; width: 195px!important; margin-top:-5px;">
+        <radiogroup id="drugDependent">
+		<label value="Yes" class="inner_label"/>
+		<radio class="radio_left" id="drugDependentYes"/>
+		<label value="No" class="inner_label"/>
+		<radio class="radio_left" id="drugDependentNo"/>
+		</radiogroup>
+		</div>
+		</row>
+		</rows>
+	</grid>
+	
+<div style="clear:both;"></div>	
+<grid style="border:0; float:right; width: 380px;">
+		<columns>
+			<column label="Test" style="border-bottom:1px solid red;" id="test"/>		
+		</columns>
+		<rows>
+			<row>
+				<label value="Hepatitis B Status"/>
+				<div style="margin-left: -201px; position: absolute; width: 195px!important; margin-top:-5px;">
+			        <radiogroup id="hepatititsBStatus">	
+						<label value="+Ve" class="inner_label"/>
+						<radio class="radio_left" id="hepatititsBStatusPositive"/>
+						<label value="-Ve" class="inner_label"/>
+						<radio class="radio_left" id="hepatititsBStatusNegative"/>
+						<label value="Not Tested" class="inner_label"/>
+						<radio class="radio_left" id="hepatititsBStatusNotTested"/>
+					</radiogroup>
+				</div>
+			</row>
+			
+			<row>
+				<label value="Hiv Status"/>	
+				<div style="margin-left: -201px; position: absolute; width: 195px!important; margin-top:-5px;">
+			        <radiogroup id="hivStatus">	
+						<label value="+Ve" class="inner_label"/>
+						<radio class="radio_left" id="hivStatusPositive"/>
+						<label value="-Ve" class="inner_label"/>
+						<radio class="radio_left" id="hivStatusNegative"/>
+						<label value="Not Tested" class="inner_label"/>
+						<radio class="radio_left" id="hivStatusNotTested"/>
+					</radiogroup>
+				</div>
+			</row>
+			<row>
+				<label value="VDRL Status"/>	
+				<div style="margin-left: -201px; position: absolute; width: 195px!important; margin-top:-5px;">
+			        <radiogroup id="VDRLStatus">	
+						<label value="+Ve" class="inner_label"/>
+						<radio class="radio_left" id="VDRLStatusPositive"/>
+						<label value="-Ve" class="inner_label"/>
+						<radio class="radio_left" id="VDRLStatusNegative"/>
+						<label value="Not Tested" class="inner_label"/>
+						<radio class="radio_left" id="VDRLStatusNotTested"/>
+					</radiogroup>
+				</div>
+			</row>
+			<row>
+				<label value="Rubella Status"/>	
+				<div style="margin-left: -201px; position: absolute; width: 195px!important; margin-top:-5px;">
+			        <radiogroup id="rubellaStatus">	
+						<label value="+Ve" class="inner_label"/>
+						<radio class="radio_left" id="rubellaStatusPositive"/>
+						<label value="-Ve" class="inner_label"/>
+						<radio class="radio_left" id="rubellaStatusNegative"/>
+						<label value="Not Tested" class="inner_label"/>
+						<radio class="radio_left" id="rubellaStatusNotTested"/>
+					</radiogroup>
+				</div>
+			</row>
+			<row>
+				<label value="Hb Electrophoresis"/>	
+				<div style="margin-left: -201px; position: absolute; width: 195px!important; margin-top:-5px;">
+			        <radiogroup id="HBElectrophoresis">	
+						<label value="+Ve" class="inner_label"/>
+						<radio class="radio_left" id="HBElectrophoresisPositive"/>
+						<label value="-Ve" class="inner_label"/>
+						<radio class="radio_left" id="HBElectrophoresisNegative"/>
+						<label value="Not Tested" class="inner_label"/>
+						<radio class="radio_left" id="HBElectrophoresisNotTested"/>
+					</radiogroup>
+				</div>
+			</row>
+			<row>
+				<label value="Thyroid Function"/>	
+				<div style="margin-left: -201px; position: absolute; width: 195px!important; margin-top:-5px;">
+			        <radiogroup id="thyroidFunction">	
+						<label value="+Ve" class="inner_label"/>
+						<radio class="radio_left" id="thyroidFunctionPositive" onClick="showThyroid()"/>
+						<label value="-Ve" class="inner_label"/>
+						<radio class="radio_left" id="thyroidFunctionNegative" onClick="hideThyroid()"/>
+						<label value="Not Tested" class="inner_label"/>
+						<radio class="radio_left" id="thyroidFunctionNotTested" onClick="hideThyroid()"/>
+					</radiogroup>
+				</div>
+			</row>
+			<row>
+				<label value=""/>	
+				<div style="margin-left: -201px; position: absolute; width: 195px!important; margin-top:-5px;">
+			        <radiogroup id="thyroidFunctionInner">	
+						<label value="Hyper" class="inner_label"/>
+						<radio class="radio_left" id="thyroidFunctionInnerHyper"/>
+						<label value="Hypo" class="inner_label"/>
+						<radio class="radio_left" id="thyroidFunctionInnerHypo"/>
+					</radiogroup>
+				</div>
+			</row>		
+			<row>
+				<label value="Triple Test"/>	
+				<div style="margin-left: -201px; position: absolute; width: 195px!important; margin-top:-5px;">
+			        <radiogroup id="tripleTest">	
+						<label value="+Ve" class="inner_label"/>
+						<radio class="radio_left" id="tripleTestPositive"/>
+						<label value="-Ve" class="inner_label"/>
+						<radio class="radio_left" id="tripleTestNegative"/>
+						<label value="Not Tested" class="inner_label"/>
+						<radio class="radio_left" id="tripleTestNotTested"/>
+					</radiogroup>
+				</div>
+			</row>							
+			<row>
+				<label value="Blood Sugar"/>	
+				<div style="margin-left: -201px; position: absolute; width: 195px!important; margin-top:-5px;">
+			        <radiogroup id="bloodSugar">	
+						<label value="+Ve" class="inner_label"/>
+						<radio class="radio_left" id="bloodSugarPositive"/>
+						<label value="-Ve" class="inner_label"/>
+						<radio class="radio_left" id="bloodSugarNegative"/>
+						<label value="Not Tested" class="inner_label"/>
+						<radio class="radio_left" id="bloodSugarNotTested"/>
+					</radiogroup>
+				</div>
+			</row>									
+		</rows>
+	</grid>	
+<div style="clear:both"></div>	
+      <grid style="border:0">
+		<columns>
+			</columns>
+		<rows>
+		<row style="padding: 10px 0; float:left; height: 30px;">
+			<label value="Antenatal Problems &amp; Medications"/>
+			<textbox style="width: 80%; position: absolute; height: 30px;" id="antenatalProblemsandMedications"/>
+			</row>
+			<row style="padding: 10px 0;height:30px;">
+			<label value="Antenatal US Scan" />
+			<textbox style="width: 80%; position: absolute; height: 30px; margin:-10px 0 0 -194px" id="antenatalUSScan"/>
+			</row>
+			<row style="padding:10px 0;">
+		    <label value="Umbical Artery Doppler"/>
+			<div style="margin-left: -201px; position: absolute; width: 195px!important; margin-top:-5px;">
+			<radiogroup id="umbicalArteryDoppler">
+		    <label value="+Ve" class="inner_label"/>
+		    <radio class="radio_left" id="umbicalArteryDopplerPositive"/>
+		    <label value="absent" class="inner_label"/>
+		    <radio class="radio_left" id="umbicalArteryDopplerAbsent"/>
+		    <label value="reversed" class="inner_label"/>
+		    <radio class="radio_left" id="umbicalArteryDopplerReversed"/>
+		    </radiogroup>
+		    </div>
+		    </row>
+		</rows>
+	</grid>  
+	
+	<grid style="border:0; width: 380px; float:left;">
+		<columns>
+
+		</columns>
+		<rows>
+			<row>
+		    <label value="Amniocentesis"/>	
+        <div style="margin-left: 0px; position: absolute; width: 195px!important; margin-top:-5px;">
+        	<radiogroup id="amniocentesis">	
+		    <label value="Yes" class="inner_label"/>
+		    <radio class="radio_left" id="amniocentesisYes"/>
+		    <label value="No" class="inner_label"/>
+		    <radio class="radio_left" id="amniocentesisNo"/>
+		    </radiogroup>
+		    </div>				
+			</row>
+			<row>
+		    <label value="Double Marker"/>	
+        <div style="margin-left: 0px; position: absolute; width: 195px!important; margin-top:-5px;">
+		    <radiogroup id="doubleMarker">	
+		    <label value="Yes" class="inner_label"/>
+		    <radio class="radio_left" id="doubleMarkerYes"/>
+		    <label value="No" class="inner_label"/>
+		    <radio class="radio_left" id="doubleMarkerNo"/>
+		    </radiogroup>
+		    </div>
+			</row>			
+			<row>
+		    <label value="Nuchal Translucency"/>	
+        <div style="margin-left: 0px; position: absolute; width: 195px!important; margin-top:-5px;">
+		    <radiogroup id="nuchalTranslucency">	
+		    <label value="Yes" class="inner_label"/>
+		    <radio class="radio_left" id="nuchalTranslucencyYes"/>
+		    <label value="No" class="inner_label"/>
+		    <radio class="radio_left" id="nuchalTranslucencyNo"/>
+		    </radiogroup>
+		    </div>
+			</row>			
+			<row>
+		    <label value="NIFTY"/>	
+        <div style="margin-left: 0px; position: absolute; width: 195px!important; margin-top:-5px;">
+			<radiogroup id="NIFTY">			    
+		    <label value="Yes" class="inner_label"/>
+		    <radio class="radio_left" id="NIFTYYes"/>
+		    <label value="No" class="inner_label"/>
+		    <radio class="radio_left" id="NIFTYNo"/>
+		    </radiogroup>
+		    </div>
+			</row>			
+		</rows>
+	</grid>
+	
+	<grid style="border:0; width: 380px; float:left;">
+		<columns>
+
+		</columns>
+		<rows>
+			<row>
+		    <label value="Antnatal Steroids"/>
+        <div style="margin-left: 0px; position: absolute; width: 195px!important; margin-top:-5px;">
+			<radiogroup id="antnatalSteroids">			    		    	
+		    <label value="Yes" class="inner_label"/>
+			<radio class="radio_left" id="antnatalSteroidsYes"/>
+			<label value="No" class="inner_label"/>
+			<radio class="radio_left" id="antnatalSteroidsNo"/>
+		    </radiogroup>
+		    </div>				
+			</row>
+			<row>
+		    <label value="No. Of Course"/>
+			<textbox id="noofCourse"/>				
+			</row>			
+			<row>
+		    <label value="Date of Latest Course"/>
+			<datebox style="width: 95px;" id="dateofLatestCourse"/>
+			<timebox style="width: 95px;" id="timeofLatestCourse"/>				
+			</row>			
+			<row>
+		    <label value="Date of 1st Dose"/>
+			<datebox style="width: 95px;" id="dateof1stDose"/>
+			<timebox style="width: 95px;" id="timeof1stDose"/>				
+			</row>			
+			<row>
+		    <label value="Date of 2nd Dose"/>
+			<datebox style="width: 95px;" id="dateof2ndDose"/>
+			<timebox style="width: 95px;" id="timeof2ndDose"/>				
+			</row>						
+		</rows>
+	</grid>	
+	<div style="clear:both"></div>
+        <grid style="border:0">
+		<columns>
+			<column label="DELIVERY AND LABOR" style="border-bottom:1px solid red;" id="deliveryandLabor"/>
+		</columns>
+		<rows>
+			<row>	
+			</row>
+		</rows>
+	</grid>
+        
+<grid style="border:0; width: 380px; float:left;">
+		<columns>
+		</columns>
+		<rows>
+			<row>	
+		    <label value="Labor"/>	
+        <div style="margin-left: 0px; position: absolute; width: 195px!important; margin-top:-5px;">
+			<radiogroup id="labor">			    		    
+		    <label value="Yes" class="inner_label"/>
+			<radio class="radio_left" id="laborYes"/>
+			<label value="No" class="inner_label"/>
+			<radio class="radio_left" id="laborNo"/>
+ 		 </radiogroup>
+		 </div>   			
+			</row>
+<row>
+<label value=""/>
+        <div style="margin-left: 0px; position: absolute; width: 195px!important; margin-top:-5px;">
+			<radiogroup id="laborInner">			    		    
+		    <label value="Spontaneous" class="inner_label"/>
+			<radio class="radio_left" id="laborInnerSpontaneous"/>
+			<label value="Induced" class="inner_label"/>
+			<radio class="radio_left" id="laborInnerInduced"/>
+		    </radiogroup>
+		    </div>
+</row>
+			<row>	
+		    <label value="Date of Onset"/>
+			<datebox id="dateofOnset"/>
+		    </row>
+		    <row>
+		    <label value="Time of Onset"/>
+			<timebox id="timeofOnset"/>			    
+			</row>			
+		</rows>
+	</grid>
+        
+<div style="clear:both"></div>
+<grid style="border:0; width: 380px; float:left;">
+		<columns>
+		</columns>
+		<rows>
+			<row>	
+		    <label value="Membranes Ruptured"/>
+           <div style="margin-left: 0px; position: absolute; width: 195px!important; margin-top:-5px;">
+			<radiogroup id="membranesRuptured">		    	
+		    <label value="Yes" class="inner_label"/>
+			<radio class="radio_left" id="membranesRupturedYes"/>
+			<label value="No" class="inner_label"/>
+			<radio class="radio_left" id="membranesRupturedNo"/>
+		    </radiogroup>
+		    </div>
+			</row>
+		</rows>
+	</grid>
+	
+<grid style="border:0; width: 380px; float:left;">
+		<columns>
+		</columns>
+		<rows>
+			<row>	
+		    <label value="Duration of Rupture"/>
+			<combobox id="durationofRupture">
+			<comboitem label="Less than 24 hours" id="durationofRuptureLessThan24Hours"/>
+			<comboitem label="More than 24 hours" id="durationofRuptureMoreThan24Hours"/>
+			</combobox>
+			</row>			
+		</rows>
+	</grid>	
+	
+<div style="clear:both"></div>
+<grid style="border:0">
+		<columns>
+			<column label="MODE OF DELIVERY" style="border-bottom:1px solid red;" id="modeofDelivery"/>		
+		</columns>
+<rows>
+<row>
+</row>
+</rows>		
+</grid>
+<grid style="border:0; width: 380px; float:left;">
+		<rows>
+			<row>	
+			<label value="Vaginal"/>
+			<div style="margin-left: 0px; position: absolute; width: 195px!important; margin-top:-5px;">
+			<radiogroup id="vaginal">		    		
+			<radio class="radio_left" id="vaginalSpontaneous"/>
+			<label value="Spontaneous" class="inner_label"/>
+				<separator style="margin-left: -100px; margin-top:-5px;"/>		
+			<radio class="radio_left" id="vaginalForceps"/>
+			<label value="forceps" class="inner_label"/>
+				<separator style="margin-left: -100px; margin-top:-5px;"/>					
+			<radio class="radio_left" id="vaginalVentouse"/>
+			<label value="ventouse" class="inner_label"/>
+			</radiogroup>
+			</div>
+			</row>			
+			<row style="float:left; margin-top:30px;">	
+			<label value="Caesarean Section"/>	
+			<div style="margin-left: 0px; position: absolute; width: 195px!important; margin-top:-5px;">
+			<radiogroup id="caesareanSection">		    					
+			<radio class="radio_left" id="caesareanSectionPrelaborEelective"/>
+			<label value="Prelabor elective" class="inner_label"/>
+							<separator style="margin-left: -100px; margin-top:-5px;"/>		
+			<radio class="radio_left" id="caesareanSectionEmergencyInLabor"/>
+			<label value="Emergency in labor" class="inner_label"/>
+			
+			</radiogroup>
+			</div>
+			</row>						
+		</rows>
+	</grid>	
+
+<grid style="border:0; width: 380px; float:left;">
+		<columns>
+		</columns>
+		<rows>
+			<row>	
+			<label value="Presentation"/>
+			<div style="margin-left: -22px; position: absolute; width: 195px!important; margin-top:-5px;">
+			<radiogroup id="presentation">				
+			<label value="Vertex" class="inner_label"/><radio class="radio_left" id="presentationVertex"/>
+			<label value="Breech" class="inner_label"/><radio class="radio_left" id="presentationBreech"/>
+			<label value="Other" class="inner_label"/><radio class="radio_left" id="presentationOther"/>
+			</radiogroup>
+			</div>
+			</row>			
+			<row>
+			<label value="Fetal Distress"/>	
+			<div style="margin-left: -22px; position: absolute; width: 195px!important; margin-top:-5px;">
+			<radiogroup id="fetalDistress">		    									
+			<label value="Yes" class="inner_label"/><radio class="radio_left" id="fetalDistressYes"/>
+			<label value="No" class="inner_label"/><radio class="radio_left" id="fetalDistressNo"/>
+			</radiogroup>
+			</div>
+			</row>						
+			<row>	
+			<label value="CTG abnormal"/>
+			<div style="margin-left: -22px; position: absolute; width: 195px!important; margin-top:-5px;">
+			<radiogroup id="CTGAbnormal">		    										
+			<label value="Yes" class="inner_label"/><radio class="radio_left" id="CTGAbnormalYes"/>
+			<label value="No" class="inner_label"/><radio class="radio_left" id="CTGAbnormalNo"/>
+			</radiogroup>
+			</div>
+			</row>						
+			<row>	
+			<label value="Fresh me corium"/>
+			<div style="margin-left: -22px; position: absolute; width: 195px!important; margin-top:-5px;">
+			<radiogroup id="FreshMeCorium">		    										
+			<label value="Yes" class="inner_label"/><radio class="radio_left" id="FreshMeCoriumYes"/>
+			<label value="No" class="inner_label"/><radio class="radio_left" id="FreshMeCoriumNo"/>
+			</radiogroup>
+			</div>
+			</row>						
+			<row>	
+			<label value="Cord gas 1:"/>
+			<div style="margin-left: -22px; position: absolute; width: 215px!important; margin-top:-5px;">
+			<radiogroup id="cordGas">		    										
+			<label value="venous" class="inner_label"/><radio class="radio_left" id="cordGasVenous"/>
+			<label value="arterial" class="inner_label"/><radio class="radio_left" id="cordGasArterial"/>
+			<label value="unknown" class="inner_label"/><radio class="radio_left" id="cordGasVenousUnknown"/>
+			</radiogroup>
+			</div>
+			</row>									
+			<row>	
+			<label value="PH"/>
+			<textbox id="PH"/>
+			</row>																		
+			<row>	
+			<label value="Bex"/>
+			<textbox id="bex"/>
+			</row>																					
+			
+		</rows>
+	</grid>	
+<div style="clear;both;"></div>
+<grid style="border:0; float:right; width: 380px;">
+		<columns>
+			<column label="Apgar Score" style="border-bottom:1px solid red;" id="apgarScore"/>
+		</columns>
+		<rows>
+			<row>	
+		    <label value="1 min" style="float:left: width: 140px;"/>
+		    <label value=""/>
+<div style="float:left; width: 183px; position:absolute; margin-top:-10px;">
+		    <combobox id="1Min">
+		    <comboitem label="1" id="1Min1"/>
+		    <comboitem label="2" id="1Min2"/>
+		    <comboitem label="3" id="1Min3"/>
+		    <comboitem label="4" id="1Min4"/>
+		    <comboitem label="5" id="1Min5"/>
+		    <comboitem label="6" id="1Min6"/>
+		    <comboitem label="7" id="1Min7"/>
+		    <comboitem label="8" id="1Min8"/>
+		    <comboitem label="9" id="1Min9"/>
+		    <comboitem label="10" id="1Min10"/>		    		    		    		    
+		    </combobox>
+		    </div>
+			</row>	
+			<row>	
+		    <label value="5 min" style="float:left: width: 140px;"/>
+		    <label value=""/>		    
+<div style="float:left; width: 183px; position:absolute; margin-top:-10px;">		    
+		    <combobox id="5Min">
+		    <comboitem label="1" id="5Min1"/>
+		    <comboitem label="2" id="5Min2"/>
+		    <comboitem label="3" id="5Min3"/>
+		    <comboitem label="4" id="5Min4"/>
+		    <comboitem label="5" id="5Min5"/>
+		    <comboitem label="6" id="5Min6"/>
+		    <comboitem label="7" id="5Min7"/>
+		    <comboitem label="8" id="5Min8"/>
+		    <comboitem label="9" id="5Min9"/>
+		    <comboitem label="10" id="5Min10"/>		    		    		    		    
+		    </combobox>
+		    </div>
+			</row>			
+			<row>	
+		    <label value="10 min" style="float:left: width: 140px;"/>
+		    <label value=""/>
+<div style="float:left; width: 183px; position:absolute; margin-top:-10px;">		    		    
+		    <combobox id="10Min">
+		    <comboitem label="1" id="10Min1"/>
+		    <comboitem label="2" id="10Min2"/>
+		    <comboitem label="3" id="10Min3"/>
+		    <comboitem label="4" id="10Min4"/>
+		    <comboitem label="5" id="10Min5"/>
+		    <comboitem label="6" id="10Min6"/>
+		    <comboitem label="7" id="10Min7"/>
+		    <comboitem label="8" id="10Min8"/>
+		    <comboitem label="9" id="10Min9"/>
+		    <comboitem label="10" id="10Min10"/>		    		    		    		    
+		    </combobox>
+		    </div>
+			</row>
+			<row>	
+			<label value="Vitamin K Given"/>	
+			<div style="margin-left: 0px; position: absolute; width: 215px!important; margin-top:-5px;">
+			<radiogroup id="vitaminKGiven">		    													
+			<label value="Yes" class="inner_label"/>
+			<radio class="radio_left" id="vitaminKGivenYes"/>
+			<label value="No" class="inner_label"/>
+			<radio class="radio_left" id="vitaminKGivenNo"/>
+			</radiogroup>
+			</div>
+			</row>												
+			<row>	
+			<label value="Dose"/>
+			<label value=""/>
+<div style="float:left; width: 183px; position:absolute; margin-top:-10px;">            
+            <textbox id="dose"/>
+</div>			
+			</row>																	
+		</rows>
+	</grid>
+
+<div style="clear:both"></div>
+
+
+                 <grid style="border:0">
+               <rows>
+                <row>
+                <div>
+                  <label value="Problems at admission" />
+                    <textbox style="width:800px; height:100px" id="ProblemsAtAdmission"/>
+                     </div>
+                        </row>
+                            </rows>
+                                </grid>
+                  </panelchildren>
+                        </panel>                     
+                    </div>
+                    </center>
+                   
+
+                   
+                    <south border="1" size="100px" height="20%" margins="0,0,3,3" style="background: none repeat scroll 0 0 " >
+                        <panel border="normal" >
+                            <panelchildren >
+                          		<toolbar align="center" >
+                               		<button label="Submit"  id="submit">
+                              			 <attribute name="onClick"><![CDATA[
+											setFormPatternId("admission");
+											setDatapatternId("FORTIS");
+											Object rootFormValue = self.getRoot();
+											System.out.println("rootFormValue = " + rootFormValue);
+											formValues = createFormValues(rootFormValue,formValues);
+											invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","nursing_progress_notes");
+											]]></attribute>
+									</button>		
+                                	<button label="Cancel" onClick="" id="cancel"/>
+                           		</toolbar>
+                        	</panelchildren>
+                        </panel>
+                    </south>
+                </borderlayout>
+
+            </center>
+
+        </borderlayout>
+    </div>
+    </window>
+</zk>

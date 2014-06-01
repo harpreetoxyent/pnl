@@ -103,7 +103,7 @@ public class HibernateConfigMover
     				if(srcFile.canWrite())
     					this.writeToFile(srcFile, filePath, xmlStr);
 		    	}
-		    }
+		    } 
 		}
 		catch(IOException docExp)
 		{

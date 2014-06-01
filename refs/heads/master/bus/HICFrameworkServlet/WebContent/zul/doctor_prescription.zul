@@ -1,0 +1,158 @@
+<html>
+<head>
+<title>Medication Chart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="images/BrightSide.css" type="text/css" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="select.js"></script>
+<script>
+var j = jQuery.noConflict();
+j(window).load(function()
+{
+function fixIds(elem, cntr) {
+    j(elem).find("").add(elem).each(function() {
+        this.id = this.id.replace(/\d+$/, "") + cntr;
+    })
+}
+
+var cloneCntr = 1;
+j("#insert-more").click(function () { 
+    var table = j("#mytable").clone(true,true) 
+    fixIds(table, cloneCntr);
+    table.insertAfter("#mytable") 
+    cloneCntr++;
+		});
+
+});
+</script>
+
+<style>
+#weight{display:inline-flex; padding-left:5px;}
+</style>
+<script>
+var l = jQuery.noConflict();
+l(window).load(function ()
+	{
+		l('.drug').click(function()
+	{
+		l('.show').css('display', 'block');
+	});
+
+});
+</script>
+<style>
+li.drug ul.show{display:none;}
+</style>
+</head>
+<body>
+<div id="wrap">
+  <div id="header">
+    <h1 id="logo"><a href="menu.zul" class="logo"><img src="images/fortis.png" /></a></h1>
+
+   </div>
+  <div id="content-wrap">
+    <div id="sidebar" >
+      <h1>Admission &amp; Examination</h1>
+      <ul class="sidemenu">
+        <li><a href="admission.zul">Admission Form</a></li>
+        <li><a href="initial_examination.zul">Initial Examination</a></li>
+      </ul>
+	  <h1>Nursing Progress Notes</h1>
+      <ul class="sidemenu">
+        <li><a href="nursing_progress_notes.zul">Nursing Progress Notes</a></li>
+	</ul>
+      <h1>Doctor's Progress Notes</h1>
+      <ul class="sidemenu">
+        <li><a href="progress_notes.zul">Doctor's Progress Notes</a></li>
+<li><a href="growth_chart.zul">Growth Chart</a></li>
+	</ul>	  	  	
+		  	  
+      <h1>Medication</h1>
+      <ul class="sidemenu">
+        <li class="drug"><a href="#" class="drug">Doctor's Prescription</a>
+        <ul class="show">
+        <li><a href="diamorphine_infusion.zul">Infusion List</a></li>
+        <li><a href="regular_medi.zul">Regular Medication</a></li>
+        <li><a href="sos_medi.zul">SOS Medication</a></li>
+<li><a href="once.zul">Once Only</a></li>                
+        </ul>
+        </li>
+        <li><a href="doctor_prescription.zul"  class="active">Doctor's Prescription</a></li>
+        <li><a href="nurse_administration.zul">Nurse Administration</a></li>				
+	</ul>	
+	      
+	  <h1>Blood Gas Tests</h1>
+      <ul class="sidemenu">
+        <li><a href="blood_gas_test.zul">Blood Gas Tests</a></li>
+      </ul>
+      <h1>Blood Tests</h1>
+      <ul class="sidemenu">
+        <li><a href="basic.zul">Basic</a></li>
+        <li><a href="specialised.zul">Specialised</a></li>
+      </ul>
+      <h1>Screening Tests</h1>
+      <ul class="sidemenu">
+        <li><a href="screeningtests.zul">Screening Tests</a></li>
+      </ul>      
+      	  
+      <h1>UltraSounds</h1>
+      <ul class="sidemenu">
+        <li><a href="cranial.zul">Cranial</a></li>
+        <li><a href="abdomen.zul">Abdomen</a></li>
+      </ul>
+      <h1>Xray</h1>
+      <ul class="sidemenu">
+        <li><a href="xray.zul">Xray</a></li>
+	</ul>	  
+
+	  <h1>Discharge Summary</h1>
+      <ul class="sidemenu">
+        <li><a href="discharge_summary.zul">Discharge Summary</a></li>
+	</ul>	  	  	
+    </div>
+    <div id="main">
+      <h1 class="head">Admission Examination</h1>
+	<div style="min-width:600px; overflow-y:hidden; overflow-x:scroll;" id="chart">  
+<table width="100%" id="mytable">
+<tr>
+<td>Select Medicine:</td>
+<td>        <select id="country" name="country"></select></td>
+<td>        <select name="state" id="state" disabled="disabled"></select>
+
+		
+</td>
+<td id="weight">x <input type="text" placeholder="weight of child" /></td>
+<td>		<input type="text" placeholder="Value" disabled="disabled" /></td>
+
+<td>		<select><option>Route</option><option>Intra Venus</option><option>Intra Muscular</option></select></td>
+<td>		<select id="slct1" name="slct1" onchange="populate(this.id, 'slct2');">
+   <option value="">Dose Frequency</option>
+   <option value="1">1</option>
+   <option value="2">2</option>
+   <option value="3">3</option>
+      <option value="4">4</option>
+	     <option value="5">5</option>
+		    <option value="6">6</option>
+</select></td>
+
+
+<td><div id="slct2"></div></td>
+ </tr>
+ </table>
+
+	  
+    </div>
+	<p style="float:left;"><a href="#" id="insert-more">Add New</a></p>	
+	<p style="float:right;"><a href="#">Prev Data</a> | <a href="#">Next Data</a></p>
+	<p style="clear:both;"></p>
+	 <p style="text-align:center;" id="buttons"> <input type="submit"  value="Submit" id="submit"/> <input type="submit"  value="Cancel" id="submit"/> 	</p>
+   
+    
+  </div>
+  </div>
+</div>
+ <script language="javascript">
+populateCountries("country", "state");
+        </script>
+</body>
+</html>

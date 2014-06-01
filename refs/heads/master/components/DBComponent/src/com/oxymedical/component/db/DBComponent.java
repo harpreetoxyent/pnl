@@ -549,7 +549,9 @@ public class DBComponent implements IComponent, IDBComponent {
 			throw new DBComponentException(
 					DBExceptionConstants.SQL_GRAMMER_EXCEPTION + obj
 							+ "in saveObject");
-		} catch (HibernateException e) {
+		} catch (HibernateException e) 
+		{
+			e.printStackTrace();
 			throw new DBComponentException(
 					DBExceptionConstants.HIBERNATE_EXCEPTION + obj
 							+ " in saveObject");
@@ -2449,7 +2451,6 @@ public class DBComponent implements IComponent, IDBComponent {
 				IFormPattern formPatternData = data.getFormPattern();
 				System.out.println("Inside DBComponent dbOperation() value of formPatternData" +formPatternData.getFormId() );
 				windowFormID = formPatternData.getFormId();
-				// windowFormID="formpattern0";
 				formValues = formPatternData.getFormValues();
 				System.out.println("Inside DBComponent dbOperation() value of formValues" +formPatternData.getFormValues().size());
 				sourceMethod = data.getMethodName();

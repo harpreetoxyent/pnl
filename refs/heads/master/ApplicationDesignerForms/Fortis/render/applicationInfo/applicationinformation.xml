@@ -1,0 +1,9 @@
+<applications>
+<application>
+		<ApplicationName>FORTIS</ApplicationName>
+		<serverLibDirectory>/apache-tomcat-7.0.52//lib/ext</serverLibDirectory>
+		<renderOption>ZK</renderOption>
+		<sourcedir>/FORTIS//</sourcedir>
+		<serverDirectory>/apache-tomcat-7.0.52//autodeploy</serverDirectory>
+	</application>
+</applications>

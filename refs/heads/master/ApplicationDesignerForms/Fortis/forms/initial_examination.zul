@@ -1,0 +1,447 @@
+<zk id="initial_examination" name="initial_examination"><window>
+    <style>
+    .z-row-inner{background: #F7F7F7!important;}
+	.z-vlayout{height: auto!important;}
+     </style>
+        <zscript src="/library/uilibrary.zs"/> 
+        <?page id="initial_examination"?>
+    <div>
+        <borderlayout sclass="complex-layout" height="810px">
+            <north size="90px" border="0" style=" background:none;">
+            <image src="images/fortis.png"/>
+            </north>
+            <!-- Sidebar -->
+            <west width="200px" border="0" flex="true"
+                margins="0,5,0,0" style="max-height: 1000px; background:none; overflow:auto; ">
+
+                <vlayout spacing="0" style="height: auto;">
+                    <panel width="100%" border="normal" title="Admission And Examination" >
+                        <panelchildren style="padding:5px;">
+                        
+                            <vbox>
+                                <toolbarbutton label="Admission Form" />
+                                <toolbarbutton label="Initial Examination" />
+                            </vbox>
+                            
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Nursing Progress Notes ">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <toolbarbutton label="Nursing Progress Notes " />
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Doctor's Progress Notes">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <toolbarbutton label="Doctor's Progress Notes " />
+                                 <toolbarbutton label="Growth Chart " />
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                     <panel width="100%" border="normal"
+                        title="Medication">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <toolbarbutton label="Doctor's Prescription" />
+                                <toolbarbutton label="Nurse Administration" />
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Blood Gas Tests">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <toolbarbutton label="Blood Gas Tests" />
+                               
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                     <panel width="100%" border="normal"
+                        title="Blood Test's">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <toolbarbutton label="Basic " />
+                                 <toolbarbutton label="Specialised " />
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                     <panel width="100%" border="normal"
+                        title="Screening Tests">
+                       <panelchildren style="padding:5px;">
+                            <vbox>
+                                <toolbarbutton label="Screening Tests" />
+                                 
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Ultrasound">
+                       <panelchildren style="padding:5px;">
+                            <vbox>
+                                <toolbarbutton label="Cranial" />
+                                <toolbarbutton label="Abdomen" />
+                                 
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Xray">
+                         <panelchildren style="padding:5px;">
+                            <vbox>
+                                <toolbarbutton label="Xray" />
+
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Discharge Summary">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <toolbarbutton label="Discharge Summary" />
+
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                </vlayout>
+
+            </west>
+            <east>
+                <vlayout>
+                    <html>
+                    </html>
+                </vlayout>
+            </east>
+            <!-- Content -->
+            <center>
+                <borderlayout sclass="inner-border">
+                    <north size="90px" border="0" height="4%" margins="2,3,0,0" style=" background: green;">
+                        <label value="Initial Examination"  style="font-size:20px; background: green; padding-left: 10px;" />
+                    </north>
+                    <center border="0" margins="0,3,3,3" style=" background: none; overflow:auto;">
+                    
+                        <panel> 
+                            <panelchildren >
+                                <grid style="border:0">
+                                    <rows>
+                                        <row>
+                                            <div style=" background: none;">
+                                           
+                                                <toolbarbutton
+                                                    label="Doctor Examining" />
+                                                    <combobox id = "doctorExamining"> 	
+                                       					<comboitem id= "D1" label="D1"/>
+                                                    	<comboitem id= "D2" label="D2"/>
+                                                    	<DataMappings>
+      														<Mapping datapattern="FORTIS" datatable="INITIALEXAMINATION" datafield="DOCTOR_EXAMINING: String"/>
+   		 												</DataMappings>
+                                                    </combobox>
+                                                    
+                                            </div>
+                                        </row>
+                                        <row>
+                                            <div>
+                                                     
+                                                <toolbarbutton id="date"
+                                                    label="Date" />
+                                                    <space bar="true" spacing="65px" />
+                                                    <datebox id= "dateBox">
+                                                    	<DataMappings>
+      														<Mapping datapattern="FORTIS" datatable="INITIALEXAMINATION" datafield="DATE: Date"/>
+   		 												</DataMappings>
+   		 											</datebox>
+                                                    <space bar="true" spacing="65px" />
+                                                     <toolbarbutton id="Time"
+                                                    label="Time" />
+                                                    <timebox  id = "timeBox">
+                                                    <DataMappings>
+      														<Mapping datapattern="FORTIS" datatable="INITIALEXAMINATION" datafield="TIME: Time"/>
+   		 											</DataMappings>
+   		 											</timebox>
+                                            </div>
+                                        </row>
+                                        <row>
+                                            <div>
+                                            
+                                                <toolbarbutton  label="Birth Weight" >
+                                                    <space bar="true" spacing="24px" />
+                                                	<doublebox id= "birthWeightBox">
+                                                		<DataMappings>
+      														<Mapping datapattern="FORTIS" datatable="INITIALEXAMINATION" datafield="BIRTH_WEIGHT: Double"/>
+   		 												</DataMappings>
+                                                 	</doublebox>
+                                                 	<doublebox id= "birthCentileBox">
+                                                		<DataMappings>
+      														<Mapping datapattern="FORTIS" datatable="INITIALEXAMINATION" datafield="CENTILE_BW: Double"/>
+   		 												</DataMappings>
+                                                	</doublebox>
+                                                </toolbarbutton>
+                                                 <toolbarbutton  label="OFC" >
+                                                    <doublebox id="ofcBox">
+                                                		<DataMappings>
+      														<Mapping datapattern="FORTIS" datatable="INITIALEXAMINATION" datafield="OFC: Double"/>
+   		 												</DataMappings>
+                                                 	</doublebox>
+                                                 	<doublebox id= "centileOFCBox">
+                                                		<DataMappings>
+      														<Mapping datapattern="FORTIS" datatable="INITIALEXAMINATION" datafield="CENTILE_OFC: Double"/>
+   		 												</DataMappings>
+                                                	</doublebox>
+ 												 </toolbarbutton>
+                                            </div>
+                                        </row>
+                                        <row>
+                                            <div>
+                                            <space bar="true" spacing="280px" />
+                                                <toolbarbutton    label="Temp" >
+                                                   <doublebox id= "tempBox">
+                                                		<DataMappings>
+      														<Mapping datapattern="FORTIS" datatable="INITIALEXAMINATION" datafield="TEMP: Double"/>
+   		 												</DataMappings>
+                                                </doublebox>
+                                             </toolbarbutton> 
+                                            </div>
+                                        </row>   
+                                    </rows>
+                                </grid>
+        
+              
+         <hlayout>
+              <grid width="400px">         
+             <columns>
+            <column hflex="1"></column>
+            <column hflex="1">Left</column>
+            <column hflex="1">Right</column>
+           
+        </columns>
+        <rows sclass="narrow">
+            <row>
+                <label id = "EyeReflex" value="Eyes Red Reflex" />
+            	<radiogroup id ="EYE_RG">
+              		 <radio id = "LeftEye" value="L" />
+                	 <radio id = "RightEye" value= "R"/>
+              		  <DataMappings>
+      						<Mapping datapattern="FORTIS" datatable="INITIALEXAMINATION" datafield="EYE_RED_REFLEX: String"/>
+   		 			</DataMappings>
+              	</radiogroup> 
+                </row>
+                 <row>
+                <label id = "Ears" value="Ears" />
+                <radiogroup id ="Ear_RG" >
+                	<radio id = "LeftEar" value="L" />
+                	<radio id = "RightEar" value= "R" />
+                	 <DataMappings>
+      						<Mapping datapattern="FORTIS" datatable="INITIALEXAMINATION" datafield="EARS: String"/>
+   		 			</DataMappings>
+                </radiogroup>	
+            </row>
+            <row>
+                <label id="Hands" value="Hands" />
+                <radiogroup id = "Hands_RG">
+                   	<radio id = "LeftHands" value= "L" />
+                	<radio id = "RightHands" value= "R" />            	
+                	 <DataMappings>
+      						<Mapping datapattern="FORTIS" datatable="INITIALEXAMINATION" datafield="HANDS: String"/>
+   		 			</DataMappings>
+                </radiogroup>	
+            </row>
+            <row>
+ 				<label id = "Upper_limbs" value="Upper limbs" />
+                 <radiogroup id ="Upper_limbs_RG" >
+  					<radio id = "LeftUpperLimbs" value= "L" />
+                	<radio id = "RightUpperLimbs" value= "R" />
+                	  <DataMappings>
+      						<Mapping datapattern="FORTIS" datatable="INITIALEXAMINATION" datafield="UPPER_LIMBS : String"/>
+   		 			</DataMappings>
+                </radiogroup>
+            </row>
+            <row>
+                <label id = "Testis" value="Testis" />
+                 <radiogroup id ="Testis_RG" >
+               		<radio id = "LeftTestis" value= "L" />
+                	<radio id = "RightTestis" value= "R" />
+                	  <DataMappings>
+      						<Mapping datapattern="FORTIS" datatable="INITIALEXAMINATION" datafield="TESTIS : String"/>
+   		 			</DataMappings>
+                </radiogroup>
+            </row>
+            <row>
+                <label id = "Hips" value="Hips" />
+                <radiogroup id ="Hips_RG" >
+          			<radio id = "LeftHips" value= "L" />
+                	<radio id = "RightHips" value= "R" />
+                	<DataMappings>
+      						<Mapping datapattern="FORTIS" datatable="INITIALEXAMINATION" datafield="HIPS : String"/>
+   		 			</DataMappings>
+                </radiogroup>
+            </row>
+            <row>
+                <label id ="Legs" value="Legs" />
+                 <radiogroup id ="Legs_RG" >
+                	<radio id = "LeftLegs" value= "L"  />
+                	<radio id = "RightLegs" value= "R" />
+                	<DataMappings>
+      						<Mapping datapattern="FORTIS" datatable="INITIALEXAMINATION" datafield="LEGS : String"/>
+   		 			</DataMappings>
+                </radiogroup>
+            </row>
+            <row>
+                <label id ="Feet" value="Feet" />
+                 <radiogroup id ="Feet_RG" >
+                	<radio id = "LeftFeet" value= "L" />
+                	<radio id = "RightFeet" value= "R" />
+                	<DataMappings>
+      						<Mapping datapattern="FORTIS" datatable="INITIALEXAMINATION" datafield="FEET : String"/>
+   		 			</DataMappings>
+                </radiogroup>
+            </row>
+                </rows>
+                </grid>
+                
+                
+                <grid width="400px" >            
+             <columns>
+            <column hflex="1"></column>
+            <column hflex="1">Normal</column>
+            <column hflex="1">Abnormal</column>
+        </columns>
+        <rows>
+            <row>
+                <label id ="Palate" value="Palate" />
+                 <radiogroup id ="Palate_RG" >
+                	<radio id = "NormalPalate" value= "L" />
+                	<radio id = "AbnormalPalate" value= "R" />
+                	<DataMappings>
+      						<Mapping datapattern="FORTIS" datatable="INITIALEXAMINATION" datafield="PALATE : String"/>
+   		 			</DataMappings>
+                </radiogroup>
+                </row>
+                 <row>
+                <label id ="Tone" value="Tone" />
+       			 <radiogroup id ="Tone_RG" >
+                	<radio id = "NormalTone" value= "L" />
+                	<radio id = "AbnormalTone" value= "R" />
+                	<DataMappings>
+      						<Mapping datapattern="FORTIS" datatable="INITIALEXAMINATION" datafield="TONE : String"/>
+   		 			</DataMappings>
+                </radiogroup>
+            </row>
+            <row>
+                <label id ="Mouth" value="Mouth" />
+                 <radiogroup id ="Mouth_RG" >
+                	<radio id = "NormalMouth"  value= "L"/>
+                	<radio id = "AbnormalMouth" value= "R" />
+                	<DataMappings>
+      						<Mapping datapattern="FORTIS" datatable="INITIALEXAMINATION" datafield="MOUTH : String"/>
+   		 			</DataMappings>
+                </radiogroup>
+            </row>
+            <row>
+                <label id ="Heart" value="Heart" />
+                  <radiogroup id ="Heart_RG" >
+                	<radio id = "NormalHeart"  value= "L"/>
+                	<radio id = "AbnormalHeart" value= "R" />
+                	 <DataMappings>
+      						<Mapping datapattern="FORTIS" datatable="INITIALEXAMINATION" datafield="HEART : String"/>
+   		 			</DataMappings>
+                </radiogroup>
+            </row>
+            <row>
+                <label id ="Liver" value="Liver" />
+                  <radiogroup id ="Liver_RG" >
+                	<radio id = "NormalLiver"  value= "L"/>
+                	<radio id = "AbnormalLiver" value= "R" />
+                	 <DataMappings>
+      						<Mapping datapattern="FORTIS" datatable="INITIALEXAMINATION" datafield="LIVER : String"/>
+   		 			</DataMappings>
+                </radiogroup>
+            </row>
+            <row>
+                <label id ="Spleen" value="Spleen" />
+                 <radiogroup id ="Spleen_RG" >
+                	<radio id = "NormalSpleen"  value= "L"/>
+                	<radio id = "AbnormalSpleen" value= "R" />
+                	 <DataMappings>
+      						<Mapping datapattern="FORTIS" datatable="INITIALEXAMINATION" datafield="SPLEEN : String"/>
+   		 			</DataMappings>
+                </radiogroup>
+            </row>
+            <row>
+                <label id ="Genitalia" value="Genitalia" />
+                  <radiogroup id ="Genitalia_RG" >
+                	<radio id = "NormalGenitalia"  value= "L"/>
+                	<radio id = "AbnormalGenitalia" value= "R" />
+                	 <DataMappings>
+      					<Mapping datapattern="FORTIS" datatable="INITIALEXAMINATION" datafield="GENITALIA : String"/>
+   		 			</DataMappings>
+                </radiogroup>
+            </row>
+            <row>
+                <label id ="Spine" value="Spine" />
+                  <radiogroup id ="Spine_RG" >
+                	<radio id = "NormalSpine"  value= "L"/>
+                	<radio id = "AbnormalSpine" value= "R" />
+                	 <DataMappings>
+      					<Mapping datapattern="FORTIS" datatable="INITIALEXAMINATION" datafield="SPINE : String"/>
+   		 			</DataMappings>
+                </radiogroup>
+            </row>
+	     </rows>        
+		</grid>
+              
+      </hlayout>
+                          
+                 <grid style="border:0">
+               <rows>
+                <row>
+                <div>
+                  <toolbarbutton
+                   label="Problems at admission" />
+                    <textbox id = "PROBLEMSATADMISSION" style="width:800px; height:100px">
+                   		 <DataMappings>
+      						<Mapping datapattern="FORTIS" datatable="INITIALEXAMINATION" datafield="PROBLEMS_AT_ADMISSION: String"/>
+   		 				</DataMappings>
+   		 			</textbox>					
+                     </div>
+                        </row>
+                            </rows>
+                                </grid>
+                  </panelchildren>
+                        </panel>                     
+                    </center>
+                   
+                    
+                    <east>
+                     </east>
+                   
+                    <south border="1" size="100px" height="24%" margins="0,0,3,3" style="background: none repeat scroll 0 0 " >
+                        <panel border="normal" >
+                            <panelchildren >
+                          <toolbar align="center" >
+                               <button label="Submit">
+                                	<Events>
+     								 	<event name="OnClick"><![CDATA[invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","initial_examination");
+]]></event>
+    								</Events>
+    							</button>	
+                                <button label="Cancel" onClick="" />
+                           </toolbar>
+                            </panelchildren>
+                        </panel>
+                    </south>
+                </borderlayout>
+            </center>
+            <south size="40px" border="0"
+                style="background: none repeat scroll 0 0 ;">
+                <toolbar mold="panel" align="center">
+                    POWERED BY OXYENT MEDICAL PVT. LTD 
+                    
+                </toolbar>
+            </south>
+        </borderlayout>
+    </div>
+    </window>
+</zk>

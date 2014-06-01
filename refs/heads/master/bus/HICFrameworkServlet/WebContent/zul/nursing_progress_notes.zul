@@ -1,0 +1,858 @@
+<zk id="nursing_progress_notes" name="nursing_progress_notes">
+<?page id="nursing_progress_notes"?>	
+<zscript src="/library/uilibrary.zs"/> 
+<zscript>
+		<![CDATA[
+		import java.text.DateFormat;
+		import java.text.SimpleDateFormat;
+		import java.util.Date;
+		import java.lang.Long;
+		public void urine()
+		{
+			String presentw = this.self.getFellow("presentwt").getValue();
+			if(presentw == "")
+			{
+				alert("Please enter the weight first");
+			}
+			else
+			{
+			int presentwtt = Integer.parseInt(presentw);
+			float presentwt = (float)presentwtt;
+			presentwt = presentwt/1000;
+			int init= 1;
+			int max= 4; 
+			String summ = this.self.getFellow("urine"+init).getValue();
+			if(summ == "" || summ == "NaN")
+			{
+				summ = "0";
+			}
+			  int sum = Integer.parseInt(summ);
+			for( int i=init+1; i<=max; i++)
+			{
+				
+				String urinevoll = this.self.getFellow("urine"+i).getValue();
+				if(urinevoll == "" || urinevoll == "NaN")
+				{
+					urinevoll = "0";
+				}
+				int urinevol = Integer.parseInt(urinevoll);
+				int hour = 1;
+				sum = sum + urinevol;
+				float total = (float)(sum/presentwt/hour);
+				if(sum == "" || sum== NaN)
+				{
+					sum = 0;
+				}
+				this.self.getFellow("totalurine").setValue(String.valueOf(total));
+			}
+		}
+		}
+		
+		public void urine2()
+		{
+			String presentw = this.self.getFellow("presentwt").getValue();
+			if(presentw == "")
+			{
+				alert("Please enter the weight first");
+			}
+			else
+			{
+			int presentwtt = Integer.parseInt(presentw);
+			float presentwt = (float)presentwtt;
+			presentwt = presentwt/1000;
+			int init= 1;
+			int max= 4; 
+			String summ = this.self.getFellow("urine"+init).getValue();
+			if(summ == "" || summ == "NaN")
+			{
+				summ = "0";
+			}
+			  int sum = Integer.parseInt(summ);
+			for( int i=init+1; i<=max; i++)
+			{
+				
+				String urinevoll = this.self.getFellow("urine"+i).getValue();
+				if(urinevoll == "" || urinevoll == "NaN")
+				{
+					urinevoll = "0";
+				}
+				int urinevol = Integer.parseInt(urinevoll);
+				int hour = 2;
+				sum = sum + urinevol;
+				float total = (float)(sum/presentwt/hour);
+				if(sum == "" || sum== NaN)
+				{
+					sum = 0;
+				}
+				this.self.getFellow("totalurine").setValue(String.valueOf(total));
+			}
+		}
+		}
+					 
+		public void urine3()
+		{
+			String presentw = this.self.getFellow("presentwt").getValue();
+			if(presentw == "")
+			{
+				alert("Please enter the weight first");
+			}
+			else
+			{
+			int presentwtt = Integer.parseInt(presentw);
+			float presentwt = (float)presentwtt;
+			presentwt = presentwt/1000;
+			int init= 1;
+			int max= 4; 
+			String summ = this.self.getFellow("urine"+init).getValue();
+			if(summ == "" || summ == "NaN")
+			{
+				summ = "0";
+			}
+			  int sum = Integer.parseInt(summ);
+			for( int i=init+1; i<=max; i++)
+			{
+				
+				String urinevoll = this.self.getFellow("urine"+i).getValue();
+				if(urinevoll == "" || urinevoll == "NaN")
+				{
+					urinevoll = "0";
+				}
+				int urinevol = Integer.parseInt(urinevoll);
+				int hour = 3;
+				sum = sum + urinevol;
+				float total = (float)(sum/presentwt/hour);
+				if(sum == "" || sum== NaN)
+				{
+					sum = 0;
+				}
+				this.self.getFellow("totalurine").setValue(String.valueOf(total));
+			}
+		}
+		}
+					 
+		public void urine4()
+		{
+			String presentw = this.self.getFellow("presentwt").getValue();
+			if(presentw == "")
+			{
+				alert("Please enter the weight first");
+			}
+			else
+			{
+			int presentwtt = Integer.parseInt(presentw);
+			float presentwt = (float)presentwtt;
+			presentwt = presentwt/1000;
+			int init= 1;
+			int max= 4; 
+			String summ = this.self.getFellow("urine"+init).getValue();
+			if(summ == "" || summ == "NaN")
+			{
+				summ = "0";
+			}
+			  int sum = Integer.parseInt(summ);
+			for( int i=init+1; i<=max; i++)
+			{
+				
+				String urinevoll = this.self.getFellow("urine"+i).getValue();
+				if(urinevoll == "" || urinevoll == "NaN")
+				{
+					urinevoll = "0";
+				}
+				int urinevol = Integer.parseInt(urinevoll);
+				int hour = 4;
+				sum = sum + urinevol;
+				float total = (float)(sum/presentwt/hour);
+				if(sum == "" || sum== NaN)
+				{
+					sum = 0;
+				}
+				this.self.getFellow("totalurine").setValue(String.valueOf(total));
+			}
+		}
+		}
+					 
+					 
+					 
+		 public void checkbirthweight()
+		{
+			String birthw= this.self.getFellow("birthwt").getValue();
+			if(birthw.length() < 3)
+			{
+				   alert ("Please Enter Birth Weight Again. The weight should be in grams");
+				  }  
+		} 
+		 
+		 /*
+		 public void checkpresentweight()
+		{
+			String presentw = this.self.getFellow("presentwt").getValue();
+			if(presentw.length() < 3)
+			{
+			 alert ("Please Enter Present Weight Again. The weight should be in grams");
+			 return;
+			}
+			int presentwt = Integer.parseInt(presentw);
+			String yesterday =  this.self.getFellow("yesterdaywt").getValue();
+			int yesterdaywt = Integer.parseInt(yesterday);
+			float diffyesterdaywt = presentwt - yesterdaywt;
+		
+			float percentage1 = presentwt*10;
+			float percentage2 = percentage1/100;
+			float percentage3 = (float)presentwt + percentage2;
+			
+			float diffpercentage = percentage3 - (float)presentwt;
+		
+			if(diffyesterdaywt > diffpercentage)
+			{
+			 alert ("Please insert present weight again. The increment shouldn't be more than 10 %");
+			 return;
+			}
+		 }
+		*/
+		
+		public void checkyesterdayweight()
+		{
+		 String yesterday =  this.self.getFellow("yesterdaywt").getValue();
+		 if(yesterday.length() < 3)
+		 {
+		  alert ("Please Enter Yesterday Weight Again. The weight should be in grams");
+		 } 
+		}
+		
+		public void calculateSum() {
+			
+			String presentw = this.self.getFellow("presentwt").getValue();
+			if(presentw.length() < 3)
+			{
+			 alert ("Please Enter Present Weight Again. The weight should be in grams");
+			 return;
+			}
+			int presentwt = Integer.parseInt(presentw);
+			String yesterday =  this.self.getFellow("yesterdaywt").getValue();
+			int yesterdaywt = Integer.parseInt(yesterday);
+			float diffyesterdaywt = presentwt - yesterdaywt;
+		
+			float percentage1 = presentwt*10;
+			float percentage2 = percentage1/100;
+			float percentage3 = (float)presentwt + percentage2;
+			
+			float diffpercentage = percentage3 - (float)presentwt;
+		
+			if(diffyesterdaywt > diffpercentage)
+			{
+			 alert ("Please insert present weight again. The increment shouldn't be more than 10 %");
+			 return;
+			}
+			
+			
+			
+		   // int presentwt=Integer.parseInt(presentw);
+			if(presentwt == "" || presentwt == NaN  )
+				presentwt = 0;
+			
+			
+			String birthw= this.self.getFellow("birthwt").getValue();
+			int birthwt=Integer.parseInt(birthw);
+				  
+			if(birthwt == "" || birthwt == NaN)
+			 birthwt = 0;
+			
+			String yesterdayw =  this.self.getFellow("yesterdaywt").getValue();
+			int yesterdaywt=Integer.parseInt(yesterdayw);
+		   
+			if(yesterdaywt == "" || yesterdaywt == NaN)
+			 yesterdaywt = 0;
+			
+			
+			float diffbirth = presentwt - birthwt;
+				
+			float diffyesterday = presentwt - yesterdaywt;
+		
+			if(presentwt != 0 && birthwt != 0)
+			{
+				this.self.getFellow("diffbirthwt").setValue(String.valueOf(diffbirth));
+				//float diff1 = this.self.getFellow("diffbirth").setValue();
+			 if(diffbirth > 0)
+			  {                                                              //String firstvalue = this.self.getFellow("volume1").getValue();
+																			 //this.self.getFellow("volumetotal1").setValue(firstvalue) ; 
+				 this.self.getFellow("from_birth").setValue("From Birth Weight Increment"); //innerHTML= "From Birth Weight Increment";
+			  }                                                            
+			 else if(diffbirth < 0)
+			  {
+				 this.self.getFellow("from_birth").setValue("From Birth Weight Decrement");   //innerHTML= "From Birth Weight Decrement";
+			  }    
+			 else
+			  {
+				 this.self.getFellow("from_birth").setValue("From Birth Weight");          //innerHTML= "From Birth Weight";
+			  }
+			}
+			
+			if(yesterdaywt != 0 && presentwt != 0)
+			{
+				this.self.getFellow("diffyesterdaywt").setValue(String.valueOf(diffyesterday));
+				
+				//float diff2=this.self.getFellow("diffyesterday").getValue();
+			 if(diffyesterday > 0)
+			  {
+				 this.self.getFellow("from_yesterday").setValue("From Yesterday Weight Increment");                      //.innerHTML= "From Yesterday Weight Increment";
+			  }
+			 else if(diffyesterday < 0)
+			  {
+				 this.self.getFellow("from_yesterday").setValue("From Yesterday Weight Decrement");                         //.innerHTML= "From Yesterday Weight Decrement";
+			  }    
+			 else
+			  {
+				 this.self.getFellow("from_yesterday").setValue("From Yesterday Weight");                            //.innerHTML= "From Yesterday Weight";
+			  }        
+			}
+		}
+					 
+					 
+					 
+					 public void volume_total(){
+		
+						 int init= 1;
+						  int max= 4;
+						  int sum=0;
+						  int volumevol=0;
+						  String sumStr =this.self.getFellow("volume"+init).getValue();
+						  
+						  if(sumStr=="" || sumStr=="NaN")
+						  {
+						   sum = 0;
+						  }
+						  else{
+							 sum=Integer.parseInt(sumStr);
+						  }
+						  for(int i=init+1; i<=max; i++)
+						  {
+						   String volumevolStr =this.self.getFellow("volume"+i).getValue();
+						   if(volumevolStr=="" || volumevolStr=="NaN")
+						   {
+							 volumevol = 0;
+						   }    	 
+						   else
+						   {
+						   volumevol = Integer.parseInt(volumevolStr);
+						   }    
+						   sum = sum + volumevol;
+					   //    sum = eval(parseInt(sum) + parseInt(volumevol));
+						   int totalvolume = sum;
+						   
+						   this.self.getFellow("volumetotal"+i).setValue(String.valueOf(totalvolume));
+						  }
+						  String firstvalue = this.self.getFellow("volume1").getValue();
+						  this.self.getFellow("volumetotal1").setValue(firstvalue) ; 
+					 }
+					 
+			public void IV_total() {
+				int init = 1;
+				int max = 4;
+				int sum = 0;
+				int volumevol = 0;
+				for (int i = init; i <= max; i++) {
+					String val1 = this.self.getFellow("input"+i).getValue();
+					String val2 = this.self.getFellow("input"+(i+4)).getValue();
+					String val3 = this.self.getFellow("input"+(i+8)).getValue();
+					if (val1 == "" || val1 == "NaN") {
+						val1 = "0";
+					}
+					if (val2 == "" || val2 == "NaN") {
+						val2 = "0";
+					}
+					if (val3 == "" || val3 == "NaN") {
+						val3 = "0";
+					}
+					int sumStr = Integer.parseInt(val1) + Integer.parseInt(val2)
+							+ Integer.parseInt(val3);
+		
+					if (sumStr == "" || sumStr == "NaN") {
+						sum = 0;
+					} else {
+						sum = sumStr;
+						volumevol=volumevol+sum;
+					}
+					this.self.getFellow("sumvalue"+i).setValue(String.valueOf(volumevol));
+				}
+			}
+			
+			public void calculateIVFluids() {
+				String ivFluids = this.self.getFellow("ivFluids").getValue();
+				if (ivFluids == "")
+				{
+					alert ("Please Enter the IV Fluids value");
+				}
+				String birthWeightinGrams = this.self.getFellow("birthwt").getValue();
+				if(birthWeightinGrams == "")
+				{
+					alert ("Please Enter the Birth Weight");
+				}
+				float birthWeight = Integer.parseInt(birthWeightinGrams) / 1000;
+					float calculation = Integer.parseInt(ivFluids)/birthWeight/24;
+					this.self.getFellow("ivFluidsMLPRHour").setValue(String.valueOf(calculation));
+		
+			}
+			
+			
+			public void calculateEnteralFeeds() {
+				String enteralFeeds = this.self.getFellow("enteralFeeds").getValue();
+				if (enteralFeeds == "")
+				{
+					alert ("Please Enter the Enteral Feeds value");
+				}
+				String birthWeightinGrams = this.self.getFellow("birthwt").getValue();
+				if(birthWeightinGrams == "")
+				{
+					alert ("Please Enter the Birth Weight");
+				}
+				float birthWeight = Integer.parseInt(birthWeightinGrams) / 1000;
+				String value= this.self.getFellow("chooseOption").getValue();
+				int valueInteger = Integer.parseInt(value);
+				if(valueInteger == 1)
+				{
+					float calculation = Integer.parseInt(enteralFeeds)/birthWeight/24;
+					this.self.getFellow("enteralFluidsMLPRHour").setValue(String.valueOf(calculation));
+				}
+				else if(valueInteger == 2)
+				{
+					float calculation = Integer.parseInt(enteralFeeds)/birthWeight/12;
+					this.self.getFellow("enteralFluidsMLPRHour").setValue(String.valueOf(calculation));
+				}        
+				else if(valueInteger == 3)
+				{
+					float calculation = Integer.parseInt(enteralFeeds)/birthWeight/8;
+					this.self.getFellow("enteralFluidsMLPRHour").setValue(String.valueOf(calculation));
+				}
+			}	
+			
+			public void totalFluids() {
+				String enteralFeeds = this.self.getFellow("enteralFeeds").getValue();
+				if (enteralFeeds == "")
+				{
+					alert ("Please Enter the Enteral Feeds value");
+				}        
+				String ivFluids = this.self.getFellow("ivFluids").getValue();
+				if (ivFluids == "")
+				{
+					alert ("Please Enter the Iv Fluids value");
+				}
+				
+				int totalFluids = Integer.parseInt(enteralFeeds) + Integer.parseInt(ivFluids);
+				this.self.getFellow("totalFluids").setValue(String.valueOf(totalFluids));
+			}
+			public void CorrectGestation()
+			{
+				Date currentdate=this.self.getFellow("headerDate").getValue();
+				//String AtBirthdate="05/24/2014";
+				//SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+				//Date Birthdate  = dateFormat.format("05/24/2014");
+				Date Birthdate=new Date("May/23/2014");
+				
+				long calculatedTime = currentdate.getTime()-Birthdate.getTime();
+				alert(calculatedTime);
+				int calculatedDays= calculatedTime/1000/60/60/24;
+				alert (calculatedDays);
+		//		int getGestationWeeks = 31;
+		//		int getGestationDays = 5;
+		//		int totalGestation = (getGestationWeeks * 7) + getGestationDays;
+				int gestation= 222;
+				int correctedGestation = gestation + calculatedDays;
+				alert (correctedGestation);
+				int correctedGestationWeeks = correctedGestation / 7;
+				int correctedGestationDays = (correctedGestation) - (correctedGestationWeeks * 7);
+				alert (correctedGestationWeeks + "Weeks" + correctedGestationDays + "Days");
+				
+				this.self.getFellow("correctedGestation").setValue(correctedGestationWeeks + "+" + correctedGestationDays);
+				//this.self.getFellow("edd").setValue(lmpDate);
+			}
+			
+		]]>
+</zscript>
+    <style>
+    body{background: #f0f0f0;}
+    *:focus{outline:none;}
+    .z-panel-tr,.z-panel-tl,.z-panel-hl,.z-panel-hr,.z-panel-children,.z-panel-hm{background: none; border: none;}
+    .sub_menu .z-toolbarbutton-cnt{margin-left: 10px; border-left: 4px solid #CCC; padding-left: 10px;}
+    .z-toolbarbutton-cnt{background: none!important; background-image:none!important; outline: none!important;}
+    .sub_menu .z-toolbarbutton-cnt:hover{border-left: 4px solid green; padding-left: 10px; margin-left: 10px; border-right:none; border-top:none; border-bottom:none;}
+    .z-center,.z-east{border:none;}
+    .z-panel-hm .z-panel-header, .z-panel-header{font-size:13px; font-weight: bold; color:#6297BC}
+    .z-toolbar{background: #f0f0f0!important; border:none!important;}
+    tr.z-grid-odd td.z-row-inner, tr.z-grid-odd .z-cell{border:none; background:none; background-color: none;}
+    tr.z-grid-odd td.z-row-inner, tr.z-grid-odd .z-cell, tr.z-grid-odd{border:none; background:none; background-color: none;}
+    tr.z-row td.z-row-inner, tr.z-row .z-cell{border:none; background: #f0f0f0;}
+    .z-combobox-rounded-inp, .z-bandbox-rounded-inp, .z-datebox-rounded-inp, .z-timebox-rounded-inp, .z-spinner-rounded-inp, .z-doublespinner-rounded-inp, .z-combobox-inp, .z-bandbox-inp, .z-datebox-inp, .z-timebox-inp, .z-spinner-inp, .z-doublespinner-inp{width: 150px;}
+    .z-textbox, .z-decimalbox, .z-intbox, .z-longbox, .z-doublebox{width: 85px;}
+.z-vlayout{height: auto!important;}
+div.z-grid-header th.z-column, div.z-grid-header th.z-auxheader{border:1px solid #ccc; border-collapse: collapse; width: 48px!important; white-space:initial;}
+.tablegrid tr.z-row td.z-row-inner, tr.z-row .z-cell{border:1px solid #ccc; border-collapse: collapse;}
+.z-label{text-align:center;}
+.z-column-sort-img{text-align:center;}
+tr.z-row td.z-row-inner, tr.z-row .z-cell{padding:1px;}
+.z-combobox-inp{width: 20px;}
+.active{color: green; border-left: 4px solid green; padding-left: 10px; margin-left: 10px; border-right:none; border-top:none; border-bottom:none;}
+.z-textbox{width: 70px;}
+div.z-column-cnt, div.z-row-cnt{font-weight: normal; padding:8px 4px 7px 0;}
+div.z-column-cnt{8px 4px 5px 0px}
+.submit,.cancel{background: green; padding:5px 15px; border:none; color: #fff; font-weight: bold; border-radius:5px; cursor:pointer;}
+        </style>
+
+<window  style="background: #F7F7F7">
+ <div style="margin:auto; width:1024px">
+        <borderlayout sclass="complex-layout" height="30px">
+            <north size="90px" border="0" style=" background:#F7F7F7;">
+            <image src="images/fortis.png"/>
+            </north>
+            </borderlayout>
+            </div>
+ <div style="margin:auto; width:1024px; margin-top:50px;">        
+        <grid style="padding:10px; border:none; background: none;">
+		<rows>
+			<row>
+			<div style="width: 150px;">
+			<label value="Date"/>
+			<datebox style="width: 120px;" onCreate="self.value = new Date()" id="headerDate"/>
+			</div>
+			<div style="width: 210px;">				
+			<label value="Day of Life"/>
+			<textbox style="width: 120px;" id="dayOfLife"/>
+			</div>
+			<div style="width: 240px;">				
+			<label value="Gestation at Birth"/>
+			<textbox style="width: 120px;" value="31+5" id="gestaionatBirth"/>
+			</div>
+			<div style="width: 240px;">				
+			<label value="Corrected Gestation"/>
+			<textbox style="width: 120px;" id="correctedGestation" onBlur="CorrectGestation()"/>
+			</div>										
+			</row>
+		</rows>
+	</grid>            
+	</div>
+<div align="center" style="margin:20px">
+<borderlayout height="400px" width="1024px">
+    
+    <center>
+        <borderlayout>
+         <north size="90px" border="0" height="8%" margins="2,3,0,0" style=" background: green;">
+               <label value="Nursing Progress Notes -> Hourly Chart"  style="background: green; font-size: 17px; background: green; margin-left: -0px; margin-top: -5px; height: 20px; padding: 10px 10px; float:left; color: #fff;" />
+         </north>
+         <center border="0" margins="0,3,3,3" style=" overflow:auto; background:#F7F7F7">
+			   <panel> 
+					<panelchildren>
+									<div align="left" style=" background: #F7F7F7">
+										<label value="Name" />
+										<space bar="false" spacing="58px" />
+										<textbox id="Name"/>
+										 <space bar="false" spacing="20px" />
+										<label value="Weight Change from Birth" />
+										<space bar="false" spacing="35px" />
+										<textbox id="diffbirthwt"/>
+										<space bar="false" spacing="115px" />
+										<label value="ml/kg/day" />
+										<space bar="false" spacing="115px" />
+										<label value="ml/hr" />                                                    
+									   </div>
+				 
+								 <div align="left"  style=" background: #F7F7F7">
+											<label value="UID" />
+											<space bar="false" spacing="71px" />
+											<textbox id = "UID"/>
+											<space bar="false" spacing="20px" />
+											<label value="Weight Change from Yesterday" id= "from_yesterday"/>
+											<space bar="false" spacing="6px" />
+											<textbox id="diffyesterdaywt"/>
+											<space bar="false" spacing="20px" />
+											<label value="I.V.Fluids" />
+											<space bar="false" spacing="34px" />
+											<textbox id="ivFluids" onBlur="calculateIVFluids()"/>
+											<space bar="false" spacing="20px" />
+											<label value="" />
+											<space bar="false" spacing="50px" />
+											<textbox id="ivFluidsMLPRHour"/>                                                    
+									</div>
+								
+									<div align="left"  style=" background: #F7F7F7">
+										 <label value="Birth Wt." />
+											<space bar="false" spacing="47px" />
+											<textbox id="birthwt"/>
+											<space bar="false" spacing="20px" />
+											 <label value="Urine" />
+											<space bar="false" spacing="146px" />
+											<textbox id="urineCalculated"/>
+											<space bar="false" spacing="20px" />
+											 <label value="Enteral Feeds" />
+											<space bar="false" spacing="7px" />
+											<textbox id="enteralFeeds"/>
+											<space bar="false" spacing="20px" />
+											<combobox id="chooseOption" onBlur="calculateEnteralFeeds()">
+											<comboitem label="1" id="one"/>
+											<comboitem label="2" id="two"/>
+											<comboitem label="3" id="three"/>
+											</combobox>
+											<space bar="false" spacing="0px" />
+											<label value="" />
+											<space bar="false" spacing="0px" />
+											<textbox id="enteralFluidsMLPRHour"/>                                                                                                        
+									</div>
+							   
+									<div align="left"  style=" background: #F7F7F7">
+
+										<label value="Yesterday Wt." />
+										<space bar="false" spacing="17px" />
+										<textbox id = "yesterdaywt" onBlur="checkyesterdayweight()"/>
+										<space bar="false" spacing="301px" />                                                                                                 
+										<label value="Total Fluids" />
+										<space bar="false" spacing="20px" />
+										<textbox id="totalFluids" onBlur="totalFluids();"/>                                                     
+									</div>
+									 <div align="left"  style=" background: #F7F7F7">
+										<label value="Present Wt." />
+										<space bar="false" spacing="28px" />
+										<textbox id="presentwt" onBlur="calculateSum()"/>
+										<space bar="false" spacing="50px" />
+									</div>
+									<div style=" background: #F7F7F7">             
+										<toolbar align="center" >     
+											 <hlayout>
+												<grid  id = "nursingDataGrid" width="1024px">         
+													<columns>
+															<column id = "Time" label="Time" hflex="1" align="center">
+															</column>
+															<column id = "MethodLabel" label= "Method" hflex="1" align="center">
+															</column>
+															<column id= "FeedTypeLabel" label="Feed Type"
+																hflex="1" align="center">
+															</column>
+															<column id= "Volume" label="Vol."
+																hflex="1" align="center">
+															</column>
+															<column id= "Total" label="Total"
+																hflex="1" align="center">
+															</column>
+															<column id="IVFluidsLabel" label="I.V. Fluids"
+																hflex="1" align="center">
+															</column>
+															<column id="IV_Hr" label="I.V/Hr"
+																hflex="1" align="center">
+															</column>
+															<column id="AA_Hr" label="AA/Hr"
+																hflex="1" align="center">
+															</column>
+															<column id="Lipid_Hr" label="Lipid / Hr"
+																hflex="1" align="center">
+															</column>
+															<column id="IVTotal" label="I.V. Total"
+																hflex="1" align="center">
+															</column>
+															<column id="Aspirate_Vomit" label="Aspire/
+																Vomit (ml)"
+																hflex="1" align="center">
+															</column>
+															<column id="Urine" label="Urine (ml)"
+																hflex="1" align="center">
+															</column>
+															<column id="BOLabel" label="BO"
+																hflex="1" align="center">
+															
+															</column>
+															<column id="SaO2" label="SaO2 %"
+																hflex="1" align="center">
+															</column>
+															<column id="HR" label="HR"
+																hflex="1" align="center">
+															</column>
+															<column id="RR" label="RR"
+																hflex="1" align="center">
+															</column>
+															<column id="BP" label="B.P"
+																hflex="1" align="center">
+															</column>
+															<column id="FIO2Label" label="FIO2 (%)"
+																hflex="1" align="center">
+															</column>
+															<column id="TempAxilla" label="Temp Axilla
+																(C)"
+																hflex="1" align="center">
+															</column>
+															<column id="TempIncBedLabel" label="Temp Inc/Bed
+																(C)"
+																hflex="1" align="center">
+															</column>
+															<column id="CPAP" label="CPAP"
+																hflex="1" align="center">
+															</column>
+		
+														</columns>
+														<rows
+															sclass="narrow">
+															<row>
+																<label
+																	value="9" />
+																<combobox id= "Method">
+																		<comboitem id="N/G"
+																		label="N/G" />
+																	<comboitem  id="Bottle"
+																		label="Bottle" />
+																	<comboitem  id="Breast"
+																		label="Breast" />
+																</combobox>
+																<combobox id= "FeedType">
+																	<comboitem id= "EBM"
+																		label="EBM" />
+																	<comboitem id= "HMF"
+																		label="HMF" />
+																	<comboitem id= "LBW"
+																		label="LBW" />
+																	<comboitem id= "Term"
+																		label="Term" />
+																</combobox>
+																<textbox  id="volume1" onBlur="volume_total()" />
+																<textbox id="volumetotal1"/>
+																<combobox id="IVFluids">
+																		<comboitem  id="5DEXTROSE"
+																		label="5% DEXTROSE" />
+																	<comboitem  id="10DEXTROSE"
+																		label="10% DEXTROSE (ml/kg/day)" />
+																	<comboitem  id="RINGERS"
+																		label="RINGERS'S LACTATE" />
+																	<comboitem  id="ISOLYTE"
+																		label="ISOLYTE P" />
+																</combobox>
+																<textbox
+																	id="input1" onBlur="IV_total()" />
+																<textbox
+																	id="input5" onBlur="IV_total()" />
+																<textbox
+																	id="input9" onBlur="IV_total()" />
+																<textbox
+																	id="sumvalue1" />
+																<textbox id="aspireVomit"/>
+																<textbox id="urine1" onBlur="urine()" />
+																<combobox id="BO">
+																	<comboitem  id="Green"
+																		label="Green" />
+																	<comboitem  id="Yellow"
+																		label="Yellow" />
+																	<comboitem  id="White"
+																		label="White" />
+																</combobox>
+																<textbox id="sao2"/>
+																<textbox id="hr"/>
+																<textbox id="rr"/>
+																<textbox id="bp"/>
+																<combobox id="FIO2">
+																	<comboitem   id="21"
+																		label="21" />
+																	<comboitem  id="22"
+																		label="22" />
+																	<comboitem id="23" 
+																		label="23" />
+																	<comboitem  id="24"
+																		label="24" />
+																	<comboitem  id="25"
+																		label="25" />
+																	<comboitem  id="26"
+																		label="26" />
+																	<comboitem  id="27"
+																		label="27" />
+																	<comboitem  id="28"
+																		label="28" />
+																	<comboitem  id="29"
+																		label="29" />
+																	<comboitem  id="30"
+																		label="30" />
+																	<comboitem  id="40"
+																		label="40" />
+																	<comboitem  id="50"
+																		label="50" />
+																	<comboitem  id="60"
+																		label="60" />
+																	<comboitem  id="70"
+																		label="70" />
+																	<comboitem  id="80"
+																		label="80" />
+																	<comboitem  id="90"
+																		label="90" />
+																	<comboitem  id="100"
+																		label="100" />
+																</combobox>
+																<textbox id="tempAxilla"/>
+																<combobox id="TempIncBed">
+																	<comboitem  id="30T"
+																		label="30" />
+																	<comboitem  id="30.5"
+																		label="30.5" />
+																	<comboitem  id="31"
+																		label="31" />
+																	<comboitem  id="31.5"
+																		label="31.5" />
+																	<comboitem  id="32"
+																		label="32" />
+																	<comboitem  id="32.5"
+																		label="32.5" />
+																	<comboitem  id="33"
+																		label="33" />
+																	<comboitem  id="33.5"
+																		label="33.5" />
+																	<comboitem  id="34"
+																		label="34" />
+																	<comboitem  id="34.5"
+																		label="34.5" />
+																	<comboitem  id="35"
+																		label="35" />
+																	<comboitem  id="35.5"
+																		label="35.5" />
+																	<comboitem  id="36"
+																		label="36" />
+																	<comboitem  id="36.5"
+																		label="36.5" />
+																	<comboitem  id="37"
+																		label="37" />
+																	<comboitem  id="37.5"
+																		label="37.5" />
+																	<comboitem  id="38"
+																		label="38" />
+																	<comboitem  id="38.5"
+																		label="38.5" />
+																	<comboitem  id="39"
+																		label="39" />
+																	<comboitem  id="39.5"
+																		label="39.5" />
+																	<comboitem  id="40T"
+																		label="40" />
+																</combobox>
+																<textbox id="cpaf"/>
+		
+															</row>
+														</rows>
+													</grid>
+											</hlayout>
+									</toolbar>
+									<timer id="timer" delay="36000" repeats="true">
+										<attribute name="onTimer"><![CDATA[
+										invokeComponent("dbComponent","executeList","com.oxymedical.component.db.DBComponent","get NURSINGPROGRESSREPORT.Time  from FORTIS.NURSINGPROGRESSREPORT ");
+										displayDataInControl("nursingDataGrid");
+										]]></attribute>
+									</timer>	
+									<button id="Submit" label="Submit">
+										<attribute name="onClick"><![CDATA[
+										setFormPatternId("nursing_progress_notes");
+										setDatapatternId("FORTIS");
+										Object rootFormValue = self.getRoot();
+										System.out.println("rootFormValue = " + rootFormValue);
+										formValues = createFormValues(rootFormValue,formValues);
+										invokeComponent("dbComponent","save","com.oxymedical.component.db.DBComponent","nursing_progress_notes");
+										]]></attribute>
+									</button>
+									<button label="Cancel" onClick="" class="cancel"/>   
+							</div>                    
+    						</panelchildren>
+						</panel>
+ 					</center>
+ 				</borderlayout>
+ 			</center>
+			</borderlayout>
+		</div>
+	</window>
+</zk>

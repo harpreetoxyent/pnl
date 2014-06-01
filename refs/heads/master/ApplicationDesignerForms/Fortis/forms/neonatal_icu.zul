@@ -1,0 +1,344 @@
+<zk id="neonatal_icu_new" name="neonatal_icu_new">
+	<!-- <zscript src="/library/uilibrary.zs"/>--> 
+<?page id="neonatal_icu_new"?>
+    <style>
+     body{background: #f0f0f0;}
+    .z-panel-tr,.z-panel-tl,.z-panel-hl,.z-panel-hr,.z-panel-children,.z-panel-hm{background: none; border: none;}
+    .sub_menu{margin-left: 10px; border-left: 4px solid #CCC; padding-left: 10px;}
+    .sub_menu:hover{border-left: 4px solid green; padding-left: 10px; margin-left: 10px; border-right:none; border-top:none; border-bottom:none; cursor: pointer;}
+    .z-center,.z-east{border:none;}
+    .z-panel-hm .z-panel-header, .z-panel-header{font-size:13px; font-weight: bold; color:#6297BC}
+    .z-toolbar{background: #f0f0f0!important; border:none!important;}
+    tr.z-grid-odd td.z-row-inner, tr.z-grid-odd .z-cell{border:none; background:none; background-color: none;}
+    tr.z-grid-odd td.z-row-inner, tr.z-grid-odd .z-cell, tr.z-grid-odd{border:none; background:none; background-color: none;}
+    tr.z-row td.z-row-inner, tr.z-row .z-cell{border:none; background: #f0f0f0;}
+    .z-textbox{width: 173px;}
+
+.z-label{float:left; width: 185px;}
+tr.z-row td.z-row-inner, tr.z-row .z-cell{padding:0px;}
+.z-a{text-decoration:none; color:#333;}
+.z-grid-header-bg{background:none;}
+.z-datebox{width: 90px; float:left}    
+        .child_menu{margin-left: 20px; display:none}
+</style>
+<window  style="background: #f0f0f0">
+   <div style="width: 1024px; margin:auto;">
+        <borderlayout sclass="complex-layout" height="1000px">
+            <north size="90px" border="0" style=" background:none;">
+            <image src="images/fortis.png"/>
+            </north>
+            <!-- Sidebar -->
+            <west width="23%" border="0" flex="true" margins="0,5,0,0" style="background:none;">
+
+                <vlayout spacing="0" style="height: auto;">
+                    <panel width="100%" border="normal" title="Admission And Examination" >
+                        <panelchildren style="padding:5px;">
+                        
+                            <vbox>
+                                <a href="admission_new.zul"><label value="Admission Form" class="sub_menu"/></a>
+                                <a href="initial_examination_new.zul"><label value="Initial Examination" class="sub_menu"/></a>
+                            </vbox>
+                            
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Nursing Progress Notes ">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="nursing_progress_notes_new.zul"><label value="Nursing Progress Notes" class="sub_menu"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Doctor's Progress Notes">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="doctor_progress_notes_new.zul"><label value="Doctor's Progress Notes " class="sub_menu"/></a>
+                                <a href="growth_chart_new.zul"><label value="Growth Chart " class="sub_menu"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                     <panel width="100%" border="normal"
+                        title="Medication">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <label value="Doctor's Prescription" class="sub_menu" onClick="showChildMenu();"/>
+	                                <div class="child_menu" id="childMenu">
+	                                <a href="infusion_list_new.zul"><label value="Infusion List" class="sub_menu"/></a>
+	                                <a href="regular_medi_new.zul"><label value="Regular Medication" class="sub_menu"/></a>
+	                                <a href="once_only_new.zul"><label value="Once Only" class="sub_menu" /></a>                                                                
+	                                </div>
+                                <a href="nurse_administration_new.zul"><label value="Nurse Administration" class="sub_menu"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Blood Gas Tests">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="blood_gas_tests_new.zul"><label value="Blood Gas Tests" class="sub_menu"/></a>
+                               
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                     <panel width="100%" border="normal"
+                        title="Blood Test's">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="basic_new.zul"><label value="Basic " class="sub_menu"/></a>
+                                 <a href="specialised_new.zul"><label value="Specialised " class="sub_menu"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                     <panel width="100%" border="normal"
+                        title="Screening Tests">
+                       <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="screening_tests_new.zul"><label value="Screening Tests" class="sub_menu"/></a>
+                                 
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Ultrasound">
+                       <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="cranial_new.zul"><label value="Cranial" class="sub_menu"/></a>
+                                <a href="abdomen_new.zul"><label value="Abdomen" class="sub_menu"/></a>
+                                 
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    <panel width="100%" border="normal"
+                        title="Xray">
+                         <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="xray_new.zul"><label value="Xray" class="sub_menu"/></a>
+
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                    
+                    <panel width="100%" border="normal"
+                        title="Neonatal">
+                         <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="neonatal_unit_new.zul"><label value="Neonatal Unit" class="sub_menu"/></a>
+                                <a href="neonatal_icu_new.zul"><label value="Neonatal ICU" class="sub_menu active"/></a>
+                            </vbox>
+                        </panelchildren>
+                    </panel>                    
+                    <panel width="100%" border="normal"
+                        title="Discharge Summary">
+                        <panelchildren style="padding:5px;">
+                            <vbox>
+                                <a href="discharge_summary_new.zul"><label value="Discharge Summary" class="sub_menu"/></a>
+
+                            </vbox>
+                        </panelchildren>
+                    </panel>
+                </vlayout>
+
+            </west>
+            <east>
+                <vlayout>
+                    <html>
+                    </html>
+                </vlayout>
+            </east>
+            <!-- Content -->
+            <center>
+
+                <borderlayout sclass="inner-border">
+                    <north size="90px" border="0" height="4%" margins="2,3,0,0" style=" background: green;">
+                        <label value="Neonatal ICU"  style="font-size:17px; color: #fff; background: green; padding: 5px 10px; float:left; font-weight: bold; " />
+                       
+                    </north>
+                    <center border="0" margins="0,3,3,3" style=" background: none; overflow:auto;">
+            <div style="padding: 0; width: 100%; height: 540px; overflow-y: auto; overflow-x: hidden">                    
+                        <panel> 
+                            <panelchildren >
+                            
+                           <grid style="width: 49.4%; float:left">
+		<rows>
+			<row>	
+			<label value="Name Of Baby" style="padding:5px"/><textbox />
+			</row>
+		</rows>
+	</grid> 
+
+                           <grid style="width: 50%; float:left">
+		<rows>
+			<row>	
+			<label value="UHID No."/><textbox />
+				</row>
+		</rows>
+	</grid> 	
+                            
+              <div style="clear:both;"></div>
+        <grid>
+              <columns >
+        <column label="Date" style="width: 110px" />
+        <column label="Time"  />
+        <column label="Mode"  />
+        <column label="BPM" />
+        <column label="PIP" />
+        <column label="PEEP" />
+        <column label="DP" />
+        <column label="MAP" />
+        <column label="FiO2" />
+    </columns>
+    <rows>
+        <row>
+            <datebox />
+            <timebox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+        </row>
+        <row>
+           <datebox />
+            <timebox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+        </row>
+        <row>
+           <datebox />
+            <timebox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+        </row>
+        <row>
+           <datebox />
+            <timebox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+        </row>
+        <row>
+           <datebox />
+            <timebox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+        </row>
+        <row>
+          <datebox />
+            <timebox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+        </row>
+        <row>
+           <datebox />
+            <timebox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+        </row>
+        <row>
+           <datebox />
+            <timebox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+        </row>
+        <row>
+           <datebox />
+            <timebox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+        </row>
+        <row>
+           <datebox />
+            <timebox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+        </row>
+        <row>
+           <datebox />
+            <timebox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+        </row>
+        <row>
+           <datebox />
+            <timebox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+            <textbox />
+        </row>
+    </rows>
+</grid>
+</panelchildren>
+</panel>
+ <panel >
+          <panelchildren >
+          <toolbar align="center" >
+          <button label="Submit" onClick="" />
+          <button label="Cancel" onClick="" />
+          </toolbar>
+            </panelchildren>
+             </panel>
+</div>
+</center></borderlayout>
+            </center>
+
+        </borderlayout>
+    </div>
+    
+    </window>
+</zk>

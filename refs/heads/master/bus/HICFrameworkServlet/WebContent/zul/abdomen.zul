@@ -1,0 +1,180 @@
+<html>
+<head>
+<title>Abdomen</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="images/BrightSide.css" type="text/css" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<link rel="stylesheet" type="text/css" media="all" href="jsDatePick_ltr.min.css" />
+<script type="text/javascript" src="jsDatePick.min.1.3.js"></script>
+
+		<script type="text/javascript" language="javascript" src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.0.0/prototype.js"></script>
+		<script type="text/javascript" language="javascript" src="https://ajax.googleapis.com/ajax/libs/scriptaculous/1.8.3/scriptaculous.js"></script>
+		<script type="text/javascript" language="javascript" src="http://jongsma.org/js/controls/protoplasm.js"></script>
+		<script type="text/javascript" language="javascript">
+			Protoplasm.use('timepicker')
+	.transform('input.timepicker')
+	.transform('input.timepicker2', {use24hrs: true});
+</script>
+
+<script type="text/javascript">
+	window.onload = function(){
+		new JsDatePick({
+			useMode:2,
+			target:"inputField",
+			dateFormat:"%d-%M-%Y"
+		});
+		new JsDatePick({
+			useMode:2,
+			target:"inputField1",
+			dateFormat:"%d-%M-%Y"
+		});
+		new JsDatePick({
+			useMode:2,
+			target:"inputField2",
+			dateFormat:"%d-%M-%Y"
+		});
+		new JsDatePick({
+			useMode:2,
+			target:"inputField3",
+			dateFormat:"%d-%M-%Y"
+		});
+		new JsDatePick({
+			useMode:2,
+			target:"inputField4",
+			dateFormat:"%d-%M-%Y"
+		});
+		new JsDatePick({
+			useMode:2,
+			target:"inputField5",
+			dateFormat:"%d-%M-%Y"
+		});
+		new JsDatePick({
+			useMode:2,
+			target:"inputField6",
+			dateFormat:"%d-%M-%Y"
+		});
+		new JsDatePick({
+			useMode:2,
+			target:"inputField7",
+			dateFormat:"%d-%M-%Y"
+		});
+		new JsDatePick({
+			useMode:2,
+			target:"inputField8",
+			dateFormat:"%d-%M-%Y"
+		});
+		new JsDatePick({
+			useMode:2,
+			target:"inputField9",
+			dateFormat:"%d-%M-%Y"
+		});
+		new JsDatePick({
+			useMode:2,
+			target:"inputField10",
+			dateFormat:"%d-%M-%Y"
+		});																				
+	};
+</script>
+<script>
+var j = jQuery.noConflict();
+j( window ).load(function() {
+ j("#insert-more").click(function () {
+     j("#mytable").each(function () {
+         var tds = '<tr>';
+         jQuery.each(j('tr:last td', this), function () {
+             tds += '<td>' + j(this).html() + '</td>';
+         });
+         tds += '</tr>';
+         if (j('tbody', this).length > 0) {
+             j('tbody', this).append(tds);
+         } else {
+             j(this).append(tds);
+         }
+     });
+});
+});
+</script>
+<script>
+var l = jQuery.noConflict();
+l(window).load(function ()
+	{
+		l('.drug').click(function()
+	{
+		l('.show').css('display', 'block');
+	});
+
+});
+</script>
+<style>
+li.drug ul.show{display:none;}
+</style>
+</head>
+<body>
+<div id="wrap">
+  <div id="header">
+    <h1 id="logo"><a href="menu.zul" class="logo"><img src="images/fortis.png" /></a></h1>
+
+   </div>
+  <div id="content-wrap">
+    <div id="sidebar" >
+      <h1>Admission &amp; Examination</h1>
+      <ul class="sidemenu">
+        <li><a href="admission.zul" class="active">Admission Form</a></li>
+        <li><a href="initial_examination.zul">Initial Examination</a></li>
+      </ul>
+	  <h1>Blood Gas Tests</h1>
+      <ul class="sidemenu">
+        <li><a href="blood_gas_test.zul">Blood Gas Tests</a></li>
+      </ul>
+      <h1>Blood Tests</h1>
+      <ul class="sidemenu">
+        <li><a href="basic.zul">Basic</a></li>
+        <li><a href="specialised.zul">Specialised</a></li>
+      </ul>	  
+      <h1>UltraSounds</h1>
+      <ul class="sidemenu">
+        <li><a href="cranial.zul">Cranial</a></li>
+        <li><a href="abdomen.zul" class="active">Abdomen</a></li>
+      </ul>
+      <h1>Xray</h1>
+      <ul class="sidemenu">
+        <li><a href="xray.zul">Xray</a></li>
+	</ul>	  
+      <h1>Progress Notes</h1>
+      <ul class="sidemenu">
+        <li><a href="progress_notes.zul">Progress Notes</a></li>
+	</ul>	  	  
+      <h1>Medication</h1>
+      <ul class="sidemenu">
+        <li class="drug"><a href="#" class="drug">Doctor's Prescription</a>
+        <ul class="show">
+        <li><a href="diamorphine_infusion.zul">Infusion List</a></li>
+        <li><a href="regular_medi.zul">Regular Medication</a></li>
+        <li><a href="sos_medi.zul">SOS Medication</a></li>
+<li><a href="once.zul">Once Only</a></li>                
+        </ul>
+        </li>
+        <!--<li><a href="doctor_prescription.zul">Doctor's Prescription</a></li>-->
+        <li><a href="nurse_administration.zul">Nurse Administration</a></li>				
+	</ul>	  	  
+	  <h1>Nursing Progress Notes</h1>
+      <ul class="sidemenu">
+        <li><a href="nursing_progress_notes.zul">Nursing Progress Notes</a></li>
+	</ul>	  	  
+	  <h1>Discharge Summary</h1>
+      <ul class="sidemenu">
+        <li><a href="discharge_summary.zul">Discharge Summary</a></li>
+	</ul>	  	  		
+    </div>
+    <div id="main">
+      <h1 class="head">Abdomen</h1>
+	  <center>
+		<p>This page is under construction</p>	  
+		</center>
+    </div>
+	
+    
+  </div>
+</div>
+</body>
+</html>

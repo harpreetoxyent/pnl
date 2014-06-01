@@ -44,6 +44,7 @@ import com.oxymedical.hic.request.RuleRequest;
 import com.oxymedical.hic.request.UserRequest;
 import com.oxymedical.hic.request.WebServiceRequest;
 import com.oxymedical.hic.request.WorkflowRequest;
+import com.oxymedical.hic.request.NICURequest;
 
 public class HICFrameworkServlet extends HttpServlet 
 {
@@ -96,6 +97,9 @@ public class HICFrameworkServlet extends HttpServlet
 				initializeHICObjects();
 				initializeWebServiceProvider();
 				webserviceThread.join();
+				System.out.println("----Invoked initializeNICURequest");
+				initializeNICURequest();
+				nicuThread.join();
 			}catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -262,6 +266,20 @@ public class HICFrameworkServlet extends HttpServlet
 		{
 			webserviceThread = new Thread(new WebServiceRequest());
 			webserviceThread.start();
+		}
+		catch (Exception e) 
+		{
+		}
+	}
+	
+
+	private synchronized void initializeNICURequest()
+	{
+		try
+		{
+			System.out.println("----Inside initializeNICURequest");
+			nicuThread = new Thread(new NICURequest());
+			nicuThread.start();
 		}
 		catch (Exception e) 
 		{
@@ -587,5 +605,6 @@ public class HICFrameworkServlet extends HttpServlet
 	Thread dbThread;
 	Thread workflowThread;
 	Thread ruleThread;
+	Thread nicuThread;
 	
 }

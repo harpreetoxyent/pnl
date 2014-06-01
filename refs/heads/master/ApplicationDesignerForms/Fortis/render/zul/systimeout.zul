@@ -1,0 +1,7 @@
+<zk xmlns:zk="http://www.zkoss.org/2005/zk" title="Session Timeout" border="normal" width="100%">
+	<vbox align="center" width="100%" style="margin-top:50px;">
+		<imagemap src="img/logo.jpg" />
+		Session Timeout. Please login again using application login screen.
+		<button label="Login" onClick='Executions.sendRedirect("login.zul")' style="margin-top:25px;" />
+	</vbox>
+</zk>

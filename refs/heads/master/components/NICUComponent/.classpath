@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/BaseComponent"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/CoreLibrary"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Framework"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/JAAP"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/LdapComponent"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Logging"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/UniquIdGenerator"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/UseradminComponent"/>
+	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/DBComponent"/>
+	<classpathentry kind="lib" path="lib/resource_FORTIS.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

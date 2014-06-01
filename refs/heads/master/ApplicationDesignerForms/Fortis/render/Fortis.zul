@@ -1,0 +1,6 @@
+<zk>
+<zscript>
+Executions.sendRedirect("zul/initial_examination.zul")
+</zscript>
+</zk>
+

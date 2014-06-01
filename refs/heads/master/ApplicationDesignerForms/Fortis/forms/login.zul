@@ -1,0 +1,89 @@
+<zk  id="index" name="index">
+<!-- 	<zscript src="/library/uilibrary.zs"/>--> 
+	<?page id="index"?>
+		
+<style>
+a {
+text-decoration: none;
+}
+.wrapper {
+text-align: left;
+margin: 0 auto;
+width: 940px;
+}
+.content{padding:25px 30px 20px 60px}
+.logo{
+background: url(images/fortis.png) top center no-repeat;
+display: block;
+overflow: hidden;
+padding-top:100px;
+margin-top:50px;
+outline: none;
+}
+.container{width: 460px; margin:0 auto; background: #f7f6f3; border: 1px solid #e1dfd4; border-radius: 6px;}
+.inner_content{width: 380px;}
+.forgot{font-size: 11px; color: #666;}
+.code{font-size: 14px; color: #333; font-weight: bold;}
+td{width: 100%;}
+div.z-grid{background: none; border:none;}
+tr.z-row td.z-row-inner, tr.z-row .z-cell{background: #f7f7f7; border:none;}
+.public-button{font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+font-size: 13px;
+vertical-align: top;
+padding: 6px 14px 6px 14px;
+border: 1px solid #a2a2a2;
+color: #444;
+cursor: pointer;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+background: -webkit-linear-gradient(#fff, #e5e5e5);
+background: -moz-linear-gradient(#fff, #e5e5e5);
+background: -ms-linear-gradient(#fff, #e5e5e5);
+background: -o-linear-gradient(#fff, #e5e5e5);
+background: linear-gradient(#fff, #e5e5e5);
+-pie-background: linear-gradient(#fff, #e5e5e5);
+position: relative;}
+</style>
+
+<window style="background: #F7F7F7" height="1024px" xmlns:w="http://www.zkoss.org/2005/zk/client">
+    	
+
+         <a href="#" class="logo"><label value=""/></a>
+
+    <div class="container">
+    	<div class="content">
+    		<div class="inner_content">
+					<grid class="login" style="margin-left: auto; margin-right: auto;">
+						<rows>
+							<row>
+							<label value="Code Number" class="code"/>
+							</row>
+							<row>							
+								<textbox class="email" tabindex="1" style="width: 300px; height: 25px;" id="codeNumber">
+									<DataMappings>
+      									<Mapping datapattern="FORTIS" datatable="LOGIN" datafield="Code: String"/>
+   		 							</DataMappings>	
+   		 						</textbox>	
+							</row>
+							<row>
+							<a href="#"><label value="Forgot Code?" class="forgot" id="forgotCode"/></a>
+                         </row> 
+                        <row>
+						<checkbox name="remember" class="rememberMe" tabindex="3" id="rememberMe"/>
+						<label value="Remember me"/>
+						</row>
+						<row>
+							<button class="public-button" tabindex="4" label="Log In" id="logIn"/>
+						</row>
+						</rows>
+					</grid>
+
+			
+			
+		</div> <!-- wrapper -->
+		</div> <!-- content -->
+	</div> <!-- container -->
+
+</window>
+</zk>

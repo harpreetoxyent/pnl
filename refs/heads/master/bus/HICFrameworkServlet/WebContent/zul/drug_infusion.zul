@@ -1,0 +1,461 @@
+<html>
+<head>
+<title>Admission Form</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="images/BrightSide.css" type="text/css" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<link rel="stylesheet" type="text/css" media="all" href="jsDatePick_ltr.min.css" />
+<script type="text/javascript" src="jsDatePick.min.1.3.js"></script>
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/redmond/jquery-ui.css" />	
+<link rel="stylesheet" type="text/css" href="jquery.ptTimeSelect.css" />
+<script type="text/javascript" src="jquery.ptTimeSelect.js"></script>		
+<style>
+.ac-container {
+    max-width: 400px;
+}
+
+.ac-container label {
+    height: 30px !important;
+    line-height: 21px !important;
+    font-size: 14px !important;
+    padding: 5px 20px;
+    position: relative;
+    z-index: 20;
+    display: block;
+    float:none;
+    height: 30px;
+    cursor: pointer;
+    color: #777;
+    line-height: 33px;
+    font-size: 19px;
+    background: #fff;
+    background: -moz-linear-gradient(top,#fff 1%,#eaeaea 100%);
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(1%,#fff),color-stop(100%,#eaeaea));
+    background: -webkit-linear-gradient(top,#fff 1%,#eaeaea 100%);
+    background: -o-linear-gradient(top,#fff 1%,#eaeaea 100%);
+    background: -ms-linear-gradient(top,#fff 1%,#eaeaea 100%);
+    background: linear-gradient(top,#fff 1%,#eaeaea 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff',endColorstr='#eaeaea',GradientType=0 );
+    box-shadow: 0 0 0 1px rgba(155,155,155,0.3),1px 0 0 rgba(255,255,255,0.9) inset,0 2px 2px rgba(0,0,0,0.1);
+    font-size: 12px;
+    height: 30px;
+    line-height: 20px;
+}
+
+.ac-container {
+    width: 100%;
+    margin: 10px auto 30px auto;
+    text-align: left;
+}
+
+.ac-container label:hover {
+    background: #fff;
+}
+
+.ac-container input:checked + label,.ac-container input:checked + label:hover {
+    background: #f1f2f3;
+    color: #666;
+    text-shadow: 0 1px 1px rgba(255,255,255,0.6);
+    box-shadow: 0 0 0 1px rgba(155,155,155,0.3),0 2px 2px rgba(0,0,0,0.1);
+    height: 30px;
+    line-height: 21px;
+    font-size: 13px;
+}
+
+.ac-container label:hover:after,.ac-container input:checked + label:hover:after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    right: 13px;
+    top: 7px;
+}
+
+
+.ac-container input {
+    display: none;
+}
+
+.ac-container article {
+width: 188px;
+    background: rgba(255,255,255,0.5);
+    margin-top: -1px;
+    overflow: hidden;
+    height: 0;
+    position: relative;
+    z-index: 10;
+    -webkit-transition: height 0.3s ease-in-out,box-shadow 0.6s linear;
+    -moz-transition: height 0.3s ease-in-out,box-shadow 0.6s linear;
+    -o-transition: height 0.3s ease-in-out,box-shadow 0.6s linear;
+    -ms-transition: height 0.3s ease-in-out,box-shadow 0.6s linear;
+    transition: height 0.3s ease-in-out,box-shadow 0.6s linear;
+}
+
+.ac-container article p {
+    font-style: normal;
+    color: #777;
+    line-height: 23px;
+    font-size: 10px;
+    padding: 20px;
+    text-shadow: 1px 1px 1px rgba(255,255,255,0.8);
+    font: normal normal 12px 'Open Sans';
+}
+
+.ac-container input:checked ~ article {
+width: 188px;
+    -webkit-transition: height 0.5s ease-in-out,box-shadow 0.1s linear;
+    -moz-transition: height 0.5s ease-in-out,box-shadow 0.1s linear;
+    -o-transition: height 0.5s ease-in-out,box-shadow 0.1s linear;
+    -ms-transition: height 0.5s ease-in-out,box-shadow 0.1s linear;
+    transition: height 0.5s ease-in-out,box-shadow 0.1s linear;
+    box-shadow: 0 0 0 1px rgba(155,155,155,0.3);
+}
+
+.ac-container input:checked ~ article.ac-small {
+    height: 70px;
+    width: 188px;
+}
+
+.ac-container input:checked ~ article.ac-medium {
+    height: auto;
+    width: 188px;
+}
+
+.ac-container input:checked ~ article.ac-large {
+    height: auto;
+    width: 188px;
+}
+</style>
+
+<script type="text/javascript">
+var k = jQuery.noConflict();
+        k(window).load(function(){
+            
+            for(var p=1; p&lt;=1000; p++)
+            {
+            k('#sample'+ p).ptTimeSelect({
+            }); 
+            }
+        }); 
+    </script>
+
+
+
+<script type="text/javascript">
+	window.onload = function(){
+		new JsDatePick({
+			useMode:2,
+			target:"inputField",
+			dateFormat:"%d-%M-%Y"
+		});
+		new JsDatePick({
+			useMode:2,
+			target:"inputField1",
+			dateFormat:"%d-%M-%Y"
+		});
+		new JsDatePick({
+			useMode:2,
+			target:"inputField2",
+			dateFormat:"%d-%M-%Y"
+		});
+		new JsDatePick({
+			useMode:2,
+			target:"inputField3",
+			dateFormat:"%d-%M-%Y"
+		});
+		new JsDatePick({
+			useMode:2,
+			target:"inputField4",
+			dateFormat:"%d-%M-%Y"
+		});
+		new JsDatePick({
+			useMode:2,
+			target:"inputField5",
+			dateFormat:"%d-%M-%Y"
+		});
+		new JsDatePick({
+			useMode:2,
+			target:"inputField6",
+			dateFormat:"%d-%M-%Y"
+		});
+		new JsDatePick({
+			useMode:2,
+			target:"inputField7",
+			dateFormat:"%d-%M-%Y"
+		});
+		new JsDatePick({
+			useMode:2,
+			target:"inputField8",
+			dateFormat:"%d-%M-%Y"
+		});
+		new JsDatePick({
+			useMode:2,
+			target:"inputField9",
+			dateFormat:"%d-%M-%Y"
+		});
+		new JsDatePick({
+			useMode:2,
+			target:"inputField10",
+			dateFormat:"%d-%M-%Y"
+		});																				
+	};
+</script>
+<script>
+var j = jQuery.noConflict();
+        j(window).load(function(){
+ j("#insert-more").click(function () {
+     j("#mytable").each(function () {
+         var tds = '<tr>';
+         jQuery.each(j('tr:last td', this), function () {
+             tds += '<td>' + j(this).html() + '</td>';
+         });
+         tds += '</tr>';
+         if (j('tbody', this).length > 0) {
+             j('tbody', this).append(tds);
+         } else {
+             j(this).append(tds);
+         }
+     });
+});
+
+    j("#blue").click(function()
+	{
+		j('#main').css('background', '#FAEBD7');
+	});
+    j("#pink").click(function()
+	{
+		j('#main').css('background', '#E0FFFF');
+	});	
+    j("#result_yes").click(function()
+	{
+		j('#display_result').css('display', 'block');
+	});	
+    j("#result_no").click(function()
+	{
+		j('#display_result').css('display', 'none');
+	});			
+    j("#result_yes1").click(function()
+	{
+		j('#display_result1').css('display', 'block');
+	});	
+    j("#result_no1").click(function()
+	{
+		j('#display_result1').css('display', 'none');
+	});
+    j("#result_not").click(function()
+	{
+		j('#display_result1').css('display', 'none');
+	});					
+	});
+</script>
+
+<script>
+function gestation_count()
+{
+var a=document.getElementById('inputField1').value;
+var d = (new Date(a));
+d.setDate(d.getDate()+280);
+document.getElementById('edd').value=d;
+$('#gestation').focus();
+
+
+var birth =document.getElementById('inputField').value;
+var b= new Date(birth);
+
+var e =new Date(d);
+e.setDate(e.getDate()-b.getDate());
+document.getElementById('gestation').value=e;
+}
+</script>
+<script>
+var l = jQuery.noConflict();
+l(window).load(function ()
+{
+l('.diamorphine').click(function()
+{
+l('.close').click(function()
+{
+l('.showdiv').css('display', 'none');
+});
+l('.showdiv').css('display', 'block');
+l('.showdiv').css('z-index', '9999');
+l('.showdiv').load('diamorphine_infusion.zul');
+});
+});
+</script>
+<script>
+var l = jQuery.noConflict();
+l(window).load(function ()
+{
+l('.dinoprostone').click(function()
+{
+l('.close').click(function()
+{
+l('.showdiv1').css('display', 'none');
+});
+l('.showdiv1').css('display', 'block');
+l('.showdiv1').css('z-index', '9999');
+l('.showdiv1').load('dinoprostone_infusion.zul');
+});
+});
+</script>
+<script>
+var l = jQuery.noConflict();
+l(window).load(function ()
+{
+l('.dobutamine').click(function()
+{
+l('.close').click(function()
+{
+l('.showdiv2').css('display', 'none');
+});
+l('.showdiv2').css('display', 'block');
+l('.showdiv2').css('z-index', '9999');
+l('.showdiv2').load('dobutamine_infusion.zul');
+});
+});
+</script>
+
+
+<style>
+.showdiv,.showdiv1,.showdiv2{display:none; width:450px; height: auto; border: 2px solid #ccc; position:absolute; top:20px; left: 450px;}
+#display_result{display:none;}
+#display_result1{display:none;}
+ul.inner_menu{list-style-type:none; background: #00FF00; overflow:auto; margin:0px; padding-left: 0px;}
+ul.inner_menu li{list-style-type:none; float:left; color: #fff; border-right: 1px solid #fff; padding:0px 7px; cursor:pointer;}
+ul.inner_menu li a{color: #fff; float:left; margin-top:3px; margin-bottom:3px;}
+ul.inner_menu li.inneractive{background: green;}
+ul.inner_menu li:hover{background: green;}
+h1{margin:0px!important;}
+</style>
+<script>
+var l = jQuery.noConflict();
+l(window).load(function ()
+	{
+		l('.drug').click(function()
+	{
+		l('.show').css('display', 'block');
+	});
+
+});
+</script>
+<style>
+li.drug ul.show{display:none;}
+</style>
+</head>
+<body>
+<div class="showdiv"></div>
+<div class="showdiv1"></div>
+<div class="showdiv2"></div>
+<div id="wrap">
+  <div id="header">
+    <h1 id="logo"><a href="menu.zul" class="logo"><img src="images/fortis.png" /></a></h1>
+   </div>
+  <div id="content-wrap">
+    <div id="sidebar" >
+      <h1>Admission &amp; Examination</h1>
+      <ul class="sidemenu">
+        <li><a href="admission.zul">Admission Form</a></li>
+        <li><a href="initial_examination.zul">Initial Examination</a></li>
+      </ul>
+	  <h1>Nursing Progress Notes</h1>
+      <ul class="sidemenu">
+        <li><a href="nursing_progress_notes.zul">Nursing Progress Notes</a></li>
+	</ul>
+      <h1>Doctor's Progress Notes</h1>
+      <ul class="sidemenu">
+        <li><a href="progress_notes.zul">Doctor's Progress Notes</a></li>
+<li><a href="growth_chart.zul">Growth Chart</a></li>
+	</ul>	  	  	
+		  	  
+      <h1>Medication</h1>
+      <ul class="sidemenu">
+        <li class="drug"><a href="#" class="drug">Doctor's Prescription</a>
+        <ul class="show">
+        <li><a href="diamorphine_infusion.zul">Infusion List</a></li>
+        <li><a href="regular_medi.zul">Regular Medication</a></li>
+        <li><a href="sos_medi.zul">SOS Medication</a></li>
+<li><a href="once.zul">Once Only</a></li>                
+        </ul>
+        </li>
+        <!--<li><a href="doctor_prescription.zul">Doctor's Prescription</a></li>-->
+        <li><a href="nurse_administration.zul">Nurse Administration</a></li>				
+	</ul>	
+	      
+	  <h1>Blood Gas Tests</h1>
+      <ul class="sidemenu">
+        <li><a href="blood_gas_test.zul">Blood Gas Tests</a></li>
+      </ul>
+      <h1>Blood Tests</h1>
+      <ul class="sidemenu">
+        <li><a href="basic.zul">Basic</a></li>
+        <li><a href="specialised.zul">Specialised</a></li>
+      </ul>
+      <h1>Screening Tests</h1>
+      <ul class="sidemenu">
+        <li><a href="screeningtests.zul">Screening Tests</a></li>
+      </ul>      
+      	  
+      <h1>UltraSounds</h1>
+      <ul class="sidemenu">
+        <li><a href="cranial.zul">Cranial</a></li>
+        <li><a href="abdomen.zul">Abdomen</a></li>
+      </ul>
+      <h1>Xray</h1>
+      <ul class="sidemenu">
+        <li><a href="xray.zul">Xray</a></li>
+	</ul>	  
+
+	  <h1>Discharge Summary</h1>
+      <ul class="sidemenu">
+        <li><a href="discharge_summary.zul">Discharge Summary</a></li>
+	</ul>	  	  	
+    </div>
+    <div id="main">
+      <h1 class="head">Drug Infusion</h1>
+    
+    
+    <section class="ac-container">
+				<div>
+					<input id="ac-1" name="accordion-1" type="radio" checked=""/>
+					<label for="ac-1">Infusion List</label>
+					<article class="ac-small">
+	<table>
+	<tr>
+	<td><a href="#" class="diamorphine">Diamorphine</a></td>
+    </tr>
+    <tr>
+    <td><a href="#" class="dinoprostone">Dinoprostone</a></td>
+    </tr>
+    <tr>
+    <td><a href="#" class="dobutamine">Dobutamine</a></td>
+	</tr>
+	</table>  
+					</article>
+				</div>
+				<div>
+					<input id="ac-2" name="accordion-1" type="radio"/>
+					<label for="ac-2">Regular Medication</label>
+					<article class="ac-medium">
+						<p>Regular Medication</p>
+					</article>
+				</div>
+				<div>
+					<input id="ac-3" name="accordion-1" type="radio"/>
+					<label for="ac-3">SOS Medication</label>
+					<article class="ac-large">
+						<p>SOS Medication</p>
+					</article>
+				</div>
+	</section>
+    
+    
+ 
+	  
+    </div>
+	
+    
+  </div>
+</div>
+</body>
+</html>
