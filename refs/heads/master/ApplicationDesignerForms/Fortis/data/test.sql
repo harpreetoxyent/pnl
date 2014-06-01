@@ -35,4 +35,7 @@ INSERT INTO MasterMethod(MethodName) VALUES('N/G');
 INSERT INTO MasterMethod(MethodName) VALUES('Bottle');
 INSERT INTO MasterMethod(MethodName) VALUES('Breast');
 
-alter table NURSINGPROGRESSREPORT  add foreign key ( MethodId )  references MasterMethod( ID );
+ALTER TABLE nursingprogressreport
+    ADD CONSTRAINT nursingMethod
+    FOREIGN KEY(methodId)
+    REFERENCES MasterMethod(ID);

@@ -163,6 +163,58 @@
 	
 		    <maintenance>
 		    </maintenance>
-		</module>		
+		</module>	
+		<module
+			name="NICU Component"
+			id="nicuComponent"
+			version="1.0"
+			provider-name="Oxyent"
+			class="com.oxymedical.component.nicu.NICUComponent">
+	
+	 		<requires>
+			<import module="org.eclipse.core.resources"/>
+			<import module="org.eclipse.ui"/>
+		    </requires>
+	
+		    <runtime>
+			<library name="testworld.jar"/>	
+		    </runtime>
+	
+		    <maintenance>
+		    </maintenance>
+		</module>
+
+		<module
+			name="Database Component"
+			id="nursingDataDBComponent"
+			version="1.0"
+			provider-name="Oxyent"
+			class="com.oxymedical.component.db.DBComponent">
+	
+	 		<requires>
+			<import module="org.eclipse.core.resources"/>
+			<import module="org.eclipse.ui"/>
+		    </requires>
+	
+		    <runtime>
+			<library name="testworld.jar"/>	
+		    </runtime>
+	
+		    <maintenance>
+		   		<Defect-Action>
+		    			<Defect-List>
+		    				<Defect>
+		    					
+		    				</Defect>
+		    			</Defect-List>	
+		    			<Action-List>
+						<Action>
+							
+						</Action>
+		    			</Action-List>
+		    		</Defect-Action>
+		    	</maintenance>
+		    	
+		</module>			
 	</modulelist>
 </container>
